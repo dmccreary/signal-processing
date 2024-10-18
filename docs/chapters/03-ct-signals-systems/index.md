@@ -1,3 +1,18 @@
-# 03-ct-signals-systems
+# Chapter 3: Continuous-Time Signals and Systems
 
-This is the index file for this chapter.
+Introduces continuous-time signals and systems, including their classifications and properties.
+
+## Signal Classification
+
+-   **Deterministic vs. Random Signals**
+-   **Periodic vs. Aperiodic Signals**
+
+### System Properties
+
+-   **Linearity and Time-Invariance**
+-   **Causality and Stability**
+
+## Convolution in Continuous Time
+
+-   **Impulse Response**
+-   **System Output Calculation**

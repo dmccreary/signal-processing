@@ -33,7 +33,6 @@ This chapter provides an overview of signal processing, its importance in modern
 -   **Structure and Prerequisites**: How the course is organized and foundational knowledge required.
 
 ## Chapter 2: Mathematical Foundations
------------------------------------
 
 Covers the essential mathematical tools required for signal processing, including linear algebra, complex numbers, and probability theory.
 
@@ -165,7 +164,7 @@ Introduces the Z-transform as a tool for analyzing discrete-time systems.
 -   **System Design Techniques**
 
 ## Chapter 8: Filter Design and Implementation
--------------------------------------------
+--------
 
 Covers the principles and methods for designing digital filters.
 
@@ -192,7 +191,7 @@ Covers the principles and methods for designing digital filters.
 -   **Real-Time Processing Constraints**
 
 ## Chapter 9: Adaptive Signal Processing
--------------------------------------
+--
 
 Discusses adaptive filtering techniques and their applications in dynamic environments.
 
@@ -285,7 +284,7 @@ Introduces methods for analyzing signals in both time and frequency domains simu
 -   **Feature Extraction**
 
 ## Chapter 13: Multirate Signal Processing
----------------------------------------
+----
 
 Discusses processing techniques involving multiple sampling rates.
 
@@ -307,7 +306,7 @@ Discusses processing techniques involving multiple sampling rates.
 -   **Applications in Subband Coding**
 
 ## Chapter 14: Signal Compression and Coding
------------------------------------------
+------
 
 Covers methods for reducing the data rate of signals while preserving essential information.
 
