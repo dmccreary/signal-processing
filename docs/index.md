@@ -1,5 +1,7 @@
 # Signal Processing
 
+![](./img/cover-banner.png)
+
 Welcome to our website on Signal Processing.
 
 [Table of Contents](toc.md)
