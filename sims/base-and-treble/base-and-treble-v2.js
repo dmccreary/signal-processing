@@ -5,11 +5,11 @@ let canvasWidth = 450;
 // The top drawing region above the interactive controls
 let drawHeight = 350;
 // control region height
-let controlHeight = 50;
+let controlHeight = 80;
 // The total height of both the drawing region height + the control region height
 let canvasHeight = drawHeight + controlHeight;
 // margin around the active plotting region
-let margin = 20;
+let margin = 25;
 // larger text so students in the back of the room can read the labels
 let defaultTextSize = 16;
 
@@ -44,7 +44,7 @@ function draw() {
 
   // Fill the drawing region with 'aliceblue'
   fill('aliceblue');
-  stroke('black');
+  noStroke();
   rect(0, 0, canvasWidth, drawHeight);
 
   // Fill the control region with 'white'
@@ -118,7 +118,7 @@ function draw() {
   line(margin, yZero, canvasWidth - margin, yZero);
 
   // Draw labels
-  noStroke();
+  strokeWeight(0);
   fill('black');
   textAlign(CENTER, TOP);
   textSize(24);
@@ -127,7 +127,7 @@ function draw() {
   // Draw labels for sliders under the sliders
   textSize(16);
   textAlign(CENTER, TOP);
-  fill('black');
+  fill(0);
   text("Bass", bassSlider.x + bassSlider.width / 2, bassSlider.y + 20);
   text("Treble", trebleSlider.x + trebleSlider.width / 2, trebleSlider.y + 20);
 }
