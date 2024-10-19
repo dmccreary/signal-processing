@@ -1,5 +1,7 @@
 # History of Signal Processing
 
+[Timeline of Signal Processing](./sims/timeline-viewer/timeline-viewer.html)
+
 ## Prompt
 
 ```
@@ -8,6 +10,7 @@ development of modern signal processing?
 Who were the most colorful characters?
 What were the key breakthroughs?
 ```
+
 ## Response
 
 ChatGPT Thought for 8 seconds
@@ -37,7 +40,7 @@ enabling the conversion of analog signals to digital form without loss of inform
 
 In 1965, James W. Cooley and John W. Tukey published the Fast Fourier
 Transform algorithm, dramatically reducing the computational
-complexity of Fourier Transforms from O(N2)O(N^2)O(N2) to O(Nlog⁡N)O(N \\log N)O(NlogN). This breakthrough made real-time signal processing feasible and opened doors to advanced applications in telecommunications, audio processing, and image analysis.
+complexity of Fourier Transforms from $O(N^2)$ to $O(N\logN)$. This breakthrough made real-time signal processing feasible and opened doors to advanced applications in telecommunications, audio processing, and image analysis.
 
 *Interesting Story*: Although Cooley and Tukey are credited with the FFT, the algorithm's roots trace back to the work of Carl Friedrich Gauss in the 19th century. The rediscovery and adaptation of these principles during the digital age exemplify how historical mathematical concepts can find new life with technological advancements.
 
