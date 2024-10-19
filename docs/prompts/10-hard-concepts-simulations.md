@@ -2,7 +2,7 @@
 
 ```linenums="0"
 What are the most difficult concepts to understand
-in a college level course on signal processing course
+in a college level course on signal processing
 that can be explained by high-quality
 interactive simulations?
 
