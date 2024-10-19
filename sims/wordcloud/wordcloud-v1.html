@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Signal Processing Word Cloud</title>
+    <script type="text/javascript" src="https://unpkg.com/vis-network/standalone/umd/vis-network.min.js"></script>
+    <style>
+        #network {
+            width: 100%;
+            height: 100vh;
+            border: 1px solid lightgray;
+        }
+    </style>
+</head>
+<body>
+
+<div id="network"></div>
+
+<script type="text/javascript">
+    // Data for the word cloud
+    const words = [
+        {label: "Signal", value: 80},
+        {label: "Noise", value: 75},
+        {label: "Filter", value: 70},
+        {label: "Fourier Transform", value: 65},
+        {label: "Sampling", value: 60},
+        {label: "Convolution", value: 60},
+        {label: "Frequency", value: 58},
+        {label: "Time Domain", value: 55},
+        {label: "Spectral Analysis", value: 50},
+        {label: "Amplitude", value: 48},
+        {label: "Discrete Fourier Transform (DFT)", value: 48},
+        {label: "Impulse Response", value: 47},
+        {label: "Phase", value: 46},
+        {label: "Quantization", value: 45},
+        {label: "Z-Transform", value: 45},
+        {label: "Laplace Transform", value: 42},
+        {label: "Modulation", value: 40},
+        {label: "Aliasing", value: 40},
+        {label: "Bandpass Filter", value: 39},
+        {label: "Lowpass Filter", value: 39},
+        {label: "Transfer Function", value: 38},
+        {label: "Linear Time-Invariant (LTI) Systems", value: 37},
+        {label: "Digital Filter", value: 36},
+        {label: "Decimation", value: 35},
+        {label: "Interpolation", value: 35},
+        {label: "Autocorrelation", value: 34},
+        {label: "Power Spectrum", value: 33},
+        {label: "Windowing", value: 33},
+        {label: "Cross-correlation", value: 33},
+        {label: "Downsampling", value: 32},
+        {label: "Upsampling", value: 32},
+        {label: "Sinc Function", value: 30},
+        {label: "Butterworth Filter", value: 30},
+        {label: "Chebyshev Filter", value: 29},
+        {label: "Wavelet Transform", value: 28},
+        {label: "Hilbert Transform", value: 27},
+        {label: "Nyquist Rate", value: 26},
+        {label: "Sampling Theorem", value: 25},
+        {label: "Impulse", value: 24},
+        {label: "Bandwidth", value: 23},
+        {label: "Oversampling", value: 23},
+        {label: "Step Response", value: 22},
+        {label: "Causal System", value: 22},
+        {label: "Non-causal System", value: 21},
+        {label: "Bode Plot", value: 20},
+        {label: "Frequency Response", value: 19},
+        {label: "Zero-Padding", value: 19},
+        {label: "Notch Filter", value: 18},
+        {label: "Phase Shift", value: 18},
+        {label: "Fast Fourier Transform (FFT)", value: 18}
+    ];
+
+    // Create nodes for the word cloud
+    const nodes = words.map((word, index) => ({
+        id: index,
+        label: word.label,
+        font: {
+            size: word.value * 1.5
+        },
+        value: word.value
+    }));
+
+    // Create a network
+    const container = document.getElementById('network');
+    const data = {nodes: new vis.DataSet(nodes)};
+    const options = {
+        nodes: {
+            shape: 'text',
+        },
+        physics: {
+            enabled: false
+        },
+        layout: {
+            randomSeed: 42 // Makes layout deterministic
+        }
+    };
+    const network = new vis.Network(container, data, options);
+</script>
+
+</body>
+</html>
