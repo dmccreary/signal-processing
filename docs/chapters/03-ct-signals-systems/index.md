@@ -2,7 +2,9 @@
 
 Introduces continuous-time signals and systems, including their classifications and properties.
 
-## Signal Classification
+## Chapter Sections
+
+### Signal Classification
 
 -   **Deterministic vs. Random Signals**
 -   **Periodic vs. Aperiodic Signals**

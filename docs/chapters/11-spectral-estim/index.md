@@ -1,3 +1,20 @@
-# 11-spectral-estim
+# Chapter 11: Spectral Estimation
 
-This is the index file for this chapter.
+Explores techniques for estimating the spectral content of signals.
+
+## Chapter Sections
+
+### Non-Parametric Methods
+
+-   **Periodogram**
+-   **Modified Periodogram**
+
+### Parametric Methods
+
+-   **Autoregressive (AR) Models**
+-   **Model Order Selection**
+
+### Applications
+
+-   **Power Spectrum Analysis**
+-   **Signal Detection**

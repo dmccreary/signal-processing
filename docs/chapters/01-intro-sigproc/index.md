@@ -2,7 +2,7 @@
 
 This chapter provides an overview of signal processing, its importance in modern technology, and its various applications across different fields.
 
-### Key Sections
+### Chapter Sections
 
 #### What is Signal Processing?
 

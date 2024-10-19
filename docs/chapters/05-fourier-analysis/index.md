@@ -1,3 +1,20 @@
-# 05-fourier-analysis
+# Chapter 5: Fourier Analysis
 
-This is the index file for this chapter.
+Explores Fourier series and transforms for both continuous and discrete signals.
+
+## Chapter Sections
+
+### Fourier Series
+
+-   **Representation of Periodic Signals**
+-   **Convergence Conditions**
+
+### Continuous-Time Fourier Transform (CTFT)
+
+-   **Spectrum Analysis**
+-   **Properties of CTFT**
+
+### Discrete-Time Fourier Transform (DTFT)
+
+-   **Frequency Representation of Discrete Signals**
+-   **Properties and Applications**
