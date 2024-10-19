@@ -1,5 +1,3 @@
-# Signal Processing Glossary of Terms
-
 #### Adaptive filtering
 
 Adaptive filtering is a type of digital filter that self-adjusts its parameters based on the input signal to minimize a certain error criterion. It is used in environments where signal characteristics change over time.
@@ -566,6 +564,12 @@ Supervised learning is a machine learning paradigm where models are trained on l
 Support Vector Machines are supervised learning models used for classification and regression tasks by finding the optimal hyperplane that separates data into classes. They are effective in high-dimensional spaces.
 
 **Example:** Students use SVMs to classify EEG signal patterns, distinguishing between different mental states based on their spectral features.
+
+#### Term
+
+This is the definition of the term.
+
+## Terms
 
 #### Time domain
 
