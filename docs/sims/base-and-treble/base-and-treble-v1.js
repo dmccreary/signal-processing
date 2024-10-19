@@ -1,15 +1,14 @@
-// Base and Treble v2 with sliders placed side-by-side
 // region drawing parameters
 // the width of the entire canvas
-let canvasWidth = 450;
+let canvasWidth = 400;
 // The top drawing region above the interactive controls
-let drawHeight = 350;
+let drawHeight = 400;
 // control region height
-let controlHeight = 50;
+let controlHeight = 80;
 // The total height of both the drawing region height + the control region height
 let canvasHeight = drawHeight + controlHeight;
 // margin around the active plotting region
-let margin = 20;
+let margin = 25;
 // larger text so students in the back of the room can read the labels
 let defaultTextSize = 16;
 
@@ -24,18 +23,15 @@ function setup() {
   // Define slider left margin
   let sliderLeftMargin = margin;
 
-  // Define slider width (half the canvas width minus margins)
-  let sliderWidth = (canvasWidth - 3 * margin) / 2;
-
-  // Create bass slider on the left
+  // Create bass slider
   bassSlider = createSlider(0, 100, 50, 1);
   bassSlider.position(sliderLeftMargin, drawHeight + 12);
-  bassSlider.style('width', sliderWidth + 'px');
+  bassSlider.style('width', canvasWidth - sliderLeftMargin - 20 + 'px');
 
-  // Create treble slider on the right
+  // Create treble slider
   trebleSlider = createSlider(0, 100, 50, 1);
-  trebleSlider.position(sliderLeftMargin + sliderWidth + margin, drawHeight + 12);
-  trebleSlider.style('width', sliderWidth + 'px');
+  trebleSlider.position(sliderLeftMargin, drawHeight + 12 + 30);
+  trebleSlider.style('width', canvasWidth - sliderLeftMargin - 20 + 'px');
 }
 
 function draw() {
@@ -44,7 +40,7 @@ function draw() {
 
   // Fill the drawing region with 'aliceblue'
   fill('aliceblue');
-  stroke('black');
+  noStroke();
   rect(0, 0, canvasWidth, drawHeight);
 
   // Fill the control region with 'white'
@@ -74,8 +70,7 @@ function draw() {
 
   // Begin shape for plotting the frequency response curve
   noFill();
-  stroke('blue');
-  strokeWeight(3);
+  stroke(0);
   beginShape();
 
   for (let i = 0; i < numPoints; i++) {
@@ -114,20 +109,16 @@ function draw() {
   stroke(150);
   // x-axis at y = gain 0 dB
   let yZero = map(0, gainMin, gainMax, drawHeight - margin, margin);
-  strokeWeight(1);
   line(margin, yZero, canvasWidth - margin, yZero);
 
-  // Draw labels
-  noStroke();
-  fill('black');
+  // Draw labels for frequencies
+  fill(0);
   textAlign(CENTER, TOP);
-  textSize(24);
   text("Frequency Response", canvasWidth / 2, margin / 2);
 
-  // Draw labels for sliders under the sliders
-  textSize(16);
-  textAlign(CENTER, TOP);
-  fill('black');
-  text("Bass", bassSlider.x + bassSlider.width / 2, bassSlider.y + 20);
-  text("Treble", trebleSlider.x + trebleSlider.width / 2, trebleSlider.y + 20);
+  // Draw labels for sliders
+  textAlign(LEFT, CENTER);
+  fill(0);
+  text("Bass", bassSlider.x + 5, bassSlider.y - 10);
+  text("Treble", trebleSlider.x + 5, trebleSlider.y - 10);
 }
