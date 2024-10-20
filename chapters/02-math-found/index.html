@@ -52,6 +52,8 @@
       
     
     
+      <link rel="stylesheet" href="../../css/extra.css">
+    
     <script>__md_scope=new URL("../..",location),__md_hash=e=>[...e].reduce((e,_)=>(e<<5)-e+_.charCodeAt(0),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
     
       
@@ -521,6 +523,75 @@
       Probability and Statistics
     </span>
   </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#linear-algebra-for-signal-processing" class="md-nav__link">
+    <span class="md-ellipsis">
+      Linear Algebra for Signal Processing
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Linear Algebra for Signal Processing">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#41-introduction" class="md-nav__link">
+    <span class="md-ellipsis">
+      4.1 Introduction
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#42-vectors-and-signals" class="md-nav__link">
+    <span class="md-ellipsis">
+      4.2 Vectors and Signals
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#43-matrices-and-systems-of-linear-equations" class="md-nav__link">
+    <span class="md-ellipsis">
+      4.3 Matrices and Systems of Linear Equations
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#44-eigenvalues-and-eigenvectors" class="md-nav__link">
+    <span class="md-ellipsis">
+      4.4 Eigenvalues and Eigenvectors
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#45-convolution" class="md-nav__link">
+    <span class="md-ellipsis">
+      4.5 Convolution
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#46-conclusion" class="md-nav__link">
+    <span class="md-ellipsis">
+      4.6 Conclusion
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
   
 </li>
       
@@ -1226,6 +1297,75 @@
   
 </li>
       
+        <li class="md-nav__item">
+  <a href="#linear-algebra-for-signal-processing" class="md-nav__link">
+    <span class="md-ellipsis">
+      Linear Algebra for Signal Processing
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Linear Algebra for Signal Processing">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#41-introduction" class="md-nav__link">
+    <span class="md-ellipsis">
+      4.1 Introduction
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#42-vectors-and-signals" class="md-nav__link">
+    <span class="md-ellipsis">
+      4.2 Vectors and Signals
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#43-matrices-and-systems-of-linear-equations" class="md-nav__link">
+    <span class="md-ellipsis">
+      4.3 Matrices and Systems of Linear Equations
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#44-eigenvalues-and-eigenvectors" class="md-nav__link">
+    <span class="md-ellipsis">
+      4.4 Eigenvalues and Eigenvectors
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#45-convolution" class="md-nav__link">
+    <span class="md-ellipsis">
+      4.5 Convolution
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#46-conclusion" class="md-nav__link">
+    <span class="md-ellipsis">
+      4.6 Conclusion
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
     </ul>
   
 </nav>
@@ -1267,6 +1407,57 @@
 <li><strong>Random Variables</strong>: Definitions and properties.</li>
 <li><strong>Statistical Measures</strong>: Mean, variance, and correlations.</li>
 </ul>
+<h2 id="linear-algebra-for-signal-processing">Linear Algebra for Signal Processing</h2>
+<h3 id="41-introduction">4.1 Introduction</h3>
+<p>Linear algebra is a fundamental mathematical tool that is essential for understanding and analyzing signals. It provides a powerful framework for representing and manipulating signals as vectors and matrices, and for solving systems of linear equations that arise in signal processing applications. In this chapter, we will explore the key concepts of linear algebra that are relevant to signal processing, including vectors, matrices, and their operations, and apply them to various signal processing problems.</p>
+<h3 id="42-vectors-and-signals">4.2 Vectors and Signals</h3>
+<p>A signal can be represented as a vector, where each element of the vector corresponds to a sample of the signal. For example, a discrete-time signal can be represented as a column vector, where each element represents the value of the signal at a particular time instant.</p>
+<p><strong>4.2.1 Vector Operations</strong></p>
+<p>The same vector operations that we discussed in Chapter 3 can be applied to signals. For example, we can add, subtract, and multiply signals, and we can calculate the dot product of two signals.</p>
+<p><strong>4.2.2 Signal Representation</strong></p>
+<ul>
+<li><strong>Time-Domain Representation:</strong> A signal can be represented in the time domain as a vector of samples.</li>
+<li><strong>Frequency-Domain Representation:</strong> A signal can also be represented in the frequency domain using the Fourier transform. The Fourier transform of a signal is a vector whose elements represent the amplitude and phase of the signal at different frequencies.</li>
+</ul>
+<h3 id="43-matrices-and-systems-of-linear-equations">4.3 Matrices and Systems of Linear Equations</h3>
+<p>Matrices are used to represent systems of linear equations, which arise in many signal processing applications.</p>
+<p><strong>4.3.1 Matrix Representation</strong></p>
+<p>A system of linear equations can be represented in matrix form as:</p>
+<p>$$ 
+&lt;0&gt;mathbf{A} \mathbf{x} = \mathbf{b}
+$$</p>
+<p>where A is the coefficient matrix, x is the vector of unknowns, and b is the constant vector.</p>
+<p><strong>4.3.2 Applications to Signal Processing</strong></p>
+<ul>
+<li><strong>Filtering:</strong> Filters can be represented as linear systems, and the filter output can be calculated by multiplying the input signal by the filter's impulse response matrix.</li>
+<li><strong>System Identification:</strong> System identification involves determining the parameters of a system based on input and output measurements. This can be formulated as a system of linear equations.</li>
+</ul>
+<h3 id="44-eigenvalues-and-eigenvectors">4.4 Eigenvalues and Eigenvectors</h3>
+<p>Eigenvalues and eigenvectors are important concepts in linear algebra that have applications in signal processing.  </p>
+<p><strong>4.4.1 Definition</strong></p>
+<p>An eigenvalue of a square matrix A is a scalar λ such that there exists a nonzero vector x, called an eigenvector, satisfying the equation:</p>
+<p>$$
+\mathbf{A} \mathbf{x} = \lambda \mathbf{x}
+$$</p>
+<p><strong>4.4.2 Applications to Signal Processing</strong></p>
+<ul>
+<li><strong>Principal Component Analysis (PCA):</strong> PCA is a technique for dimensionality reduction that involves finding the eigenvectors of the covariance matrix of a set of data points.</li>
+<li><strong>Singular Value Decomposition (SVD):</strong> SVD is a matrix decomposition technique that can be used to analyze the structure of a signal or system.</li>
+</ul>
+<h3 id="45-convolution">4.5 Convolution</h3>
+<p>Convolution is a mathematical operation that is fundamental to signal processing. It is used to represent the output of a linear system when the input is a signal.</p>
+<p><strong>4.5.1 Definition</strong></p>
+<p>The convolution of two signals, x[n] and h[n], is defined as:</p>
+<p>$$
+y[n] = x[n] * h[n] = \sum_{k=-\infty}^{\infty} x[k] h[n-k] 
+$$</p>
+<p><strong>4.5.2 Applications to Signal Processing</strong></p>
+<ul>
+<li><strong>Filtering:</strong> Filters can be implemented using convolution.</li>
+<li><strong>System Analysis:</strong> The impulse response of a system is the output of the system when the input is an impulse. The output of a system can be calculated by convolving the input signal with the system's impulse response.</li>
+</ul>
+<h3 id="46-conclusion">4.6 Conclusion</h3>
+<p>Linear algebra is a powerful tool for analyzing signals and systems. By understanding vectors, matrices, and their operations, we can effectively represent and manipulate signals, and solve systems of linear equations that arise in signal processing applications. In this chapter, we have explored the fundamental concepts of linear algebra that are relevant to signal processing, and applied them to various signal processing problems.</p>
 
 
 
