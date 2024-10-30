@@ -6,13 +6,13 @@ function drawGraph() {
             // Extract nodes and edges from the JSON data
             const nodes = new vis.DataSet(data.nodes.map(node => {
                 // Pin foundational concepts on the left side
-                if (node.group === 1) {  // Assuming group 1 is foundational
-                    node.x = -300;
+                if (node.group == "found") {  // Assuming group 1 is foundational
+                    node.x = -1000;
                     node.fixed = { x: true, y: false };
                 } 
                 // Pin advanced concepts on the right side
-                else if (node.group === 10) {  // Assuming group 2 is advanced
-                    node.x = 300;
+                else if (node.group == "goal") {  // Assuming group 2 is advanced
+                    node.x = 1000;
                     node.fixed = { x: true, y: false };
                 }
                 // Enable physics for all other node properties

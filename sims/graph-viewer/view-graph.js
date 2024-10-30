@@ -1,21 +1,33 @@
 function drawGraph() {
-    // Fetch the graph data from the JSON file
-    fetch('graph-data.json')
-        .then(response => response.json())
-        .then(data => {
-            // Extract nodes and edges from the JSON data
-            const nodes = new vis.DataSet(data.nodes);
-            const edges = new vis.DataSet(data.edges);
+  // Fetch the graph data from the JSON file
+  fetch('graph-data.json')
+    .then(response => response.json())
+    .then(data => {
+        // Extract nodes and edges from the JSON data
+        const nodes = new vis.DataSet(data.nodes);
 
-            // Create a network
-            const container = document.getElementById('mynetwork');
-            const graphData = {
-                nodes: nodes,
-                edges: edges
-            };
+        // Function to fix the x positions for groups 1 and 12 after the data is loaded
+        nodes.forEach(function (node) {
+          if (node.group === "found") {
+              node.x = -1000;
+              node.fixed = { x: true, y: false }; // Fix x, but let y be adjusted by physics
+          } else if (node.group === "goal") {
+              node.x = 1000;
+              node.fixed = { x: true, y: false }; // Fix x, but let y be adjusted by physics
+          }
+      });
 
-            // Network options
-            // Configuration options
+      const edges = new vis.DataSet(data.edges);
+
+      // Create a network
+      const container = document.getElementById('mynetwork');
+      const graphData = {
+            nodes: nodes,
+            edges: edges
+      };
+
+      // Network options
+      // Configuration options
   var options = {
     physics: {
       enabled: true,
@@ -26,7 +38,7 @@ function drawGraph() {
       },
     },
     layout: {
-      improvedLayout: true, // Prevent node overlap
+      improvedLayout: false, // Prevent node overlap
     },
     interaction: { 
       dragNodes: true // Allow dragging of nodes
@@ -34,7 +46,7 @@ function drawGraph() {
     edges: {
         arrows: {
           to: {
-            enabled: true,
+            enabled: true, // all edges have an arrow on the true side
             type: 'arrow', // Options: 'arrow', 'bar', 'circle', 'triangle'
             scaleFactor: 1
           }
@@ -54,12 +66,12 @@ function drawGraph() {
       borderWidth: 2,
       borderWidthSelected: 4
     }
-  };
+};
 
-            // Initialize the network
-            const network = new vis.Network(container, graphData, options);
-        })
-        .catch(error => {
-            console.error("Error loading or parsing graph-data.json:", error);
-        });
+          // Initialize the network
+          const network = new vis.Network(container, graphData, options);
+      })
+      .catch(error => {
+          console.error("Error loading or parsing graph-data.json:", error);
+      });
 }
