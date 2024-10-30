@@ -72,8 +72,8 @@ async function drawGraph() {
                     7: {
                         color:{background:'violet'}, 
                      },
-                    8: {
-                        color:{background:'silver'}, 
+                    "ml": {
+                        color:{background:'purple'}
                      },
                     9: {
                         color:{background:'tan'}, 
