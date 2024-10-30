@@ -1,6 +1,7 @@
 # Creating a Taxonomy
 
 ## Prompt
+
 Next, let's Create a taxonomy to classify these concepts. For the list of concepts, can you suggest a taxonomy of up to ten categories on how to classify each concept? For example: 1. Foundational Concepts (Mathematical Foundations), 2. Types of Signals. 3. Fourier Transforms... 10. Other
 
 For each of the categories create a category label and list the concepts under that category.
@@ -11,7 +12,7 @@ ChatGPT o1-preview Thought for 34 seconds
 
 Sure! Here's a taxonomy of up to ten categories to classify the 150 essential concepts in the undergraduate signal processing course:
 
-### **1\. Mathematical Foundations**
+### **1. Mathematical Foundations**
 
 -   **Concepts:**
     1.  Complex numbers
@@ -31,61 +32,60 @@ Sure! Here's a taxonomy of up to ten categories to classify the 150 essential co
     15.  Variance
     16.  Standard deviation
 
-* * * *
 
-### **2\. Signals and Systems**
+
+### **2. Signals and Systems**
 
 -   **Concepts:** 17. Signals 18. Systems 19. Continuous-time signals 20. Discrete-time signals 21. Analog signals 22. Digital signals 23. Sampling 24. Quantization 25. Aliasing 26. Nyquist theorem 27. Convolution 28. Impulse response 29. LTI systems 30. Causality 31. Stability 42. Time domain 43. Frequency domain 44. Signal decomposition
 
-* * * *
 
-### **3\. Transforms and Frequency Analysis**
+
+### **3. Transforms and Frequency Analysis**
 
 -   **Concepts:** 33. Fourier series 34. Fourier Transform (FT) 35. Inverse Fourier Transform (IFT) 36. Laplace Transform 37. Z-Transform 38. Discrete Fourier Transform (DFT) 39. Fast Fourier Transform (FFT) 40. Window functions 41. Spectral analysis 53. Bilinear transform
 
-* * * *
 
-### **4\. Filters and Filter Design**
+
+### **4. Filters and Filter Design**
 
 -   **Concepts:** 45. Filtering 46. Low-pass filter (LPF) 47. High-pass filter (HPF) 48. Band-pass filter (BPF) 49. Band-stop filter (BSF) 50. FIR filters 51. IIR filters 52. Filter design 54. Butterworth filter 55. Chebyshev filter 56. Elliptic filter 57. Bessel filter
 
-* * * *
 
-### **5\. Random Processes and Statistical Signal Processing**
+
+### **5. Random Processes and Statistical Signal Processing**
 
 -   **Concepts:** 69. Autocorrelation 70. Cross-correlation 71. Power Spectral Density (PSD) 72. Energy Spectral Density (ESD) 73. Random processes 74. Stationarity 75. Ergodicity 76. White noise 77. Colored noise 78. Signal estimation 79. Kalman filter 80. Wiener filter
 
-* * * *
 
-### **6\. Time-Frequency Analysis and Wavelets**
+
+### **6. Time-Frequency Analysis and Wavelets**
 
 -   **Concepts:** 81. Time-frequency analysis 82. Short-Time Fourier Transform (STFT) 83. Spectrogram 84. Wavelet Transform (WT) 85. Continuous Wavelet Transform (CWT) 86. Discrete Wavelet Transform (DWT) 87. Multiresolution analysis
 
-* * * *
 
-### **7\. Advanced Signal Processing Techniques**
+
+### **7. Advanced Signal Processing Techniques**
 
 -   **Concepts:** 64. Adaptive filtering 65. Least Mean Squares (LMS) algorithm 66. Recursive Least Squares (RLS) algorithm 67. Noise cancellation 68. Signal detection 88. Signal compression 89. Lossless compression 90. Lossy compression 91. Huffman coding 92. Entropy coding 93. Quantization noise 94. Sampling rate conversion 95. Interpolation 96. Decimation 97. Multirate signal processing 98. Polyphase filters 99. Filter banks 100. Subband coding 101. Oversampling 102. Undersampling 103. Compressed sensing 104. Sparse representation 118. Signal reconstruction 119. Signal prediction
 
-* * * *
 
-### **8\. Machine Learning and Neural Networks in Signal Processing**
+
+### **8. Machine Learning and Neural Networks in Signal Processing**
 
 -   **Concepts:** 105. Machine Learning (ML) 106. Supervised learning 107. Unsupervised learning 108. Feature extraction 109. Pattern recognition 110. Classification 111. Regression 112. Neural Networks (NN) 113. Deep Learning (DL) 114. Convolutional Neural Networks (CNNs) 115. Recurrent Neural Networks (RNNs) 116. Autoencoders 117. Generative Adversarial Networks (GANs) 144. Cognitive signal processing 149. Big data analytics
 
-* * * *
 
-### **9\. Applications in Communications and Multimedia**
+### **9. Applications in Communications and Multimedia**
 
 -   **Concepts:** 58. Digital Signal Processing (DSP) 59. Modulation 60. Amplitude Modulation (AM) 61. Frequency Modulation (FM) 62. Phase Modulation (PM) 63. Pulse-Code Modulation (PCM) 120. Digital communications 121. Modulation schemes 122. Digital modulation 123. Quadrature Amplitude Modulation (QAM) 124. Phase Shift Keying (PSK) 125. Frequency Shift Keying (FSK) 126. Orthogonal Frequency Division Multiplexing (OFDM) 127. Channel coding 128. Error detection 129. Error correction 130. Communications signal processing 131. Radar signal processing 132. Sonar signal processing 133. Image processing 134. Edge detection 135. Image filtering 136. Image segmentation 137. Audio signal processing 138. Speech recognition 139. Speech synthesis 140. Voice over IP (VoIP) 141. Multimedia signal processing 142. Virtual Reality (VR) 143. Augmented Reality (AR) 148. Internet of Things (IoT)
 
-* * * *
 
-### **10\. Emerging and Specialized Topics**
+
+### **10. Emerging and Specialized Topics**
 
 -   **Concepts:** 145. Quantum signal processing 146. Biosignal processing 147. Brain-Computer Interfaces (BCI) 150. Ethical considerations in AI
 
-* * * *
+
 
 ### **Note:**
 
@@ -93,7 +93,7 @@ Sure! Here's a taxonomy of up to ten categories to classify the 150 essential co
 -   Concepts are unique to one category to avoid duplication.
 -   Categories are designed to progress from foundational topics to advanced applications.
 
-* * * *
+
 
 This taxonomy should help organize the concepts and determine an effective teaching order, starting from foundational knowledge and building up to specialized topics.
 
@@ -267,16 +267,16 @@ ID,Concept Name,Dependencies,Category ID
 
 -   **Category IDs:**
 
-    -   **1\. Mathematical Foundations**
-    -   **2\. Signals and Systems**
-    -   **3\. Transforms and Frequency Analysis**
-    -   **4\. Filters and Filter Design**
-    -   **5\. Random Processes and Statistical Signal Processing**
-    -   **6\. Time-Frequency Analysis and Wavelets**
-    -   **7\. Advanced Signal Processing Techniques**
-    -   **8\. Machine Learning and Neural Networks in Signal Processing**
-    -   **9\. Applications in Communications and Multimedia**
-    -   **10\. Emerging and Specialized Topics**
+    -   **1. Mathematical Foundations**
+    -   **2. Signals and Systems**
+    -   **3. Transforms and Frequency Analysis**
+    -   **4. Filters and Filter Design**
+    -   **5. Random Processes and Statistical Signal Processing**
+    -   **6. Time-Frequency Analysis and Wavelets**
+    -   **7. Advanced Signal Processing Techniques**
+    -   **8. Machine Learning and Neural Networks in Signal Processing**
+    -   **9. Applications in Communications and Multimedia**
+    -   **10. Emerging and Specialized Topics**
 
 -   Each concept from the original list is assigned to one of these categories based on the taxonomy provided earlier.
 
@@ -292,7 +292,7 @@ ID,Concept Name,Dependencies,Category ID
     -   Foundational concepts without dependencies have an empty Dependencies field.
     -   All concepts are connected to at least one other concept through dependencies or category grouping.
 
-* * * *
+
 
 ### **How to Use This CSV File:**
 
@@ -307,7 +307,7 @@ ID,Concept Name,Dependencies,Category ID
 
     -   The taxonomy and dependencies assist in curriculum planning, ensuring that foundational topics are covered before advanced concepts.
 
-* * * *
+
 
 ### **Assumptions Made:**
 
@@ -319,7 +319,7 @@ ID,Concept Name,Dependencies,Category ID
 
     -   Each concept is placed in the category that best fits its primary focus, as per the taxonomy provided.
 
-* * * *
+
 
 If you need any further adjustments or have specific requirements for formatting or content, please let me know!
 
