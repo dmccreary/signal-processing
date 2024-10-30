@@ -1,20 +1,26 @@
 # Wordcloud Prompt
 
-## Prompt
+![](../img/wordcloud.png)
+
+This section describes the challenges of using p5.js to create
+a wordcloud diagram for a signal processing course.  It
+also shows how the specialized JavaScript library wordcloud2.js
+does a much better job at placing words on a page.
+
+## P5.js Prompt
 
 ```javascript
-Create a list of the 50 most important terms
-in signal processing. Create a JavaScript
-program that displays a word-cloud of
-these words using the vis.js application.
-Size the words to reflect how often they
-are mentioned in a typical college-level
+Create a list of the 50 most important terms in signal processing. 
+Create a JavaScript program that displays a word-cloud of
+these words using the vis.js application.  Use size the words to
+reflect how often they are mentioned in a typical college-level
 textbook on signal processing.
 ```
 
 ## ChatGPT Response
 
-Here's a list of 50 important terms in signal processing along with their relative frequency of mention in a typical college-level textbook. The words with higher importance will have a larger font size in the word cloud.
+Here's a list of 50 important terms in signal processing along with their
+relative frequency of mention in a typical college-level textbook. The words with higher importance will have a larger font size in the word cloud.
 
 ### Signal Processing Terms and Frequencies
 
@@ -175,8 +181,6 @@ Here's a list of 50 important terms in signal processing along with their relati
 
 </body>
 </html>
-`
-
 ```
 
 ### Instructions
@@ -187,6 +191,151 @@ Here's a list of 50 important terms in signal processing along with their relati
 
 This will create a word cloud, with larger words reflecting the more frequently mentioned terms in a typical signal processing textbook. The `vis.js` library uses physics-based layout, but here it is disabled for a word-cloud-like appearance.
 
-4o
+## A Better Way: Use the wordcloud2.js JavaScript Library
 
-window.\_\_oai\_logHTML?window.\_\_oai\_logHTML():window.\_\_oai\_SSR\_HTML=window.\_\_oai\_SSR\_HTML||Date.now();requestAnimationFrame((function(){window.\_\_oai\_logTTI?window.\_\_oai\_logTTI():window.\_\_oai\_SSR\_TTI=window.\_\_oai\_SSR\_TTI||Date.now()}))
+### Sample wordcloud2 Prompt
+
+```linenums="0"
+Create a new javascript program using the wordcloud2.js program here:
+
+https://github.com/timdream/wordcloud2.js
+
+Assume that the data is in the file words.json
+```
+
+### Response
+
+Here’s how you can create a word cloud using the wordcloud2.js library with data from a words.json file. First, ensure you have the wordcloud2.js library included in your project.
+
+#### Step 1: Include wordcloud2.js
+
+Download or link to the wordcloud2.js library from here or use a CDN link directly in your HTML file.
+
+#### Step 2: Create the HTML file
+
+Here’s an HTML file that includes wordcloud2.js and loads the word data from words.json:
+
+```html
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Signal Processing Word Cloud</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/wordcloud2.js/1.0.6/wordcloud2.min.js"></script>
+    <style>
+        #wordcloud {
+            width: 100%;
+            height: 100vh;
+            border: 1px solid lightgray;
+        }
+    </style>
+</head>
+<body>
+
+<div id="wordcloud"></div>
+
+<script type="text/javascript">
+    // Load the JSON file
+    fetch('words.json')
+        .then(response => response.json())
+        .then(data => {
+            // Convert the data to the format expected by wordcloud2.js
+            const words = data.words.map(word => [word.label, word.value]);
+
+            // Generate the word cloud
+            WordCloud(document.getElementById('wordcloud'), {
+                list: words,
+                gridSize: Math.round(16 * window.innerWidth / 1024),
+                weightFactor: 0.5,  // Adjusts the size of the words
+                fontFamily: 'Times, serif',
+                color: 'random-dark',
+                rotateRatio: 0.5,
+                rotationSteps: 2,
+                backgroundColor: '#f0f0f0'
+            });
+        })
+        .catch(error => console.error('Error loading the JSON file:', error));
+</script>
+
+</body>
+</html>
+```
+
+#### Step 3: JSON Data (words.json)
+
+Here’s the words.json file that contains the word data:
+
+```json
+{
+  "words": [
+    {"label": "Signal", "value": 80},
+    {"label": "Noise", "value": 75},
+    {"label": "Filter", "value": 70},
+    {"label": "Fourier Transform", "value": 65},
+    {"label": "Sampling", "value": 60},
+    {"label": "Convolution", "value": 60},
+    {"label": "Frequency", "value": 58},
+    {"label": "Time Domain", "value": 55},
+    {"label": "Spectral Analysis", "value": 50},
+    {"label": "Amplitude", "value": 48},
+    {"label": "Discrete Fourier Transform (DFT)", "value": 48},
+    {"label": "Impulse Response", "value": 47},
+    {"label": "Phase", "value": 46},
+    {"label": "Quantization", "value": 45},
+    {"label": "Z-Transform", "value": 45},
+    {"label": "Laplace Transform", "value": 42},
+    {"label": "Modulation", "value": 40},
+    {"label": "Aliasing", "value": 40},
+    {"label": "Bandpass Filter", "value": 39},
+    {"label": "Lowpass Filter", "value": 39},
+    {"label": "Transfer Function", "value": 38},
+    {"label": "Linear Time-Invariant (LTI) Systems", "value": 37},
+    {"label": "Digital Filter", "value": 36},
+    {"label": "Decimation", "value": 35},
+    {"label": "Interpolation", "value": 35},
+    {"label": "Autocorrelation", "value": 34},
+    {"label": "Power Spectrum", "value": 33},
+    {"label": "Windowing", "value": 33},
+    {"label": "Cross-correlation", "value": 33},
+    {"label": "Downsampling", "value": 32},
+    {"label": "Upsampling", "value": 32},
+    {"label": "Sinc Function", "value": 30},
+    {"label": "Butterworth Filter", "value": 30},
+    {"label": "Chebyshev Filter", "value": 29},
+    {"label": "Wavelet Transform", "value": 28},
+    {"label": "Hilbert Transform", "value": 27},
+    {"label": "Nyquist Rate", "value": 26},
+    {"label": "Sampling Theorem", "value": 25},
+    {"label": "Impulse", "value": 24},
+    {"label": "Bandwidth", "value": 23},
+    {"label": "Oversampling", "value": 23},
+    {"label": "Step Response", "value": 22},
+    {"label": "Causal System", "value": 22},
+    {"label": "Non-causal System", "value": 21},
+    {"label": "Bode Plot", "value": 20},
+    {"label": "Frequency Response", "value": 19},
+    {"label": "Zero-Padding", "value": 19},
+    {"label": "Notch Filter", "value": 18},
+    {"label": "Phase Shift", "value": 18},
+    {"label": "Fast Fourier Transform (FFT)", "value": 18}
+  ]
+}
+```
+
+### Explanation of the Code
+
+•	HTML: The word cloud is displayed in the #wordcloud div, which fills the entire viewport.
+•	JavaScript:
+•	The fetch() function loads the words.json file.
+•	The words are mapped to the format expected by wordcloud2.js, which is a list of arrays where each array contains a word and its weight (size).
+•	The WordCloud() function generates the word cloud in the target element (#wordcloud).
+•	The gridSize and weightFactor properties help control the size and spacing of the words. You can adjust these values to further fine-tune the appearance.
+
+Notes:
+
+1.	wordcloud2.js: Ensure you have the library correctly referenced via the CDN link or by downloading it.
+2.	File Paths: The words.json file should be in the same directory as your HTML file, or modify the fetch() path if it is located elsewhere.
+
+This setup will generate a word cloud based on the word frequencies in the JSON file!
+

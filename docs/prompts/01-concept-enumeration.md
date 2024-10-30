@@ -6,11 +6,11 @@
 Please create a numbered list of the 150 most essential concepts
 in an undergraduate course in signal processing we have described
 above. For each concept, just return the concept name and use
-acronyms and abbreviations when apprpriate.  They will be used
+acronyms and abbreviations when appropriate.  They will be used
 to label a network graph.
 Make sure that the concepts are distinct and are not duplicates.
 
-Start with the most basic foundational concepts that are prerequsites
+Start with the most basic foundational concepts that are prerequisites
 for the course, and then proceed from the basic to the most complex
 concepts. Return the numbered list just one concept per line.
 ```

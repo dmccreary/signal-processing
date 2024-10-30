@@ -7,7 +7,9 @@
 ## Prompt
 
 ```linenums="0"
-Create a timeline of the 50 most important milestones in the history of electronic signal processing.  Use the vis.js format to store the events in a JSON format.
+Create a timeline of the 50 most important milestones in
+the history of electronic signal processing.  Use the vis.js
+format to store the events in a JSON format.
 ```
 
 ## Response
