@@ -4,20 +4,10 @@ async function drawGraph() {
         .then(response => response.json())
         .then(data => {
 
-            // Extract nodes and edges from the JSON data
-            const nodes = new vis.DataSet(data.nodes);
-            
-            // Function to fix the x positions for groups 1 and 12 after the data is loaded
-            nodes.forEach(function (node) {
-                if (node.group === "found") {
-                    node.x = -2000;
-                    node.fixed = { x: true, y: false }; // Fix x, but let y be adjusted by physics
-                } else if (node.group === "goal") {
-                    node.x = 2000;
-                    node.fixed = { x: true, y: false }; // Fix x, but let y be adjusted by physics
-                }
-            });
-
+        // Extract nodes and edges from the JSON data
+        const nodes = new vis.DataSet(data.nodes);
+        // Array to hold the modified nodes
+       
             const edges = new vis.DataSet(data.edges);
 
             // Create a network
@@ -46,10 +36,15 @@ async function drawGraph() {
                     zoomView: true     // Allow zooming
                 },
                 physics: {
+                    enabled: true,
                     solver: 'forceAtlas2Based',
-                    stabilization: false, // Disable stabilization to respect initial positions
+                    stabilization: {
+                      fit: true,
+                      iterations: 200,
+                      updateInterval: 25
+                    },
                     forceAtlas2Based: {
-                        springLength: 80          // Higher value for larger spacing
+                        springLength: 60          // Higher value for larger spacing
                     }
                 },
                 groups: {
@@ -93,7 +88,35 @@ async function drawGraph() {
 
             // Initialize the network
             const network = new vis.Network(container, graphData, options);
+
+            // Wait for the stabilization to finish
+            network.once('stabilizationIterationsDone', function () {
+                // Disable physics to prevent further movement
+                network.setOptions({ physics: { enabled: false } });
+
+                // Fix the x positions of the specified nodes
+                const updatedNodes = [];
+                nodes.forEach(function (node) {
+                    if (node.group === "found") {
+                        updatedNodes.push({
+                            id: node.id,
+                            x: -1200,
+                            group: node.group,
+                            fixed: { x: true, y: false }
+                        });
+                    } else if (node.group === "goal") {
+                        updatedNodes.push({
+                            id: node.id,
+                            group: node.group,
+                            x: 1200,
+                            fixed: { x: true, y: false }
+                        });
+                    }
+                });
+                nodes.update(updatedNodes);
+            });
         })
+        
         .catch(error => {
             console.error("Error loading or parsing graph-data.json:", error);
         });
