@@ -577,6 +577,17 @@
         
       
       
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  <span class="md-ellipsis">
+    Graph Viewer
+  </span>
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
       <a href="./" class="md-nav__link md-nav__link--active">
         
   
@@ -586,6 +597,43 @@
   
 
       </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#simple-graph-view-with-pinned-foundation-and-goal-nodes" class="md-nav__link">
+    <span class="md-ellipsis">
+      Simple Graph View with Pinned Foundation and Goal Nodes
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#adding-styling" class="md-nav__link">
+    <span class="md-ellipsis">
+      Adding Styling
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
       
     </li>
   
@@ -823,6 +871,32 @@
     
   
   
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#simple-graph-view-with-pinned-foundation-and-goal-nodes" class="md-nav__link">
+    <span class="md-ellipsis">
+      Simple Graph View with Pinned Foundation and Goal Nodes
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#adding-styling" class="md-nav__link">
+    <span class="md-ellipsis">
+      Adding Styling
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
 </nav>
                   </div>
                 </div>
@@ -845,7 +919,54 @@
 
 
 <h1 id="graph-viewer">Graph Viewer</h1>
-<p><a href="view-graph.html">View JSON Graph</a></p>
+<p><img alt="" src="view-graph.png" /></p>
+<p>Here are a few example programs to view the learning
+graph using the vis.js JavaScript library.  We start with
+a simple </p>
+<h2 id="simple-graph-view-with-pinned-foundation-and-goal-nodes">Simple Graph View with Pinned Foundation and Goal Nodes</h2>
+<p><a href="view-graph.html">Run the View JSON Graph MicroSim</a></p>
+<p>Here are the changes we made to a standard vis.js template
+to pin the foundation nodes to the left and the goal nodes
+to the right.</p>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
+<span class="normal"> 2</span>
+<span class="normal"> 3</span>
+<span class="normal"> 4</span>
+<span class="normal"> 5</span>
+<span class="normal"> 6</span>
+<span class="normal"> 7</span>
+<span class="normal"> 8</span>
+<span class="normal"> 9</span>
+<span class="normal">10</span>
+<span class="normal">11</span>
+<span class="normal">12</span>
+<span class="normal">13</span>
+<span class="normal">14</span>
+<span class="normal">15</span>
+<span class="normal">16</span>
+<span class="normal">17</span>
+<span class="normal">18</span>
+<span class="normal">19</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="c1">// Extract nodes from the JSON data</span>
+<span class="kd">const</span><span class="w"> </span><span class="nx">nodes</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="ow">new</span><span class="w"> </span><span class="nx">vis</span><span class="p">.</span><span class="nx">DataSet</span><span class="p">(</span><span class="nx">data</span><span class="p">.</span><span class="nx">nodes</span><span class="p">);</span>
+
+<span class="c1">// Function to fix the x positions for foundation and goal groups after JSON load</span>
+<span class="c1">// and set red boxes for foundation and gold stars for goals</span>
+<span class="nx">nodes</span><span class="p">.</span><span class="nx">forEach</span><span class="p">(</span><span class="kd">function</span><span class="w"> </span><span class="p">(</span><span class="nx">node</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="nx">node</span><span class="p">.</span><span class="nx">group</span><span class="w"> </span><span class="o">===</span><span class="w"> </span><span class="s2">&quot;found&quot;</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="nx">node</span><span class="p">.</span><span class="nx">x</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="o">-</span><span class="mf">900</span><span class="p">;</span>
+<span class="w">        </span><span class="nx">node</span><span class="p">.</span><span class="nx">fixed</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nx">x</span><span class="o">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w"> </span><span class="nx">y</span><span class="o">:</span><span class="w"> </span><span class="kc">false</span><span class="w"> </span><span class="p">};</span><span class="w"> </span><span class="c1">// Fix x, but let y be adjusted by physics</span>
+<span class="w">        </span><span class="nx">node</span><span class="p">.</span><span class="nx">shape</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;box&quot;</span><span class="p">;</span>
+<span class="w">        </span><span class="nx">node</span><span class="p">.</span><span class="nx">color</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;red&quot;</span><span class="p">;</span>
+<span class="w">        </span><span class="nx">node</span><span class="p">.</span><span class="nx">font</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">{</span><span class="s2">&quot;color&quot;</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;white&quot;</span><span class="p">};</span>
+<span class="w">    </span><span class="p">}</span><span class="w"> </span><span class="k">else</span><span class="w"> </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="nx">node</span><span class="p">.</span><span class="nx">group</span><span class="w"> </span><span class="o">===</span><span class="w"> </span><span class="s2">&quot;goal&quot;</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="nx">node</span><span class="p">.</span><span class="nx">x</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mf">900</span><span class="p">;</span>
+<span class="w">        </span><span class="nx">node</span><span class="p">.</span><span class="nx">fixed</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nx">x</span><span class="o">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w"> </span><span class="nx">y</span><span class="o">:</span><span class="w"> </span><span class="kc">false</span><span class="w"> </span><span class="p">};</span><span class="w"> </span><span class="c1">// Fix x, but let y be adjusted by physics</span>
+<span class="w">        </span><span class="nx">node</span><span class="p">.</span><span class="nx">shape</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;star&quot;</span><span class="p">;</span>
+<span class="w">        </span><span class="nx">node</span><span class="p">.</span><span class="nx">color</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;gold&quot;</span><span class="p">;</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="p">});</span>
+</code></pre></div></td></tr></table></div>
+<h2 id="adding-styling">Adding Styling</h2>
 <p><a href="view-graph-v2.html">View JSON Graph V2</a></p>
 <p><a href="view-graph-v3.html">View Leaning Graph with Sidebar V3</a></p>
 

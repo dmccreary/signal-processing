@@ -91,30 +91,31 @@ async function drawGraph() {
 
             // Wait for the stabilization to finish
             network.once('stabilizationIterationsDone', function () {
-                // Disable physics to prevent further movement
-                network.setOptions({ physics: { enabled: false } });
+              // Disable physics to prevent further movement
+              network.setOptions({ physics: { enabled: false } });
 
-                // Fix the x positions of the specified nodes
-                const updatedNodes = [];
-                nodes.forEach(function (node) {
-                    if (node.group === "found") {
-                        updatedNodes.push({
-                            id: node.id,
-                            x: -1200,
-                            group: node.group,
-                            fixed: { x: true, y: false }
-                        });
-                    } else if (node.group === "goal") {
-                        updatedNodes.push({
-                            id: node.id,
-                            group: node.group,
-                            x: 1200,
-                            fixed: { x: true, y: false }
-                        });
-                    }
-                });
-                nodes.update(updatedNodes);
+              // Fix the x positions of the specified nodes
+              const updatedNodes = [];
+              nodes.forEach(function (node) {
+                if (node.group === "found") {
+                    updatedNodes.push({
+                      id: node.id,
+                      x: -1200,
+                      group: node.group,
+                      fixed: { x: true, y: false }
+                    });
+                } else if (node.group === "goal") {
+                    updatedNodes.push({
+                        id: node.id,
+                        group: node.group,
+                        x: 1200,
+                        fixed: { x: true, y: false }
+                    });
+                }
+              });
+              nodes.update(updatedNodes);
             });
+            
         })
         
         .catch(error => {
