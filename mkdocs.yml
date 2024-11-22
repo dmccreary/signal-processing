@@ -44,6 +44,7 @@ nav:
     - prompts/07-glossary.md
     - prompts/09-wordcloud.md
     - prompts/10-hard-concepts-simulations.md
+    - prompts/11-stories.md
   - Sims:
     - Introduction: sims/index.md
     - Graph Viewer: sims/graph-viewer/index.md
@@ -84,6 +85,9 @@ theme:
 plugins:
   - search
 #  - social
+extra_javascript:
+  - javascripts/mathjax.js
+  - https://unpkg.com/mathjax@3/es5/tex-mml-chtml.js
 markdown_extensions:
   - admonition
   - pymdownx.details
@@ -91,8 +95,11 @@ markdown_extensions:
   - attr_list
   - pymdownx.highlight:
       linenums: true
-#extra:
-#  analytics:
-#    provider: google
+  # enable LaTeX extensions
+  - pymdownx.arithmatex:
+      generic: true#extra:
+extra:
+  analytics:
+    provider: google
     # https://analytics.google.com/analytics/web/#/a1420179p349994530/admin/streams/table/4433129821
-#    property: G-XXXX
+    property: G-SY3G2ND80K
