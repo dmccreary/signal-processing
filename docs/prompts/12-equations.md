@@ -34,14 +34,19 @@
     - $A$ is the area of the circle
     - $r$ is the radius
 
-## Response
+After the first 25 equations were generated I used the following prompt:
+
+!!! prompt
+    Excellent! Please continue with the next 25 most commonly used equations in a signal processing course.
+
+## Responses
 
 Note that the 100 top equations are group in four ranges:
 
 1. [1-25](#equations-1-25)
 2. [26-50](#equations-25-50)
-3. [51-75](#equations-50-75)
-4. [76-100](#equations-75-100)
+3. [50-75](#equations-50-75)
+4. [75-100](#equations-75-100)
 
 ### Equations 1-25
 
