@@ -15,8 +15,15 @@ See our [About](./about.md).
 
 All content is licensed under [Creative Commons Attribution NonCommercial ShareAlike](./license.md).
 
-Please contact me on [LinkedIn](https://www.linkedin.com/in/danmccreary/)
+Please use the [GitHub Discussions](https://github.com/dmccreary/signal-processing/discussions/1) for questions or comments.
+
+Please contact me on [LinkedIn](https://www.linkedin.com/in/danmccreary/) if you would like to join our group.
 
 Thanks! - Dan
+
+## Change Log
+
+* [January 11, 2024 - Added 100 Signal Processing Equations](./prompts/12-equations.md)
+
 
 
