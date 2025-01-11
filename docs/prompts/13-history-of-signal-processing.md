@@ -1,6 +1,6 @@
 # History of Signal Processing
 
-[Timeline of Signal Processing](./sims/timeline-viewer/timeline-viewer.html)
+[Timeline of Signal Processing](../sims/timeline-viewer/timeline-viewer.html)
 
 ## Prompt
 
