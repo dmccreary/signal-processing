@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Non-Inverting Operational Amplifier</title>
+</head>
+<body>
+    <h1>Non-Inverting Operational Amplifier Circuit</h1>
+    <svg width="800" height="600" xmlns="http://www.w3.org/2000/svg">
+        <!-- Op-Amp Triangle -->
+        <polygon points="300,200 500,300 300,400" fill="none" stroke="black" stroke-width="2" />
+
+        <!-- Non-inverting input -->
+        <line x1="250" y1="250" x2="300" y2="250" stroke="black" stroke-width="2" />
+        <text x="220" y="255" font-size="14">+</text>
+        
+        <!-- Inverting input -->
+        <line x1="250" y1="350" x2="300" y2="350" stroke="black" stroke-width="2" />
+        <text x="220" y="355" font-size="14">-</text>
+
+        <!-- Feedback Resistor -->
+        <line x1="500" y1="300" x2="500" y2="350" stroke="black" stroke-width="2" />
+        <rect x="480" y="350" width="40" height="10" fill="none" stroke="black" stroke-width="2" />
+        <text x="520" y="360" font-size="14">Rf</text>
+
+        <!-- Output -->
+        <line x1="500" y1="300" x2="600" y2="300" stroke="black" stroke-width="2" />
+        <text x="610" y="305" font-size="14">V<sub>out</sub></text>
+
+        <!-- Ground -->
+        <line x1="250" y1="350" x2="250" y2="400" stroke="black" stroke-width="2" />
+        <line x1="235" y1="400" x2="265" y2="400" stroke="black" stroke-width="2" />
+        <line x1="240" y1="410" x2="260" y2="410" stroke="black" stroke-width="2" />
+        <line x1="245" y1="420" x2="255" y2="420" stroke="black" stroke-width="2" />
+
+        <!-- Power Supply -->
+        <line x1="400" y1="200" x2="400" y2="170" stroke="black" stroke-width="2" />
+        <text x="410" y="170" font-size="14">+Vcc</text>
+        <line x1="400" y1="400" x2="400" y2="430" stroke="black" stroke-width="2" />
+        <text x="410" y="440" font-size="14">-Vcc</text>
+
+        <!-- Input Resistor -->
+        <line x1="200" y1="250" x2="250" y2="250" stroke="black" stroke-width="2" />
+        <rect x="210" y="240" width="30" height="10" fill="none" stroke="black" stroke-width="2" />
+        <text x="180" y="260" font-size="14">R1</text>
+
+        <!-- Input Voltage -->
+        <line x1="150" y1="250" x2="200" y2="250" stroke="black" stroke-width="2" />
+        <text x="120" y="255" font-size="14">V<sub>in</sub></text>
+    </svg>
+</body>
+</html>
