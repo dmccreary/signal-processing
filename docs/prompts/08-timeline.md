@@ -6,11 +6,10 @@
 
 ## Prompt
 
-```linenums="0"
-Create a timeline of the 50 most important milestones in
-the history of electronic signal processing.  Use the vis.js
-format to store the events in a JSON format.
-```
+!!! prompt
+  Create a timeline of the 50 most important milestones in
+  the history of electronic signal processing.  Use the vis.js
+  format to store the events in a JSON format.
 
 ## Response
 
@@ -357,3 +356,7 @@ fetch('events.json')
     -   `zoomMax` is set to `1261440000000` (40 years in milliseconds), ensuring that the maximum zoom level covers a larger time span but starts with 40 years initially.
 
 With this setup, the timeline will load showing the desired 40-year range (from 1940 to 1980), and users won't be able to zoom in closer than the yearly level.
+
+## References
+
+* [ChatGPT Dialog History](https://chatgpt.com/share/67828487-b05c-8001-8cd4-ce213d76b24e)
