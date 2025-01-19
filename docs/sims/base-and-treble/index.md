@@ -1,5 +1,7 @@
 # Base and Treble Amplifier Controls
 
+<iframe src="main.html" width="470" height="270" scrolling="no" style="overflow: hidden;"></iframe>
+
 ![Base and Treble Image](./base-and-treble.png)
 
 [Run the Base and Treble MicroSim](./base-and-treble.html){ .md-button .md-button--primary }
