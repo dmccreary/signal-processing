@@ -1,56 +1,68 @@
-# Convolution
+# Understanding Convolution: An Interactive Lesson
 
 <iframe src="main.html" width="470" height="267" noscroll="true" style="overflow: hidden;"></iframe>
 
 [Edit this MicroSim](https://editor.p5js.org/dmccreary/sketches/zmX1mgsv3)
 
-# Understanding Convolution: An Interactive Lesson
-
 ## Learning Objectives
+
 By the end of this lesson, students will be able to:
+
 1. Understand convolution as a measure of overlap between two functions
 2. Visualize how the convolution operation works geometrically
 3. Connect the geometric interpretation to the mathematical definition
 4. Apply this understanding to basic signal processing concepts
 
 ## Prerequisites
+
 - Basic understanding of functions
 - Familiarity with coordinate systems
 - Understanding of area calculations
 
-## Lesson Plan (50 minutes)
+## Lesson Plan
 
-### Part 1: Introduction (10 minutes)
-- Define convolution informally as a way to measure how much two functions overlap as one slides over the other
-- Explain real-world applications:
-  - Image blurring in photo editing
-  - Audio echo effects
-  - Signal filtering in communications
-  - Data smoothing in statistics
+### Part 1: Introduction
 
-### Part 2: Geometric Understanding (15 minutes)
+We define convolution informally as a way to measure how much two functions overlap as one slides over the other.
+
+There are many real-world applications of convolutions
+
+- Image blurring in photo editing
+- Audio echo effects
+- Signal filtering in communications
+- Data smoothing in statistics
+
+### Part 2: Geometric Understanding
 
 #### Interactive Simulation Exploration
+
 1. Introduce the three regions of the simulation:
-   - Left: Square function f(x) (blue)
-   - Middle: Triangle function g(x) (red)
-   - Right: Convolution result (f * g)(x) (purple)
+
+- Left: Square function f(x) (blue)
+- Middle: Triangle function g(x) (red)
+- Right: Convolution result (f * g)(x) (purple)
 
 2. Student Activities:
-   a. Move the slider slowly from left to right, observing:
-      - When does overlap begin?
-      - When is overlap maximum?
-      - How does the overlap change throughout?
-   
-   b. Key Observations:
-      - The height of the purple triangle represents the area of overlap
-      - Maximum overlap occurs when the square aligns with the triangle's peak
-      - The result is symmetric (why?)
 
-### Part 3: Mathematical Connection (15 minutes)
+Move the slider slowly from left to right, observing:
+
+- When does overlap begin?
+- When is overlap maximum?
+- How does the overlap change throughout?
+
+Key Observations:
+
+- The height of the purple triangle represents the area of overlap
+- Maximum overlap occurs when the square aligns with the triangle's peak
+- The result is symmetric (why?)
+
+### Part 3: Mathematical Connection
 
 The convolution formula:
-(f * g)(x) = ∫ f(τ)g(x-τ)dτ
+
+$$
+(f * g)(x) = \int f(\tau)g(x-\tau)d\tau
+$$
 
 Connect simulation to formula:
 1. f(τ) is our moving square function
@@ -59,9 +71,16 @@ Connect simulation to formula:
 4. The slider position represents the x in our formula
 5. The height of the purple triangle represents (f * g)(x) at that x position
 
+If we want to explicitly show the limits of integration (typically from -∞ to ∞ for continuous convolution), we would write:
+
+$$
+(f * g)(x) = \int_{-\infty}^{\infty} f(\tau)g(x-\tau)d\tau
+$$
+
 ### Part 4: Practice and Discussion (10 minutes)
 
 Student Exercises:
+
 1. Predict the shape of the convolution result before sliding:
    - Where will it start rising?
    - Where will it peak?
@@ -83,6 +102,7 @@ Student Exercises:
 ## Extended Learning
 
 Challenge students to think about:
+
 1. How this relates to digital filters in signal processing
 2. Why convolution is useful for image blurring
 3. How changing the shapes of f(x) and g(x) would affect the result
