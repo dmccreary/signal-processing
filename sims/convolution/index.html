@@ -12,13 +12,13 @@
         <meta name="author" content="Dan McCreary">
       
       
-        <link rel="canonical" href="https://dmccreary.github.io/signal-processing/chapters/08-filter-design-impl/">
+        <link rel="canonical" href="https://dmccreary.github.io/signal-processing/sims/convolution/">
       
       
-        <link rel="prev" href="../07-z-transform-apps/">
+        <link rel="prev" href="../nyquist-shannon-sampling/">
       
       
-        <link rel="next" href="../09-adaptive-sigproc/">
+        <link rel="next" href="../0-templates/">
       
       
       <link rel="icon" href="../../img/favicon.ico">
@@ -26,7 +26,7 @@
     
     
       
-        <title>Filter Design - Signal Processing</title>
+        <title>Convolution - Signal Processing</title>
       
     
     
@@ -86,7 +86,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#chapter-8-filter-design-and-implementation" class="md-skip">
+        <a href="#convolution" class="md-skip">
           Skip to content
         </a>
       
@@ -121,7 +121,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              Filter Design
+              Convolution
             
           </span>
         </div>
@@ -257,7 +257,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../" class="md-nav__link">
+      <a href="../../chapters/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -314,673 +314,124 @@
       
   
   
-    
   
   
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+    
+    
+    
+      
+        
+        
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
   
-    
-    
+  
+    <a href="../../chapters/" class="md-nav__link">
       
-        
-          
-        
-      
-        
-      
-        
-          
-        
-      
-        
-          
-        
-      
-        
-          
-        
-      
-        
-          
-        
-      
-        
-          
-        
-      
-        
-          
-        
-      
-        
-          
-        
-      
-        
-          
-        
-      
-        
-          
-        
-      
-        
-          
-        
-      
-        
-          
-        
-      
-        
-          
-        
-      
-        
-          
-        
-      
-        
-          
-        
-      
-        
-          
-        
-      
-        
-          
-        
-      
-        
-          
-        
-      
-        
-          
-        
-      
-        
-          
-        
-      
-        
-          
-        
-      
-    
-    
-    
-      
-    
-    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
-      
-        
-        
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_5" checked>
-        
-          
-          
-          <div class="md-nav__link md-nav__container">
-            <a href="../" class="md-nav__link ">
-              
   
   <span class="md-ellipsis">
     Chapters
   </span>
   
 
-            </a>
-            
-              
-              <label class="md-nav__link " for="__nav_5" id="__nav_5_label" tabindex="0">
-                <span class="md-nav__icon md-icon"></span>
-              </label>
-            
-          </div>
-        
-        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_5_label" aria-expanded="true">
-          <label class="md-nav__title" for="__nav_5">
-            <span class="md-nav__icon md-icon"></span>
-            Chapters
-          </label>
-          <ul class="md-nav__list" data-md-scrollfix>
-            
-              
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../toc/" class="md-nav__link">
-        
-  
-  <span class="md-ellipsis">
-    Table of Contents
-  </span>
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../01-intro-sigproc/" class="md-nav__link">
-        
-  
-  <span class="md-ellipsis">
-    Introduction
-  </span>
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../02-math-found/" class="md-nav__link">
-        
-  
-  <span class="md-ellipsis">
-    Mathematical Foundations
-  </span>
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../03-ct-signals-systems/" class="md-nav__link">
-        
-  
-  <span class="md-ellipsis">
-    Continuous-Time
-  </span>
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../04-dt-signals-systems/" class="md-nav__link">
-        
-  
-  <span class="md-ellipsis">
-    Discrete-Time
-  </span>
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../05-fourier-analysis/" class="md-nav__link">
-        
-  
-  <span class="md-ellipsis">
-    Fourier Analysis
-  </span>
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../06-dft-fft/" class="md-nav__link">
-        
-  
-  <span class="md-ellipsis">
-    DFT and FFT
-  </span>
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../07-z-transform-apps/" class="md-nav__link">
-        
-  
-  <span class="md-ellipsis">
-    Z Transforms
-  </span>
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-    
-  
-  
-  
-    <li class="md-nav__item md-nav__item--active">
       
-      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+        <span class="md-nav__icon md-icon"></span>
       
-      
-        
-      
-      
-        <label class="md-nav__link md-nav__link--active" for="__toc">
-          
-  
-  <span class="md-ellipsis">
-    Filter Design
-  </span>
+    </a>
   
 
-          <span class="md-nav__icon md-icon"></span>
-        </label>
-      
-      <a href="./" class="md-nav__link md-nav__link--active">
-        
-  
-  <span class="md-ellipsis">
-    Filter Design
-  </span>
-  
-
-      </a>
-      
-        
-
-<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
-  
-  
-  
-    
-  
-  
-    <label class="md-nav__title" for="__toc">
-      <span class="md-nav__icon md-icon"></span>
-      Table of contents
-    </label>
-    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
-      
-        <li class="md-nav__item">
-  <a href="#chapter-sections" class="md-nav__link">
-    <span class="md-ellipsis">
-      Chapter Sections
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="Chapter Sections">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#types-of-filters" class="md-nav__link">
-    <span class="md-ellipsis">
-      Types of Filters
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#fir-filter-design" class="md-nav__link">
-    <span class="md-ellipsis">
-      FIR Filter Design
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#iir-filter-design" class="md-nav__link">
-    <span class="md-ellipsis">
-      IIR Filter Design
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#implementation-considerations" class="md-nav__link">
-    <span class="md-ellipsis">
-      Implementation Considerations
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-      
-    </ul>
-  
-</nav>
-      
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../09-adaptive-sigproc/" class="md-nav__link">
-        
-  
-  <span class="md-ellipsis">
-    Adaptive Processing
-  </span>
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../10-stoch-proc-rand-sig/" class="md-nav__link">
-        
-  
-  <span class="md-ellipsis">
-    Stochastic and Random
-  </span>
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../11-spectral-estim/" class="md-nav__link">
-        
-  
-  <span class="md-ellipsis">
-    Spectral Estimation
-  </span>
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../12-time-freq-wavelets/" class="md-nav__link">
-        
-  
-  <span class="md-ellipsis">
-    Time-Freq. Analysis and Wavelets
-  </span>
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../13-multirate-sigproc/" class="md-nav__link">
-        
-  
-  <span class="md-ellipsis">
-    Multirate
-  </span>
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../14-sigcomp-coding/" class="md-nav__link">
-        
-  
-  <span class="md-ellipsis">
-    Compression and Coding
-  </span>
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../15-ml-sigproc/" class="md-nav__link">
-        
-  
-  <span class="md-ellipsis">
-    Machine Learning
-  </span>
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../16-deep-learning-nn/" class="md-nav__link">
-        
-  
-  <span class="md-ellipsis">
-    Deep Learning
-  </span>
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../17-comm-radar-apps/" class="md-nav__link">
-        
-  
-  <span class="md-ellipsis">
-    Radar Apps
-  </span>
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../18-sigproc-multimedia/" class="md-nav__link">
-        
-  
-  <span class="md-ellipsis">
-    Multimedia
-  </span>
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../19-emerging-sigproc/" class="md-nav__link">
-        
-  
-  <span class="md-ellipsis">
-    Emerging Technologies
-  </span>
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../20-ai-edu-sigproc/" class="md-nav__link">
-        
-  
-  <span class="md-ellipsis">
-    AI Education
-  </span>
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-          </ul>
-        </nav>
       
     </li>
   
@@ -1063,70 +514,244 @@
       
   
   
+    
   
   
-    
-    
-      
-        
-          
-        
-      
-        
-          
-        
-      
-        
-          
-        
-      
-        
-          
-        
-      
-        
-          
-        
-      
-        
-          
-        
-      
-        
-          
-        
-      
-        
-          
-        
-      
-    
-    
-    
-      
-        
-        
-      
-    
-    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
-      
-        
   
-  
-    <a href="../../sims/" class="md-nav__link">
+    
+    
       
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+    
+    
+    
+      
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_7" checked>
+        
+          
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../" class="md-nav__link ">
+              
   
   <span class="md-ellipsis">
     Sims
   </span>
   
 
-      
-        <span class="md-nav__icon md-icon"></span>
-      
-    </a>
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_7" id="__nav_7_label" tabindex="0">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_7_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_7">
+            <span class="md-nav__icon md-icon"></span>
+            Sims
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../graph-viewer/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Graph Viewer
+  </span>
   
 
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../timeline-viewer/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Timeline Viewer
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../wordcloud/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Word Cloud
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../base-and-treble/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Base and Treble
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../nyquist-shannon-sampling/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Nyquist-Shannon Sampling
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        
+  
+  <span class="md-ellipsis">
+    Convolution
+  </span>
+  
+
+      </a>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../0-templates/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Templates
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
       
     </li>
   
@@ -1321,65 +946,6 @@
     
   
   
-    <label class="md-nav__title" for="__toc">
-      <span class="md-nav__icon md-icon"></span>
-      Table of contents
-    </label>
-    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
-      
-        <li class="md-nav__item">
-  <a href="#chapter-sections" class="md-nav__link">
-    <span class="md-ellipsis">
-      Chapter Sections
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="Chapter Sections">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#types-of-filters" class="md-nav__link">
-    <span class="md-ellipsis">
-      Types of Filters
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#fir-filter-design" class="md-nav__link">
-    <span class="md-ellipsis">
-      FIR Filter Design
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#iir-filter-design" class="md-nav__link">
-    <span class="md-ellipsis">
-      IIR Filter Design
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#implementation-considerations" class="md-nav__link">
-    <span class="md-ellipsis">
-      Implementation Considerations
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-      
-    </ul>
-  
 </nav>
                   </div>
                 </div>
@@ -1393,7 +959,7 @@
                   
 
   
-    <a href="https://github.com/dmccreary/signal-processing/blob/master/docs/chapters/08-filter-design-impl/index.md" title="Edit this page" class="md-content__button md-icon">
+    <a href="https://github.com/dmccreary/signal-processing/blob/master/docs/sims/convolution/index.md" title="Edit this page" class="md-content__button md-icon">
       
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M10 20H6V4h7v5h5v3.1l2-2V8l-6-6H6c-1.1 0-2 .9-2 2v16c0 1.1.9 2 2 2h4zm10.2-7c.1 0 .3.1.4.2l1.3 1.3c.2.2.2.6 0 .8l-1 1-2.1-2.1 1-1c.1-.1.2-.2.4-.2m0 3.9L14.1 23H12v-2.1l6.1-6.1z"/></svg>
     </a>
@@ -1401,28 +967,108 @@
   
 
 
-<h1 id="chapter-8-filter-design-and-implementation">Chapter 8: Filter Design and Implementation</h1>
-<p>Covers the principles and methods for designing digital filters.</p>
-<h2 id="chapter-sections">Chapter Sections</h2>
-<h3 id="types-of-filters">Types of Filters</h3>
+<h1 id="convolution">Convolution</h1>
+<iframe src="main.html" width="470" height="267" noscroll="true" style="overflow: hidden;"></iframe>
+
+<p><a href="https://editor.p5js.org/dmccreary/sketches/zmX1mgsv3">Edit this MicroSim</a></p>
+<h1 id="understanding-convolution-an-interactive-lesson">Understanding Convolution: An Interactive Lesson</h1>
+<h2 id="learning-objectives">Learning Objectives</h2>
+<p>By the end of this lesson, students will be able to:
+1. Understand convolution as a measure of overlap between two functions
+2. Visualize how the convolution operation works geometrically
+3. Connect the geometric interpretation to the mathematical definition
+4. Apply this understanding to basic signal processing concepts</p>
+<h2 id="prerequisites">Prerequisites</h2>
 <ul>
-<li><strong>Low-Pass, High-Pass, Band-Pass, Band-Stop</strong></li>
-<li><strong>FIR vs. IIR Filters</strong></li>
+<li>Basic understanding of functions</li>
+<li>Familiarity with coordinate systems</li>
+<li>Understanding of area calculations</li>
 </ul>
-<h3 id="fir-filter-design">FIR Filter Design</h3>
+<h2 id="lesson-plan-50-minutes">Lesson Plan (50 minutes)</h2>
+<h3 id="part-1-introduction-10-minutes">Part 1: Introduction (10 minutes)</h3>
 <ul>
-<li><strong>Window Method</strong></li>
-<li><strong>Frequency Sampling Method</strong></li>
+<li>Define convolution informally as a way to measure how much two functions overlap as one slides over the other</li>
+<li>Explain real-world applications:</li>
+<li>Image blurring in photo editing</li>
+<li>Audio echo effects</li>
+<li>Signal filtering in communications</li>
+<li>Data smoothing in statistics</li>
 </ul>
-<h3 id="iir-filter-design">IIR Filter Design</h3>
+<h3 id="part-2-geometric-understanding-15-minutes">Part 2: Geometric Understanding (15 minutes)</h3>
+<h4 id="interactive-simulation-exploration">Interactive Simulation Exploration</h4>
+<ol>
+<li>Introduce the three regions of the simulation:</li>
+<li>Left: Square function f(x) (blue)</li>
+<li>Middle: Triangle function g(x) (red)</li>
+<li>
+<p>Right: Convolution result (f * g)(x) (purple)</p>
+</li>
+<li>
+<p>Student Activities:
+   a. Move the slider slowly from left to right, observing:</p>
 <ul>
-<li><strong>Analog Filter Approximation</strong></li>
-<li><strong>Bilinear Transformation</strong></li>
+<li>When does overlap begin?</li>
+<li>When is overlap maximum?</li>
+<li>How does the overlap change throughout?</li>
 </ul>
-<h3 id="implementation-considerations">Implementation Considerations</h3>
+</li>
+</ol>
+<p>b. Key Observations:
+      - The height of the purple triangle represents the area of overlap
+      - Maximum overlap occurs when the square aligns with the triangle's peak
+      - The result is symmetric (why?)</p>
+<h3 id="part-3-mathematical-connection-15-minutes">Part 3: Mathematical Connection (15 minutes)</h3>
+<p>The convolution formula:
+(f * g)(x) = ∫ f(τ)g(x-τ)dτ</p>
+<p>Connect simulation to formula:
+1. f(τ) is our moving square function
+2. g(x-τ) is our stationary triangle function
+3. The integral (∫) represents the area of overlap
+4. The slider position represents the x in our formula
+5. The height of the purple triangle represents (f * g)(x) at that x position</p>
+<h3 id="part-4-practice-and-discussion-10-minutes">Part 4: Practice and Discussion (10 minutes)</h3>
+<p>Student Exercises:
+1. Predict the shape of the convolution result before sliding:
+   - Where will it start rising?
+   - Where will it peak?
+   - Where will it return to zero?</p>
+<ol>
+<li>Discussion Questions:</li>
+<li>Why is the result symmetric?</li>
+<li>What determines the maximum height of the result?</li>
+<li>How would the result change if we used two squares instead?</li>
+<li>How would it change with two triangles?</li>
+</ol>
+<h2 id="assessment-questions">Assessment Questions</h2>
+<ol>
+<li>What determines the height of the purple triangle at any given slider position?</li>
+<li>Why does the convolution result reach its maximum when the square is centered on the triangle?</li>
+<li>If we made the blue square wider, how would that affect the purple result?</li>
+<li>How does this geometric interpretation help understand the convolution formula?</li>
+</ol>
+<h2 id="extended-learning">Extended Learning</h2>
+<p>Challenge students to think about:
+1. How this relates to digital filters in signal processing
+2. Why convolution is useful for image blurring
+3. How changing the shapes of f(x) and g(x) would affect the result
+4. The relationship between convolution and correlation</p>
+<h2 id="common-misconceptions-to-address">Common Misconceptions to Address</h2>
+<ol>
+<li>The height of the result is NOT the height of overlap, but the AREA of overlap</li>
+<li>Convolution is NOT multiplication at a point, but integration of product over all overlapping points</li>
+<li>The result shape depends on BOTH input shapes, not just one</li>
+</ol>
+<h2 id="homework-suggestions">Homework Suggestions</h2>
+<ol>
+<li>Sketch predicted convolution results for different function pairs</li>
+<li>Find real-world examples of convolution in signal processing</li>
+<li>Write a brief explanation of why the convolution result is smooth even with a square input</li>
+</ol>
+<h2 id="additional-resources">Additional Resources</h2>
 <ul>
-<li><strong>Finite Word Length Effects</strong></li>
-<li><strong>Real-Time Processing Constraints</strong></li>
+<li>Signal processing textbook chapters on convolution</li>
+<li>Online visualizations of 2D convolution for image processing</li>
+<li>Audio processing examples using convolution for reverb effects</li>
 </ul>
 
 
@@ -1461,7 +1107,7 @@
       <nav class="md-footer__inner md-grid" aria-label="Footer" >
         
           
-          <a href="../07-z-transform-apps/" class="md-footer__link md-footer__link--prev" aria-label="Previous: Z Transforms">
+          <a href="../nyquist-shannon-sampling/" class="md-footer__link md-footer__link--prev" aria-label="Previous: Nyquist-Shannon Sampling">
             <div class="md-footer__button md-icon">
               
               <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
@@ -1471,20 +1117,20 @@
                 Previous
               </span>
               <div class="md-ellipsis">
-                Z Transforms
+                Nyquist-Shannon Sampling
               </div>
             </div>
           </a>
         
         
           
-          <a href="../09-adaptive-sigproc/" class="md-footer__link md-footer__link--next" aria-label="Next: Adaptive Processing">
+          <a href="../0-templates/" class="md-footer__link md-footer__link--next" aria-label="Next: Templates">
             <div class="md-footer__title">
               <span class="md-footer__direction">
                 Next
               </span>
               <div class="md-ellipsis">
-                Adaptive Processing
+                Templates
               </div>
             </div>
             <div class="md-footer__button md-icon">
