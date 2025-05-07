@@ -21,6 +21,15 @@ Describe each image in detail and be consistent across all the images in the sto
 
 # Algorithm of the Century: Cooley and Tukey's FFT Revolution
 
+![](cover.png)
+<details class="image-prompt"><summary>Show Image Prompt</summary>
+Cover Image:
+Please create a new wide-landscape drawing using the style the bright, optimistic style of the graphic novel.
+This should be the cover page for the the following story:
+
+Algorithm of the Century: Cooley and Tukey's FFT Revolution" tells the story of how James Cooley and John Tukey revolutionized signal processing by developing the Fast Fourier Transform algorithm in 1965 during the Cold War. Born from the practical need to detect Soviet nuclear tests, their breakthrough reduced calculation time from N² to N log N operations, making previously impossible computations feasible on 1960s computers. The algorithm spread rapidly across scientific disciplines after being published, enabling real-time signal analysis for applications ranging from seismology to astronomy. The FFT ultimately transformed entire industries—creating the foundation for digital signal processing, enabling technologies like MRI machines, digital audio, telecommunications, and countless other innovations that shape our modern digital world. Their story illustrates how elegant mathematical solutions to efficiency problems can have far greater impact than raw computing power alone.
+</details>
+
 ## A Graphic Novel Narrative
 
 ### CHAPTER 1: THE WORLD IN FLUX
@@ -96,6 +105,7 @@ The publication ignited immediate interest. Scientists and engineers quickly rec
 
 This decision, perhaps unintentional, was crucial to the algorithm's rapid adoption. Scientists everywhere began implementing the FFT in their work, and the results were transformative.
 
+![](06.png)
 <details class="image-prompt"><summary>Show Image Prompt</summary>
 IMAGE 6: 
 Please create a new wide-landscape drawing.
@@ -107,7 +117,7 @@ Seismologists could now process earthquake data in real-time. Radio astronomers 
 What many didn't realize at first was that Cooley and Tukey had rediscovered a method originally developed by Carl Friedrich Gauss around 1805. Gauss had used a similar approach to calculate the trajectories of asteroids, but his work, published posthumously in Latin, had been largely forgotten until it was connected to the FFT years after Cooley and Tukey's publication.
 
 ### CHAPTER 5: TRANSFORMING DIGITAL SIGNAL PROCESSING
-
+![](07.png)
 <details class="image-prompt"><summary>Show Image Prompt</summary>
 IMAGE 7: 
 Please create a new wide-landscape drawing.
@@ -124,8 +134,8 @@ In medicine, the FFT became central to image reconstruction in CT scanners and M
 
 In audio processing, the FFT revolutionized how we analyze, manipulate, and compress sound. Every MP3 file, digital music production tool, and voice recognition system relies on FFT-based techniques.
 
+![](08.png)
 <details class="image-prompt"><summary>Show Image Prompt</summary>
-
 IMAGE 8: 
 Please create a new wide-landscape drawing.
 A detailed wide-landscape drawing showing multiple panels of FFT applications in everyday life - someone listening to compressed music on headphones, a patient in an MRI machine, people using smartphones, voice assistants responding to commands, and radar systems monitoring weather. The illustration should use bright colors and clean lines typical of an optimistic technology-focused graphic novel.
@@ -139,9 +149,9 @@ Perhaps most surprising was how the FFT transformed fields that weren't even on 
 
 ### CHAPTER 6: THE MODERN ERA AND LEGACY
 
+![](09.png)
 <details class="image-prompt"><summary>Show Image Prompt</summary>
-
-    IMAGE 9: 
+IMAGE 9: 
 Please create a new wide-landscape drawing.
 A bright, colorful wide-landscape illustration showing modern applications of FFT in cutting-edge technology. The scene should depict autonomous vehicles using radar and lidar, smartphones with voice assistants, virtual reality headsets, medical imaging devices, and AI systems - all with subtle indications of FFT operations powering them. The illustration should maintain the optimistic technology-forward style with clean lines and vibrant colors.
 </details>
@@ -154,9 +164,9 @@ In a world increasingly driven by digital data, the ability to efficiently analy
 
 ### CHAPTER 7: LESSONS FOR FUTURE INNOVATORS
 
+![](10.png)
 <details class="image-prompt"><summary>Show Image Prompt</summary>
-
-    IMAGE 10: 
+IMAGE 10: 
 Please create a new wide-landscape drawing.
 A wide-landscape drawing showing young, diverse students and engineers studying and working with signal processing technologies. One half should show them learning about FFT in a classroom or lab setting; the other half should show them applying this knowledge to new innovations. The background should include mathematical equations and signal visualizations. The illustration should use the same bright, colorful, optimistic technology-forward style as previous images.
 </details>
@@ -173,8 +183,8 @@ Fourth, collaboration across disciplines can spark innovation. Tukey's mathemati
 
 Finally, the most revolutionary innovations often don't appear revolutionary at first. The FFT was, at its core, a more efficient way to calculate something mathematicians already knew how to calculate. Yet this efficiency unlocked entirely new possibilities, transforming entire industries and enabling new technologies.
 
+![](11.png)
 <details class="image-prompt"><summary>Show Image Prompt</summary>
-
 IMAGE 11: 
 Please create a new wide-landscape drawing.
 A colorful wide-landscape drawing showing Cooley and Tukey in the foreground, looking at the modern world their algorithm helped create. Behind them should be a montage of technologies that rely on FFT - digital communication, medical imaging, space exploration, music production, and more. The style should remain consistent with previous illustrations - bright, optimistic, and technology-forward.
