@@ -24,7 +24,7 @@ Describe each image in detail and be consistent across all the images in the sto
 ## A Graphic Novel Narrative
 
 ### CHAPTER 1: THE WORLD IN FLUX
-
+![](01.png)
 <details class="image-prompt"><summary>Show Image Prompt</summary>
 Image 1:
 Please generate A wide-landscape drawing showing a split scene - on one side, the tense Cold War political environment with Soviet and American flags, military technology, and world leaders in serious discussion; on the other side, scientists and mathematicians at work in laboratories with early computers. The image should be rendered in a colorful, bright style with clean lines typical of an optimistic technology-focused graphic novel.
@@ -38,9 +38,10 @@ Tukey, a brilliant mathematician with a knack for practical solutions, recognize
 
 "There has to be a faster way," Tukey thought to himself as he jotted notes on a pad. The problem wasn't just theoretical—it had real-world implications for national security.
 
+![](02.png)
 <details class="image-prompt"><summary>Show Image Prompt</summary>
 IMAGE 2: Please create a new drawing.  It is detailed wide-landscape panel showing John Tukey deep in thought at a meeting table, surrounded by government officials in suits. Above his head, mathematical equations float in thought bubbles, suggesting his realization about a more efficient algorithm. In the background, early computer systems with blinking lights and spinning tape reels. The drawing should maintain the colorful, optimistic technology-forward style of the graphic novel.
-
+</details>
 
 ### CHAPTER 2: THE SPARK OF INSIGHT
 
@@ -50,12 +51,12 @@ A few days after the meeting, Tukey shared his insight with Richard Garwin, a ph
 
 Cooley was intrigued. He had been working on computational algorithms for years and understood the limitations of contemporary computers. Together, they began exploring Tukey's idea, which involved recursively breaking down a large DFT into smaller, more manageable ones.
 
+![](03.png)
 <details class="image-prompt"><summary>Show Image Prompt</summary>
-
 IMAGE 3: 
 Please create a new wide-landscape drawing.
 A colorful wide-landscape illustration showing Cooley and Tukey at a blackboard filled with equations, working together with energy and excitement. The blackboard should show the recursive decomposition of the DFT formula, with arrows indicating how it breaks into smaller parts. Around them, stacks of punch cards and printouts symbolize the computational limitations they were working against. The illustration should have a bright, optimistic technology-forward style.
-    ]**
+</details>
 
 For weeks, Cooley worked on implementing the algorithm, meticulously working through the mathematics and translating it into code that would run on IBM's computers. The challenge wasn't just theoretical—it was practical. How could they reorganize the calculations to minimize redundant operations? How could they leverage the limited memory of 1960s computers efficiently?
 
@@ -65,11 +66,12 @@ The breakthrough came when they realized they could use a "divide and conquer" a
 
 ### CHAPTER 3: THE IMPLEMENTATION
 
+![](04.png)
 <details class="image-prompt"><summary>Show Image Prompt</summary>
 IMAGE 4: 
 Please create a new wide-landscape drawing.
 A wide-landscape scene depicting the computing environment of the 1960s: large mainframe computers filling entire rooms, with operators in white lab coats monitoring blinking console lights, paper tape output, and punch cards being fed into readers. Cooley is shown implementing the algorithm on these systems. The illustration should maintain the bright, colorful style of a technology-forward graphic novel, presenting vintage technology with an optimistic lens.
-]**
+</details>
 
 Implementing the algorithm presented its own challenges. Computers in 1965 were a far cry from today's powerful machines. IBM's mainframes filled entire rooms, ran hot, and had severely limited memory. Every operation had to be carefully planned to fit within these constraints.
 
@@ -79,11 +81,12 @@ Cooley spent hours optimizing the algorithm, finding clever ways to reuse memory
 
 For a data set of 8,192 points, the standard DFT would require over 67 million operations. With their Fast Fourier Transform (FFT), the same calculation could be done with just about 106,000 operations—a speedup of more than 600 times. Problems that would have taken weeks could now be solved in minutes.
 
+![](05.png)
 <details class="image-prompt"><summary>Show Image Prompt</summary>
 IMAGE 5: 
 Please create a new wide-landscape drawing.
 A colorful wide-landscape illustration showing a split screen with two computers side by side - one running the traditional DFT algorithm (shown struggling with smoke coming from its circuits, dials in the red zone) and the other running the new FFT algorithm (shown processing data effortlessly with happy indicator lights). Above each machine, stylized time counters show the dramatic difference in processing time. The drawing should maintain the bright, optimistic technology-forward style.
-]**
+</details>
 
 ### CHAPTER 4: PUBLICATION AND IMMEDIATE IMPACT
 
@@ -97,7 +100,7 @@ This decision, perhaps unintentional, was crucial to the algorithm's rapid adopt
 IMAGE 6: 
 Please create a new wide-landscape drawing.
 A wide-landscape drawing showing the ripple effect of the FFT publication. The center shows the journal with the paper, and expanding outward are various scientists and engineers in different fields (acoustics, radio astronomy, medical imaging, etc.) implementing and using the algorithm. Each application should be visually distinguished by color and imagery related to its field. The illustration should use bright colors and clean lines in an optimistic technology-forward style.
-]**
+</details>
 
 Seismologists could now process earthquake data in real-time. Radio astronomers could analyze signals from space with unprecedented precision. Sound engineers could visualize audio frequencies instantly. And yes, the original application—detecting Soviet nuclear tests—became feasible with the network of sensors placed around the USSR.
 
@@ -109,7 +112,7 @@ What many didn't realize at first was that Cooley and Tukey had rediscovered a m
 IMAGE 7: 
 Please create a new wide-landscape drawing.
 A colorful wide-landscape illustration showing the evolution of signal processing applications through the decades following the FFT. The timeline should flow from left to right, starting with 1960s applications (radar, sonar), through 1970s-80s (medical imaging, audio equipment), 1990s-2000s (multimedia compression, cell phones), to modern applications (AI voice recognition, virtual reality). Each era should have distinctive technology and fashion elements while maintaining the bright, optimistic style of the graphic novel.
-]**
+</details>
 
 Within a decade, the FFT had become the cornerstone of an entirely new field: digital signal processing (DSP). Before the FFT, most signal processing was done with analog circuits—physical electronic components that had to be designed and built for specific applications. The FFT made it practical to process signals digitally, enabling flexibility and capabilities that were previously unimaginable.
 
@@ -121,11 +124,12 @@ In medicine, the FFT became central to image reconstruction in CT scanners and M
 
 In audio processing, the FFT revolutionized how we analyze, manipulate, and compress sound. Every MP3 file, digital music production tool, and voice recognition system relies on FFT-based techniques.
 
-**[
+<details class="image-prompt"><summary>Show Image Prompt</summary>
+
 IMAGE 8: 
 Please create a new wide-landscape drawing.
 A detailed wide-landscape drawing showing multiple panels of FFT applications in everyday life - someone listening to compressed music on headphones, a patient in an MRI machine, people using smartphones, voice assistants responding to commands, and radar systems monitoring weather. The illustration should use bright colors and clean lines typical of an optimistic technology-focused graphic novel.
-]**
+</details>
 
 In astronomy, the FFT enabled radio telescopes to process vast amounts of data, helping scientists detect pulsars, map distant galaxies, and even search for extraterrestrial intelligence.
 
@@ -135,11 +139,12 @@ Perhaps most surprising was how the FFT transformed fields that weren't even on 
 
 ### CHAPTER 6: THE MODERN ERA AND LEGACY
 
-**[
+<details class="image-prompt"><summary>Show Image Prompt</summary>
+
     IMAGE 9: 
 Please create a new wide-landscape drawing.
 A bright, colorful wide-landscape illustration showing modern applications of FFT in cutting-edge technology. The scene should depict autonomous vehicles using radar and lidar, smartphones with voice assistants, virtual reality headsets, medical imaging devices, and AI systems - all with subtle indications of FFT operations powering them. The illustration should maintain the optimistic technology-forward style with clean lines and vibrant colors.
-]**
+</details>
 
 Today, FFT algorithms run billions of times per second on devices we carry in our pockets. Modern implementations have been optimized to run efficiently on everything from tiny microcontrollers to massive supercomputers and specialized signal processing chips.
 
@@ -149,11 +154,12 @@ In a world increasingly driven by digital data, the ability to efficiently analy
 
 ### CHAPTER 7: LESSONS FOR FUTURE INNOVATORS
 
-**[
+<details class="image-prompt"><summary>Show Image Prompt</summary>
+
     IMAGE 10: 
 Please create a new wide-landscape drawing.
 A wide-landscape drawing showing young, diverse students and engineers studying and working with signal processing technologies. One half should show them learning about FFT in a classroom or lab setting; the other half should show them applying this knowledge to new innovations. The background should include mathematical equations and signal visualizations. The illustration should use the same bright, colorful, optimistic technology-forward style as previous images.
-]**
+</details>
 
 The story of Cooley and Tukey's FFT offers several lessons for aspiring engineers and mathematicians:
 
@@ -167,11 +173,12 @@ Fourth, collaboration across disciplines can spark innovation. Tukey's mathemati
 
 Finally, the most revolutionary innovations often don't appear revolutionary at first. The FFT was, at its core, a more efficient way to calculate something mathematicians already knew how to calculate. Yet this efficiency unlocked entirely new possibilities, transforming entire industries and enabling new technologies.
 
-**[
+<details class="image-prompt"><summary>Show Image Prompt</summary>
+
 IMAGE 11: 
 Please create a new wide-landscape drawing.
 A colorful wide-landscape drawing showing Cooley and Tukey in the foreground, looking at the modern world their algorithm helped create. Behind them should be a montage of technologies that rely on FFT - digital communication, medical imaging, space exploration, music production, and more. The style should remain consistent with previous illustrations - bright, optimistic, and technology-forward.
-]**
+</details>
 
 The FFT revolution teaches us that elegant algorithms and efficient code aren't just academic exercises—they're how we overcome the limitations of hardware and make the impossible possible. In our world of limited computational resources and growing data, algorithmic efficiency remains as important today as it was in 1965.
 
