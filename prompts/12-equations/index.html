@@ -6,7 +6,7 @@
       <meta charset="utf-8">
       <meta name="viewport" content="width=device-width,initial-scale=1">
       
-        <meta name="description" content="DESCRIPTION All content licensed Creative Commons ShareAlike Attribution Noncommercial">
+        <meta name="description" content="College Level Textbook on Signal Processing - License is Commons ShareAlike Attribution Noncommercial">
       
       
         <meta name="author" content="Dan McCreary">
@@ -22,15 +22,15 @@
       
       
       <link rel="icon" href="../../img/favicon.ico">
-      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.5.45">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.6.12">
     
     
       
-        <title>Equations - Signal Processing</title>
+        <title>Equations - Signal Processing with AI</title>
       
     
     
-      <link rel="stylesheet" href="../../assets/stylesheets/main.0253249f.min.css">
+      <link rel="stylesheet" href="../../assets/stylesheets/main.2afb09e1.min.css">
       
         
         <link rel="stylesheet" href="../../assets/stylesheets/palette.06af60db.min.css">
@@ -52,6 +52,8 @@
       
     
     
+      <link rel="stylesheet" href="../../css/extra.css">
+    
     <script>__md_scope=new URL("../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
     
       
@@ -68,6 +70,32 @@
 
     
     
+      
+        <meta  property="og:type"  content="website" >
+      
+        <meta  property="og:title"  content="Equations - Signal Processing with AI" >
+      
+        <meta  property="og:description"  content="College Level Textbook on Signal Processing - License is Commons ShareAlike Attribution Noncommercial" >
+      
+        <meta  property="og:image"  content="https://dmccreary.github.io/signal-processing/assets/images/social/prompts/12-equations.png" >
+      
+        <meta  property="og:image:type"  content="image/png" >
+      
+        <meta  property="og:image:width"  content="1200" >
+      
+        <meta  property="og:image:height"  content="630" >
+      
+        <meta  property="og:url"  content="https://dmccreary.github.io/signal-processing/prompts/12-equations/" >
+      
+        <meta  name="twitter:card"  content="summary_large_image" >
+      
+        <meta  name="twitter:title"  content="Equations - Signal Processing with AI" >
+      
+        <meta  name="twitter:description"  content="College Level Textbook on Signal Processing - License is Commons ShareAlike Attribution Noncommercial" >
+      
+        <meta  name="twitter:image"  content="https://dmccreary.github.io/signal-processing/assets/images/social/prompts/12-equations.png" >
+      
+    
     
   </head>
   
@@ -77,7 +105,7 @@
     
     
     
-    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="blue" data-md-color-accent="orange">
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="maroon" data-md-color-accent="gold">
   
     
     <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
@@ -102,9 +130,9 @@
 
 <header class="md-header md-header--shadow" data-md-component="header">
   <nav class="md-header__inner md-grid" aria-label="Header">
-    <a href="../.." title="Signal Processing" class="md-header__button md-logo" aria-label="Signal Processing" data-md-component="logo">
+    <a href="../.." title="Signal Processing with AI" class="md-header__button md-logo" aria-label="Signal Processing with AI" data-md-component="logo">
       
-  <img src="../../img/logo.png" alt="logo">
+  <img src="../../img/logo-192.png" alt="logo">
 
     </a>
     <label class="md-header__button md-icon" for="__drawer">
@@ -115,7 +143,7 @@
       <div class="md-header__ellipsis">
         <div class="md-header__topic">
           <span class="md-ellipsis">
-            Signal Processing
+            Signal Processing with AI
           </span>
         </div>
         <div class="md-header__topic" data-md-component="header-topic">
@@ -133,11 +161,13 @@
     
     
     
-      <label class="md-header__button md-icon" for="__search">
-        
-        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
-      </label>
-      <div class="md-search" data-md-component="search" role="dialog">
+      
+      
+        <label class="md-header__button md-icon" for="__search">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        </label>
+        <div class="md-search" data-md-component="search" role="dialog">
   <label class="md-search__overlay" for="__search"></label>
   <div class="md-search__inner" role="search">
     <form class="md-search__form" name="search">
@@ -169,13 +199,14 @@
     </div>
   </div>
 </div>
+      
     
     
       <div class="md-header__source">
         <a href="https://github.com/dmccreary/signal-processing" title="Go to repository" class="md-source" data-md-component="source">
   <div class="md-source__icon md-icon">
     
-    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 6.6.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2024 Fonticons, Inc.--><path d="M439.55 236.05 244 40.45a28.87 28.87 0 0 0-40.81 0l-40.66 40.63 51.52 51.52c27.06-9.14 52.68 16.77 43.39 43.68l49.66 49.66c34.23-11.8 61.18 31 35.47 56.69-26.49 26.49-70.21-2.87-56-37.34L240.22 199v121.85c25.3 12.54 22.26 41.85 9.08 55a34.34 34.34 0 0 1-48.55 0c-17.57-17.6-11.07-46.91 11.25-56v-123c-20.8-8.51-24.6-30.74-18.64-45L142.57 101 8.45 235.14a28.86 28.86 0 0 0 0 40.81l195.61 195.6a28.86 28.86 0 0 0 40.8 0l194.69-194.69a28.86 28.86 0 0 0 0-40.81"/></svg>
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 6.7.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2024 Fonticons, Inc.--><path d="M439.55 236.05 244 40.45a28.87 28.87 0 0 0-40.81 0l-40.66 40.63 51.52 51.52c27.06-9.14 52.68 16.77 43.39 43.68l49.66 49.66c34.23-11.8 61.18 31 35.47 56.69-26.49 26.49-70.21-2.87-56-37.34L240.22 199v121.85c25.3 12.54 22.26 41.85 9.08 55a34.34 34.34 0 0 1-48.55 0c-17.57-17.6-11.07-46.91 11.25-56v-123c-20.8-8.51-24.6-30.74-18.64-45L142.57 101 8.45 235.14a28.86 28.86 0 0 0 0 40.81l195.61 195.6a28.86 28.86 0 0 0 40.8 0l194.69-194.69a28.86 28.86 0 0 0 0-40.81"/></svg>
   </div>
   <div class="md-source__repository">
     GitHub Repo
@@ -208,19 +239,19 @@
 
 <nav class="md-nav md-nav--primary" aria-label="Navigation" data-md-level="0">
   <label class="md-nav__title" for="__drawer">
-    <a href="../.." title="Signal Processing" class="md-nav__button md-logo" aria-label="Signal Processing" data-md-component="logo">
+    <a href="../.." title="Signal Processing with AI" class="md-nav__button md-logo" aria-label="Signal Processing with AI" data-md-component="logo">
       
-  <img src="../../img/logo.png" alt="logo">
+  <img src="../../img/logo-192.png" alt="logo">
 
     </a>
-    Signal Processing
+    Signal Processing with AI
   </label>
   
     <div class="md-nav__source">
       <a href="https://github.com/dmccreary/signal-processing" title="Go to repository" class="md-source" data-md-component="source">
   <div class="md-source__icon md-icon">
     
-    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 6.6.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2024 Fonticons, Inc.--><path d="M439.55 236.05 244 40.45a28.87 28.87 0 0 0-40.81 0l-40.66 40.63 51.52 51.52c27.06-9.14 52.68 16.77 43.39 43.68l49.66 49.66c34.23-11.8 61.18 31 35.47 56.69-26.49 26.49-70.21-2.87-56-37.34L240.22 199v121.85c25.3 12.54 22.26 41.85 9.08 55a34.34 34.34 0 0 1-48.55 0c-17.57-17.6-11.07-46.91 11.25-56v-123c-20.8-8.51-24.6-30.74-18.64-45L142.57 101 8.45 235.14a28.86 28.86 0 0 0 0 40.81l195.61 195.6a28.86 28.86 0 0 0 40.8 0l194.69-194.69a28.86 28.86 0 0 0 0-40.81"/></svg>
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 6.7.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2024 Fonticons, Inc.--><path d="M439.55 236.05 244 40.45a28.87 28.87 0 0 0-40.81 0l-40.66 40.63 51.52 51.52c27.06-9.14 52.68 16.77 43.39 43.68l49.66 49.66c34.23-11.8 61.18 31 35.47 56.69-26.49 26.49-70.21-2.87-56-37.34L240.22 199v121.85c25.3 12.54 22.26 41.85 9.08 55a34.34 34.34 0 0 1-48.55 0c-17.57-17.6-11.07-46.91 11.25-56v-123c-20.8-8.51-24.6-30.74-18.64-45L142.57 101 8.45 235.14a28.86 28.86 0 0 0 0 40.81l195.61 195.6a28.86 28.86 0 0 0 40.8 0l194.69-194.69a28.86 28.86 0 0 0 0-40.81"/></svg>
   </div>
   <div class="md-source__repository">
     GitHub Repo
@@ -240,8 +271,10 @@
       <a href="../.." class="md-nav__link">
         
   
+  
   <span class="md-ellipsis">
     Home
+    
   </span>
   
 
@@ -260,8 +293,10 @@
       <a href="../../chapters/" class="md-nav__link">
         
   
+  
   <span class="md-ellipsis">
     Table of Contents
+    
   </span>
   
 
@@ -280,8 +315,10 @@
       <a href="../../about/" class="md-nav__link">
         
   
+  
   <span class="md-ellipsis">
     About This Website
+    
   </span>
   
 
@@ -300,8 +337,10 @@
       <a href="../../course-description/" class="md-nav__link">
         
   
+  
   <span class="md-ellipsis">
     Course Description
+    
   </span>
   
 
@@ -326,85 +365,46 @@
         
       
         
-          
+      
         
       
         
-          
+      
         
       
         
-          
+      
         
       
         
-          
+      
         
       
         
-          
+      
         
       
         
-          
+      
         
       
         
-          
+      
         
       
         
-          
+      
         
       
         
-          
+      
         
       
         
-          
-        
       
         
-          
-        
       
-        
-          
-        
-      
-        
-          
-        
-      
-        
-          
-        
-      
-        
-          
-        
-      
-        
-          
-        
-      
-        
-          
-        
-      
-        
-          
-        
-      
-        
-          
-        
-      
-        
-          
-        
-      
+    
     
     
     
@@ -418,11 +418,14 @@
         
   
   
+  
     <a href="../../chapters/" class="md-nav__link">
       
   
+  
   <span class="md-ellipsis">
     Chapters
+    
   </span>
   
 
@@ -486,6 +489,9 @@
       
         
       
+        
+      
+    
     
     
     
@@ -498,13 +504,14 @@
         <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_6" checked>
         
           
-          
           <div class="md-nav__link md-nav__container">
             <a href="../" class="md-nav__link ">
               
   
+  
   <span class="md-ellipsis">
     Prompts
+    
   </span>
   
 
@@ -536,8 +543,10 @@
       <a href="../00-course-desciption/" class="md-nav__link">
         
   
+  
   <span class="md-ellipsis">
     Course Description
+    
   </span>
   
 
@@ -557,8 +566,10 @@
       <a href="../05-vis-refinement/" class="md-nav__link">
         
   
+  
   <span class="md-ellipsis">
     Vis Refinement
+    
   </span>
   
 
@@ -578,8 +589,10 @@
       <a href="../01-concept-enumeration/" class="md-nav__link">
         
   
+  
   <span class="md-ellipsis">
     Concept Enumeration
+    
   </span>
   
 
@@ -599,8 +612,10 @@
       <a href="../02-concept-depend/" class="md-nav__link">
         
   
+  
   <span class="md-ellipsis">
     Concept Dependencies
+    
   </span>
   
 
@@ -620,8 +635,10 @@
       <a href="../03-taxonomy/" class="md-nav__link">
         
   
+  
   <span class="md-ellipsis">
     Concept Taxonomy
+    
   </span>
   
 
@@ -641,8 +658,10 @@
       <a href="../03b-legend/" class="md-nav__link">
         
   
+  
   <span class="md-ellipsis">
     Legend
+    
   </span>
   
 
@@ -662,8 +681,10 @@
       <a href="../04-vis-js/" class="md-nav__link">
         
   
+  
   <span class="md-ellipsis">
     Vis.js
+    
   </span>
   
 
@@ -683,8 +704,10 @@
       <a href="../08-timeline/" class="md-nav__link">
         
   
+  
   <span class="md-ellipsis">
     Timeline of Signal Processing
+    
   </span>
   
 
@@ -704,8 +727,10 @@
       <a href="../11-electronic-music/" class="md-nav__link">
         
   
+  
   <span class="md-ellipsis">
     Electronic Music
+    
   </span>
   
 
@@ -725,8 +750,10 @@
       <a href="../07-glossary/" class="md-nav__link">
         
   
+  
   <span class="md-ellipsis">
-    Glossary of Terms
+    Glossary
+    
   </span>
   
 
@@ -746,8 +773,10 @@
       <a href="../09-wordcloud/" class="md-nav__link">
         
   
+  
   <span class="md-ellipsis">
-    Wordcloud Prompt
+    Wordcloud
+    
   </span>
   
 
@@ -767,8 +796,10 @@
       <a href="../10-hard-concepts-simulations/" class="md-nav__link">
         
   
+  
   <span class="md-ellipsis">
-    Hard Concept Simulations
+    Hard Concepts
+    
   </span>
   
 
@@ -788,8 +819,10 @@
       <a href="../11-stories/" class="md-nav__link">
         
   
+  
   <span class="md-ellipsis">
-    Storytelling
+    Stories
+    
   </span>
   
 
@@ -818,8 +851,10 @@
         <label class="md-nav__link md-nav__link--active" for="__toc">
           
   
+  
   <span class="md-ellipsis">
     Equations
+    
   </span>
   
 
@@ -829,8 +864,10 @@
       <a href="./" class="md-nav__link md-nav__link--active">
         
   
+  
   <span class="md-ellipsis">
     Equations
+    
   </span>
   
 
@@ -1869,8 +1906,10 @@
       <a href="../13-history-of-signal-processing/" class="md-nav__link">
         
   
+  
   <span class="md-ellipsis">
     History
+    
   </span>
   
 
@@ -1890,8 +1929,33 @@
       <a href="../16-assessment-prompt/" class="md-nav__link">
         
   
+  
   <span class="md-ellipsis">
     Assessments
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../15-prompt-to-create-mc-prompt/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Prompt to Create a Multiple Choice Prompt
+    
   </span>
   
 
@@ -1911,8 +1975,10 @@
       <a href="../17-important-circuits/" class="md-nav__link">
         
   
+  
   <span class="md-ellipsis">
     Important Circuits
+    
   </span>
   
 
@@ -1943,57 +2009,32 @@
         
       
         
-          
+      
         
       
         
-          
+      
         
       
         
-          
+      
         
       
         
-          
+      
         
       
         
-          
+      
         
       
         
-          
+      
         
       
         
-          
-        
       
-        
-          
-        
-      
-        
-          
-        
-      
-        
-          
-        
-      
-        
-          
-        
-      
-        
-          
-        
-      
-        
-          
-        
-      
+    
     
     
     
@@ -2005,13 +2046,16 @@
     <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
       
         
+  
   
   
     <a href="../../sims/" class="md-nav__link">
       
   
+  
   <span class="md-ellipsis">
     Sims
+    
   </span>
   
 
@@ -2042,9 +2086,8 @@
         
       
         
-          
-        
       
+    
     
     
     
@@ -2056,13 +2099,16 @@
     <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
       
         
+  
   
   
     <a href="../../stories/" class="md-nav__link">
       
   
+  
   <span class="md-ellipsis">
     Stories
+    
   </span>
   
 
@@ -2091,9 +2137,8 @@
         
       
         
-          
-        
       
+    
     
     
     
@@ -2107,11 +2152,14 @@
         
   
   
+  
     <a href="../../circuits/" class="md-nav__link">
       
   
+  
   <span class="md-ellipsis">
     Circuits
+    
   </span>
   
 
@@ -2136,8 +2184,10 @@
       <a href="../../checklist/" class="md-nav__link">
         
   
+  
   <span class="md-ellipsis">
     Checklist
+    
   </span>
   
 
@@ -2156,8 +2206,10 @@
       <a href="../../glossary/" class="md-nav__link">
         
   
+  
   <span class="md-ellipsis">
     Glossary
+    
   </span>
   
 
@@ -2176,8 +2228,10 @@
       <a href="../../how-we-built-this-site/" class="md-nav__link">
         
   
+  
   <span class="md-ellipsis">
     How We Built This Site
+    
   </span>
   
 
@@ -2196,8 +2250,10 @@
       <a href="../../license/" class="md-nav__link">
         
   
+  
   <span class="md-ellipsis">
     License
+    
   </span>
   
 
@@ -2216,8 +2272,10 @@
       <a href="../../references/" class="md-nav__link">
         
   
+  
   <span class="md-ellipsis">
     References
+    
   </span>
   
 
@@ -2236,8 +2294,10 @@
       <a href="../../contact/" class="md-nav__link">
         
   
+  
   <span class="md-ellipsis">
     Contact
+    
   </span>
   
 
@@ -2256,28 +2316,10 @@
       <a href="../../ieee-paper-changes/" class="md-nav__link">
         
   
+  
   <span class="md-ellipsis">
-    IEEE Signal Processing Paper Changes
-  </span>
-  
-
-      </a>
-    </li>
-  
-
+    Paper Changes
     
-      
-      
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../15-prompt-to-create-mc-prompt/" class="md-nav__link">
-        
-  
-  <span class="md-ellipsis">
-    Prompt to Create a Multiple Choice Prompt
   </span>
   
 
@@ -3325,6 +3367,7 @@
                 
                   
 
+
   
     <a href="https://github.com/dmccreary/signal-processing/blob/master/docs/prompts/12-equations.md" title="Edit this page" class="md-content__button md-icon">
       
@@ -3351,20 +3394,20 @@ equations in a college level signal processing course.</p>
 </ol>
 <p>Examples:</p>
 <h4 id="slope-and-intercept">Slope and Intercept</h4>
-<p><span class="arithmatex">\(y = m * x + b\)</span></p>
+<p>$y = m * x + b$</p>
 <p>where:</p>
 <ul>
-<li><span class="arithmatex">\(y\)</span> is the vertical axis</li>
-<li><span class="arithmatex">\(x\)</span> is the horizontal axis</li>
-<li><span class="arithmatex">\(m\)</span> is the slope</li>
-<li><span class="arithmatex">\(b\)</span> is the intercept</li>
+<li>$y$ is the vertical axis</li>
+<li>$x$ is the horizontal axis</li>
+<li>$m$ is the slope</li>
+<li>$b$ is the intercept</li>
 </ul>
 <h4 id="area-of-a-circle">Area of a Circle</h4>
-<p><span class="arithmatex">\(A = 2\pi r^2\)</span>
+<p>$A = 2\pi r^2$
 where:</p>
 <ul>
-<li><span class="arithmatex">\(A\)</span> is the area of the circle</li>
-<li><span class="arithmatex">\(r\)</span> is the radius</li>
+<li>$A$ is the area of the circle</li>
+<li>$r$ is the radius</li>
 </ul>
 </div>
 <p>After the first 25 equations were generated I used the following prompt:</p>
@@ -3382,913 +3425,913 @@ where:</p>
 </ol>
 <h3 id="equations-1-25">Equations 1-25</h3>
 <h4 id="discrete-fourier-transform-dft">Discrete Fourier Transform (DFT)</h4>
-<p><span class="arithmatex">\(X[k] = \sum_{n=0}^{N-1} x[n]e^{-j2\pi kn/N}\)</span></p>
+<p>$X[k] = \sum_{n=0}^{N-1} x[n]e^{-j2\pi kn/N}$</p>
 <p>where:</p>
 <ul>
-<li><span class="arithmatex">\(X[k]\)</span> is the frequency domain representation</li>
-<li><span class="arithmatex">\(x[n]\)</span> is the time domain signal</li>
-<li><span class="arithmatex">\(N\)</span> is the number of samples</li>
-<li><span class="arithmatex">\(k\)</span> is the frequency index</li>
-<li><span class="arithmatex">\(n\)</span> is the time index</li>
+<li>$X[k]$ is the frequency domain representation</li>
+<li>$x[n]$ is the time domain signal</li>
+<li>$N$ is the number of samples</li>
+<li>$k$ is the frequency index</li>
+<li>$n$ is the time index</li>
 </ul>
 <h4 id="inverse-discrete-fourier-transform-idft">Inverse Discrete Fourier Transform (IDFT)</h4>
-<p><span class="arithmatex">\(x[n] = \frac{1}{N}\sum_{k=0}^{N-1} X[k]e^{j2\pi kn/N}\)</span></p>
+<p>$x[n] = \frac{1}{N}\sum_{k=0}^{N-1} X[k]e^{j2\pi kn/N}$</p>
 <p>where:</p>
 <ul>
-<li><span class="arithmatex">\(x[n]\)</span> is the reconstructed time domain signal</li>
-<li><span class="arithmatex">\(X[k]\)</span> is the frequency domain representation</li>
-<li><span class="arithmatex">\(N\)</span> is the number of samples</li>
-<li><span class="arithmatex">\(k\)</span> is the frequency index</li>
-<li><span class="arithmatex">\(n\)</span> is the time index</li>
+<li>$x[n]$ is the reconstructed time domain signal</li>
+<li>$X[k]$ is the frequency domain representation</li>
+<li>$N$ is the number of samples</li>
+<li>$k$ is the frequency index</li>
+<li>$n$ is the time index</li>
 </ul>
 <h4 id="sampling-theorem-nyquist-rate">Sampling Theorem (Nyquist Rate)</h4>
-<p><span class="arithmatex">\(f_s \geq 2f_{max}\)</span></p>
+<p>$f_s \geq 2f_{max}$</p>
 <p>where:</p>
 <ul>
-<li><span class="arithmatex">\(f_s\)</span> is the sampling frequency</li>
-<li><span class="arithmatex">\(f_{max}\)</span> is the highest frequency component in the signal</li>
+<li>$f_s$ is the sampling frequency</li>
+<li>$f_{max}$ is the highest frequency component in the signal</li>
 </ul>
 <h4 id="z-transform">Z-Transform</h4>
-<p><span class="arithmatex">\(X(z) = \sum_{n=-\infty}^{\infty} x[n]z^{-n}\)</span></p>
+<p>$X(z) = \sum_{n=-\infty}^{\infty} x[n]z^{-n}$</p>
 <p>where:</p>
 <ul>
-<li><span class="arithmatex">\(X(z)\)</span> is the z-domain representation</li>
-<li><span class="arithmatex">\(x[n]\)</span> is the time domain signal</li>
-<li><span class="arithmatex">\(z\)</span> is the complex variable</li>
-<li><span class="arithmatex">\(n\)</span> is the time index</li>
+<li>$X(z)$ is the z-domain representation</li>
+<li>$x[n]$ is the time domain signal</li>
+<li>$z$ is the complex variable</li>
+<li>$n$ is the time index</li>
 </ul>
 <h4 id="inverse-z-transform">Inverse Z-Transform</h4>
-<p><span class="arithmatex">\(x[n] = \frac{1}{2\pi j}\oint_C X(z)z^{n-1}dz\)</span></p>
+<p>$x[n] = \frac{1}{2\pi j}\oint_C X(z)z^{n-1}dz$</p>
 <p>where:</p>
 <ul>
-<li><span class="arithmatex">\(x[n]\)</span> is the time domain signal</li>
-<li><span class="arithmatex">\(X(z)\)</span> is the z-domain representation</li>
-<li><span class="arithmatex">\(C\)</span> is the contour of integration</li>
-<li><span class="arithmatex">\(z\)</span> is the complex variable</li>
+<li>$x[n]$ is the time domain signal</li>
+<li>$X(z)$ is the z-domain representation</li>
+<li>$C$ is the contour of integration</li>
+<li>$z$ is the complex variable</li>
 </ul>
 <h4 id="convolution-sum">Convolution Sum</h4>
-<p><span class="arithmatex">\(y[n] = x[n] * h[n] = \sum_{k=-\infty}^{\infty} x[k]h[n-k]\)</span></p>
+<p>$y[n] = x[n] * h[n] = \sum_{k=-\infty}^{\infty} x[k]h[n-k]$</p>
 <p>where:</p>
 <ul>
-<li><span class="arithmatex">\(y[n]\)</span> is the output signal</li>
-<li><span class="arithmatex">\(x[n]\)</span> is the input signal</li>
-<li><span class="arithmatex">\(h[n]\)</span> is the impulse response</li>
-<li><span class="arithmatex">\(k\)</span> is the summation index</li>
+<li>$y[n]$ is the output signal</li>
+<li>$x[n]$ is the input signal</li>
+<li>$h[n]$ is the impulse response</li>
+<li>$k$ is the summation index</li>
 </ul>
 <h4 id="correlation">Correlation</h4>
-<p><span class="arithmatex">\(R_{xy}[n] = \sum_{k=-\infty}^{\infty} x[k]y[k+n]\)</span></p>
+<p>$R_{xy}[n] = \sum_{k=-\infty}^{\infty} x[k]y[k+n]$</p>
 <p>where:</p>
 <ul>
-<li><span class="arithmatex">\(R_{xy}[n]\)</span> is the correlation sequence</li>
-<li><span class="arithmatex">\(x[k]\)</span> is the first signal</li>
-<li><span class="arithmatex">\(y[k]\)</span> is the second signal</li>
-<li><span class="arithmatex">\(n\)</span> is the lag variable</li>
+<li>$R_{xy}[n]$ is the correlation sequence</li>
+<li>$x[k]$ is the first signal</li>
+<li>$y[k]$ is the second signal</li>
+<li>$n$ is the lag variable</li>
 </ul>
 <h4 id="power-spectral-density">Power Spectral Density</h4>
-<p><span class="arithmatex">\(P_{xx}(e^{j\omega}) = \sum_{n=-\infty}^{\infty} R_{xx}[n]e^{-j\omega n}\)</span></p>
+<p>$P_{xx}(e^{j\omega}) = \sum_{n=-\infty}^{\infty} R_{xx}[n]e^{-j\omega n}$</p>
 <p>where:</p>
 <ul>
-<li><span class="arithmatex">\(P_{xx}(e^{j\omega})\)</span> is the power spectral density</li>
-<li><span class="arithmatex">\(R_{xx}[n]\)</span> is the autocorrelation sequence</li>
-<li><span class="arithmatex">\(\omega\)</span> is the angular frequency</li>
-<li><span class="arithmatex">\(n\)</span> is the lag variable</li>
+<li>$P_{xx}(e^{j\omega})$ is the power spectral density</li>
+<li>$R_{xx}[n]$ is the autocorrelation sequence</li>
+<li>$\omega$ is the angular frequency</li>
+<li>$n$ is the lag variable</li>
 </ul>
 <h4 id="first-difference-equation">First Difference Equation</h4>
-<p><span class="arithmatex">\(y[n] = y[n-1] + x[n]\)</span></p>
+<p>$y[n] = y[n-1] + x[n]$</p>
 <p>where:</p>
 <ul>
-<li><span class="arithmatex">\(y[n]\)</span> is the output signal</li>
-<li><span class="arithmatex">\(x[n]\)</span> is the input signal</li>
-<li><span class="arithmatex">\(n\)</span> is the time index</li>
+<li>$y[n]$ is the output signal</li>
+<li>$x[n]$ is the input signal</li>
+<li>$n$ is the time index</li>
 </ul>
 <h4 id="moving-average-filter">Moving Average Filter</h4>
-<p><span class="arithmatex">\(y[n] = \frac{1}{M}\sum_{k=0}^{M-1} x[n-k]\)</span></p>
+<p>$y[n] = \frac{1}{M}\sum_{k=0}^{M-1} x[n-k]$</p>
 <p>where:</p>
 <ul>
-<li><span class="arithmatex">\(y[n]\)</span> is the filtered output</li>
-<li><span class="arithmatex">\(x[n]\)</span> is the input signal</li>
-<li><span class="arithmatex">\(M\)</span> is the number of points in the average</li>
-<li><span class="arithmatex">\(k\)</span> is the summation index</li>
+<li>$y[n]$ is the filtered output</li>
+<li>$x[n]$ is the input signal</li>
+<li>$M$ is the number of points in the average</li>
+<li>$k$ is the summation index</li>
 </ul>
 <h4 id="iir-filter-general-form">IIR Filter General Form</h4>
-<p><span class="arithmatex">\(y[n] = \sum_{k=0}^{M} b_k x[n-k] - \sum_{k=1}^{N} a_k y[n-k]\)</span></p>
+<p>$y[n] = \sum_{k=0}^{M} b_k x[n-k] - \sum_{k=1}^{N} a_k y[n-k]$</p>
 <p>where:</p>
 <ul>
-<li><span class="arithmatex">\(y[n]\)</span> is the filter output</li>
-<li><span class="arithmatex">\(x[n]\)</span> is the filter input</li>
-<li><span class="arithmatex">\(b_k\)</span> are the feedforward coefficients</li>
-<li><span class="arithmatex">\(a_k\)</span> are the feedback coefficients</li>
-<li><span class="arithmatex">\(M\)</span> is the feedforward filter order</li>
-<li><span class="arithmatex">\(N\)</span> is the feedback filter order</li>
+<li>$y[n]$ is the filter output</li>
+<li>$x[n]$ is the filter input</li>
+<li>$b_k$ are the feedforward coefficients</li>
+<li>$a_k$ are the feedback coefficients</li>
+<li>$M$ is the feedforward filter order</li>
+<li>$N$ is the feedback filter order</li>
 </ul>
 <h4 id="frequency-response">Frequency Response</h4>
-<p><span class="arithmatex">\(H(e^{j\omega}) = \sum_{n=-\infty}^{\infty} h[n]e^{-j\omega n}\)</span></p>
+<p>$H(e^{j\omega}) = \sum_{n=-\infty}^{\infty} h[n]e^{-j\omega n}$</p>
 <p>where:</p>
 <ul>
-<li><span class="arithmatex">\(H(e^{j\omega})\)</span> is the frequency response</li>
-<li><span class="arithmatex">\(h[n]\)</span> is the impulse response</li>
-<li><span class="arithmatex">\(\omega\)</span> is the angular frequency</li>
-<li><span class="arithmatex">\(n\)</span> is the time index</li>
+<li>$H(e^{j\omega})$ is the frequency response</li>
+<li>$h[n]$ is the impulse response</li>
+<li>$\omega$ is the angular frequency</li>
+<li>$n$ is the time index</li>
 </ul>
 <h4 id="phase-response">Phase Response</h4>
-<p><span class="arithmatex">\(\phi(\omega) = \tan^{-1}\left(\frac{\Im\{H(e^{j\omega})\}}{\Re\{H(e^{j\omega})\}}\right)\)</span></p>
+<p>$\phi(\omega) = \tan^{-1}\left(\frac{\Im{H(e^{j\omega})}}{\Re{H(e^{j\omega})}}\right)$</p>
 <p>where:</p>
 <ul>
-<li><span class="arithmatex">\(\phi(\omega)\)</span> is the phase response</li>
-<li><span class="arithmatex">\(H(e^{j\omega})\)</span> is the frequency response</li>
-<li><span class="arithmatex">\(\omega\)</span> is the angular frequency</li>
-<li><span class="arithmatex">\(\Im\)</span> represents the imaginary part</li>
-<li><span class="arithmatex">\(\Re\)</span> represents the real part</li>
+<li>$\phi(\omega)$ is the phase response</li>
+<li>$H(e^{j\omega})$ is the frequency response</li>
+<li>$\omega$ is the angular frequency</li>
+<li>$\Im$ represents the imaginary part</li>
+<li>$\Re$ represents the real part</li>
 </ul>
 <h4 id="magnitude-response">Magnitude Response</h4>
-<p><span class="arithmatex">\(|H(e^{j\omega})| = \sqrt{\Re\{H(e^{j\omega})\}^2 + \Im\{H(e^{j\omega})\}^2}\)</span></p>
+<p>$|H(e^{j\omega})| = \sqrt{\Re{H(e^{j\omega})}^2 + \Im{H(e^{j\omega})}^2}$</p>
 <p>where:</p>
 <ul>
-<li><span class="arithmatex">\(|H(e^{j\omega})|\)</span> is the magnitude response</li>
-<li><span class="arithmatex">\(H(e^{j\omega})\)</span> is the frequency response</li>
-<li><span class="arithmatex">\(\omega\)</span> is the angular frequency</li>
-<li><span class="arithmatex">\(\Im\)</span> represents the imaginary part</li>
-<li><span class="arithmatex">\(\Re\)</span> represents the real part</li>
+<li>$|H(e^{j\omega})|$ is the magnitude response</li>
+<li>$H(e^{j\omega})$ is the frequency response</li>
+<li>$\omega$ is the angular frequency</li>
+<li>$\Im$ represents the imaginary part</li>
+<li>$\Re$ represents the real part</li>
 </ul>
 <h4 id="group-delay">Group Delay</h4>
-<p><span class="arithmatex">\(\tau_g(\omega) = -\frac{d\phi(\omega)}{d\omega}\)</span></p>
+<p>$\tau_g(\omega) = -\frac{d\phi(\omega)}{d\omega}$</p>
 <p>where:</p>
 <ul>
-<li><span class="arithmatex">\(\tau_g(\omega)\)</span> is the group delay</li>
-<li><span class="arithmatex">\(\phi(\omega)\)</span> is the phase response</li>
-<li><span class="arithmatex">\(\omega\)</span> is the angular frequency</li>
+<li>$\tau_g(\omega)$ is the group delay</li>
+<li>$\phi(\omega)$ is the phase response</li>
+<li>$\omega$ is the angular frequency</li>
 </ul>
 <h4 id="parsevals-theorem">Parseval's Theorem</h4>
-<p><span class="arithmatex">\(\sum_{n=-\infty}^{\infty} |x[n]|^2 = \frac{1}{2\pi}\int_{-\pi}^{\pi} |X(e^{j\omega})|^2 d\omega\)</span></p>
+<p>$\sum_{n=-\infty}^{\infty} |x[n]|^2 = \frac{1}{2\pi}\int_{-\pi}^{\pi} |X(e^{j\omega})|^2 d\omega$</p>
 <p>where:</p>
 <ul>
-<li><span class="arithmatex">\(x[n]\)</span> is the time domain signal</li>
-<li><span class="arithmatex">\(X(e^{j\omega})\)</span> is the frequency domain representation</li>
-<li><span class="arithmatex">\(\omega\)</span> is the angular frequency</li>
+<li>$x[n]$ is the time domain signal</li>
+<li>$X(e^{j\omega})$ is the frequency domain representation</li>
+<li>$\omega$ is the angular frequency</li>
 </ul>
 <h4 id="discrete-time-fourier-transform-dtft">Discrete-Time Fourier Transform (DTFT)</h4>
-<p><span class="arithmatex">\(X(e^{j\omega}) = \sum_{n=-\infty}^{\infty} x[n]e^{-j\omega n}\)</span></p>
+<p>$X(e^{j\omega}) = \sum_{n=-\infty}^{\infty} x[n]e^{-j\omega n}$</p>
 <p>where:</p>
 <ul>
-<li><span class="arithmatex">\(X(e^{j\omega})\)</span> is the frequency domain representation</li>
-<li><span class="arithmatex">\(x[n]\)</span> is the time domain signal</li>
-<li><span class="arithmatex">\(\omega\)</span> is the angular frequency</li>
-<li><span class="arithmatex">\(n\)</span> is the time index</li>
+<li>$X(e^{j\omega})$ is the frequency domain representation</li>
+<li>$x[n]$ is the time domain signal</li>
+<li>$\omega$ is the angular frequency</li>
+<li>$n$ is the time index</li>
 </ul>
 <h4 id="window-function-hamming">Window Function (Hamming)</h4>
-<p><span class="arithmatex">\(w[n] = 0.54 - 0.46\cos(\frac{2\pi n}{N-1})\)</span></p>
+<p>$w[n] = 0.54 - 0.46\cos(\frac{2\pi n}{N-1})$</p>
 <p>where:</p>
 <ul>
-<li><span class="arithmatex">\(w[n]\)</span> is the window function value</li>
-<li><span class="arithmatex">\(n\)</span> is the sample index</li>
-<li><span class="arithmatex">\(N\)</span> is the window length</li>
+<li>$w[n]$ is the window function value</li>
+<li>$n$ is the sample index</li>
+<li>$N$ is the window length</li>
 </ul>
 <h4 id="discrete-cosine-transform-dct">Discrete Cosine Transform (DCT)</h4>
-<p><span class="arithmatex">\(X[k] = \sum_{n=0}^{N-1} x[n]\cos[\frac{\pi k(2n+1)}{2N}]\)</span></p>
+<p>$X[k] = \sum_{n=0}^{N-1} x[n]\cos[\frac{\pi k(2n+1)}{2N}]$</p>
 <p>where:</p>
 <ul>
-<li><span class="arithmatex">\(X[k]\)</span> is the DCT coefficient</li>
-<li><span class="arithmatex">\(x[n]\)</span> is the input signal</li>
-<li><span class="arithmatex">\(N\)</span> is the number of samples</li>
-<li><span class="arithmatex">\(k\)</span> is the frequency index</li>
-<li><span class="arithmatex">\(n\)</span> is the time index</li>
+<li>$X[k]$ is the DCT coefficient</li>
+<li>$x[n]$ is the input signal</li>
+<li>$N$ is the number of samples</li>
+<li>$k$ is the frequency index</li>
+<li>$n$ is the time index</li>
 </ul>
 <h4 id="energy-of-a-signal">Energy of a Signal</h4>
-<p><span class="arithmatex">\(E = \sum_{n=-\infty}^{\infty} |x[n]|^2\)</span></p>
+<p>$E = \sum_{n=-\infty}^{\infty} |x[n]|^2$</p>
 <p>where:</p>
 <ul>
-<li><span class="arithmatex">\(E\)</span> is the total energy</li>
-<li><span class="arithmatex">\(x[n]\)</span> is the signal</li>
-<li><span class="arithmatex">\(n\)</span> is the time index</li>
+<li>$E$ is the total energy</li>
+<li>$x[n]$ is the signal</li>
+<li>$n$ is the time index</li>
 </ul>
 <h4 id="power-of-a-signal">Power of a Signal</h4>
-<p><span class="arithmatex">\(P = \lim_{N\to\infty} \frac{1}{2N+1}\sum_{n=-N}^{N} |x[n]|^2\)</span></p>
+<p>$P = \lim_{N\to\infty} \frac{1}{2N+1}\sum_{n=-N}^{N} |x[n]|^2$</p>
 <p>where:</p>
 <ul>
-<li><span class="arithmatex">\(P\)</span> is the average power</li>
-<li><span class="arithmatex">\(x[n]\)</span> is the signal</li>
-<li><span class="arithmatex">\(N\)</span> is the number of samples</li>
+<li>$P$ is the average power</li>
+<li>$x[n]$ is the signal</li>
+<li>$N$ is the number of samples</li>
 </ul>
 <h4 id="decimation-equation">Decimation Equation</h4>
-<p><span class="arithmatex">\(y[n] = x[Mn]\)</span></p>
+<p>$y[n] = x[Mn]$</p>
 <p>where:</p>
 <ul>
-<li><span class="arithmatex">\(y[n]\)</span> is the decimated signal</li>
-<li><span class="arithmatex">\(x[n]\)</span> is the input signal</li>
-<li><span class="arithmatex">\(M\)</span> is the decimation factor</li>
-<li><span class="arithmatex">\(n\)</span> is the time index</li>
+<li>$y[n]$ is the decimated signal</li>
+<li>$x[n]$ is the input signal</li>
+<li>$M$ is the decimation factor</li>
+<li>$n$ is the time index</li>
 </ul>
 <h4 id="interpolation-equation">Interpolation Equation</h4>
-<p><span class="arithmatex">\(y[n] = \begin{cases} x[n/L] &amp; \text{if } n/L \text{ is integer} \\ 0 &amp; \text{otherwise} \end{cases}\)</span></p>
+<p>$y[n] = \begin{cases} x[n/L] &amp; \text{if } n/L \text{ is integer} \ 0 &amp; \text{otherwise} \end{cases}$</p>
 <p>where:</p>
 <ul>
-<li><span class="arithmatex">\(y[n]\)</span> is the interpolated signal</li>
-<li><span class="arithmatex">\(x[n]\)</span> is the input signal</li>
-<li><span class="arithmatex">\(L\)</span> is the interpolation factor</li>
-<li><span class="arithmatex">\(n\)</span> is the time index</li>
+<li>$y[n]$ is the interpolated signal</li>
+<li>$x[n]$ is the input signal</li>
+<li>$L$ is the interpolation factor</li>
+<li>$n$ is the time index</li>
 </ul>
 <h4 id="signal-to-noise-ratio-snr">Signal-to-Noise Ratio (SNR)</h4>
-<p><span class="arithmatex">\(SNR = 10\log_{10}\left(\frac{P_{signal}}{P_{noise}}\right)\)</span></p>
+<p>$SNR = 10\log_{10}\left(\frac{P_{signal}}{P_{noise}}\right)$</p>
 <p>where:</p>
 <ul>
-<li><span class="arithmatex">\(SNR\)</span> is the signal-to-noise ratio in dB</li>
-<li><span class="arithmatex">\(P_{signal}\)</span> is the power of the signal</li>
-<li><span class="arithmatex">\(P_{noise}\)</span> is the power of the noise</li>
+<li>$SNR$ is the signal-to-noise ratio in dB</li>
+<li>$P_{signal}$ is the power of the signal</li>
+<li>$P_{noise}$ is the power of the noise</li>
 </ul>
 <h4 id="circular-convolution">Circular Convolution</h4>
-<p><span class="arithmatex">\(y[n] = \sum_{k=0}^{N-1} x[k]h[(n-k)_N]\)</span></p>
+<p>$y[n] = \sum_{k=0}^{N-1} x[k]h[(n-k)_N]$</p>
 <p>where:</p>
 <ul>
-<li><span class="arithmatex">\(y[n]\)</span> is the output signal</li>
-<li><span class="arithmatex">\(x[n]\)</span> is the input signal</li>
-<li><span class="arithmatex">\(h[n]\)</span> is the impulse response</li>
-<li><span class="arithmatex">\(N\)</span> is the period of the circular convolution</li>
-<li><span class="arithmatex">\((n-k)_N\)</span> denotes modulo-N operation</li>
+<li>$y[n]$ is the output signal</li>
+<li>$x[n]$ is the input signal</li>
+<li>$h[n]$ is the impulse response</li>
+<li>$N$ is the period of the circular convolution</li>
+<li>$(n-k)_N$ denotes modulo-N operation</li>
 </ul>
 <p>I'll continue with the next 25 common signal processing equations following the same format.</p>
 <h3 id="equations-25-50">Equations 25-50</h3>
 <h4 id="fast-fourier-transform-radix-2-decimation-in-time">Fast Fourier Transform (Radix-2 Decimation in Time)</h4>
-<p><span class="arithmatex">\(X[k] = \sum_{n=0}^{N/2-1} x[2n]W_N^{2nk} + W_N^k\sum_{n=0}^{N/2-1} x[2n+1]W_N^{2nk}\)</span></p>
+<p>$X[k] = \sum_{n=0}^{N/2-1} x[2n]W_N^{2nk} + W_N^k\sum_{n=0}^{N/2-1} x[2n+1]W_N^{2nk}$</p>
 <p>where:</p>
 <ul>
-<li><span class="arithmatex">\(X[k]\)</span> is the frequency domain output</li>
-<li><span class="arithmatex">\(x[n]\)</span> is the time domain input</li>
-<li><span class="arithmatex">\(W_N^k = e^{-j2\pi k/N}\)</span> is the twiddle factor</li>
-<li><span class="arithmatex">\(N\)</span> is the number of points (power of 2)</li>
-<li><span class="arithmatex">\(k\)</span> is the frequency index</li>
-<li><span class="arithmatex">\(n\)</span> is the time index</li>
+<li>$X[k]$ is the frequency domain output</li>
+<li>$x[n]$ is the time domain input</li>
+<li>$W_N^k = e^{-j2\pi k/N}$ is the twiddle factor</li>
+<li>$N$ is the number of points (power of 2)</li>
+<li>$k$ is the frequency index</li>
+<li>$n$ is the time index</li>
 </ul>
 <h4 id="goertzel-algorithm">Goertzel Algorithm</h4>
-<p><span class="arithmatex">\(y[n] = 2\cos(2\pi f_0/f_s)y[n-1] - y[n-2] + x[n]\)</span></p>
+<p>$y[n] = 2\cos(2\pi f_0/f_s)y[n-1] - y[n-2] + x[n]$</p>
 <p>where:</p>
 <ul>
-<li><span class="arithmatex">\(y[n]\)</span> is the filter output</li>
-<li><span class="arithmatex">\(x[n]\)</span> is the input signal</li>
-<li><span class="arithmatex">\(f_0\)</span> is the frequency of interest</li>
-<li><span class="arithmatex">\(f_s\)</span> is the sampling frequency</li>
-<li><span class="arithmatex">\(n\)</span> is the time index</li>
+<li>$y[n]$ is the filter output</li>
+<li>$x[n]$ is the input signal</li>
+<li>$f_0$ is the frequency of interest</li>
+<li>$f_s$ is the sampling frequency</li>
+<li>$n$ is the time index</li>
 </ul>
 <h4 id="chirp-signal">Chirp Signal</h4>
-<p><span class="arithmatex">\(x[n] = \cos(2\pi(f_0n + \frac{\beta}{2}n^2))\)</span></p>
+<p>$x[n] = \cos(2\pi(f_0n + \frac{\beta}{2}n^2))$</p>
 <p>where:</p>
 <ul>
-<li><span class="arithmatex">\(x[n]\)</span> is the chirp signal</li>
-<li><span class="arithmatex">\(f_0\)</span> is the starting frequency</li>
-<li><span class="arithmatex">\(\beta\)</span> is the rate of frequency change</li>
-<li><span class="arithmatex">\(n\)</span> is the time index</li>
+<li>$x[n]$ is the chirp signal</li>
+<li>$f_0$ is the starting frequency</li>
+<li>$\beta$ is the rate of frequency change</li>
+<li>$n$ is the time index</li>
 </ul>
 <h4 id="hilbert-transform-discrete">Hilbert Transform (Discrete)</h4>
-<p><span class="arithmatex">\(h[n] = \begin{cases} \frac{2}{\pi n} &amp; n \text{ odd} \\ 0 &amp; n \text{ even} \end{cases}\)</span></p>
+<p>$h[n] = \begin{cases} \frac{2}{\pi n} &amp; n \text{ odd} \ 0 &amp; n \text{ even} \end{cases}$</p>
 <p>where:</p>
 <ul>
-<li><span class="arithmatex">\(h[n]\)</span> is the Hilbert transform impulse response</li>
-<li><span class="arithmatex">\(n\)</span> is the time index</li>
-<li><span class="arithmatex">\(\pi\)</span> is pi (approximately 3.14159)</li>
+<li>$h[n]$ is the Hilbert transform impulse response</li>
+<li>$n$ is the time index</li>
+<li>$\pi$ is pi (approximately 3.14159)</li>
 </ul>
 <h4 id="cross-correlation-coefficient">Cross-Correlation Coefficient</h4>
-<p><span class="arithmatex">\(\rho_{xy} = \frac{R_{xy}[0]}{\sqrt{R_{xx}[0]R_{yy}[0]}}\)</span></p>
+<p>$\rho_{xy} = \frac{R_{xy}[0]}{\sqrt{R_{xx}[0]R_{yy}[0]}}$</p>
 <p>where:</p>
 <ul>
-<li><span class="arithmatex">\(\rho_{xy}\)</span> is the correlation coefficient</li>
-<li><span class="arithmatex">\(R_{xy}[0]\)</span> is the cross-correlation at lag zero</li>
-<li><span class="arithmatex">\(R_{xx}[0]\)</span> is the autocorrelation of x at lag zero</li>
-<li><span class="arithmatex">\(R_{yy}[0]\)</span> is the autocorrelation of y at lag zero</li>
+<li>$\rho_{xy}$ is the correlation coefficient</li>
+<li>$R_{xy}[0]$ is the cross-correlation at lag zero</li>
+<li>$R_{xx}[0]$ is the autocorrelation of x at lag zero</li>
+<li>$R_{yy}[0]$ is the autocorrelation of y at lag zero</li>
 </ul>
 <h4 id="discrete-wavelet-transform">Discrete Wavelet Transform</h4>
-<p><span class="arithmatex">\(W[j,k] = \sum_{n} x[n]2^{-j/2}\psi(2^{-j}n - k)\)</span></p>
+<p>$W[j,k] = \sum_{n} x[n]2^{-j/2}\psi(2^{-j}n - k)$</p>
 <p>where:</p>
 <ul>
-<li><span class="arithmatex">\(W[j,k]\)</span> is the wavelet coefficient</li>
-<li><span class="arithmatex">\(x[n]\)</span> is the input signal</li>
-<li><span class="arithmatex">\(\psi\)</span> is the mother wavelet</li>
-<li><span class="arithmatex">\(j\)</span> is the scale parameter</li>
-<li><span class="arithmatex">\(k\)</span> is the translation parameter</li>
-<li><span class="arithmatex">\(n\)</span> is the time index</li>
+<li>$W[j,k]$ is the wavelet coefficient</li>
+<li>$x[n]$ is the input signal</li>
+<li>$\psi$ is the mother wavelet</li>
+<li>$j$ is the scale parameter</li>
+<li>$k$ is the translation parameter</li>
+<li>$n$ is the time index</li>
 </ul>
 <h4 id="kalman-filter-prediction">Kalman Filter Prediction</h4>
-<p><span class="arithmatex">\(\hat{x}_{k|k-1} = F_k\hat{x}_{k-1|k-1}\)</span></p>
+<p>$\hat{x}<em k-1_k-1="k-1|k-1">{k|k-1} = F_k\hat{x}</em>$</p>
 <p>where:</p>
 <ul>
-<li><span class="arithmatex">\(\hat{x}_{k|k-1}\)</span> is the state prediction</li>
-<li><span class="arithmatex">\(F_k\)</span> is the state transition matrix</li>
-<li><span class="arithmatex">\(\hat{x}_{k-1|k-1}\)</span> is the previous state estimate</li>
-<li><span class="arithmatex">\(k\)</span> is the time step</li>
+<li>$\hat{x}_{k|k-1}$ is the state prediction</li>
+<li>$F_k$ is the state transition matrix</li>
+<li>$\hat{x}_{k-1|k-1}$ is the previous state estimate</li>
+<li>$k$ is the time step</li>
 </ul>
 <h4 id="kalman-filter-update">Kalman Filter Update</h4>
-<p><span class="arithmatex">\(\hat{x}_{k|k} = \hat{x}_{k|k-1} + K_k(z_k - H_k\hat{x}_{k|k-1})\)</span></p>
+<p>$\hat{x}<em k_k-1="k|k-1">{k|k} = \hat{x}</em>)$} + K_k(z_k - H_k\hat{x}_{k|k-1</p>
 <p>where:</p>
 <ul>
-<li><span class="arithmatex">\(\hat{x}_{k|k}\)</span> is the updated state estimate</li>
-<li><span class="arithmatex">\(K_k\)</span> is the Kalman gain</li>
-<li><span class="arithmatex">\(z_k\)</span> is the measurement</li>
-<li><span class="arithmatex">\(H_k\)</span> is the measurement matrix</li>
-<li><span class="arithmatex">\(\hat{x}_{k|k-1}\)</span> is the state prediction</li>
+<li>$\hat{x}_{k|k}$ is the updated state estimate</li>
+<li>$K_k$ is the Kalman gain</li>
+<li>$z_k$ is the measurement</li>
+<li>$H_k$ is the measurement matrix</li>
+<li>$\hat{x}_{k|k-1}$ is the state prediction</li>
 </ul>
 <h4 id="autocorrelation-function-biased">Autocorrelation Function (Biased)</h4>
-<p><span class="arithmatex">\(R_{xx}[m] = \frac{1}{N}\sum_{n=0}^{N-|m|-1} x[n]x[n+|m|]\)</span></p>
+<p>$R_{xx}[m] = \frac{1}{N}\sum_{n=0}^{N-|m|-1} x[n]x[n+|m|]$</p>
 <p>where:</p>
 <ul>
-<li><span class="arithmatex">\(R_{xx}[m]\)</span> is the autocorrelation function</li>
-<li><span class="arithmatex">\(x[n]\)</span> is the signal</li>
-<li><span class="arithmatex">\(N\)</span> is the number of samples</li>
-<li><span class="arithmatex">\(m\)</span> is the lag</li>
-<li><span class="arithmatex">\(n\)</span> is the time index</li>
+<li>$R_{xx}[m]$ is the autocorrelation function</li>
+<li>$x[n]$ is the signal</li>
+<li>$N$ is the number of samples</li>
+<li>$m$ is the lag</li>
+<li>$n$ is the time index</li>
 </ul>
 <h4 id="levinson-durbin-recursion">Levinson-Durbin Recursion</h4>
-<p><span class="arithmatex">\(a_m^{(m)} = k_m\)</span>
-<span class="arithmatex">\(a_i^{(m)} = a_i^{(m-1)} - k_ma_{m-i}^{(m-1)}\)</span></p>
+<p>$a_m^{(m)} = k_m$
+$a_i^{(m)} = a_i^{(m-1)} - k_ma_{m-i}^{(m-1)}$</p>
 <p>where:</p>
 <ul>
-<li><span class="arithmatex">\(a_i^{(m)}\)</span> are the reflection coefficients</li>
-<li><span class="arithmatex">\(k_m\)</span> is the mth reflection coefficient</li>
-<li><span class="arithmatex">\(m\)</span> is the order</li>
-<li><span class="arithmatex">\(i\)</span> is the coefficient index</li>
+<li>$a_i^{(m)}$ are the reflection coefficients</li>
+<li>$k_m$ is the mth reflection coefficient</li>
+<li>$m$ is the order</li>
+<li>$i$ is the coefficient index</li>
 </ul>
 <h4 id="lms-adaptive-filter">LMS Adaptive Filter</h4>
-<p><span class="arithmatex">\(w[n+1] = w[n] + \mu e[n]x[n]\)</span></p>
+<p>$w[n+1] = w[n] + \mu e[n]x[n]$</p>
 <p>where:</p>
 <ul>
-<li><span class="arithmatex">\(w[n]\)</span> is the filter coefficient vector</li>
-<li><span class="arithmatex">\(\mu\)</span> is the step size</li>
-<li><span class="arithmatex">\(e[n]\)</span> is the error signal</li>
-<li><span class="arithmatex">\(x[n]\)</span> is the input signal vector</li>
-<li><span class="arithmatex">\(n\)</span> is the time index</li>
+<li>$w[n]$ is the filter coefficient vector</li>
+<li>$\mu$ is the step size</li>
+<li>$e[n]$ is the error signal</li>
+<li>$x[n]$ is the input signal vector</li>
+<li>$n$ is the time index</li>
 </ul>
 <h4 id="nlms-adaptive-filter">NLMS Adaptive Filter</h4>
-<p><span class="arithmatex">\(w[n+1] = w[n] + \frac{\mu}{||x[n]||^2}e[n]x[n]\)</span></p>
+<p>$w[n+1] = w[n] + \frac{\mu}{||x[n]||^2}e[n]x[n]$</p>
 <p>where:</p>
 <ul>
-<li><span class="arithmatex">\(w[n]\)</span> is the filter coefficient vector</li>
-<li><span class="arithmatex">\(\mu\)</span> is the step size</li>
-<li><span class="arithmatex">\(e[n]\)</span> is the error signal</li>
-<li><span class="arithmatex">\(x[n]\)</span> is the input signal vector</li>
-<li><span class="arithmatex">\(||x[n]||^2\)</span> is the squared norm of the input vector</li>
+<li>$w[n]$ is the filter coefficient vector</li>
+<li>$\mu$ is the step size</li>
+<li>$e[n]$ is the error signal</li>
+<li>$x[n]$ is the input signal vector</li>
+<li>$||x[n]||^2$ is the squared norm of the input vector</li>
 </ul>
 <h4 id="rls-adaptive-filter">RLS Adaptive Filter</h4>
-<p><span class="arithmatex">\(w[n] = w[n-1] + k[n]e[n]\)</span></p>
+<p>$w[n] = w[n-1] + k[n]e[n]$</p>
 <p>where:</p>
 <ul>
-<li><span class="arithmatex">\(w[n]\)</span> is the filter coefficient vector</li>
-<li><span class="arithmatex">\(k[n]\)</span> is the gain vector</li>
-<li><span class="arithmatex">\(e[n]\)</span> is the a priori error</li>
-<li><span class="arithmatex">\(n\)</span> is the time index</li>
+<li>$w[n]$ is the filter coefficient vector</li>
+<li>$k[n]$ is the gain vector</li>
+<li>$e[n]$ is the a priori error</li>
+<li>$n$ is the time index</li>
 </ul>
 <h4 id="bandwidth">Bandwidth</h4>
-<p><span class="arithmatex">\(BW = f_H - f_L\)</span></p>
+<p>$BW = f_H - f_L$</p>
 <p>where:</p>
 <ul>
-<li><span class="arithmatex">\(BW\)</span> is the bandwidth</li>
-<li><span class="arithmatex">\(f_H\)</span> is the upper cutoff frequency</li>
-<li><span class="arithmatex">\(f_L\)</span> is the lower cutoff frequency</li>
+<li>$BW$ is the bandwidth</li>
+<li>$f_H$ is the upper cutoff frequency</li>
+<li>$f_L$ is the lower cutoff frequency</li>
 </ul>
 <h4 id="quality-factor">Quality Factor</h4>
-<p><span class="arithmatex">\(Q = \frac{f_c}{BW}\)</span></p>
+<p>$Q = \frac{f_c}{BW}$</p>
 <p>where:</p>
 <ul>
-<li><span class="arithmatex">\(Q\)</span> is the quality factor</li>
-<li><span class="arithmatex">\(f_c\)</span> is the center frequency</li>
-<li><span class="arithmatex">\(BW\)</span> is the bandwidth</li>
+<li>$Q$ is the quality factor</li>
+<li>$f_c$ is the center frequency</li>
+<li>$BW$ is the bandwidth</li>
 </ul>
 <h4 id="polyphase-decomposition">Polyphase Decomposition</h4>
-<p><span class="arithmatex">\(H(z) = \sum_{k=0}^{M-1} z^{-k}E_k(z^M)\)</span></p>
+<p>$H(z) = \sum_{k=0}^{M-1} z^{-k}E_k(z^M)$</p>
 <p>where:</p>
 <ul>
-<li><span class="arithmatex">\(H(z)\)</span> is the transfer function</li>
-<li><span class="arithmatex">\(E_k(z)\)</span> are the polyphase components</li>
-<li><span class="arithmatex">\(M\)</span> is the number of phases</li>
-<li><span class="arithmatex">\(k\)</span> is the phase index</li>
+<li>$H(z)$ is the transfer function</li>
+<li>$E_k(z)$ are the polyphase components</li>
+<li>$M$ is the number of phases</li>
+<li>$k$ is the phase index</li>
 </ul>
 <h4 id="instantaneous-frequency">Instantaneous Frequency</h4>
-<p><span class="arithmatex">\(f_i[n] = \frac{1}{2\pi}\frac{d\phi[n]}{dn}\)</span></p>
+<p>$f_i[n] = \frac{1}{2\pi}\frac{d\phi[n]}{dn}$</p>
 <p>where:</p>
 <ul>
-<li><span class="arithmatex">\(f_i[n]\)</span> is the instantaneous frequency</li>
-<li><span class="arithmatex">\(\phi[n]\)</span> is the instantaneous phase</li>
-<li><span class="arithmatex">\(n\)</span> is the time index</li>
+<li>$f_i[n]$ is the instantaneous frequency</li>
+<li>$\phi[n]$ is the instantaneous phase</li>
+<li>$n$ is the time index</li>
 </ul>
 <h4 id="discrete-sine-transform">Discrete Sine Transform</h4>
-<p><span class="arithmatex">\(X[k] = \sum_{n=0}^{N-1} x[n]\sin[\frac{\pi(k+1)(n+1)}{N+1}]\)</span></p>
+<p>$X[k] = \sum_{n=0}^{N-1} x[n]\sin[\frac{\pi(k+1)(n+1)}{N+1}]$</p>
 <p>where:</p>
 <ul>
-<li><span class="arithmatex">\(X[k]\)</span> is the transform coefficient</li>
-<li><span class="arithmatex">\(x[n]\)</span> is the input signal</li>
-<li><span class="arithmatex">\(N\)</span> is the number of samples</li>
-<li><span class="arithmatex">\(k\)</span> is the frequency index</li>
-<li><span class="arithmatex">\(n\)</span> is the time index</li>
+<li>$X[k]$ is the transform coefficient</li>
+<li>$x[n]$ is the input signal</li>
+<li>$N$ is the number of samples</li>
+<li>$k$ is the frequency index</li>
+<li>$n$ is the time index</li>
 </ul>
 <h4 id="complex-envelope">Complex Envelope</h4>
-<p><span class="arithmatex">\(z[n] = x[n] + j\hat{x}[n]\)</span></p>
+<p>$z[n] = x[n] + j\hat{x}[n]$</p>
 <p>where:</p>
 <ul>
-<li><span class="arithmatex">\(z[n]\)</span> is the complex envelope</li>
-<li><span class="arithmatex">\(x[n]\)</span> is the original signal</li>
-<li><span class="arithmatex">\(\hat{x}[n]\)</span> is the Hilbert transform</li>
-<li><span class="arithmatex">\(n\)</span> is the time index</li>
+<li>$z[n]$ is the complex envelope</li>
+<li>$x[n]$ is the original signal</li>
+<li>$\hat{x}[n]$ is the Hilbert transform</li>
+<li>$n$ is the time index</li>
 </ul>
 <h4 id="matched-filter">Matched Filter</h4>
-<p><span class="arithmatex">\(h[n] = s[L-1-n]\)</span></p>
+<p>$h[n] = s[L-1-n]$</p>
 <p>where:</p>
 <ul>
-<li><span class="arithmatex">\(h[n]\)</span> is the filter impulse response</li>
-<li><span class="arithmatex">\(s[n]\)</span> is the signal to be detected</li>
-<li><span class="arithmatex">\(L\)</span> is the signal length</li>
-<li><span class="arithmatex">\(n\)</span> is the time index</li>
+<li>$h[n]$ is the filter impulse response</li>
+<li>$s[n]$ is the signal to be detected</li>
+<li>$L$ is the signal length</li>
+<li>$n$ is the time index</li>
 </ul>
 <h4 id="peak-signal-to-noise-ratio">Peak Signal-to-Noise Ratio</h4>
-<p><span class="arithmatex">\(PSNR = 10\log_{10}\left(\frac{MAX^2}{MSE}\right)\)</span></p>
+<p>$PSNR = 10\log_{10}\left(\frac{MAX^2}{MSE}\right)$</p>
 <p>where:</p>
 <ul>
-<li><span class="arithmatex">\(PSNR\)</span> is the peak signal-to-noise ratio</li>
-<li><span class="arithmatex">\(MAX\)</span> is the maximum possible signal value</li>
-<li><span class="arithmatex">\(MSE\)</span> is the mean squared error</li>
+<li>$PSNR$ is the peak signal-to-noise ratio</li>
+<li>$MAX$ is the maximum possible signal value</li>
+<li>$MSE$ is the mean squared error</li>
 </ul>
 <h4 id="frequency-response-of-moving-average">Frequency Response of Moving Average</h4>
-<p><span class="arithmatex">\(H(e^{j\omega}) = \frac{\sin(\omega M/2)}{M\sin(\omega/2)}e^{-j\omega(M-1)/2}\)</span></p>
+<p>$H(e^{j\omega}) = \frac{\sin(\omega M/2)}{M\sin(\omega/2)}e^{-j\omega(M-1)/2}$</p>
 <p>where:</p>
 <ul>
-<li><span class="arithmatex">\(H(e^{j\omega})\)</span> is the frequency response</li>
-<li><span class="arithmatex">\(M\)</span> is the filter length</li>
-<li><span class="arithmatex">\(\omega\)</span> is the angular frequency</li>
+<li>$H(e^{j\omega})$ is the frequency response</li>
+<li>$M$ is the filter length</li>
+<li>$\omega$ is the angular frequency</li>
 </ul>
 <h4 id="cepstrum">Cepstrum</h4>
-<p><span class="arithmatex">\(c[n] = \mathcal{F}^{-1}\{\log|\mathcal{F}\{x[n]\}|\}\)</span></p>
+<p>$c[n] = \mathcal{F}^{-1}{\log|\mathcal{F}{x[n]}|}$</p>
 <p>where:</p>
 <ul>
-<li><span class="arithmatex">\(c[n]\)</span> is the cepstrum</li>
-<li><span class="arithmatex">\(x[n]\)</span> is the input signal</li>
-<li><span class="arithmatex">\(\mathcal{F}\)</span> represents the Fourier transform</li>
-<li><span class="arithmatex">\(\mathcal{F}^{-1}\)</span> represents the inverse Fourier transform</li>
-<li><span class="arithmatex">\(n\)</span> is the time index</li>
+<li>$c[n]$ is the cepstrum</li>
+<li>$x[n]$ is the input signal</li>
+<li>$\mathcal{F}$ represents the Fourier transform</li>
+<li>$\mathcal{F}^{-1}$ represents the inverse Fourier transform</li>
+<li>$n$ is the time index</li>
 </ul>
 <h4 id="linear-prediction">Linear Prediction</h4>
-<p><span class="arithmatex">\(\hat{x}[n] = -\sum_{k=1}^{p} a_k x[n-k]\)</span></p>
+<p>$\hat{x}[n] = -\sum_{k=1}^{p} a_k x[n-k]$</p>
 <p>where:</p>
 <ul>
-<li><span class="arithmatex">\(\hat{x}[n]\)</span> is the predicted sample</li>
-<li><span class="arithmatex">\(x[n]\)</span> is the input signal</li>
-<li><span class="arithmatex">\(a_k\)</span> are the prediction coefficients</li>
-<li><span class="arithmatex">\(p\)</span> is the prediction order</li>
-<li><span class="arithmatex">\(k\)</span> is the coefficient index</li>
+<li>$\hat{x}[n]$ is the predicted sample</li>
+<li>$x[n]$ is the input signal</li>
+<li>$a_k$ are the prediction coefficients</li>
+<li>$p$ is the prediction order</li>
+<li>$k$ is the coefficient index</li>
 </ul>
 <h3 id="equations-50-75">Equations 50-75</h3>
 <p>I'll continue with the next 25 common signal processing equations, focusing on more specialized topics and advanced concepts.</p>
 <h4 id="bilinear-transform">Bilinear Transform</h4>
-<p><span class="arithmatex">\(s = \frac{2}{T}\frac{1-z^{-1}}{1+z^{-1}}\)</span></p>
+<p>$s = \frac{2}{T}\frac{1-z^{-1}}{1+z^{-1}}$</p>
 <p>where:</p>
 <ul>
-<li><span class="arithmatex">\(s\)</span> is the continuous-time complex frequency</li>
-<li><span class="arithmatex">\(z\)</span> is the discrete-time complex frequency</li>
-<li><span class="arithmatex">\(T\)</span> is the sampling period</li>
+<li>$s$ is the continuous-time complex frequency</li>
+<li>$z$ is the discrete-time complex frequency</li>
+<li>$T$ is the sampling period</li>
 </ul>
 <h4 id="yule-walker-equations">Yule-Walker Equations</h4>
-<p><span class="arithmatex">\(R_{xx}[m] = -\sum_{k=1}^p a_k R_{xx}[m-k]\)</span></p>
+<p>$R_{xx}[m] = -\sum_{k=1}^p a_k R_{xx}[m-k]$</p>
 <p>where:</p>
 <ul>
-<li><span class="arithmatex">\(R_{xx}[m]\)</span> is the autocorrelation sequence</li>
-<li><span class="arithmatex">\(a_k\)</span> are the AR coefficients</li>
-<li><span class="arithmatex">\(p\)</span> is the model order</li>
-<li><span class="arithmatex">\(m\)</span> is the lag</li>
-<li><span class="arithmatex">\(k\)</span> is the coefficient index</li>
+<li>$R_{xx}[m]$ is the autocorrelation sequence</li>
+<li>$a_k$ are the AR coefficients</li>
+<li>$p$ is the model order</li>
+<li>$m$ is the lag</li>
+<li>$k$ is the coefficient index</li>
 </ul>
 <h4 id="zero-phase-filter">Zero-Phase Filter</h4>
-<p><span class="arithmatex">\(H_{zp}(z) = H(z)H(z^{-1})\)</span></p>
+<p>$H_{zp}(z) = H(z)H(z^{-1})$</p>
 <p>where:</p>
 <ul>
-<li><span class="arithmatex">\(H_{zp}(z)\)</span> is the zero-phase filter</li>
-<li><span class="arithmatex">\(H(z)\)</span> is the original filter</li>
-<li><span class="arithmatex">\(z\)</span> is the complex frequency variable</li>
+<li>$H_{zp}(z)$ is the zero-phase filter</li>
+<li>$H(z)$ is the original filter</li>
+<li>$z$ is the complex frequency variable</li>
 </ul>
 <h4 id="gabor-transform">Gabor Transform</h4>
-<p><span class="arithmatex">\(X[n,k] = \sum_{m=-\infty}^{\infty} x[m]w[n-m]e^{-j2\pi km/N}\)</span></p>
+<p>$X[n,k] = \sum_{m=-\infty}^{\infty} x[m]w[n-m]e^{-j2\pi km/N}$</p>
 <p>where:</p>
 <ul>
-<li><span class="arithmatex">\(X[n,k]\)</span> is the time-frequency representation</li>
-<li><span class="arithmatex">\(x[m]\)</span> is the input signal</li>
-<li><span class="arithmatex">\(w[n]\)</span> is the window function</li>
-<li><span class="arithmatex">\(N\)</span> is the number of frequency points</li>
-<li><span class="arithmatex">\(n\)</span> is the time index</li>
-<li><span class="arithmatex">\(k\)</span> is the frequency index</li>
+<li>$X[n,k]$ is the time-frequency representation</li>
+<li>$x[m]$ is the input signal</li>
+<li>$w[n]$ is the window function</li>
+<li>$N$ is the number of frequency points</li>
+<li>$n$ is the time index</li>
+<li>$k$ is the frequency index</li>
 </ul>
 <h4 id="bartlett-window">Bartlett Window</h4>
-<p><span class="arithmatex">\(w[n] = 1 - |\frac{2n}{N-1} - 1|\)</span></p>
+<p>$w[n] = 1 - |\frac{2n}{N-1} - 1|$</p>
 <p>where:</p>
 <ul>
-<li><span class="arithmatex">\(w[n]\)</span> is the window function value</li>
-<li><span class="arithmatex">\(n\)</span> is the sample index</li>
-<li><span class="arithmatex">\(N\)</span> is the window length</li>
+<li>$w[n]$ is the window function value</li>
+<li>$n$ is the sample index</li>
+<li>$N$ is the window length</li>
 </ul>
 <h4 id="compression-ratio">Compression Ratio</h4>
-<p><span class="arithmatex">\(CR = \frac{n_{bits_{original}}}{n_{bits_{compressed}}}\)</span></p>
+<p>$CR = \frac{n_{bits_{original}}}{n_{bits_{compressed}}}$</p>
 <p>where:</p>
 <ul>
-<li><span class="arithmatex">\(CR\)</span> is the compression ratio</li>
-<li><span class="arithmatex">\(n_{bits_{original}}\)</span> is the number of bits in original signal</li>
-<li><span class="arithmatex">\(n_{bits_{compressed}}\)</span> is the number of bits after compression</li>
+<li>$CR$ is the compression ratio</li>
+<li>$n_{bits_{original}}$ is the number of bits in original signal</li>
+<li>$n_{bits_{compressed}}$ is the number of bits after compression</li>
 </ul>
 <h4 id="coherence-function">Coherence Function</h4>
-<p><span class="arithmatex">\(\gamma_{xy}^2(f) = \frac{|P_{xy}(f)|^2}{P_{xx}(f)P_{yy}(f)}\)</span></p>
+<p>$\gamma_{xy}^2(f) = \frac{|P_{xy}(f)|^2}{P_{xx}(f)P_{yy}(f)}$</p>
 <p>where:</p>
 <ul>
-<li><span class="arithmatex">\(\gamma_{xy}^2(f)\)</span> is the coherence function</li>
-<li><span class="arithmatex">\(P_{xy}(f)\)</span> is the cross-spectral density</li>
-<li><span class="arithmatex">\(P_{xx}(f)\)</span> and <span class="arithmatex">\(P_{yy}(f)\)</span> are power spectral densities</li>
-<li><span class="arithmatex">\(f\)</span> is the frequency</li>
+<li>$\gamma_{xy}^2(f)$ is the coherence function</li>
+<li>$P_{xy}(f)$ is the cross-spectral density</li>
+<li>$P_{xx}(f)$ and $P_{yy}(f)$ are power spectral densities</li>
+<li>$f$ is the frequency</li>
 </ul>
 <h4 id="multi-rate-noble-identity-1">Multi-Rate Noble Identity 1</h4>
-<p><span class="arithmatex">\(H(z^M)↓M = ↓MH(z)\)</span></p>
+<p>$H(z^M)↓M = ↓MH(z)$</p>
 <p>where:</p>
 <ul>
-<li><span class="arithmatex">\(H(z)\)</span> is the transfer function</li>
-<li><span class="arithmatex">\(M\)</span> is the decimation factor</li>
-<li><span class="arithmatex">\(↓M\)</span> represents decimation by M</li>
+<li>$H(z)$ is the transfer function</li>
+<li>$M$ is the decimation factor</li>
+<li>$↓M$ represents decimation by M</li>
 </ul>
 <h4 id="savitzky-golay-filter">Savitzky-Golay Filter</h4>
-<p><span class="arithmatex">\(y[n] = \sum_{k=-M}^{M} h[k]x[n+k]\)</span></p>
+<p>$y[n] = \sum_{k=-M}^{M} h[k]x[n+k]$</p>
 <p>where:</p>
 <ul>
-<li><span class="arithmatex">\(y[n]\)</span> is the filtered output</li>
-<li><span class="arithmatex">\(x[n]\)</span> is the input signal</li>
-<li><span class="arithmatex">\(h[k]\)</span> are the Savitzky-Golay coefficients</li>
-<li><span class="arithmatex">\(M\)</span> is the half-width of the window</li>
-<li><span class="arithmatex">\(n\)</span> is the time index</li>
+<li>$y[n]$ is the filtered output</li>
+<li>$x[n]$ is the input signal</li>
+<li>$h[k]$ are the Savitzky-Golay coefficients</li>
+<li>$M$ is the half-width of the window</li>
+<li>$n$ is the time index</li>
 </ul>
 <h4 id="phase-delay">Phase Delay</h4>
-<p><span class="arithmatex">\(\tau_p(\omega) = -\frac{\phi(\omega)}{\omega}\)</span></p>
+<p>$\tau_p(\omega) = -\frac{\phi(\omega)}{\omega}$</p>
 <p>where:</p>
 <ul>
-<li><span class="arithmatex">\(\tau_p(\omega)\)</span> is the phase delay</li>
-<li><span class="arithmatex">\(\phi(\omega)\)</span> is the phase response</li>
-<li><span class="arithmatex">\(\omega\)</span> is the angular frequency</li>
+<li>$\tau_p(\omega)$ is the phase delay</li>
+<li>$\phi(\omega)$ is the phase response</li>
+<li>$\omega$ is the angular frequency</li>
 </ul>
 <h4 id="kaiser-window">Kaiser Window</h4>
-<p><span class="arithmatex">\(w[n] = \frac{I_0(\beta\sqrt{1-((n-\alpha)/\alpha)^2})}{I_0(\beta)}\)</span></p>
+<p>$w[n] = \frac{I_0(\beta\sqrt{1-((n-\alpha)/\alpha)^2})}{I_0(\beta)}$</p>
 <p>where:</p>
 <ul>
-<li><span class="arithmatex">\(w[n]\)</span> is the window function value</li>
-<li><span class="arithmatex">\(I_0\)</span> is the modified Bessel function</li>
-<li><span class="arithmatex">\(\beta\)</span> is the shape parameter</li>
-<li><span class="arithmatex">\(\alpha\)</span> is <span class="arithmatex">\((N-1)/2\)</span></li>
-<li><span class="arithmatex">\(N\)</span> is the window length</li>
-<li><span class="arithmatex">\(n\)</span> is the sample index</li>
+<li>$w[n]$ is the window function value</li>
+<li>$I_0$ is the modified Bessel function</li>
+<li>$\beta$ is the shape parameter</li>
+<li>$\alpha$ is $(N-1)/2$</li>
+<li>$N$ is the window length</li>
+<li>$n$ is the sample index</li>
 </ul>
 <h4 id="median-filter">Median Filter</h4>
-<p><span class="arithmatex">\(y[n] = \text{median}\{x[n-M],...,x[n],...,x[n+M]\}\)</span></p>
+<p>$y[n] = \text{median}{x[n-M],...,x[n],...,x[n+M]}$</p>
 <p>where:</p>
 <ul>
-<li><span class="arithmatex">\(y[n]\)</span> is the filtered output</li>
-<li><span class="arithmatex">\(x[n]\)</span> is the input signal</li>
-<li><span class="arithmatex">\(M\)</span> is the half-width of the window</li>
-<li><span class="arithmatex">\(n\)</span> is the time index</li>
+<li>$y[n]$ is the filtered output</li>
+<li>$x[n]$ is the input signal</li>
+<li>$M$ is the half-width of the window</li>
+<li>$n$ is the time index</li>
 </ul>
 <h4 id="envelope-detection">Envelope Detection</h4>
-<p><span class="arithmatex">\(e[n] = |x[n] + j\hat{x}[n]|\)</span></p>
+<p>$e[n] = |x[n] + j\hat{x}[n]|$</p>
 <p>where:</p>
 <ul>
-<li><span class="arithmatex">\(e[n]\)</span> is the envelope</li>
-<li><span class="arithmatex">\(x[n]\)</span> is the input signal</li>
-<li><span class="arithmatex">\(\hat{x}[n]\)</span> is the Hilbert transform</li>
-<li><span class="arithmatex">\(n\)</span> is the time index</li>
+<li>$e[n]$ is the envelope</li>
+<li>$x[n]$ is the input signal</li>
+<li>$\hat{x}[n]$ is the Hilbert transform</li>
+<li>$n$ is the time index</li>
 </ul>
 <h4 id="total-harmonic-distortion">Total Harmonic Distortion</h4>
-<p><span class="arithmatex">\(THD = \sqrt{\frac{\sum_{n=2}^{N} V_n^2}{V_1^2}}\)</span></p>
+<p>$THD = \sqrt{\frac{\sum_{n=2}^{N} V_n^2}{V_1^2}}$</p>
 <p>where:</p>
 <ul>
-<li><span class="arithmatex">\(THD\)</span> is the total harmonic distortion</li>
-<li><span class="arithmatex">\(V_n\)</span> is the voltage of the nth harmonic</li>
-<li><span class="arithmatex">\(V_1\)</span> is the voltage of the fundamental frequency</li>
-<li><span class="arithmatex">\(N\)</span> is the number of harmonics considered</li>
+<li>$THD$ is the total harmonic distortion</li>
+<li>$V_n$ is the voltage of the nth harmonic</li>
+<li>$V_1$ is the voltage of the fundamental frequency</li>
+<li>$N$ is the number of harmonics considered</li>
 </ul>
 <h4 id="frequency-modulation">Frequency Modulation</h4>
-<p><span class="arithmatex">\(x[n] = A\cos(2\pi f_cn + \beta\sin(2\pi f_mn))\)</span></p>
+<p>$x[n] = A\cos(2\pi f_cn + \beta\sin(2\pi f_mn))$</p>
 <p>where:</p>
 <ul>
-<li><span class="arithmatex">\(x[n]\)</span> is the FM signal</li>
-<li><span class="arithmatex">\(A\)</span> is the amplitude</li>
-<li><span class="arithmatex">\(f_c\)</span> is the carrier frequency</li>
-<li><span class="arithmatex">\(f_m\)</span> is the modulating frequency</li>
-<li><span class="arithmatex">\(\beta\)</span> is the modulation index</li>
-<li><span class="arithmatex">\(n\)</span> is the time index</li>
+<li>$x[n]$ is the FM signal</li>
+<li>$A$ is the amplitude</li>
+<li>$f_c$ is the carrier frequency</li>
+<li>$f_m$ is the modulating frequency</li>
+<li>$\beta$ is the modulation index</li>
+<li>$n$ is the time index</li>
 </ul>
 <h4 id="amplitude-modulation">Amplitude Modulation</h4>
-<p><span class="arithmatex">\(x[n] = A_c(1 + \mu m[n])\cos(2\pi f_cn)\)</span></p>
+<p>$x[n] = A_c(1 + \mu m[n])\cos(2\pi f_cn)$</p>
 <p>where:</p>
 <ul>
-<li><span class="arithmatex">\(x[n]\)</span> is the AM signal</li>
-<li><span class="arithmatex">\(A_c\)</span> is the carrier amplitude</li>
-<li><span class="arithmatex">\(\mu\)</span> is the modulation index</li>
-<li><span class="arithmatex">\(m[n]\)</span> is the modulating signal</li>
-<li><span class="arithmatex">\(f_c\)</span> is the carrier frequency</li>
-<li><span class="arithmatex">\(n\)</span> is the time index</li>
+<li>$x[n]$ is the AM signal</li>
+<li>$A_c$ is the carrier amplitude</li>
+<li>$\mu$ is the modulation index</li>
+<li>$m[n]$ is the modulating signal</li>
+<li>$f_c$ is the carrier frequency</li>
+<li>$n$ is the time index</li>
 </ul>
 <h4 id="complementary-filter">Complementary Filter</h4>
-<p><span class="arithmatex">\(H_1(z) + H_2(z) = 1\)</span></p>
+<p>$H_1(z) + H_2(z) = 1$</p>
 <p>where:</p>
 <ul>
-<li><span class="arithmatex">\(H_1(z)\)</span> is the first filter transfer function</li>
-<li><span class="arithmatex">\(H_2(z)\)</span> is the second filter transfer function</li>
-<li><span class="arithmatex">\(z\)</span> is the complex frequency variable</li>
+<li>$H_1(z)$ is the first filter transfer function</li>
+<li>$H_2(z)$ is the second filter transfer function</li>
+<li>$z$ is the complex frequency variable</li>
 </ul>
 <h4 id="barker-code-correlation">Barker Code Correlation</h4>
-<p><span class="arithmatex">\(R[k] = \sum_{n=0}^{N-1} b[n]b[n+k]\)</span></p>
+<p>$R[k] = \sum_{n=0}^{N-1} b[n]b[n+k]$</p>
 <p>where:</p>
 <ul>
-<li><span class="arithmatex">\(R[k]\)</span> is the autocorrelation function</li>
-<li><span class="arithmatex">\(b[n]\)</span> is the Barker sequence</li>
-<li><span class="arithmatex">\(N\)</span> is the sequence length</li>
-<li><span class="arithmatex">\(k\)</span> is the lag</li>
-<li><span class="arithmatex">\(n\)</span> is the time index</li>
+<li>$R[k]$ is the autocorrelation function</li>
+<li>$b[n]$ is the Barker sequence</li>
+<li>$N$ is the sequence length</li>
+<li>$k$ is the lag</li>
+<li>$n$ is the time index</li>
 </ul>
 <h4 id="notch-filter-transfer-function">Notch Filter Transfer Function</h4>
-<p><span class="arithmatex">\(H(z) = \frac{1 - 2\cos(\omega_0)z^{-1} + z^{-2}}{1 - 2r\cos(\omega_0)z^{-1} + r^2z^{-2}}\)</span></p>
+<p>$H(z) = \frac{1 - 2\cos(\omega_0)z^{-1} + z^{-2}}{1 - 2r\cos(\omega_0)z^{-1} + r^2z^{-2}}$</p>
 <p>where:</p>
 <ul>
-<li><span class="arithmatex">\(H(z)\)</span> is the transfer function</li>
-<li><span class="arithmatex">\(\omega_0\)</span> is the notch frequency</li>
-<li><span class="arithmatex">\(r\)</span> is the pole radius</li>
-<li><span class="arithmatex">\(z\)</span> is the complex frequency variable</li>
+<li>$H(z)$ is the transfer function</li>
+<li>$\omega_0$ is the notch frequency</li>
+<li>$r$ is the pole radius</li>
+<li>$z$ is the complex frequency variable</li>
 </ul>
 <h4 id="raised-cosine-filter">Raised Cosine Filter</h4>
-<p><span class="arithmatex">\(H(f) = \begin{cases} T, &amp; |f| \leq \frac{1-\alpha}{2T} \\ \frac{T}{2}[1 + \cos(\frac{\pi T}{\alpha}(|f| - \frac{1-\alpha}{2T}))], &amp; \frac{1-\alpha}{2T} \leq |f| \leq \frac{1+\alpha}{2T} \\ 0, &amp; \text{otherwise} \end{cases}\)</span></p>
+<p>$H(f) = \begin{cases} T, &amp; |f| \leq \frac{1-\alpha}{2T} \ \frac{T}{2}[1 + \cos(\frac{\pi T}{\alpha}(|f| - \frac{1-\alpha}{2T}))], &amp; \frac{1-\alpha}{2T} \leq |f| \leq \frac{1+\alpha}{2T} \ 0, &amp; \text{otherwise} \end{cases}$</p>
 <p>where:</p>
 <ul>
-<li><span class="arithmatex">\(H(f)\)</span> is the frequency response</li>
-<li><span class="arithmatex">\(T\)</span> is the symbol period</li>
-<li><span class="arithmatex">\(\alpha\)</span> is the roll-off factor</li>
-<li><span class="arithmatex">\(f\)</span> is the frequency</li>
+<li>$H(f)$ is the frequency response</li>
+<li>$T$ is the symbol period</li>
+<li>$\alpha$ is the roll-off factor</li>
+<li>$f$ is the frequency</li>
 </ul>
 <h4 id="golay-complementary-sequences">Golay Complementary Sequences</h4>
-<p><span class="arithmatex">\(G_A(z)G_A(z^{-1}) + G_B(z)G_B(z^{-1}) = 2N\)</span></p>
+<p>$G_A(z)G_A(z^{-1}) + G_B(z)G_B(z^{-1}) = 2N$</p>
 <p>where:</p>
 <ul>
-<li><span class="arithmatex">\(G_A(z)\)</span> is the z-transform of the first sequence</li>
-<li><span class="arithmatex">\(G_B(z)\)</span> is the z-transform of the second sequence</li>
-<li><span class="arithmatex">\(N\)</span> is the sequence length</li>
-<li><span class="arithmatex">\(z\)</span> is the complex frequency variable</li>
+<li>$G_A(z)$ is the z-transform of the first sequence</li>
+<li>$G_B(z)$ is the z-transform of the second sequence</li>
+<li>$N$ is the sequence length</li>
+<li>$z$ is the complex frequency variable</li>
 </ul>
 <h4 id="walsh-transform">Walsh Transform</h4>
-<p><span class="arithmatex">\(W[k] = \sum_{n=0}^{N-1} x[n]wal(k,n)\)</span></p>
+<p>$W[k] = \sum_{n=0}^{N-1} x[n]wal(k,n)$</p>
 <p>where:</p>
 <ul>
-<li><span class="arithmatex">\(W[k]\)</span> is the Walsh transform coefficient</li>
-<li><span class="arithmatex">\(x[n]\)</span> is the input signal</li>
-<li><span class="arithmatex">\(wal(k,n)\)</span> is the Walsh function</li>
-<li><span class="arithmatex">\(N\)</span> is the number of points</li>
-<li><span class="arithmatex">\(k\)</span> is the sequency index</li>
-<li><span class="arithmatex">\(n\)</span> is the time index</li>
+<li>$W[k]$ is the Walsh transform coefficient</li>
+<li>$x[n]$ is the input signal</li>
+<li>$wal(k,n)$ is the Walsh function</li>
+<li>$N$ is the number of points</li>
+<li>$k$ is the sequency index</li>
+<li>$n$ is the time index</li>
 </ul>
 <h4 id="normalized-cross-correlation">Normalized Cross-Correlation</h4>
-<p><span class="arithmatex">\(\rho[m] = \frac{\sum_{n} (x[n]-\bar{x})(y[n+m]-\bar{y})}{\sqrt{\sum_{n} (x[n]-\bar{x})^2\sum_{n} (y[n]-\bar{y})^2}}\)</span></p>
+<p>$\rho[m] = \frac{\sum_{n} (x[n]-\bar{x})(y[n+m]-\bar{y})}{\sqrt{\sum_{n} (x[n]-\bar{x})^2\sum_{n} (y[n]-\bar{y})^2}}$</p>
 <p>where:</p>
 <ul>
-<li><span class="arithmatex">\(\rho[m]\)</span> is the normalized correlation</li>
-<li><span class="arithmatex">\(x[n]\)</span> and <span class="arithmatex">\(y[n]\)</span> are the signals</li>
-<li><span class="arithmatex">\(\bar{x}\)</span> and <span class="arithmatex">\(\bar{y}\)</span> are the means</li>
-<li><span class="arithmatex">\(m\)</span> is the lag</li>
-<li><span class="arithmatex">\(n\)</span> is the time index</li>
+<li>$\rho[m]$ is the normalized correlation</li>
+<li>$x[n]$ and $y[n]$ are the signals</li>
+<li>$\bar{x}$ and $\bar{y}$ are the means</li>
+<li>$m$ is the lag</li>
+<li>$n$ is the time index</li>
 </ul>
 <h4 id="zadoff-chu-sequence">Zadoff-Chu Sequence</h4>
-<p><span class="arithmatex">\(x[n] = e^{-j\pi un(n+1)/N}\)</span></p>
+<p>$x[n] = e^{-j\pi un(n+1)/N}$</p>
 <p>where:</p>
 <ul>
-<li><span class="arithmatex">\(x[n]\)</span> is the sequence value</li>
-<li><span class="arithmatex">\(u\)</span> is the sequence root</li>
-<li><span class="arithmatex">\(N\)</span> is the sequence length</li>
-<li><span class="arithmatex">\(n\)</span> is the time index</li>
+<li>$x[n]$ is the sequence value</li>
+<li>$u$ is the sequence root</li>
+<li>$N$ is the sequence length</li>
+<li>$n$ is the time index</li>
 </ul>
 <h4 id="maximum-length-sequence">Maximum Length Sequence</h4>
-<p><span class="arithmatex">\(s[n] = s[n-p] \oplus s[n-q]\)</span></p>
+<p>$s[n] = s[n-p] \oplus s[n-q]$</p>
 <p>where:</p>
 <ul>
-<li><span class="arithmatex">\(s[n]\)</span> is the sequence value</li>
-<li><span class="arithmatex">\(p\)</span> and <span class="arithmatex">\(q\)</span> are the tap positions</li>
-<li><span class="arithmatex">\(\oplus\)</span> represents modulo-2 addition</li>
-<li><span class="arithmatex">\(n\)</span> is the time index</li>
+<li>$s[n]$ is the sequence value</li>
+<li>$p$ and $q$ are the tap positions</li>
+<li>$\oplus$ represents modulo-2 addition</li>
+<li>$n$ is the time index</li>
 </ul>
 <h3 id="equations-75-100">Equations 75-100</h3>
 <p>I'll continue with the next 25 equations, focusing on more specialized signal processing concepts and applications.</p>
 <h4 id="multi-channel-wiener-filter">Multi-Channel Wiener Filter</h4>
-<p><span class="arithmatex">\(\mathbf{W} = \mathbf{R}_{xx}^{-1}\mathbf{R}_{xy}\)</span></p>
+<p>$\mathbf{W} = \mathbf{R}<em xy="xy">{xx}^{-1}\mathbf{R}</em>$</p>
 <p>where:</p>
 <ul>
-<li><span class="arithmatex">\(\mathbf{W}\)</span> is the filter coefficient matrix</li>
-<li><span class="arithmatex">\(\mathbf{R}_{xx}\)</span> is the input correlation matrix</li>
-<li><span class="arithmatex">\(\mathbf{R}_{xy}\)</span> is the cross-correlation matrix</li>
+<li>$\mathbf{W}$ is the filter coefficient matrix</li>
+<li>$\mathbf{R}_{xx}$ is the input correlation matrix</li>
+<li>$\mathbf{R}_{xy}$ is the cross-correlation matrix</li>
 </ul>
 <h4 id="costas-loop-phase-error">Costas Loop Phase Error</h4>
-<p><span class="arithmatex">\(e[n] = I[n]Q'[n] - I'[n]Q[n]\)</span></p>
+<p>$e[n] = I[n]Q'[n] - I'[n]Q[n]$</p>
 <p>where:</p>
 <ul>
-<li><span class="arithmatex">\(e[n]\)</span> is the phase error signal</li>
-<li><span class="arithmatex">\(I[n]\)</span> is the in-phase component</li>
-<li><span class="arithmatex">\(Q[n]\)</span> is the quadrature component</li>
-<li><span class="arithmatex">\(I'[n]\)</span> and <span class="arithmatex">\(Q'[n]\)</span> are the derivatives</li>
+<li>$e[n]$ is the phase error signal</li>
+<li>$I[n]$ is the in-phase component</li>
+<li>$Q[n]$ is the quadrature component</li>
+<li>$I'[n]$ and $Q'[n]$ are the derivatives</li>
 </ul>
 <h4 id="discrete-hartley-transform">Discrete Hartley Transform</h4>
-<p><span class="arithmatex">\(H[k] = \sum_{n=0}^{N-1} x[n]cas(\frac{2\pi kn}{N})\)</span></p>
+<p>$H[k] = \sum_{n=0}^{N-1} x[n]cas(\frac{2\pi kn}{N})$</p>
 <p>where:</p>
 <ul>
-<li><span class="arithmatex">\(H[k]\)</span> is the transform coefficient</li>
-<li><span class="arithmatex">\(x[n]\)</span> is the input signal</li>
-<li><span class="arithmatex">\(cas(\theta) = \cos(\theta) + \sin(\theta)\)</span></li>
-<li><span class="arithmatex">\(N\)</span> is the transform length</li>
-<li><span class="arithmatex">\(k\)</span> is the frequency index</li>
+<li>$H[k]$ is the transform coefficient</li>
+<li>$x[n]$ is the input signal</li>
+<li>$cas(\theta) = \cos(\theta) + \sin(\theta)$</li>
+<li>$N$ is the transform length</li>
+<li>$k$ is the frequency index</li>
 </ul>
 <h4 id="exponential-moving-average">Exponential Moving Average</h4>
-<p><span class="arithmatex">\(y[n] = \alpha x[n] + (1-\alpha)y[n-1]\)</span></p>
+<p>$y[n] = \alpha x[n] + (1-\alpha)y[n-1]$</p>
 <p>where:</p>
 <ul>
-<li><span class="arithmatex">\(y[n]\)</span> is the filtered output</li>
-<li><span class="arithmatex">\(x[n]\)</span> is the input signal</li>
-<li><span class="arithmatex">\(\alpha\)</span> is the smoothing factor</li>
-<li><span class="arithmatex">\(n\)</span> is the time index</li>
+<li>$y[n]$ is the filtered output</li>
+<li>$x[n]$ is the input signal</li>
+<li>$\alpha$ is the smoothing factor</li>
+<li>$n$ is the time index</li>
 </ul>
 <h4 id="rician-k-factor">Rician K-Factor</h4>
-<p><span class="arithmatex">\(K = \frac{A^2}{2\sigma^2}\)</span></p>
+<p>$K = \frac{A^2}{2\sigma^2}$</p>
 <p>where:</p>
 <ul>
-<li><span class="arithmatex">\(K\)</span> is the Rician K-factor</li>
-<li><span class="arithmatex">\(A\)</span> is the amplitude of the dominant signal</li>
-<li><span class="arithmatex">\(\sigma^2\)</span> is the variance of the multipath components</li>
+<li>$K$ is the Rician K-factor</li>
+<li>$A$ is the amplitude of the dominant signal</li>
+<li>$\sigma^2$ is the variance of the multipath components</li>
 </ul>
 <h4 id="periodogram">Periodogram</h4>
-<p><span class="arithmatex">\(P_{xx}(f) = \frac{1}{N}|X(f)|^2\)</span></p>
+<p>$P_{xx}(f) = \frac{1}{N}|X(f)|^2$</p>
 <p>where:</p>
 <ul>
-<li><span class="arithmatex">\(P_{xx}(f)\)</span> is the power spectral density</li>
-<li><span class="arithmatex">\(X(f)\)</span> is the Fourier transform</li>
-<li><span class="arithmatex">\(N\)</span> is the number of samples</li>
-<li><span class="arithmatex">\(f\)</span> is the frequency</li>
+<li>$P_{xx}(f)$ is the power spectral density</li>
+<li>$X(f)$ is the Fourier transform</li>
+<li>$N$ is the number of samples</li>
+<li>$f$ is the frequency</li>
 </ul>
 <h4 id="teager-energy-operator">Teager Energy Operator</h4>
-<p><span class="arithmatex">\(\Psi[x[n]] = x^2[n] - x[n-1]x[n+1]\)</span></p>
+<p>$\Psi[x[n]] = x^2[n] - x[n-1]x[n+1]$</p>
 <p>where:</p>
 <ul>
-<li><span class="arithmatex">\(\Psi[x[n]]\)</span> is the Teager energy</li>
-<li><span class="arithmatex">\(x[n]\)</span> is the input signal</li>
-<li><span class="arithmatex">\(n\)</span> is the time index</li>
+<li>$\Psi[x[n]]$ is the Teager energy</li>
+<li>$x[n]$ is the input signal</li>
+<li>$n$ is the time index</li>
 </ul>
 <h4 id="adaptive-line-enhancer">Adaptive Line Enhancer</h4>
-<p><span class="arithmatex">\(y[n] = \mathbf{w}^T[n]\mathbf{x}[n-\Delta]\)</span></p>
+<p>$y[n] = \mathbf{w}^T[n]\mathbf{x}[n-\Delta]$</p>
 <p>where:</p>
 <ul>
-<li><span class="arithmatex">\(y[n]\)</span> is the filter output</li>
-<li><span class="arithmatex">\(\mathbf{w}[n]\)</span> is the weight vector</li>
-<li><span class="arithmatex">\(\mathbf{x}[n]\)</span> is the input vector</li>
-<li><span class="arithmatex">\(\Delta\)</span> is the prediction delay</li>
+<li>$y[n]$ is the filter output</li>
+<li>$\mathbf{w}[n]$ is the weight vector</li>
+<li>$\mathbf{x}[n]$ is the input vector</li>
+<li>$\Delta$ is the prediction delay</li>
 </ul>
 <h4 id="modified-dft-filter-bank">Modified DFT Filter Bank</h4>
-<p><span class="arithmatex">\(H_k(z) = H(zW_M^k)\)</span></p>
+<p>$H_k(z) = H(zW_M^k)$</p>
 <p>where:</p>
 <ul>
-<li><span class="arithmatex">\(H_k(z)\)</span> is the kth bandpass filter</li>
-<li><span class="arithmatex">\(H(z)\)</span> is the prototype filter</li>
-<li><span class="arithmatex">\(W_M = e^{-j2\pi/M}\)</span> is the twiddle factor</li>
-<li><span class="arithmatex">\(M\)</span> is the number of channels</li>
+<li>$H_k(z)$ is the kth bandpass filter</li>
+<li>$H(z)$ is the prototype filter</li>
+<li>$W_M = e^{-j2\pi/M}$ is the twiddle factor</li>
+<li>$M$ is the number of channels</li>
 </ul>
 <h4 id="constant-q-transform">Constant Q Transform</h4>
-<p><span class="arithmatex">\(X[k] = \sum_{n=0}^{N_k-1} x[n]w[n]e^{-j2\pi Qn/N_k}\)</span></p>
+<p>$X[k] = \sum_{n=0}^{N_k-1} x[n]w[n]e^{-j2\pi Qn/N_k}$</p>
 <p>where:</p>
 <ul>
-<li><span class="arithmatex">\(X[k]\)</span> is the transform coefficient</li>
-<li><span class="arithmatex">\(x[n]\)</span> is the input signal</li>
-<li><span class="arithmatex">\(w[n]\)</span> is the window function</li>
-<li><span class="arithmatex">\(Q\)</span> is the quality factor</li>
-<li><span class="arithmatex">\(N_k\)</span> is the window length for bin k</li>
+<li>$X[k]$ is the transform coefficient</li>
+<li>$x[n]$ is the input signal</li>
+<li>$w[n]$ is the window function</li>
+<li>$Q$ is the quality factor</li>
+<li>$N_k$ is the window length for bin k</li>
 </ul>
 <h4 id="short-time-energy-function">Short-Time Energy Function</h4>
-<p><span class="arithmatex">\(E[n] = \sum_{m=-\infty}^{\infty} (x[m]w[n-m])^2\)</span></p>
+<p>$E[n] = \sum_{m=-\infty}^{\infty} (x[m]w[n-m])^2$</p>
 <p>where:</p>
 <ul>
-<li><span class="arithmatex">\(E[n]\)</span> is the short-time energy</li>
-<li><span class="arithmatex">\(x[m]\)</span> is the input signal</li>
-<li><span class="arithmatex">\(w[n]\)</span> is the window function</li>
-<li><span class="arithmatex">\(n\)</span> is the frame index</li>
-<li><span class="arithmatex">\(m\)</span> is the time index</li>
+<li>$E[n]$ is the short-time energy</li>
+<li>$x[m]$ is the input signal</li>
+<li>$w[n]$ is the window function</li>
+<li>$n$ is the frame index</li>
+<li>$m$ is the time index</li>
 </ul>
 <h4 id="zero-crossing-rate">Zero-Crossing Rate</h4>
-<p><span class="arithmatex">\(ZCR[n] = \sum_{m=-\infty}^{\infty} |\text{sign}(x[m]) - \text{sign}(x[m-1])|w[n-m]\)</span></p>
+<p>$ZCR[n] = \sum_{m=-\infty}^{\infty} |\text{sign}(x[m]) - \text{sign}(x[m-1])|w[n-m]$</p>
 <p>where:</p>
 <ul>
-<li><span class="arithmatex">\(ZCR[n]\)</span> is the zero-crossing rate</li>
-<li><span class="arithmatex">\(x[m]\)</span> is the input signal</li>
-<li><span class="arithmatex">\(w[n]\)</span> is the window function</li>
-<li><span class="arithmatex">\(\text{sign}()\)</span> is the signum function</li>
+<li>$ZCR[n]$ is the zero-crossing rate</li>
+<li>$x[m]$ is the input signal</li>
+<li>$w[n]$ is the window function</li>
+<li>$\text{sign}()$ is the signum function</li>
 </ul>
 <h4 id="linear-predictive-coding-error">Linear Predictive Coding Error</h4>
-<p><span class="arithmatex">\(e[n] = x[n] - \sum_{k=1}^{p} a_k x[n-k]\)</span></p>
+<p>$e[n] = x[n] - \sum_{k=1}^{p} a_k x[n-k]$</p>
 <p>where:</p>
 <ul>
-<li><span class="arithmatex">\(e[n]\)</span> is the prediction error</li>
-<li><span class="arithmatex">\(x[n]\)</span> is the input signal</li>
-<li><span class="arithmatex">\(a_k\)</span> are the LPC coefficients</li>
-<li><span class="arithmatex">\(p\)</span> is the prediction order</li>
-<li><span class="arithmatex">\(k\)</span> is the coefficient index</li>
+<li>$e[n]$ is the prediction error</li>
+<li>$x[n]$ is the input signal</li>
+<li>$a_k$ are the LPC coefficients</li>
+<li>$p$ is the prediction order</li>
+<li>$k$ is the coefficient index</li>
 </ul>
 <h4 id="mel-frequency-scale">Mel-Frequency Scale</h4>
-<p><span class="arithmatex">\(f_{mel} = 2595\log_{10}(1 + \frac{f}{700})\)</span></p>
+<p>$f_{mel} = 2595\log_{10}(1 + \frac{f}{700})$</p>
 <p>where:</p>
 <ul>
-<li><span class="arithmatex">\(f_{mel}\)</span> is the frequency in mel scale</li>
-<li><span class="arithmatex">\(f\)</span> is the frequency in Hz</li>
+<li>$f_{mel}$ is the frequency in mel scale</li>
+<li>$f$ is the frequency in Hz</li>
 </ul>
 <h4 id="bark-scale">Bark Scale</h4>
-<p><span class="arithmatex">\(z = 13\arctan(0.00076f) + 3.5\arctan((f/7500)^2)\)</span></p>
+<p>$z = 13\arctan(0.00076f) + 3.5\arctan((f/7500)^2)$</p>
 <p>where:</p>
 <ul>
-<li><span class="arithmatex">\(z\)</span> is the frequency in Bark scale</li>
-<li><span class="arithmatex">\(f\)</span> is the frequency in Hz</li>
+<li>$z$ is the frequency in Bark scale</li>
+<li>$f$ is the frequency in Hz</li>
 </ul>
 <h4 id="phase-vocoder">Phase Vocoder</h4>
-<p><span class="arithmatex">\(\phi_{out}[n] = \phi_{in}[n] + 2\pi f_{in}\frac{R_{out}}{R_{in}}\)</span></p>
+<p>$\phi_{out}[n] = \phi_{in}[n] + 2\pi f_{in}\frac{R_{out}}{R_{in}}$</p>
 <p>where:</p>
 <ul>
-<li><span class="arithmatex">\(\phi_{out}[n]\)</span> is the output phase</li>
-<li><span class="arithmatex">\(\phi_{in}[n]\)</span> is the input phase</li>
-<li><span class="arithmatex">\(f_{in}\)</span> is the input frequency</li>
-<li><span class="arithmatex">\(R_{out}\)</span> is the output rate</li>
-<li><span class="arithmatex">\(R_{in}\)</span> is the input rate</li>
+<li>$\phi_{out}[n]$ is the output phase</li>
+<li>$\phi_{in}[n]$ is the input phase</li>
+<li>$f_{in}$ is the input frequency</li>
+<li>$R_{out}$ is the output rate</li>
+<li>$R_{in}$ is the input rate</li>
 </ul>
 <h4 id="wavelet-packet-transform">Wavelet Packet Transform</h4>
-<p><span class="arithmatex">\(W_{j,k,n}[m] = 2^{j/2}w_n(2^jm - k)\)</span></p>
+<p>$W_{j,k,n}[m] = 2^{j/2}w_n(2^jm - k)$</p>
 <p>where:</p>
 <ul>
-<li><span class="arithmatex">\(W_{j,k,n}[m]\)</span> is the wavelet packet basis</li>
-<li><span class="arithmatex">\(w_n\)</span> is the wavelet packet function</li>
-<li><span class="arithmatex">\(j\)</span> is the scale parameter</li>
-<li><span class="arithmatex">\(k\)</span> is the translation parameter</li>
-<li><span class="arithmatex">\(n\)</span> is the oscillation parameter</li>
+<li>$W_{j,k,n}[m]$ is the wavelet packet basis</li>
+<li>$w_n$ is the wavelet packet function</li>
+<li>$j$ is the scale parameter</li>
+<li>$k$ is the translation parameter</li>
+<li>$n$ is the oscillation parameter</li>
 </ul>
 <h4 id="preemphasis-filter">Preemphasis Filter</h4>
-<p><span class="arithmatex">\(y[n] = x[n] - \alpha x[n-1]\)</span></p>
+<p>$y[n] = x[n] - \alpha x[n-1]$</p>
 <p>where:</p>
 <ul>
-<li><span class="arithmatex">\(y[n]\)</span> is the filtered output</li>
-<li><span class="arithmatex">\(x[n]\)</span> is the input signal</li>
-<li><span class="arithmatex">\(\alpha\)</span> is the preemphasis coefficient</li>
-<li><span class="arithmatex">\(n\)</span> is the time index</li>
+<li>$y[n]$ is the filtered output</li>
+<li>$x[n]$ is the input signal</li>
+<li>$\alpha$ is the preemphasis coefficient</li>
+<li>$n$ is the time index</li>
 </ul>
 <h4 id="modulation-transfer-function">Modulation Transfer Function</h4>
-<p><span class="arithmatex">\(MTF(f) = \frac{|H(f)|}{|H(0)|}\)</span></p>
+<p>$MTF(f) = \frac{|H(f)|}{|H(0)|}$</p>
 <p>where:</p>
 <ul>
-<li><span class="arithmatex">\(MTF(f)\)</span> is the modulation transfer function</li>
-<li><span class="arithmatex">\(H(f)\)</span> is the system transfer function</li>
-<li><span class="arithmatex">\(f\)</span> is the frequency</li>
+<li>$MTF(f)$ is the modulation transfer function</li>
+<li>$H(f)$ is the system transfer function</li>
+<li>$f$ is the frequency</li>
 </ul>
 <h4 id="karhunen-loeve-transform">Karhunen-Loève Transform</h4>
-<p><span class="arithmatex">\(\Phi_k = \sum_{n=1}^{N} v_k[n]x[n]\)</span></p>
+<p>$\Phi_k = \sum_{n=1}^{N} v_k[n]x[n]$</p>
 <p>where:</p>
 <ul>
-<li><span class="arithmatex">\(\Phi_k\)</span> is the KLT coefficient</li>
-<li><span class="arithmatex">\(v_k[n]\)</span> is the kth eigenvector</li>
-<li><span class="arithmatex">\(x[n]\)</span> is the input signal</li>
-<li><span class="arithmatex">\(N\)</span> is the signal length</li>
+<li>$\Phi_k$ is the KLT coefficient</li>
+<li>$v_k[n]$ is the kth eigenvector</li>
+<li>$x[n]$ is the input signal</li>
+<li>$N$ is the signal length</li>
 </ul>
 <h4 id="adaptive-spectral-enhancement">Adaptive Spectral Enhancement</h4>
-<p><span class="arithmatex">\(H(z) = \frac{1}{1 - \sum_{k=1}^{p} a_k z^{-k}}\)</span></p>
+<p>$H(z) = \frac{1}{1 - \sum_{k=1}^{p} a_k z^{-k}}$</p>
 <p>where:</p>
 <ul>
-<li><span class="arithmatex">\(H(z)\)</span> is the enhancement filter</li>
-<li><span class="arithmatex">\(a_k\)</span> are the prediction coefficients</li>
-<li><span class="arithmatex">\(p\)</span> is the filter order</li>
-<li><span class="arithmatex">\(z\)</span> is the complex frequency variable</li>
+<li>$H(z)$ is the enhancement filter</li>
+<li>$a_k$ are the prediction coefficients</li>
+<li>$p$ is the filter order</li>
+<li>$z$ is the complex frequency variable</li>
 </ul>
 <h4 id="pitch-synchronous-overlap-add-psola">Pitch Synchronous Overlap Add (PSOLA)</h4>
-<p><span class="arithmatex">\(y[n] = \sum_{m=-\infty}^{\infty} x[m]h[n-mT_0]\)</span></p>
+<p>$y[n] = \sum_{m=-\infty}^{\infty} x[m]h[n-mT_0]$</p>
 <p>where:</p>
 <ul>
-<li><span class="arithmatex">\(y[n]\)</span> is the modified signal</li>
-<li><span class="arithmatex">\(x[m]\)</span> is the input signal</li>
-<li><span class="arithmatex">\(h[n]\)</span> is the synthesis window</li>
-<li><span class="arithmatex">\(T_0\)</span> is the pitch period</li>
-<li><span class="arithmatex">\(n\)</span> is the time index</li>
+<li>$y[n]$ is the modified signal</li>
+<li>$x[m]$ is the input signal</li>
+<li>$h[n]$ is the synthesis window</li>
+<li>$T_0$ is the pitch period</li>
+<li>$n$ is the time index</li>
 </ul>
 <h4 id="harmonic-plus-noise-model">Harmonic Plus Noise Model</h4>
-<p><span class="arithmatex">\(s[n] = h[n] + r[n]\)</span></p>
+<p>$s[n] = h[n] + r[n]$</p>
 <p>where:</p>
 <ul>
-<li><span class="arithmatex">\(s[n]\)</span> is the total signal</li>
-<li><span class="arithmatex">\(h[n]\)</span> is the harmonic component</li>
-<li><span class="arithmatex">\(r[n]\)</span> is the noise residual</li>
-<li><span class="arithmatex">\(n\)</span> is the time index</li>
+<li>$s[n]$ is the total signal</li>
+<li>$h[n]$ is the harmonic component</li>
+<li>$r[n]$ is the noise residual</li>
+<li>$n$ is the time index</li>
 </ul>
 <h4 id="goertzel-energy">Goertzel Energy</h4>
-<p><span class="arithmatex">\(E_k = x_1^2[N] + x_2^2[N] - 2\cos(2\pi k/N)x_1[N]x_2[N]\)</span></p>
+<p>$E_k = x_1^2[N] + x_2^2[N] - 2\cos(2\pi k/N)x_1[N]x_2[N]$</p>
 <p>where:</p>
 <ul>
-<li><span class="arithmatex">\(E_k\)</span> is the energy at frequency k</li>
-<li><span class="arithmatex">\(x_1[N]\)</span> and <span class="arithmatex">\(x_2[N]\)</span> are Goertzel algorithm outputs</li>
-<li><span class="arithmatex">\(N\)</span> is the block length</li>
-<li><span class="arithmatex">\(k\)</span> is the frequency bin</li>
+<li>$E_k$ is the energy at frequency k</li>
+<li>$x_1[N]$ and $x_2[N]$ are Goertzel algorithm outputs</li>
+<li>$N$ is the block length</li>
+<li>$k$ is the frequency bin</li>
 </ul>
 <h4 id="adaptive-noise-cancellation">Adaptive Noise Cancellation</h4>
-<p><span class="arithmatex">\(e[n] = d[n] - \mathbf{w}^T[n]\mathbf{x}[n]\)</span></p>
+<p>$e[n] = d[n] - \mathbf{w}^T[n]\mathbf{x}[n]$</p>
 <p>where:</p>
 <ul>
-<li><span class="arithmatex">\(e[n]\)</span> is the error signal</li>
-<li><span class="arithmatex">\(d[n]\)</span> is the desired signal</li>
-<li><span class="arithmatex">\(\mathbf{w}[n]\)</span> is the filter coefficient vector</li>
-<li><span class="arithmatex">\(\mathbf{x}[n]\)</span> is the reference noise vector</li>
+<li>$e[n]$ is the error signal</li>
+<li>$d[n]$ is the desired signal</li>
+<li>$\mathbf{w}[n]$ is the filter coefficient vector</li>
+<li>$\mathbf{x}[n]$ is the reference noise vector</li>
 </ul>
 
 
@@ -4296,6 +4339,9 @@ where:</p>
 
 
 
+
+  
+  
 
 
 
@@ -4327,7 +4373,7 @@ where:</p>
       <nav class="md-footer__inner md-grid" aria-label="Footer" >
         
           
-          <a href="../11-stories/" class="md-footer__link md-footer__link--prev" aria-label="Previous: Storytelling">
+          <a href="../11-stories/" class="md-footer__link md-footer__link--prev" aria-label="Previous: Stories">
             <div class="md-footer__button md-icon">
               
               <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
@@ -4337,7 +4383,7 @@ where:</p>
                 Previous
               </span>
               <div class="md-ellipsis">
-                Storytelling
+                Stories
               </div>
             </div>
           </a>
@@ -4384,12 +4430,14 @@ where:</p>
     </div>
     
     
-    <script id="__config" type="application/json">{"base": "../..", "features": ["content.code.copy", "navigation.expand", "navigation.path", "navigation.prune", "navigation.indexes", "toc.follow", "navigation.top", "navigation.footer", "content.action.edit"], "search": "../../assets/javascripts/workers/search.6ce7567c.min.js", "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}}</script>
     
-    
-      <script src="../../assets/javascripts/bundle.83f73b43.min.js"></script>
       
-        <script src="../../javascripts/mathjax.js"></script>
+      <script id="__config" type="application/json">{"base": "../..", "features": ["content.code.copy", "navigation.expand", "navigation.path", "navigation.prune", "navigation.indexes", "toc.follow", "navigation.top", "navigation.footer", "content.action.edit"], "search": "../../assets/javascripts/workers/search.f8cc74c7.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": null}</script>
+    
+    
+      <script src="../../assets/javascripts/bundle.c8b220af.min.js"></script>
+      
+        <script src="../../js/extra.js"></script>
       
         <script src="https://unpkg.com/mathjax@3/es5/tex-mml-chtml.js"></script>
       
