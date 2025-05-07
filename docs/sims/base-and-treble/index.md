@@ -1,3 +1,7 @@
+---
+hide:
+  - toc
+---
 # Base and Treble Amplifier Controls
 
 <iframe src="main.html" width="470" height="270" scrolling="no" style="overflow: hidden;"></iframe>

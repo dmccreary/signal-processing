@@ -1,3 +1,7 @@
+---
+hide:
+  - toc
+---
 # Understanding Convolution: An Interactive Lesson
 
 <iframe src="main.html" width="470" height="267" noscroll="true" style="overflow: hidden;"></iframe>

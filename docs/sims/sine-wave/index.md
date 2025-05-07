@@ -2,7 +2,6 @@
 hide:
   - toc
 ---
-
 # Sine Wave
 
 <iframe src="./main.html" height="480px" scrolling="no"
@@ -14,7 +13,7 @@ hide:
 To include this MicroSim on your web site, just copy the following line of HTML code:
 
 ```html
-<iframe src="https://dmccreary.github.io/intelligent-textbooks/sims/sine-wave/main.html" height="480px" scrolling="no"
+<iframe src="https://dmccreary.github.io/signal-processing/sims/sine-wave/main.html" height="480px" scrolling="no"
   style="overflow: hidden;"></iframe>
 ```
 

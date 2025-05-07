@@ -1,4 +1,9 @@
-# MicroSim Folder index.md Template
+---
+hide:
+  - toc
+---
+# Bloom's Taxonomy MicroSim
+
 
 <iframe src="./main.html" height="600px" width="600px" scrolling="no" style="overflow: hidden"></iframe>
 

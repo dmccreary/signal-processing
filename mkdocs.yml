@@ -1,3 +1,4 @@
+# YAML file for Signal Processing with AI website
 site_name: Signal Processing with AI
 site_description: 'College Level Textbook on Signal Processing - License is Commons ShareAlike Attribution Noncommercial'
 site_author: 'Dan McCreary'
@@ -85,7 +86,6 @@ nav:
   - Contact: contact.md
   - Paper Changes: ieee-paper-changes.md
 
-
 # Dan's Microsite Standards from here down
 
 theme:
@@ -110,24 +110,22 @@ theme:
 plugins:
   - search
   - social
+  # - social_override
 markdown_extensions:
   - admonition
+  - md_in_html # required for multiple-choice question numbering
   - pymdownx.details
   - pymdownx.superfences
   - attr_list
-  - md_in_html
   - pymdownx.highlight:
       linenums: true
-  # enable LaTeX extensions
-  - pymdownx.arithmatex:
-      generic: true
-  extra_css:
-     - css/extra.css
-  extra_javascript:
+extra_css:
+   - css/extra.css
+extra_javascript:
     - js/extra.js
     - https://unpkg.com/mathjax@3/es5/tex-mml-chtml.js
-  extra:
-     analytics:
+extra:
+    analytics:
       provider: google
-        # https://analytics.google.com/analytics/web/#/a1420179p349994530/admin/streams/table/4433129821
+      # https://analytics.google.com/analytics/web/#/a1420179p349994530/admin/streams/table/4433129821
       property: G-SY3G2ND80K

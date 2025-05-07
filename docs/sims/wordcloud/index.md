@@ -1,3 +1,7 @@
+---
+hide:
+  - toc
+---
 # Wordcloud for Signal Processing
 
 ## Version 1

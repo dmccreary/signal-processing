@@ -1,3 +1,7 @@
+---
+hide:
+  - toc
+---
 # Signal Processing Timeline
 
 ![Timeline Viewer](timeline-viewer.png)

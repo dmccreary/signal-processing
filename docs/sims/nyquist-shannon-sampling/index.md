@@ -1,3 +1,7 @@
+---
+hide:
+  - toc
+---
 # Nyquist-Shannon Sampling
 
 ![](./nyquist-shannon-sampling.png){ .md-button .md-button--primary }

@@ -1,3 +1,7 @@
+---
+hide:
+  - toc
+---
 # Synth Timeline
 
 [Run the Synth Timeline](./main.html)
