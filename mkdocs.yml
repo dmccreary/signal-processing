@@ -1,5 +1,5 @@
-site_name: Signal Processing
-site_description: 'DESCRIPTION All content licensed Creative Commons ShareAlike Attribution Noncommercial'
+site_name: Signal Processing with AI
+site_description: 'College Level Textbook on Signal Processing - License is Commons ShareAlike Attribution Noncommercial'
 site_author: 'Dan McCreary'
 repo_name: 'GitHub Repo'
 site_url: 'https://dmccreary.github.io/signal-processing/'
@@ -46,13 +46,14 @@ nav:
     - Timeline of Signal Processing: prompts/08-timeline.md
     - Electronic Music: prompts/11-electronic-music.md
     # - prompts/05-vis-refinement.md
-    - prompts/07-glossary.md
-    - prompts/09-wordcloud.md
-    - prompts/10-hard-concepts-simulations.md
-    - prompts/11-stories.md
+    - Glossary: prompts/07-glossary.md
+    - Wordcloud: prompts/09-wordcloud.md
+    - Hard Concepts: prompts/10-hard-concepts-simulations.md
+    - Stories: prompts/11-stories.md
     - Equations: prompts/12-equations.md
     - History: prompts/13-history-of-signal-processing.md
     - Assessments: prompts/16-assessment-prompt.md
+    - prompts/15-prompt-to-create-mc-prompt.md
     - Important Circuits: prompts/17-important-circuits.md
   - Sims:
     - Introduction: sims/index.md
@@ -67,7 +68,6 @@ nav:
     - Convolution: sims/convolution/index.md
     - AI Pace: sims/ai-pace-accelerating/index.md
     - Bloom's Taxonomy: sims/blooms-taxonomy/index.md
-
     - Sine Wave: sims/sine-wave/index.md
     - Templates: sims/0-templates/index.md
   - Stories:
@@ -83,21 +83,18 @@ nav:
   - License: license.md
   - References: references.md
   - Contact: contact.md
-  - ieee-paper-changes.md
-  - prompts/15-prompt-to-create-mc-prompt.md
+  - Paper Changes: ieee-paper-changes.md
 
 
 # Dan's Microsite Standards from here down
 
 theme:
   name: material
-  extra_css:
-    - css/extra.css
-  logo: img/logo.png
+  logo: img/logo-192.png
   favicon: img/favicon.ico
   palette:
-    primary: 'blue'
-    accent: 'orange'
+    primary: 'maroon'
+    accent: 'gold'
   include_sidebar: true
   features:
     - content.code.copy
@@ -112,22 +109,25 @@ theme:
     - content.action.edit
 plugins:
   - search
-#  - social
-extra_javascript:
-  - javascripts/mathjax.js
-  - https://unpkg.com/mathjax@3/es5/tex-mml-chtml.js
+  - social
 markdown_extensions:
   - admonition
   - pymdownx.details
   - pymdownx.superfences
   - attr_list
+  - md_in_html
   - pymdownx.highlight:
       linenums: true
   # enable LaTeX extensions
   - pymdownx.arithmatex:
       generic: true
-extra:
-  analytics:
-    provider: google
-    # https://analytics.google.com/analytics/web/#/a1420179p349994530/admin/streams/table/4433129821
-    property: G-SY3G2ND80K
+  extra_css:
+     - css/extra.css
+  extra_javascript:
+    - js/extra.js
+    - https://unpkg.com/mathjax@3/es5/tex-mml-chtml.js
+  extra:
+     analytics:
+      provider: google
+        # https://analytics.google.com/analytics/web/#/a1420179p349994530/admin/streams/table/4433129821
+      property: G-SY3G2ND80K
