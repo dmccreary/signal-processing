@@ -58,7 +58,7 @@ In 1937, Hedy orchestrated a daring escape. Disguising herself as a maid, she fl
 
 By 1940, Hedy Lamarr was one of Hollywood's brightest stars. Her exotic beauty and enigmatic presence captivated audiences in films like "Algiers," "Boom Town," and "Comrade X." The press dubbed her "the most beautiful woman in the world."
 
-![](03.png
+![](03.png)
 <details class="image-prompt">
    <summary>Show Image Prompt</summary>
 Please generate a new wide-landscape art deco inspired illustration as it might appear in a graphic novel.
@@ -145,7 +145,7 @@ Image  8: A wide-landscape, colorful art deco illustration showing Hedy at a war
 
 For years, Hedy's invention gathered dust, forgotten by the military establishment. It wasn't until the Cuban Missile Crisis in 1962 that the U.S. military finally began using frequency-hopping technology on naval ships.
 
-![](./09.png)
+![](09.png)
 <details class="image-prompt">
    <summary>Show Image Prompt</summary>
 Please generate a new wide-landscape art deco inspired illustration as it might appear in a graphic novel.
@@ -159,7 +159,7 @@ By then, Hedy and George's patent had expired, and they never received a penny f
 
 It wasn't until 1997, when Hedy was 82 years old, that she finally received recognition for her technological contributions. The Electronic Frontier Foundation presented her with their Pioneer Award, acknowledging her role in developing spread spectrum technology.
 
-![](
+![](10.png)
 <details class="image-prompt">
    <summary>Show Image Prompt</summary>
 
@@ -174,7 +174,7 @@ When a reporter asked how a beautiful movie star could also be an inventor, Hedy
 
 Hedy Lamarr's story reveals the qualities that make a great engineer: curiosity, creativity, persistence, and the courage to challenge conventional thinking. She saw a problem that others overlooked and imagined a solution that was decades ahead of its time.
 
-![](
+![](11.png)
 <details class="image-prompt">
    <summary>Show Image Prompt</summary>
 Please generate a new wide-landscape art deco inspired illustration as it might appear in a graphic novel.
@@ -188,7 +188,7 @@ She did this without formal training, institutional support, or recognition—an
 
 Today, as we use our smartphones and wireless devices, we are all beneficiaries of Hedy Lamarr's brilliance. Her legacy lives on not just in the technologies she helped create, but in every girl and woman who dares to pursue science, technology, engineering, and mathematics despite being told that these are not fields for them.
 
-![](
+![](./12.png)
 <details class="image-prompt">
    <summary>Show Image Prompt</summary>
 Please generate a new wide-landscape art deco inspired illustration as it might appear in a graphic novel.

@@ -1,4 +1,4 @@
-!!!
+!!! prompt
     Please consult the course-description.md file in the Project knowledge area.
 
     I would like to create some short graphic novels to tell stories about how individuals contributed to the field of signal processing over the last 100 years starting with the work of Claude Shannon at Bell Labs.  Each story should be understandable by high-school students and not require complex calculus to understand.  However, the stories can highlight the role of mathematics in innovation.
