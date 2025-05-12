@@ -114,12 +114,23 @@ plugins:
   # - social_override
 markdown_extensions:
   - admonition
-  - md_in_html # required for multiple-choice question numbering
+  - attr_list
+  - md_in_html
   - pymdownx.details
   - pymdownx.superfences
-  - attr_list
+  - pymdownx.mark
+  - pymdownx.inlinehilite
+  - pymdownx.magiclink
+  - pymdownx.snippets
+  - pymdownx.emoji
+  - pymdownx.tilde
+  - pymdownx.tasklist
+  - pymdownx.tabbed
   - pymdownx.highlight:
       linenums: true
+  # enable LaTeX equation rendering
+  - pymdownx.arithmatex:
+      generic: true
 extra_css:
    - css/extra.css
 extra_javascript:
