@@ -206,6 +206,8 @@ Their algorithm reminds us that sometimes, the most powerful tool isn't more com
     understand.  Return the references in the following format:
 
     1. [Link Label](Link URL) - date of publication - publication name - notes on why this article might be interesting.
+
+    Make sure that the links are all real working links.  Test that the links are all currently working.
 </details>
 
 Here are ten engaging references about the Fast Fourier Transform that high school students would enjoy:
