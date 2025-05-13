@@ -184,6 +184,7 @@ Shannon lived to see his theoretical work transform the world. The internet, dig
 
 Though modest about his contributions, Shannon's work touches every aspect of modern signal processing. From the noise-cancellation algorithms in your headphones to the error-correction codes protecting data in space probes, his mathematics continues to shape how humanity communicates across distances and through time.
 
+![](12.png)
 <details><summary>Image Prompt</summary>
 Image 12:
 Please generate a new wide-landscape illustration.
@@ -196,6 +197,7 @@ Shannon's work wasn't just a series of brilliant insights—it was a methodology
 
 As we enter an era of quantum communication, artificial intelligence, and systems that process signals beyond human perception, Shannon's principles remain relevant. His mathematics of information continues to guide researchers who are pushing the boundaries of what signals we can detect, process, and understand.
 
+![](13.png)
 <details><summary>Image Prompt</summary>
 Image 13:
 Please generate a new wide-landscape illustration.
@@ -217,8 +219,9 @@ Shannon’s legacy is more than equations; it is a blueprint for creative engine
 | **Courage to Challenge Orthodoxy** | Asked *“What *is* information?”*                             | Question first principles in any problem.       |
 | **Communication**                  | Wrote papers engineers *and* mathematicians could read.      | Practice explaining complex ideas clearly.      |
 
+![](14.png)
 <details><summary>Image Prompt</summary>
-Final Image 15:
+Final Image 14:
 Please generate a new wide-landscape illustration.
 A colorful, bright wide-landscape illustration showing a diverse group of modern students—some on laptops, others dismantling gadgets—surrounded by floating icons of play (unicycle), rigor (math symbols), and communication (bits). In the background, a mural of Shannon tips his hat, passing a glowing bit to the next generation.
 </details>
