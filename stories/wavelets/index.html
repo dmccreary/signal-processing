@@ -1,0 +1,1265 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+        <meta name="description" content="College Level Textbook on Signal Processing - License is Commons ShareAlike Attribution Noncommercial">
+      
+      
+        <meta name="author" content="Dan McCreary">
+      
+      
+        <link rel="canonical" href="https://dmccreary.github.io/signal-processing/stories/wavelets/">
+      
+      
+      
+      
+      <link rel="icon" href="../../img/favicon.ico">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.6.12">
+    
+    
+      
+        <title>The Wavelet Revolution: Ingrid Daubechies' Mathematical Journey - Signal Processing with AI</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../assets/stylesheets/main.2afb09e1.min.css">
+      
+        
+        <link rel="stylesheet" href="../../assets/stylesheets/palette.06af60db.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+      <link rel="stylesheet" href="../../css/extra.css">
+    
+    <script>__md_scope=new URL("../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+  
+
+
+  
+  
+
+<script id="__analytics">function __md_analytics(){function e(){dataLayer.push(arguments)}window.dataLayer=window.dataLayer||[],e("js",new Date),e("config","G-SY3G2ND80K"),document.addEventListener("DOMContentLoaded",(function(){document.forms.search&&document.forms.search.query.addEventListener("blur",(function(){this.value&&e("event","search",{search_term:this.value})}));document$.subscribe((function(){var t=document.forms.feedback;if(void 0!==t)for(var a of t.querySelectorAll("[type=submit]"))a.addEventListener("click",(function(a){a.preventDefault();var n=document.location.pathname,d=this.getAttribute("data-md-value");e("event","feedback",{page:n,data:d}),t.firstElementChild.disabled=!0;var r=t.querySelector(".md-feedback__note [data-md-value='"+d+"']");r&&(r.hidden=!1)})),t.hidden=!1})),location$.subscribe((function(t){e("config","G-SY3G2ND80K",{page_path:t.pathname})}))}));var t=document.createElement("script");t.async=!0,t.src="https://www.googletagmanager.com/gtag/js?id=G-SY3G2ND80K",document.getElementById("__analytics").insertAdjacentElement("afterEnd",t)}</script>
+  
+    <script>"undefined"!=typeof __md_analytics&&__md_analytics()</script>
+  
+
+    
+    
+      
+        <meta  property="og:type"  content="website" >
+      
+        <meta  property="og:title"  content="The Wavelet Revolution: Ingrid Daubechies' Mathematical Journey - Signal Processing with AI" >
+      
+        <meta  property="og:description"  content="College Level Textbook on Signal Processing - License is Commons ShareAlike Attribution Noncommercial" >
+      
+        <meta  property="og:image"  content="https://dmccreary.github.io/signal-processing/assets/images/social/stories/wavelets/index.png" >
+      
+        <meta  property="og:image:type"  content="image/png" >
+      
+        <meta  property="og:image:width"  content="1200" >
+      
+        <meta  property="og:image:height"  content="630" >
+      
+        <meta  property="og:url"  content="https://dmccreary.github.io/signal-processing/stories/wavelets/" >
+      
+        <meta  name="twitter:card"  content="summary_large_image" >
+      
+        <meta  name="twitter:title"  content="The Wavelet Revolution: Ingrid Daubechies' Mathematical Journey - Signal Processing with AI" >
+      
+        <meta  name="twitter:description"  content="College Level Textbook on Signal Processing - License is Commons ShareAlike Attribution Noncommercial" >
+      
+        <meta  name="twitter:image"  content="https://dmccreary.github.io/signal-processing/assets/images/social/stories/wavelets/index.png" >
+      
+    
+    
+  </head>
+  
+  
+    
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="maroon" data-md-color-accent="gold">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#the-wavelet-revolution-ingrid-daubechies-mathematical-journey" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+  
+
+<header class="md-header md-header--shadow" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href="../.." title="Signal Processing with AI" class="md-header__button md-logo" aria-label="Signal Processing with AI" data-md-component="logo">
+      
+  <img src="../../img/logo-192.png" alt="logo">
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            Signal Processing with AI
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              The Wavelet Revolution: Ingrid Daubechies' Mathematical Journey
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+    
+    
+    
+    
+      
+      
+        <label class="md-header__button md-icon" for="__search">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        </label>
+        <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Search">
+        
+        <button type="reset" class="md-search__icon md-icon" title="Clear" aria-label="Clear" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+        </button>
+      </nav>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+      
+    
+    
+      <div class="md-header__source">
+        <a href="https://github.com/dmccreary/signal-processing" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 6.7.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2024 Fonticons, Inc.--><path d="M439.55 236.05 244 40.45a28.87 28.87 0 0 0-40.81 0l-40.66 40.63 51.52 51.52c27.06-9.14 52.68 16.77 43.39 43.68l49.66 49.66c34.23-11.8 61.18 31 35.47 56.69-26.49 26.49-70.21-2.87-56-37.34L240.22 199v121.85c25.3 12.54 22.26 41.85 9.08 55a34.34 34.34 0 0 1-48.55 0c-17.57-17.6-11.07-46.91 11.25-56v-123c-20.8-8.51-24.6-30.74-18.64-45L142.57 101 8.45 235.14a28.86 28.86 0 0 0 0 40.81l195.61 195.6a28.86 28.86 0 0 0 40.8 0l194.69-194.69a28.86 28.86 0 0 0 0-40.81"/></svg>
+  </div>
+  <div class="md-source__repository">
+    GitHub Repo
+  </div>
+</a>
+      </div>
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+
+<nav class="md-nav md-nav--primary" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../.." title="Signal Processing with AI" class="md-nav__button md-logo" aria-label="Signal Processing with AI" data-md-component="logo">
+      
+  <img src="../../img/logo-192.png" alt="logo">
+
+    </a>
+    Signal Processing with AI
+  </label>
+  
+    <div class="md-nav__source">
+      <a href="https://github.com/dmccreary/signal-processing" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 6.7.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2024 Fonticons, Inc.--><path d="M439.55 236.05 244 40.45a28.87 28.87 0 0 0-40.81 0l-40.66 40.63 51.52 51.52c27.06-9.14 52.68 16.77 43.39 43.68l49.66 49.66c34.23-11.8 61.18 31 35.47 56.69-26.49 26.49-70.21-2.87-56-37.34L240.22 199v121.85c25.3 12.54 22.26 41.85 9.08 55a34.34 34.34 0 0 1-48.55 0c-17.57-17.6-11.07-46.91 11.25-56v-123c-20.8-8.51-24.6-30.74-18.64-45L142.57 101 8.45 235.14a28.86 28.86 0 0 0 0 40.81l195.61 195.6a28.86 28.86 0 0 0 40.8 0l194.69-194.69a28.86 28.86 0 0 0 0-40.81"/></svg>
+  </div>
+  <div class="md-source__repository">
+    GitHub Repo
+  </div>
+</a>
+    </div>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../.." class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Home
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../chapters/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Table of Contents
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../about/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    About This Website
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../course-description/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Course Description
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+    
+      
+        
+        
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+  
+    <a href="../../chapters/" class="md-nav__link">
+      
+  
+  
+  <span class="md-ellipsis">
+    Chapters
+    
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+    
+      
+        
+        
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+  
+    <a href="../../prompts/" class="md-nav__link">
+      
+  
+  
+  <span class="md-ellipsis">
+    Prompts
+    
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+    
+      
+        
+        
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+  
+    <a href="../../sims/" class="md-nav__link">
+      
+  
+  
+  <span class="md-ellipsis">
+    Sims
+    
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+    
+      
+        
+        
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+  
+    <a href="../" class="md-nav__link">
+      
+  
+  
+  <span class="md-ellipsis">
+    Stories
+    
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+    
+    
+    
+    
+      
+        
+        
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+  
+    <a href="../../circuits/" class="md-nav__link">
+      
+  
+  
+  <span class="md-ellipsis">
+    Circuits
+    
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../checklist/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Checklist
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../glossary/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Glossary
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../how-we-built-this-site/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    How We Built This Site
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../license/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    License
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../references/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    References
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../contact/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Contact
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../ieee-paper-changes/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Paper Changes
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#panel-1-the-garden-of-numbers" class="md-nav__link">
+    <span class="md-ellipsis">
+      Panel 1: The Garden of Numbers
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#panel-2-the-limitations-of-fourier" class="md-nav__link">
+    <span class="md-ellipsis">
+      Panel 2: The Limitations of Fourier
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#panel-3-the-revelation" class="md-nav__link">
+    <span class="md-ellipsis">
+      Panel 3: The Revelation
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#panel-4-the-breakthrough" class="md-nav__link">
+    <span class="md-ellipsis">
+      Panel 4: The Breakthrough
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#panel-5-facing-the-skeptics" class="md-nav__link">
+    <span class="md-ellipsis">
+      Panel 5: Facing the Skeptics
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#panel-6-from-theory-to-practice" class="md-nav__link">
+    <span class="md-ellipsis">
+      Panel 6: From Theory to Practice
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#panel-7-the-jpeg2000-revolution" class="md-nav__link">
+    <span class="md-ellipsis">
+      Panel 7: The JPEG2000 Revolution
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#panel-8-breaking-the-glass-ceiling" class="md-nav__link">
+    <span class="md-ellipsis">
+      Panel 8: Breaking the Glass Ceiling
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#panel-9-the-professors-garden" class="md-nav__link">
+    <span class="md-ellipsis">
+      Panel 9: The Professor's Garden
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#panel-10-the-digital-revolution" class="md-nav__link">
+    <span class="md-ellipsis">
+      Panel 10: The Digital Revolution
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#panel-11-the-continuing-journey" class="md-nav__link">
+    <span class="md-ellipsis">
+      Panel 11: The Continuing Journey
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#panel-12-the-seeds-of-change" class="md-nav__link">
+    <span class="md-ellipsis">
+      Panel 12: The Seeds of Change
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#epilogue-the-engineers-path" class="md-nav__link">
+    <span class="md-ellipsis">
+      Epilogue: The Engineer's Path
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+  
+    <a href="https://github.com/dmccreary/signal-processing/blob/master/docs/stories/wavelets/index.md" title="Edit this page" class="md-content__button md-icon">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M10 20H6V4h7v5h5v3.1l2-2V8l-6-6H6c-1.1 0-2 .9-2 2v16c0 1.1.9 2 2 2h4zm10.2-7c.1 0 .3.1.4.2l1.3 1.3c.2.2.2.6 0 .8l-1 1-2.1-2.1 1-1c.1-.1.2-.2.4-.2m0 3.9L14.1 23H12v-2.1l6.1-6.1z"/></svg>
+    </a>
+  
+  
+
+
+<h1 id="the-wavelet-revolution-ingrid-daubechies-mathematical-journey">The Wavelet Revolution: Ingrid Daubechies' Mathematical Journey</h1>
+<details>
+    <summary>Narrative Summary<summary>
+Please generate a detailed narrative for a graph-novel about Ingrid Daubechies contribution to signal processing.  The narrative should have places for 12 panels.
+
+It should be a detailed, fun and entertaining story about Belgian mathematician Ingrid Daubechies as she develops wavelet theory in the 1980s and early 90s, revolutionizing signal processing with her "mathematical building blocks." 
+
+Initially facing skepticism in a male-dominated field, Daubechies persevered to create compact wavelets that enabled everything from MP3 music files to medical imaging.
+
+Add panels about her work to gain acceptance and respect from her peers.
+
+The narrative follows her from her garden (which serves as a metaphor for her mathematical work) to her becoming the first woman to receive certain prestigious mathematics awards, showing students how abstract mathematics can solve real-world problems and break through gender barriers.
+
+Finally, generalize about the skills needed to be a great engineer and promote change.  Discuss the ability of woman to make fundamental contributions to engineering.
+
+Our goal is to have you generate the full text of the story, but to turn the story into a graphic novel with many illustrations that explain how the FFT algorithms was created. 
+
+When appropriate, suggest an wide-landscape drawing that could be inserted into the narrative to make the story a graphic novel. 
+Describe each image in detail and be consistent across all the images in the story for style. When you describe an image, make sure to mention that it should be a colorful, bright wide-landscape drawing suitable for consistent technology-forward optimistic graphic-novel.
+</details>
+
+<p>I'll create a detailed narrative for a graphic novel about Ingrid Daubechies and her contributions to signal processing, with places for 12 panels as requested.</p>
+<h2 id="panel-1-the-garden-of-numbers">Panel 1: The Garden of Numbers</h2>
+<p>In her lush Belgian garden in 1980, a young mathematician named Ingrid Daubechies kneels among flowering plants, notebook in hand. Mathematical equations float visibly in thought bubbles around her head. She sketches wave-like patterns while observing the natural rhythms of her garden.</p>
+<p><em>Narrator: "Some see only flowers and soil. Ingrid Daubechies saw patterns, frequencies, and mathematical possibilities. In her garden outside Brussels, the young Belgian mathematician found inspiration that would one day transform how we process signals."</em></p>
+<p>Ingrid (thinking): "Nature doesn't use perfect sine waves... it uses short bursts of energy that start and stop. Why can't our mathematics do the same?"</p>
+<details>
+    <summary></summary>
+Panel 1:
+Please generate a new bright wide-landscape drawing.
+A colorful, bright wide-landscape drawing showing Ingrid in her vibrant garden with mathematical equations floating visibly around her as thought bubbles. The drawing should have a dreamy quality with both realistic garden elements and abstract mathematical symbols blending together. The style should be technology-forward and optimistic, establishing the graphic novel's visual language.
+</details>
+</details>
+<h2 id="panel-2-the-limitations-of-fourier">Panel 2: The Limitations of Fourier</h2>
+<p>Inside a university lecture hall, male professors crowd around a chalkboard covered in classical Fourier transform equations. Ingrid stands slightly apart, her expression thoughtful as she points to a fundamental limitation in the equations.</p>
+<p><em>Narrator: "For two centuries, scientists relied on Fourier transforms to break down signals into sine waves. But Ingrid saw what others missed—these methods struggled with real-world signals that change over time."</em></p>
+<p>Ingrid: "But what about signals that contain short bursts? Musical notes that start and stop? Images with sudden edges? Fourier analysis loses this critical time information."</p>
+<p>Professor (dismissively): "That's just how signal processing works, Dr. Daubechies. Perhaps you're overthinking the problem."</p>
+<details>
+    <summary></summary>
+Panel 2:
+Please generate a new bright wide-landscape drawing.
+ A colorful, bright wide-landscape drawing of a traditional academic setting with men in formal attire surrounding a massive chalkboard filled with complex equations. Ingrid should stand slightly apart, confident yet isolated, with light highlighting her figure against the darker tones of the lecture hall. Maintain the technology-forward optimistic style while conveying the gender disparity of the era.
+</details>
+
+<h2 id="panel-3-the-revelation">Panel 3: The Revelation</h2>
+<p>Split scene showing Ingrid working late at night in her study, surrounded by stacks of research papers and a crude early computer. Through her window, we see wavelets in nature—ripples in water, sound waves, heartbeats on a monitor.</p>
+<p><em>Narrator: "While others slept, Ingrid pursued a revolutionary idea: mathematical building blocks called wavelets that could capture both frequency AND time."</em></p>
+<p>Ingrid (writing furiously): "If I can create compact mathematical wavelets—functions that are non-zero for only a short time—I could transform signal processing forever."</p>
+<p>Computer screen shows early wavelet patterns forming as Ingrid works.</p>
+<details>
+    <summary></summary>
+Panel 3:
+Please generate a new bright wide-landscape drawing.
+A colorful, bright wide-landscape drawing showing a split scene with Ingrid working intensely at her desk on one side, and natural wavelet patterns (water ripples, sound waves, heartbeats) visible through her window on the other. The contrast between the warm light of her study and the cool blues of the night outside should create visual interest while maintaining the technology-forward optimistic aesthetic.
+</details>
+
+<h2 id="panel-4-the-breakthrough">Panel 4: The Breakthrough</h2>
+<p>Ingrid stands triumphant in her office at AT&amp;T Bell Labs in 1987, where equations for what will become "Daubechies wavelets" illuminate her workspace like streams of light. Her notepad shows the first orthogonal wavelets with compact support—her historic breakthrough.</p>
+<p><em>Narrator: "In 1987, Ingrid achieved what many thought impossible—she constructed the first family of wavelets that were both orthogonal and compactly supported. In simpler terms, she created perfect mathematical building blocks for analyzing signals."</em></p>
+<p>Ingrid: "They're beautiful... compact, efficient, and they preserve all the information! These wavelets can decompose and rebuild signals perfectly!"</p>
+<details>
+    <summary></summary>
+Panel 4:
+Please generate a new bright wide-landscape drawing.
+A colorful, bright wide-landscape drawing of Ingrid in her AT&T Bell Labs office with streams of light-like equations flowing around her. The scene should have a triumphant feel with Ingrid at the center surrounded by mathematical diagrams of wavelets that appear to glow with potential. The technology-forward optimistic style should convey this as a moment of scientific breakthrough and discovery.
+</details>
+
+<h2 id="panel-5-facing-the-skeptics">Panel 5: Facing the Skeptics</h2>
+<p>At a major mathematics conference, Ingrid presents her wavelet theory to a predominantly male audience. Some appear skeptical, others intrigued. Ingrid stands confidently at a podium, her wavelet equations projected behind her.</p>
+<p><em>Narrator: "Revolutionary ideas rarely receive immediate acceptance. When Ingrid presented her wavelets, many in the mathematical establishment remained skeptical."</em></p>
+<p>Senior Mathematician: "Interesting theory, Dr. Daubechies, but how would this ever have practical applications beyond theoretical mathematics?"</p>
+<p>Ingrid: "These wavelets will change how we process and compress signals. They'll transform everything from digital imaging to telecommunications."</p>
+<details>
+    <summary></summary>
+Panel 5:
+Please generate a new bright wide-landscape drawing.
+A colorful, bright wide-landscape drawing of a conference hall with Ingrid standing confidently at a podium, facing rows of mostly male mathematicians with varied expressions from skeptical to curious. Her wavelet diagrams should be prominently displayed on a screen behind her, glowing with potential. The style should maintain the technology-forward optimistic aesthetic while capturing the tension of the moment.
+</details>
+
+<h2 id="panel-6-from-theory-to-practice">Panel 6: From Theory to Practice</h2>
+<p>Split panel showing multiple practical applications emerging from Ingrid's work: medical MRI machines generating clearer images, digital music files being compressed, FBI fingerprint databases, and early digital photography. Ingrid walks through these applications, touching the screens in wonder.</p>
+<p><em>Narrator: "Ingrid didn't just theorize—she built bridges between abstract mathematics and practical applications, proving her critics wrong."</em></p>
+<p>Ingrid: "Mathematics isn't just about beauty—it's about solving real problems. Wavelets can compress images without losing important details, make medical scans clearer, and even help store the FBI's fingerprint database."</p>
+<details>
+    <summary></summary>
+Panel 6:
+Please generate a new bright wide-landscape drawing.
+A colorful, bright wide-landscape drawing structured as a series of connected scenes showing various practical applications of wavelets: medical imaging equipment, digital music players, fingerprint scanning systems, and digital cameras. Ingrid should be depicted walking through this technological landscape with an expression of satisfaction. The technology-forward optimistic style should emphasize how theoretical mathematics transforms into practical applications that improve lives.
+</details>
+
+<h2 id="panel-7-the-jpeg2000-revolution">Panel 7: The JPEG2000 Revolution</h2>
+<p>A cinematic scene showing the implementation of wavelet compression in the JPEG2000 standard. Engineers work on computer screens showing image compression algorithms while Ingrid consults with them. Before-and-after comparisons show how wavelets preserve image quality at higher compression rates.</p>
+<p><em>Narrator: "When the world needed better ways to store and transmit digital images, Ingrid's wavelets provided the solution. The JPEG2000 standard incorporated her work, allowing images to be compressed more efficiently while preserving important details."</em></p>
+<p>Engineer: "Using Daubechies wavelets, we can compress this medical scan to one-twentieth its size while keeping all the diagnostic details. This changes everything."</p>
+<details>
+    <summary></summary>
+Panel 7:
+Please generate a new bright wide-landscape drawing.
+A colorful, bright wide-landscape drawing showing a modern technical environment with engineers working on advanced computer systems displaying wavelet-based image compression. Side-by-side image comparisons should be visible on screens, with Ingrid collaborating with the team. The technology-forward optimistic style should emphasize the collaborative nature of applied science and the tangible impact of Ingrid's mathematical work.
+</details>
+
+<h2 id="panel-8-breaking-the-glass-ceiling">Panel 8: Breaking the Glass Ceiling</h2>
+<p>Ingrid receiving the MacArthur "Genius" Fellowship in 1992 and later becoming the first female president of the International Mathematical Union. The scene shows her acceptance speech with pioneering female mathematicians from history appearing as ghostly, supportive figures behind her.</p>
+<p><em>Narrator: "In a field historically dominated by men, Ingrid's brilliance could not be denied. In 1992, she received the prestigious MacArthur 'Genius' Fellowship, and would later become the first woman president of the International Mathematical Union."</em></p>
+<p>Ingrid (at podium): "This recognition isn't just for me—it's for every girl who's been told that mathematics isn't for her. We belong in this field, and we will continue to transform it."</p>
+<details>
+    <summary></summary>
+Panel 8:
+Please generate a new bright wide-landscape drawing.
+A colorful, bright wide-landscape drawing of an awards ceremony with Ingrid at a podium accepting her recognition. Behind her, semi-transparent figures of historical female mathematicians (like Emmy Noether, Sofia Kovalevskaya) should appear as supportive spirits. The audience should include both contemporary supporters and young girls looking inspired. The technology-forward optimistic style should emphasize this as a moment of historical significance and inspiration.
+</details>
+
+<h2 id="panel-9-the-professors-garden">Panel 9: The Professor's Garden</h2>
+<p>At Princeton University, where Ingrid became the first female full professor in the Mathematics Department, she teaches a diverse group of students in a garden-like setting. She uses natural examples—leaves, flower patterns, river waves—to explain wavelet theory.</p>
+<p><em>Narrator: "At Princeton, Professor Daubechies cultivated not just mathematical theories, but also the next generation of mathematicians—especially young women who saw in her a role model."</em></p>
+<p>Ingrid (to students): "Mathematics is everywhere in nature, just waiting for us to discover its patterns. My wavelets were inspired by how natural signals work—they come, they go, they overlap and interact."</p>
+<p>Female student: "So you're saying we should look to nature for mathematical inspiration?"</p>
+<p>Ingrid: "I'm saying that great mathematics, like gardening, requires both structured thinking and creative intuition."</p>
+<details>
+    <summary></summary>
+Panel 9:
+Please generate a new bright wide-landscape drawing.
+A colorful, bright wide-landscape drawing of an outdoor classroom setting at Princeton with Ingrid teaching a diverse group of students. The scene should have garden elements with mathematical diagrams overlaid on natural objects like leaves and flower patterns. The technology-forward optimistic style should emphasize knowledge transfer and the connection between mathematics and nature.
+</details>
+
+<h2 id="panel-10-the-digital-revolution">Panel 10: The Digital Revolution</h2>
+<p>A dramatic visualization showing how Ingrid's wavelets underpin the modern digital world. Data streams flow through smartphones, medical devices, digital music, internet transmission, and space exploration technology—all utilizing wavelet technology.</p>
+<p><em>Narrator: "Today, Ingrid's mathematical building blocks are processing signals all around us. Every time you stream music, view digital images, or benefit from a medical scan, you're experiencing the power of Daubechies wavelets."</em></p>
+<p>Ingrid (observing the digital world): "Mathematics isn't separate from everyday life—it's an essential language for describing and improving our world."</p>
+<details>
+    <summary></summary>
+Panel 10:
+Please generate a new bright wide-landscape drawing.
+A colorful, bright wide-landscape drawing visualizing the modern digital world with flowing data streams connecting various technologies that use wavelets. The scene should show smartphones, medical imaging devices, streaming music services, and satellite communications all connected by mathematical wavelet patterns. Ingrid should be depicted observing this interconnected technological ecosystem. The technology-forward optimistic style should be at its peak here, showing the culmination of how abstract mathematics transforms modern life.
+</details>
+
+<h2 id="panel-11-the-continuing-journey">Panel 11: The Continuing Journey</h2>
+<p>An older, distinguished Ingrid works with diverse young researchers in a modern laboratory. They're applying wavelet theory to new frontiers: artificial intelligence, climate modeling, gravitational wave detection.</p>
+<p><em>Narrator: "Great innovations don't end with discovery—they evolve and find new applications. Today, Ingrid's wavelets are being applied to challenges she never imagined."</em></p>
+<p>Young researcher: "Professor, we're using your wavelet transforms to help AI systems process visual information more like humans do."</p>
+<p>Ingrid: "That's the beauty of fundamental mathematics—it gives us tools that transcend their original purposes. I'm more excited about what you'll discover than what I found."</p>
+<details>
+    <summary></summary>
+Panel 11:
+Please generate a new bright wide-landscape drawing.
+A colorful, bright wide-landscape drawing of a modern research facility where an older Ingrid collaborates with a diverse team of young researchers. Displays should show advanced applications of wavelets in AI visualization, climate models, and gravitational wave detection. The technology-forward optimistic style should convey the passing of knowledge to new generations and the evolution of mathematical applications.
+</details>
+
+<h2 id="panel-12-the-seeds-of-change">Panel 12: The Seeds of Change</h2>
+<p>The final panel returns to a garden metaphor, but now it's a global garden with diverse young people—particularly girls—studying mathematics, engineering, and computer science around the world. Ingrid walks through this symbolic garden, nurturing the growth of new ideas.</p>
+<p><em>Narrator: "The true measure of Ingrid Daubechies' impact isn't just in her mathematical formulas, but in how she transformed what it means to be an engineer, a mathematician, a problem-solver."</em></p>
+<p>Ingrid: "The qualities that make great engineers and scientists aren't limited by gender. Persistence in the face of skepticism. Creativity in framing problems. The courage to challenge established thinking. The ability to connect abstract ideas to practical needs."</p>
+<p><em>Narrator: "Through her brilliant work and unrelenting perseverance, Ingrid Daubechies didn't just create wavelets—she created waves of change that continue to ripple through science, technology, and society."</em></p>
+<details>
+    <summary></summary>
+Panel 12:
+Please generate a new bright wide-landscape drawing.
+A colorful, bright wide-landscape drawing showing a symbolic global garden where diverse young people, particularly girls and young women, engage with mathematical and scientific pursuits. Ingrid should be depicted walking through this garden, symbolic of her legacy. The technology-forward optimistic style should reach its fullest expression here, representing hope for a future where science and mathematics are truly inclusive fields.
+</details>
+
+<hr />
+<h2 id="epilogue-the-engineers-path">Epilogue: The Engineer's Path</h2>
+<p><em>"Great engineering isn't just about technical skills—it's about vision. Ingrid Daubechies showed us that the greatest contributions come from those who can see beyond current limitations, who persist when others doubt, and who understand that mathematics and science are tools for human progress."</em></p>
+<p><em>"The story of wavelets reminds us that abstract thinking and practical application aren't opposites—they're complementary forces. Women have always had the capacity for this kind of transformative thinking, even when denied the opportunity to demonstrate it."</em></p>
+<p><em>"As we face the complex challenges of our future—from climate change to healthcare, from artificial intelligence to space exploration—we need diverse perspectives more than ever. The next revolutionary idea, like the wavelets that transformed our digital world, might come from someone who doesn't fit the traditional mold of what an engineer or mathematician 'should' look like."</em></p>
+<p><em>"Ingrid Daubechies didn't just create mathematical tools—she created possibilities. And in doing so, she planted seeds that continue to grow into forests of innovation."</em></p>
+
+
+
+
+
+
+
+  
+  
+
+
+
+  
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+          <button type="button" class="md-top md-icon" data-md-component="top" hidden>
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8z"/></svg>
+  Back to top
+</button>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+    
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    
+      
+      <script id="__config" type="application/json">{"base": "../..", "features": ["content.code.copy", "navigation.expand", "navigation.path", "navigation.prune", "navigation.indexes", "toc.follow", "navigation.top", "navigation.footer", "content.action.edit"], "search": "../../assets/javascripts/workers/search.f8cc74c7.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": null}</script>
+    
+    
+      <script src="../../assets/javascripts/bundle.c8b220af.min.js"></script>
+      
+        <script src="../../js/extra.js"></script>
+      
+        <script src="https://unpkg.com/mathjax@3/es5/tex-mml-chtml.js"></script>
+      
+    
+  </body>
+</html>
