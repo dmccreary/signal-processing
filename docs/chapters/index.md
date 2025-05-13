@@ -14,7 +14,7 @@ Thought for 31 seconds
 
 This chapter provides an overview of signal processing, its importance in modern technology, and its various applications across different fields.
 
-[Chapter 1](./01-intro-sigproc/)
+[Chapter 1](./01-intro-sigproc/index.md)
 
 ### Chapter Sections
 
