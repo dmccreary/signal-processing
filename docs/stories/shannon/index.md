@@ -7,8 +7,8 @@ twitter:image: /stories/shannon/cover.png
 social:
    cards: false
 ---
-
 # The Information Revolutionary: Claude Shannon's Digital Gamble
+![](./cover.png)
 
 <details>
     <summary>Narrative Prompt</summary>
@@ -36,10 +36,6 @@ When appropriate, suggest an wide-landscape drawing that could be inserted into 
 When you describe an image, make sure to mention that it should be a colorful, bright wide-landscape illustration using a tech-forward optimistic style.
 </details>
 
-## Response
-
-## ChatGPT Said (OpenAI o3)
-
 ### Prologue – A World on the Brink of Digital Discovery
 
 In the early-1940s, long before “Wi-Fi,” “smartphones,” or even “computers” as we know them, the beating heart of American innovation was **Bell Telephone Laboratories** in Murray Hill, New Jersey. Inside its limestone walls, Nobel laureates rubbed shoulders with tinkering technicians; ideas leapt from quantum theory to vacuum-tube amplifiers before lunch and from satellite orbits to transistorized hearing aids by dinner. The lab’s mantra was simple: *solve problems nobody else can even phrase.*
@@ -51,7 +47,7 @@ Please generate a new wide-landscape illustration.
 A colorful, bright wide-landscape illustration in a tech-forward optimistic style showing the grand façade of Bell Labs in the 1940s. Scientists in white lab coats and navy suits stream through art-deco doors while giant, translucent circuit diagrams float above the building, hinting at ideas yet to be born.
 </details>
 
-### Chapter 1 – Enter Claude Shannon
+## Chapter 1 – Enter Claude Shannon
 
 Claude Elwood Shannon arrived at Bell Labs in 1941, fresh from completing his master’s thesis at MIT that proved telephone switchboards and Boolean algebra were two sides of the same coin. Bell Labs hired the shy, 25-year-old engineer as a mathematical consultant in the “Relay and Switching” group—hardly glamorous, but the perfect sandbox for a mind that relished puzzles.
 
@@ -64,9 +60,7 @@ Please generate a new wide-landscape illustration.
 Shannon, slender and boyish, studies a maze-like relay panel. Above his head, ghostly Boolean algebra symbols morph into telephone relays, blending math and machinery in a bright, wide-landscape illustration.
 </details>
 
----
-
-### Chapter 2 – Bell Labs: A Playground of Possibility
+## Chapter 2 – Bell Labs: A Playground of Possibility
 
 Bell Labs housed radar pioneers, wartime code-breakers, and the soon-to-be inventors of the transistor. Colleagues shared cafeterias and chalkboards, turning lunch breaks into spontaneous seminars. In this crucible, Shannon’s *playful genius* flourished. He famously rode a unicycle down the corridor while juggling three beanbags, a grin framing his analytical eyes—because for Shannon, play and discovery were the same verb.
 
@@ -77,9 +71,7 @@ Please generate a new wide-landscape illustration.
 A wide-landscape corridor scene: Claud Shannon pedals a unicycle beneath fluorescent lights, juggling colorful beanbags that trace rainbow arcs. Around him, astonished engineers clutch slide rules, while equations float like neon graffiti along the hallway walls.
 </details>
 
----
-
-### Chapter 3 – War, Cryptography, and the Birth of Information Theory
+## Chapter 3 – War, Cryptography, and the Birth of Information Theory
 
 World War II thrust Bell Labs into cryptographic research. Shannon joined a hush-hush team crafting secure voice scramblers and analyzing enemy ciphers. Exposure to secret-keeping sharpened his conviction that **communication is fundamentally the battle between *signal* and *noise*.**
 
@@ -94,9 +86,7 @@ Please generate a new wide-landscape illustration.
 A tech-forward wide-landscape illustration split diagonally: left side, a dim war-room with code tapes and rotary scramblers; right side, glowing probability clouds and 0/1 bits streaming through the air, symbolizing Shannon’s mental leap from hardware to abstraction.
 </details>
 
----
-
-### Chapter 4 – Cross-Currents with Hedy Lamarr’s Frequency Hopping
+## Chapter 4 – Cross-Currents with Hedy Lamarr’s Frequency Hopping
 
 Around the same time, Hollywood star **Hedy Lamarr** and composer George Antheil patented **frequency-hopping spread spectrum** to thwart torpedo jamming—an idea also rooted in staying ahead of noise. While Shannon and Lamarr never collaborated directly, Bell Labs engineers eagerly studied her patent. Shannon absorbed its central insight: continuous shifts in carrier frequency *increase channel reliability*. This resonated with his growing mathematics of channel capacity.
 
@@ -107,9 +97,7 @@ Please generate a new wide-landscape illustration.
 A vibrant, wide-landscape split scene: on the left, Hedy Lamarr at a piano covered in torpedo diagrams; on the right, Shannon at a chalkboard of entropy equations. In the middle, colorful radio waves hop across the spectrum, knitting the two innovators together under an optimistic glow.
 </details>
 
----
-
-### Chapter 5 – 1948: *A Mathematical Theory of Communication*
+## Chapter 5 – 1948: *A Mathematical Theory of Communication*
 
 In July 1948 the *Bell System Technical Journal* published Shannon’s masterpiece in two parts. Key ideas:
 
@@ -127,9 +115,7 @@ Please generate a new wide-landscape illustration.
 A bright, wide-landscape illustration of Shannon seated at a drafting table. Sheets of his 1948 paper swirl upward, morphing into today’s digital icons—smartphones, fiber-optic strands, satellite dishes—each connected by sparkling 0s and 1s.
 </details>
 
----
-
-### Chapter 6 – From Bell Labs to the Digital Universe
+## Chapter 6 – From Bell Labs to the Digital Universe
 
 Shannon’s work seeded inventions that followed: **pulse-code modulation, modems, error-correcting codes, compact disks, Wi-Fi, 5G**, and every compression algorithm that squeezes video into your pocket. By proving that bits—*not volts*—carry meaning, he turned communication engineering into *information* engineering.
 
@@ -139,10 +125,6 @@ Image 7:
 Please generate a new wide-landscape illustration.
 A timeline-style wide-landscape scene: starting with a 1940s telephone pole at left, progressing through mainframes, personal computers, smartphones, and ending with a holographic internet globe at right. A single glowing thread of bits links each era.
 </details>
-
-
-
-I'll create five new sections to enhance the Claude Shannon narrative, including detailed image descriptions for a graphic novel style. These will focus on additional aspects of Shannon's work and impact in signal processing.
 
 ## Chapter 7 – The Shannon-Hartley Theorem: Measuring the Invisible
 
