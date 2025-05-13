@@ -1,5 +1,5 @@
 ---
-title: The Information Revolutionary: Claude Shannon's Digital Gamble
+title: The Information Revolutionary - Claude Shannon's Digital Gamble
 description: A graphic-novel story of how Claude Shannon made contributions to the field of signal processing.
 image: /stories/shannon/cover.png
 og:image: /stories/shannon/cover.png

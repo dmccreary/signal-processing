@@ -1,5 +1,8 @@
+---
+title: Algorithm of the Century: Cooley and Tukey's FFT Revolution
+og:image: /stories/fft/cover.png
+---
 # Algorithm of the Century: Cooley and Tukey's FFT Revolution
-
 
 <details class="narrative-prompt">
    <summary>Show Narrative Prompt</summary>
