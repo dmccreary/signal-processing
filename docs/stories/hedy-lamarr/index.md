@@ -1,5 +1,5 @@
 ---
-title: Frequency Hopping: The Untold Story of Hedy Lamarr, Engineer and Hollywood Star
+title: Frequency Hopping - The Untold Story of Hedy Lamarr, Engineer and Hollywood Star
 description: A graphic-novel story of how Engineer and Hollywood Star Hedy Lamarr made contributions to the field of signal processing.
 image: /stories/hedy-lamarr/cover.png
 og:image: /stories/hedy-lamarr/cover.png
@@ -7,7 +7,6 @@ twitter:image: /stories/hedy-lamarr/cover.png
 social:
    cards: false
 ---
-
 # Frequency Hopping: The Untold Story of Hedy Lamarr, Engineer and Hollywood Star
 
 ![](cover.png)
