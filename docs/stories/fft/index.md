@@ -3,7 +3,7 @@
 
 <details class="narrative-prompt">
    <summary>Show Narrative Prompt</summary>
-Please generate a full story narrative for me?  It should be a detailed, fun and entertaining story about the creation of the FFT and its relevance to the entire field digital signal processing. 
+Please generate a full story narrative for me.  It should be a detailed, fun and entertaining story about the creation of the FFT and its relevance to the entire field digital signal processing. 
 
 First put in some context.  Describe was happening in the world at the time they created the FFT.  Describe the challenges at the time and how they cleverly used efficient algorithms to solve the problem.
 

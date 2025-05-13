@@ -1,5 +1,11 @@
 # Signal Processing Stories
 
+These stories were created mostly by generative AI.  I used a generative AI to
+generate some story ideas and then wrote some detailed prompts that created
+a narrative for the stories.  Each story also included narratives that were
+fed into the OpenAI DALL-E 3 text to image system.  You can see examples
+of the narrative prompts, the image prompts and the reference prompts.
+
 ## Frequency Hopping: The Untold Story of Hedy Lamarr, Engineer and Hollywood Star
 ![](./hedy-lamarr/cover.png){width="400px"}
 
@@ -14,3 +20,8 @@ This tells the story of how James Cooley and John Tukey revolutionized signal pr
 
 [Read the FFT Story](./fft/index.md)
 
+## The Wavelet Revolution: Ingrid Daubechies' Mathematical Journey
+
+Ingrid Daubechies, a brilliant Belgian mathematician working in her garden in 1980, saw mathematical patterns where others saw only flowers and soil. Recognizing the limitations of traditional Fourier transforms in analyzing real-world signals that change over time, she worked tirelessly to develop a revolutionary alternative. In 1987, despite skepticism from her male-dominated field, Daubechies created the first orthogonal wavelets with compact support—mathematical building blocks that could capture both frequency and time information in signals. Her breakthrough transformed numerous fields, from digital image compression to medical imaging, ultimately becoming fundamental to modern technologies like JPEG2000 and MP3 files. Breaking glass ceilings, she received the MacArthur "Genius" Fellowship and became the first female president of the International Mathematical Union and the first female full professor in Princeton's Mathematics Department. Beyond her mathematical contributions, Daubechies demonstrated that the qualities of great engineers and scientists—persistence, creativity, courage, and connecting abstract ideas to practical needs—are not limited by gender, creating waves of change that continue to inspire diverse new generations of mathematicians and engineers.
+
+[Read the Wavelets Story](./wavelets/index.md)

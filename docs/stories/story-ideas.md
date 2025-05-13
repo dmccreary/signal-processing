@@ -1,3 +1,5 @@
+# Story Ideas
+
 !!! prompt
     Please consult the course-description.md file in the Project knowledge area.
 
