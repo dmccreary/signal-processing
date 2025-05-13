@@ -38,6 +38,7 @@ When appropriate, suggest an wide-landscape drawing that could be inserted into 
 When you describe an image, make sure to mention that it should be a colorful, bright wide-landscape drawing with an art deco design style.
 
 Prompt given to Anthropic Claude 3.7 in Mat 2025.
+[Claude Session](https://claude.ai/share/e6c6e432-387c-404b-b5d3-3d4b231ef61f)
 </details>
 
 In the glittering world of 1940s Hollywood, one woman led a double life. By day, she was Hedy Lamarr, the glamorous movie star whose beauty captivated audiences worldwide. By night, she was an ingenious inventor whose brilliant mind would change the course of technology forever.
