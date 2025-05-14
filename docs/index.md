@@ -1,8 +1,12 @@
-# Signal Processing
+# Signal Processing with AI
 
 ![](./img/cover-banner.png)
 
-Welcome to our website on Signal Processing with AI.
+Welcome to our website on using generative AI to create
+and maintain a Signal Processing online course.  This site
+is designed to be forked so you can quickly customize it for
+your own signal processing course.  It provides detailed tutorials 
+on how to use generative AI to create and maintain your content.
 
 [Table of Contents](./chapters/index.md)
 
