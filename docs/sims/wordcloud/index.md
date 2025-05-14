@@ -4,10 +4,12 @@ hide:
 ---
 # Wordcloud for Signal Processing
 
-## Version 1
+<iframe src="./wordcloud.html" height="480px" scrolling="no"
+  style="overflow: hidden;"></iframe>
 
-[Version 1](./wordcloud-v1.html)
+```html
+<iframe src="wordcloud.html" height="480px" scrolling="no"
+  style="overflow: hidden;"></iframe>
+```
 
-[Version 2](./wordcloud-v1.html)
-
-[Wordcloud App](wordcloud.html)
+[Run the Wordcloud for Signal Processing MicroSim](wordcloud.html)

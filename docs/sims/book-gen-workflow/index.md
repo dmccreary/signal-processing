@@ -14,7 +14,7 @@ You can include this interactive infographic MicroSim in your textbook
 by adding the following HTML statement to your website:
 
 ```html
-<iframe src="https://dmccreary.github.io/intelligent-textbooks/sims/book-gen-workflow/main.html" height="610px" scrolling="no" style="overflow: hidden;"></iframe>
+<iframe src="https://dmccreary.github.io/signal-processing/sims/book-gen-workflow/main.html" height="610px" scrolling="no" style="overflow: hidden;"></iframe>
 ```
 
 [Run the Circle Radius MicroSim](./main.html){ .md-button .md-button--primary }
