@@ -1,55 +1,54 @@
-// Base and Treble v2 with sliders placed side-by-side
-// region drawing parameters
-// the width of the entire canvas
+// Base and Treble MicroSim with responsive design
+// Canvas dimensions
 let canvasWidth = 450;
-// The top drawing region above the interactive controls
 let drawHeight = 350;
-// control region height
 let controlHeight = 50;
-// The total height of both the drawing region height + the control region height
 let canvasHeight = drawHeight + controlHeight;
-// margin around the active plotting region
 let margin = 20;
-// larger text so students in the back of the room can read the labels
+let sliderLeftMargin = 50; // just wide enough for the value
 let defaultTextSize = 16;
+
+// Global variables for width and height
+let containerWidth; // calculated by container upon resize
+let containerHeight = canvasHeight; // fixed height on page
 
 let bassSlider, trebleSlider;
 
 function setup() {
-  const canvas = createCanvas(canvasWidth, canvasHeight);
-  var mainElement = document.querySelector('main');
-  canvas.parent(mainElement);
+  // Create a canvas to match the parent container's size
+  updateCanvasSize();
+  const canvas = createCanvas(containerWidth, containerHeight);
+  canvas.parent(document.querySelector('main'));
   textSize(defaultTextSize);
 
-  // Define slider left margin
-  let sliderLeftMargin = margin;
-
   // Define slider width (half the canvas width minus margins)
-  let sliderWidth = (canvasWidth - 3 * margin) / 2;
+  let sliderWidth = (containerWidth - (8 * margin)) / 2;;
 
   // Create bass slider on the left
   bassSlider = createSlider(0, 100, 50, 1);
-  bassSlider.position(sliderLeftMargin, drawHeight + 12);
-  bassSlider.style('width', sliderWidth + 'px');
+  bassSlider.position(sliderLeftMargin, drawHeight + 20);
+  bassSlider.size(sliderWidth);
 
   // Create treble slider on the right
   trebleSlider = createSlider(0, 100, 50, 1);
-  trebleSlider.position(sliderLeftMargin + sliderWidth + margin, drawHeight + 12);
-  trebleSlider.style('width', sliderWidth + 'px');
+  trebleSlider.position(sliderLeftMargin + sliderWidth + 4*margin, drawHeight + 20);
+  trebleSlider.size(sliderWidth);
+  
+  describe('A frequency response visualizer showing how bass and treble controls affect audio output.', LABEL);
 }
 
 function draw() {
-  // Set background color
-  background('white');
-
-  // Fill the drawing region with 'aliceblue'
+  // Draw area
   fill('aliceblue');
-  stroke('black');
-  rect(0, 0, canvasWidth, drawHeight);
-
-  // Fill the control region with 'white'
+  stroke('silver');
+  strokeWeight(1);
+  rect(0, 0, containerWidth, drawHeight);
+  
+  // Controls area
   fill('white');
-  rect(0, drawHeight, canvasWidth, controlHeight);
+  stroke('silver');
+  strokeWeight(1);
+  rect(0, drawHeight, containerWidth, controlHeight);
 
   // Get the updated slider values
   let bassVal = bassSlider.value();
@@ -92,13 +91,13 @@ function draw() {
 
     let totalGain_dB = bassGain_dB + trebleGain_dB;
 
-    // Map frequency to x position
+    // Map frequency to x position (adjusted for container width)
     let x = map(
       Math.log10(freq),
       Math.log10(freqMin),
       Math.log10(freqMax),
       margin,
-      canvasWidth - margin
+      containerWidth - margin
     );
 
     // Map gain to y position
@@ -115,19 +114,58 @@ function draw() {
   // x-axis at y = gain 0 dB
   let yZero = map(0, gainMin, gainMax, drawHeight - margin, margin);
   strokeWeight(1);
-  line(margin, yZero, canvasWidth - margin, yZero);
+  line(margin, yZero, containerWidth - margin, yZero);
 
   // Draw labels
   noStroke();
   fill('black');
+  
+  // Title - responsive text size
+  let titleSize = constrain(containerWidth * 0.05, 18, 28);
+  textSize(titleSize);
   textAlign(CENTER, TOP);
-  textSize(24);
-  text("Frequency Response", canvasWidth / 2, margin / 2);
+  text("Frequency Response", containerWidth / 2, margin / 2);
 
-  // Draw labels for sliders under the sliders
-  textSize(16);
-  textAlign(CENTER, TOP);
+  // Draw labels for sliders
   fill('black');
-  text("Bass", bassSlider.x + bassSlider.width / 2, bassSlider.y + 20);
-  text("Treble", trebleSlider.x + trebleSlider.width / 2, trebleSlider.y + 20);
+  textSize(defaultTextSize);
+  textAlign(LEFT, CENTER);
+  text("Bass", containerWidth * .3, drawHeight + 35);
+  
+  // Calculate position for "Treble:" label
+  let trebleLabel = sliderLeftMargin + ((containerWidth - 3 * margin) / 2) + margin - 60;
+  text("Treble", containerWidth * .7, drawHeight + 35);
+  
+  // Add value labels
+  textAlign(RIGHT, CENTER);
+  text(bassVal, sliderLeftMargin - 20, drawHeight + 20);
+  text(trebleVal, trebleSlider.x - 15, drawHeight + 20);
+  
+  // Add frequency labels at bottom of graph (optional)
+  textAlign(CENTER, TOP);
+  textSize(constrain(containerWidth * 0.025, 10, 14));
+  text("20 Hz", margin, drawHeight - margin + 5);
+  text("1 kHz", containerWidth/2, drawHeight - margin + 5);
+  text("20 kHz", containerWidth - margin, drawHeight - margin + 5);
+}
+
+function windowResized() {
+  // Update canvas size when the container resizes
+  updateCanvasSize();
+  resizeCanvas(containerWidth, containerHeight);
+  
+  // Recalculate slider sizes based on new width
+  let sliderWidth = (containerWidth - 6 * margin) / 2;
+  bassSlider.size(sliderWidth);
+  trebleSlider.position(sliderLeftMargin + sliderWidth + 4*margin, drawHeight + 20);
+  trebleSlider.size(sliderWidth);
+  
+  redraw();
+}
+
+function updateCanvasSize() {
+  // Get the exact dimensions of the container
+  const container = document.querySelector('main').getBoundingClientRect();
+  containerWidth = Math.floor(container.width);  // Avoid fractional pixels
+  canvasWidth = containerWidth;
 }
