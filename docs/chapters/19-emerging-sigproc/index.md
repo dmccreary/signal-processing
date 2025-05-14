@@ -9,12 +9,8 @@ Introduces cutting-edge areas in signal processing research and development.
 -   **Theory and Principles**
 -   **Recovery Algorithms**
 
-### Cognitive Signal Processing
+### Using Deep Neural Networks for Signal Processing
 
--   **Adaptive Learning Systems**
--   **Applications in Smart Devices**
-
-### Quantum Signal Processing
-
--   **Quantum Computing Basics**
--   **Potential Signal Processing Applications**
+- **Overview of Deep Neural Networks**
+- **Tradeoff Analysis with Rule-Based Systems**
+- **Expandability and Risk Management**

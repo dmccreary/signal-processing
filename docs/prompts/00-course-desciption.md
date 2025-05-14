@@ -2,25 +2,24 @@
 
 ## Sample Prompt
 
-```linenums="0"
-Please generate a detailed course description for a
-college-level course on signal processing as through
-it would be taught by an electrical engineering
-department at a university and listed in the
-departments course catalog online.
+!!! prompt
+    Please generate a detailed course description for a
+    college-level course on signal processing as through
+    it would be taught by an electrical engineering
+    department at a university and listed in the
+    departments course catalog online.
 
-The course description should also have a summary
-as well as a detailed prerequisites and learning
-objectives.
+    The course description should also have a summary
+    as well as a detailed prerequisites and learning
+    objectives.
 
-Use Blooms 2001 taxonomy to generate a detailed
-list of learning objectives.
+    Use Blooms 2001 taxonomy to generate a detailed
+    list of learning objectives.
 
-Focus on the extensive use of generative AI to
-create innovative content and simulations to make
-signal processing fun and engaging for a wide
-variety of students with different math backgrounds.
-```
+    Focus on the extensive use of generative AI to
+    create innovative content and simulations to make
+    signal processing fun and engaging for a wide
+    variety of students with different math backgrounds.
 
 ## Sample Response
 
