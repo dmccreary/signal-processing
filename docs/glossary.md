@@ -125,6 +125,12 @@ Cross-correlation measures the similarity between two signals as a function of t
 
 **Example:** Students use cross-correlation to identify the time delay between two sensor signals, aiding in applications like radar and sonar.
 
+#### Cursor IDE
+
+An agentic integrated development environment that is ideal for creating and maintaining intelligent textbooks.
+
+Cursor immediately creates embeddings for all the files in your project so when you make a request it knows how to proceed with changes.  A request such as "Create a new MicroSim" will automatically create new directories and files that conform to your rules.
+
 #### Deep Learning (DL)
 
 Deep Learning is a subset of machine learning that uses neural networks with many layers to model complex patterns in data. It is applied in signal processing for tasks like image and speech recognition.

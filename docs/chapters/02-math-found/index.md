@@ -2,6 +2,9 @@
 
 Covers the essential mathematical tools required for signal processing, including linear algebra, complex numbers, and probability theory.
 
+!!! Note
+    We now have a new intelligent textbook that covers many of the topics in linear algebra.  See [This GitHub Repo](https://artemispearson.github.io/learning-graphs/) for details.
+
 ### Chapter Sections
 
 ## Linear Algebra Review
