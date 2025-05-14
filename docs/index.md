@@ -12,7 +12,7 @@ signal processing content that leverages the latest generative AI
 technologies to create a fun and engaging content for a wide
 audience of students with various math backgrounds.
 
-See our [About This Course](./about.md) for further details.
+See our [About This Website](./about.md) for further details.
 
 All content is licensed under [Creative Commons Attribution NonCommercial ShareAlike](./license.md).
 
