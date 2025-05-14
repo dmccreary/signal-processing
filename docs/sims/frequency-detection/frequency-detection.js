@@ -1,3 +1,5 @@
+// frequencey-detection.js
+// Frequency Detection Simulation
 let height = 575;
 let width = 600;
 
@@ -74,7 +76,7 @@ function set_style(args) {
 }
 
 function preload() {
-    font = loadFont('/ee-microsims/sims/frequency-detection/frequency-detection.otf');
+    font = loadFont('/signal-processing/sims/frequency-detection/frequency-detection.otf');
 }
 
 function register_frame(label,x,y,w,h,vx,vy) {

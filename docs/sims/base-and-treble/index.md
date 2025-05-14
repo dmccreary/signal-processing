@@ -4,9 +4,12 @@ hide:
 ---
 # Base and Treble Amplifier Controls
 
-<iframe src="main.html" width="470" height="270" scrolling="no" style="overflow: hidden;"></iframe>
+<iframe src="base-and-treble.html" height="420" scrolling="no" style="overflow: hidden;"></iframe>
 
-![Base and Treble Image](./base-and-treble.png)
+To use this MicroSim on your web page, just copy this code into your web page.
+```html
+<iframe src="/signal-processing/sims/base-and-treble/base-and-treble.html" height="420" scrolling="no" style="overflow: hidden;"></iframe>
+```
 
 [Run the Base and Treble MicroSim](./base-and-treble.html){ .md-button .md-button--primary }
 [Edit the Base and Treble MicroSim](https://editor.p5js.org/dmccreary/sketches/j1ND7Tl4a)
