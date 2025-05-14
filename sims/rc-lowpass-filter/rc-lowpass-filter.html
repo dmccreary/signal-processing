@@ -1,0 +1,30 @@
+
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/1.9.0/p5.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/1.9.0/addons/p5.sound.min.js"></script>
+    <script src="https://cdn.plot.ly/plotly-latest.min.js"></script>
+<input type="number" id="resistance" placeholder="Enter Resistance (Ohms)">
+<input type="number" id="capacitance" placeholder="Enter Capacitance (Farads)">
+<button onclick="updatePlot()">Generate Bode Plot</button>
+<div id="myDiv" style="width: 100%; height: 100%;"></div>
+
+<script>
+function updatePlot() {
+    let R = document.getElementById('resistance').value;
+    let C = document.getElementById('capacitance').value;
+    createBodePlot(parseFloat(R), parseFloat(C));
+}
+</script>    
+    <link rel="stylesheet" type="text/css" href="rc-lowpass-filter.css">
+    <meta charset="utf-8" />
+
+  </head>
+  <body>
+    <div id="myDiv" style="width: 100%; height: 100%;"></div>
+    <main>
+    </main>
+    <script src="rc-lowpass-filter.js"></script>
+  </body>
+</html>
