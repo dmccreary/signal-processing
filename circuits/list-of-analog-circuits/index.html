@@ -1,0 +1,2715 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+        <meta name="description" content="College Level Textbook on Signal Processing - License is Commons ShareAlike Attribution Noncommercial">
+      
+      
+        <meta name="author" content="Dan McCreary">
+      
+      
+        <link rel="canonical" href="https://dmccreary.github.io/signal-processing/circuits/list-of-analog-circuits/">
+      
+      
+        <link rel="prev" href="../">
+      
+      
+        <link rel="next" href="../non-inverting-opamp/">
+      
+      
+      <link rel="icon" href="../../img/favicon.ico">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.6.12">
+    
+    
+      
+        <title>List of Analog Circuits - Signal Processing with AI</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../assets/stylesheets/main.2afb09e1.min.css">
+      
+        
+        <link rel="stylesheet" href="../../assets/stylesheets/palette.06af60db.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+      <link rel="stylesheet" href="../../css/extra.css">
+    
+    <script>__md_scope=new URL("../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+  
+
+
+  
+  
+
+<script id="__analytics">function __md_analytics(){function e(){dataLayer.push(arguments)}window.dataLayer=window.dataLayer||[],e("js",new Date),e("config","G-SY3G2ND80K"),document.addEventListener("DOMContentLoaded",(function(){document.forms.search&&document.forms.search.query.addEventListener("blur",(function(){this.value&&e("event","search",{search_term:this.value})}));document$.subscribe((function(){var t=document.forms.feedback;if(void 0!==t)for(var a of t.querySelectorAll("[type=submit]"))a.addEventListener("click",(function(a){a.preventDefault();var n=document.location.pathname,d=this.getAttribute("data-md-value");e("event","feedback",{page:n,data:d}),t.firstElementChild.disabled=!0;var r=t.querySelector(".md-feedback__note [data-md-value='"+d+"']");r&&(r.hidden=!1)})),t.hidden=!1})),location$.subscribe((function(t){e("config","G-SY3G2ND80K",{page_path:t.pathname})}))}));var t=document.createElement("script");t.async=!0,t.src="https://www.googletagmanager.com/gtag/js?id=G-SY3G2ND80K",document.getElementById("__analytics").insertAdjacentElement("afterEnd",t)}</script>
+  
+    <script>"undefined"!=typeof __md_analytics&&__md_analytics()</script>
+  
+
+    
+    
+      
+        <meta  property="og:type"  content="website" >
+      
+        <meta  property="og:title"  content="List of Analog Circuits - Signal Processing with AI" >
+      
+        <meta  property="og:description"  content="College Level Textbook on Signal Processing - License is Commons ShareAlike Attribution Noncommercial" >
+      
+        <meta  property="og:image"  content="https://dmccreary.github.io/signal-processing/assets/images/social/circuits/list-of-analog-circuits.png" >
+      
+        <meta  property="og:image:type"  content="image/png" >
+      
+        <meta  property="og:image:width"  content="1200" >
+      
+        <meta  property="og:image:height"  content="630" >
+      
+        <meta  property="og:url"  content="https://dmccreary.github.io/signal-processing/circuits/list-of-analog-circuits/" >
+      
+        <meta  name="twitter:card"  content="summary_large_image" >
+      
+        <meta  name="twitter:title"  content="List of Analog Circuits - Signal Processing with AI" >
+      
+        <meta  name="twitter:description"  content="College Level Textbook on Signal Processing - License is Commons ShareAlike Attribution Noncommercial" >
+      
+        <meta  name="twitter:image"  content="https://dmccreary.github.io/signal-processing/assets/images/social/circuits/list-of-analog-circuits.png" >
+      
+    
+    
+  </head>
+  
+  
+    
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="maroon" data-md-color-accent="gold">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#important-analog-circuits-in-signal-processing" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+  
+
+<header class="md-header md-header--shadow" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href="../.." title="Signal Processing with AI" class="md-header__button md-logo" aria-label="Signal Processing with AI" data-md-component="logo">
+      
+  <img src="../../img/logo-192.png" alt="logo">
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            Signal Processing with AI
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              List of Analog Circuits
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+    
+    
+    
+    
+      
+      
+        <label class="md-header__button md-icon" for="__search">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        </label>
+        <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Search">
+        
+        <button type="reset" class="md-search__icon md-icon" title="Clear" aria-label="Clear" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+        </button>
+      </nav>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+      
+    
+    
+      <div class="md-header__source">
+        <a href="https://github.com/dmccreary/signal-processing" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 6.7.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2024 Fonticons, Inc.--><path d="M439.55 236.05 244 40.45a28.87 28.87 0 0 0-40.81 0l-40.66 40.63 51.52 51.52c27.06-9.14 52.68 16.77 43.39 43.68l49.66 49.66c34.23-11.8 61.18 31 35.47 56.69-26.49 26.49-70.21-2.87-56-37.34L240.22 199v121.85c25.3 12.54 22.26 41.85 9.08 55a34.34 34.34 0 0 1-48.55 0c-17.57-17.6-11.07-46.91 11.25-56v-123c-20.8-8.51-24.6-30.74-18.64-45L142.57 101 8.45 235.14a28.86 28.86 0 0 0 0 40.81l195.61 195.6a28.86 28.86 0 0 0 40.8 0l194.69-194.69a28.86 28.86 0 0 0 0-40.81"/></svg>
+  </div>
+  <div class="md-source__repository">
+    GitHub Repo
+  </div>
+</a>
+      </div>
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+
+<nav class="md-nav md-nav--primary" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../.." title="Signal Processing with AI" class="md-nav__button md-logo" aria-label="Signal Processing with AI" data-md-component="logo">
+      
+  <img src="../../img/logo-192.png" alt="logo">
+
+    </a>
+    Signal Processing with AI
+  </label>
+  
+    <div class="md-nav__source">
+      <a href="https://github.com/dmccreary/signal-processing" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 6.7.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2024 Fonticons, Inc.--><path d="M439.55 236.05 244 40.45a28.87 28.87 0 0 0-40.81 0l-40.66 40.63 51.52 51.52c27.06-9.14 52.68 16.77 43.39 43.68l49.66 49.66c34.23-11.8 61.18 31 35.47 56.69-26.49 26.49-70.21-2.87-56-37.34L240.22 199v121.85c25.3 12.54 22.26 41.85 9.08 55a34.34 34.34 0 0 1-48.55 0c-17.57-17.6-11.07-46.91 11.25-56v-123c-20.8-8.51-24.6-30.74-18.64-45L142.57 101 8.45 235.14a28.86 28.86 0 0 0 0 40.81l195.61 195.6a28.86 28.86 0 0 0 40.8 0l194.69-194.69a28.86 28.86 0 0 0 0-40.81"/></svg>
+  </div>
+  <div class="md-source__repository">
+    GitHub Repo
+  </div>
+</a>
+    </div>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../.." class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Home
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../chapters/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Table of Contents
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../about/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    About This Website
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../course-description/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Course Description
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+    
+      
+        
+        
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+  
+    <a href="../../chapters/" class="md-nav__link">
+      
+  
+  
+  <span class="md-ellipsis">
+    Sample Book Chapters
+    
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+    
+      
+        
+        
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+  
+    <a href="../../prompts/" class="md-nav__link">
+      
+  
+  
+  <span class="md-ellipsis">
+    Prompts
+    
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+    
+      
+        
+        
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+  
+    <a href="../../sims/" class="md-nav__link">
+      
+  
+  
+  <span class="md-ellipsis">
+    MicroSims
+    
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+    
+      
+        
+        
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+  
+    <a href="../../stories/" class="md-nav__link">
+      
+  
+  
+  <span class="md-ellipsis">
+    Stories
+    
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+    
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+    
+      
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_9" checked>
+        
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../" class="md-nav__link ">
+              
+  
+  
+  <span class="md-ellipsis">
+    Circuits
+    
+  </span>
+  
+
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_9" id="__nav_9_label" tabindex="0">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_9_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_9">
+            <span class="md-nav__icon md-icon"></span>
+            Circuits
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  
+  <span class="md-ellipsis">
+    List of Analog Circuits
+    
+  </span>
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        
+  
+  
+  <span class="md-ellipsis">
+    List of Analog Circuits
+    
+  </span>
+  
+
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#operational-amplifier-op-amp-inverting-amplifier" class="md-nav__link">
+    <span class="md-ellipsis">
+      Operational Amplifier (Op-Amp) Inverting Amplifier
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Operational Amplifier (Op-Amp) Inverting Amplifier">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#importance-in-signal-processing" class="md-nav__link">
+    <span class="md-ellipsis">
+      Importance in Signal Processing
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#circuit-description" class="md-nav__link">
+    <span class="md-ellipsis">
+      Circuit Description
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#key-components" class="md-nav__link">
+    <span class="md-ellipsis">
+      Key Components
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#non-inverting-amplifier" class="md-nav__link">
+    <span class="md-ellipsis">
+      Non-Inverting Amplifier
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Non-Inverting Amplifier">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#importance-in-signal-processing_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      Importance in Signal Processing
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#circuit-description_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      Circuit Description
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#key-components_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      Key Components
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#active-low-pass-filter" class="md-nav__link">
+    <span class="md-ellipsis">
+      Active Low-Pass Filter
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Active Low-Pass Filter">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#importance-in-signal-processing_2" class="md-nav__link">
+    <span class="md-ellipsis">
+      Importance in Signal Processing
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#circuit-description_2" class="md-nav__link">
+    <span class="md-ellipsis">
+      Circuit Description
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#key-components_2" class="md-nav__link">
+    <span class="md-ellipsis">
+      Key Components
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#active-high-pass-filter" class="md-nav__link">
+    <span class="md-ellipsis">
+      Active High-Pass Filter
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Active High-Pass Filter">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#importance-in-signal-processing_3" class="md-nav__link">
+    <span class="md-ellipsis">
+      Importance in Signal Processing
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#circuit-description_3" class="md-nav__link">
+    <span class="md-ellipsis">
+      Circuit Description
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#key-components_3" class="md-nav__link">
+    <span class="md-ellipsis">
+      Key Components
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#active-band-pass-filter" class="md-nav__link">
+    <span class="md-ellipsis">
+      Active Band-Pass Filter
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Active Band-Pass Filter">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#importance-in-signal-processing_4" class="md-nav__link">
+    <span class="md-ellipsis">
+      Importance in Signal Processing
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#circuit-description_4" class="md-nav__link">
+    <span class="md-ellipsis">
+      Circuit Description
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#key-components_4" class="md-nav__link">
+    <span class="md-ellipsis">
+      Key Components
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#active-band-reject-notch-filter" class="md-nav__link">
+    <span class="md-ellipsis">
+      Active Band-Reject (Notch) Filter
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Active Band-Reject (Notch) Filter">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#importance-in-signal-processing_5" class="md-nav__link">
+    <span class="md-ellipsis">
+      Importance in Signal Processing
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#circuit-description_5" class="md-nav__link">
+    <span class="md-ellipsis">
+      Circuit Description
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#key-components_5" class="md-nav__link">
+    <span class="md-ellipsis">
+      Key Components
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#voltage-controlled-amplifier-vca" class="md-nav__link">
+    <span class="md-ellipsis">
+      Voltage-Controlled Amplifier (VCA)
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Voltage-Controlled Amplifier (VCA)">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#importance-in-signal-processing_6" class="md-nav__link">
+    <span class="md-ellipsis">
+      Importance in Signal Processing
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#circuit-description_6" class="md-nav__link">
+    <span class="md-ellipsis">
+      Circuit Description
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#key-components_6" class="md-nav__link">
+    <span class="md-ellipsis">
+      Key Components
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#sallen-key-filter" class="md-nav__link">
+    <span class="md-ellipsis">
+      Sallen-Key Filter
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Sallen-Key Filter">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#importance-in-signal-processing_7" class="md-nav__link">
+    <span class="md-ellipsis">
+      Importance in Signal Processing
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#circuit-description_7" class="md-nav__link">
+    <span class="md-ellipsis">
+      Circuit Description
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#key-components_7" class="md-nav__link">
+    <span class="md-ellipsis">
+      Key Components
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#integrator-circuit" class="md-nav__link">
+    <span class="md-ellipsis">
+      Integrator Circuit
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Integrator Circuit">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#importance-in-signal-processing_8" class="md-nav__link">
+    <span class="md-ellipsis">
+      Importance in Signal Processing
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#circuit-description_8" class="md-nav__link">
+    <span class="md-ellipsis">
+      Circuit Description
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#key-components_8" class="md-nav__link">
+    <span class="md-ellipsis">
+      Key Components
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#differentiator-circuit" class="md-nav__link">
+    <span class="md-ellipsis">
+      Differentiator Circuit
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Differentiator Circuit">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#importance-in-signal-processing_9" class="md-nav__link">
+    <span class="md-ellipsis">
+      Importance in Signal Processing
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#circuit-description_9" class="md-nav__link">
+    <span class="md-ellipsis">
+      Circuit Description
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#key-components_9" class="md-nav__link">
+    <span class="md-ellipsis">
+      Key Components
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#phase-shift-oscillator" class="md-nav__link">
+    <span class="md-ellipsis">
+      Phase-Shift Oscillator
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Phase-Shift Oscillator">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#importance-in-signal-processing_10" class="md-nav__link">
+    <span class="md-ellipsis">
+      Importance in Signal Processing
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#circuit-description_10" class="md-nav__link">
+    <span class="md-ellipsis">
+      Circuit Description
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#key-components_10" class="md-nav__link">
+    <span class="md-ellipsis">
+      Key Components
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#precision-rectifier-absolute-value-circuit" class="md-nav__link">
+    <span class="md-ellipsis">
+      Precision Rectifier (Absolute Value Circuit)
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Precision Rectifier (Absolute Value Circuit)">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#importance-in-signal-processing_11" class="md-nav__link">
+    <span class="md-ellipsis">
+      Importance in Signal Processing
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#circuit-description_11" class="md-nav__link">
+    <span class="md-ellipsis">
+      Circuit Description
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#key-components_11" class="md-nav__link">
+    <span class="md-ellipsis">
+      Key Components
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#sample-and-hold-circuit" class="md-nav__link">
+    <span class="md-ellipsis">
+      Sample and Hold Circuit
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Sample and Hold Circuit">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#importance-in-signal-processing_12" class="md-nav__link">
+    <span class="md-ellipsis">
+      Importance in Signal Processing
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#circuit-description_12" class="md-nav__link">
+    <span class="md-ellipsis">
+      Circuit Description
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#key-components_12" class="md-nav__link">
+    <span class="md-ellipsis">
+      Key Components
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#analog-multiplier" class="md-nav__link">
+    <span class="md-ellipsis">
+      Analog Multiplier
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Analog Multiplier">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#importance-in-signal-processing_13" class="md-nav__link">
+    <span class="md-ellipsis">
+      Importance in Signal Processing
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#circuit-description_13" class="md-nav__link">
+    <span class="md-ellipsis">
+      Circuit Description
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#key-components_13" class="md-nav__link">
+    <span class="md-ellipsis">
+      Key Components
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#wien-bridge-oscillator" class="md-nav__link">
+    <span class="md-ellipsis">
+      Wien Bridge Oscillator
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Wien Bridge Oscillator">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#importance-in-signal-processing_14" class="md-nav__link">
+    <span class="md-ellipsis">
+      Importance in Signal Processing
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#circuit-description_14" class="md-nav__link">
+    <span class="md-ellipsis">
+      Circuit Description
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#key-components_14" class="md-nav__link">
+    <span class="md-ellipsis">
+      Key Components
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#state-variable-filter" class="md-nav__link">
+    <span class="md-ellipsis">
+      State Variable Filter
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="State Variable Filter">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#importance-in-signal-processing_15" class="md-nav__link">
+    <span class="md-ellipsis">
+      Importance in Signal Processing
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#circuit-description_15" class="md-nav__link">
+    <span class="md-ellipsis">
+      Circuit Description
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#key-components_15" class="md-nav__link">
+    <span class="md-ellipsis">
+      Key Components
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../non-inverting-opamp/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Non-Inverting OpAmp
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../op-amp-inverting/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Inverting OpAmp
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../checklist/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Checklist
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../glossary/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Glossary
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../how-we-built-this-site/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    How We Built This Site
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../license/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    License
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../references/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    References
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../contact/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Contact
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../ieee-paper-changes/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Paper Changes
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#operational-amplifier-op-amp-inverting-amplifier" class="md-nav__link">
+    <span class="md-ellipsis">
+      Operational Amplifier (Op-Amp) Inverting Amplifier
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Operational Amplifier (Op-Amp) Inverting Amplifier">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#importance-in-signal-processing" class="md-nav__link">
+    <span class="md-ellipsis">
+      Importance in Signal Processing
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#circuit-description" class="md-nav__link">
+    <span class="md-ellipsis">
+      Circuit Description
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#key-components" class="md-nav__link">
+    <span class="md-ellipsis">
+      Key Components
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#non-inverting-amplifier" class="md-nav__link">
+    <span class="md-ellipsis">
+      Non-Inverting Amplifier
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Non-Inverting Amplifier">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#importance-in-signal-processing_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      Importance in Signal Processing
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#circuit-description_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      Circuit Description
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#key-components_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      Key Components
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#active-low-pass-filter" class="md-nav__link">
+    <span class="md-ellipsis">
+      Active Low-Pass Filter
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Active Low-Pass Filter">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#importance-in-signal-processing_2" class="md-nav__link">
+    <span class="md-ellipsis">
+      Importance in Signal Processing
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#circuit-description_2" class="md-nav__link">
+    <span class="md-ellipsis">
+      Circuit Description
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#key-components_2" class="md-nav__link">
+    <span class="md-ellipsis">
+      Key Components
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#active-high-pass-filter" class="md-nav__link">
+    <span class="md-ellipsis">
+      Active High-Pass Filter
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Active High-Pass Filter">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#importance-in-signal-processing_3" class="md-nav__link">
+    <span class="md-ellipsis">
+      Importance in Signal Processing
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#circuit-description_3" class="md-nav__link">
+    <span class="md-ellipsis">
+      Circuit Description
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#key-components_3" class="md-nav__link">
+    <span class="md-ellipsis">
+      Key Components
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#active-band-pass-filter" class="md-nav__link">
+    <span class="md-ellipsis">
+      Active Band-Pass Filter
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Active Band-Pass Filter">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#importance-in-signal-processing_4" class="md-nav__link">
+    <span class="md-ellipsis">
+      Importance in Signal Processing
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#circuit-description_4" class="md-nav__link">
+    <span class="md-ellipsis">
+      Circuit Description
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#key-components_4" class="md-nav__link">
+    <span class="md-ellipsis">
+      Key Components
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#active-band-reject-notch-filter" class="md-nav__link">
+    <span class="md-ellipsis">
+      Active Band-Reject (Notch) Filter
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Active Band-Reject (Notch) Filter">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#importance-in-signal-processing_5" class="md-nav__link">
+    <span class="md-ellipsis">
+      Importance in Signal Processing
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#circuit-description_5" class="md-nav__link">
+    <span class="md-ellipsis">
+      Circuit Description
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#key-components_5" class="md-nav__link">
+    <span class="md-ellipsis">
+      Key Components
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#voltage-controlled-amplifier-vca" class="md-nav__link">
+    <span class="md-ellipsis">
+      Voltage-Controlled Amplifier (VCA)
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Voltage-Controlled Amplifier (VCA)">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#importance-in-signal-processing_6" class="md-nav__link">
+    <span class="md-ellipsis">
+      Importance in Signal Processing
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#circuit-description_6" class="md-nav__link">
+    <span class="md-ellipsis">
+      Circuit Description
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#key-components_6" class="md-nav__link">
+    <span class="md-ellipsis">
+      Key Components
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#sallen-key-filter" class="md-nav__link">
+    <span class="md-ellipsis">
+      Sallen-Key Filter
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Sallen-Key Filter">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#importance-in-signal-processing_7" class="md-nav__link">
+    <span class="md-ellipsis">
+      Importance in Signal Processing
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#circuit-description_7" class="md-nav__link">
+    <span class="md-ellipsis">
+      Circuit Description
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#key-components_7" class="md-nav__link">
+    <span class="md-ellipsis">
+      Key Components
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#integrator-circuit" class="md-nav__link">
+    <span class="md-ellipsis">
+      Integrator Circuit
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Integrator Circuit">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#importance-in-signal-processing_8" class="md-nav__link">
+    <span class="md-ellipsis">
+      Importance in Signal Processing
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#circuit-description_8" class="md-nav__link">
+    <span class="md-ellipsis">
+      Circuit Description
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#key-components_8" class="md-nav__link">
+    <span class="md-ellipsis">
+      Key Components
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#differentiator-circuit" class="md-nav__link">
+    <span class="md-ellipsis">
+      Differentiator Circuit
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Differentiator Circuit">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#importance-in-signal-processing_9" class="md-nav__link">
+    <span class="md-ellipsis">
+      Importance in Signal Processing
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#circuit-description_9" class="md-nav__link">
+    <span class="md-ellipsis">
+      Circuit Description
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#key-components_9" class="md-nav__link">
+    <span class="md-ellipsis">
+      Key Components
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#phase-shift-oscillator" class="md-nav__link">
+    <span class="md-ellipsis">
+      Phase-Shift Oscillator
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Phase-Shift Oscillator">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#importance-in-signal-processing_10" class="md-nav__link">
+    <span class="md-ellipsis">
+      Importance in Signal Processing
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#circuit-description_10" class="md-nav__link">
+    <span class="md-ellipsis">
+      Circuit Description
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#key-components_10" class="md-nav__link">
+    <span class="md-ellipsis">
+      Key Components
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#precision-rectifier-absolute-value-circuit" class="md-nav__link">
+    <span class="md-ellipsis">
+      Precision Rectifier (Absolute Value Circuit)
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Precision Rectifier (Absolute Value Circuit)">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#importance-in-signal-processing_11" class="md-nav__link">
+    <span class="md-ellipsis">
+      Importance in Signal Processing
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#circuit-description_11" class="md-nav__link">
+    <span class="md-ellipsis">
+      Circuit Description
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#key-components_11" class="md-nav__link">
+    <span class="md-ellipsis">
+      Key Components
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#sample-and-hold-circuit" class="md-nav__link">
+    <span class="md-ellipsis">
+      Sample and Hold Circuit
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Sample and Hold Circuit">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#importance-in-signal-processing_12" class="md-nav__link">
+    <span class="md-ellipsis">
+      Importance in Signal Processing
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#circuit-description_12" class="md-nav__link">
+    <span class="md-ellipsis">
+      Circuit Description
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#key-components_12" class="md-nav__link">
+    <span class="md-ellipsis">
+      Key Components
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#analog-multiplier" class="md-nav__link">
+    <span class="md-ellipsis">
+      Analog Multiplier
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Analog Multiplier">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#importance-in-signal-processing_13" class="md-nav__link">
+    <span class="md-ellipsis">
+      Importance in Signal Processing
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#circuit-description_13" class="md-nav__link">
+    <span class="md-ellipsis">
+      Circuit Description
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#key-components_13" class="md-nav__link">
+    <span class="md-ellipsis">
+      Key Components
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#wien-bridge-oscillator" class="md-nav__link">
+    <span class="md-ellipsis">
+      Wien Bridge Oscillator
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Wien Bridge Oscillator">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#importance-in-signal-processing_14" class="md-nav__link">
+    <span class="md-ellipsis">
+      Importance in Signal Processing
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#circuit-description_14" class="md-nav__link">
+    <span class="md-ellipsis">
+      Circuit Description
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#key-components_14" class="md-nav__link">
+    <span class="md-ellipsis">
+      Key Components
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#state-variable-filter" class="md-nav__link">
+    <span class="md-ellipsis">
+      State Variable Filter
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="State Variable Filter">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#importance-in-signal-processing_15" class="md-nav__link">
+    <span class="md-ellipsis">
+      Importance in Signal Processing
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#circuit-description_15" class="md-nav__link">
+    <span class="md-ellipsis">
+      Circuit Description
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#key-components_15" class="md-nav__link">
+    <span class="md-ellipsis">
+      Key Components
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+  
+    <a href="https://github.com/dmccreary/signal-processing/blob/master/docs/circuits/list-of-analog-circuits.md" title="Edit this page" class="md-content__button md-icon">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M10 20H6V4h7v5h5v3.1l2-2V8l-6-6H6c-1.1 0-2 .9-2 2v16c0 1.1.9 2 2 2h4zm10.2-7c.1 0 .3.1.4.2l1.3 1.3c.2.2.2.6 0 .8l-1 1-2.1-2.1 1-1c.1-.1.2-.2.4-.2m0 3.9L14.1 23H12v-2.1l6.1-6.1z"/></svg>
+    </a>
+  
+  
+
+
+<h1 id="important-analog-circuits-in-signal-processing">Important Analog Circuits in Signal Processing</h1>
+<h2 id="operational-amplifier-op-amp-inverting-amplifier">Operational Amplifier (Op-Amp) Inverting Amplifier</h2>
+<h3 id="importance-in-signal-processing">Importance in Signal Processing</h3>
+<p>The inverting amplifier is fundamental for signal conditioning, providing precise gain control with phase inversion. It's often the first practical circuit students learn when studying signal processing, demonstrating basic feedback principles and serving as a building block for more complex filters and signal manipulation circuits.</p>
+<h3 id="circuit-description">Circuit Description</h3>
+<p>An op-amp circuit that produces an output signal that's amplified and inverted (180° phase shift) compared to the input signal. The gain is determined by the ratio of feedback resistor to input resistor.</p>
+<h3 id="key-components">Key Components</h3>
+<ul>
+<li>Operational amplifier (typically 741, LM358, or TL072)</li>
+<li>Input resistor (R₁): 1kΩ to 10kΩ (determines input impedance)</li>
+<li>Feedback resistor (R₂): Value depends on desired gain (R₂/R₁)</li>
+<li>Power supply: Typically ±15V or ±12V (dual supply)</li>
+</ul>
+<h2 id="non-inverting-amplifier">Non-Inverting Amplifier</h2>
+<h3 id="importance-in-signal-processing_1">Importance in Signal Processing</h3>
+<p>The non-inverting amplifier provides voltage gain without phase inversion and offers high input impedance, making it ideal for buffering signals from high-impedance sources while maintaining signal integrity.</p>
+<h3 id="circuit-description_1">Circuit Description</h3>
+<p>An op-amp configuration where the input signal connects to the positive terminal, producing an amplified output without phase inversion. The gain is determined by (1 + R₂/R₁).</p>
+<h3 id="key-components_1">Key Components</h3>
+<ul>
+<li>Operational amplifier (typically 741, LM358, or TL072)</li>
+<li>Ground resistor (R₁): 1kΩ to 10kΩ</li>
+<li>Feedback resistor (R₂): Value determined by desired gain</li>
+<li>Power supply: Typically ±15V or ±12V (dual supply)</li>
+</ul>
+<h2 id="active-low-pass-filter">Active Low-Pass Filter</h2>
+<h3 id="importance-in-signal-processing_2">Importance in Signal Processing</h3>
+<p>Low-pass filters are essential for removing high-frequency noise and extracting baseband signals. They're used in audio processing, anti-aliasing before analog-to-digital conversion, and smoothing signals after digital-to-analog conversion.</p>
+<h3 id="circuit-description_2">Circuit Description</h3>
+<p>A filter circuit that passes signals with frequencies lower than a specified cutoff frequency while attenuating higher frequencies. The active implementation uses an op-amp to provide gain and buffering.</p>
+<h3 id="key-components_2">Key Components</h3>
+<ul>
+<li>Operational amplifier</li>
+<li>Input resistor (R): Typically 10kΩ</li>
+<li>Feedback resistor (RF): Typically 10kΩ to 100kΩ (determines gain)</li>
+<li>Capacitor (C): Value determines cutoff frequency (fc = 1/(2πRC))</li>
+<li>Power supply for op-amp</li>
+</ul>
+<h2 id="active-high-pass-filter">Active High-Pass Filter</h2>
+<h3 id="importance-in-signal-processing_3">Importance in Signal Processing</h3>
+<p>High-pass filters remove unwanted low-frequency components and DC offsets. They're critical in audio engineering for eliminating rumble, in biomedical signal processing for removing baseline drift, and in communications for extracting high-frequency carrier signals.</p>
+<h3 id="circuit-description_3">Circuit Description</h3>
+<p>A filter that passes signals with frequencies higher than a specified cutoff frequency while attenuating lower frequencies. The active implementation provides gain and buffering.</p>
+<h3 id="key-components_3">Key Components</h3>
+<ul>
+<li>Operational amplifier</li>
+<li>Input capacitor (C): Value determines cutoff frequency</li>
+<li>Input resistor (R₁): Typically 10kΩ</li>
+<li>Feedback resistor (R₂): Determines gain</li>
+<li>Power supply for op-amp</li>
+</ul>
+<h2 id="active-band-pass-filter">Active Band-Pass Filter</h2>
+<h3 id="importance-in-signal-processing_4">Importance in Signal Processing</h3>
+<p>Band-pass filters isolate specific frequency bands, critical for applications like audio equalizers, radio receivers, and biomedical signal analysis where specific frequency components contain the information of interest.</p>
+<h3 id="circuit-description_4">Circuit Description</h3>
+<p>A filter that passes signals within a specific frequency range while attenuating frequencies outside that range. Typically implemented by cascading high-pass and low-pass stages or using multiple-feedback topology.</p>
+<h3 id="key-components_4">Key Components</h3>
+<ul>
+<li>1-2 Operational amplifiers</li>
+<li>Capacitors (C₁, C₂): Values determine lower and upper cutoff frequencies</li>
+<li>Resistors (R₁, R₂, R₃): Set gain and Q factor (frequency selectivity)</li>
+<li>Power supply for op-amps</li>
+</ul>
+<h2 id="active-band-reject-notch-filter">Active Band-Reject (Notch) Filter</h2>
+<h3 id="importance-in-signal-processing_5">Importance in Signal Processing</h3>
+<p>Notch filters remove specific frequencies while leaving others intact, essential for eliminating power line interference (50/60 Hz) in biomedical instruments, suppressing unwanted carriers in communications, and feedback control in audio systems.</p>
+<h3 id="circuit-description_5">Circuit Description</h3>
+<p>A filter that attenuates signals within a specific frequency band while passing signals outside that band. Can be implemented using twin-T networks or state-variable designs.</p>
+<h3 id="key-components_5">Key Components</h3>
+<ul>
+<li>1-2 Operational amplifiers</li>
+<li>Capacitors (C₁, C₂, C₃): Values determine the notch frequency</li>
+<li>Resistors (R₁, R₂, R₃, R₄): Set Q factor and notch depth</li>
+<li>Power supply for op-amps</li>
+</ul>
+<h2 id="voltage-controlled-amplifier-vca">Voltage-Controlled Amplifier (VCA)</h2>
+<h3 id="importance-in-signal-processing_6">Importance in Signal Processing</h3>
+<p>VCAs allow amplitude modulation and automatic gain control, critical for applications including audio processing, communications (AM modulation), compressors, expanders, and adaptive systems.</p>
+<h3 id="circuit-description_6">Circuit Description</h3>
+<p>An amplifier whose gain can be controlled by an external voltage. Often implemented using multiplier circuits, transistor pairs, or specialized ICs.</p>
+<h3 id="key-components_6">Key Components</h3>
+<ul>
+<li>Dedicated VCA IC (e.g., LM13700, SSM2164) or analog multiplier (e.g., AD633)</li>
+<li>Control voltage input resistor: 10kΩ - 100kΩ</li>
+<li>Bias resistors: Values depend on specific implementation</li>
+<li>Coupling capacitors: 1μF to 10μF for audio applications</li>
+<li>Power supply: Typically ±12V to ±15V</li>
+</ul>
+<h2 id="sallen-key-filter">Sallen-Key Filter</h2>
+<h3 id="importance-in-signal-processing_7">Importance in Signal Processing</h3>
+<p>The Sallen-Key topology provides a versatile second-order filter with good stability and minimal component count. It's widely used to implement Butterworth, Chebyshev, and Bessel filters for applications requiring specific frequency response characteristics.</p>
+<h3 id="circuit-description_7">Circuit Description</h3>
+<p>A second-order active filter using a single op-amp with positive feedback. Can be configured for low-pass, high-pass, or band-pass response with control over the quality factor (Q).</p>
+<h3 id="key-components_7">Key Components</h3>
+<ul>
+<li>Operational amplifier</li>
+<li>Two resistors (R₁, R₂): Typically equal values between 10kΩ and 100kΩ</li>
+<li>Two capacitors (C₁, C₂): Values determine cutoff frequency</li>
+<li>Additional resistors for gain control (if needed)</li>
+<li>Power supply for op-amp</li>
+</ul>
+<h2 id="integrator-circuit">Integrator Circuit</h2>
+<h3 id="importance-in-signal-processing_8">Importance in Signal Processing</h3>
+<p>Integrators are essential for converting square waves to triangular waves, pulse-width demodulation, and implementing mathematical operations in analog computers. They're also fundamental building blocks in control systems and waveform generators.</p>
+<h3 id="circuit-description_8">Circuit Description</h3>
+<p>An op-amp circuit that performs mathematical integration on the input signal. The output voltage is proportional to the integral of the input voltage over time.</p>
+<h3 id="key-components_8">Key Components</h3>
+<ul>
+<li>Operational amplifier</li>
+<li>Input resistor (R): Typically 10kΩ to 100kΩ</li>
+<li>Feedback capacitor (C): 0.01μF to 1μF (determines integration time constant)</li>
+<li>Optional reset switch or resistor in parallel with capacitor</li>
+<li>Power supply for op-amp</li>
+</ul>
+<h2 id="differentiator-circuit">Differentiator Circuit</h2>
+<h3 id="importance-in-signal-processing_9">Importance in Signal Processing</h3>
+<p>Differentiators are used for edge detection, rate-of-change measurement, and FM demodulation. They help extract derivative information from signals, crucial in systems monitoring rates of change.</p>
+<h3 id="circuit-description_9">Circuit Description</h3>
+<p>An op-amp circuit that performs mathematical differentiation on the input signal. The output voltage is proportional to the rate of change of the input voltage.</p>
+<h3 id="key-components_9">Key Components</h3>
+<ul>
+<li>Operational amplifier</li>
+<li>Input capacitor (C): 0.001μF to 0.1μF</li>
+<li>Feedback resistor (R): 10kΩ to 100kΩ</li>
+<li>Small resistor (100Ω to 1kΩ) in series with input capacitor (for stability)</li>
+<li>Small capacitor (10pF to 100pF) in parallel with feedback resistor (for noise reduction)</li>
+<li>Power supply for op-amp</li>
+</ul>
+<h2 id="phase-shift-oscillator">Phase-Shift Oscillator</h2>
+<h3 id="importance-in-signal-processing_10">Importance in Signal Processing</h3>
+<p>Oscillators generate reference signals crucial for synchronization, modulation/demodulation, and testing. The phase-shift oscillator specifically produces low-distortion sine waves needed for audio testing and signal references.</p>
+<h3 id="circuit-description_10">Circuit Description</h3>
+<p>A sine wave oscillator using an op-amp with three RC stages providing a 180° phase shift in the feedback path to create positive feedback at a specific frequency.</p>
+<h3 id="key-components_10">Key Components</h3>
+<ul>
+<li>Operational amplifier</li>
+<li>Three RC networks (each R: 10kΩ, C: 0.01μF) for phase shifting</li>
+<li>Feedback resistor (Rf): Typically 100kΩ to 1MΩ</li>
+<li>Power supply for op-amp</li>
+</ul>
+<h2 id="precision-rectifier-absolute-value-circuit">Precision Rectifier (Absolute Value Circuit)</h2>
+<h3 id="importance-in-signal-processing_11">Importance in Signal Processing</h3>
+<p>Precision rectifiers overcome limitations of diode forward voltage drops, enabling accurate signal rectification and absolute value operations. They're essential for amplitude detection, AC signal measurement, and power supply design.</p>
+<h3 id="circuit-description_11">Circuit Description</h3>
+<p>A circuit that performs full-wave or half-wave rectification without the voltage drop limitations of passive diode rectifiers. Uses op-amps to compensate for diode voltage drops.</p>
+<h3 id="key-components_11">Key Components</h3>
+<ul>
+<li>1-2 Operational amplifiers</li>
+<li>Diodes (typically 1N4148 or 1N914)</li>
+<li>Resistors (typically equal values, 10kΩ)</li>
+<li>Power supply for op-amps</li>
+</ul>
+<h2 id="sample-and-hold-circuit">Sample and Hold Circuit</h2>
+<h3 id="importance-in-signal-processing_12">Importance in Signal Processing</h3>
+<p>Sample and hold circuits capture instantaneous signal values, essential for analog-to-digital conversion, demodulation of pulse-amplitude modulated signals, and multiplexing multiple analog signals.</p>
+<h3 id="circuit-description_12">Circuit Description</h3>
+<p>A circuit that captures ("samples") an analog input voltage and holds this value steady for a certain period. Consists of a voltage follower with a switch and hold capacitor.</p>
+<h3 id="key-components_12">Key Components</h3>
+<ul>
+<li>Operational amplifier(s)</li>
+<li>Analog switch (e.g., CD4066 or specialized S&amp;H IC like LF398)</li>
+<li>Hold capacitor: 0.01μF to 0.1μF (low leakage, polypropylene or polyester)</li>
+<li>Input buffer and output buffer op-amps</li>
+<li>Power supply for op-amps and switch control</li>
+</ul>
+<h2 id="analog-multiplier">Analog Multiplier</h2>
+<h3 id="importance-in-signal-processing_13">Importance in Signal Processing</h3>
+<p>Multipliers perform amplitude modulation, frequency mixing, and phase detection. They're critical components in communications systems, lock-in amplifiers, and adaptive filters where signals must be multiplied in real-time.</p>
+<h3 id="circuit-description_13">Circuit Description</h3>
+<p>A circuit that outputs the product of two input signals. Can be implemented using specialized ICs or discrete transistor arrangements.</p>
+<h3 id="key-components_13">Key Components</h3>
+<ul>
+<li>Dedicated analog multiplier IC (e.g., AD633, MPY634)</li>
+<li>Scaling resistors for input and output conditioning</li>
+<li>Bypass capacitors: 0.1μF for power supply filtering</li>
+<li>Power supply: Typically ±15V</li>
+</ul>
+<h2 id="wien-bridge-oscillator">Wien Bridge Oscillator</h2>
+<h3 id="importance-in-signal-processing_14">Importance in Signal Processing</h3>
+<p>The Wien bridge oscillator generates low-distortion sine waves with stable amplitude and frequency, critical for audio testing, function generators, and as reference signals in experimental setups.</p>
+<h3 id="circuit-description_14">Circuit Description</h3>
+<p>A sine wave oscillator using a Wien bridge network as a frequency-selective feedback element, typically with amplitude stabilization using a nonlinear element.</p>
+<h3 id="key-components_14">Key Components</h3>
+<ul>
+<li>Operational amplifier</li>
+<li>Two resistors (R) in Wien network: Typically 10kΩ</li>
+<li>Two capacitors (C) in Wien network: Values determine oscillation frequency (f = 1/(2πRC))</li>
+<li>Gain-setting resistors: R₃ (typically 20kΩ), R₄ (typically 10kΩ)</li>
+<li>Amplitude stabilization element: Small-signal lamp or diodes with resistors</li>
+<li>Power supply for op-amp</li>
+</ul>
+<h2 id="state-variable-filter">State Variable Filter</h2>
+<h3 id="importance-in-signal-processing_15">Importance in Signal Processing</h3>
+<p>State variable filters simultaneously provide low-pass, high-pass, and band-pass outputs with independent control of frequency and Q factor. They're valuable in audio processing, spectrum analysis, and multi-mode filtering applications.</p>
+<h3 id="circuit-description_15">Circuit Description</h3>
+<p>A versatile filter circuit using multiple op-amps in an integrator-based configuration, providing simultaneous low-pass, high-pass, and band-pass outputs.</p>
+<h3 id="key-components_15">Key Components</h3>
+<ul>
+<li>3-4 Operational amplifiers</li>
+<li>Resistors (typically 10kΩ to 100kΩ) for gain and frequency setting</li>
+<li>Capacitors (typically 0.01μF to 0.1μF) for integration</li>
+<li>Optional variable resistors for tuning frequency and Q factor</li>
+<li>Power supply for op-amps</li>
+</ul>
+
+
+
+
+
+
+
+  
+  
+
+
+
+  
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+          <button type="button" class="md-top md-icon" data-md-component="top" hidden>
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8z"/></svg>
+  Back to top
+</button>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+    
+      
+      <nav class="md-footer__inner md-grid" aria-label="Footer" >
+        
+          
+          <a href="../" class="md-footer__link md-footer__link--prev" aria-label="Previous: Introduction">
+            <div class="md-footer__button md-icon">
+              
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+            </div>
+            <div class="md-footer__title">
+              <span class="md-footer__direction">
+                Previous
+              </span>
+              <div class="md-ellipsis">
+                Introduction
+              </div>
+            </div>
+          </a>
+        
+        
+          
+          <a href="../non-inverting-opamp/" class="md-footer__link md-footer__link--next" aria-label="Next: Non-Inverting OpAmp">
+            <div class="md-footer__title">
+              <span class="md-footer__direction">
+                Next
+              </span>
+              <div class="md-ellipsis">
+                Non-Inverting OpAmp
+              </div>
+            </div>
+            <div class="md-footer__button md-icon">
+              
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M4 11v2h12l-5.5 5.5 1.42 1.42L19.84 12l-7.92-7.92L10.5 5.5 16 11z"/></svg>
+            </div>
+          </a>
+        
+      </nav>
+    
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    
+      
+      <script id="__config" type="application/json">{"base": "../..", "features": ["content.code.copy", "navigation.expand", "navigation.path", "navigation.prune", "navigation.indexes", "toc.follow", "navigation.top", "navigation.footer", "content.action.edit"], "search": "../../assets/javascripts/workers/search.f8cc74c7.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": null}</script>
+    
+    
+      <script src="../../assets/javascripts/bundle.c8b220af.min.js"></script>
+      
+        <script src="../../js/extra.js"></script>
+      
+        <script src="https://unpkg.com/mathjax@3/es5/tex-mml-chtml.js"></script>
+      
+    
+  </body>
+</html>

@@ -12,13 +12,13 @@
         <meta name="author" content="Dan McCreary">
       
       
-        <link rel="canonical" href="https://dmccreary.github.io/signal-processing/chapters/01-intro-sigproc/">
+        <link rel="canonical" href="https://dmccreary.github.io/signal-processing/circuits/op-amp-inverting/">
       
       
-        <link rel="prev" href="../toc/">
+        <link rel="prev" href="../non-inverting-opamp/">
       
       
-        <link rel="next" href="../02-math-found/">
+        <link rel="next" href="../../checklist/">
       
       
       <link rel="icon" href="../../img/favicon.ico">
@@ -26,7 +26,7 @@
     
     
       
-        <title>Introduction - Signal Processing with AI</title>
+        <title>Inverting OpAmp - Signal Processing with AI</title>
       
     
     
@@ -73,11 +73,11 @@
       
         <meta  property="og:type"  content="website" >
       
-        <meta  property="og:title"  content="Introduction - Signal Processing with AI" >
+        <meta  property="og:title"  content="Inverting OpAmp - Signal Processing with AI" >
       
         <meta  property="og:description"  content="College Level Textbook on Signal Processing - License is Commons ShareAlike Attribution Noncommercial" >
       
-        <meta  property="og:image"  content="https://dmccreary.github.io/signal-processing/assets/images/social/chapters/01-intro-sigproc/index.png" >
+        <meta  property="og:image"  content="https://dmccreary.github.io/signal-processing/assets/images/social/circuits/op-amp-inverting/index.png" >
       
         <meta  property="og:image:type"  content="image/png" >
       
@@ -85,15 +85,15 @@
       
         <meta  property="og:image:height"  content="630" >
       
-        <meta  property="og:url"  content="https://dmccreary.github.io/signal-processing/chapters/01-intro-sigproc/" >
+        <meta  property="og:url"  content="https://dmccreary.github.io/signal-processing/circuits/op-amp-inverting/" >
       
         <meta  name="twitter:card"  content="summary_large_image" >
       
-        <meta  name="twitter:title"  content="Introduction - Signal Processing with AI" >
+        <meta  name="twitter:title"  content="Inverting OpAmp - Signal Processing with AI" >
       
         <meta  name="twitter:description"  content="College Level Textbook on Signal Processing - License is Commons ShareAlike Attribution Noncommercial" >
       
-        <meta  name="twitter:image"  content="https://dmccreary.github.io/signal-processing/assets/images/social/chapters/01-intro-sigproc/index.png" >
+        <meta  name="twitter:image"  content="https://dmccreary.github.io/signal-processing/assets/images/social/circuits/op-amp-inverting/index.png" >
       
     
     
@@ -114,7 +114,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#chapter-1-introduction-to-signal-processing" class="md-skip">
+        <a href="#operational-amplifier-op-amp-inverting-amplifier" class="md-skip">
           Skip to content
         </a>
       
@@ -149,7 +149,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              Introduction
+              Inverting OpAmp
             
           </span>
         </div>
@@ -290,7 +290,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../" class="md-nav__link">
+      <a href="../../chapters/" class="md-nav__link">
         
   
   
@@ -353,8 +353,6 @@
       
   
   
-    
-  
   
   
     
@@ -413,17 +411,18 @@
     
     
       
+        
+        
+      
     
-    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
       
         
-        
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_5" checked>
-        
-          
-          <div class="md-nav__link md-nav__container">
-            <a href="../" class="md-nav__link ">
-              
+  
+  
+  
+    <a href="../../chapters/" class="md-nav__link">
+      
   
   
   <span class="md-ellipsis">
@@ -432,616 +431,12 @@
   </span>
   
 
-            </a>
-            
-              
-              <label class="md-nav__link " for="__nav_5" id="__nav_5_label" tabindex="0">
-                <span class="md-nav__icon md-icon"></span>
-              </label>
-            
-          </div>
-        
-        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_5_label" aria-expanded="true">
-          <label class="md-nav__title" for="__nav_5">
-            <span class="md-nav__icon md-icon"></span>
-            Sample Book Chapters
-          </label>
-          <ul class="md-nav__list" data-md-scrollfix>
-            
-              
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../toc/" class="md-nav__link">
-        
-  
-  
-  <span class="md-ellipsis">
-    Table of Contents
-    
-  </span>
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-    
-  
-  
-  
-    <li class="md-nav__item md-nav__item--active">
       
-      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+        <span class="md-nav__icon md-icon"></span>
       
-      
-        
-      
-      
-        <label class="md-nav__link md-nav__link--active" for="__toc">
-          
-  
-  
-  <span class="md-ellipsis">
-    Introduction
-    
-  </span>
+    </a>
   
 
-          <span class="md-nav__icon md-icon"></span>
-        </label>
-      
-      <a href="./" class="md-nav__link md-nav__link--active">
-        
-  
-  
-  <span class="md-ellipsis">
-    Introduction
-    
-  </span>
-  
-
-      </a>
-      
-        
-
-<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
-  
-  
-  
-    
-  
-  
-    <label class="md-nav__title" for="__toc">
-      <span class="md-nav__icon md-icon"></span>
-      Table of contents
-    </label>
-    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
-      
-        <li class="md-nav__item">
-  <a href="#chapter-sections" class="md-nav__link">
-    <span class="md-ellipsis">
-      Chapter Sections
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="Chapter Sections">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#what-is-signal-processing" class="md-nav__link">
-    <span class="md-ellipsis">
-      What is Signal Processing?
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#importance-of-signal-processing" class="md-nav__link">
-    <span class="md-ellipsis">
-      Importance of Signal Processing
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#overview-of-the-course" class="md-nav__link">
-    <span class="md-ellipsis">
-      Overview of the Course
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-      
-    </ul>
-  
-</nav>
-      
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../02-math-found/" class="md-nav__link">
-        
-  
-  
-  <span class="md-ellipsis">
-    Mathematical Foundations
-    
-  </span>
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../03-ct-signals-systems/" class="md-nav__link">
-        
-  
-  
-  <span class="md-ellipsis">
-    Continuous-Time
-    
-  </span>
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../04-dt-signals-systems/" class="md-nav__link">
-        
-  
-  
-  <span class="md-ellipsis">
-    Discrete-Time
-    
-  </span>
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../05-fourier-analysis/" class="md-nav__link">
-        
-  
-  
-  <span class="md-ellipsis">
-    Fourier Analysis
-    
-  </span>
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../06-dft-fft/" class="md-nav__link">
-        
-  
-  
-  <span class="md-ellipsis">
-    DFT and FFT
-    
-  </span>
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../07-z-transform-apps/" class="md-nav__link">
-        
-  
-  
-  <span class="md-ellipsis">
-    Z Transforms
-    
-  </span>
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../08-filter-design-impl/" class="md-nav__link">
-        
-  
-  
-  <span class="md-ellipsis">
-    Filter Design
-    
-  </span>
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../09-adaptive-sigproc/" class="md-nav__link">
-        
-  
-  
-  <span class="md-ellipsis">
-    Adaptive Processing
-    
-  </span>
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../10-stoch-proc-rand-sig/" class="md-nav__link">
-        
-  
-  
-  <span class="md-ellipsis">
-    Stochastic and Random
-    
-  </span>
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../11-spectral-estim/" class="md-nav__link">
-        
-  
-  
-  <span class="md-ellipsis">
-    Spectral Estimation
-    
-  </span>
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../12-time-freq-wavelets/" class="md-nav__link">
-        
-  
-  
-  <span class="md-ellipsis">
-    Time-Freq. Analysis and Wavelets
-    
-  </span>
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../13-multirate-sigproc/" class="md-nav__link">
-        
-  
-  
-  <span class="md-ellipsis">
-    Multirate
-    
-  </span>
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../14-sigcomp-coding/" class="md-nav__link">
-        
-  
-  
-  <span class="md-ellipsis">
-    Compression and Coding
-    
-  </span>
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../15-ml-sigproc/" class="md-nav__link">
-        
-  
-  
-  <span class="md-ellipsis">
-    Machine Learning
-    
-  </span>
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../16-deep-learning-nn/" class="md-nav__link">
-        
-  
-  
-  <span class="md-ellipsis">
-    Deep Learning
-    
-  </span>
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../17-comm-radar-apps/" class="md-nav__link">
-        
-  
-  
-  <span class="md-ellipsis">
-    Radar Apps
-    
-  </span>
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../18-sigproc-multimedia/" class="md-nav__link">
-        
-  
-  
-  <span class="md-ellipsis">
-    Multimedia
-    
-  </span>
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../19-emerging-sigproc/" class="md-nav__link">
-        
-  
-  
-  <span class="md-ellipsis">
-    Emerging Technologies
-    
-  </span>
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../20-ai-edu-sigproc/" class="md-nav__link">
-        
-  
-  
-  <span class="md-ellipsis">
-    AI Education
-    
-  </span>
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../rendering-circuit-diagrams-in-mkdocs/" class="md-nav__link">
-        
-  
-  
-  <span class="md-ellipsis">
-    Rendering Circuit Diagrams
-    
-  </span>
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-          </ul>
-        </nav>
       
     </li>
   
@@ -1278,6 +673,8 @@
       
   
   
+    
+  
   
   
     
@@ -1298,18 +695,17 @@
     
     
       
-        
-        
-      
     
-    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
       
         
-  
-  
-  
-    <a href="../../circuits/" class="md-nav__link">
-      
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_9" checked>
+        
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../" class="md-nav__link ">
+              
   
   
   <span class="md-ellipsis">
@@ -1318,12 +714,193 @@
   </span>
   
 
-      
-        <span class="md-nav__icon md-icon"></span>
-      
-    </a>
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_9" id="__nav_9_label" tabindex="0">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_9_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_9">
+            <span class="md-nav__icon md-icon"></span>
+            Circuits
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../list-of-analog-circuits/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    List of Analog Circuits
+    
+  </span>
   
 
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../non-inverting-opamp/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Non-Inverting OpAmp
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  
+  <span class="md-ellipsis">
+    Inverting OpAmp
+    
+  </span>
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        
+  
+  
+  <span class="md-ellipsis">
+    Inverting OpAmp
+    
+  </span>
+  
+
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#operational-amplifier-op-amp-inverting-amplifier" class="md-nav__link">
+    <span class="md-ellipsis">
+      Operational Amplifier (Op-Amp) Inverting Amplifier
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Operational Amplifier (Op-Amp) Inverting Amplifier">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#importance-in-signal-processing" class="md-nav__link">
+    <span class="md-ellipsis">
+      Importance in Signal Processing
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#circuit-description" class="md-nav__link">
+    <span class="md-ellipsis">
+      Circuit Description
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#key-components" class="md-nav__link">
+    <span class="md-ellipsis">
+      Key Components
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#circuit-diagram" class="md-nav__link">
+    <span class="md-ellipsis">
+      Circuit Diagram
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#key-features-of-the-inverting-amplifier" class="md-nav__link">
+    <span class="md-ellipsis">
+      Key Features of the Inverting Amplifier
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
       
     </li>
   
@@ -1500,8 +1077,6 @@
   
   
   
-    
-  
   
     <label class="md-nav__title" for="__toc">
       <span class="md-nav__icon md-icon"></span>
@@ -1510,37 +1085,37 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#chapter-sections" class="md-nav__link">
+  <a href="#operational-amplifier-op-amp-inverting-amplifier" class="md-nav__link">
     <span class="md-ellipsis">
-      Chapter Sections
+      Operational Amplifier (Op-Amp) Inverting Amplifier
     </span>
   </a>
   
-    <nav class="md-nav" aria-label="Chapter Sections">
+    <nav class="md-nav" aria-label="Operational Amplifier (Op-Amp) Inverting Amplifier">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#what-is-signal-processing" class="md-nav__link">
+  <a href="#importance-in-signal-processing" class="md-nav__link">
     <span class="md-ellipsis">
-      What is Signal Processing?
+      Importance in Signal Processing
     </span>
   </a>
   
 </li>
         
           <li class="md-nav__item">
-  <a href="#importance-of-signal-processing" class="md-nav__link">
+  <a href="#circuit-description" class="md-nav__link">
     <span class="md-ellipsis">
-      Importance of Signal Processing
+      Circuit Description
     </span>
   </a>
   
 </li>
         
           <li class="md-nav__item">
-  <a href="#overview-of-the-course" class="md-nav__link">
+  <a href="#key-components" class="md-nav__link">
     <span class="md-ellipsis">
-      Overview of the Course
+      Key Components
     </span>
   </a>
   
@@ -1548,6 +1123,24 @@
         
       </ul>
     </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#circuit-diagram" class="md-nav__link">
+    <span class="md-ellipsis">
+      Circuit Diagram
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#key-features-of-the-inverting-amplifier" class="md-nav__link">
+    <span class="md-ellipsis">
+      Key Features of the Inverting Amplifier
+    </span>
+  </a>
   
 </li>
       
@@ -1567,7 +1160,7 @@
 
 
   
-    <a href="https://github.com/dmccreary/signal-processing/blob/master/docs/chapters/01-intro-sigproc/index.md" title="Edit this page" class="md-content__button md-icon">
+    <a href="https://github.com/dmccreary/signal-processing/blob/master/docs/circuits/op-amp-inverting/index.md" title="Edit this page" class="md-content__button md-icon">
       
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M10 20H6V4h7v5h5v3.1l2-2V8l-6-6H6c-1.1 0-2 .9-2 2v16c0 1.1.9 2 2 2h4zm10.2-7c.1 0 .3.1.4.2l1.3 1.3c.2.2.2.6 0 .8l-1 1-2.1-2.1 1-1c.1-.1.2-.2.4-.2m0 3.9L14.1 23H12v-2.1l6.1-6.1z"/></svg>
     </a>
@@ -1575,24 +1168,55 @@
   
 
 
-<h1 id="chapter-1-introduction-to-signal-processing">Chapter 1: Introduction to Signal Processing</h1>
-<p>This chapter provides an overview of signal processing, its importance in modern technology, and its various applications across different fields.</p>
-<h3 id="chapter-sections">Chapter Sections</h3>
-<h4 id="what-is-signal-processing">What is Signal Processing?</h4>
+  <h1>Inverting OpAmp</h1>
+
+<h2 id="operational-amplifier-op-amp-inverting-amplifier">Operational Amplifier (Op-Amp) Inverting Amplifier</h2>
+<h3 id="importance-in-signal-processing">Importance in Signal Processing</h3>
+<p>The inverting amplifier is fundamental for signal conditioning, providing precise gain control with phase inversion. It's often the first practical circuit students learn when studying signal processing, demonstrating basic feedback principles and serving as a building block for more complex filters and signal manipulation circuits.</p>
+<h3 id="circuit-description">Circuit Description</h3>
+<p>An op-amp circuit that produces an output signal that's amplified and inverted (180° phase shift) compared to the input signal. The gain is determined by the ratio of feedback resistor to input resistor.</p>
+<h3 id="key-components">Key Components</h3>
 <ul>
-<li><strong>Definition of Signals and Systems</strong>: Understanding the basic concepts of signals (both continuous and discrete) and systems.</li>
-<li><strong>Historical Background</strong>: Evolution of signal processing from analog to digital.</li>
+<li>Operational amplifier (typically 741, LM358, or TL072)</li>
+<li>Input resistor (R₁): 1kΩ to 10kΩ (determines input impedance)</li>
+<li>Feedback resistor (R₂): Value depends on desired gain (R₂/R₁)</li>
+<li>Power supply: Typically ±15V or ±12V (dual supply)</li>
 </ul>
-<h4 id="importance-of-signal-processing">Importance of Signal Processing</h4>
+<h2 id="circuit-diagram">Circuit Diagram</h2>
+<p><img alt="" src="op-amp-inverting.svg" /></p>
+<h2 id="key-features-of-the-inverting-amplifier">Key Features of the Inverting Amplifier</h2>
+<ol>
+<li>
+<p><strong>Circuit Operation</strong>: The inverting amplifier takes an input signal and produces an output signal that is amplified and phase-inverted (180° phase shift).</p>
+</li>
+<li>
+<p><strong>Components</strong>:</p>
 <ul>
-<li><strong>Applications in Daily Life</strong>: Communication systems, multimedia, healthcare, etc.</li>
-<li><strong>Role in Modern Technology</strong>: Internet of Things (IoT), autonomous vehicles, and more.</li>
+<li>Operational amplifier (typically 741, LM358, or TL072)</li>
+<li>Input resistor (R₁): Typically 1kΩ to 10kΩ</li>
+<li>Feedback resistor (R₂): Value depends on desired gain</li>
+<li>Dual power supply (±15V or ±12V)</li>
 </ul>
-<h4 id="overview-of-the-course">Overview of the Course</h4>
+</li>
+<li>
+<p><strong>Gain Formula</strong>:</p>
 <ul>
-<li><strong>Course Objectives</strong>: What students will learn and achieve.</li>
-<li><strong>Structure and Prerequisites</strong>: How the course is organized and foundational knowledge required.</li>
+<li>Vout = -(R₂/R₁) × Vin</li>
+<li>The negative sign indicates phase inversion</li>
 </ul>
+</li>
+<li>
+<p><strong>Applications in Signal Processing</strong>:</p>
+<ul>
+<li>Signal conditioning</li>
+<li>Active filtering</li>
+<li>Precise gain control</li>
+<li>Summing amplifier (when multiple inputs are used)</li>
+<li>Basic building block for more complex circuits</li>
+</ul>
+</li>
+</ol>
+<p>The inverting configuration is one of the most commonly used op-amp circuits, providing predictable gain with excellent linearity when operated within the op-amp's limitations.</p>
 
 
 
@@ -1633,7 +1257,7 @@
       <nav class="md-footer__inner md-grid" aria-label="Footer" >
         
           
-          <a href="../toc/" class="md-footer__link md-footer__link--prev" aria-label="Previous: Table of Contents">
+          <a href="../non-inverting-opamp/" class="md-footer__link md-footer__link--prev" aria-label="Previous: Non-Inverting OpAmp">
             <div class="md-footer__button md-icon">
               
               <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
@@ -1643,20 +1267,20 @@
                 Previous
               </span>
               <div class="md-ellipsis">
-                Table of Contents
+                Non-Inverting OpAmp
               </div>
             </div>
           </a>
         
         
           
-          <a href="../02-math-found/" class="md-footer__link md-footer__link--next" aria-label="Next: Mathematical Foundations">
+          <a href="../../checklist/" class="md-footer__link md-footer__link--next" aria-label="Next: Checklist">
             <div class="md-footer__title">
               <span class="md-footer__direction">
                 Next
               </span>
               <div class="md-ellipsis">
-                Mathematical Foundations
+                Checklist
               </div>
             </div>
             <div class="md-footer__button md-icon">
