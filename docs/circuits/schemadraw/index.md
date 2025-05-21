@@ -1,8 +1,16 @@
 # Schemadraw
 
-SchemaDraw is a python library that converts a high-level
+Schemadraw is a python library that converts a high-level
 placement file of components directly into a detailed
-circuit drawing in SVG.
+circuit drawing in SVG.  The key benefit for using
+schemadraw is that the actual placement of components
+in a schematic does not have to be specified in the schemadraw
+file.  Only relative positioning (left, right, up down) needs
+to be specified.  This is an ideal match with LLMs since
+LLMs are good at understanding relative positioning, but
+they are not good at absolute placement of components, wires or labels in a circuit diagram.
+
+We call schemadraw a [Declarative](../../glossary.md#declarative)
 
 ## Simple LED Circuit Example
 
@@ -76,7 +84,7 @@ Note the battery has the ```reverse()``` method for positive polarity on the top
 
 ![](./led-circuit-battery.svg)
 
-## Setup SchemaDraw
+## Setup Schemadraw
 ```sh
 $ conda create -n schemadraw python=3
 $ conda deactivate
@@ -91,5 +99,6 @@ Successfully installed schemdraw-0.20
 
 ## References
 
-[SchemaDraw Documentation Website](https://schemdraw.readthedocs.io/en/stable/index.html)
+[Schemadraw Documentation Website](https://schemdraw.readthedocs.io/en/stable/index.html)
 
+[Schemadraw Analog Circuits](https://schemdraw.readthedocs.io/en/stable/gallery/analog.html)

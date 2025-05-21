@@ -53,6 +53,7 @@ The Bilinear transform is a mathematical technique used to convert analog filter
 A Butterworth filter is a type of analog or digital filter with a maximally flat frequency response in the passband, ensuring no ripples. It provides a smooth transition from passband to stopband.
 
 **Example:** Students design Butterworth filters and compare their frequency responses to other filter types, analyzing the trade-offs between smoothness and transition sharpness.
+
 #### Calculus
 
 Calculus is a branch of mathematics focused on limits, functions, derivatives, integrals, and infinite series. It is fundamental for analyzing and modeling dynamic systems in signal processing.
@@ -76,6 +77,12 @@ Channel coding involves adding redundancy to transmitted information to protect 
 A Chebyshev filter is a type of analog or digital filter characterized by a steeper roll-off and ripple in either the passband or stopband. It offers a sharper transition between passband and stopband compared to Butterworth filters.
 
 **Example:** Students design Chebyshev filters and analyze the trade-offs between passband ripple and filter sharpness in different signal processing applications.
+
+#### CircuiTekz
+
+An extension to LaTeX that allows circuits to be added to LaTeX drawing using the Tekz drawing system.
+
+**Example:** Generative AI tools can be used to generate Circuit
 
 #### Classification
 
@@ -130,6 +137,13 @@ Cross-correlation measures the similarity between two signals as a function of t
 An agentic integrated development environment that is ideal for creating and maintaining intelligent textbooks.
 
 Cursor immediately creates embeddings for all the files in your project so when you make a request it knows how to proceed with changes.  A request such as "Create a new MicroSim" will automatically create new directories and files that conform to your rules.
+
+#### Declarative
+
+An abstract form of representation that states the intent of **what** is
+to be done, but not the precise details of **how** it should be done.
+
+**Example:** [Schemadraw](#schemadraw) allows us to place electrical components relative to each other using terms like left, right, above and below without having to specify the exact x and y coordinates of each component in a circuit diagram.
 
 #### Deep Learning (DL)
 
@@ -494,6 +508,12 @@ Sampling is the process of converting a continuous-time signal into a discrete-t
 Sampling rate conversion changes the sampling rate of a discrete-time signal, either by upsampling (increasing) or downsampling (decreasing). It is used to match different system requirements or standards.
 
 **Example:** Students implement sampling rate conversion algorithms to adapt audio signals for different playback devices, ensuring compatibility and maintaining quality.
+
+#### Schemadraw
+
+A Python library that uses a [declarative](#declarative) circuit placement algorithm (left, right, above, below) when describing circuits.
+
+* [Schemadraw](https://schemdraw.readthedocs.io/en/stable/index.html)
 
 #### Short-Time Fourier Transform (STFT)
 
