@@ -692,6 +692,8 @@
       
         
       
+        
+      
     
     
     
@@ -732,6 +734,29 @@
           </label>
           <ul class="md-nav__list" data-md-scrollfix>
             
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../schemadraw-vs-circuiTekz/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Schemadraw vs CircuiTekz
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
               
             
               
@@ -843,7 +868,7 @@
         <li class="md-nav__item">
   <a href="#setup-schemadraw" class="md-nav__link">
     <span class="md-ellipsis">
-      Setup SchemaDraw
+      Setup Schemadraw
     </span>
   </a>
   
@@ -1183,7 +1208,7 @@
         <li class="md-nav__item">
   <a href="#setup-schemadraw" class="md-nav__link">
     <span class="md-ellipsis">
-      Setup SchemaDraw
+      Setup Schemadraw
     </span>
   </a>
   
@@ -1223,9 +1248,16 @@
 
 
 <h1 id="schemadraw">Schemadraw</h1>
-<p>SchemaDraw is a python library that converts a high-level
+<p>Schemadraw is a python library that converts a high-level
 placement file of components directly into a detailed
-circuit drawing in SVG.</p>
+circuit drawing in SVG.  The key benefit for using
+schemadraw is that the actual placement of components
+in a schematic does not have to be specified in the schemadraw
+file.  Only relative positioning (left, right, up down) needs
+to be specified.  This is an ideal match with LLMs since
+LLMs are good at understanding relative positioning, but
+they are not good at absolute placement of components, wires or labels in a circuit diagram.</p>
+<p>We call schemadraw a <a href="../../glossary/#declarative">Declarative</a></p>
 <h2 id="simple-led-circuit-example">Simple LED Circuit Example</h2>
 <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
 <span class="normal">2</span>
@@ -1331,7 +1363,7 @@ circuit drawing in SVG.</p>
 </code></pre></div></td></tr></table></div>
 <p>Note the battery has the <code>reverse()</code> method for positive polarity on the top.</p>
 <p><img alt="" src="led-circuit-battery.svg" /></p>
-<h2 id="setup-schemadraw">Setup SchemaDraw</h2>
+<h2 id="setup-schemadraw">Setup Schemadraw</h2>
 <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
 <span class="normal">2</span>
 <span class="normal">3</span>
@@ -1351,7 +1383,8 @@ Installing<span class="w"> </span>collected<span class="w"> </span>packages:<spa
 Successfully<span class="w"> </span>installed<span class="w"> </span>schemdraw-0.20
 </code></pre></div></td></tr></table></div>
 <h2 id="references">References</h2>
-<p><a href="https://schemdraw.readthedocs.io/en/stable/index.html">SchemaDraw Documentation Website</a></p>
+<p><a href="https://schemdraw.readthedocs.io/en/stable/index.html">Schemadraw Documentation Website</a></p>
+<p><a href="https://schemdraw.readthedocs.io/en/stable/gallery/analog.html">Schemadraw Analog Circuits</a></p>
 
 
 
