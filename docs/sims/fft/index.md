@@ -5,11 +5,10 @@
    <figcaption>Fast Fourier transform Sim</figcaption>
 </figure>
 
-<form action="fft-scheme.html" style="text-align:center;">
-<button style="align-content: center;" class="md-button md-button--primary">
-Run the FFT MicroSim
-</button>
-</form>
+
+
+[Run the MicroSim](fft-scheme.html)
+[Edit MicroSim](https://editor.p5js.org/dmccreary/sketches/XnH57-jNr)
 
 FFT, or Fast Fourier Transform, is an algorithm designed to compute the Discrete Fourier Transform (DFT) and its inverse efficiently. The DFT is a mathematical transformation used to convert a signal from its original domain (often time or space) into a frequency domain. FFT is widely used because it reduces the complexity of computing the DFT from \(O(n^2)\) to \(O(n \log n)\), where \(n\) is the number of data points. This efficiency is critical in processing large datasets and in applications where real-time processing is required, such as audio signal processing, image analysis, and solving partial differential equations.
 
