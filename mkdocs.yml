@@ -83,7 +83,6 @@ nav:
     - Frequency Detection: sims/frequency-detection/index.md
     - Mobius Transformation: sims/mobius-transform/index.md
     - RC Lowpass Filter: sims/rc-lowpass-filter/index.md
-    - Templates: sims/0-templates/index.md
     - OpenAI GPTs: sims/openai-gpts/index.md
   
   - Stories:
@@ -137,6 +136,11 @@ plugins:
   - search
   - social
   - social_override
+  # exclude template files from the build
+  - exclude:
+      glob:
+        - "*template/*.md"
+        - "*templates/*.md"
 markdown_extensions:
   - meta
   - admonition
