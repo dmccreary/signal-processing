@@ -30,6 +30,9 @@ let containerHeight = canvasHeight; // fixed height on page
 // distance from edge of canvas to a drawing component
 let margin = 20;
 
+// oscillator parameters
+let maxFrequency = 100; // maximum frequency in Hz
+
 function setup() {
   // Create a canvas to match the parent container's size
   updateCanvasSize();
@@ -64,6 +67,8 @@ function setup() {
   // Create mute button
   muteButton = createButton('Mute');
   muteButton.position(20 + sliderSpacing * 3, controlY);
+  muteButton.mousePressed(toggleMute);
+
   
   // Initialize oscillators
   signalSine = new p5.Oscillator('sine');
@@ -102,19 +107,17 @@ function draw() {
   text('Sum of Two Oscillator Waves', canvasWidth/2, margin)
   textAlign(LEFT,CENTER);
   
-  // only update the display if the simulation is running
-  // only play the sound if the simulation is unumted
   if (!isPaused) {
-    // Update frequencies and amplitudes from sliders even when paused
-    signalSine.freq(freqSliderSine.value());
-    signalSine.amp(ampSliderSine.value());
-    signalCos.freq(freqSliderCos.value());
-    signalCos.amp(ampSliderCos.value());
-  } else // set the frequence and amplitutudes of both oscilators to 0
-  {
+  // Update frequencies and amplitudes from sliders
+  signalSine.freq(freqSliderSine.value());
+  signalSine.amp(ampSliderSine.value());
+  signalCos.freq(freqSliderCos.value());
+  signalCos.amp(ampSliderCos.value());
+  } else {
+    // Paused: set both frequency and amplitude to 0
     signalSine.freq(0);
     signalSine.amp(0);
-    signalCos.freq(0);
+    signalCos.freq(0);  
     signalCos.amp(0);
   }
   
@@ -132,9 +135,10 @@ function displayWaveformAndSpectrum() {
   let spectrum = fft.analyze();
   
   // Define drawing areas
-  let timeHeight = drawHeight / 2 + 30;
-  let freqHeight = drawHeight / 2;
   let margin = 50;
+  let timeHeight = drawHeight / 2 + 30;
+  let freqHeight = drawHeight / 2 + 40;
+
   let plotWidth = canvasWidth - 2 * margin;
   
   // Draw time-domain waveform (top half)
@@ -161,9 +165,10 @@ function displayWaveformAndSpectrum() {
   strokeWeight(2);
   beginShape();
   noFill();
-  for (let i = 0; i < spectrum.length; i++) {
-    let x = map(i, 0, spectrum.length, margin, canvasWidth - margin);
-    let y = map(spectrum[i], 0, 255, drawHeight - 10, timeHeight + 60);
+  // replace spectrum.length (10k?) with maxFrequency (2K)
+  for (let i = 0; i < maxFrequency; i++) {
+    let x = map(i, 0, maxFrequency, margin, canvasWidth - margin);
+    let y = map(spectrum[i], 0, 255, drawHeight - 10, freqHeight);
     vertex(x, y);
   }
   endShape();
@@ -178,15 +183,20 @@ function togglePause() {
   pauseButton.html(isPaused ? 'Restart' : 'Pause');
 }
 
-// Function to toggle mute
 function toggleMute() {
   isMuted = !isMuted;
-  muteButton.html(isPaused ? 'Mute' : 'Unmute');
+  if (isMuted) {
+    outputVolume(0); // Mute all audio
+  } else {
+    outputVolume(1); // Restore full volume
+  }
+  muteButton.html(isMuted ? 'Unmute' : 'Mute');
 }
 
 // Function to draw labels for controls
 function drawControlLabels() {
   fill(0);
+  noStroke();
   textSize(14);
   
   // Control labels
