@@ -2,6 +2,7 @@
 // Use sliders to change the frequency and amplititude of each wave
 // Display the sum of the waves on top half of the canvas
 // Display the FFT frequency response on the lower half of the canvas
+// See https://p5js.org/reference/p5.sound/p5.FFT/ for details on the p5 FFT
 // Place controls under the canvas
 let signalSine;
 let signalCos;
@@ -43,11 +44,13 @@ function setup() {
   let sliderSpacing = 180;
   
   // Define sliders for sine wave frequency and amplitude
+  // Oscillator 1
   freqSliderSine = createSlider(20, 2000, 440, 1);
   freqSliderSine.position(20, controlY);
   ampSliderSine = createSlider(0, 1, 0.5, 0.01);
   ampSliderSine.position(20, controlY + 30);
   
+  // Oscillator 2
   // Define sliders for cosine wave frequency and amplitude
   freqSliderCos = createSlider(20, 2000, 880, 1);
   freqSliderCos.position(20 + sliderSpacing, controlY);
@@ -62,7 +65,7 @@ function setup() {
   muteButton = createButton('Mute');
   muteButton.position(20 + sliderSpacing * 3, controlY);
   
-  // Initialize sine and cosine oscillators
+  // Initialize oscillators
   signalSine = new p5.Oscillator('sine');
   signalSine.phase(0);
   signalSine.start();
@@ -73,7 +76,7 @@ function setup() {
   signalCos.start();
   signalCos.amp(0);
 
-  // Initialize FFT object
+  // Initialize the very cool p5.js FFT object
   fft = new p5.FFT();
   
   frameRate(20);
@@ -81,8 +84,9 @@ function setup() {
 }
 
 function draw() {
+  // create a light gray boarder around drawing region and control regions
+  stroke('silver');
   // Background of drawing region in light blue
-
   fill('aliceblue');
   rect(0, 0, canvasWidth, drawHeight);
   
@@ -90,7 +94,7 @@ function draw() {
   fill('white');
   rect(0, drawHeight, canvasWidth, controlHeight);
   
-  // Draw Title
+  // Draw Title and place it in the top center of the drawing region
   textSize(22);
   noStroke();
   fill('black');
@@ -98,22 +102,24 @@ function draw() {
   text('Sum of Two Oscillator Waves', canvasWidth/2, margin)
   textAlign(LEFT,CENTER);
   
-  if (!isPaused || isMuted) {
+  // only update the display if the simulation is running
+  // only play the sound if the simulation is unumted
+  if (!isPaused) {
     // Update frequencies and amplitudes from sliders even when paused
     signalSine.freq(freqSliderSine.value());
     signalSine.amp(ampSliderSine.value());
     signalCos.freq(freqSliderCos.value());
     signalCos.amp(ampSliderCos.value());
-
-    // Display the waveform and spectrum
-    displayWaveformAndSpectrum();
-  } else {
+  } else // set the frequence and amplitutudes of both oscilators to 0
+  {
     signalSine.freq(0);
     signalSine.amp(0);
     signalCos.freq(0);
     signalCos.amp(0);
   }
-
+  
+  // Display the waveform and spectrum
+  displayWaveformAndSpectrum();
   // Drawing labels for controls and display sections
   drawControlLabels();
   drawDisplayLabels();
@@ -122,6 +128,7 @@ function draw() {
 // Function to display waveform and spectrum with proper alignment
 function displayWaveformAndSpectrum() {
   let waveform = fft.waveform();
+  // this is where we get the frequency spectrum from the waves
   let spectrum = fft.analyze();
   
   // Define drawing areas
