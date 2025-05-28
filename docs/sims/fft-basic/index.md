@@ -16,11 +16,13 @@ hide:
 
 You can include this MicroSim in your course by pasting the following HTML directly into your web page.
 
-<iframe src="https://dmccreary.github.io/signal-processing/sims/basic-fft/main.html" height="480px" scrolling="no"
-  style="overflow: hidden;"></iframe>
+```html
+<iframe src="https://dmccreary.github.io/signal-processing/sims/basic-fft/main.html" 
+  height="480px" scrolling="no" style="overflow: hidden;"></iframe>
+```
 
-[Run the MicroSim](./sine-wave.html){ .md-button .md-button--primary }
-[Edit the MicroSim](https://editor.p5js.org/dmccreary/sketches/0SEATs3jW)
+[Run the Basic FFT MicroSim Fullscreen](./main.html){ .md-button .md-button--primary }
+[Edit the Basic FFT MicroSim](https://editor.p5js.org/dmccreary/sketches/oDP6EoAQ6)
 
 To include this MicroSim on your web site, just copy the following line of HTML code:
 
