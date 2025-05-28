@@ -30,7 +30,7 @@ To include this MicroSim on your web site, just copy the following line of HTML 
 ```
 ## Basic FFT Visualization - Lesson Plan
 
-## Course Information
+## Lab Information
 **Course:** Introduction to Signal Processing  
 **Level:** College Freshman  
 **Duration:** 20 minutes  
@@ -55,11 +55,10 @@ By the end of this lesson, students will be able to:
 - Student worksheet (provided below)
 - Whiteboard/projector for demonstrations
 
----
-
-## Pre-Lesson Preparation (5 minutes)
+## Pre-Lesson Preparation
 
 ### Student Setup
+
 1. Open the Basic FFT Visualization MicroSim in web browser
 2. Ensure audio is working (volume at comfortable level)
 3. Familiarize yourself with the interface:

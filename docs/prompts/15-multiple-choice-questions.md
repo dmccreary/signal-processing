@@ -1,7 +1,13 @@
-# Prompt to Create a Multiple Choice Prompt
+# Multiple Choice Question
+
+Because the creation of a high-quality prompt for multiple-choice questions is difficult, we will use generative AI to help us craft the first version of this prompt.
 
 !!! prompt
-    Please create a generative AI prompt for me that will create a high quality multiple choice question on a concept in the signalprocessingconcepts file.  This is a CSV file where there is one line per concept.  The prompt should help determine if the student understands the concept.
+    Please create a generative AI prompt for me that will create a high-quality multiple choice question on a Signal Processing concept.  The prompt should help determine if the student understands the concept.  Some questions are simple and just show basic knowledge of terminology.  Other questions are advanced and show true mastery of a topic.  Some of the best questions help discriminate learners from non-learners for determining the effectiveness of the course material.
+
+    The multiple-choice question should have four possible answers.  Only one answer is
+    correct.  The other three possible answers are "distractors" that are plausible
+    but incorrect.
 
     Use the following format Output Format in the prompt you return
 
