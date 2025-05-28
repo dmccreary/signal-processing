@@ -12,13 +12,13 @@
         <meta name="author" content="Dan McCreary">
       
       
-        <link rel="canonical" href="https://dmccreary.github.io/signal-processing/prompts/15-prompt-to-create-mc-prompt/">
+        <link rel="canonical" href="https://dmccreary.github.io/signal-processing/prompts/15-multiple-choice-questions/">
       
       
         <link rel="prev" href="../16-assessment-prompt/">
       
       
-        <link rel="next" href="../using-projects/">
+        <link rel="next" href="../18-fft-in-p5/">
       
       
       <link rel="icon" href="../../img/favicon.ico">
@@ -26,7 +26,7 @@
     
     
       
-        <title>Prompt to Create a Multiple Choice Prompt - Signal Processing with AI</title>
+        <title>Multiple Choice Questions - Signal Processing with AI</title>
       
     
     
@@ -73,11 +73,11 @@
       
         <meta  property="og:type"  content="website" >
       
-        <meta  property="og:title"  content="Prompt to Create a Multiple Choice Prompt - Signal Processing with AI" >
+        <meta  property="og:title"  content="Multiple Choice Questions - Signal Processing with AI" >
       
         <meta  property="og:description"  content="College Level Textbook on Signal Processing - License is Commons ShareAlike Attribution Noncommercial" >
       
-        <meta  property="og:image"  content="https://dmccreary.github.io/signal-processing/assets/images/social/prompts/15-prompt-to-create-mc-prompt.png" >
+        <meta  property="og:image"  content="https://dmccreary.github.io/signal-processing/assets/images/social/prompts/15-multiple-choice-questions.png" >
       
         <meta  property="og:image:type"  content="image/png" >
       
@@ -85,15 +85,15 @@
       
         <meta  property="og:image:height"  content="630" >
       
-        <meta  property="og:url"  content="https://dmccreary.github.io/signal-processing/prompts/15-prompt-to-create-mc-prompt/" >
+        <meta  property="og:url"  content="https://dmccreary.github.io/signal-processing/prompts/15-multiple-choice-questions/" >
       
         <meta  name="twitter:card"  content="summary_large_image" >
       
-        <meta  name="twitter:title"  content="Prompt to Create a Multiple Choice Prompt - Signal Processing with AI" >
+        <meta  name="twitter:title"  content="Multiple Choice Questions - Signal Processing with AI" >
       
         <meta  name="twitter:description"  content="College Level Textbook on Signal Processing - License is Commons ShareAlike Attribution Noncommercial" >
       
-        <meta  name="twitter:image"  content="https://dmccreary.github.io/signal-processing/assets/images/social/prompts/15-prompt-to-create-mc-prompt.png" >
+        <meta  name="twitter:image"  content="https://dmccreary.github.io/signal-processing/assets/images/social/prompts/15-multiple-choice-questions.png" >
       
     
     
@@ -114,7 +114,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#prompt-to-create-a-multiple-choice-prompt" class="md-skip">
+        <a href="#multiple-choice-question" class="md-skip">
           Skip to content
         </a>
       
@@ -149,7 +149,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              Prompt to Create a Multiple Choice Prompt
+              Multiple Choice Questions
             
           </span>
         </div>
@@ -455,6 +455,8 @@
       
         
           
+        
+      
         
       
         
@@ -928,7 +930,7 @@
   
   
   <span class="md-ellipsis">
-    Prompt to Create a Multiple Choice Prompt
+    Multiple Choice Questions
     
   </span>
   
@@ -941,7 +943,7 @@
   
   
   <span class="md-ellipsis">
-    Prompt to Create a Multiple Choice Prompt
+    Multiple Choice Questions
     
   </span>
   
@@ -1069,6 +1071,29 @@
   
 </nav>
       
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../18-fft-in-p5/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    FFT in P5
+    
+  </span>
+  
+
+      </a>
     </li>
   
 
@@ -1704,7 +1729,7 @@
 
 
   
-    <a href="https://github.com/dmccreary/signal-processing/blob/master/docs/prompts/15-prompt-to-create-mc-prompt.md" title="Edit this page" class="md-content__button md-icon">
+    <a href="https://github.com/dmccreary/signal-processing/blob/master/docs/prompts/15-multiple-choice-questions.md" title="Edit this page" class="md-content__button md-icon">
       
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M10 20H6V4h7v5h5v3.1l2-2V8l-6-6H6c-1.1 0-2 .9-2 2v16c0 1.1.9 2 2 2h4zm10.2-7c.1 0 .3.1.4.2l1.3 1.3c.2.2.2.6 0 .8l-1 1-2.1-2.1 1-1c.1-.1.2-.2.4-.2m0 3.9L14.1 23H12v-2.1l6.1-6.1z"/></svg>
     </a>
@@ -1712,10 +1737,14 @@
   
 
 
-<h1 id="prompt-to-create-a-multiple-choice-prompt">Prompt to Create a Multiple Choice Prompt</h1>
+<h1 id="multiple-choice-question">Multiple Choice Question</h1>
+<p>Because the creation of a high-quality prompt for multiple-choice questions is difficult, we will use generative AI to help us craft the first version of this prompt.</p>
 <div class="admonition prompt">
 <p class="admonition-title">Prompt</p>
-<p>Please create a generative AI prompt for me that will create a high quality multiple choice question on a concept in the signalprocessingconcepts file.  This is a CSV file where there is one line per concept.  The prompt should help determine if the student understands the concept.</p>
+<p>Please create a generative AI prompt for me that will create a high-quality multiple choice question on a Signal Processing concept.  The prompt should help determine if the student understands the concept.  Some questions are simple and just show basic knowledge of terminology.  Other questions are advanced and show true mastery of a topic.  Some of the best questions help discriminate learners from non-learners for determining the effectiveness of the course material.</p>
+<p>The multiple-choice question should have four possible answers.  Only one answer is
+correct.  The other three possible answers are "distractors" that are plausible
+but incorrect.</p>
 <p>Use the following format Output Format in the prompt you return</p>
 <h4 id="question-stem">[Question stem]</h4>
 <p><div class="upper-alpha" markdown>
@@ -1875,13 +1904,13 @@ D) 169.7∠30° V: This incorrectly multiplies the amplitude by √2 (mixing up 
         
         
           
-          <a href="../using-projects/" class="md-footer__link md-footer__link--next" aria-label="Next: Using Projects">
+          <a href="../18-fft-in-p5/" class="md-footer__link md-footer__link--next" aria-label="Next: FFT in P5">
             <div class="md-footer__title">
               <span class="md-footer__direction">
                 Next
               </span>
               <div class="md-ellipsis">
-                Using Projects
+                FFT in P5
               </div>
             </div>
             <div class="md-footer__button md-icon">
