@@ -1,24 +1,39 @@
-// Display two waves (Sine and Cosine) and their mix and FFTs
+// Display the sum of two oscilators, one sine and cosine
+// Use sliders to change the frequency and amplititude of each wave
+// Display the sum of the waves on top half of the canvas
+// Display the FFT frequency response on the lower half of the canvas
+// Place controls under the canvas
 let signalSine;
 let signalCos;
 let fft;
 let freqSliderSine, freqSliderCos, ampSliderSine, ampSliderCos;
-let pauseButton;
+let pauseButton; // pause the display
+let muteButton; // Turn off the sound
 let isPaused = false;
+let isMuted = false;
 
 // Canvas regions setup
+// This is the region we do the drawing
 let drawHeight = 400;
+
+// This is the region we place the slider and button controls 
 let controlHeight = 80;
+
 let canvasHeight = drawHeight + controlHeight;
-let aspectRatio = 1.91; // Open Graph standard
+let aspectRatio = 1.91; // Open Graph standard for social previews
 let canvasWidth = canvasHeight * aspectRatio;
 
+// for a responsive design we need global variables
+let containerWidth; // calculated by container upon resize
+let containerHeight = canvasHeight; // fixed height on page
+// distance from edge of canvas to a drawing component
+let margin = 20;
+
 function setup() {
-  const canvas = createCanvas(canvasWidth, canvasHeight);
-  var mainElement = document.querySelector('main');
-  if (mainElement) {
-    canvas.parent(mainElement);
-  }
+  // Create a canvas to match the parent container's size
+  updateCanvasSize();
+  const canvas = createCanvas(containerWidth, containerHeight);
+  canvas.parent(document.querySelector('main'));
   
   noFill();
   textSize(12);
@@ -66,16 +81,25 @@ function setup() {
 }
 
 function draw() {
-  // Background of drawing region
+  // Background of drawing region in light blue
+
   fill('aliceblue');
   rect(0, 0, canvasWidth, drawHeight);
   
-  // Background of controls
+  // Background of controls in white
   fill('white');
   rect(0, drawHeight, canvasWidth, controlHeight);
-
-  if (!isPaused) {
-    // Update frequencies and amplitudes from sliders
+  
+  // Draw Title
+  textSize(22);
+  noStroke();
+  fill('black');
+  textAlign(CENTER,CENTER);
+  text('Sum of Two Oscillator Waves', canvasWidth/2, margin)
+  textAlign(LEFT,CENTER);
+  
+  if (!isPaused || isMuted) {
+    // Update frequencies and amplitudes from sliders even when paused
     signalSine.freq(freqSliderSine.value());
     signalSine.amp(ampSliderSine.value());
     signalCos.freq(freqSliderCos.value());
@@ -101,7 +125,7 @@ function displayWaveformAndSpectrum() {
   let spectrum = fft.analyze();
   
   // Define drawing areas
-  let timeHeight = drawHeight / 2;
+  let timeHeight = drawHeight / 2 + 30;
   let freqHeight = drawHeight / 2;
   let margin = 50;
   let plotWidth = canvasWidth - 2 * margin;
@@ -113,10 +137,17 @@ function displayWaveformAndSpectrum() {
   noFill();
   for (let i = 0; i < waveform.length; i++) {
     let x = map(i, 0, waveform.length, margin, canvasWidth - margin);
-    let y = map(waveform[i], -1, 1, timeHeight - 40, 40);
+    let y = map(waveform[i], -1, 1, timeHeight - 10, 40);
     vertex(x, y);
   }
   endShape();
+  
+  // Draw center line to separate sections
+  stroke('black');
+  strokeWeight(1);
+  let separatorLineHeight = canvasHeight/2-margin+20
+  line(0, separatorLineHeight, canvasWidth, separatorLineHeight);
+
 
   // Draw frequency spectrum (bottom half) - full width
   stroke('purple');
@@ -130,10 +161,6 @@ function displayWaveformAndSpectrum() {
   }
   endShape();
   
-  // Draw center line to separate sections
-  stroke(150);
-  strokeWeight(1);
-  line(0, timeHeight, canvasWidth, timeHeight);
   
   strokeWeight(1);
 }
@@ -142,6 +169,12 @@ function displayWaveformAndSpectrum() {
 function togglePause() {
   isPaused = !isPaused;
   pauseButton.html(isPaused ? 'Restart' : 'Pause');
+}
+
+// Function to toggle mute
+function toggleMute() {
+  isMuted = !isMuted;
+  muteButton.html(isPaused ? 'Mute' : 'Unmute');
 }
 
 // Function to draw labels for controls
@@ -160,24 +193,20 @@ function drawControlLabels() {
 
 // Function to draw display section labels
 function drawDisplayLabels() {
-  fill(0);
+  noStroke();
+  fill('green');
   textSize(14);
   textStyle(BOLD);
   
   // Time domain label (top section)
-  text('TIME DOMAIN: Combined Signal (Sine + Cosine)', 60, 25);
-  textSize(10);
-  textStyle(NORMAL);
-  text('Amplitude vs. Time - Combined waveform of both oscillators', 60, 38);
+  let yOffset = 45;
+  text('TIME DOMAIN: Combined Signal (Sine + Cosine)', 60, yOffset);
   
   // Frequency domain label (bottom section)
   textSize(14);
+  fill('purple');
   textStyle(BOLD);
   text('FREQUENCY DOMAIN: FFT Analysis', 60, drawHeight/2 + 25);
-  textSize(14);
-  textStyle(NORMAL);
-  text('Magnitude vs. Frequency - Shows individual frequency components', 60, drawHeight/2 + 38);
-  text('Look for peaks at ' + freqSliderSine.value() + ' Hz (sine) and ' + freqSliderCos.value() + ' Hz (cosine)', 60, drawHeight/2 + 50);
   
   // Add axis labels
   textSize(14);
@@ -188,7 +217,7 @@ function drawDisplayLabels() {
   push();
   translate(20, drawHeight/4);
   rotate(-PI/2);
-  text('Amplitude', 0, 0);
+  text('Amplitude', -40, 0);
   pop();
   
   // Frequency domain axis labels  
@@ -196,8 +225,24 @@ function drawDisplayLabels() {
   push();
   translate(20, 3*drawHeight/4);
   rotate(-PI/2);
-  text('Magnitude', 0, 0);
+  text('Magnitude', -40, 0);
   pop();
   
   noFill();
+}
+
+function windowResized() {
+  // Update canvas size when the container resizes
+  updateCanvasSize();
+  resizeCanvas(containerWidth, containerHeight);
+  redraw();
+  // speedSlider.size(canvasWidth - sliderLeftMargin - 15);
+  // radiusSlider.size(canvasWidth - sliderLeftMargin - 15);
+}
+
+function updateCanvasSize() {
+    // Get the exact dimensions of the container
+    const container = document.querySelector('main').getBoundingClientRect();
+    containerWidth = Math.floor(container.width);  // Avoid fractional pixels
+    canvasWidth = containerWidth;
 }
