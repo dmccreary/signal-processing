@@ -69,32 +69,32 @@ function drawGraph() {
            color:{background:'red'},
            font: {color: "white"},
         },
-        "term": {
+        "signals": {
            color:{background:'orange'},
         },
-        "stand": {
-           color:{background:'gold'},
+        "trans": {
+           color:{background:'yellow'},
         },
-        "ui": {
-           color:{background:'purple'},
+        "filters": {
+           color:{background:'lightgreen'},
         },
-        "algorithms": {
-           color:{background:'green'},
+        "random": {
+           color:{background:'lightblue'},
         },
-        "similarity": {
-           color:{background:'brown'},
+        "time": {
+           color:{background:'plum'},
         },
-        "learning-theory": {
-           color:{background:'green'},
+        "adv": {
+           color:{background:'violet'},
         },
-        "ai": {
-           color:{background:'pink'},
+        "ml": {
+           color:{background:'silver'},
         },
-        "feed": {
-           color:{background:'gray'},
+        "apps": {
+           color:{background:'tan'},
         },
-        "agents": {
-           color:{background:'navy'},
+        "emerging": {
+           color:{background:'mediumaquamarine'},
         },
         goal: {
            shape: "star", 

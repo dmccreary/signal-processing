@@ -1,14 +1,8 @@
-# Graph Viewer
+# Learning Graph Viewer
 
 ![](./view-graph.png)
 
-Here are a few example programs to view the learning
-graph using the vis.js JavaScript library.  We start with
-a simple 
-
-## Simple Graph View with Pinned Foundation and Goal Nodes
-
-[Run the Learning Graph Viewer MicroSim](main.html)
+[Run the Learning Graph Viewer MicroSim Fullscreen](main.html){ .md-button .md-button--primary }
 
 Here are the changes we made to a standard vis.js template
 to pin the foundation nodes to the left and the goal nodes
