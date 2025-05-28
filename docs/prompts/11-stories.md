@@ -1,12 +1,39 @@
 # Storytelling
 
-```
-Please tell a fun and engaging story about actress
-Hedy Lamarr and her patents the basis for WiFi.
-Make it demonstrate the intelligence of Hedy and
-her courage to overcome being a stereotype of an
-actress with no brains.
-```
+## Narrative Prompt
+!!! prompt
+    Please tell a fun and engaging story about actress
+    Hedy Lamarr and her patents the basis for WiFi.
+    Make it demonstrate the intelligence of Hedy and
+    her courage to overcome being a stereotype of an
+    actress with no brains.
+
+A sample response done with ChatGPT in 2023 is shown below.
+
+## Graphic Novel Prompt
+
+This is a much more sophisticated prompt that generates descriptions of images for a graphic novel.
+You can see an example graphic-novel story here: [Frequency Hopping Graphic Novel](../stories/hedy-lamarr/index.md)
+
+!!! prompt
+    I would like to create new graphic novel based around the story of Hedy Lamarr and her work on signal processing.
+
+    The story should have about a dozen panels of graphic-novel type drawings.  Please use an art deco style drawings that were popular around 1942.  The drawing should all be a wide-landscape format. 
+
+    Your job is to write the overall narrative of the story and then describe in details the images in each story.
+
+    You are welcome to use the heady-lamarr-story-v1.md to get started.
+    The story should show Heady Lamarr in a positive superhero-like role and her ability to overcome adversity despite being a woman.
+
+    Finally, generalize about the skills needed to be a great engineer and promote change. Our goal is to have you generate the full text of the story, but to turn the story into a graphic novel with many illustrations that explain how the Hedy invited the ideas of frequency shifting. 
+
+    When appropriate, suggest an wide-landscape drawing that could be inserted into the narrative to make the story a graphic novel. Describe each image in detail and be consistent across all the images in the story for style. 
+
+    When you describe an image, make sure to mention that it should be a colorful, bright wide-landscape drawing with an art deco design style.
+
+    Prompt given to Anthropic Claude 3.7 in Mat 2025.
+
+
 
 ## ChatGPT Response
 
