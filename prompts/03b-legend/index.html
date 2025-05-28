@@ -722,9 +722,9 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#response" class="md-nav__link">
+  <a href="#example-format" class="md-nav__link">
     <span class="md-ellipsis">
-      Response
+      Example Format
     </span>
   </a>
   
@@ -1537,9 +1537,9 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#response" class="md-nav__link">
+  <a href="#example-format" class="md-nav__link">
     <span class="md-ellipsis">
-      Response
+      Example Format
     </span>
   </a>
   
@@ -1571,54 +1571,71 @@
 
 <h1 id="generating-a-concept-legend">Generating a Concept Legend</h1>
 <h2 id="summarize-categories">Summarize Categories</h2>
-<div class="highlight"><pre><span></span><code>Convert the following list into an HTML table
-
--   **1. Mathematical Foundations**
--   **2. Signals and Systems**
--   **3. Transforms and Frequency Analysis**
--   **4. Filters and Filter Design**
--   **5. Random Processes and Statistical Signal Processing**
--   **6. Time-Frequency Analysis and Wavelets**
--   **7. Advanced Signal Processing Techniques**
--   **8. Machine Learning and Neural Networks in Signal Processing**
--   **9. Applications in Communications and Multimedia**
--   **10. Emerging and Specialized Topics**
-
-Use the following format:
-
-&lt;table&gt;
-    &lt;tr&gt;
-        &lt;td&gt;Mathematical Foundations&lt;/td&gt;
-        &lt;td style=&quot;background-color: red; color: white;&quot;&gt;Red&lt;/td&gt;
-    &lt;/tr&gt;
-    &lt;tr&gt;
-        &lt;td&gt;Signals and Systems&lt;/td&gt;
-        &lt;td style=&quot;background-color: orange;&quot;&gt;Orange&lt;/td&gt;
-    &lt;/tr&gt;
-    &lt;tr&gt;
-        &lt;td&gt;Transforms and Frequency Analysis&lt;/td&gt;
-        &lt;td style=&quot;background-color: orange;&quot;&gt;Gold&lt;/td&gt;
-    &lt;/tr&gt;
-    &lt;tr&gt;
-        &lt;td&gt;Filters and Filter Design&lt;/td&gt;
-        &lt;td style=&quot;background-color: orange;&quot;&gt;Green&lt;/td&gt;
-    &lt;/tr&gt;
-&lt;table&gt;
-
-Use the following colors:
-
-1. Red
-2. Orange
-3. Yellow
-4. Lightgreen
-5. Lightblue
-6. Plum
-7. Violet
-8. Silver
-9. Tan
-10. MediumAquamarine
-</code></pre></div>
-<h2 id="response">Response</h2>
+<div class="admonition prompt">
+<p class="admonition-title">Prompt</p>
+<p>Convert the following list into an HTML table</p>
+<ul>
+<li><strong>1. Mathematical Foundations</strong></li>
+<li><strong>2. Signals and Systems</strong></li>
+<li><strong>3. Transforms and Frequency Analysis</strong></li>
+<li><strong>4. Filters and Filter Design</strong></li>
+<li><strong>5. Random Processes and Statistical Signal Processing</strong></li>
+<li><strong>6. Time-Frequency Analysis and Wavelets</strong></li>
+<li><strong>7. Advanced Signal Processing Techniques</strong></li>
+<li><strong>8. Machine Learning and Neural Networks in Signal Processing</strong></li>
+<li><strong>9. Applications in Communications and Multimedia</strong></li>
+<li><strong>10. Emerging and Specialized Topics</strong></li>
+</ul>
+</div>
+<p>Use the following format:</p>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
+<span class="normal"> 2</span>
+<span class="normal"> 3</span>
+<span class="normal"> 4</span>
+<span class="normal"> 5</span>
+<span class="normal"> 6</span>
+<span class="normal"> 7</span>
+<span class="normal"> 8</span>
+<span class="normal"> 9</span>
+<span class="normal">10</span>
+<span class="normal">11</span>
+<span class="normal">12</span>
+<span class="normal">13</span>
+<span class="normal">14</span>
+<span class="normal">15</span>
+<span class="normal">16</span>
+<span class="normal">17</span>
+<span class="normal">18</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="p">&lt;</span><span class="nt">table</span><span class="p">&gt;</span>
+    <span class="p">&lt;</span><span class="nt">tr</span><span class="p">&gt;</span>
+        <span class="p">&lt;</span><span class="nt">td</span><span class="p">&gt;</span>Mathematical Foundations<span class="p">&lt;/</span><span class="nt">td</span><span class="p">&gt;</span>
+        <span class="p">&lt;</span><span class="nt">td</span> <span class="na">style</span><span class="o">=</span><span class="s">&quot;background-color: red; color: white;&quot;</span><span class="p">&gt;</span>Red<span class="p">&lt;/</span><span class="nt">td</span><span class="p">&gt;</span>
+    <span class="p">&lt;/</span><span class="nt">tr</span><span class="p">&gt;</span>
+    <span class="p">&lt;</span><span class="nt">tr</span><span class="p">&gt;</span>
+        <span class="p">&lt;</span><span class="nt">td</span><span class="p">&gt;</span>Signals and Systems<span class="p">&lt;/</span><span class="nt">td</span><span class="p">&gt;</span>
+        <span class="p">&lt;</span><span class="nt">td</span> <span class="na">style</span><span class="o">=</span><span class="s">&quot;background-color: orange;&quot;</span><span class="p">&gt;</span>Orange<span class="p">&lt;/</span><span class="nt">td</span><span class="p">&gt;</span>
+    <span class="p">&lt;/</span><span class="nt">tr</span><span class="p">&gt;</span>
+    <span class="p">&lt;</span><span class="nt">tr</span><span class="p">&gt;</span>
+        <span class="p">&lt;</span><span class="nt">td</span><span class="p">&gt;</span>Transforms and Frequency Analysis<span class="p">&lt;/</span><span class="nt">td</span><span class="p">&gt;</span>
+        <span class="p">&lt;</span><span class="nt">td</span> <span class="na">style</span><span class="o">=</span><span class="s">&quot;background-color: orange;&quot;</span><span class="p">&gt;</span>Gold<span class="p">&lt;/</span><span class="nt">td</span><span class="p">&gt;</span>
+    <span class="p">&lt;/</span><span class="nt">tr</span><span class="p">&gt;</span>
+    <span class="p">&lt;</span><span class="nt">tr</span><span class="p">&gt;</span>
+        <span class="p">&lt;</span><span class="nt">td</span><span class="p">&gt;</span>Filters and Filter Design<span class="p">&lt;/</span><span class="nt">td</span><span class="p">&gt;</span>
+        <span class="p">&lt;</span><span class="nt">td</span> <span class="na">style</span><span class="o">=</span><span class="s">&quot;background-color: orange;&quot;</span><span class="p">&gt;</span>Green<span class="p">&lt;/</span><span class="nt">td</span><span class="p">&gt;</span>
+    <span class="p">&lt;/</span><span class="nt">tr</span><span class="p">&gt;</span>
+<span class="p">&lt;</span><span class="nt">table</span><span class="p">&gt;</span>
+</code></pre></div></td></tr></table></div>
+<p>Use the following colors:</p>
+<ol>
+<li>Red</li>
+<li>Orange</li>
+<li>Yellow</li>
+<li>Lightgreen</li>
+<li>Lightblue</li>
+<li>Plum</li>
+<li>Violet</li>
+<li>Silver</li>
+<li>Tan</li>
+<li>MediumAquamarine
 <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
 <span class="normal"> 2</span>
 <span class="normal"> 3</span>
@@ -1660,49 +1677,99 @@ Use the following colors:
 <span class="normal">39</span>
 <span class="normal">40</span>
 <span class="normal">41</span>
-<span class="normal">42</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="p">&lt;</span><span class="nt">table</span><span class="p">&gt;</span>
-    <span class="p">&lt;</span><span class="nt">tr</span><span class="p">&gt;</span>
-        <span class="p">&lt;</span><span class="nt">td</span><span class="p">&gt;</span>Mathematical Foundations<span class="p">&lt;/</span><span class="nt">td</span><span class="p">&gt;</span>
-        <span class="p">&lt;</span><span class="nt">td</span> <span class="na">style</span><span class="o">=</span><span class="s">&quot;background-color: red; color: white;&quot;</span><span class="p">&gt;</span>Red<span class="p">&lt;/</span><span class="nt">td</span><span class="p">&gt;</span>
-    <span class="p">&lt;/</span><span class="nt">tr</span><span class="p">&gt;</span>
-    <span class="p">&lt;</span><span class="nt">tr</span><span class="p">&gt;</span>
-        <span class="p">&lt;</span><span class="nt">td</span><span class="p">&gt;</span>Signals and Systems<span class="p">&lt;/</span><span class="nt">td</span><span class="p">&gt;</span>
-        <span class="p">&lt;</span><span class="nt">td</span> <span class="na">style</span><span class="o">=</span><span class="s">&quot;background-color: orange; color: white;&quot;</span><span class="p">&gt;</span>Orange<span class="p">&lt;/</span><span class="nt">td</span><span class="p">&gt;</span>
-    <span class="p">&lt;/</span><span class="nt">tr</span><span class="p">&gt;</span>
-    <span class="p">&lt;</span><span class="nt">tr</span><span class="p">&gt;</span>
-        <span class="p">&lt;</span><span class="nt">td</span><span class="p">&gt;</span>Transforms and Frequency Analysis<span class="p">&lt;/</span><span class="nt">td</span><span class="p">&gt;</span>
-        <span class="p">&lt;</span><span class="nt">td</span> <span class="na">style</span><span class="o">=</span><span class="s">&quot;background-color: yellow;&quot;</span><span class="p">&gt;</span>Yellow<span class="p">&lt;/</span><span class="nt">td</span><span class="p">&gt;</span>
-    <span class="p">&lt;/</span><span class="nt">tr</span><span class="p">&gt;</span>
-    <span class="p">&lt;</span><span class="nt">tr</span><span class="p">&gt;</span>
-        <span class="p">&lt;</span><span class="nt">td</span><span class="p">&gt;</span>Filters and Filter Design<span class="p">&lt;/</span><span class="nt">td</span><span class="p">&gt;</span>
-        <span class="p">&lt;</span><span class="nt">td</span> <span class="na">style</span><span class="o">=</span><span class="s">&quot;background-color: lightgreen;&quot;</span><span class="p">&gt;</span>Lightgreen<span class="p">&lt;/</span><span class="nt">td</span><span class="p">&gt;</span>
-    <span class="p">&lt;/</span><span class="nt">tr</span><span class="p">&gt;</span>
-    <span class="p">&lt;</span><span class="nt">tr</span><span class="p">&gt;</span>
-        <span class="p">&lt;</span><span class="nt">td</span><span class="p">&gt;</span>Random Processes and Statistical Signal Processing<span class="p">&lt;/</span><span class="nt">td</span><span class="p">&gt;</span>
-        <span class="p">&lt;</span><span class="nt">td</span> <span class="na">style</span><span class="o">=</span><span class="s">&quot;background-color: lightblue;&quot;</span><span class="p">&gt;</span>Lightblue<span class="p">&lt;/</span><span class="nt">td</span><span class="p">&gt;</span>
-    <span class="p">&lt;/</span><span class="nt">tr</span><span class="p">&gt;</span>
-    <span class="p">&lt;</span><span class="nt">tr</span><span class="p">&gt;</span>
-        <span class="p">&lt;</span><span class="nt">td</span><span class="p">&gt;</span>Time-Frequency Analysis and Wavelets<span class="p">&lt;/</span><span class="nt">td</span><span class="p">&gt;</span>
-        <span class="p">&lt;</span><span class="nt">td</span> <span class="na">style</span><span class="o">=</span><span class="s">&quot;background-color: plum;&quot;</span><span class="p">&gt;</span>Plum<span class="p">&lt;/</span><span class="nt">td</span><span class="p">&gt;</span>
-    <span class="p">&lt;/</span><span class="nt">tr</span><span class="p">&gt;</span>
-    <span class="p">&lt;</span><span class="nt">tr</span><span class="p">&gt;</span>
-        <span class="p">&lt;</span><span class="nt">td</span><span class="p">&gt;</span>Advanced Signal Processing Techniques<span class="p">&lt;/</span><span class="nt">td</span><span class="p">&gt;</span>
-        <span class="p">&lt;</span><span class="nt">td</span> <span class="na">style</span><span class="o">=</span><span class="s">&quot;background-color: violet; color: white;&quot;</span><span class="p">&gt;</span>Violet<span class="p">&lt;/</span><span class="nt">td</span><span class="p">&gt;</span>
-    <span class="p">&lt;/</span><span class="nt">tr</span><span class="p">&gt;</span>
-    <span class="p">&lt;</span><span class="nt">tr</span><span class="p">&gt;</span>
-        <span class="p">&lt;</span><span class="nt">td</span><span class="p">&gt;</span>Machine Learning and Neural Networks in Signal Processing<span class="p">&lt;/</span><span class="nt">td</span><span class="p">&gt;</span>
-        <span class="p">&lt;</span><span class="nt">td</span> <span class="na">style</span><span class="o">=</span><span class="s">&quot;background-color: silver;&quot;</span><span class="p">&gt;</span>Silver<span class="p">&lt;/</span><span class="nt">td</span><span class="p">&gt;</span>
-    <span class="p">&lt;/</span><span class="nt">tr</span><span class="p">&gt;</span>
-    <span class="p">&lt;</span><span class="nt">tr</span><span class="p">&gt;</span>
-        <span class="p">&lt;</span><span class="nt">td</span><span class="p">&gt;</span>Applications in Communications and Multimedia<span class="p">&lt;/</span><span class="nt">td</span><span class="p">&gt;</span>
-        <span class="p">&lt;</span><span class="nt">td</span> <span class="na">style</span><span class="o">=</span><span class="s">&quot;background-color: tan;&quot;</span><span class="p">&gt;</span>Tan<span class="p">&lt;/</span><span class="nt">td</span><span class="p">&gt;</span>
-    <span class="p">&lt;/</span><span class="nt">tr</span><span class="p">&gt;</span>
-    <span class="p">&lt;</span><span class="nt">tr</span><span class="p">&gt;</span>
-        <span class="p">&lt;</span><span class="nt">td</span><span class="p">&gt;</span>Emerging and Specialized Topics<span class="p">&lt;/</span><span class="nt">td</span><span class="p">&gt;</span>
-        <span class="p">&lt;</span><span class="nt">td</span> <span class="na">style</span><span class="o">=</span><span class="s">&quot;background-color: mediumaquamarine;&quot;</span><span class="p">&gt;</span>MediumAquamarine<span class="p">&lt;/</span><span class="nt">td</span><span class="p">&gt;</span>
-    <span class="p">&lt;/</span><span class="nt">tr</span><span class="p">&gt;</span>
-<span class="p">&lt;/</span><span class="nt">table</span><span class="p">&gt;</span>
-</code></pre></div></td></tr></table></div>
+<span class="normal">42</span>
+<span class="normal">43</span>
+<span class="normal">44</span>
+<span class="normal">45</span></pre></div></td><td class="code"><div><pre><span></span><code>## Response
+
+```html
+&lt;table&gt;
+    &lt;tr&gt;
+        &lt;td&gt;Mathematical Foundations&lt;/td&gt;
+        &lt;td style=&quot;background-color: red; color: white;&quot;&gt;Red&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+        &lt;td&gt;Signals and Systems&lt;/td&gt;
+        &lt;td style=&quot;background-color: orange; color: white;&quot;&gt;Orange&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+        &lt;td&gt;Transforms and Frequency Analysis&lt;/td&gt;
+        &lt;td style=&quot;background-color: yellow;&quot;&gt;Yellow&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+        &lt;td&gt;Filters and Filter Design&lt;/td&gt;
+        &lt;td style=&quot;background-color: lightgreen;&quot;&gt;Lightgreen&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+        &lt;td&gt;Random Processes and Statistical Signal Processing&lt;/td&gt;
+        &lt;td style=&quot;background-color: lightblue;&quot;&gt;Lightblue&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+        &lt;td&gt;Time-Frequency Analysis and Wavelets&lt;/td&gt;
+        &lt;td style=&quot;background-color: plum;&quot;&gt;Plum&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+        &lt;td&gt;Advanced Signal Processing Techniques&lt;/td&gt;
+        &lt;td style=&quot;background-color: violet; color: white;&quot;&gt;Violet&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+        &lt;td&gt;Machine Learning and Neural Networks in Signal Processing&lt;/td&gt;
+        &lt;td style=&quot;background-color: silver;&quot;&gt;Silver&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+        &lt;td&gt;Applications in Communications and Multimedia&lt;/td&gt;
+        &lt;td style=&quot;background-color: tan;&quot;&gt;Tan&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+        &lt;td&gt;Emerging and Specialized Topics&lt;/td&gt;
+        &lt;td style=&quot;background-color: mediumaquamarine;&quot;&gt;MediumAquamarine&lt;/td&gt;
+    &lt;/tr&gt;
+&lt;/table&gt;
+</code></pre></div></td></tr></table></div></li>
+</ol>
+<h2 id="example-format">Example Format</h2>
+<table>
+    <tr>
+        <td>Mathematical Foundations</td>
+        <td style="background-color: red; color: white;">Red</td>
+    </tr>
+    <tr>
+        <td>Signals and Systems</td>
+        <td style="background-color: orange; color: white;">Orange</td>
+    </tr>
+    <tr>
+        <td>Transforms and Frequency Analysis</td>
+        <td style="background-color: yellow;">Yellow</td>
+    </tr>
+    <tr>
+        <td>Filters and Filter Design</td>
+        <td style="background-color: lightgreen;">Lightgreen</td>
+    </tr>
+    <tr>
+        <td>Random Processes and Statistical Signal Processing</td>
+        <td style="background-color: lightblue;">Lightblue</td>
+    </tr>
+    <tr>
+        <td>Time-Frequency Analysis and Wavelets</td>
+        <td style="background-color: plum;">Plum</td>
+    </tr>
+    <tr>
+        <td>Advanced Signal Processing Techniques</td>
+        <td style="background-color: violet; color: white;">Violet</td>
+    </tr>
+    <tr>
+        <td>Machine Learning and Neural Networks in Signal Processing</td>
+        <td style="background-color: silver;">Silver</td>
+    </tr>
+    <tr>
+        <td>Applications in Communications and Multimedia</td>
+        <td style="background-color: tan;">Tan</td>
+    </tr>
+    <tr>
+        <td>Emerging and Specialized Topics</td>
+        <td style="background-color: mediumaquamarine;">MediumAquamarine</td>
+    </tr>
+</table>
 
 
 
