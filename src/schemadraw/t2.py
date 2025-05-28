@@ -3,7 +3,7 @@ import schemdraw.elements as elm
 
 with schemdraw.Drawing():
     elm.SourceV().up().label('5V')
-    elm.Line().right()
+    elm.Line().right().color('red')
     elm.Resistor().down().label('150 Ω')
     elm.LED().label('Red LED')
     elm.Line().left()

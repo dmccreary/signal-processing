@@ -8,7 +8,7 @@ a simple
 
 ## Simple Graph View with Pinned Foundation and Goal Nodes
 
-[Run the View JSON Graph MicroSim](view-graph.html)
+[Run the Learning Graph Viewer MicroSim](main.html)
 
 Here are the changes we made to a standard vis.js template
 to pin the foundation nodes to the left and the goal nodes
