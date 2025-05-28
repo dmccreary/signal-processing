@@ -1,22 +1,22 @@
 ---
-title: A title under 60 characters.
-description: A description under 110 characters.
-image: /img/cover-preview.png
-og:image: /img/cover-preview.png
-twitter:image: /img/cover-preview.png
+title: Basic FFT MicroSim
+description: A basic demonstration of FFT with time on the top and frequency on the bottom of the MicroSim
+image: /sims/fft-basic/fft-basic.png
+og:image: /sims/fft-basic/fft-basic.png
+twitter:image: /sims/fft-basic/fft-basic.png
 social:
    cards: false
 hide:
   - toc
 ---
-# My MicroSim
+# Basic FFT MicroSim
 
 <iframe src="./main.html" height="480px" scrolling="no"
   style="overflow: hidden;"></iframe>
 
 You can include this MicroSim in your course by pasting the following HTML directly into your web page.
 
-<iframe src="https://dmccreary.github.io/signal-processing/sims/SIM_NAME/main.html" height="480px" scrolling="no"
+<iframe src="https://dmccreary.github.io/signal-processing/sims/basic-fft/main.html" height="480px" scrolling="no"
   style="overflow: hidden;"></iframe>
 
 [Run the MicroSim](./sine-wave.html){ .md-button .md-button--primary }
