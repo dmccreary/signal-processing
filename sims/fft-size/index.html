@@ -6,19 +6,19 @@
       <meta charset="utf-8">
       <meta name="viewport" content="width=device-width,initial-scale=1">
       
-        <meta name="description" content="College Level Textbook on Signal Processing - License is Commons ShareAlike Attribution Noncommercial">
+        <meta name="description" content="A basic demonstration of FFT on a single oscillator and radio button to control the size">
       
       
         <meta name="author" content="Dan McCreary">
       
       
-        <link rel="canonical" href="https://dmccreary.github.io/signal-processing/sims/fft-2-osc/">
+        <link rel="canonical" href="https://dmccreary.github.io/signal-processing/sims/fft-size/">
       
       
-        <link rel="prev" href="../fft-basic/">
+        <link rel="prev" href="../fft-3-osc/">
       
       
-        <link rel="next" href="../fft-3-osc/">
+        <link rel="next" href="../timeline-viewer/">
       
       
       <link rel="icon" href="../../img/favicon.ico">
@@ -26,7 +26,7 @@
     
     
       
-        <title>FFT 2 Oscillators - Signal Processing with AI</title>
+        <title>FFT Size MicroSim - Signal Processing with AI</title>
       
     
     
@@ -73,11 +73,11 @@
       
         <meta  property="og:type"  content="website" >
       
-        <meta  property="og:title"  content="FFT 2 Oscillators - Signal Processing with AI" >
+        <meta  property="og:title"  content="FFT Size MicroSim - Signal Processing with AI" >
       
-        <meta  property="og:description"  content="College Level Textbook on Signal Processing - License is Commons ShareAlike Attribution Noncommercial" >
+        <meta  property="og:description"  content="A basic demonstration of FFT on a single oscillator and radio button to control the size" >
       
-        <meta  property="og:image"  content="https://dmccreary.github.io/signal-processing/assets/images/social/sims/fft-2-osc/index.png" >
+        <meta property="og:image" content="https://dmccreary.github.io/signal-processing/sims/fft-size/fft-size.png">
       
         <meta  property="og:image:type"  content="image/png" >
       
@@ -85,15 +85,15 @@
       
         <meta  property="og:image:height"  content="630" >
       
-        <meta  property="og:url"  content="https://dmccreary.github.io/signal-processing/sims/fft-2-osc/" >
+        <meta  property="og:url"  content="https://dmccreary.github.io/signal-processing/sims/fft-size/" >
       
         <meta  name="twitter:card"  content="summary_large_image" >
       
-        <meta  name="twitter:title"  content="FFT 2 Oscillators - Signal Processing with AI" >
+        <meta  name="twitter:title"  content="FFT Size MicroSim - Signal Processing with AI" >
       
-        <meta  name="twitter:description"  content="College Level Textbook on Signal Processing - License is Commons ShareAlike Attribution Noncommercial" >
+        <meta  name="twitter:description"  content="A basic demonstration of FFT on a single oscillator and radio button to control the size" >
       
-        <meta  name="twitter:image"  content="https://dmccreary.github.io/signal-processing/assets/images/social/sims/fft-2-osc/index.png" >
+        <meta name="twitter:image" content="https://dmccreary.github.io/signal-processing/sims/fft-size/fft-size.png">
       
     
     
@@ -114,7 +114,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#fast-fourier-trsnaform" class="md-skip">
+        <a href="#fft-size-microsim" class="md-skip">
           Skip to content
         </a>
       
@@ -149,7 +149,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              FFT 2 Oscillators
+              FFT Size MicroSim
             
           </span>
         </div>
@@ -755,19 +755,10 @@
                 
   
   
-    
   
   
-  
-    <li class="md-nav__item md-nav__item--active">
-      
-      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
-      
-      
-        
-      
-      
-      <a href="./" class="md-nav__link md-nav__link--active">
+    <li class="md-nav__item">
+      <a href="../fft-2-osc/" class="md-nav__link">
         
   
   
@@ -778,7 +769,6 @@
   
 
       </a>
-      
     </li>
   
 
@@ -811,10 +801,32 @@
                 
   
   
+    
   
   
-    <li class="md-nav__item">
-      <a href="../fft-size/" class="md-nav__link">
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  
+  <span class="md-ellipsis">
+    FFT Size
+    
+  </span>
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
         
   
   
@@ -825,6 +837,239 @@
   
 
       </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#fft-size-lesson-plan" class="md-nav__link">
+    <span class="md-ellipsis">
+      FFT Size - Lesson Plan
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="FFT Size - Lesson Plan">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#learning-objectives" class="md-nav__link">
+    <span class="md-ellipsis">
+      Learning Objectives
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#part-1-introduction-to-the-fft-visualization" class="md-nav__link">
+    <span class="md-ellipsis">
+      Part 1: Introduction to the FFT Visualization
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Part 1: Introduction to the FFT Visualization">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#getting-started" class="md-nav__link">
+    <span class="md-ellipsis">
+      Getting Started
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#part-2-exploring-frequency-relationships" class="md-nav__link">
+    <span class="md-ellipsis">
+      Part 2: Exploring Frequency Relationships
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Part 2: Exploring Frequency Relationships">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#activity-1-understanding-the-frequency-connection" class="md-nav__link">
+    <span class="md-ellipsis">
+      Activity 1: Understanding the Frequency Connection
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#activity-2-the-amplitude-connection" class="md-nav__link">
+    <span class="md-ellipsis">
+      Activity 2: The Amplitude Connection
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#part-3-understanding-fft-resolution" class="md-nav__link">
+    <span class="md-ellipsis">
+      Part 3: Understanding FFT Resolution
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Part 3: Understanding FFT Resolution">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#activity-3-fft-size-and-peak-width-analysis" class="md-nav__link">
+    <span class="md-ellipsis">
+      Activity 3: FFT Size and Peak Width Analysis
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#activity-4-trade-offs-in-fft-size" class="md-nav__link">
+    <span class="md-ellipsis">
+      Activity 4: Trade-offs in FFT Size
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#part-4-observing-transient-signals" class="md-nav__link">
+    <span class="md-ellipsis">
+      Part 4: Observing Transient Signals
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Part 4: Observing Transient Signals">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#activity-5-creating-wave-packets" class="md-nav__link">
+    <span class="md-ellipsis">
+      Activity 5: Creating Wave Packets
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#activity-6-amplitude-modulation-effects" class="md-nav__link">
+    <span class="md-ellipsis">
+      Activity 6: Amplitude Modulation Effects
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#part-5-synthesis-and-understanding" class="md-nav__link">
+    <span class="md-ellipsis">
+      Part 5: Synthesis and Understanding
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Part 5: Synthesis and Understanding">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#reflection-questions" class="md-nav__link">
+    <span class="md-ellipsis">
+      Reflection Questions
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#key-takeaways" class="md-nav__link">
+    <span class="md-ellipsis">
+      Key Takeaways
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#extension-activities" class="md-nav__link">
+    <span class="md-ellipsis">
+      Extension Activities
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Extension Activities">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#for-advanced-students" class="md-nav__link">
+    <span class="md-ellipsis">
+      For Advanced Students:
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#troubleshooting-common-misconceptions" class="md-nav__link">
+    <span class="md-ellipsis">
+      Troubleshooting Common Misconceptions:
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
     </li>
   
 
@@ -1523,6 +1768,227 @@
     
   
   
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#fft-size-lesson-plan" class="md-nav__link">
+    <span class="md-ellipsis">
+      FFT Size - Lesson Plan
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="FFT Size - Lesson Plan">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#learning-objectives" class="md-nav__link">
+    <span class="md-ellipsis">
+      Learning Objectives
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#part-1-introduction-to-the-fft-visualization" class="md-nav__link">
+    <span class="md-ellipsis">
+      Part 1: Introduction to the FFT Visualization
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Part 1: Introduction to the FFT Visualization">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#getting-started" class="md-nav__link">
+    <span class="md-ellipsis">
+      Getting Started
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#part-2-exploring-frequency-relationships" class="md-nav__link">
+    <span class="md-ellipsis">
+      Part 2: Exploring Frequency Relationships
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Part 2: Exploring Frequency Relationships">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#activity-1-understanding-the-frequency-connection" class="md-nav__link">
+    <span class="md-ellipsis">
+      Activity 1: Understanding the Frequency Connection
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#activity-2-the-amplitude-connection" class="md-nav__link">
+    <span class="md-ellipsis">
+      Activity 2: The Amplitude Connection
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#part-3-understanding-fft-resolution" class="md-nav__link">
+    <span class="md-ellipsis">
+      Part 3: Understanding FFT Resolution
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Part 3: Understanding FFT Resolution">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#activity-3-fft-size-and-peak-width-analysis" class="md-nav__link">
+    <span class="md-ellipsis">
+      Activity 3: FFT Size and Peak Width Analysis
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#activity-4-trade-offs-in-fft-size" class="md-nav__link">
+    <span class="md-ellipsis">
+      Activity 4: Trade-offs in FFT Size
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#part-4-observing-transient-signals" class="md-nav__link">
+    <span class="md-ellipsis">
+      Part 4: Observing Transient Signals
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Part 4: Observing Transient Signals">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#activity-5-creating-wave-packets" class="md-nav__link">
+    <span class="md-ellipsis">
+      Activity 5: Creating Wave Packets
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#activity-6-amplitude-modulation-effects" class="md-nav__link">
+    <span class="md-ellipsis">
+      Activity 6: Amplitude Modulation Effects
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#part-5-synthesis-and-understanding" class="md-nav__link">
+    <span class="md-ellipsis">
+      Part 5: Synthesis and Understanding
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Part 5: Synthesis and Understanding">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#reflection-questions" class="md-nav__link">
+    <span class="md-ellipsis">
+      Reflection Questions
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#key-takeaways" class="md-nav__link">
+    <span class="md-ellipsis">
+      Key Takeaways
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#extension-activities" class="md-nav__link">
+    <span class="md-ellipsis">
+      Extension Activities
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Extension Activities">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#for-advanced-students" class="md-nav__link">
+    <span class="md-ellipsis">
+      For Advanced Students:
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#troubleshooting-common-misconceptions" class="md-nav__link">
+    <span class="md-ellipsis">
+      Troubleshooting Common Misconceptions:
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
 </nav>
                   </div>
                 </div>
@@ -1537,7 +2003,7 @@
 
 
   
-    <a href="https://github.com/dmccreary/signal-processing/blob/master/docs/sims/fft-2-osc/index.md" title="Edit this page" class="md-content__button md-icon">
+    <a href="https://github.com/dmccreary/signal-processing/blob/master/docs/sims/fft-size/index.md" title="Edit this page" class="md-content__button md-icon">
       
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M10 20H6V4h7v5h5v3.1l2-2V8l-6-6H6c-1.1 0-2 .9-2 2v16c0 1.1.9 2 2 2h4zm10.2-7c.1 0 .3.1.4.2l1.3 1.3c.2.2.2.6 0 .8l-1 1-2.1-2.1 1-1c.1-.1.2-.2.4-.2m0 3.9L14.1 23H12v-2.1l6.1-6.1z"/></svg>
     </a>
@@ -1545,16 +2011,241 @@
   
 
 
-<h1 id="fast-fourier-trsnaform">Fast Fourier Trsnaform</h1>
-<figure>
-<p><img alt="" src="fft.png" width="400" />
-   </p>
-<figcaption>Fast Fourier transform Sim</figcaption>
-</figure>
-<p><a href="fft-scheme.html">Run the MicroSim</a>
-<a href="https://editor.p5js.org/dmccreary/sketches/XnH57-jNr">Edit MicroSim</a></p>
-<p>FFT, or Fast Fourier Transform, is an algorithm designed to compute the Discrete Fourier Transform (DFT) and its inverse efficiently. The DFT is a mathematical transformation used to convert a signal from its original domain (often time or space) into a frequency domain. FFT is widely used because it reduces the complexity of computing the DFT from <span class="arithmatex">\(O(n^2)\)</span> to <span class="arithmatex">\(O(n \log n)\)</span>, where <span class="arithmatex">\(n\)</span> is the number of data points. This efficiency is critical in processing large datasets and in applications where real-time processing is required, such as audio signal processing, image analysis, and solving partial differential equations.</p>
-<p>The key advantage of using FFT is that it helps in analyzing the frequency characteristics of signals, filtering, and managing signals in the frequency domain more effectively. It has numerous applications in engineering, physics, applied mathematics, and computer science, making it a fundamental tool in many scientific and engineering tasks.</p>
+<h1 id="fft-size-microsim">FFT Size MicroSim</h1>
+<iframe src="./main.html" height="480px" scrolling="no"
+  style="overflow: hidden;"></iframe>
+
+<p>You can include this MicroSim in your course by pasting the following HTML directly into your web page.</p>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
+<span class="normal">2</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="p">&lt;</span><span class="nt">iframe</span> <span class="na">src</span><span class="o">=</span><span class="s">&quot;https://dmccreary.github.io/signal-processing/sims/fft-size/main.html&quot;</span> 
+  <span class="na">height</span><span class="o">=</span><span class="s">&quot;480px&quot;</span> <span class="na">scrolling</span><span class="o">=</span><span class="s">&quot;no&quot;</span> <span class="na">style</span><span class="o">=</span><span class="s">&quot;overflow: hidden;&quot;</span><span class="p">&gt;&lt;/</span><span class="nt">iframe</span><span class="p">&gt;</span>
+</code></pre></div></td></tr></table></div>
+<p><a class="md-button md-button--primary" href="main.html">Run the FFT Size MicroSim Fullscreen</a>
+<a href="https://editor.p5js.org/dmccreary/sketches/FNORtTenz">Edit the FFT Size MicroSim</a></p>
+<h2 id="fft-size-lesson-plan">FFT Size - Lesson Plan</h2>
+<div class="admonition prompt">
+<p class="admonition-title">Prompt</p>
+<p>Please generate a detailed lesson plan with no times for a freshman in college that is getting their first exposure to FFT.  Have them vary the controls and see the impact.  Have them note the width of the peak in the frequency graph.  Have them quickly move the amplitude control and see a packet of waves of a given frequency in the top time domain.  Return the results in markup with </p>
+</div>
+<h3 id="learning-objectives">Learning Objectives</h3>
+<p>By the end of this lesson, students will be able to:
+- Understand the relationship between time domain and frequency domain representations
+- Explain how FFT size affects frequency resolution
+- Observe the connection between signal amplitude and spectral peaks
+- Recognize how transient signals appear in both domains</p>
+<h2 id="part-1-introduction-to-the-fft-visualization">Part 1: Introduction to the FFT Visualization</h2>
+<h3 id="getting-started">Getting Started</h3>
+<ol>
+<li><strong>Launch the FFT Basic Visualization</strong> and observe the interface</li>
+<li><strong>Identify the key components:</strong></li>
+<li>Top half: Time Domain (shows the waveform over time)</li>
+<li>Bottom half: Frequency Domain (shows the FFT spectrum)</li>
+<li>Controls: Frequency slider, Amplitude slider, FFT Size radio buttons</li>
+<li>
+<p>Start/Pause and Reset buttons</p>
+</li>
+<li>
+<p><strong>Initial Observation:</strong></p>
+</li>
+<li>Click "Start" to begin the simulation</li>
+<li>Notice the green waveform in the time domain (top)</li>
+<li>Notice the purple bars in the frequency domain (bottom)</li>
+<li><strong>Question to ponder:</strong> What is the relationship between these two displays?</li>
+</ol>
+<hr />
+<h2 id="part-2-exploring-frequency-relationships">Part 2: Exploring Frequency Relationships</h2>
+<h3 id="activity-1-understanding-the-frequency-connection">Activity 1: Understanding the Frequency Connection</h3>
+<ol>
+<li><strong>Set initial conditions:</strong></li>
+<li>Frequency: 440 Hz (default)</li>
+<li>Amplitude: 0.5 (default)</li>
+<li>FFT Size: 1024 (default)</li>
+<li>
+<p>Click "Start"</p>
+</li>
+<li>
+<p><strong>Observe and record:</strong></p>
+</li>
+<li>What frequency shows the peak in the bottom graph?</li>
+<li>How does this relate to the frequency slider setting?</li>
+<li>
+<p><strong>Key insight:</strong> The peak in the frequency domain appears at exactly the same frequency as the time domain signal</p>
+</li>
+<li>
+<p><strong>Experiment with different frequencies:</strong></p>
+</li>
+<li>Move the frequency slider to 200 Hz</li>
+<li>Move it to 800 Hz</li>
+<li>Move it to 1500 Hz</li>
+<li><strong>Record your observations:</strong> How does the peak location change in the frequency domain?</li>
+</ol>
+<h3 id="activity-2-the-amplitude-connection">Activity 2: The Amplitude Connection</h3>
+<ol>
+<li><strong>Fix the frequency at 440 Hz</strong></li>
+<li><strong>Vary the amplitude from 0.1 to 1.0:</strong></li>
+<li>Start with amplitude = 0.1</li>
+<li>Gradually increase to 0.5</li>
+<li>Increase to 1.0</li>
+<li>
+<p><strong>Observe:</strong> What happens to the height of the peak in the frequency domain?</p>
+</li>
+<li>
+<p><strong>Key discovery:</strong> Amplitude in the time domain directly corresponds to the magnitude (height) of the peak in the frequency domain</p>
+</li>
+</ol>
+<hr />
+<h2 id="part-3-understanding-fft-resolution">Part 3: Understanding FFT Resolution</h2>
+<h3 id="activity-3-fft-size-and-peak-width-analysis">Activity 3: FFT Size and Peak Width Analysis</h3>
+<p>This is a crucial concept that many students find challenging initially.</p>
+<ol>
+<li><strong>Set up for peak width observation:</strong></li>
+<li>Frequency: 440 Hz</li>
+<li>Amplitude: 0.7</li>
+<li>
+<p>Start with FFT Size: 512</p>
+</li>
+<li>
+<p><strong>Observe the peak width:</strong></p>
+</li>
+<li><strong>Look carefully</strong> at the width of the purple peak at 440 Hz</li>
+<li>Notice how "spread out" or "narrow" the peak appears</li>
+<li>
+<p><strong>Record:</strong> Estimate the width of the peak in the frequency domain</p>
+</li>
+<li>
+<p><strong>Change FFT size systematically:</strong></p>
+</li>
+<li>Switch to FFT Size: 1024</li>
+<li><strong>Observe:</strong> Is the peak narrower or wider than before?</li>
+<li>Switch to FFT Size: 2048</li>
+<li><strong>Observe:</strong> How has the peak width changed?</li>
+<li>Switch to FFT Size: 4096</li>
+<li>
+<p><strong>Final observation:</strong> What is the trend in peak width as FFT size increases?</p>
+</li>
+<li>
+<p><strong>Understanding frequency resolution:</strong></p>
+</li>
+<li><strong>Check the display:</strong> Look at "Freq Resolution: X.X Hz/bin" </li>
+<li><strong>Connect the concepts:</strong> Smaller Hz/bin values mean better frequency resolution</li>
+<li><strong>Key insight:</strong> Larger FFT sizes provide better frequency resolution (narrower peaks)</li>
+</ol>
+<h3 id="activity-4-trade-offs-in-fft-size">Activity 4: Trade-offs in FFT Size</h3>
+<ol>
+<li><strong>Practical considerations:</strong></li>
+<li>Try FFT Size: 8192 (maximum)</li>
+<li>Try FFT Size: 512 (minimum)</li>
+<li><strong>Question:</strong> What might be the trade-off between high resolution and computational cost?</li>
+</ol>
+<hr />
+<h2 id="part-4-observing-transient-signals">Part 4: Observing Transient Signals</h2>
+<h3 id="activity-5-creating-wave-packets">Activity 5: Creating Wave Packets</h3>
+<p>This activity helps students understand how changing signals appear in both domains.</p>
+<ol>
+<li><strong>Set up for transient observation:</strong></li>
+<li>Frequency: 600 Hz</li>
+<li>FFT Size: 2048 (for good resolution)</li>
+<li>
+<p>Amplitude: 0.5</p>
+</li>
+<li>
+<p><strong>Create a wave packet:</strong></p>
+</li>
+<li><strong>Quickly</strong> move the amplitude slider from 0 to 0.8 and back to 0</li>
+<li>Do this motion in about 1-2 seconds</li>
+<li>
+<p><strong>Observe the time domain:</strong> You should see a "burst" or "packet" of waves</p>
+</li>
+<li>
+<p><strong>Observe both domains simultaneously:</strong></p>
+</li>
+<li><strong>Time domain:</strong> Notice the localized group of oscillations</li>
+<li><strong>Frequency domain:</strong> What happens to the peak during this transient?</li>
+<li>
+<p><strong>Repeat several times</strong> to see the effect clearly</p>
+</li>
+<li>
+<p><strong>Advanced observation:</strong></p>
+</li>
+<li>Try creating wave packets at different frequencies (300 Hz, 800 Hz, 1200 Hz)</li>
+<li><strong>Question:</strong> How does the frequency of the wave packet relate to where the peak appears in the frequency domain?</li>
+</ol>
+<h3 id="activity-6-amplitude-modulation-effects">Activity 6: Amplitude Modulation Effects</h3>
+<ol>
+<li><strong>Create rhythmic amplitude changes:</strong></li>
+<li>Set frequency to 440 Hz</li>
+<li><strong>Slowly and rhythmically</strong> vary the amplitude up and down</li>
+<li>Create a "beating" or "pulsing" effect</li>
+<li><strong>Observe:</strong> How does this appear in both time and frequency domains?</li>
+</ol>
+<hr />
+<h2 id="part-5-synthesis-and-understanding">Part 5: Synthesis and Understanding</h2>
+<h3 id="reflection-questions">Reflection Questions</h3>
+<p>Work through these questions to consolidate your understanding:</p>
+<ol>
+<li><strong>Fundamental relationship:</strong></li>
+<li>
+<p>How would you explain the relationship between time domain and frequency domain to a classmate?</p>
+</li>
+<li>
+<p><strong>Peak characteristics:</strong></p>
+</li>
+<li>Why does a single-frequency sine wave show up as a single peak in the frequency domain?</li>
+<li>What determines the location of the peak?</li>
+<li>
+<p>What determines the height of the peak?</p>
+</li>
+<li>
+<p><strong>Resolution trade-offs:</strong></p>
+</li>
+<li>What happens to frequency resolution as FFT size increases?</li>
+<li>Why might you choose a smaller FFT size despite lower resolution?</li>
+<li>
+<p>In what applications might high frequency resolution be critical?</p>
+</li>
+<li>
+<p><strong>Transient signals:</strong></p>
+</li>
+<li>How do short-duration signals (wave packets) appear differently from continuous signals?</li>
+<li>Why might the frequency domain representation change when you create wave packets?</li>
+</ol>
+<h3 id="key-takeaways">Key Takeaways</h3>
+<p>Students should be able to articulate:</p>
+<ul>
+<li>
+<p><strong>Time-Frequency Duality:</strong> Every signal can be represented in both time domain (how it changes over time) and frequency domain (what frequencies it contains)</p>
+</li>
+<li>
+<p><strong>FFT Resolution:</strong> The FFT size determines how precisely we can distinguish between different frequencies - larger FFT sizes give narrower, more precise peaks</p>
+</li>
+<li>
+<p><strong>Amplitude-Magnitude Relationship:</strong> The amplitude of a signal in the time domain directly relates to the magnitude (height) of its corresponding peak in the frequency domain</p>
+</li>
+<li>
+<p><strong>Transient Analysis:</strong> Short-duration signals create temporary peaks in the frequency domain, illustrating how the FFT can reveal the frequency content of time-varying signals</p>
+</li>
+</ul>
+<hr />
+<h2 id="extension-activities">Extension Activities</h2>
+<h3 id="for-advanced-students">For Advanced Students:</h3>
+<ol>
+<li>
+<p><strong>Predict and verify:</strong> Before moving the frequency slider, predict where the peak will appear, then verify your prediction</p>
+</li>
+<li>
+<p><strong>Multiple frequencies:</strong> What would happen if we had two different frequencies at the same time? (This sets up the next lesson on multi-component signals)</p>
+</li>
+<li>
+<p><strong>Real-world connections:</strong> Where might FFT analysis be used in engineering applications? (Audio processing, vibration analysis, communications, etc.)</p>
+</li>
+</ol>
+<h3 id="troubleshooting-common-misconceptions">Troubleshooting Common Misconceptions:</h3>
+<ul>
+<li><strong>"The time domain shows frequency"</strong> - Clarify that time domain shows how the signal varies over time, while frequency domain shows what frequencies are present</li>
+<li><strong>"Bigger FFT is always better"</strong> - Discuss computational trade-offs and real-time processing constraints</li>
+<li><strong>"The peak should be a single line"</strong> - Explain that digital processing creates finite-width peaks, and resolution limits cause peak spreading</li>
+</ul>
+<p>This lesson provides hands-on experience with the fundamental concepts of FFT analysis while building intuition for more advanced signal processing topics.</p>
 
 
 
@@ -1595,7 +2286,7 @@
       <nav class="md-footer__inner md-grid" aria-label="Footer" >
         
           
-          <a href="../fft-basic/" class="md-footer__link md-footer__link--prev" aria-label="Previous: Basic FFT">
+          <a href="../fft-3-osc/" class="md-footer__link md-footer__link--prev" aria-label="Previous: FFT 3 Oscillators">
             <div class="md-footer__button md-icon">
               
               <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
@@ -1605,20 +2296,20 @@
                 Previous
               </span>
               <div class="md-ellipsis">
-                Basic FFT
+                FFT 3 Oscillators
               </div>
             </div>
           </a>
         
         
           
-          <a href="../fft-3-osc/" class="md-footer__link md-footer__link--next" aria-label="Next: FFT 3 Oscillators">
+          <a href="../timeline-viewer/" class="md-footer__link md-footer__link--next" aria-label="Next: Timeline Viewer">
             <div class="md-footer__title">
               <span class="md-footer__direction">
                 Next
               </span>
               <div class="md-ellipsis">
-                FFT 3 Oscillators
+                Timeline Viewer
               </div>
             </div>
             <div class="md-footer__button md-icon">
