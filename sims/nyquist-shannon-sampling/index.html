@@ -588,6 +588,12 @@
       
         
       
+        
+      
+        
+      
+        
+      
     
     
     
@@ -706,12 +712,81 @@
   
   
     <li class="md-nav__item">
+      <a href="../tone-gen/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Tone Generator
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
       <a href="../fft-basic/" class="md-nav__link">
         
   
   
   <span class="md-ellipsis">
     Basic FFT
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../fft-2-osc/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    FFT 2 Oscillators
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../fft-3-osc/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    FFT 3 Oscillators
     
   </span>
   
@@ -1088,7 +1163,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../fft/" class="md-nav__link">
+      <a href="../fft/index.md" class="md-nav__link">
         
   
   
@@ -1669,27 +1744,26 @@
 <p><img alt="" class="md-button md-button--primary" src="nyquist-shannon-sampling.png" /></p>
 <p><a href="nyquist-shannon-sampling.html">Run the Nyquist-Shannon Sampling MicroSim</a>
 <a href="https://editor.p5js.org/dmccreary/sketches/I95-hiV6z">Edit This MicroSim</a></p>
-<div class="highlight"><pre><span></span><code>Please help me create a p5.js simulation that helps
-students understand Sampling and Aliasing. The Nyquist-Shannon
-sampling theorem and the concept of aliasing involve understanding
-how continuous signals are represented in discrete form. Grasping
-how undersampling leads to frequency overlap (aliasing) can be non-intuitive.
-
-I would like an Interactive p5.js program that can demonstrate how
-varying the sampling rate affects the reconstructed signal.
-By adjusting parameters in real-time, students can visualize
-aliasing effects and the importance of adhering to the Nyquist rate.
-
-Please create a p5.js simulation that allows students to use a
-slider to adjust the sampling rate for a waveform using a slider.
-Display two waveforms. One is the input with the samples drawn
-as radius 7 red circles. The second waveform is one done from
-the reconstruction of the sampling points.
-Place the original on the top and the reconstruction under
-the original.
-
-Use the following template:
-</code></pre></div>
+<div class="admonition prompt">
+<p class="admonition-title">Prompt</p>
+</div>
+<p>Please help me create a p5.js simulation that helps
+  students understand Sampling and Aliasing. The Nyquist-Shannon
+  sampling theorem and the concept of aliasing involve understanding
+  how continuous signals are represented in discrete form. Grasping
+  how undersampling leads to frequency overlap (aliasing) can be non-intuitive.</p>
+<p>I would like an Interactive p5.js program that can demonstrate how
+  varying the sampling rate affects the reconstructed signal.
+  By adjusting parameters in real-time, students can visualize
+  aliasing effects and the importance of adhering to the Nyquist rate.</p>
+<p>Please create a p5.js simulation that allows students to use a
+  slider to adjust the sampling rate for a waveform using a slider.
+  Display two waveforms. One is the input with the samples drawn
+  as radius 7 red circles. The second waveform is one done from
+  the reconstruction of the sampling points.
+  Place the original on the top and the reconstruction under
+  the original.</p>
+<p>Use the following template:</p>
 <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
 <span class="normal"> 2</span>
 <span class="normal"> 3</span>

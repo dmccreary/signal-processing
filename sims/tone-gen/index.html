@@ -6,19 +6,19 @@
       <meta charset="utf-8">
       <meta name="viewport" content="width=device-width,initial-scale=1">
       
-        <meta name="description" content="College Level Textbook on Signal Processing - License is Commons ShareAlike Attribution Noncommercial">
+        <meta name="description" content="A description under 110 characters.">
       
       
         <meta name="author" content="Dan McCreary">
       
       
-        <link rel="canonical" href="https://dmccreary.github.io/signal-processing/sims/fft/">
+        <link rel="canonical" href="https://dmccreary.github.io/signal-processing/sims/tone-gen/">
       
       
-        <link rel="prev" href="../analog-mod/">
+        <link rel="prev" href="../book-levels/">
       
       
-        <link rel="next" href="../frequency-detection/">
+        <link rel="next" href="../fft-basic/">
       
       
       <link rel="icon" href="../../img/favicon.ico">
@@ -26,7 +26,7 @@
     
     
       
-        <title>Waves and FFT - Signal Processing with AI</title>
+        <title>A title under 60 characters. - Signal Processing with AI</title>
       
     
     
@@ -73,11 +73,11 @@
       
         <meta  property="og:type"  content="website" >
       
-        <meta  property="og:title"  content="Waves and FFT - Signal Processing with AI" >
+        <meta  property="og:title"  content="A title under 60 characters. - Signal Processing with AI" >
       
-        <meta  property="og:description"  content="College Level Textbook on Signal Processing - License is Commons ShareAlike Attribution Noncommercial" >
+        <meta  property="og:description"  content="A description under 110 characters." >
       
-        <meta  property="og:image"  content="https://dmccreary.github.io/signal-processing/assets/images/social/sims/fft/index.png" >
+        <meta property="og:image" content="https://dmccreary.github.io/signal-processing/img/cover-preview.png">
       
         <meta  property="og:image:type"  content="image/png" >
       
@@ -85,15 +85,15 @@
       
         <meta  property="og:image:height"  content="630" >
       
-        <meta  property="og:url"  content="https://dmccreary.github.io/signal-processing/sims/fft/" >
+        <meta  property="og:url"  content="https://dmccreary.github.io/signal-processing/sims/tone-gen/" >
       
         <meta  name="twitter:card"  content="summary_large_image" >
       
-        <meta  name="twitter:title"  content="Waves and FFT - Signal Processing with AI" >
+        <meta  name="twitter:title"  content="A title under 60 characters. - Signal Processing with AI" >
       
-        <meta  name="twitter:description"  content="College Level Textbook on Signal Processing - License is Commons ShareAlike Attribution Noncommercial" >
+        <meta  name="twitter:description"  content="A description under 110 characters." >
       
-        <meta  name="twitter:image"  content="https://dmccreary.github.io/signal-processing/assets/images/social/sims/fft/index.png" >
+        <meta name="twitter:image" content="https://dmccreary.github.io/signal-processing/img/cover-preview.png">
       
     
     
@@ -114,7 +114,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#fast-fourier-trsnaform" class="md-skip">
+        <a href="#tone-generator-microsim" class="md-skip">
           Skip to content
         </a>
       
@@ -149,7 +149,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              Waves and FFT
+              A title under 60 characters.
             
           </span>
         </div>
@@ -229,6 +229,8 @@
         <div class="md-main__inner md-grid">
           
             
+              
+                
               
               <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
                 <div class="md-sidebar__scrollwrap">
@@ -586,6 +588,12 @@
       
         
       
+        
+      
+        
+      
+        
+      
     
     
     
@@ -701,6 +709,80 @@
                 
   
   
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  
+  <span class="md-ellipsis">
+    Tone Generator
+    
+  </span>
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        
+  
+  
+  <span class="md-ellipsis">
+    Tone Generator
+    
+  </span>
+  
+
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#microsim-description" class="md-nav__link">
+    <span class="md-ellipsis">
+      MicroSim Description
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
   
   
     <li class="md-nav__item">
@@ -710,6 +792,52 @@
   
   <span class="md-ellipsis">
     Basic FFT
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../fft-2-osc/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    FFT 2 Oscillators
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../fft-3-osc/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    FFT 3 Oscillators
     
   </span>
   
@@ -954,19 +1082,10 @@
                 
   
   
-    
   
   
-  
-    <li class="md-nav__item md-nav__item--active">
-      
-      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
-      
-      
-        
-      
-      
-      <a href="./" class="md-nav__link md-nav__link--active">
+    <li class="md-nav__item">
+      <a href="../fft/index.md" class="md-nav__link">
         
   
   
@@ -977,7 +1096,6 @@
   
 
       </a>
-      
     </li>
   
 
@@ -1411,7 +1529,9 @@
             
             
               
-              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" hidden>
                 <div class="md-sidebar__scrollwrap">
                   <div class="md-sidebar__inner">
                     
@@ -1422,6 +1542,23 @@
   
     
   
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#microsim-description" class="md-nav__link">
+    <span class="md-ellipsis">
+      MicroSim Description
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
   
 </nav>
                   </div>
@@ -1434,10 +1571,12 @@
               <article class="md-content__inner md-typeset">
                 
                   
+  
+
 
 
   
-    <a href="https://github.com/dmccreary/signal-processing/blob/master/docs/sims/fft/index.md" title="Edit this page" class="md-content__button md-icon">
+    <a href="https://github.com/dmccreary/signal-processing/blob/master/docs/sims/tone-gen/index.md" title="Edit this page" class="md-content__button md-icon">
       
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M10 20H6V4h7v5h5v3.1l2-2V8l-6-6H6c-1.1 0-2 .9-2 2v16c0 1.1.9 2 2 2h4zm10.2-7c.1 0 .3.1.4.2l1.3 1.3c.2.2.2.6 0 .8l-1 1-2.1-2.1 1-1c.1-.1.2-.2.4-.2m0 3.9L14.1 23H12v-2.1l6.1-6.1z"/></svg>
     </a>
@@ -1445,16 +1584,26 @@
   
 
 
-<h1 id="fast-fourier-trsnaform">Fast Fourier Trsnaform</h1>
-<figure>
-<p><img alt="" src="fft.png" width="400" />
-   </p>
-<figcaption>Fast Fourier transform Sim</figcaption>
-</figure>
-<p><a href="fft-scheme.html">Run the MicroSim</a>
-<a href="https://editor.p5js.org/dmccreary/sketches/XnH57-jNr">Edit MicroSim</a></p>
-<p>FFT, or Fast Fourier Transform, is an algorithm designed to compute the Discrete Fourier Transform (DFT) and its inverse efficiently. The DFT is a mathematical transformation used to convert a signal from its original domain (often time or space) into a frequency domain. FFT is widely used because it reduces the complexity of computing the DFT from <span class="arithmatex">\(O(n^2)\)</span> to <span class="arithmatex">\(O(n \log n)\)</span>, where <span class="arithmatex">\(n\)</span> is the number of data points. This efficiency is critical in processing large datasets and in applications where real-time processing is required, such as audio signal processing, image analysis, and solving partial differential equations.</p>
-<p>The key advantage of using FFT is that it helps in analyzing the frequency characteristics of signals, filtering, and managing signals in the frequency domain more effectively. It has numerous applications in engineering, physics, applied mathematics, and computer science, making it a fundamental tool in many scientific and engineering tasks.</p>
+<h1 id="tone-generator-microsim">Tone Generator MicroSim</h1>
+<iframe src="./main.html" height="100px" scrolling="no"
+  style="overflow: hidden;"></iframe>
+
+<p>You can include this MicroSim in your course by pasting the following HTML directly into your web page.</p>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
+<span class="normal">2</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="p">&lt;</span><span class="nt">iframe</span> <span class="na">src</span><span class="o">=</span><span class="s">&quot;https://dmccreary.github.io/signal-processing/sims/SIM_NAME/main.html&quot;</span> <span class="na">height</span><span class="o">=</span><span class="s">&quot;100px&quot;</span> <span class="na">scrolling</span><span class="o">=</span><span class="s">&quot;no&quot;</span>
+  <span class="na">style</span><span class="o">=</span><span class="s">&quot;overflow: hidden;&quot;</span><span class="p">&gt;&lt;/</span><span class="nt">iframe</span><span class="p">&gt;</span>
+</code></pre></div></td></tr></table></div>
+<p><a class="md-button md-button--primary" href="main.html">Run the MicroSim</a>
+<a href="https://editor.p5js.org/dmccreary/sketches/NCgsgPY8y">Edit the MicroSim</a></p>
+<h2 id="microsim-description">MicroSim Description</h2>
+<p>In this demo, we use three range control sliders to change 
+the ways a sine wave is drawn on a canvas.
+The three parameters are:</p>
+<ol>
+<li>amplitude</li>
+<li>period</li>
+<li>and phase</li>
+</ol>
 
 
 
@@ -1469,6 +1618,8 @@
 
   
 
+
+  
 
 
 
@@ -1492,10 +1643,12 @@
   
     
       
+        
+      
       <nav class="md-footer__inner md-grid" aria-label="Footer" >
         
           
-          <a href="../analog-mod/" class="md-footer__link md-footer__link--prev" aria-label="Previous: Analog Modulation">
+          <a href="../book-levels/" class="md-footer__link md-footer__link--prev" aria-label="Previous: Book Levels">
             <div class="md-footer__button md-icon">
               
               <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
@@ -1505,20 +1658,20 @@
                 Previous
               </span>
               <div class="md-ellipsis">
-                Analog Modulation
+                Book Levels
               </div>
             </div>
           </a>
         
         
           
-          <a href="../frequency-detection/" class="md-footer__link md-footer__link--next" aria-label="Next: Frequency Detection">
+          <a href="../fft-basic/" class="md-footer__link md-footer__link--next" aria-label="Next: Basic FFT">
             <div class="md-footer__title">
               <span class="md-footer__direction">
                 Next
               </span>
               <div class="md-ellipsis">
-                Frequency Detection
+                Basic FFT
               </div>
             </div>
             <div class="md-footer__button md-icon">

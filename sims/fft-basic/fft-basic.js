@@ -44,7 +44,9 @@ function setup() {
   oscillator.start();
   
   // Create FFT with moderate smoothing and good resolution
-  fft = new p5.FFT(0.8, 1024);
+  // try these 2^N values 512, 1024, 2048, 4096 or 8192 for the FFT Size
+  // higher numbers will create narrower peaks
+  fft = new p5.FFT(0.8, 8192);
   
   // Create control elements
   createControls();
@@ -64,10 +66,10 @@ function draw() {
   
   // Get FFT data
   let spectrum = fft.analyze();
-  let waveform = fft.waveform();
+  let myWaveform = fft.waveform();
   
   // Draw time-domain waveform (top half)
-  drawTimeSignal(waveform);
+  drawTimeSignal(myWaveform);
   
   // Draw frequency spectrum (bottom half)
   drawSpectrum(spectrum);
