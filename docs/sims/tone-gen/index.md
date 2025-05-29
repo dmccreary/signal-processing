@@ -9,20 +9,20 @@ social:
 hide:
   - toc
 ---
-# My MicroSim
+# Tone Generator MicroSim
 
-<iframe src="./main.html" height="480px" scrolling="no"
+<iframe src="./main.html" height="100px" scrolling="no"
   style="overflow: hidden;"></iframe>
 
 You can include this MicroSim in your course by pasting the following HTML directly into your web page.
 
 ```html
-<iframe src="https://dmccreary.github.io/signal-processing/sims/SIM_NAME/main.html" height="480px" scrolling="no"
+<iframe src="https://dmccreary.github.io/signal-processing/sims/SIM_NAME/main.html" height="100px" scrolling="no"
   style="overflow: hidden;"></iframe>
 ```
 
-[Run the MicroSim](./sine-wave.html){ .md-button .md-button--primary }
-[Edit the MicroSim](https://editor.p5js.org/dmccreary/sketches/0SEATs3jW)
+[Run the MicroSim](./main.html){ .md-button .md-button--primary }
+[Edit the MicroSim](https://editor.p5js.org/dmccreary/sketches/NCgsgPY8y)
 
 ## MicroSim Description
 

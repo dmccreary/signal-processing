@@ -9,28 +9,27 @@ hide:
 [Run the Nyquist-Shannon Sampling MicroSim](nyquist-shannon-sampling.html)
 [Edit This MicroSim](https://editor.p5js.org/dmccreary/sketches/I95-hiV6z)
 
-```linenums="0"
-Please help me create a p5.js simulation that helps
-students understand Sampling and Aliasing. The Nyquist-Shannon
-sampling theorem and the concept of aliasing involve understanding
-how continuous signals are represented in discrete form. Grasping
-how undersampling leads to frequency overlap (aliasing) can be non-intuitive.
+!!! prompt
+  Please help me create a p5.js simulation that helps
+  students understand Sampling and Aliasing. The Nyquist-Shannon
+  sampling theorem and the concept of aliasing involve understanding
+  how continuous signals are represented in discrete form. Grasping
+  how undersampling leads to frequency overlap (aliasing) can be non-intuitive.
 
-I would like an Interactive p5.js program that can demonstrate how
-varying the sampling rate affects the reconstructed signal.
-By adjusting parameters in real-time, students can visualize
-aliasing effects and the importance of adhering to the Nyquist rate.
+  I would like an Interactive p5.js program that can demonstrate how
+  varying the sampling rate affects the reconstructed signal.
+  By adjusting parameters in real-time, students can visualize
+  aliasing effects and the importance of adhering to the Nyquist rate.
 
-Please create a p5.js simulation that allows students to use a
-slider to adjust the sampling rate for a waveform using a slider.
-Display two waveforms. One is the input with the samples drawn
-as radius 7 red circles. The second waveform is one done from
-the reconstruction of the sampling points.
-Place the original on the top and the reconstruction under
-the original.
+  Please create a p5.js simulation that allows students to use a
+  slider to adjust the sampling rate for a waveform using a slider.
+  Display two waveforms. One is the input with the samples drawn
+  as radius 7 red circles. The second waveform is one done from
+  the reconstruction of the sampling points.
+  Place the original on the top and the reconstruction under
+  the original.
 
-Use the following template:
-```
+  Use the following template:
 
 ```javascript
 // region drawing parameters

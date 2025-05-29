@@ -1,7 +1,7 @@
 # Signal Processing MicroSims Using p5.js FFT
 
 !!! prompt
-    I just found out that the p5.js JavaScript library already has an FFT function built in.  I have not been using this in this course.  Can you please create a list of Micro-Simulations for this course on Signal Processing that follow the standard-rules.md guidelines?  
+    I just found out that the new version of p5.js JavaScript library already has an FFT function built in.  I have not been using this in this course.  Can you please create a list of Micro-Simulations for this course on Signal Processing that follow the standard-rules.md guidelines?  
     
     For each Signal Processing MicroSim that uses the FFT, suggest what concept we are trying to teach and how we could implement the MicroSim.  List the display and the slider and/or button controls the student would be able to change.
 

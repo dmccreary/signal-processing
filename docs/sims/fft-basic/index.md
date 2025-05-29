@@ -22,12 +22,6 @@ You can include this MicroSim in your course by pasting the following HTML direc
 [Run the Basic FFT MicroSim Fullscreen](./main.html){ .md-button .md-button--primary }
 [Edit the Basic FFT MicroSim](https://editor.p5js.org/dmccreary/sketches/oDP6EoAQ6)
 
-To include this MicroSim on your web site, just copy the following line of HTML code:
-
-```html
-<iframe src="https://dmccreary.github.io/signal-processing/sims/sine-wave/main.html" height="480px" scrolling="no"
-  style="overflow: hidden;"></iframe>
-```
 ## Basic FFT Visualization - Lesson Plan
 
 ## Lab Information

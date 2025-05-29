@@ -64,10 +64,10 @@ function draw() {
   
   // Get FFT data
   let spectrum = fft.analyze();
-  let waveform = fft.waveform();
+  let myWaveform = fft.waveform();
   
   // Draw time-domain waveform (top half)
-  drawTimeSignal(waveform);
+  drawTimeSignal(myWaveform);
   
   // Draw frequency spectrum (bottom half)
   drawSpectrum(spectrum);
