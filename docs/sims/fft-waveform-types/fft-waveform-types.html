@@ -1,0 +1,408 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Waveform FFT Analysis MicroSim</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/1.7.0/p5.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/1.7.0/addons/p5.sound.min.js"></script>
+    <style>
+        body {
+            margin: 0;
+            padding: 20px;
+            font-family: Arial, sans-serif;
+            background-color: #f5f5f5;
+        }
+        main {
+            max-width: 1000px;
+            margin: 0 auto;
+            background-color: white;
+            border-radius: 8px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            overflow: hidden;
+        }
+        .description {
+            padding: 20px;
+            background-color: #e8f4f8;
+            border-bottom: 1px solid #ddd;
+        }
+        .description h2 {
+            margin: 0 0 10px 0;
+            color: #2c3e50;
+        }
+        .description p {
+            margin: 0;
+            color: #555;
+            line-height: 1.4;
+        }
+    </style>
+</head>
+<body>
+    <main>
+        <div class="description">
+            <h2>Waveform FFT Analysis</h2>
+            <p>This simulation shows how different waveform shapes appear in the frequency domain. 
+            Select a waveform type to see its time-domain representation (top) and frequency spectrum (bottom). 
+            Notice how sine waves have a single frequency peak, while square and sawtooth waves contain harmonics.</p>
+        </div>
+    </main>
+
+    <script>
+        // Waveform FFT Analysis MicroSim
+        // Shows static waveforms and their frequency domain representation
+
+        // Canvas dimensions and layout
+        let canvasWidth = 800;
+        let drawHeight = 400;
+        let controlHeight = 100;
+        let canvasHeight = drawHeight + controlHeight;
+        let margin = 40;
+        let defaultTextSize = 16;
+
+        // Global variables for responsive design
+        let containerWidth;
+        let containerHeight = canvasHeight;
+
+        // Audio and FFT objects
+        let oscillator;
+        let fft;
+
+        // Control elements
+        let waveformRadio;
+        let frequencySlider;
+
+        // Simulation state
+        let currentWaveform = 'sine';
+        let currentFreq = 440;
+        let sampleRate = 44100;
+        let fftSize = 8192;
+
+        // Pre-calculated waveform data
+        let waveformData = [];
+        let spectrumData = [];
+
+        function setup() {
+            // Responsive canvas setup
+            updateCanvasSize();
+            const canvas = createCanvas(containerWidth, containerHeight);
+            canvas.parent(document.querySelector('main'));
+            
+            textSize(defaultTextSize);
+            
+            // Initialize audio context
+            userStartAudio();
+            
+            // Create oscillator for generating waveform data
+            oscillator = new p5.Oscillator();
+            oscillator.start();
+            oscillator.amp(0); // Keep silent - we just want the waveform shape
+            
+            // Create FFT with high resolution
+            fft = new p5.FFT(0.8, fftSize);
+            
+            // Create control elements
+            createControls();
+            
+            // Generate initial waveform
+            generateWaveform();
+            
+            describe('Interactive waveform FFT analysis showing time and frequency domain representations', LABEL);
+        }
+
+        function draw() {
+            // Set up drawing regions
+            drawRegions();
+            
+            // Draw title
+            drawTitle();
+            
+            // Update frequency if slider changed
+            if (frequencySlider.value() !== currentFreq) {
+                currentFreq = frequencySlider.value();
+                generateWaveform();
+            }
+            
+            // Draw time-domain waveform (top half)
+            drawTimeWaveform();
+            
+            // Draw frequency spectrum (bottom half)
+            drawFrequencySpectrum();
+            
+            // Draw axis labels and control labels
+            drawAxisLabels();
+            drawControlLabels();
+        }
+
+        function generateWaveform() {
+            // Generate one complete cycle of the selected waveform
+            let samplesPerCycle = Math.floor(sampleRate / currentFreq);
+            waveformData = [];
+            
+            for (let i = 0; i < samplesPerCycle; i++) {
+                let phase = (i / samplesPerCycle) * TWO_PI;
+                let sample = 0;
+                
+                switch(currentWaveform) {
+                    case 'sine':
+                        sample = sin(phase);
+                        break;
+                    case 'square':
+                        sample = phase < PI ? 1 : -1;
+                        break;
+                    case 'sawtooth':
+                        sample = (phase / PI) - 1; // -1 to 1 sawtooth
+                        break;
+                }
+                
+                waveformData.push(sample);
+            }
+            
+            // Generate spectrum data using a simple DFT approximation
+            generateSpectrum();
+        }
+
+        function generateSpectrum() {
+            // Create a simplified spectrum representation
+            spectrumData = new Array(fftSize / 2).fill(0);
+            
+            if (currentWaveform === 'sine') {
+                // Sine wave: single peak at fundamental frequency
+                let binIndex = Math.floor(currentFreq * fftSize / sampleRate);
+                if (binIndex < spectrumData.length) {
+                    spectrumData[binIndex] = 255;
+                }
+            } else if (currentWaveform === 'square') {
+                // Square wave: odd harmonics (1, 3, 5, 7, ...)
+                for (let harmonic = 1; harmonic <= 15; harmonic += 2) {
+                    let freq = currentFreq * harmonic;
+                    let binIndex = Math.floor(freq * fftSize / sampleRate);
+                    if (binIndex < spectrumData.length) {
+                        let amplitude = 255 / harmonic; // Decreasing amplitude
+                        spectrumData[binIndex] = amplitude;
+                    }
+                }
+            } else if (currentWaveform === 'sawtooth') {
+                // Sawtooth wave: all harmonics (1, 2, 3, 4, ...)
+                for (let harmonic = 1; harmonic <= 20; harmonic++) {
+                    let freq = currentFreq * harmonic;
+                    let binIndex = Math.floor(freq * fftSize / sampleRate);
+                    if (binIndex < spectrumData.length) {
+                        let amplitude = 255 / harmonic; // Decreasing amplitude
+                        spectrumData[binIndex] = amplitude;
+                    }
+                }
+            }
+        }
+
+        function drawRegions() {
+            // Drawing area background (light blue)
+            fill('aliceblue');
+            stroke('silver');
+            strokeWeight(1);
+            rect(0, 0, canvasWidth, drawHeight);
+            
+            // Controls area background (white)
+            fill('white');
+            stroke('silver');
+            strokeWeight(1);
+            rect(0, drawHeight, canvasWidth, controlHeight);
+            
+            // Separator line between time and frequency domains
+            stroke('black');
+            strokeWeight(1);
+            let midLine = drawHeight / 2;
+            line(margin, midLine, canvasWidth - margin, midLine);
+        }
+
+        function drawTitle() {
+            fill('black');
+            noStroke();
+            textSize(24);
+            textAlign(CENTER, TOP);
+            text('Waveform FFT Analysis', canvasWidth / 2, 10);
+            textSize(defaultTextSize);
+            textAlign(LEFT, CENTER);
+        }
+
+        function drawTimeWaveform() {
+            // Time-domain waveform (top half)
+            let topHeight = drawHeight / 2 - 10;
+            let yCenter = topHeight / 2;
+            
+            stroke('green');
+            strokeWeight(2);
+            noFill();
+            
+            if (waveformData.length > 0) {
+                beginShape();
+                
+                // Draw multiple cycles for better visualization
+                let cyclesToShow = 3;
+                let totalSamples = waveformData.length * cyclesToShow;
+                
+                for (let cycle = 0; cycle < cyclesToShow; cycle++) {
+                    for (let i = 0; i < waveformData.length; i++) {
+                        let sampleIndex = cycle * waveformData.length + i;
+                        let x = map(sampleIndex, 0, totalSamples - 1, margin, canvasWidth - margin);
+                        let y = map(waveformData[i], -1, 1, topHeight - 20, 20);
+                        vertex(x, y);
+                    }
+                }
+                endShape();
+            }
+            
+            // Draw center line for time domain
+            stroke('gray');
+            strokeWeight(1);
+            line(margin, yCenter, canvasWidth - margin, yCenter);
+        }
+
+        function drawFrequencySpectrum() {
+            // Frequency spectrum (bottom half)
+            let bottomY = drawHeight / 2 + 10;
+            let spectrumHeight = drawHeight / 2 - 30;
+            
+            stroke('purple');
+            strokeWeight(1);
+            fill('purple');
+            
+            // Only show meaningful frequency range (0-2000 Hz)
+            let maxFreqBin = Math.floor(2000 * fftSize / sampleRate);
+            maxFreqBin = Math.min(maxFreqBin, spectrumData.length);
+            
+            for (let i = 1; i < maxFreqBin; i++) {
+                let x = map(i, 0, maxFreqBin, margin, canvasWidth - margin);
+                let barWidth = (canvasWidth - 2 * margin) / maxFreqBin;
+                
+                // Map spectrum value to bar height
+                let barHeight = map(spectrumData[i], 0, 255, 0, spectrumHeight);
+                
+                if (barHeight > 1) { // Only draw visible bars
+                    rect(x, drawHeight - 20 - barHeight, barWidth * 0.8, barHeight);
+                }
+            }
+            
+            // Draw baseline for frequency domain
+            stroke('gray');
+            strokeWeight(1);
+            line(margin, drawHeight - 20, canvasWidth - margin, drawHeight - 20);
+        }
+
+        function drawAxisLabels() {
+            fill('black');
+            noStroke();
+            textSize(14);
+            
+            // Time domain labels
+            textAlign(LEFT, TOP);
+            text('Time Domain (' + currentWaveform + ' wave)', margin, 35);
+            
+            // Time domain axis labels
+            textAlign(CENTER, BOTTOM);
+            text('Time →', canvasWidth - 60, drawHeight/4+20);
+            push();
+            translate(20, drawHeight/4);
+            rotate(-PI/2);
+            textAlign(CENTER, BOTTOM);
+            text('Amplitude', 0, 0);
+            pop();
+            
+            // Frequency domain labels
+            textAlign(LEFT, TOP);
+            text('Frequency Domain (FFT Analysis)', margin, drawHeight / 2 + 25);
+            
+            // Frequency domain axis labels  
+            textAlign(CENTER, BOTTOM);
+            text('Frequency (Hz) →', canvasWidth - 100, drawHeight - 50);
+            push();
+            translate(20, 3*drawHeight/4);
+            rotate(-PI/2);
+            textAlign(CENTER, BOTTOM);
+            text('Magnitude', 0, 0);
+            pop();
+            
+            // Frequency scale markers
+            textSize(12);
+            textAlign(CENTER, TOP);
+            for (let freq = 0; freq <= 2000; freq += 500) {
+                let x = map(freq, 0, 2000, margin, canvasWidth - margin);
+                text(freq, x, drawHeight - 15);
+            }
+        }
+
+        function drawControlLabels() {
+            fill('black');
+            noStroke();
+            textSize(14);
+            textAlign(LEFT, CENTER);
+            
+            // Frequency control label
+            text('Frequency: ' + currentFreq.toFixed(0) + ' Hz', 20, drawHeight + 60);
+            
+            // Waveform info
+            textAlign(LEFT, TOP);
+            text('Waveform Type:', 20, drawHeight + 15);
+            
+            // Harmonic content info
+            textAlign(RIGHT, CENTER);
+            let harmonicInfo = '';
+            switch(currentWaveform) {
+                case 'sine':
+                    harmonicInfo = 'Pure tone (fundamental only)';
+                    break;
+                case 'square':
+                    harmonicInfo = 'Odd harmonics (1st, 3rd, 5th...)';
+                    break;
+                case 'sawtooth':
+                    harmonicInfo = 'All harmonics (1st, 2nd, 3rd...)';
+                    break;
+            }
+            text(harmonicInfo, canvasWidth - 20, drawHeight + 25);
+        }
+
+        function createControls() {
+            let controlY = drawHeight + 10;
+            
+            // Waveform type radio buttons
+            waveformRadio = createRadio();
+            waveformRadio.option('sine', 'Sine Wave');
+            waveformRadio.option('square', 'Square Wave');
+            waveformRadio.option('sawtooth', 'Sawtooth Wave');
+            waveformRadio.selected('sine');
+            waveformRadio.position(150, controlY);
+            waveformRadio.changed(onWaveformChange);
+            
+            // Style the radio buttons
+            waveformRadio.style('font-family', 'Arial, sans-serif');
+            waveformRadio.style('font-size', '14px');
+            
+            // Frequency slider
+            frequencySlider = createSlider(50, 1000, currentFreq, 10);
+            frequencySlider.position(150, drawHeight + 50);
+            frequencySlider.size(200);
+        }
+
+        function onWaveformChange() {
+            currentWaveform = waveformRadio.value();
+            generateWaveform();
+        }
+
+        function windowResized() {
+            updateCanvasSize();
+            resizeCanvas(containerWidth, containerHeight);
+            
+            // Update slider width for responsive design
+            let sliderWidth = Math.min(200, containerWidth - 200);
+            frequencySlider.size(sliderWidth);
+            
+            redraw();
+        }
+
+        function updateCanvasSize() {
+            const container = document.querySelector('main').getBoundingClientRect();
+            containerWidth = Math.floor(container.width);
+            canvasWidth = containerWidth;
+        }
+    </script>
+</body>
+</html>
