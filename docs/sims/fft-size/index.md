@@ -9,14 +9,14 @@ social:
 ---
 # FFT Size MicroSim
 
-<iframe src="./main.html" height="480px" scrolling="no"
+<iframe src="./main.html" height="500px" scrolling="no"
   style="overflow: hidden;"></iframe>
 
 You can include this MicroSim in your course by pasting the following HTML directly into your web page.
 
 ```html
 <iframe src="https://dmccreary.github.io/signal-processing/sims/fft-size/main.html" 
-  height="480px" scrolling="no" style="overflow: hidden;"></iframe>
+  height="500px" scrolling="no" style="overflow: hidden;"></iframe>
 ```
 
 [Run the FFT Size MicroSim Fullscreen](./main.html){ .md-button .md-button--primary }
