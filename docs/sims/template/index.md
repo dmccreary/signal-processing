@@ -21,8 +21,9 @@ You can include this MicroSim in your course by pasting the following HTML direc
   style="overflow: hidden;"></iframe>
 ```
 
-[Run the MicroSim](./sine-wave.html){ .md-button .md-button--primary }
-[Edit the MicroSim](https://editor.p5js.org/dmccreary/sketches/0SEATs3jW)
+[Run the MicroSim](./main.html){ .md-button .md-button--primary }
+
+[Edit the MicroSim]()
 
 ## MicroSim Description
 
