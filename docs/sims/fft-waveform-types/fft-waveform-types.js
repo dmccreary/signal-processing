@@ -284,7 +284,7 @@ function drawControlLabels() {
   textAlign(LEFT, CENTER);
   
   // Control labels
-  text('Waveform:', 20, drawHeight + 15);
+  text('Waveform:', 20, drawHeight + 17);
   text('Frequency: ' + currentFreq.toFixed(0) + ' Hz', 20, drawHeight + 55);
   
   // Harmonic content info
@@ -313,7 +313,7 @@ function createControls() {
   waveformRadio.option('square', 'Square');
   waveformRadio.option('sawtooth', 'Sawtooth');
   waveformRadio.selected('sine');
-  waveformRadio.position(100, drawHeight + 5);
+  waveformRadio.position(100, drawHeight + 15);
   
   // Frequency slider (0-500 Hz)
   frequencySlider = createSlider(0, 500, currentFreq, 1);
