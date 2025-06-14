@@ -1,5 +1,33 @@
 # Generating High Quality Citations
 
+!!! prompt
+    I would like to create a citation graph for the all the papers that reference the use of FFTs in modern microcontrollers.  Please do the following:
+
+    Find the top 50 papers in peer reviewed journals that reference the use of FFTs in modern microcontrollers.  For each of these 50 papers, get the other papers that they cite.  
+
+    For the entire list of papers, remove any papers that were only cited once.
+
+    For each of the remaining papers, put their data in a JSON file with one node per paper and links for citations using the vis.js graph format.  Then create a vis.js program that views the citation graph for these papers.
+
+[Anthropic Claude Transcript](https://claude.ai/public/artifacts/b1f8225c-13fa-4adb-abd2-5a9c41db8d72)
+
+## Thought Process
+
+This is a research task involving finding academic papers and creating a visualization. Let me break this down:
+
+Find the top 50 papers in peer-reviewed journals that reference the use of FFTs in modern microcontrollers
+For each of these 50 papers, get the other papers they cite
+Remove papers that were only cited once
+Create a JSON file with node/link data in vis.js format
+Create a vis.js program to visualize the citation graph
+
+I'll need to use web search to find academic papers, as this requires current information beyond my knowledge cutoff. I should search for academic papers using scholarly databases or search engines.
+Let me start by searching for papers about FFTs in microcontrollers.
+
+[Citation Graph MicroSim](../sims/citation-graph/index.md)
+
+## Sample Text
+
 Effective citation practices begin with thorough literature searches that go beyond simple keyword matching. Use multiple academic databases, including IEEE Xplore, ACM Digital Library, Google Scholar, and discipline-specific repositories. Each database has different coverage patterns and indexing approaches, so comprehensive searches require multiple sources.
 
 Develop systematic search strategies using Boolean operators and field-specific terminology. Signal processing spans multiple disciplines, so search terms should include variations like "digital signal processing," "statistical signal processing," "adaptive signal processing," and application-specific terms like "biomedical signal analysis" or "communications signal processing."

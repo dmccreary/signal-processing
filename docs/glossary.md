@@ -205,6 +205,19 @@ Edge detection is an image processing technique used to identify and locate shar
 
 **Example:** In projects, students apply edge detection algorithms like the Sobel filter to identify boundaries in grayscale images, facilitating object recognition tasks.
 
+#### Eclipse Layout Kernel
+
+A collection of javascript layout algorithms, and an infrastructure that bridges the gap between layout algorithms and diagram viewers and editors.
+
+We can use tools Eclipse Layout Kernel (ELK) to automate the layout of signal processing circuits after we have used generative AI to generate a text description of a circuit.
+
+Note that ELK itself doesn't render the drawing but only computes positions (and possibly dimensions) for the diagram elements.  Other downstream frameworks are then used to render a circuit drawing and execute a simulation of the circuit.
+
+Note that ELK was originally written to support the Java-based Eclipse IDE system and it still uses legacy Java code.
+
+- See also: [ELK documentation website](https://eclipse.dev/elk/)
+- [ELK JSON Layout Format](https://eclipse.dev/elk/documentation/tooldevelopers/graphdatastructure/jsonformat.html) - a JSON format for storing nodes, ports, labels, edges, and edge sections of a layout diagram.
+
 #### Elliptic filter
 
 An Elliptic filter, also known as a Cauer filter, is a type of analog or digital filter with equalized ripple in both the passband and stopband. It provides the steepest transition between passband and stopband for a given filter order.
