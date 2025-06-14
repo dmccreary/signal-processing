@@ -198,3 +198,13 @@ It takes a mind like Watson-Watt’s to hear it clearly.”
   A symbolic panel showing a stylized radar wave expanding across time. Overlay ghosted images of Watson-Watt, an oscilloscope, a fighter plane, and a classroom. The waves ripple outward to show the legacy of signal processing.
 </details>
 
+![](./panel-13.png)
+
+![](./panel-14.png)
+<details>
+    <summary>Image Prompt</summary>
+    Please generate a wide-landscape drawing using the style of a graphic novel.  
+    Use bright colors and the style of drawing should reflect the time around World War II.
+
+    Create a conclusion image of people in England celebrating the victory at the end of WW-II.  In the crowd stands a humble engineer, confident that his contribution to signal processing helped win the war.
+</details>
