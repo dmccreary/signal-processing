@@ -28,7 +28,6 @@ For each of the panels, return the following format
 
 ![](panel-01.png)
 
-<details>
 
    <summary>image prompt</summary>
 
