@@ -184,6 +184,13 @@ Show a timeline from the 1960s to today, with the original Moog modular system e
 
 Robert Moog's voltage-controlled signal processing concepts became the foundation of all modern electronic music. From analog to digital, from hardware to software, the basic principles of oscillators, filters, and envelopes that Moog pioneered continue to shape how we create and manipulate sound today. Every synthesizer, from massive studio systems to smartphone apps, owes its conceptual DNA to Moog's revolutionary approach to electronic signal processing.
 
-**The End**
+## Conclusion
 
-*The story of the Moog synthesizer demonstrates how innovative signal processing techniques can transform entire industries. Moog's voltage-controlled modules remain the fundamental building blocks of modern synthesis, proving that elegant engineering solutions can have profound cultural impact.*
+The story of the Moog synthesizer demonstrates how innovative signal processing techniques can transform entire industries. Moog's voltage-controlled modules remain the fundamental building blocks of modern synthesis, proving that elegant engineering solutions can have profound cultural impact.
+
+## References
+
+* [Robert Moog on Wikipedia](https://en.wikipedia.org/wiki/Robert_Moog)
+
+* [Wendy Carlos Interview 1989 BBC Two](https://youtu.be/Z3cab5IcCy8?si=1IBnBE_NQsfX6B1A)
+
