@@ -30,6 +30,12 @@ export DYLD_FALLBACK_LIBRARY_PATH=/opt/homebrew/lib
 - **CSV to JSON conversion**: `python src/csv-to-json/csv-to-json.py` - Converts concept data formats
 - **Sort glossary**: `python src/glossary/sort-glossary.py` - Alphabetizes glossary entries
 
+### Image Optimization Scripts
+- **Complete optimization workflow**: `python src/resize-images/run_optimization.py` - Runs full image optimization process
+- **Compress large images**: `python src/resize-images/compress_images.py` - Compresses images >500KB to ~300KB
+- **Update image references**: `python src/resize-images/update_image_references.py` - Updates markdown files from PNG to JPG
+- **Cleanup backups**: `python src/resize-images/cleanup_backups.py` - Removes backup files after successful compression
+
 ## Architecture and Structure
 
 ### Content Organization

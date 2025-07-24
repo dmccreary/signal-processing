@@ -26,7 +26,7 @@ For each of the panels, return the following format
 
 ## Panel Name
 
-![](panel-01.png)
+![](panel-01.jpg)
 
 
    <summary>image prompt</summary>
@@ -41,7 +41,7 @@ For each of the panels, return the following format
 
 
 ## Panel 1: The Dawn of Electronic Music
-![](panel-01.png)
+![](panel-01.jpg)
 <details>
    <summary>image prompt</summary>
 Please generate a new wide-landscape drawing in the style of a graphic novel.  
@@ -53,7 +53,7 @@ Show a 1950s recording studio with musicians gathered around traditional acousti
 Before the 1960s, electronic music was a realm of mad scientists and avant-garde composers. Musicians were limited to acoustic instruments, while electronic sounds required expensive studio equipment, complex tape manipulation, and hours of tedious work to create even simple effects.
 
 ## Panel 2: The Tape Music Challenge
-![](panel-02.png)
+![](panel-02.jpg)
 <details>
    <summary>image prompt</summary>
 Please generate a new wide-landscape drawing in the style of a graphic novel.  
@@ -65,7 +65,7 @@ Show a composer hunched over a large tape editing table, surrounded by scissors,
 Electronic music pioneers like Karlheinz Stockhausen and Pierre Schaeffer spent countless hours cutting and splicing magnetic tape to create otherworldly sounds. Each note required manual manipulation, making real-time performance impossible and composition incredibly labor-intensive.
 
 ## Panel 3: The Thereminvox Limitation
-![](panel-03.png)
+![](panel-03.jpg)
 <details>
    <summary>image prompt</summary>
 Panel 3: Please generate a new wide-landscape drawing in the style of a graphic novel.  
@@ -77,7 +77,7 @@ Show a theremin player on stage, hands waving mysteriously in the air around the
 The theremin, invented in the 1920s, was one of the first electronic instruments, but it was notoriously difficult to play with precision. Its oscillators produced continuous tones controlled by hand position in electromagnetic fields - a concept that would inspire future voltage-controlled synthesis.
 
 ## Panel 4: Enter Robert Moog
-![](panel-04.png)
+![](panel-04.jpg)
 <details>
    <summary>image prompt</summary>
 Panel 4: Please generate a new wide-landscape drawing in the style of a graphic novel.  
@@ -89,7 +89,7 @@ Show a young Robert Moog in his workshop/garage in the early 1960s, surrounded b
 In 1963, Robert Moog, a young engineer and theremin enthusiast, had a revolutionary idea: What if electronic music instruments could be controlled by voltage rather than requiring manual manipulation? This concept would become the foundation of modern synthesizers.
 
 ## Panel 5: The Voltage-Controlled Revolution
-![](panel-05.png)
+![](panel-05.jpg)
 <details>
    <summary>image prompt</summary>
 Panel 5: Please generate a new wide-landscape drawing in the style of a graphic novel.  
@@ -101,7 +101,7 @@ Show a technical diagram split-screen: on the left, show a traditional piano key
 Moog's breakthrough was voltage control: pressing a key would output a specific voltage (following the 1 volt per octave standard), which could electronically control the frequency of oscillators. This meant musicians could play electronic sounds with the same precision as acoustic instruments.
 
 ## Panel 6: The Modular Signal Chain
-![](panel-06.png)
+![](panel-06.jpg)
 <details>
    <summary>image prompt</summary>
 Please generate a new wide-landscape drawing in the style of a graphic novel.  
@@ -113,7 +113,7 @@ Show a detailed view of the Moog modular system with three main components: VCO 
 Moog created a modular signal processing chain: VCO (Voltage Controlled Oscillator) generated the raw waveforms, VCF (Voltage Controlled Filter) shaped the harmonic content using analog filter circuits, and VCA (Voltage Controlled Amplifier) controlled the amplitude envelope - the same fundamental signal path used in synthesizers today.
 
 ## Panel 7: The Filter Innovation
-![](panel-07.png)
+![](panel-07.jpg)
 <details>
    <summary>image prompt</summary>
 Panel 7: Please generate a new wide-landscape drawing in the style of a graphic novel.  
@@ -125,7 +125,7 @@ Show a detailed cross-section of the famous Moog ladder filter circuit, with its
 The legendary Moog ladder filter became the signature sound of the synthesizer. Using a cascade of transistors in a "ladder" configuration, it provided a distinctive 24dB per octave low-pass filter with resonance control - creating the warm, musical distortion that defined the Moog sound.
 
 ## Panel 8: Envelope Generators and Modulation
-![](panel-08.png)
+![](panel-08.jpg)
 <details>
    <summary>image prompt</summary>
 Panel 8: Please generate a new wide-landscape drawing in the style of a graphic novel.  
@@ -137,7 +137,7 @@ Show the ADSR envelope generator concept with a clear graph displaying Attack, D
 Moog pioneered the ADSR envelope generator (Attack, Decay, Sustain, Release), which created voltage curves over time to shape sounds dynamically. This same envelope could modulate multiple parameters simultaneously - making electronic sounds feel alive and expressive rather than static.
 
 ## Panel 9: Wendy Carlos and Switched-On Bach
-![](panel-09.png)
+![](panel-09.jpg)
 <details>
    <summary>image prompt</summary>
 Panel 9: Please generate a new wide-landscape drawing in the style of a graphic novel.  
@@ -149,7 +149,7 @@ Show Wendy Carlos at a large Moog modular synthesizer in a recording studio, car
 In 1968, Wendy Carlos released "Switched-On Bach," proving that synthesizers could create serious, beautiful music. Each note was painstakingly programmed and recorded in multiple passes, demonstrating the musical potential of voltage-controlled synthesis and bringing electronic music to mainstream audiences.
 
 ## Panel 10: The Minimoog Goes Portable
-![](panel-10.png)
+![](panel-10.jpg)
 <details>
    <summary>image prompt</summary>
 Panel 10: Please generate a new wide-landscape drawing in the style of a graphic novel.  
@@ -161,7 +161,7 @@ Show the compact Minimoog synthesizer sitting on a stage next to traditional roc
 In 1970, Moog released the Minimoog - a compact, portable synthesizer that put the essential signal processing modules (oscillators, filter, envelope) in an optimized, preset configuration. This made advanced electronic music accessible to working musicians for the first time.
 
 ## Panel 11: Rock and Pop Revolution
-![](panel-11.png)
+![](panel-11.jpg)
 <details>
    <summary>image prompt</summary>
 Panel 11: Please generate a new wide-landscape drawing in the style of a graphic novel.  
@@ -173,7 +173,7 @@ Show famous musicians like Keith Emerson, Rick Wakeman, and Stevie Wonder perfor
 Progressive rock and pop artists embraced the Moog's capabilities, creating sounds never before heard in popular music. The synthesizer's voltage-controlled signal processing allowed for precise, repeatable sounds that could be performed live, revolutionizing the sonic palette of popular music.
 
 ## Panel 12: Legacy and Modern Impact
-![](panel-12.png)
+![](panel-12.jpg)
 <details>
    <summary>image prompt</summary>
 Panel 12: Please generate a new wide-landscape drawing in the style of a graphic novel.  

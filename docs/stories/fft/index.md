@@ -1,6 +1,6 @@
 ---
 title: Algorithm of the Century: Cooley and Tukey's FFT Revolution
-og:image: /stories/fft/cover.png
+og:image: /stories/fft/cover.jpg
 ---
 # Algorithm of the Century: Cooley and Tukey's FFT Revolution
 
@@ -24,7 +24,7 @@ When appropriate, suggest an wide-landscape drawing that could be inserted into 
 Describe each image in detail and be consistent across all the images in the story for style. When you describe an image, make sure to mention that it should be a colorful, bright wide-landscape drawing suitable for consistent technology-forward optimistic graphic-novel.
 </details>
 
-![](cover.png)
+![](cover.jpg)
 <details class="image-prompt">
    <summary>Show Image Prompt</summary>
 Cover Image:
@@ -35,7 +35,7 @@ Algorithm of the Century: Cooley and Tukey's FFT Revolution" tells the story of 
 </details>
 
 ### CHAPTER 1: THE WORLD IN FLUX
-![](01.png)
+![](01.jpg)
 <details class="image-prompt"><summary>Show Image Prompt</summary>
 Image 1:
 Please generate A wide-landscape drawing showing a split scene - on one side, the tense Cold War political environment with Soviet and American flags, military technology, and world leaders in serious discussion; on the other side, scientists and mathematicians at work in laboratories with early computers. The image should be rendered in a colorful, bright style with clean lines typical of an optimistic technology-focused graphic novel.
@@ -49,7 +49,7 @@ Tukey, a brilliant mathematician with a knack for practical solutions, recognize
 
 "There has to be a faster way," Tukey thought to himself as he jotted notes on a pad. The problem wasn't just theoretical—it had real-world implications for national security.
 
-![](02.png)
+![](02.jpg)
 <details class="image-prompt"><summary>Show Image Prompt</summary>
 IMAGE 2: Please create a new drawing.  It is detailed wide-landscape panel showing John Tukey deep in thought at a meeting table, surrounded by government officials in suits. Above his head, mathematical equations float in thought bubbles, suggesting his realization about a more efficient algorithm. In the background, early computer systems with blinking lights and spinning tape reels. The drawing should maintain the colorful, optimistic technology-forward style of the graphic novel.
 </details>
@@ -62,7 +62,7 @@ A few days after the meeting, Tukey shared his insight with Richard Garwin, a ph
 
 Cooley was intrigued. He had been working on computational algorithms for years and understood the limitations of contemporary computers. Together, they began exploring Tukey's idea, which involved recursively breaking down a large DFT into smaller, more manageable ones.
 
-![](03.png)
+![](03.jpg)
 <details class="image-prompt"><summary>Show Image Prompt</summary>
 IMAGE 3: 
 Please create a new wide-landscape drawing.
@@ -77,7 +77,7 @@ The breakthrough came when they realized they could use a "divide and conquer" a
 
 ### CHAPTER 3: THE IMPLEMENTATION
 
-![](04.png)
+![](04.jpg)
 <details class="image-prompt"><summary>Show Image Prompt</summary>
 IMAGE 4: 
 Please create a new wide-landscape drawing.
@@ -92,7 +92,7 @@ Cooley spent hours optimizing the algorithm, finding clever ways to reuse memory
 
 For a data set of 8,192 points, the standard DFT would require over 67 million operations. With their Fast Fourier Transform (FFT), the same calculation could be done with just about 106,000 operations—a speedup of more than 600 times. Problems that would have taken weeks could now be solved in minutes.
 
-![](05.png)
+![](05.jpg)
 <details class="image-prompt"><summary>Show Image Prompt</summary>
 IMAGE 5: 
 Please create a new wide-landscape drawing.
@@ -119,7 +119,7 @@ Seismologists could now process earthquake data in real-time. Radio astronomers 
 What many didn't realize at first was that Cooley and Tukey had rediscovered a method originally developed by Carl Friedrich Gauss around 1805. Gauss had used a similar approach to calculate the trajectories of asteroids, but his work, published posthumously in Latin, had been largely forgotten until it was connected to the FFT years after Cooley and Tukey's publication.
 
 ### CHAPTER 5: TRANSFORMING DIGITAL SIGNAL PROCESSING
-![](07.png)
+![](07.jpg)
 <details class="image-prompt"><summary>Show Image Prompt</summary>
 IMAGE 7: 
 Please create a new wide-landscape drawing.
@@ -136,7 +136,7 @@ In medicine, the FFT became central to image reconstruction in CT scanners and M
 
 In audio processing, the FFT revolutionized how we analyze, manipulate, and compress sound. Every MP3 file, digital music production tool, and voice recognition system relies on FFT-based techniques.
 
-![](08.png)
+![](08.jpg)
 <details class="image-prompt"><summary>Show Image Prompt</summary>
 IMAGE 8: 
 Please create a new wide-landscape drawing.
@@ -151,7 +151,7 @@ Perhaps most surprising was how the FFT transformed fields that weren't even on 
 
 ### CHAPTER 6: THE MODERN ERA AND LEGACY
 
-![](09.png)
+![](09.jpg)
 <details class="image-prompt"><summary>Show Image Prompt</summary>
 IMAGE 9: 
 Please create a new wide-landscape drawing.
@@ -166,7 +166,7 @@ In a world increasingly driven by digital data, the ability to efficiently analy
 
 ### CHAPTER 7: LESSONS FOR FUTURE INNOVATORS
 
-![](10.png)
+![](10.jpg)
 <details class="image-prompt"><summary>Show Image Prompt</summary>
 IMAGE 10: 
 Please create a new wide-landscape drawing.
@@ -185,7 +185,7 @@ Fourth, collaboration across disciplines can spark innovation. Tukey's mathemati
 
 Finally, the most revolutionary innovations often don't appear revolutionary at first. The FFT was, at its core, a more efficient way to calculate something mathematicians already knew how to calculate. Yet this efficiency unlocked entirely new possibilities, transforming entire industries and enabling new technologies.
 
-![](11.png)
+![](11.jpg)
 <details class="image-prompt"><summary>Show Image Prompt</summary>
 IMAGE 11: 
 Please create a new wide-landscape drawing.

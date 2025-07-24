@@ -4,7 +4,7 @@
 
 The story begins in 1934, with newspaper headlines screaming about Nazi rearmament. A fearful public and unprepared military contrast with the confident stride of a determined engineer—Robert Watson-Watt—walking into the British Air Ministry.
 
-![](panel-01.png)
+![](panel-01.jpg)
 <details>
   <summary>Image Prompt</summary>
   Please generate a wide-landscape drawing using the style of a graphic novel.  
@@ -20,7 +20,7 @@ The story begins in 1934, with newspaper headlines screaming about Nazi rearmame
 Narrative:
 British officials are searching for fantastical weapons. Watson-Watt is summoned to evaluate the feasibility of a "death ray." He calmly responds: “No ray, but perhaps... a wave.”
 
-![](panel-02.png)
+![](panel-02.jpg)
 <details>
   <summary>Image Prompt</summary>
   Please generate a wide-landscape drawing using the style of a graphic novel.  
@@ -53,7 +53,7 @@ Watson-Watt returns to his lab, pondering: “If we bounce radio waves off aircr
 Narrative:
 February 1935. In a snowy field near Daventry, they aim a receiver toward a BBC transmitter. A bomber flies overhead—blips appear. It works.
 
-![](panel-04a.png)
+![](panel-04a.jpg)
 <details>
   <summary>Image Prompt</summary>
   Please generate a wide-landscape drawing using the style of a graphic novel.  
@@ -67,12 +67,12 @@ February 1935. In a snowy field near Daventry, they aim a receiver toward a BBC 
 Narrative:
 Armed with evidence, Watson-Watt gives a dramatic presentation to skeptical military leaders. “This isn’t fantasy. It’s science that sees beyond the clouds.”
 
-![](panel-06.png)
-![](panel-03.png)
-![](panel-04.png)
-![](panel-05.png)
-![](panel-07.png)
-![](panel-08.png)
+![](panel-06.jpg)
+![](panel-03.jpg)
+![](panel-04.jpg)
+![](panel-05.jpg)
+![](panel-07.jpg)
+![](panel-08.jpg)
 
 <details>
   <summary>Image Prompt</summary>
@@ -89,7 +89,7 @@ Narrative:
 He receives funding to build the "Chain Home" radar stations. Towers rise along the coast, each transmitting signals into the sky.
 
 
-![](panel-10b.png)
+![](panel-10b.jpg)
 <details>
   <summary>Image Prompt</summary>
   Please generate a wide-landscape drawing using the style of a graphic novel.  
@@ -106,8 +106,8 @@ Narrative:
 Radar operators, mostly women, watch green circular screens in darkened rooms. Blips reveal unseen enemies miles away.
 
 
-![](panel-09.png)
-![](panel-11b.png)
+![](panel-09.jpg)
+![](panel-11b.jpg)
 <details>
   <summary>Image Prompt</summary>
   Please generate a wide-landscape drawing using the style of a graphic novel.  
@@ -124,7 +124,7 @@ Narrative:
 As Nazi bombers cross the Channel, Britain braces. Radar detects them early. RAF squadrons are scrambled with precious minutes to spare.
 
 
-![](panel-08b.png)
+![](panel-08b.jpg)
 <details>
   <summary>Image Prompt</summary>
   Please generate a wide-landscape drawing using the style of a graphic novel.  
@@ -156,7 +156,7 @@ Thanks to radar, British fighter pilots intercept waves of bombers. The tide tur
 Narrative:
 Watson-Watt walks through London after an air raid. Buildings smolder. Civilians thank the pilots, but no one notices the man who gave them the warning.
 
-![](panel-10.png)
+![](panel-10.jpg)
 <details>
   <summary>Image Prompt</summary>
   Please generate a wide-landscape drawing using the style of a graphic novel.  
@@ -173,7 +173,7 @@ Narrative:
 In a quiet lab years later, young engineers study signal processing. A portrait of Watson-Watt hangs beside a whiteboard of radar equations.
 
 
-![](panel-11.png)
+![](panel-11.jpg)
 <details>
   <summary>Image Prompt</summary>
   Please generate a wide-landscape drawing using the style of a graphic novel.  
@@ -189,7 +189,7 @@ Final panel. A voiceover:
 “Behind every breakthrough is a signal—
 It takes a mind like Watson-Watt’s to hear it clearly.”
 
-![](panel-12.png)
+![](panel-12.jpg)
 <details>
   <summary>Image Prompt</summary>
   Please generate a wide-landscape drawing using the style of a graphic novel.  

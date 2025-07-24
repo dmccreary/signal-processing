@@ -1,15 +1,15 @@
 ---
 title: Frequency Hopping - The Untold Story of Hedy Lamarr, Engineer and Hollywood Star
 description: A graphic-novel story of how Engineer and Hollywood Star Hedy Lamarr made contributions to the field of signal processing.
-image: /stories/hedy-lamarr/cover.png
-og:image: /stories/hedy-lamarr/cover.png
-twitter:image: /stories/hedy-lamarr/cover.png
+image: /stories/hedy-lamarr/cover.jpg
+og:image: /stories/hedy-lamarr/cover.jpg
+twitter:image: /stories/hedy-lamarr/cover.jpg
 social:
    cards: false
 ---
 # Frequency Hopping: The Untold Story of Hedy Lamarr, Engineer and Hollywood Star
 
-![](cover.png)
+![](cover.jpg)
 <details class="image-prompt">
    <summary>Show Cover Image Prompt</summary>
    Please generate a new wide-landscape art deco inspired illustration as it might appear in a graphic novel. 
@@ -44,7 +44,7 @@ Prompt given to Anthropic Claude 3.7 in Mat 2025.
 In the glittering world of 1940s Hollywood, one woman led a double life. By day, she was Hedy Lamarr, the glamorous movie star whose beauty captivated audiences worldwide. By night, she was an ingenious inventor whose brilliant mind would change the course of technology forever.
 
 
-![](01.png)
+![](01.jpg)
 <details class="image-prompt">
    <summary>Show Image Prompt</summary>
    Please generate a new wide-landscape art deco illustration as it might appear in a graphic novel.
@@ -56,7 +56,7 @@ In the glittering world of 1940s Hollywood, one woman led a double life. By day,
 
 Born Hedwig Eva Maria Kiesler in Vienna, Austria, Hedy's journey began long before Hollywood discovered her. In 1933, she starred in the controversial Czech film "Ecstasy," gaining international attention. Her beauty caught the eye of Friedrich Mandl, a wealthy Austrian munitions manufacturer with ties to the fascist regimes rising across Europe.
 
-![](02.png)
+![](02.jpg)
 <details class="image-prompt">
    <summary>Show Image Prompt</summary>
 Please generate a new wide-landscape art deco illustration as it might appear in a graphic novel.
@@ -72,7 +72,7 @@ In 1937, Hedy orchestrated a daring escape. Disguising herself as a maid, she fl
 
 By 1940, Hedy Lamarr was one of Hollywood's brightest stars. Her exotic beauty and enigmatic presence captivated audiences in films like "Algiers," "Boom Town," and "Comrade X." The press dubbed her "the most beautiful woman in the world."
 
-![](03.png)
+![](03.jpg)
 <details class="image-prompt">
    <summary>Show Image Prompt</summary>
 Please generate a new wide-landscape art deco inspired illustration as it might appear in a graphic novel.
@@ -86,7 +86,7 @@ Yet behind the glamour, Hedy's brilliant mind remained restless. The world was a
 
 In 1940, as the Battle of the Atlantic raged, Allied ships were being sunk at an alarming rate by German U-boats. Radio-controlled torpedoes offered a potential advantage, but there was a critical flaw: the radio signals could be easily jammed by the enemy.
 
-![](04.png)
+![](04.jpg)
 <details class="image-prompt">
    <summary>Show Image Prompt</summary>
 Please generate a new wide-landscape art deco inspired illustration as it might appear in a graphic novel.
@@ -102,7 +102,7 @@ Late at night, after shooting wrapped on her latest film, Hedy would return home
 
 At a dinner party in Hollywood, Hedy met George Antheil, an avant-garde composer known for his Ballet Mécanique, a piece written for sixteen player pianos operating in sync. Their conversation quickly turned to the war effort, and Hedy shared her frequency-hopping concept.
 
-![](05.png)
+![](05.jpg)
 <details class="image-prompt">
    <summary>Show Image Prompt</summary>
 
@@ -117,7 +117,7 @@ Antheil was immediately intrigued. His experience synchronizing player pianos wa
 
 Their invention was elegant in its simplicity. The system would use 88 frequencies (the same as the number of keys on a piano) and both the transmitter and receiver would have identical paper rolls dictating the precise timing of frequency changes.
 
-![](06.png)
+![](06.jpg)
 <details class="image-prompt">
    <summary>Show Image Prompt</summary>
 Please generate a new wide-landscape art deco inspired illustration as it might appear in a graphic novel.
@@ -131,7 +131,7 @@ The system was ingenious. Even if the enemy managed to jam one frequency, the si
 
 On August 11, 1942, U.S. Patent No. 2,292,387 was granted to Hedy Kiesler Markey (her married name at the time) and George Antheil for their "Secret Communication System." It was a remarkable achievement for anyone, let alone a Hollywood actress and a composer.
 
-![](07.png)
+![](07.jpg)
 <details class="image-prompt">
    <summary>Show Image Prompt</summary>
 Please generate a new wide-landscape art deco inspired illustration as it might appear in a graphic novel.
@@ -145,7 +145,7 @@ However, when they presented their invention to the U.S. Navy, they were met wit
 
 Though disappointed by the rejection, Hedy was determined to help defeat fascism. She threw herself into selling war bonds, using her star power to raise millions of dollars for the Allied cause.
 
-![](08.png)
+![](08.jpg)
 <details class="image-prompt">
    <summary>Show Image Prompt</summary>
 Please generate a new wide-landscape art deco inspired illustration as it might appear in a graphic novel.
@@ -159,7 +159,7 @@ Image  8: A wide-landscape, colorful art deco illustration showing Hedy at a war
 
 For years, Hedy's invention gathered dust, forgotten by the military establishment. It wasn't until the Cuban Missile Crisis in 1962 that the U.S. military finally began using frequency-hopping technology on naval ships.
 
-![](09.png)
+![](09.jpg)
 <details class="image-prompt">
    <summary>Show Image Prompt</summary>
 Please generate a new wide-landscape art deco inspired illustration as it might appear in a graphic novel.
@@ -173,7 +173,7 @@ By then, Hedy and George's patent had expired, and they never received a penny f
 
 It wasn't until 1997, when Hedy was 82 years old, that she finally received recognition for her technological contributions. The Electronic Frontier Foundation presented her with their Pioneer Award, acknowledging her role in developing spread spectrum technology.
 
-![](10.png)
+![](10.jpg)
 <details class="image-prompt">
    <summary>Show Image Prompt</summary>
 
@@ -188,7 +188,7 @@ When a reporter asked how a beautiful movie star could also be an inventor, Hedy
 
 Hedy Lamarr's story reveals the qualities that make a great engineer: curiosity, creativity, persistence, and the courage to challenge conventional thinking. She saw a problem that others overlooked and imagined a solution that was decades ahead of its time.
 
-![](11.png)
+![](11.jpg)
 <details class="image-prompt">
    <summary>Show Image Prompt</summary>
 Please generate a new wide-landscape art deco inspired illustration as it might appear in a graphic novel.

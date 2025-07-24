@@ -1,14 +1,14 @@
 ---
 title: The Information Revolutionary - Claude Shannon's Digital Gamble
 description: A graphic-novel story of how Claude Shannon made contributions to the field of signal processing.
-image: /stories/shannon/cover.png
-og:image: /stories/shannon/cover.png
-twitter:image: /stories/shannon/cover.png
+image: /stories/shannon/cover.jpg
+og:image: /stories/shannon/cover.jpg
+twitter:image: /stories/shannon/cover.jpg
 social:
    cards: false
 ---
 # The Information Revolutionary: Claude Shannon's Digital Gamble
-![](./cover.png)
+![](./cover.jpg)
 
 <details>
     <summary>Narrative Prompt</summary>
@@ -40,7 +40,7 @@ When you describe an image, make sure to mention that it should be a colorful, b
 
 In the early-1940s, long before “Wi-Fi,” “smartphones,” or even “computers” as we know them, the beating heart of American innovation was **Bell Telephone Laboratories** in Murray Hill, New Jersey. Inside its limestone walls, Nobel laureates rubbed shoulders with tinkering technicians; ideas leapt from quantum theory to vacuum-tube amplifiers before lunch and from satellite orbits to transistorized hearing aids by dinner. The lab’s mantra was simple: *solve problems nobody else can even phrase.*
 
-![](01.png)
+![](01.jpg)
 <details><summary>Image Prompt</summary>
 Image 1:
 Please generate a new wide-landscape illustration.
@@ -53,7 +53,7 @@ Claude Elwood Shannon arrived at Bell Labs in 1941, fresh from completing his ma
 
 Shannon’s first tasks were to optimize electromechanical relay circuits that routed millions of calls across the American continent. Yet, as he traced wires and contacts, he asked a question few engineers dared: **“What if signals aren’t merely voltages on copper, but *abstract units* that obey mathematical laws?”**
 
-![](02.png)
+![](02.jpg)
 <details><summary>Image Prompt</summary>
 Image 2:
 Please generate a new wide-landscape illustration.
@@ -64,7 +64,7 @@ Shannon, slender and boyish, studies a maze-like relay panel. Above his head, gh
 
 Bell Labs housed radar pioneers, wartime code-breakers, and the soon-to-be inventors of the transistor. Colleagues shared cafeterias and chalkboards, turning lunch breaks into spontaneous seminars. In this crucible, Shannon’s *playful genius* flourished. He famously rode a unicycle down the corridor while juggling three beanbags, a grin framing his analytical eyes—because for Shannon, play and discovery were the same verb.
 
-![](03.png)
+![](03.jpg)
 <details><summary>Image Prompt</summary>
 Image 3:
 Please generate a new wide-landscape illustration.
@@ -79,7 +79,7 @@ Working nights, he sketched probability curves on endless yellow pads, formulati
 
 > *“Information,” Shannon wrote to a colleague, “is the *reduction of uncertainty*.”*
 
-![](04.png)
+![](04.jpg)
 <details><summary>Image Prompt</summary>
 Image 4:
 Please generate a new wide-landscape illustration.
@@ -90,7 +90,7 @@ A tech-forward wide-landscape illustration split diagonally: left side, a dim wa
 
 Around the same time, Hollywood star **Hedy Lamarr** and composer George Antheil patented **frequency-hopping spread spectrum** to thwart torpedo jamming—an idea also rooted in staying ahead of noise. While Shannon and Lamarr never collaborated directly, Bell Labs engineers eagerly studied her patent. Shannon absorbed its central insight: continuous shifts in carrier frequency *increase channel reliability*. This resonated with his growing mathematics of channel capacity.
 
-![](05.png)
+![](05.jpg)
 <details><summary>Image Prompt</summary>
 Image 5:
 Please generate a new wide-landscape illustration.
@@ -107,7 +107,7 @@ In July 1948 the *Bell System Technical Journal* published Shannon’s masterpie
 
 Engineers worldwide realized they could calculate, *before building*, the exact limits of any communication system—from coaxial cables to satellite links.
 
-![](06.png)
+![](06.jpg)
 <details><summary>Image Prompt</summary>
 Image 6:
 Please generate a new wide-landscape illustration.
@@ -119,7 +119,7 @@ A bright, wide-landscape illustration of Shannon seated at a drafting table. She
 
 Shannon’s work seeded inventions that followed: **pulse-code modulation, modems, error-correcting codes, compact disks, Wi-Fi, 5G**, and every compression algorithm that squeezes video into your pocket. By proving that bits—*not volts*—carry meaning, he turned communication engineering into *information* engineering.
 
-![](07.png)
+![](07.jpg)
 <details><summary>Image Prompt</summary>
 Image 7:
 Please generate a new wide-landscape illustration.
@@ -132,7 +132,7 @@ Shannon's most profound contribution to signal processing came through his mathe
 
 In smoke-filled conference rooms at Bell Labs, Shannon would sketch probability distributions and logarithmic functions, puzzling his colleagues with his assertion that noise wasn't just an enemy to be fought—it was a mathematical certainty to be quantified. "Every channel has a capacity," he would explain, "and once you know it, you can design right up to that limit."
 
-![](08.png)
+![](08.jpg)
 <details><summary>Image Prompt</summary>
 Image 8:
 Please generate a new wide-landscape illustration.
@@ -145,7 +145,7 @@ Shannon borrowed the concept of entropy from thermodynamics and reimagined it fo
 
 "Information is surprise," Shannon would explain to puzzled visitors in his office filled with mechanical puzzles and chess problems. "The less likely a message is, the more information it contains." This insight revolutionized how engineers thought about coding and compression, turning communication into a sophisticated game of probability.
 
-![](09.png)
+![](09.jpg)
 <details><summary>Image Prompt</summary>
 Image 9:
 Please generate a new wide-landscape illustration.
@@ -158,7 +158,7 @@ Few knew that Shannon's mathematical brilliance was matched by his love of creat
 
 The maze-solving mouse became a perfect metaphor for Shannon's broader vision: that properly designed systems could find optimal paths through uncertainty. This principle would later become fundamental to digital signal processing algorithms used in everything from noise cancellation to image compression.
 
-![](10.png)
+![](10.jpg)
 <details><summary>Image Prompt</summary>
 Image 10:
 Please generate a new wide-landscape illustration.
@@ -171,7 +171,7 @@ By the 1960s, Shannon's theoretical work began transforming into practical appli
 
 While Shannon himself moved on to other interests, engineers at Bell Labs and beyond were implementing his theories into the first digital filters, analog-to-digital converters, and signal processing algorithms. These innovations would eventually lead to crystal-clear digital telephone lines, compact discs, and the entire field of digital media.
 
-![](11.png)
+![](11.jpg)
 <details><summary>Image Prompt</summary>
 Image 11:
 Please generate a new wide-landscape illustration.
@@ -184,7 +184,7 @@ Shannon lived to see his theoretical work transform the world. The internet, dig
 
 Though modest about his contributions, Shannon's work touches every aspect of modern signal processing. From the noise-cancellation algorithms in your headphones to the error-correction codes protecting data in space probes, his mathematics continues to shape how humanity communicates across distances and through time.
 
-![](12.png)
+![](12.jpg)
 <details><summary>Image Prompt</summary>
 Image 12:
 Please generate a new wide-landscape illustration.
@@ -197,7 +197,7 @@ Shannon's work wasn't just a series of brilliant insights—it was a methodology
 
 As we enter an era of quantum communication, artificial intelligence, and systems that process signals beyond human perception, Shannon's principles remain relevant. His mathematics of information continues to guide researchers who are pushing the boundaries of what signals we can detect, process, and understand.
 
-![](13.png)
+![](13.jpg)
 <details><summary>Image Prompt</summary>
 Image 13:
 Please generate a new wide-landscape illustration.
@@ -219,7 +219,7 @@ Shannon’s legacy is more than equations; it is a blueprint for creative engine
 | **Courage to Challenge Orthodoxy** | Asked *“What *is* information?”*                             | Question first principles in any problem.       |
 | **Communication**                  | Wrote papers engineers *and* mathematicians could read.      | Practice explaining complex ideas clearly.      |
 
-![](14.png)
+![](14.jpg)
 <details><summary>Image Prompt</summary>
 Final Image 14:
 Please generate a new wide-landscape illustration.
