@@ -6,7 +6,7 @@
       <meta charset="utf-8">
       <meta name="viewport" content="width=device-width,initial-scale=1">
       
-        <meta name="description" content="A description under 110 characters.">
+        <meta name="description" content="Interactive simulation showing how different waveform shapes (sine, square, triangle, sawtooth) appear in frequency domain">
       
       
         <meta name="author" content="Dan McCreary">
@@ -26,7 +26,7 @@
     
     
       
-        <title>A title under 60 characters. - Signal Processing with AI</title>
+        <title>FFT Waveform Types - Compare Harmonic Content - Signal Processing with AI</title>
       
     
     
@@ -73,11 +73,11 @@
       
         <meta  property="og:type"  content="website" >
       
-        <meta  property="og:title"  content="A title under 60 characters. - Signal Processing with AI" >
+        <meta  property="og:title"  content="FFT Waveform Types - Compare Harmonic Content - Signal Processing with AI" >
       
-        <meta  property="og:description"  content="A description under 110 characters." >
+        <meta  property="og:description"  content="Interactive simulation showing how different waveform shapes (sine, square, triangle, sawtooth) appear in frequency domain" >
       
-        <meta property="og:image" content="https://dmccreary.github.io/signal-processing/img/cover-preview.png">
+        <meta property="og:image" content="https://dmccreary.github.io/signal-processing/sims/fft-waveform-types/fft-waveform-types.png">
       
         <meta  property="og:image:type"  content="image/png" >
       
@@ -89,11 +89,11 @@
       
         <meta  name="twitter:card"  content="summary_large_image" >
       
-        <meta  name="twitter:title"  content="A title under 60 characters. - Signal Processing with AI" >
+        <meta  name="twitter:title"  content="FFT Waveform Types - Compare Harmonic Content - Signal Processing with AI" >
       
-        <meta  name="twitter:description"  content="A description under 110 characters." >
+        <meta  name="twitter:description"  content="Interactive simulation showing how different waveform shapes (sine, square, triangle, sawtooth) appear in frequency domain" >
       
-        <meta name="twitter:image" content="https://dmccreary.github.io/signal-processing/img/cover-preview.png">
+        <meta name="twitter:image" content="https://dmccreary.github.io/signal-processing/sims/fft-waveform-types/fft-waveform-types.png">
       
     
     
@@ -114,7 +114,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#fft-of-waveform-types-microsim" class="md-skip">
+        <a href="#fft-waveform-types-microsim" class="md-skip">
           Skip to content
         </a>
       
@@ -149,7 +149,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              A title under 60 characters.
+              FFT Waveform Types - Compare Harmonic Content
             
           </span>
         </div>
@@ -229,8 +229,6 @@
         <div class="md-main__inner md-grid">
           
             
-              
-                
               
               <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
                 <div class="md-sidebar__scrollwrap">
@@ -941,12 +939,105 @@
     </span>
   </a>
   
+    <nav class="md-nav" aria-label="About this MicroSim">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#supported-waveforms" class="md-nav__link">
+    <span class="md-ellipsis">
+      Supported Waveforms
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#interactive-controls" class="md-nav__link">
+    <span class="md-ellipsis">
+      Interactive Controls
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#key-learning-objectives" class="md-nav__link">
+    <span class="md-ellipsis">
+      Key Learning Objectives
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
 </li>
       
         <li class="md-nav__item">
-  <a href="#sample-prompt" class="md-nav__link">
+  <a href="#educational-applications" class="md-nav__link">
     <span class="md-ellipsis">
-      Sample Prompt
+      Educational Applications
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Educational Applications">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#for-instructors" class="md-nav__link">
+    <span class="md-ellipsis">
+      For Instructors
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#for-students" class="md-nav__link">
+    <span class="md-ellipsis">
+      For Students
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#technical-implementation" class="md-nav__link">
+    <span class="md-ellipsis">
+      Technical Implementation
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#sample-exercises" class="md-nav__link">
+    <span class="md-ellipsis">
+      Sample Exercises
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#extensions-and-variations" class="md-nav__link">
+    <span class="md-ellipsis">
+      Extensions and Variations
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#related-concepts" class="md-nav__link">
+    <span class="md-ellipsis">
+      Related Concepts
     </span>
   </a>
   
@@ -1692,9 +1783,7 @@
             
             
               
-                
-              
-              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" hidden>
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
                 <div class="md-sidebar__scrollwrap">
                   <div class="md-sidebar__inner">
                     
@@ -1719,12 +1808,105 @@
     </span>
   </a>
   
+    <nav class="md-nav" aria-label="About this MicroSim">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#supported-waveforms" class="md-nav__link">
+    <span class="md-ellipsis">
+      Supported Waveforms
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#interactive-controls" class="md-nav__link">
+    <span class="md-ellipsis">
+      Interactive Controls
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#key-learning-objectives" class="md-nav__link">
+    <span class="md-ellipsis">
+      Key Learning Objectives
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
 </li>
       
         <li class="md-nav__item">
-  <a href="#sample-prompt" class="md-nav__link">
+  <a href="#educational-applications" class="md-nav__link">
     <span class="md-ellipsis">
-      Sample Prompt
+      Educational Applications
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Educational Applications">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#for-instructors" class="md-nav__link">
+    <span class="md-ellipsis">
+      For Instructors
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#for-students" class="md-nav__link">
+    <span class="md-ellipsis">
+      For Students
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#technical-implementation" class="md-nav__link">
+    <span class="md-ellipsis">
+      Technical Implementation
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#sample-exercises" class="md-nav__link">
+    <span class="md-ellipsis">
+      Sample Exercises
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#extensions-and-variations" class="md-nav__link">
+    <span class="md-ellipsis">
+      Extensions and Variations
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#related-concepts" class="md-nav__link">
+    <span class="md-ellipsis">
+      Related Concepts
     </span>
   </a>
   
@@ -1743,8 +1925,6 @@
               <article class="md-content__inner md-typeset">
                 
                   
-  
-
 
 
   
@@ -1756,30 +1936,83 @@
   
 
 
-<h1 id="fft-of-waveform-types-microsim">FFT of Waveform Types MicroSim</h1>
+<h1 id="fft-waveform-types-microsim">FFT Waveform Types MicroSim</h1>
 <iframe src="main.html" height="500" scrolling="no" style="overflow: hidden;"></iframe>
 
-<p><a class="md-button md-button--primary" href="main.html">Run the FFT Waveform Types MicroSim</a></p>
-<p><a href="fft-waveform-types.html">FFT Waveform TYpes HTML Full</a>
-<a href="">Edit this MicroSim</a></p>
+<p>You can include this MicroSim in your course by pasting the following HTML directly into your web page.</p>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
+<span class="normal">2</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="p">&lt;</span><span class="nt">iframe</span> <span class="na">src</span><span class="o">=</span><span class="s">&quot;https://dmccreary.github.io/signal-processing/sims/fft-waveform-types/main.html&quot;</span> 
+  <span class="na">height</span><span class="o">=</span><span class="s">&quot;500px&quot;</span> <span class="na">scrolling</span><span class="o">=</span><span class="s">&quot;no&quot;</span> <span class="na">style</span><span class="o">=</span><span class="s">&quot;overflow: hidden;&quot;</span><span class="p">&gt;&lt;/</span><span class="nt">iframe</span><span class="p">&gt;</span>
+</code></pre></div></td></tr></table></div>
+<p><a class="md-button md-button--primary" href="main.html">Run the FFT Waveform Types MicroSim Fullscreen</a>
+<a class="md-button" href="https://editor.p5js.org/">Edit this MicroSim</a></p>
 <h2 id="about-this-microsim">About this MicroSim</h2>
-<p>This MicroSim teaches us how to
-specify the drawing of a static filled circle.</p>
-<h2 id="sample-prompt">Sample Prompt</h2>
-<div class="admonition prompt">
-<p class="admonition-title">Prompt</p>
-<p>Please create a new MicroSim using the p5.js library. Start with the fft-basic.js example in the project knowledge area. Also pay attention to the microsim-rules.md file in the Project knowledge area. </p>
-<p>In this variation, I would like the top 1/2 of the drawing region to display a fixed waveform such as: </p>
+<p>This interactive simulation demonstrates how different waveform shapes appear in both time and frequency domains. It helps students understand the fundamental relationship between waveform shape and harmonic content by showing:</p>
+<ul>
+<li><strong>Time Domain</strong> (top): The actual waveform shape over time</li>
+<li><strong>Frequency Domain</strong> (bottom): The FFT spectrum showing which frequencies are present</li>
+</ul>
+<h3 id="supported-waveforms">Supported Waveforms</h3>
 <ol>
-<li>Sine wave</li>
-<li>Square wave</li>
-<li>Sawtooth wave</li>
+<li><strong>Sine Wave</strong> - Pure tone with only the fundamental frequency</li>
+<li><strong>Square Wave</strong> - Contains odd harmonics (1st, 3rd, 5th...) with 1/n amplitude decay</li>
+<li><strong>Triangle Wave</strong> - Contains odd harmonics with 1/n² amplitude decay (much smoother spectrum than square)</li>
+<li><strong>Sawtooth Wave</strong> - Contains all harmonics (1st, 2nd, 3rd...) with 1/n amplitude decay</li>
 </ol>
-<p>In the bottom 1/2 of the drawing region, show the FFT of this static waveform.</p>
-<p>In the controls area add a radio button to allow the user to change the waveform type.  Also allow the user to change the frequency of the waveform on the top.  The frequency range of the slider is from 0 to 2000 Hz with the default value of 500 Hz.</p>
-<p>Use an FFT of size 8192.</p>
-<p>Only return the fft-waveform-type.js file so it can be easily pasted into the p5.js online editor for testing.</p>
-</div>
+<h3 id="interactive-controls">Interactive Controls</h3>
+<ul>
+<li><strong>Waveform Type</strong>: Radio buttons to select sine, square, triangle, or sawtooth</li>
+<li><strong>Frequency Slider</strong>: Adjusts fundamental frequency from 0-500 Hz</li>
+<li><strong>Real-time Updates</strong>: Changes are reflected immediately in both domains</li>
+</ul>
+<h3 id="key-learning-objectives">Key Learning Objectives</h3>
+<ul>
+<li>Understand that waveform shape determines harmonic content</li>
+<li>Compare how different wave shapes produce different frequency spectra</li>
+<li>Observe that smoother waveforms (triangle) have fewer high-frequency harmonics than angular waveforms (square)</li>
+<li>Learn why triangle waves sound "softer" than square waves (faster harmonic decay)</li>
+</ul>
+<h2 id="educational-applications">Educational Applications</h2>
+<h3 id="for-instructors">For Instructors</h3>
+<p>This simulation is ideal for:
+- <strong>Signal Processing Courses</strong>: Demonstrating Fourier analysis principles
+- <strong>Music Technology</strong>: Explaining synthesizer waveform selection
+- <strong>Physics Classes</strong>: Showing wave superposition and harmonic series
+- <strong>Engineering</strong>: Understanding spectral content of different signals</p>
+<h3 id="for-students">For Students</h3>
+<p>Students can explore:
+- How changing waveform shape affects the frequency spectrum
+- Why different waveforms have characteristic sounds
+- The mathematical relationship between time and frequency domains
+- The concept of harmonic series and amplitude decay</p>
+<h2 id="technical-implementation">Technical Implementation</h2>
+<ul>
+<li><strong>FFT Size</strong>: 8192 samples for high frequency resolution</li>
+<li><strong>Sample Rate</strong>: 44.1 kHz (standard audio rate)</li>
+<li><strong>Frequency Range</strong>: Display limited to 0-500 Hz for clarity</li>
+<li><strong>Real-time Processing</strong>: Efficient spectrum calculation for smooth interaction</li>
+</ul>
+<h2 id="sample-exercises">Sample Exercises</h2>
+<ol>
+<li><strong>Compare Harmonic Content</strong>: Switch between waveforms and observe how the spectrum changes</li>
+<li><strong>Frequency Scaling</strong>: Adjust the frequency and see how all harmonics scale proportionally</li>
+<li><strong>Harmonic Decay</strong>: Compare the rate at which harmonics decrease for triangle vs. square waves</li>
+<li><strong>Audio Connection</strong>: If audio is enabled, listen to how different waveforms sound at the same frequency</li>
+</ol>
+<h2 id="extensions-and-variations">Extensions and Variations</h2>
+<p>This simulation could be extended to include:
+- Audio output for hearing the differences
+- Custom waveform drawing capability
+- Phase relationships between harmonics
+- Noise addition to demonstrate real-world signals
+- Time-varying waveforms (chirps, modulation)</p>
+<h2 id="related-concepts">Related Concepts</h2>
+<ul>
+<li><strong>Fourier Series</strong>: Mathematical foundation for harmonic decomposition</li>
+<li><strong>Spectral Analysis</strong>: Frequency domain representation of signals</li>
+<li><strong>Music Synthesis</strong>: How electronic instruments generate different timbres</li>
+<li><strong>Signal Processing</strong>: Fundamental tool for analyzing and processing signals</li>
+</ul>
 
 
 
@@ -1794,8 +2027,6 @@ specify the drawing of a static filled circle.</p>
 
   
 
-
-  
 
 
 
@@ -1818,8 +2049,6 @@ specify the drawing of a static filled circle.</p>
         <footer class="md-footer">
   
     
-      
-        
       
       <nav class="md-footer__inner md-grid" aria-label="Footer" >
         
