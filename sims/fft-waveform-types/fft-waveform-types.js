@@ -98,14 +98,6 @@ function generateWaveformAndSpectrum() {
           let cyclePhase = phase % (2 * PI);
           sample = (cyclePhase / PI) - 1; // -1 to 1 sawtooth
           break;
-        case 'triangle':
-          let triPhase = phase % (2 * PI);
-          if (triPhase < PI) {
-            sample = (triPhase / (PI/2)) - 1; // Rising edge: -1 to 1
-          } else {
-            sample = 3 - (triPhase / (PI/2)); // Falling edge: 1 to -1
-          }
-          break;
       }
     }
     
@@ -151,18 +143,6 @@ function generateSpectrum() {
       let binIndex = Math.floor(freq * fftSize / sampleRate);
       if (binIndex < spectrumData.length) {
         let amplitude = 255 / harmonic;
-        spectrumData[binIndex] = amplitude;
-      }
-    }
-  } else if (currentWaveform === 'triangle') {
-    // Triangle wave: odd harmonics with 1/n² amplitude
-    for (let harmonic = 1; harmonic <= 21; harmonic += 2) {
-      let freq = currentFreq * harmonic;
-      if (freq > sampleRate / 2) break; // Above Nyquist frequency
-      
-      let binIndex = Math.floor(freq * fftSize / sampleRate);
-      if (binIndex < spectrumData.length) {
-        let amplitude = 255 / (harmonic * harmonic);
         spectrumData[binIndex] = amplitude;
       }
     }
@@ -317,9 +297,6 @@ function drawControlLabels() {
     case 'square':
       harmonicInfo = 'Odd harmonics (1st, 3rd, 5th...)';
       break;
-    case 'triangle':
-      harmonicInfo = 'Odd harmonics (1/n² decay)';
-      break;
     case 'sawtooth':
       harmonicInfo = 'All harmonics (1st, 2nd, 3rd...)';
       break;
@@ -334,7 +311,6 @@ function createControls() {
   waveformRadio = createRadio();
   waveformRadio.option('sine', 'Sine');
   waveformRadio.option('square', 'Square');
-  waveformRadio.option('triangle', 'Triangle');
   waveformRadio.option('sawtooth', 'Sawtooth');
   waveformRadio.selected('sine');
   waveformRadio.position(100, drawHeight + 15);
