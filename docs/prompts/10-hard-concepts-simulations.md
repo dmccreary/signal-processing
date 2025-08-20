@@ -1,13 +1,11 @@
 # Hard Concept Simulations
 
-```linenums="0"
-What are the most difficult concepts to understand
-in a college level course on signal processing
-that can be explained by high-quality
-interactive simulations?
+!!! prompt
+    What are the most difficult concepts to understand
+    in a college level course on signal processing
+    that can be explained by high-quality interactive simulations?
 
-For each section, return it in a level 3 markdown section.
-```
+    For each section, return it in a level 3 markdown section.
 
 ## ChatGPT Response
 

@@ -2,14 +2,14 @@
 
 [Timeline of Signal Processing](../sims/timeline-viewer/timeline-viewer.html)
 
-## Prompt
+## Sample Prompt
 
-```
-What were some of the most interesting stories in the
-development of modern signal processing?
-Who were the most colorful characters?
-What were the key breakthroughs?
-```
+!!! prompt
+    What were some of the most interesting stories in the
+    development of modern signal processing?
+    Who were the most colorful characters?
+    What were the key breakthroughs?
+
 
 ## Response
 
