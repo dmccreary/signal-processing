@@ -41,7 +41,7 @@ After the first 25 equations were generated I used the following prompt:
 
 ## Responses
 
-Note that the 100 top equations are group in four ranges:
+Note that the 100 top equations are grouped in four ranges:
 
 1. [1-25](#equations-1-25)
 2. [26-50](#equations-25-50)

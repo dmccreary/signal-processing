@@ -53,6 +53,7 @@ I’ll let you know once I’ve compiled a detailed overview.
 OpenAI Deep Research Thought for 
 
 ## Thinking
+
 I’m considering generative AI and automation tools for analog and digital circuit diagrams. Features like natural language input, integration with Markdown, and support for Python or JavaScript are key focus areas.
 
 I'm looking into options that combine JavaScript libraries with Markdown for seamless circuit diagram generation, enabling dynamic, browser-friendly integration in teaching materials.

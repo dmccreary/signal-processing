@@ -1,19 +1,20 @@
 # Concept Enumeration
 
-## Prompt
+## Sample Prompt
 
-```
-Please create a numbered list of the 150 most essential concepts
-in an undergraduate course in signal processing we have described
-above. For each concept, just return the concept name and use
-acronyms and abbreviations when appropriate.  They will be used
-to label a network graph.
-Make sure that the concepts are distinct and are not duplicates.
+Here is a sample prompt that will generate the top 150 concepts in this course.  When we first ran this in September of 2024 LLMs could only handle about 150 concepts.  Today we have seen LLMs that can do over 300 concepts.
 
-Start with the most basic foundational concepts that are prerequisites
-for the course, and then proceed from the basic to the most complex
-concepts. Return the numbered list just one concept per line.
-```
+!!! prompt
+    Please create a numbered list of the 150 most essential concepts
+    in an undergraduate course in signal processing we have described
+    above. For each concept, just return the concept name and use
+    acronyms and abbreviations when appropriate.  They will be used
+    to label a network graph.
+    Make sure that the concepts are distinct and are not duplicates.
+
+    Start with the most basic foundational concepts that are prerequisites
+    for the course, and then proceed from the basic to the most complex
+    concepts. Return the numbered list just one concept per line.
 
 ## Response
 
