@@ -517,8 +517,6 @@
         
       
         
-      
-        
           
         
       
@@ -580,27 +578,6 @@
   
   <span class="md-ellipsis">
     Course Description
-  </span>
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../05-vis-refinement/" class="md-nav__link">
-        
-  
-  <span class="md-ellipsis">
-    Vis Refinement
   </span>
   
 
@@ -1966,12 +1943,21 @@
 
 <h1 id="creating-a-taxonomy">Creating a Taxonomy</h1>
 <h2 id="prompt">Prompt</h2>
-<p>Next, let's Create a taxonomy to classify these concepts. For the list of concepts, can you suggest a taxonomy of up to ten categories on how to classify each concept? For example: 1. Foundational Concepts (Mathematical Foundations), 2. Types of Signals. 3. Fourier Transforms... 10. Other</p>
+<p>Before we generate a knowledge graph it is useful to group similar types of concepts together and then assign them a color.  This allows you to seen patterns of similar items in the learning graphs.  Note that we are not concerned with learning order.  We only want to put similar types of concepts near each other in a taxonomy.</p>
+<div class="admonition prompt">
+<p class="admonition-title">Prompt</p>
+<p>Next, let's Create a taxonomy to classify these concepts. For the list of concepts, can you suggest a taxonomy of up to ten categories on how to classify each concept? For example: 
+1. Foundational Concepts (Mathematical Foundations), 
+2. Types of Signals. 
+3. Fourier Transforms
+... 
+10. Miscellaneous</p>
 <p>For each of the categories create a category label and list the concepts under that category.</p>
+</div>
 <h2 id="response">Response</h2>
 <p>ChatGPT o1-preview Thought for 34 seconds</p>
 <p>Sure! Here's a taxonomy of up to ten categories to classify the 150 essential concepts in the undergraduate signal processing course:</p>
-<h3 id="1-mathematical-foundations"><strong>1. Mathematical Foundations</strong></h3>
+<h3 id="1-mathematical-foundations">1. Mathematical Foundations</h3>
 <ul>
 <li><strong>Concepts:</strong><ol>
 <li>Complex numbers</li>
@@ -1993,33 +1979,67 @@
 </ol>
 </li>
 </ul>
-<h3 id="2-signals-and-systems"><strong>2. Signals and Systems</strong></h3>
+<h3 id="2-signals-and-systems">2. Signals and Systems</h3>
 <ul>
-<li><strong>Concepts:</strong> 17. Signals 18. Systems 19. Continuous-time signals 20. Discrete-time signals 21. Analog signals 22. Digital signals 23. Sampling 24. Quantization 25. Aliasing 26. Nyquist theorem 27. Convolution 28. Impulse response 29. LTI systems 30. Causality 31. Stability 42. Time domain 43. Frequency domain 44. Signal decomposition</li>
+<li><strong>Concepts:</strong> <ol>
+<li>Signals </li>
+<li>Systems </li>
+<li>Continuous-time signals </li>
+<li>Discrete-time signals </li>
+<li>Analog signals </li>
+<li>Digital signals </li>
+<li>Sampling </li>
+<li>Quantization </li>
+<li>Aliasing </li>
+<li>Nyquist theorem </li>
+<li>Convolution </li>
+<li>Impulse response </li>
+<li>LTI systems 30. Causality </li>
+<li>Stability </li>
+<li>Time domain </li>
+<li>Frequency domain</li>
+<li>Signal decomposition</li>
+</ol>
+</li>
 </ul>
-<h3 id="3-transforms-and-frequency-analysis"><strong>3. Transforms and Frequency Analysis</strong></h3>
+<h3 id="3-transforms-and-frequency-analysis">3. Transforms and Frequency Analysis</h3>
 <ul>
-<li><strong>Concepts:</strong> 33. Fourier series 34. Fourier Transform (FT) 35. Inverse Fourier Transform (IFT) 36. Laplace Transform 37. Z-Transform 38. Discrete Fourier Transform (DFT) 39. Fast Fourier Transform (FFT) 40. Window functions 41. Spectral analysis 53. Bilinear transform</li>
+<li><strong>Concepts:</strong> <ol>
+<li>Fourier series </li>
+<li>Fourier Transform (FT) </li>
+<li>Inverse Fourier Transform (IFT) </li>
+<li>Laplace Transform </li>
+<li>Z-Transform </li>
+<li>Discrete Fourier Transform (DFT) </li>
+<li>Fast Fourier Transform (FFT) </li>
+<li>Window functions </li>
+<li>Spectral analysis </li>
+<li>Bilinear transform</li>
+</ol>
+</li>
 </ul>
-<h3 id="4-filters-and-filter-design"><strong>4. Filters and Filter Design</strong></h3>
+<h3 id="4-filters-and-filter-design">4. Filters and Filter Design</h3>
 <ul>
 <li><strong>Concepts:</strong> 45. Filtering 46. Low-pass filter (LPF) 47. High-pass filter (HPF) 48. Band-pass filter (BPF) 49. Band-stop filter (BSF) 50. FIR filters 51. IIR filters 52. Filter design 54. Butterworth filter 55. Chebyshev filter 56. Elliptic filter 57. Bessel filter</li>
 </ul>
-<h3 id="5-random-processes-and-statistical-signal-processing"><strong>5. Random Processes and Statistical Signal Processing</strong></h3>
+<h3 id="5-random-processes-and-statistical-signal-processing">5. Random Processes and Statistical Signal Processing</h3>
 <ul>
 <li><strong>Concepts:</strong> 69. Autocorrelation 70. Cross-correlation 71. Power Spectral Density (PSD) 72. Energy Spectral Density (ESD) 73. Random processes 74. Stationarity 75. Ergodicity 76. White noise 77. Colored noise 78. Signal estimation 79. Kalman filter 80. Wiener filter</li>
 </ul>
-<h3 id="6-time-frequency-analysis-and-wavelets"><strong>6. Time-Frequency Analysis and Wavelets</strong></h3>
+<h3 id="6-time-frequency-analysis-and-wavelets">6. Time-Frequency Analysis and Wavelets</h3>
 <ul>
 <li><strong>Concepts:</strong> 81. Time-frequency analysis 82. Short-Time Fourier Transform (STFT) 83. Spectrogram 84. Wavelet Transform (WT) 85. Continuous Wavelet Transform (CWT) 86. Discrete Wavelet Transform (DWT) 87. Multiresolution analysis</li>
 </ul>
-<h3 id="7-advanced-signal-processing-techniques"><strong>7. Advanced Signal Processing Techniques</strong></h3>
+<h3 id="7-advanced-signal-processing-techniques">7. Advanced Signal Processing Techniques</h3>
 <ul>
 <li><strong>Concepts:</strong> 64. Adaptive filtering 65. Least Mean Squares (LMS) algorithm 66. Recursive Least Squares (RLS) algorithm 67. Noise cancellation 68. Signal detection 88. Signal compression 89. Lossless compression 90. Lossy compression 91. Huffman coding 92. Entropy coding 93. Quantization noise 94. Sampling rate conversion 95. Interpolation 96. Decimation 97. Multirate signal processing 98. Polyphase filters 99. Filter banks 100. Subband coding 101. Oversampling 102. Undersampling 103. Compressed sensing 104. Sparse representation 118. Signal reconstruction 119. Signal prediction</li>
 </ul>
-<h3 id="8-machine-learning-and-neural-networks-in-signal-processing"><strong>8. Machine Learning and Neural Networks in Signal Processing</strong></h3>
+<h3 id="8-machine-learning-and-neural-networks-in-signal-processing">8. Machine Learning and Neural Networks in Signal Processing</h3>
 <ul>
-<li><strong>Concepts:</strong> 105. Machine Learning (ML) 106. Supervised learning 107. Unsupervised learning 108. Feature extraction 109. Pattern recognition 110. Classification 111. Regression 112. Neural Networks (NN) 113. Deep Learning (DL) 114. Convolutional Neural Networks (CNNs) 115. Recurrent Neural Networks (RNNs) 116. Autoencoders 117. Generative Adversarial Networks (GANs) 144. Cognitive signal processing 149. Big data analytics</li>
+<li><strong>Concepts:</strong> </li>
+<li>Machine Learning (ML) </li>
+<li>Supervised learning </li>
+<li>Unsupervised learning 108. Feature extraction 109. Pattern recognition 110. Classification 111. Regression 112. Neural Networks (NN) 113. Deep Learning (DL) 114. Convolutional Neural Networks (CNNs) 115. Recurrent Neural Networks (RNNs) 116. Autoencoders 117. Generative Adversarial Networks (GANs) 144. Cognitive signal processing 149. Big data analytics</li>
 </ul>
 <h3 id="9-applications-in-communications-and-multimedia"><strong>9. Applications in Communications and Multimedia</strong></h3>
 <ul>
@@ -2038,6 +2058,13 @@
 <p>This taxonomy should help organize the concepts and determine an effective teaching order, starting from foundational knowledge and building up to specialized topics.</p>
 <h2 id="new-csv-file">New CSV File</h2>
 <h2 id="prompt_1">Prompt</h2>
+<div class="admonition prompt">
+<p class="admonition-title">Prompt</p>
+<p>Perfect! Now for each category, use the number you
+returned in the list as a category ID. Please return
+a new CSV file with the category ID as a new column in the CSV file.</p>
+</div>
+<p>ChatGPT o1-preview Thought for 5 seconds</p>
 <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">  1</span>
 <span class="normal">  2</span>
 <span class="normal">  3</span>
@@ -2188,21 +2215,7 @@
 <span class="normal">148</span>
 <span class="normal">149</span>
 <span class="normal">150</span>
-<span class="normal">151</span>
-<span class="normal">152</span>
-<span class="normal">153</span>
-<span class="normal">154</span>
-<span class="normal">155</span>
-<span class="normal">156</span>
-<span class="normal">157</span>
-<span class="normal">158</span></pre></div></td><td class="code"><div><pre><span></span><code>Perfect! Now for each category, use the number you
-returned in the list as a category ID. Please return
-a new CSV file with the category ID as a new column in the CSV file.
-
-ChatGPT o1-preview Thought for 5 seconds
-
-```csv
-ID,Concept Name,Dependencies,Category ID
+<span class="normal">151</span></pre></div></td><td class="code"><div><pre><span></span><code>ID,Concept Name,Dependencies,Category ID
 1,Complex numbers,,1
 2,Euler&#39;s formula,1,1
 3,Phasors,1|2,1

@@ -517,8 +517,6 @@
         
       
         
-      
-        
           
         
       
@@ -580,27 +578,6 @@
   
   <span class="md-ellipsis">
     Course Description
-  </span>
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../05-vis-refinement/" class="md-nav__link">
-        
-  
-  <span class="md-ellipsis">
-    Vis Refinement
   </span>
   
 
@@ -684,18 +661,18 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#prompt" class="md-nav__link">
+  <a href="#sample-prompts" class="md-nav__link">
     <span class="md-ellipsis">
-      Prompt
+      Sample Prompts
     </span>
   </a>
   
 </li>
       
         <li class="md-nav__item">
-  <a href="#response" class="md-nav__link">
+  <a href="#chatgpt-o1-preview-response" class="md-nav__link">
     <span class="md-ellipsis">
-      Response
+      ChatGPT o1-preview Response
     </span>
   </a>
   
@@ -1612,18 +1589,18 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#prompt" class="md-nav__link">
+  <a href="#sample-prompts" class="md-nav__link">
     <span class="md-ellipsis">
-      Prompt
+      Sample Prompts
     </span>
   </a>
   
 </li>
       
         <li class="md-nav__item">
-  <a href="#response" class="md-nav__link">
+  <a href="#chatgpt-o1-preview-response" class="md-nav__link">
     <span class="md-ellipsis">
-      Response
+      ChatGPT o1-preview Response
     </span>
   </a>
   
@@ -1653,30 +1630,28 @@
 
 
 <h1 id="concept-dependencies">Concept Dependencies</h1>
-<h2 id="prompt">Prompt</h2>
-<div class="highlight"><pre><span></span><code>Our next step is to create a fully connected
+<h2 id="sample-prompts">Sample Prompts</h2>
+<div class="admonition prompt">
+<p class="admonition-title">Prompt</p>
+<p>Our next step is to create a fully connected
 dependency graph for learning these Concepts.
 In this step, for each Concept on this list, create a new
 list of other concepts on which it depends.  If a concept
 depends on a specific concept that is not listed,
 then we will need to add it as a new concept.
-This will help us determine the teaching order of the Concepts.
-
-Return the new list as a CSV file using the following format:
-
-The first column in the CSV file is a numeric concept ID
+This will help us determine the teaching order of the Concepts.</p>
+<p>Return the new list as a CSV file using the following format:</p>
+<p>The first column in the CSV file is a numeric concept ID
 you assigned in the list above.  The second column is
 the concept name.
 The third column is a pipe-delimited list of the Concept
-IDs that the concept depends upon.
-
-Check your results to make sure that all concepts
-are connected to at least one other concept.
-
-If a concept is a Foundational concept,
-there are no dependency concepts.
-</code></pre></div>
-<h2 id="response">Response</h2>
+IDs that the concept depends upon.</p>
+<p>Check your results to make sure that all concepts
+are connected to at least one other concept.</p>
+<p>If a concept is a Foundational concept,
+there are no dependency concepts.</p>
+</div>
+<h2 id="chatgpt-o1-preview-response">ChatGPT o1-preview Response</h2>
 <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">  1</span>
 <span class="normal">  2</span>
 <span class="normal">  3</span>
