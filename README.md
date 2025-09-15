@@ -1,5 +1,6 @@
 # Signal Processing with AI
 
+[![ArXiv](https://img.shields.io/badge/cs.MA-2402.14034-B31C1C?logo=arxiv&logoColor=B31C1C)](https://arxiv.org/abs/2509.08950)
 [![MkDocs](https://img.shields.io/badge/docs-mkdocs-blue)](https://dmccreary.github.io/signal-processing/)
 [![Material for MkDocs](https://img.shields.io/badge/material-mkdocs-teal)](https://squidfunk.github.io/mkdocs-material/)
 [![License: CC BY-NC 4.0](https://img.shields.io/badge/License-CC%20BY--NC%204.0-lightgrey.svg)](https://creativecommons.org/licenses/by-nc/4.0/)
