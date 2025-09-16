@@ -3,8 +3,8 @@
 [![ArXiv](https://img.shields.io/badge/cs.MA-2402.14034-B31C1C?logo=arxiv&logoColor=B31C1C)](https://arxiv.org/abs/2509.08950)
 [![MkDocs](https://img.shields.io/badge/docs-mkdocs-blue)](https://dmccreary.github.io/signal-processing/)
 [![Material for MkDocs](https://img.shields.io/badge/material-mkdocs-teal)](https://squidfunk.github.io/mkdocs-material/)
-[![License: CC BY-NC 4.0](https://img.shields.io/badge/License-CC%20BY--NC%204.0-lightgrey.svg)](https://creativecommons.org/licenses/by-nc/4.0/)
 [![GitHub Pages](https://img.shields.io/badge/Hosted%20on-GitHub%20Pages-brightgreen)](https://dmccreary.github.io/signal-processing/)
+[![License: CC BY-NC-SA 4.0](https://img.shields.io/badge/License-CC%20BY--NC--SA%204.0-lightgrey.svg)](https://creativecommons.org/licenses/by-nc-sa/4.0/)
 
 > An innovative educational resource demonstrating how AI can revolutionize signal processing education through interactive microsimulations and intelligent content generation.
 
@@ -139,9 +139,9 @@ We welcome contributions! Please see our [contribution guidelines](docs/how-we-b
 
 ## 📄 License
 
-This work is licensed under a [Creative Commons Attribution-NonCommercial 4.0 International License](https://creativecommons.org/licenses/by-nc/4.0/).
+This work is licensed under a [Creative Commons Attribution-NonCommercial-ShareAlike 4.0 International License](https://creativecommons.org/licenses/by-nc-sa/4.0/).
 
-[![CC BY-NC 4.0](https://licensebuttons.net/l/by-nc/4.0/88x31.png)](https://creativecommons.org/licenses/by-nc/4.0/)
+[![CC BY-NC-SA 4.0](https://licensebuttons.net/l/by-nc-sa/4.0/88x31.png)](https://creativecommons.org/licenses/by-nc-sa/4.0/)
 
 ## 🙏 Acknowledgments
 
