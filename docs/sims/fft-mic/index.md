@@ -20,11 +20,13 @@ social:
 
 ## Sample iframe
 
+You can add this MicroSim to your course website by adding the following HTML element:
+
 ```html
-<iframe src="https://dmccreary.github.io/microsims/sims/name/main.html" height="400"  scrolling="no"></iframe>
+<iframe src="https://dmccreary.github.io/microsims/sims/fft-mic/main.html" height="450px"  scrolling="no"></iframe>
 ```
 
-[P5JS Editor ](https://editor.p5js.org/dmccreary/sketches/ZYGLml9Fs)
+[Edit the Microphone Frequency Visualization Microphone in the P5.js Editor ](https://editor.p5js.org/dmccreary/sketches/ZYGLml9Fs)
 
 Here is a FFT Microphone Visualizer MicroSim that follows the standard responsive design template. Here are the key features:
 
