@@ -27,6 +27,7 @@ function setup(){
 }
 
 function draw(){
+  updateCanvasSize();
   // Draw area
   fill('aliceblue');
   stroke('silver');
@@ -46,10 +47,12 @@ function draw(){
   textAlign(CENTER, TOP);
   text("Tone Generator and Visualization with FFT", canvasWidth/2, margin/2);
 
-  let frequency = map(mouseX, 0, windowWidth, 20, 10000);
+  // this is not working.  The frequncy is 2x the mouseX
+  let frequency = map(mouseX, 0, canvasWidth, 20, 10000);
   frequency = constrain(frequency, 1, 10000);
   // set the oscillator to the frequency
-  osc.freq(frequency);
+  // I don't understand why we have to do this multiply
+  osc.freq(frequency * .6);
 
   // run the FFT on the sound
   let spectrum = fft.analyze();
@@ -58,9 +61,9 @@ function draw(){
   
   // draw rectangles corrisponding to 
   for (let i = 0; i< spectrum.length; i++){
-    let x = map(i, 0, spectrum.length/4, 0, width);
+    let x = map(i, 0, spectrum.length/4, 0, canvasWidth);
     let h = -drawHeight + map(spectrum[i], 0, 255, drawHeight, 0);
-    rect(x, drawHeight, width*4 / spectrum.length, h );
+    rect(x, drawHeight, canvasWidth*4 / spectrum.length, h );
   }
 
   stroke(255);
@@ -76,6 +79,7 @@ function startSound() {
   osc.amp(0.5, 0.2);
 }
 
+// turn the osc amp off onn release of the mouse
 function mouseReleased() {
   osc.amp(0, 0.2);
 }
@@ -86,7 +90,7 @@ function windowResized() {
   resizeCanvas(containerWidth, containerHeight);
   
   // Resize the slider to match the new canvasWidth
-  maxFreqSlider.size(containerWidth - 200);
+  // maxFreqSlider.size(containerWidth - 200);
   
   redraw();
 }
