@@ -29,6 +29,7 @@ export DYLD_FALLBACK_LIBRARY_PATH=/opt/homebrew/lib
 - **Generate chapter structure**: `python docs/chapters/gen-index-files.py` - Creates index.md files for all 20 chapters
 - **CSV to JSON conversion**: `python src/csv-to-json/csv-to-json.py` - Converts concept data formats
 - **Sort glossary**: `python src/glossary/sort-glossary.py` - Alphabetizes glossary entries
+- **Setup script**: `python setup.py` - Installs custom MkDocs plugins
 
 ### Image Optimization Scripts
 - **Complete optimization workflow**: `python src/resize-images/run_optimization.py` - Runs full image optimization process
@@ -57,6 +58,7 @@ export DYLD_FALLBACK_LIBRARY_PATH=/opt/homebrew/lib
 - **Material theme**: Uses Material for MkDocs with custom CSS/JS in `docs/css/extra.css` and `docs/js/extra.js`
 - **Image optimization**: Screenshots compressed via TinyPNG for web performance
 - **LaTeX support**: MathJax integration for mathematical equations
+- **Site generation**: `mkdocs-gen.sh` - Bootstrap script for initial MkDocs setup from template
 
 ### Data and Content Management
 - **Concept graphs**: JSON data structures for signal processing concept dependencies
