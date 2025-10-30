@@ -16,11 +16,15 @@
 
         #sidebar {
             width: auto; /* Automatically adjust width based on content in the table */
-            max-width: 150px; /* Set a maximum width to avoid excessive size */
+            max-width: 170px; /* Set a maximum width to avoid excessive size */
             padding: 5px; /* around the sidebar */
             margin-right: 10px; /* Space between sidebar and main content */
             box-sizing: border-box;
-            font-size: 10px;
+            font-size: 14px;
+        }
+
+        #sidebar table td:nth-child(2) {
+            min-width: 2em;
         }
 
         #main {
@@ -42,47 +46,55 @@
       <button id="toggle-button" onclick="toggleSidebar()">&#9776;</button>
 
       <div id="sidebar">
-          <h3>Legend Sidebar</h3>
+          <h3>Legend</h3>
           <table>
             <tr>
-                <td>Mathematical Foundations</td>
-                <td style="background-color: red; color: white;">Red</td>
+                <td>Math Foundations</td>
+                <td style="background-color: #ff6b6b;"></td>
             </tr>
             <tr>
-                <td>Signals and Systems</td>
-                <td style="background-color: orange; color: white;">Orange</td>
+                <td>Signal Fundamentals</td>
+                <td style="background-color: #4ecdc4;"></td>
             </tr>
             <tr>
-                <td>Transforms and Frequency Analysis</td>
-                <td style="background-color: yellow;">Yellow</td>
+                <td>Systems Theory</td>
+                <td style="background-color: #45b7d1;"></td>
             </tr>
             <tr>
-                <td>Filters and Filter Design</td>
-                <td style="background-color: lightgreen;">Lightgreen</td>
+                <td>Sampling & Quantization</td>
+                <td style="background-color: #96ceb4;"></td>
             </tr>
             <tr>
-                <td>Random Processes and Statistical Signal Processing</td>
-                <td style="background-color: lightblue;">Lightblue</td>
+                <td>Fourier Analysis</td>
+                <td style="background-color: #ffeaa7;"></td>
             </tr>
             <tr>
-                <td>Time-Frequency Analysis and Wavelets</td>
-                <td style="background-color: plum;">Plum</td>
+                <td>Other Transforms</td>
+                <td style="background-color: #dfe6e9;"></td>
             </tr>
             <tr>
-                <td>Advanced Signal Processing Techniques</td>
-                <td style="background-color: violet; color: white;">Violet</td>
+                <td> Filtering Fundamentals</td>
+                <td style="background-color: #a29bfe;"></td>
             </tr>
             <tr>
-                <td>Machine Learning and Neural Networks in Signal Processing</td>
-                <td style="background-color: silver;">Silver</td>
+                <td>Filter Design</td>
+                <td style="background-color: #fd79a8;"></td>
             </tr>
             <tr>
-                <td>Applications in Communications and Multimedia</td>
-                <td style="background-color: tan;">Tan</td>
+                <td>Advanced DSP</td>
+                <td style="background-color: #fdcb6e;"></td>
             </tr>
             <tr>
-                <td>Emerging and Specialized Topics</td>
-                <td style="background-color: mediumaquamarine;">Aquamarine</td>
+                <td>Applications</td>
+                <td style="background-color: #00b894;"></td>
+            </tr>
+            <tr>
+                <td>AI & Machine Learning</td>
+                <td style="background-color: #6c5ce7;"></td>
+            </tr>
+            <tr>
+                <td> Miscellaneous</td>
+                <td style="background-color: #b2bec3;"></td>
             </tr>
         </table>
       </div>
