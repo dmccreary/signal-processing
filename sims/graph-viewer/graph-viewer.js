@@ -5,20 +5,7 @@ function drawGraph() {
       .then(data => {
         // Extract nodes from the JSON data
         const nodes = new vis.DataSet(data.nodes);
-  
-        // Function to fix the x positions for foundation and goal groups after JSON load
-        nodes.forEach(function (node) {
-            if (node.group === "found") {
-                // placement can't be done in a group
-                node.x = -1400;
-                node.fixed = { x: true, y: false }; // Fix x, but let y be adjusted by physics
-                
-            } else if (node.group === "goal") {
-                node.x = 1400;
-                node.fixed = { x: true, y: false }; // Fix x, but let y be adjusted by physics
-            }
-          });
-  
+
         const edges = new vis.DataSet(data.edges);
   
         // Create a network
@@ -60,52 +47,79 @@ function drawGraph() {
           size: 20,
           color: 'black'
         },
-        borderWidth: 2,
+        borderWidth: .5,
         borderWidthSelected: 4
       },
       groups: {
-        "found": {
-           shape: "box", 
-           color:{background:'red'},
-           font: {color: "white"},
+        "MATH": {
+           color:{background:'#ff6b6b'}
         },
-        "signals": {
-           color:{background:'orange'},
+        "SIG": {
+           color:{background:'#4ecdc4'},
         },
-        "trans": {
-           color:{background:'yellow'},
+        "SYS": {
+           color:{background:'#45b7d1'},
         },
-        "filters": {
-           color:{background:'lightgreen'},
+        "SAMP": {
+           color:{background:'#96ceb4'},
         },
-        "random": {
-           color:{background:'lightblue'},
+        "FOUR": {
+           color:{background:'#ffeaa7'},
         },
-        "time": {
-           color:{background:'plum'},
+        "TRANS": {
+           color:{background:'#dfe6e9'},
         },
-        "adv": {
-           color:{background:'violet'},
+        "FILT": {
+           color:{background:'#a29bfe'},
         },
-        "ml": {
-           color:{background:'silver'},
+        "FDES": {
+           color:{background:'#fd79a8'},
         },
-        "apps": {
-           color:{background:'tan'},
+        "ADV": {
+           color:{background:'#fdcb6e'},
         },
-        "emerging": {
-           color:{background:'mediumaquamarine'},
+        "APP": {
+           color:{background:'#00b894'}
         },
-        goal: {
-           shape: "star", 
-           color:{background:'gold'}, 
-           font: { size: 16 }
+        "AI": {
+           color:{background:'#6c5ce7'}
+        },
+        "MISC": {
+           color:{background:'#b2bec3'},
         }
     }
   };
-  
+
     // Initialize the network
       const network = new vis.Network(container, graphData, options);
+
+      // Wait for the stabilization to finish
+      network.once('stabilizationIterationsDone', function () {
+        // Disable physics to prevent further movement
+        network.setOptions({ physics: { enabled: false } });
+
+        // Fix the x positions of the specified nodes
+        const updatedNodes = [];
+        nodes.forEach(function (node) {
+          if (node.group === "MATH") {
+              updatedNodes.push({
+                id: node.id,
+                x: -1200,
+                group: node.group,
+                fixed: { x: true, y: false }
+              });
+          } else if (node.group === "APP" || node.group === "AI") {
+              updatedNodes.push({
+                  id: node.id,
+                  group: node.group,
+                  x: 1200,
+                  fixed: { x: true, y: false }
+              });
+          }
+        });
+        nodes.update(updatedNodes);
+      });
+
     })
     .catch(error => {
             console.error("Error loading or parsing graph-data.json:", error);
