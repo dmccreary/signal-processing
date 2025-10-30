@@ -1,151 +1,201 @@
-ID,Concept Name,Dependencies,Category ID
-1,Complex numbers,,1
-2,Euler's formula,1,1
-3,Phasors,1|2,1
-4,Vectors,,1
-5,Matrices,4,1
-6,Linear algebra,4|5,1
-7,Calculus,,1
-8,Differential equations,7,1
-9,Integration,7,1
-10,Differentiation,7,1
-11,Probability,,1
-12,Random variables,11,1
-13,Statistics,11|12,1
-14,Mean,13,1
-15,Variance,13,1
-16,Standard deviation,13,1
-17,Signals,1|4|7,2
-18,Systems,17,2
-19,Continuous-time signals,17,2
-20,Discrete-time signals,17,2
-21,Analog signals,19,2
-22,Digital signals,20,2
-23,Sampling,19|20,2
-24,Quantization,22|23,2
-25,Aliasing,23|24,2
-26,Nyquist theorem,23|25,2
-27,Convolution,9|10,2
-28,Impulse response,18|27,2
-29,LTI systems,18|28,2
-30,Causality,29,2
-31,Stability,29,2
-32,Frequency response,29|34,2
-33,Fourier series,7|17,3
-34,Fourier Transform (FT),33,3
-35,Inverse Fourier Transform (IFT),34,3
-36,Laplace Transform,8,3
-37,Z-Transform,20|34,3
-38,Discrete Fourier Transform (DFT),20|34,3
-39,Fast Fourier Transform (FFT),38,3
-40,Window functions,38|39,3
-41,Spectral analysis,34|38,3
-42,Time domain,17,2
-43,Frequency domain,34|38,2
-44,Signal decomposition,33|34,2
-45,Filtering,27|29,4
-46,Low-pass filter (LPF),45,4
-47,High-pass filter (HPF),45,4
-48,Band-pass filter (BPF),45,4
-49,Band-stop filter (BSF),45,4
-50,FIR filters,20|45,4
-51,IIR filters,20|45,4
-52,Filter design,50|51,4
-53,Bilinear transform,36|37,3
-54,Butterworth filter,52,4
-55,Chebyshev filter,52,4
-56,Elliptic filter,52,4
-57,Bessel filter,52,4
-58,Digital Signal Processing (DSP),22|38|45,9
-59,Modulation,17|58,9
-60,Amplitude Modulation (AM),59,9
-61,Frequency Modulation (FM),59,9
-62,Phase Modulation (PM),59,9
-63,Pulse-Code Modulation (PCM),22|59,9
-64,Adaptive filtering,52|58,7
-65,Least Mean Squares (LMS) algorithm,64,7
-66,Recursive Least Squares (RLS) algorithm,64,7
-67,Noise cancellation,64|65,7
-68,Signal detection,41|58,7
-69,Autocorrelation,13|17,5
-70,Cross-correlation,13|17,5
-71,Power Spectral Density (PSD),41|69,5
-72,Energy Spectral Density (ESD),41|69,5
-73,Random processes,12|17,5
-74,Stationarity,73,5
-75,Ergodicity,73,5
-76,White noise,73,5
-77,Colored noise,73,5
-78,Signal estimation,68|73,5
-79,Kalman filter,78,5
-80,Wiener filter,78,5
-81,Time-frequency analysis,41|42|43,6
-82,Short-Time Fourier Transform (STFT),81,6
-83,Spectrogram,82,6
-84,Wavelet Transform (WT),81,6
-85,Continuous Wavelet Transform (CWT),84,6
-86,Discrete Wavelet Transform (DWT),84,6
-87,Multiresolution analysis,86,6
-88,Signal compression,58|86,7
-89,Lossless compression,88,7
-90,Lossy compression,88,7
-91,Huffman coding,89,7
-92,Entropy coding,89,7
-93,Quantization noise,24|90,7
-94,Sampling rate conversion,23|97,7
-95,Interpolation,94,7
-96,Decimation,94,7
-97,Multirate signal processing,94|95|96,7
-98,Polyphase filters,97,7
-99,Filter banks,97|98,7
-100,Subband coding,99,7
-101,Oversampling,23|97,7
-102,Undersampling,23|97,7
-103,Compressed sensing,23|104,7
-104,Sparse representation,88|103,7
-105,Machine Learning (ML),13|58,8
-106,Supervised learning,105,8
-107,Unsupervised learning,105,8
-108,Feature extraction,58|105,8
-109,Pattern recognition,108|106,8
-110,Classification,106|109,8
-111,Regression,106|109,8
-112,Neural Networks (NN),105,8
-113,Deep Learning (DL),112,8
-114,Convolutional Neural Networks (CNNs),113,8
-115,Recurrent Neural Networks (RNNs),113,8
-116,Autoencoders,113,8
-117,Generative Adversarial Networks (GANs),113,8
-118,Signal reconstruction,88|104,7
-119,Signal prediction,73|105,8
-120,Digital communications,58|59,9
-121,Modulation schemes,59|120,9
-122,Digital modulation,22|121,9
-123,Quadrature Amplitude Modulation (QAM),122,9
-124,Phase Shift Keying (PSK),122,9
-125,Frequency Shift Keying (FSK),122,9
-126,Orthogonal Frequency Division Multiplexing (OFDM),122|38,9
-127,Channel coding,120,9
-128,Error detection,127,9
-129,Error correction,127,9
-130,Communications signal processing,58|120,9
-131,Radar signal processing,58|130,9
-132,Sonar signal processing,58|130,9
-133,Image processing,58|105,9
-134,Edge detection,133,9
-135,Image filtering,133|45,9
-136,Image segmentation,133|108,9
-137,Audio signal processing,58|17,9
-138,Speech recognition,137|105,9
-139,Speech synthesis,137,9
-140,Voice over IP (VoIP),137|120,9
-141,Multimedia signal processing,58|133|137,9
-142,Virtual Reality (VR),141,9
-143,Augmented Reality (AR),141,9
-144,Cognitive signal processing,105|130,8
-145,Quantum signal processing,58|146,10
-146,Biosignal processing,58|73,10
-147,Brain-Computer Interfaces (BCI),146|105,10
-148,Internet of Things (IoT),58|120|149,9
-149,Big data analytics,105|58,8
-150,Ethical considerations in AI,105|149,10
+ConceptID,ConceptLabel,Dependencies,TaxonomyID
+1,Real Numbers,,MATH
+2,Complex Numbers,1,MATH
+3,Imaginary Unit,1|2,MATH
+4,Euler's Formula,2|19|20,MATH
+5,Phasors,2|4,MATH
+6,Vectors,,MATH
+7,Matrices,6,MATH
+8,Linear Algebra,6|7,MATH
+9,Differential Calculus,,MATH
+10,Integral Calculus,,MATH
+11,Differential Equations,9,MATH
+12,Partial Derivatives,9,MATH
+13,Probability Theory,,MATH
+14,Random Variables,13,MATH
+15,Statistical Distributions,13|14,MATH
+16,Mean and Expected Value,13|14,MATH
+17,Variance,13|14|16,MATH
+18,Standard Deviation,13|14|17,MATH
+19,Trigonometry,,MATH
+20,Exponential Functions,1,MATH
+21,Signals,1,SIG
+22,Systems,21,SYS
+23,Continuous-Time Signals,21,SIG
+24,Discrete-Time Signals,21,SIG
+25,Analog Signals,23,SIG
+26,Digital Signals,24,SIG
+27,Periodic Signals,21,SIG
+28,Aperiodic Signals,21,SIG
+29,Even Signals,21,SIG
+30,Odd Signals,21,SIG
+31,Energy Signals,21|10,SIG
+32,Power Signals,21|10,SIG
+33,Unit Step Function,21,MATH
+34,Unit Impulse Function,21,MATH
+35,Sinusoidal Signals,21|19,SIG
+36,Exponential Signals,21|20,MATH
+37,Signal Operations,21,SIG
+38,Time Shifting,21|37,SIG
+39,Time Scaling,21|37,SIG
+40,Signal Amplitude,21,SIG
+41,Signal Phase,21|19,SIG
+42,Signal Frequency,21|27,SIG
+43,Time Domain,21,SIG
+44,Frequency Domain,21|42,SIG
+45,Signal Representation,21|43|44,SIG
+46,Linear Systems,22,SYS
+47,Time-Invariant Systems,22,SYS
+48,LTI Systems,22|46|47,SYS
+49,Causality,22,SYS
+50,Stability,22,SYS
+51,BIBO Stability,22|50,SYS
+52,Impulse Response,22|34|48,SYS
+53,Step Response,22|33|48,SYS
+54,Frequency Response,22|44|48,SYS
+55,System Characterization,22|48,SYS
+56,Convolution,22|48,SYS
+57,Convolution Sum,24|56,SYS
+58,Convolution Integral,23|56|10,MATH
+59,Superposition Principle,46,SYS
+60,System Transfer Function,22|48|54,MATH
+61,Poles and Zeros,2|60,SYS
+62,System Memory,22,SYS
+63,Invertibility,22,SYS
+64,Feedback Systems,22,SYS
+65,Feedforward Systems,22,SYS
+66,Sampling,23|24,SAMP
+67,Sampling Rate,66,SAMP
+68,Sampling Frequency,66|42,SAMP
+69,Sampling Theorem,66|44,SAMP
+70,Nyquist Rate,69,SAMP
+71,Nyquist Frequency,69|70,SAMP
+72,Aliasing,66|44|71,SAMP
+73,Anti-Aliasing Filters,72|121,SAMP
+74,Oversampling,66|67,SAMP
+75,Undersampling,66|67,SAMP
+76,Quantization,26|66,SAMP
+77,Quantization Error,76,SAMP
+78,Quantization Noise,76|77,SAMP
+79,Sample-and-Hold,66,SAMP
+80,Analog-to-Digital Conversion,25|26|66|76,SIG
+81,Fourier Series,27|19|10,FOUR
+82,Fourier Coefficients,81,FOUR
+83,Fundamental Frequency,27|42,FOUR
+84,Harmonics,27|83,FOUR
+85,Fourier Transform,81|10|23,FOUR
+86,Inverse Fourier Transform,85,FOUR
+87,Fourier Transform Properties,85,FOUR
+88,Linearity Property,85|87,SYS
+89,Time Shifting Property,85|87|38,SIG
+90,Frequency Shifting Property,85|87|44,SIG
+91,Convolution Property,85|87|56,SYS
+92,Duality Property,85|87,FOUR
+93,Parseval's Theorem,85|31|32,FOUR
+94,Discrete Fourier Transform,85|24,FOUR
+95,DFT Properties,94,FOUR
+96,Fast Fourier Transform,94,FOUR
+97,FFT Algorithm,96,FOUR
+98,FFT Complexity,96|97,MATH
+99,Inverse FFT,96,FOUR
+100,Window Functions,94,MATH
+101,Rectangular Window,100,FOUR
+102,Hamming Window,100,FOUR
+103,Hanning Window,100,FOUR
+104,Spectral Leakage,94|100,FOUR
+105,Zero Padding,94,SYS
+106,Laplace Transform,85|2|10,TRANS
+107,Region of Convergence,106,TRANS
+108,Laplace Transform Properties,106,TRANS
+109,Inverse Laplace Transform,106,TRANS
+110,Z-Transform,94|106,TRANS
+111,Z-Transform Properties,110,TRANS
+112,Inverse Z-Transform,110,TRANS
+113,Z-Plane,110|2,TRANS
+114,Unit Circle,113,TRANS
+115,Bilinear Transform,106|110,SYS
+116,Short-Time Fourier Transform,85|100,FOUR
+117,STFT Limitations,116,TRANS
+118,Wavelet Transform,85,TRANS
+119,Continuous Wavelet Transform,118|23,TRANS
+120,Discrete Wavelet Transform,118|24,TRANS
+121,Filtering,22|54,FILT
+122,Filter Types,121,FILT
+123,Low-Pass Filter,121|122|44,FILT
+124,High-Pass Filter,121|122|44,FILT
+125,Band-Pass Filter,121|122|44,FILT
+126,Band-Stop Filter,121|122|44,FILT
+127,All-Pass Filter,121|122,FILT
+128,Ideal Filters,121|122,FILT
+129,Practical Filters,121|128,FILT
+130,Filter Order,121,FILT
+131,Filter Cutoff Frequency,121|42,FILT
+132,Filter Bandwidth,121|131,FILT
+133,Filter Rolloff,121|130,FILT
+134,Passband,121,FILT
+135,Stopband,121,FILT
+136,Transition Band,121|134|135,FILT
+137,Passband Ripple,121|134,FILT
+138,Stopband Attenuation,121|135,FILT
+139,FIR Filters,121|52|24,FILT
+140,IIR Filters,121|52|24,FILT
+141,Filter Impulse Response,121|52,SYS
+142,Filter Stability,121|50|140,SYS
+143,Linear Phase Response,54|139,SIG
+144,Phase Distortion,54|41,SIG
+145,Group Delay,54|143,FILT
+146,Filter Design Methods,121,FDES
+147,Filter Specifications,121|130|131|132,FDES
+148,Butterworth Filter,129|140|147,FDES
+149,Chebyshev Type I Filter,129|140|147,FDES
+150,Chebyshev Type II Filter,129|140|147,FDES
+151,Elliptic Filter,129|140|147,FDES
+152,Bessel Filter,129|140|147,FDES
+153,Window Method Design,139|100|146,FOUR
+154,Frequency Sampling Method,139|94|146,SAMP
+155,Parks-McClellan Algorithm,139|146|156,FDES
+156,Optimal Filter Design,146|147,FDES
+157,Pole-Zero Placement,61|146,SYS
+158,Digital Filter Design,121|146|26,FDES
+159,Analog Filter Design,121|146|25,FDES
+160,Filter Implementation,121|146,FILT
+161,Direct Form Implementation,160|140,FDES
+162,Cascade Form Implementation,160|61,FDES
+163,Parallel Form Implementation,160|61,FDES
+164,Lattice Structure,160|139,FDES
+165,Polyphase Filters,160|180,FILT
+166,Adaptive Filtering,121|169,FILT
+167,LMS Algorithm,166|8,ADV
+168,RLS Algorithm,166|8,ADV
+169,Wiener Filter,121|171|13,FILT
+170,Kalman Filter,169|11|14,FILT
+171,Correlation,21|10,ADV
+172,Autocorrelation,171,ADV
+173,Cross-Correlation,171,ADV
+174,Power Spectral Density,32|85|171,FOUR
+175,Energy Spectral Density,31|85|171,FOUR
+176,Spectrogram,116|174,ADV
+177,Signal Compression,21,SIG
+178,Lossless Compression,177,ADV
+179,Lossy Compression,177,ADV
+180,Multirate Signal Processing,66|121,SIG
+181,Audio Signal Processing,85|121,SIG
+182,Speech Processing,181|116,APP
+183,Music Signal Processing,181|84,SIG
+184,Image Processing,21|85|121,APP
+185,Video Processing,184,APP
+186,Communication Systems,21|187,SYS
+187,Modulation Techniques,5|85,MISC
+188,Biomedical Signal Processing,21|85|121,SIG
+189,Radar Signal Processing,173|85|121,SIG
+190,Sonar Signal Processing,173|85|121,SIG
+191,Machine Learning Basics,8|13,AI
+192,Neural Networks,191|7|8,AI
+193,Deep Learning,192,AI
+194,Convolutional Neural Networks,193|56,SYS
+195,Feature Extraction,85|94|171,AI
+196,Pattern Recognition,191|195,AI
+197,Generative AI,193,AI
+198,AI-Powered Simulations,191|21,AI
+199,Interactive Learning Systems,191,SYS
+200,Adaptive Educational Content,191|199,ADV

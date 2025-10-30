@@ -13,21 +13,21 @@ def csv_to_visjs_json(csv_filename, json_filename):
         for row in reader:
             # Extract node information
             try:
-                concept_id = int(row['ID'])
+                concept_id = int(row['ConceptID'])
             except ValueError:
-                print(f"Invalid ID '{row['ID']}' skipped.")
+                print(f"Invalid ID '{row['ConceptID']}' skipped.")
                 continue  # Skip rows with invalid ID
 
-            concept_name = row['Concept Name'].strip()
+            concept_name = row['ConceptLabel'].strip()
             if not concept_name:
                 print(f"Empty Concept Name for ID {concept_id} skipped.")
                 continue  # Skip nodes without a name
 
-            try:
-                category_id = int(row['Category ID'])
-            except ValueError:
-                print(f"Invalid Category ID '{row['Category ID']}' for ID {concept_id} skipped.")
-                continue  # Skip rows with invalid Category ID
+            # Get TaxonomyID as string (e.g., 'MATH', 'SIG', etc.)
+            category_id = row['TaxonomyID'].strip()
+            if not category_id:
+                print(f"Empty TaxonomyID for ID {concept_id} skipped.")
+                continue  # Skip rows without a taxonomy
 
             # Create node object
             node = {
@@ -69,8 +69,8 @@ def csv_to_visjs_json(csv_filename, json_filename):
 
 if __name__ == "__main__":
     # Define input and output file names
-    input_csv = 'graph-data.csv'
-    output_json = 'graph-data.json'
+    input_csv = 'signal-processing-concepts.csv'
+    output_json = 'signal-processing-concepts.json'
     
     # Convert CSV to JSON
     csv_to_visjs_json(input_csv, output_json)
