@@ -1,6 +1,6 @@
 ---
 title: Signal Processing with AI
-description: A college level signal processing course with extensive interactive MicroSims
+description: A college-level signal processing course with extensive interactive MicroSims
 hide:
     toc
 ---
