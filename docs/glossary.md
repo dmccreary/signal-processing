@@ -570,6 +570,17 @@ Signal prediction estimates future values of a signal based on past and present 
 
 **Example:** In assignments, students develop predictive models using autoregressive techniques to forecast stock market trends based on historical price data.
 
+#### Signal Processing
+
+The analysis, manipulation, and interpretation of signals to extract meaningful information, enhance signal quality, or transform signals into more useful forms.
+
+
+According to [Arxiv Taxonomy](https://arxiv.org/category_taxonomy), the field of Signal Processing is a discipline within the Electrical Engineering and Systems Science discipline.  It includes the following research topics.
+
+Theory, algorithms, performance analysis and applications of signal and data analysis, including physical modeling, processing, detection and parameter estimation, learning, mining, retrieval, and information extraction. The term "signal" includes speech, audio, sonar, radar, geophysical, physiological, (bio-) medical, image, video, and multimodal natural and man-made signals, including communication signals and data. Topics of interest include: statistical signal processing, spectral estimation and system identification; filter design, adaptive filtering / stochastic learning; (compressive) sampling, sensing, and transform-domain methods including fast algorithms; signal processing for machine learning and machine learning for signal processing applications; in-network and graph signal processing; convex and nonconvex optimization methods for signal processing applications; radar, sonar, and sensor array beamforming and direction finding; communications signal processing; low power, multi-core and system-on-chip signal processing; sensing, communication, analysis and optimization for cyber-physical systems such as power grids and the Internet of Things.
+
+
+
 #### Signal reconstruction
 
 Signal reconstruction is the process of rebuilding a continuous-time signal from its discrete samples, typically using interpolation methods. It ensures that the original signal can be accurately recovered from its sampled version.

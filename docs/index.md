@@ -1,12 +1,3 @@
----
-title: Signal Processing with AI
-description: A template for a college level course on signal processing with AI
-image: img/cover-banner.png
-og:image: img/cover-banner.png
----
-<style>
-.md-content__inner h1 {display: none !important;}
-</style>
 # Signal Processing with AI
 
 ![](./img/cover-banner.png)
