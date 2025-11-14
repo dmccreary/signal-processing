@@ -35,6 +35,7 @@ function setup() {
 
 
 function draw() {
+  updateCanvasSize()
   background('aliceblue');
 
   // isolates values along the frequency (pitch) spectrum (red)
@@ -70,4 +71,18 @@ function togglePlay() {
     playButton.html('Pause');
     isPlaying = true;
   }
+}
+
+function windowResized() {
+  // Update canvas size when the container resizes
+  updateCanvasSize();
+  resizeCanvas(containerWidth, containerHeight);
+  redraw();
+}
+
+function updateCanvasSize() {
+  // Get the exact dimensions of the container
+  const container = document.querySelector('main').getBoundingClientRect();
+  containerWidth = Math.floor(container.width);  // Avoid fractional pixels
+  canvasWidth = containerWidth;
 }
