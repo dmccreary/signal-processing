@@ -1,0 +1,1470 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+        <meta name="description" content="College Level Textbook on Signal Processing - License is Commons ShareAlike Attribution Noncommercial">
+      
+      
+        <meta name="author" content="Dan McCreary">
+      
+      
+        <link rel="canonical" href="https://dmccreary.github.io/signal-processing/chapters/11-adaptive-signal-processing/quiz/">
+      
+      
+      
+      
+      <link rel="icon" href="../../../img/favicon.ico">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.5.43">
+    
+    
+      
+        <title>Quiz: Adaptive Signal Processing - Signal Processing with AI</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../../assets/stylesheets/main.0253249f.min.css">
+      
+        
+        <link rel="stylesheet" href="../../../assets/stylesheets/palette.06af60db.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+      <link rel="stylesheet" href="../../../css/extra.css">
+    
+    <script>__md_scope=new URL("../../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+  
+
+
+  
+  
+
+<script id="__analytics">function __md_analytics(){function e(){dataLayer.push(arguments)}window.dataLayer=window.dataLayer||[],e("js",new Date),e("config","G-SY3G2ND80K"),document.addEventListener("DOMContentLoaded",(function(){document.forms.search&&document.forms.search.query.addEventListener("blur",(function(){this.value&&e("event","search",{search_term:this.value})}));document$.subscribe((function(){var t=document.forms.feedback;if(void 0!==t)for(var a of t.querySelectorAll("[type=submit]"))a.addEventListener("click",(function(a){a.preventDefault();var n=document.location.pathname,d=this.getAttribute("data-md-value");e("event","feedback",{page:n,data:d}),t.firstElementChild.disabled=!0;var r=t.querySelector(".md-feedback__note [data-md-value='"+d+"']");r&&(r.hidden=!1)})),t.hidden=!1})),location$.subscribe((function(t){e("config","G-SY3G2ND80K",{page_path:t.pathname})}))}));var t=document.createElement("script");t.async=!0,t.src="https://www.googletagmanager.com/gtag/js?id=G-SY3G2ND80K",document.getElementById("__analytics").insertAdjacentElement("afterEnd",t)}</script>
+  
+    <script>"undefined"!=typeof __md_analytics&&__md_analytics()</script>
+  
+
+    
+    
+      
+        <meta  property="og:type"  content="website" >
+      
+        <meta  property="og:title"  content="Quiz: Adaptive Signal Processing - Signal Processing with AI" >
+      
+        <meta  property="og:description"  content="College Level Textbook on Signal Processing - License is Commons ShareAlike Attribution Noncommercial" >
+      
+        <meta  property="og:image"  content="https://dmccreary.github.io/signal-processing/assets/images/social/chapters/11-adaptive-signal-processing/quiz.png" >
+      
+        <meta  property="og:image:type"  content="image/png" >
+      
+        <meta  property="og:image:width"  content="1200" >
+      
+        <meta  property="og:image:height"  content="630" >
+      
+        <meta  property="og:url"  content="https://dmccreary.github.io/signal-processing/chapters/11-adaptive-signal-processing/quiz/" >
+      
+        <meta  name="twitter:card"  content="summary_large_image" >
+      
+        <meta  name="twitter:title"  content="Quiz: Adaptive Signal Processing - Signal Processing with AI" >
+      
+        <meta  name="twitter:description"  content="College Level Textbook on Signal Processing - License is Commons ShareAlike Attribution Noncommercial" >
+      
+        <meta  name="twitter:image"  content="https://dmccreary.github.io/signal-processing/assets/images/social/chapters/11-adaptive-signal-processing/quiz.png" >
+      
+    
+    
+  </head>
+  
+  
+    
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="maroon" data-md-color-accent="gold">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#quiz-adaptive-signal-processing" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+  
+
+<header class="md-header md-header--shadow" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href="../../.." title="Signal Processing with AI" class="md-header__button md-logo" aria-label="Signal Processing with AI" data-md-component="logo">
+      
+  <img src="../../../img/logo-192.png" alt="logo">
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            Signal Processing with AI
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              Quiz: Adaptive Signal Processing
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+    
+    
+    
+    
+      <label class="md-header__button md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+      </label>
+      <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Search">
+        
+        <button type="reset" class="md-search__icon md-icon" title="Clear" aria-label="Clear" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+        </button>
+      </nav>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+    
+      <div class="md-header__source">
+        <a href="https://github.com/dmccreary/signal-processing" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 6.6.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2024 Fonticons, Inc.--><path d="M439.55 236.05 244 40.45a28.87 28.87 0 0 0-40.81 0l-40.66 40.63 51.52 51.52c27.06-9.14 52.68 16.77 43.39 43.68l49.66 49.66c34.23-11.8 61.18 31 35.47 56.69-26.49 26.49-70.21-2.87-56-37.34L240.22 199v121.85c25.3 12.54 22.26 41.85 9.08 55a34.34 34.34 0 0 1-48.55 0c-17.57-17.6-11.07-46.91 11.25-56v-123c-20.8-8.51-24.6-30.74-18.64-45L142.57 101 8.45 235.14a28.86 28.86 0 0 0 0 40.81l195.61 195.6a28.86 28.86 0 0 0 40.8 0l194.69-194.69a28.86 28.86 0 0 0 0-40.81"/></svg>
+  </div>
+  <div class="md-source__repository">
+    GitHub Repo
+  </div>
+</a>
+      </div>
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+
+<nav class="md-nav md-nav--primary" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../../.." title="Signal Processing with AI" class="md-nav__button md-logo" aria-label="Signal Processing with AI" data-md-component="logo">
+      
+  <img src="../../../img/logo-192.png" alt="logo">
+
+    </a>
+    Signal Processing with AI
+  </label>
+  
+    <div class="md-nav__source">
+      <a href="https://github.com/dmccreary/signal-processing" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 6.6.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2024 Fonticons, Inc.--><path d="M439.55 236.05 244 40.45a28.87 28.87 0 0 0-40.81 0l-40.66 40.63 51.52 51.52c27.06-9.14 52.68 16.77 43.39 43.68l49.66 49.66c34.23-11.8 61.18 31 35.47 56.69-26.49 26.49-70.21-2.87-56-37.34L240.22 199v121.85c25.3 12.54 22.26 41.85 9.08 55a34.34 34.34 0 0 1-48.55 0c-17.57-17.6-11.07-46.91 11.25-56v-123c-20.8-8.51-24.6-30.74-18.64-45L142.57 101 8.45 235.14a28.86 28.86 0 0 0 0 40.81l195.61 195.6a28.86 28.86 0 0 0 40.8 0l194.69-194.69a28.86 28.86 0 0 0 0-40.81"/></svg>
+  </div>
+  <div class="md-source__repository">
+    GitHub Repo
+  </div>
+</a>
+    </div>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../.." class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Home
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Table of Contents
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../about/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    About This Website
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../course-description/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Course Description
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+        
+        
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+    <a href="../../../learning-graph/" class="md-nav__link">
+      
+  
+  <span class="md-ellipsis">
+    Learning Graph
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+    
+    
+    
+      
+        
+        
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+    <a href="../../" class="md-nav__link">
+      
+  
+  <span class="md-ellipsis">
+    Chapters
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+    
+    
+    
+      
+        
+        
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+    <a href="../../../sims/" class="md-nav__link">
+      
+  
+  <span class="md-ellipsis">
+    MicroSims
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+    
+    
+    
+      
+        
+        
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+    <a href="../../../stories/" class="md-nav__link">
+      
+  
+  <span class="md-ellipsis">
+    Stories
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+    
+    
+    
+      
+        
+        
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+    <a href="../../../circuits/" class="md-nav__link">
+      
+  
+  <span class="md-ellipsis">
+    Circuits
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+    
+    
+    
+      
+        
+        
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+    <a href="../../../research/" class="md-nav__link">
+      
+  
+  <span class="md-ellipsis">
+    Research
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../report-card/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Report Card
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../checklist/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Checklist
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../glossary/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Glossary
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../how-we-built-this-site/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    How We Built This Site
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../license/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    License
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../references/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    References
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../contact/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Contact
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../ieee-paper-changes/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Paper Changes
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+        
+        
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+    <a href="../../../prompts/" class="md-nav__link">
+      
+  
+  <span class="md-ellipsis">
+    Prompts
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#1-what-distinguishes-adaptive-filters-from-fixed-filters" class="md-nav__link">
+    <span class="md-ellipsis">
+      1. What distinguishes adaptive filters from fixed filters?
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#2-what-performance-criterion-do-most-adaptive-algorithms-seek-to-minimize" class="md-nav__link">
+    <span class="md-ellipsis">
+      2. What performance criterion do most adaptive algorithms seek to minimize?
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#3-what-is-the-lms-least-mean-squares-algorithms-update-equation" class="md-nav__link">
+    <span class="md-ellipsis">
+      3. What is the LMS (Least Mean Squares) algorithm's update equation?
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#4-what-condition-must-the-lms-step-size-parameter-mu-satisfy-for-stability" class="md-nav__link">
+    <span class="md-ellipsis">
+      4. What condition must the LMS step-size parameter \(\mu\) satisfy for stability?
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#5-what-key-advantage-does-normalized-lms-nlms-provide-over-standard-lms" class="md-nav__link">
+    <span class="md-ellipsis">
+      5. What key advantage does Normalized LMS (NLMS) provide over standard LMS?
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#6-what-is-the-main-advantage-of-the-rls-recursive-least-squares-algorithm-over-lms" class="md-nav__link">
+    <span class="md-ellipsis">
+      6. What is the main advantage of the RLS (Recursive Least Squares) algorithm over LMS?
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#7-what-role-does-the-forgetting-factor-lambda-play-in-the-rls-algorithm" class="md-nav__link">
+    <span class="md-ellipsis">
+      7. What role does the forgetting factor \(\lambda\) play in the RLS algorithm?
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#8-what-is-the-primary-application-of-adaptive-noise-cancellation" class="md-nav__link">
+    <span class="md-ellipsis">
+      8. What is the primary application of adaptive noise cancellation?
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#9-what-challenge-does-double-talk-present-in-acoustic-echo-cancellation-systems" class="md-nav__link">
+    <span class="md-ellipsis">
+      9. What challenge does "double-talk" present in acoustic echo cancellation systems?
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#10-how-do-adaptive-equalizers-operate-in-decision-directed-mode" class="md-nav__link">
+    <span class="md-ellipsis">
+      10. How do adaptive equalizers operate in decision-directed mode?
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+  
+    <a href="https://github.com/dmccreary/signal-processing/blob/master/docs/chapters/11-adaptive-signal-processing/quiz.md" title="Edit this page" class="md-content__button md-icon">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M10 20H6V4h7v5h5v3.1l2-2V8l-6-6H6c-1.1 0-2 .9-2 2v16c0 1.1.9 2 2 2h4zm10.2-7c.1 0 .3.1.4.2l1.3 1.3c.2.2.2.6 0 .8l-1 1-2.1-2.1 1-1c.1-.1.2-.2.4-.2m0 3.9L14.1 23H12v-2.1l6.1-6.1z"/></svg>
+    </a>
+  
+  
+
+
+<h1 id="quiz-adaptive-signal-processing">Quiz: Adaptive Signal Processing</h1>
+<p>Test your understanding of adaptive filtering algorithms, LMS, RLS, Kalman filtering, and applications.</p>
+<hr />
+<h4 id="1-what-distinguishes-adaptive-filters-from-fixed-filters">1. What distinguishes adaptive filters from fixed filters?</h4>
+<div class="upper-alpha">
+<ol>
+<li>Adaptive filters use only FIR structures while fixed filters use IIR</li>
+<li>Adaptive filters automatically adjust their coefficients in response to changing signal characteristics</li>
+<li>Adaptive filters require less computational power</li>
+<li>Adaptive filters can only process audio signals</li>
+</ol>
+</div>
+<details class="question">
+<summary>Show Answer</summary>
+<p>The correct answer is <strong>B</strong>. Unlike fixed filters with predetermined coefficients, adaptive filters possess the ability to automatically adjust their coefficients in response to changing signal characteristics and environment conditions. This self-tuning capability makes them indispensable for applications where signal properties are unknown, time-varying, or unpredictable, such as echo cancellation, adaptive equalization, and noise cancellation in dynamic environments.</p>
+<p><strong>Concept Tested:</strong> Adaptive Filters</p>
+<p><strong>See:</strong> <a href="../#adaptive-filter-fundamentals">Adaptive Filter Fundamentals</a></p>
+</details>
+<hr />
+<h4 id="2-what-performance-criterion-do-most-adaptive-algorithms-seek-to-minimize">2. What performance criterion do most adaptive algorithms seek to minimize?</h4>
+<div class="upper-alpha">
+<ol>
+<li>Filter order</li>
+<li>Mean-squared error (MSE) between desired and actual outputs</li>
+<li>Sampling rate</li>
+<li>Computational complexity</li>
+</ol>
+</div>
+<details class="question">
+<summary>Show Answer</summary>
+<p>The correct answer is <strong>B</strong>. Most adaptive algorithms seek to minimize the mean-squared error (MSE): <span class="arithmatex">\(J = E[e^2[n]] = E[(d[n] - w^Tx[n])^2]\)</span> where <span class="arithmatex">\(d[n]\)</span> is the desired response, <span class="arithmatex">\(w\)</span> is the coefficient vector, and <span class="arithmatex">\(x[n]\)</span> is the input vector. This optimization framework connects adaptive filtering to fundamental concepts in estimation theory and stochastic optimization, creating a performance surface that algorithms navigate through iterative updates.</p>
+<p><strong>Concept Tested:</strong> Adaptive Filters, Adaptive Algorithms</p>
+<p><strong>See:</strong> <a href="../#basic-adaptive-filter-architecture">Basic Adaptive Filter Architecture</a></p>
+</details>
+<hr />
+<h4 id="3-what-is-the-lms-least-mean-squares-algorithms-update-equation">3. What is the LMS (Least Mean Squares) algorithm's update equation?</h4>
+<div class="upper-alpha">
+<ol>
+<li><span class="arithmatex">\(w[n+1] = w[n] + \mu x[n]\)</span></li>
+<li><span class="arithmatex">\(w[n+1] = w[n] - \mu e[n]x[n]\)</span></li>
+<li><span class="arithmatex">\(w[n+1] = w[n] + \mu e[n]x[n]\)</span></li>
+<li><span class="arithmatex">\(w[n+1] = w[n] + e[n]/x[n]\)</span></li>
+</ol>
+</div>
+<details class="question">
+<summary>Show Answer</summary>
+<p>The correct answer is <strong>C</strong>. The LMS algorithm update equation is <span class="arithmatex">\(w[n+1] = w[n] + \mu e[n]x[n]\)</span> where <span class="arithmatex">\(\mu\)</span> is the step-size parameter controlling convergence rate and stability, <span class="arithmatex">\(e[n]\)</span> is the error signal, and <span class="arithmatex">\(x[n]\)</span> is the input vector. This remarkably simple update uses an instantaneous gradient estimate rather than computing true statistical averages, requiring only M+1 multiplications per iteration for an M-tap filter.</p>
+<p><strong>Concept Tested:</strong> Least Mean Squares</p>
+<p><strong>See:</strong> <a href="../#lms-update-equation">LMS Update Equation</a></p>
+</details>
+<hr />
+<h4 id="4-what-condition-must-the-lms-step-size-parameter-mu-satisfy-for-stability">4. What condition must the LMS step-size parameter <span class="arithmatex">\(\mu\)</span> satisfy for stability?</h4>
+<div class="upper-alpha">
+<ol>
+<li><span class="arithmatex">\(\mu &gt; 1\)</span></li>
+<li><span class="arithmatex">\(0 &lt; \mu &lt; 2/\lambda_{max}\)</span> where <span class="arithmatex">\(\lambda_{max}\)</span> is maximum eigenvalue of input autocorrelation matrix</li>
+<li><span class="arithmatex">\(\mu\)</span> must equal 1</li>
+<li><span class="arithmatex">\(\mu\)</span> can be any positive value</li>
+</ol>
+</div>
+<details class="question">
+<summary>Show Answer</summary>
+<p>The correct answer is <strong>B</strong>. LMS algorithm stability requires the step-size parameter to satisfy <span class="arithmatex">\(0 &lt; \mu &lt; 2/\lambda_{max}\)</span> where <span class="arithmatex">\(\lambda_{max}\)</span> is the maximum eigenvalue of the input autocorrelation matrix. A practical conservative bound uses <span class="arithmatex">\(0 &lt; \mu &lt; 2/(M \cdot P_x)\)</span> where <span class="arithmatex">\(M\)</span> is filter length and <span class="arithmatex">\(P_x\)</span> is input signal power. Larger step sizes accelerate convergence but risk instability, while smaller values ensure stability but slow convergence.</p>
+<p><strong>Concept Tested:</strong> Least Mean Squares</p>
+<p><strong>See:</strong> <a href="../#convergence-and-stability-analysis">Convergence and Stability Analysis</a></p>
+</details>
+<hr />
+<h4 id="5-what-key-advantage-does-normalized-lms-nlms-provide-over-standard-lms">5. What key advantage does Normalized LMS (NLMS) provide over standard LMS?</h4>
+<div class="upper-alpha">
+<ol>
+<li>NLMS converges in fewer iterations regardless of input correlation</li>
+<li>NLMS normalizes the update based on input signal power, providing robustness to power variations</li>
+<li>NLMS eliminates all gradient noise</li>
+<li>NLMS requires no step-size parameter</li>
+</ol>
+</div>
+<details class="question">
+<summary>Show Answer</summary>
+<p>The correct answer is <strong>B</strong>. The NLMS algorithm normalizes the coefficient update based on input signal power: <span class="arithmatex">\(w[n+1] = w[n] + \frac{\mu}{||x[n]||^2 + \epsilon}e[n]x[n]\)</span>. This automatic adjustment of effective step size based on input power provides more consistent convergence behavior, robustness to power variations, and typically 2-4 times faster convergence than LMS for correlated inputs. The stable convergence range becomes <span class="arithmatex">\(0 &lt; \mu &lt; 2\)</span>, independent of input statistics.</p>
+<p><strong>Concept Tested:</strong> Normalized LMS</p>
+<p><strong>See:</strong> <a href="../#nlms-update-rule">NLMS Update Rule</a></p>
+</details>
+<hr />
+<h4 id="6-what-is-the-main-advantage-of-the-rls-recursive-least-squares-algorithm-over-lms">6. What is the main advantage of the RLS (Recursive Least Squares) algorithm over LMS?</h4>
+<div class="upper-alpha">
+<ol>
+<li>RLS requires less memory than LMS</li>
+<li>RLS achieves substantially faster convergence (approximately 2M iterations vs. 10M-100M for LMS)</li>
+<li>RLS has lower computational complexity than LMS</li>
+<li>RLS works only with real-valued signals while LMS works with complex signals</li>
+</ol>
+</div>
+<details class="question">
+<summary>Show Answer</summary>
+<p>The correct answer is <strong>B</strong>. RLS achieves convergence in approximately 2M iterations (where M is filter length), independent of input correlation structure, compared to LMS which may require 10M to 100M iterations for highly correlated signals. This dramatic improvement comes from explicitly exploiting input signal correlation structure through recursive matrix updates, though at the cost of increased computational complexity (<span class="arithmatex">\(O(M^2)\)</span> vs. <span class="arithmatex">\(O(M)\)</span> for LMS) and memory requirements.</p>
+<p><strong>Concept Tested:</strong> Recursive Least Squares</p>
+<p><strong>See:</strong> <a href="../#convergence-properties">Convergence Properties</a></p>
+</details>
+<hr />
+<h4 id="7-what-role-does-the-forgetting-factor-lambda-play-in-the-rls-algorithm">7. What role does the forgetting factor <span class="arithmatex">\(\lambda\)</span> play in the RLS algorithm?</h4>
+<div class="upper-alpha">
+<ol>
+<li>It determines the sampling rate</li>
+<li>It exponentially weights recent errors more heavily than past errors, enabling tracking of time-varying systems</li>
+<li>It eliminates the need for an error signal</li>
+<li>It converts RLS to LMS</li>
+</ol>
+</div>
+<details class="question">
+<summary>Show Answer</summary>
+<p>The correct answer is <strong>B</strong>. The RLS forgetting factor <span class="arithmatex">\(\lambda\)</span> (typically 0.95-0.999) exponentially weights recent errors more heavily than past errors in the cost function <span class="arithmatex">\(J[n] = \sum_{i=0}^{n} \lambda^{n-i}e^2[i]\)</span>. Smaller <span class="arithmatex">\(\lambda\)</span> enables quicker adaptation to changes (faster tracking), while larger <span class="arithmatex">\(\lambda\)</span> reduces misadjustment in stationary environments. The effective memory depth is approximately <span class="arithmatex">\(1/(1-\lambda)\)</span> samples.</p>
+<p><strong>Concept Tested:</strong> Recursive Least Squares</p>
+<p><strong>See:</strong> <a href="../#rls-formulation">RLS Formulation</a></p>
+</details>
+<hr />
+<h4 id="8-what-is-the-primary-application-of-adaptive-noise-cancellation">8. What is the primary application of adaptive noise cancellation?</h4>
+<div class="upper-alpha">
+<ol>
+<li>Increasing signal amplitude</li>
+<li>Removing unwanted interference by subtracting an adaptively filtered version of a reference noise signal</li>
+<li>Converting analog signals to digital</li>
+<li>Changing the sampling rate of signals</li>
+</ol>
+</div>
+<details class="question">
+<summary>Show Answer</summary>
+<p>The correct answer is <strong>B</strong>. Adaptive noise cancellation (ANC) removes unwanted interference from signals by subtracting an adaptively filtered version of a reference noise signal. The configuration exploits correlation between primary and reference inputs: as the adaptive filter converges, its output approximates the noise component, leaving primarily the desired signal in the error output. Applications include biomedical instrumentation, active noise control, and speech enhancement.</p>
+<p><strong>Concept Tested:</strong> Adaptive Noise Cancellation</p>
+<p><strong>See:</strong> <a href="../#adaptive-noise-cancellation">Adaptive Noise Cancellation</a></p>
+</details>
+<hr />
+<h4 id="9-what-challenge-does-double-talk-present-in-acoustic-echo-cancellation-systems">9. What challenge does "double-talk" present in acoustic echo cancellation systems?</h4>
+<div class="upper-alpha">
+<ol>
+<li>It increases the sampling rate beyond system capability</li>
+<li>Simultaneous near-end and far-end speakers confuse the adaptation algorithm</li>
+<li>It eliminates all echo completely</li>
+<li>It requires switching from LMS to RLS algorithm</li>
+</ol>
+</div>
+<details class="question">
+<summary>Show Answer</summary>
+<p>The correct answer is <strong>B</strong>. Double-talk occurs when both near-end and far-end speakers talk simultaneously, confusing the echo cancellation adaptation algorithm. The near-end speech appears as additional "error" that doesn't correlate with the far-end reference, causing the adaptive filter to diverge from the correct echo path model. Modern echo cancelers employ double-talk detection to freeze adaptation when both ends are speaking, preventing filter corruption.</p>
+<p><strong>Concept Tested:</strong> Echo Cancellation</p>
+<p><strong>See:</strong> <a href="../#acoustic-echo-cancellation">Acoustic Echo Cancellation</a></p>
+</details>
+<hr />
+<h4 id="10-how-do-adaptive-equalizers-operate-in-decision-directed-mode">10. How do adaptive equalizers operate in decision-directed mode?</h4>
+<div class="upper-alpha">
+<ol>
+<li>They use the symbol detector output as the desired response after training completes</li>
+<li>They only work during the training sequence</li>
+<li>They require manual coefficient adjustment</li>
+<li>They convert digital signals to analog</li>
+</ol>
+</div>
+<details class="question">
+<summary>Show Answer</summary>
+<p>The correct answer is <strong>A</strong>. After initial training with a known sequence, adaptive equalizers switch to decision-directed mode where they use detected symbols (symbol detector output) as the desired response. The equalizer input is the received signal, and the "desired" response comes from the detector's symbol decisions. This enables continuous tracking of slowly time-varying channels without requiring repeated training sequences, essential for maintaining performance as channel conditions change.</p>
+<p><strong>Concept Tested:</strong> Adaptive Equalization</p>
+<p><strong>See:</strong> <a href="../#training-and-decision-directed-modes">Training and Decision-Directed Modes</a></p>
+</details>
+<hr />
+
+
+
+
+
+
+
+  
+  
+
+
+
+  
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+          <button type="button" class="md-top md-icon" data-md-component="top" hidden>
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8z"/></svg>
+  Back to top
+</button>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+    
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    <script id="__config" type="application/json">{"base": "../../..", "features": ["content.code.copy", "navigation.expand", "navigation.path", "navigation.prune", "navigation.indexes", "toc.follow", "navigation.top", "navigation.footer", "content.action.edit"], "search": "../../../assets/javascripts/workers/search.6ce7567c.min.js", "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}}</script>
+    
+    
+      <script src="../../../assets/javascripts/bundle.83f73b43.min.js"></script>
+      
+        <script src="../../../js/extra.js"></script>
+      
+        <script src="https://unpkg.com/mathjax@3/es5/tex-mml-chtml.js"></script>
+      
+    
+  </body>
+</html>

@@ -1,0 +1,1470 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+        <meta name="description" content="College Level Textbook on Signal Processing - License is Commons ShareAlike Attribution Noncommercial">
+      
+      
+        <meta name="author" content="Dan McCreary">
+      
+      
+        <link rel="canonical" href="https://dmccreary.github.io/signal-processing/chapters/01-mathematical-foundations/quiz/">
+      
+      
+      
+      
+      <link rel="icon" href="../../../img/favicon.ico">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.5.43">
+    
+    
+      
+        <title>Quiz: Mathematical Foundations - Signal Processing with AI</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../../assets/stylesheets/main.0253249f.min.css">
+      
+        
+        <link rel="stylesheet" href="../../../assets/stylesheets/palette.06af60db.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+      <link rel="stylesheet" href="../../../css/extra.css">
+    
+    <script>__md_scope=new URL("../../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+  
+
+
+  
+  
+
+<script id="__analytics">function __md_analytics(){function e(){dataLayer.push(arguments)}window.dataLayer=window.dataLayer||[],e("js",new Date),e("config","G-SY3G2ND80K"),document.addEventListener("DOMContentLoaded",(function(){document.forms.search&&document.forms.search.query.addEventListener("blur",(function(){this.value&&e("event","search",{search_term:this.value})}));document$.subscribe((function(){var t=document.forms.feedback;if(void 0!==t)for(var a of t.querySelectorAll("[type=submit]"))a.addEventListener("click",(function(a){a.preventDefault();var n=document.location.pathname,d=this.getAttribute("data-md-value");e("event","feedback",{page:n,data:d}),t.firstElementChild.disabled=!0;var r=t.querySelector(".md-feedback__note [data-md-value='"+d+"']");r&&(r.hidden=!1)})),t.hidden=!1})),location$.subscribe((function(t){e("config","G-SY3G2ND80K",{page_path:t.pathname})}))}));var t=document.createElement("script");t.async=!0,t.src="https://www.googletagmanager.com/gtag/js?id=G-SY3G2ND80K",document.getElementById("__analytics").insertAdjacentElement("afterEnd",t)}</script>
+  
+    <script>"undefined"!=typeof __md_analytics&&__md_analytics()</script>
+  
+
+    
+    
+      
+        <meta  property="og:type"  content="website" >
+      
+        <meta  property="og:title"  content="Quiz: Mathematical Foundations - Signal Processing with AI" >
+      
+        <meta  property="og:description"  content="College Level Textbook on Signal Processing - License is Commons ShareAlike Attribution Noncommercial" >
+      
+        <meta  property="og:image"  content="https://dmccreary.github.io/signal-processing/assets/images/social/chapters/01-mathematical-foundations/quiz.png" >
+      
+        <meta  property="og:image:type"  content="image/png" >
+      
+        <meta  property="og:image:width"  content="1200" >
+      
+        <meta  property="og:image:height"  content="630" >
+      
+        <meta  property="og:url"  content="https://dmccreary.github.io/signal-processing/chapters/01-mathematical-foundations/quiz/" >
+      
+        <meta  name="twitter:card"  content="summary_large_image" >
+      
+        <meta  name="twitter:title"  content="Quiz: Mathematical Foundations - Signal Processing with AI" >
+      
+        <meta  name="twitter:description"  content="College Level Textbook on Signal Processing - License is Commons ShareAlike Attribution Noncommercial" >
+      
+        <meta  name="twitter:image"  content="https://dmccreary.github.io/signal-processing/assets/images/social/chapters/01-mathematical-foundations/quiz.png" >
+      
+    
+    
+  </head>
+  
+  
+    
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="maroon" data-md-color-accent="gold">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#quiz-mathematical-foundations" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+  
+
+<header class="md-header md-header--shadow" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href="../../.." title="Signal Processing with AI" class="md-header__button md-logo" aria-label="Signal Processing with AI" data-md-component="logo">
+      
+  <img src="../../../img/logo-192.png" alt="logo">
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            Signal Processing with AI
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              Quiz: Mathematical Foundations
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+    
+    
+    
+    
+      <label class="md-header__button md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+      </label>
+      <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Search">
+        
+        <button type="reset" class="md-search__icon md-icon" title="Clear" aria-label="Clear" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+        </button>
+      </nav>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+    
+      <div class="md-header__source">
+        <a href="https://github.com/dmccreary/signal-processing" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 6.6.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2024 Fonticons, Inc.--><path d="M439.55 236.05 244 40.45a28.87 28.87 0 0 0-40.81 0l-40.66 40.63 51.52 51.52c27.06-9.14 52.68 16.77 43.39 43.68l49.66 49.66c34.23-11.8 61.18 31 35.47 56.69-26.49 26.49-70.21-2.87-56-37.34L240.22 199v121.85c25.3 12.54 22.26 41.85 9.08 55a34.34 34.34 0 0 1-48.55 0c-17.57-17.6-11.07-46.91 11.25-56v-123c-20.8-8.51-24.6-30.74-18.64-45L142.57 101 8.45 235.14a28.86 28.86 0 0 0 0 40.81l195.61 195.6a28.86 28.86 0 0 0 40.8 0l194.69-194.69a28.86 28.86 0 0 0 0-40.81"/></svg>
+  </div>
+  <div class="md-source__repository">
+    GitHub Repo
+  </div>
+</a>
+      </div>
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+
+<nav class="md-nav md-nav--primary" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../../.." title="Signal Processing with AI" class="md-nav__button md-logo" aria-label="Signal Processing with AI" data-md-component="logo">
+      
+  <img src="../../../img/logo-192.png" alt="logo">
+
+    </a>
+    Signal Processing with AI
+  </label>
+  
+    <div class="md-nav__source">
+      <a href="https://github.com/dmccreary/signal-processing" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 6.6.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2024 Fonticons, Inc.--><path d="M439.55 236.05 244 40.45a28.87 28.87 0 0 0-40.81 0l-40.66 40.63 51.52 51.52c27.06-9.14 52.68 16.77 43.39 43.68l49.66 49.66c34.23-11.8 61.18 31 35.47 56.69-26.49 26.49-70.21-2.87-56-37.34L240.22 199v121.85c25.3 12.54 22.26 41.85 9.08 55a34.34 34.34 0 0 1-48.55 0c-17.57-17.6-11.07-46.91 11.25-56v-123c-20.8-8.51-24.6-30.74-18.64-45L142.57 101 8.45 235.14a28.86 28.86 0 0 0 0 40.81l195.61 195.6a28.86 28.86 0 0 0 40.8 0l194.69-194.69a28.86 28.86 0 0 0 0-40.81"/></svg>
+  </div>
+  <div class="md-source__repository">
+    GitHub Repo
+  </div>
+</a>
+    </div>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../.." class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Home
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Table of Contents
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../about/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    About This Website
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../course-description/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Course Description
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+        
+        
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+    <a href="../../../learning-graph/" class="md-nav__link">
+      
+  
+  <span class="md-ellipsis">
+    Learning Graph
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+    
+    
+    
+      
+        
+        
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+    <a href="../../" class="md-nav__link">
+      
+  
+  <span class="md-ellipsis">
+    Chapters
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+    
+    
+    
+      
+        
+        
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+    <a href="../../../sims/" class="md-nav__link">
+      
+  
+  <span class="md-ellipsis">
+    MicroSims
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+    
+    
+    
+      
+        
+        
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+    <a href="../../../stories/" class="md-nav__link">
+      
+  
+  <span class="md-ellipsis">
+    Stories
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+    
+    
+    
+      
+        
+        
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+    <a href="../../../circuits/" class="md-nav__link">
+      
+  
+  <span class="md-ellipsis">
+    Circuits
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+    
+    
+    
+      
+        
+        
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+    <a href="../../../research/" class="md-nav__link">
+      
+  
+  <span class="md-ellipsis">
+    Research
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../report-card/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Report Card
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../checklist/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Checklist
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../glossary/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Glossary
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../how-we-built-this-site/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    How We Built This Site
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../license/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    License
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../references/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    References
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../contact/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Contact
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../ieee-paper-changes/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Paper Changes
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+        
+        
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+    <a href="../../../prompts/" class="md-nav__link">
+      
+  
+  <span class="md-ellipsis">
+    Prompts
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#1-what-is-the-defining-property-of-the-imaginary-unit-i" class="md-nav__link">
+    <span class="md-ellipsis">
+      1. What is the defining property of the imaginary unit \(i\)?
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#2-which-formula-establishes-the-fundamental-relationship-between-exponential-functions-and-trigonometric-functions" class="md-nav__link">
+    <span class="md-ellipsis">
+      2. Which formula establishes the fundamental relationship between exponential functions and trigonometric functions?
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#3-what-does-a-phasor-represent-in-signal-processing" class="md-nav__link">
+    <span class="md-ellipsis">
+      3. What does a phasor represent in signal processing?
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#4-in-signal-processing-vectors-are-commonly-used-to-represent-which-of-the-following" class="md-nav__link">
+    <span class="md-ellipsis">
+      4. In signal processing, vectors are commonly used to represent which of the following?
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#5-what-does-the-eigenvalue-equation-mathbfamathbfv-lambdamathbfv-tell-us-about-the-transformation-represented-by-matrix-mathbfa" class="md-nav__link">
+    <span class="md-ellipsis">
+      5. What does the eigenvalue equation \(\mathbf{A}\mathbf{v} = \lambda\mathbf{v}\) tell us about the transformation represented by matrix \(\mathbf{A}\)?
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#6-in-signal-processing-what-does-the-integral-e-int_-inftyinfty-xt2-dt-represent" class="md-nav__link">
+    <span class="md-ellipsis">
+      6. In signal processing, what does the integral \(E = \int_{-\infty}^{\infty} |x(t)|^2 \, dt\) represent?
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#7-why-is-the-gaussian-distribution-particularly-important-in-signal-processing" class="md-nav__link">
+    <span class="md-ellipsis">
+      7. Why is the Gaussian distribution particularly important in signal processing?
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#8-given-a-signal-with-additive-gaussian-noise-having-standard-deviation-sigma-2-approximately-what-percentage-of-noise-samples-will-fall-within-the-range-mu-pm-2sigma" class="md-nav__link">
+    <span class="md-ellipsis">
+      8. Given a signal with additive Gaussian noise having standard deviation \(\sigma = 2\), approximately what percentage of noise samples will fall within the range \(\mu \pm 2\sigma\)?
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#9-when-measuring-signal-power-in-decibels-db-which-logarithmic-expression-is-used" class="md-nav__link">
+    <span class="md-ellipsis">
+      9. When measuring signal power in decibels (dB), which logarithmic expression is used?
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#10-what-is-the-sum-of-a-geometric-series-sum_n0infty-arn-when-r-1" class="md-nav__link">
+    <span class="md-ellipsis">
+      10. What is the sum of a geometric series \(\sum_{n=0}^{\infty} ar^n\) when \(|r| &lt; 1\)?
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+  
+    <a href="https://github.com/dmccreary/signal-processing/blob/master/docs/chapters/01-mathematical-foundations/quiz.md" title="Edit this page" class="md-content__button md-icon">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M10 20H6V4h7v5h5v3.1l2-2V8l-6-6H6c-1.1 0-2 .9-2 2v16c0 1.1.9 2 2 2h4zm10.2-7c.1 0 .3.1.4.2l1.3 1.3c.2.2.2.6 0 .8l-1 1-2.1-2.1 1-1c.1-.1.2-.2.4-.2m0 3.9L14.1 23H12v-2.1l6.1-6.1z"/></svg>
+    </a>
+  
+  
+
+
+<h1 id="quiz-mathematical-foundations">Quiz: Mathematical Foundations</h1>
+<p>Test your understanding of the mathematical foundations essential for signal processing.</p>
+<hr />
+<h4 id="1-what-is-the-defining-property-of-the-imaginary-unit-i">1. What is the defining property of the imaginary unit <span class="arithmatex">\(i\)</span>?</h4>
+<div class="upper-alpha">
+<ol>
+<li><span class="arithmatex">\(i = 1\)</span></li>
+<li><span class="arithmatex">\(i^2 = -1\)</span></li>
+<li><span class="arithmatex">\(i = -1\)</span></li>
+<li><span class="arithmatex">\(i^2 = 1\)</span></li>
+</ol>
+</div>
+<details class="question">
+<summary>Show Answer</summary>
+<p>The correct answer is <strong>B</strong>. The imaginary unit <span class="arithmatex">\(i\)</span> is defined by the fundamental property that <span class="arithmatex">\(i^2 = -1\)</span>, which allows us to extend the real number system to include solutions to equations like <span class="arithmatex">\(x^2 + 1 = 0\)</span>. This definition leads to the cyclic behavior of powers of <span class="arithmatex">\(i\)</span> and enables the representation of complex numbers in the form <span class="arithmatex">\(z = a + bi\)</span>.</p>
+<p><strong>Concept Tested:</strong> Imaginary Unit</p>
+<p><strong>See:</strong> <a href="../#the-imaginary-unit">Imaginary Unit</a></p>
+</details>
+<hr />
+<h4 id="2-which-formula-establishes-the-fundamental-relationship-between-exponential-functions-and-trigonometric-functions">2. Which formula establishes the fundamental relationship between exponential functions and trigonometric functions?</h4>
+<div class="upper-alpha">
+<ol>
+<li>Pythagorean theorem</li>
+<li>Fourier transform</li>
+<li>Euler's formula</li>
+<li>Taylor series</li>
+</ol>
+</div>
+<details class="question">
+<summary>Show Answer</summary>
+<p>The correct answer is <strong>C</strong>. Euler's formula, <span class="arithmatex">\(e^{i\theta} = \cos(\theta) + i\sin(\theta)\)</span>, establishes the fundamental relationship between exponential and trigonometric functions. This elegant equation is arguably the most important formula in signal processing, as it allows us to express sinusoidal signals as complex exponentials and forms the foundation of Fourier analysis.</p>
+<p><strong>Concept Tested:</strong> Euler's Formula</p>
+<p><strong>See:</strong> <a href="../#eulers-formula">Euler's Formula</a></p>
+</details>
+<hr />
+<h4 id="3-what-does-a-phasor-represent-in-signal-processing">3. What does a phasor represent in signal processing?</h4>
+<div class="upper-alpha">
+<ol>
+<li>The frequency of a sinusoidal signal only</li>
+<li>A complex number representing a sinusoidal signal's amplitude and phase</li>
+<li>The time delay between two signals</li>
+<li>The power spectrum of a signal</li>
+</ol>
+</div>
+<details class="question">
+<summary>Show Answer</summary>
+<p>The correct answer is <strong>B</strong>. A phasor is a complex number that represents a sinusoidal signal's amplitude and phase. For a sinusoidal signal <span class="arithmatex">\(x(t) = A\cos(\omega t + \phi)\)</span>, the phasor is <span class="arithmatex">\(\tilde{X} = Ae^{i\phi}\)</span>, capturing amplitude <span class="arithmatex">\(A\)</span> and initial phase <span class="arithmatex">\(\phi\)</span> while assuming frequency <span class="arithmatex">\(\omega\)</span> is known from context. This representation transforms differential equations into algebraic equations, simplifying circuit and system analysis.</p>
+<p><strong>Concept Tested:</strong> Phasors</p>
+<p><strong>See:</strong> <a href="../#phasors">Phasors</a></p>
+</details>
+<hr />
+<h4 id="4-in-signal-processing-vectors-are-commonly-used-to-represent-which-of-the-following">4. In signal processing, vectors are commonly used to represent which of the following?</h4>
+<div class="upper-alpha">
+<ol>
+<li>Only continuous-time signals</li>
+<li>Discrete-time signals as ordered collections of samples</li>
+<li>Frequency domain representations exclusively</li>
+<li>Only scalar quantities without direction</li>
+</ol>
+</div>
+<details class="question">
+<summary>Show Answer</summary>
+<p>The correct answer is <strong>B</strong>. In signal processing, vectors are used to represent discrete-time signals as ordered collections of samples, along with feature vectors, state variables in dynamic systems, and multi-channel signals like stereo audio or RGB images. Vectors provide a mathematical framework for representing quantities with both magnitude and direction, enabling various signal processing operations.</p>
+<p><strong>Concept Tested:</strong> Vectors</p>
+<p><strong>See:</strong> <a href="../#vectors">Vectors</a></p>
+</details>
+<hr />
+<h4 id="5-what-does-the-eigenvalue-equation-mathbfamathbfv-lambdamathbfv-tell-us-about-the-transformation-represented-by-matrix-mathbfa">5. What does the eigenvalue equation <span class="arithmatex">\(\mathbf{A}\mathbf{v} = \lambda\mathbf{v}\)</span> tell us about the transformation represented by matrix <span class="arithmatex">\(\mathbf{A}\)</span>?</h4>
+<div class="upper-alpha">
+<ol>
+<li>The matrix inverts the eigenvector</li>
+<li>The matrix rotates the eigenvector by 90 degrees</li>
+<li>The matrix scales the eigenvector by factor <span class="arithmatex">\(\lambda\)</span> without changing its direction</li>
+<li>The matrix translates the eigenvector to a new location</li>
+</ol>
+</div>
+<details class="question">
+<summary>Show Answer</summary>
+<p>The correct answer is <strong>C</strong>. The eigenvalue equation shows that the transformation <span class="arithmatex">\(\mathbf{A}\)</span> merely scales the eigenvector <span class="arithmatex">\(\mathbf{v}\)</span> by factor <span class="arithmatex">\(\lambda\)</span> without changing its direction. This property reveals the intrinsic geometric behavior of linear transformations and is essential for applications like Principal Component Analysis, stability analysis of recursive systems, and diagonalization of matrices in signal processing.</p>
+<p><strong>Concept Tested:</strong> Eigenvalues and Eigenvectors</p>
+<p><strong>See:</strong> <a href="../#eigenvalues-and-eigenvectors">Eigenvalues and Eigenvectors</a></p>
+</details>
+<hr />
+<h4 id="6-in-signal-processing-what-does-the-integral-e-int_-inftyinfty-xt2-dt-represent">6. In signal processing, what does the integral <span class="arithmatex">\(E = \int_{-\infty}^{\infty} |x(t)|^2 \, dt\)</span> represent?</h4>
+<div class="upper-alpha">
+<ol>
+<li>The average value of the signal</li>
+<li>The signal energy</li>
+<li>The signal frequency</li>
+<li>The signal duration</li>
+</ol>
+</div>
+<details class="question">
+<summary>Show Answer</summary>
+<p>The correct answer is <strong>B</strong>. The integral <span class="arithmatex">\(E = \int_{-\infty}^{\infty} |x(t)|^2 \, dt\)</span> represents the signal energy, which is the accumulated squared magnitude of the signal over all time. This concept from integral calculus is fundamental in signal processing for characterizing signal strength and is related to the <span class="arithmatex">\(L^2\)</span> norm. Energy signals have finite energy, while power signals require a different measure.</p>
+<p><strong>Concept Tested:</strong> Integral Calculus, Signal Energy</p>
+<p><strong>See:</strong> <a href="../#integral-calculus">Integral Calculus</a></p>
+</details>
+<hr />
+<h4 id="7-why-is-the-gaussian-distribution-particularly-important-in-signal-processing">7. Why is the Gaussian distribution particularly important in signal processing?</h4>
+<div class="upper-alpha">
+<ol>
+<li>It has the simplest mathematical form</li>
+<li>The Central Limit Theorem shows that sums of independent random variables tend toward Gaussian distributions</li>
+<li>It is the only distribution used for noise modeling</li>
+<li>It always has zero mean and unit variance</li>
+</ol>
+</div>
+<details class="question">
+<summary>Show Answer</summary>
+<p>The correct answer is <strong>B</strong>. The Gaussian (normal) distribution is particularly important because the Central Limit Theorem states that sums of independent random variables tend toward Gaussian distributions, regardless of the original distributions. This makes Gaussian distributions natural models for thermal noise, measurement errors, and many other phenomena in signal processing. The distribution is characterized by its mean <span class="arithmatex">\(\mu\)</span> and standard deviation <span class="arithmatex">\(\sigma\)</span>, which can take various values.</p>
+<p><strong>Concept Tested:</strong> Statistical Distributions, Gaussian Distribution</p>
+<p><strong>See:</strong> <a href="../#statistical-distributions">Statistical Distributions</a></p>
+</details>
+<hr />
+<h4 id="8-given-a-signal-with-additive-gaussian-noise-having-standard-deviation-sigma-2-approximately-what-percentage-of-noise-samples-will-fall-within-the-range-mu-pm-2sigma">8. Given a signal with additive Gaussian noise having standard deviation <span class="arithmatex">\(\sigma = 2\)</span>, approximately what percentage of noise samples will fall within the range <span class="arithmatex">\(\mu \pm 2\sigma\)</span>?</h4>
+<div class="upper-alpha">
+<ol>
+<li>68%</li>
+<li>75%</li>
+<li>95%</li>
+<li>99.7%</li>
+</ol>
+</div>
+<details class="question">
+<summary>Show Answer</summary>
+<p>The correct answer is <strong>C</strong>. For a Gaussian distribution, approximately 95% of values fall within <span class="arithmatex">\(\mu \pm 2\sigma\)</span> (the "68-95-99.7 rule"). Specifically, about 68% fall within <span class="arithmatex">\(\mu \pm \sigma\)</span>, 95% within <span class="arithmatex">\(\mu \pm 2\sigma\)</span>, and 99.7% within <span class="arithmatex">\(\mu \pm 3\sigma\)</span>. This understanding is crucial for analyzing noise levels and setting detection thresholds in signal processing applications.</p>
+<p><strong>Concept Tested:</strong> Standard Deviation, Gaussian Distribution</p>
+<p><strong>See:</strong> <a href="../#standard-deviation">Standard Deviation</a></p>
+</details>
+<hr />
+<h4 id="9-when-measuring-signal-power-in-decibels-db-which-logarithmic-expression-is-used">9. When measuring signal power in decibels (dB), which logarithmic expression is used?</h4>
+<div class="upper-alpha">
+<ol>
+<li><span class="arithmatex">\(\text{dB} = \log_{10}(P/P_0)\)</span></li>
+<li><span class="arithmatex">\(\text{dB} = 10\log_{10}(P/P_0)\)</span></li>
+<li><span class="arithmatex">\(\text{dB} = 20\log_{10}(P/P_0)\)</span></li>
+<li><span class="arithmatex">\(\text{dB} = \ln(P/P_0)\)</span></li>
+</ol>
+</div>
+<details class="question">
+<summary>Show Answer</summary>
+<p>The correct answer is <strong>B</strong>. Power in decibels is calculated as <span class="arithmatex">\(\text{dB} = 10\log_{10}(P/P_0)\)</span>, where <span class="arithmatex">\(P\)</span> is the measured power and <span class="arithmatex">\(P_0\)</span> is the reference power. For amplitude measurements, the formula is <span class="arithmatex">\(20\log_{10}(A/A_0)\)</span> (since power is proportional to amplitude squared). The logarithmic decibel scale compresses large dynamic ranges into manageable numbers and is crucial for representing signal power and frequency response.</p>
+<p><strong>Concept Tested:</strong> Logarithmic Functions, Decibel Scale</p>
+<p><strong>See:</strong> <a href="../#logarithmic-functions">Logarithmic Functions</a></p>
+</details>
+<hr />
+<h4 id="10-what-is-the-sum-of-a-geometric-series-sum_n0infty-arn-when-r-1">10. What is the sum of a geometric series <span class="arithmatex">\(\sum_{n=0}^{\infty} ar^n\)</span> when <span class="arithmatex">\(|r| &lt; 1\)</span>?</h4>
+<div class="upper-alpha">
+<ol>
+<li><span class="arithmatex">\(\frac{r}{1-a}\)</span></li>
+<li><span class="arithmatex">\(\frac{a}{1-r}\)</span></li>
+<li><span class="arithmatex">\(\frac{1}{a-r}\)</span></li>
+<li><span class="arithmatex">\(ar\)</span></li>
+</ol>
+</div>
+<details class="question">
+<summary>Show Answer</summary>
+<p>The correct answer is <strong>B</strong>. The geometric series <span class="arithmatex">\(\sum_{n=0}^{\infty} ar^n = \frac{a}{1-r}\)</span> when <span class="arithmatex">\(|r| &lt; 1\)</span> (the convergence condition). This series is fundamental in signal processing, appearing in recursive filter analysis, Z-transform convergence regions, and many analytical solutions. The condition <span class="arithmatex">\(|r| &lt; 1\)</span> ensures the series converges to a finite value.</p>
+<p><strong>Concept Tested:</strong> Series and Sequences, Geometric Series</p>
+<p><strong>See:</strong> <a href="../#series-and-sequences">Series and Sequences</a></p>
+</details>
+<hr />
+
+
+
+
+
+
+
+  
+  
+
+
+
+  
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+          <button type="button" class="md-top md-icon" data-md-component="top" hidden>
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8z"/></svg>
+  Back to top
+</button>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+    
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    <script id="__config" type="application/json">{"base": "../../..", "features": ["content.code.copy", "navigation.expand", "navigation.path", "navigation.prune", "navigation.indexes", "toc.follow", "navigation.top", "navigation.footer", "content.action.edit"], "search": "../../../assets/javascripts/workers/search.6ce7567c.min.js", "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}}</script>
+    
+    
+      <script src="../../../assets/javascripts/bundle.83f73b43.min.js"></script>
+      
+        <script src="../../../js/extra.js"></script>
+      
+        <script src="https://unpkg.com/mathjax@3/es5/tex-mml-chtml.js"></script>
+      
+    
+  </body>
+</html>

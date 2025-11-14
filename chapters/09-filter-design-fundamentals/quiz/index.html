@@ -1,0 +1,1470 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+        <meta name="description" content="College Level Textbook on Signal Processing - License is Commons ShareAlike Attribution Noncommercial">
+      
+      
+        <meta name="author" content="Dan McCreary">
+      
+      
+        <link rel="canonical" href="https://dmccreary.github.io/signal-processing/chapters/09-filter-design-fundamentals/quiz/">
+      
+      
+      
+      
+      <link rel="icon" href="../../../img/favicon.ico">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.5.43">
+    
+    
+      
+        <title>Quiz: Filter Design Fundamentals - Signal Processing with AI</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../../assets/stylesheets/main.0253249f.min.css">
+      
+        
+        <link rel="stylesheet" href="../../../assets/stylesheets/palette.06af60db.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+      <link rel="stylesheet" href="../../../css/extra.css">
+    
+    <script>__md_scope=new URL("../../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+  
+
+
+  
+  
+
+<script id="__analytics">function __md_analytics(){function e(){dataLayer.push(arguments)}window.dataLayer=window.dataLayer||[],e("js",new Date),e("config","G-SY3G2ND80K"),document.addEventListener("DOMContentLoaded",(function(){document.forms.search&&document.forms.search.query.addEventListener("blur",(function(){this.value&&e("event","search",{search_term:this.value})}));document$.subscribe((function(){var t=document.forms.feedback;if(void 0!==t)for(var a of t.querySelectorAll("[type=submit]"))a.addEventListener("click",(function(a){a.preventDefault();var n=document.location.pathname,d=this.getAttribute("data-md-value");e("event","feedback",{page:n,data:d}),t.firstElementChild.disabled=!0;var r=t.querySelector(".md-feedback__note [data-md-value='"+d+"']");r&&(r.hidden=!1)})),t.hidden=!1})),location$.subscribe((function(t){e("config","G-SY3G2ND80K",{page_path:t.pathname})}))}));var t=document.createElement("script");t.async=!0,t.src="https://www.googletagmanager.com/gtag/js?id=G-SY3G2ND80K",document.getElementById("__analytics").insertAdjacentElement("afterEnd",t)}</script>
+  
+    <script>"undefined"!=typeof __md_analytics&&__md_analytics()</script>
+  
+
+    
+    
+      
+        <meta  property="og:type"  content="website" >
+      
+        <meta  property="og:title"  content="Quiz: Filter Design Fundamentals - Signal Processing with AI" >
+      
+        <meta  property="og:description"  content="College Level Textbook on Signal Processing - License is Commons ShareAlike Attribution Noncommercial" >
+      
+        <meta  property="og:image"  content="https://dmccreary.github.io/signal-processing/assets/images/social/chapters/09-filter-design-fundamentals/quiz.png" >
+      
+        <meta  property="og:image:type"  content="image/png" >
+      
+        <meta  property="og:image:width"  content="1200" >
+      
+        <meta  property="og:image:height"  content="630" >
+      
+        <meta  property="og:url"  content="https://dmccreary.github.io/signal-processing/chapters/09-filter-design-fundamentals/quiz/" >
+      
+        <meta  name="twitter:card"  content="summary_large_image" >
+      
+        <meta  name="twitter:title"  content="Quiz: Filter Design Fundamentals - Signal Processing with AI" >
+      
+        <meta  name="twitter:description"  content="College Level Textbook on Signal Processing - License is Commons ShareAlike Attribution Noncommercial" >
+      
+        <meta  name="twitter:image"  content="https://dmccreary.github.io/signal-processing/assets/images/social/chapters/09-filter-design-fundamentals/quiz.png" >
+      
+    
+    
+  </head>
+  
+  
+    
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="maroon" data-md-color-accent="gold">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#quiz-filter-design-fundamentals" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+  
+
+<header class="md-header md-header--shadow" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href="../../.." title="Signal Processing with AI" class="md-header__button md-logo" aria-label="Signal Processing with AI" data-md-component="logo">
+      
+  <img src="../../../img/logo-192.png" alt="logo">
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            Signal Processing with AI
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              Quiz: Filter Design Fundamentals
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+    
+    
+    
+    
+      <label class="md-header__button md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+      </label>
+      <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Search">
+        
+        <button type="reset" class="md-search__icon md-icon" title="Clear" aria-label="Clear" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+        </button>
+      </nav>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+    
+      <div class="md-header__source">
+        <a href="https://github.com/dmccreary/signal-processing" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 6.6.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2024 Fonticons, Inc.--><path d="M439.55 236.05 244 40.45a28.87 28.87 0 0 0-40.81 0l-40.66 40.63 51.52 51.52c27.06-9.14 52.68 16.77 43.39 43.68l49.66 49.66c34.23-11.8 61.18 31 35.47 56.69-26.49 26.49-70.21-2.87-56-37.34L240.22 199v121.85c25.3 12.54 22.26 41.85 9.08 55a34.34 34.34 0 0 1-48.55 0c-17.57-17.6-11.07-46.91 11.25-56v-123c-20.8-8.51-24.6-30.74-18.64-45L142.57 101 8.45 235.14a28.86 28.86 0 0 0 0 40.81l195.61 195.6a28.86 28.86 0 0 0 40.8 0l194.69-194.69a28.86 28.86 0 0 0 0-40.81"/></svg>
+  </div>
+  <div class="md-source__repository">
+    GitHub Repo
+  </div>
+</a>
+      </div>
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+
+<nav class="md-nav md-nav--primary" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../../.." title="Signal Processing with AI" class="md-nav__button md-logo" aria-label="Signal Processing with AI" data-md-component="logo">
+      
+  <img src="../../../img/logo-192.png" alt="logo">
+
+    </a>
+    Signal Processing with AI
+  </label>
+  
+    <div class="md-nav__source">
+      <a href="https://github.com/dmccreary/signal-processing" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 6.6.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2024 Fonticons, Inc.--><path d="M439.55 236.05 244 40.45a28.87 28.87 0 0 0-40.81 0l-40.66 40.63 51.52 51.52c27.06-9.14 52.68 16.77 43.39 43.68l49.66 49.66c34.23-11.8 61.18 31 35.47 56.69-26.49 26.49-70.21-2.87-56-37.34L240.22 199v121.85c25.3 12.54 22.26 41.85 9.08 55a34.34 34.34 0 0 1-48.55 0c-17.57-17.6-11.07-46.91 11.25-56v-123c-20.8-8.51-24.6-30.74-18.64-45L142.57 101 8.45 235.14a28.86 28.86 0 0 0 0 40.81l195.61 195.6a28.86 28.86 0 0 0 40.8 0l194.69-194.69a28.86 28.86 0 0 0 0-40.81"/></svg>
+  </div>
+  <div class="md-source__repository">
+    GitHub Repo
+  </div>
+</a>
+    </div>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../.." class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Home
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Table of Contents
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../about/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    About This Website
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../course-description/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Course Description
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+        
+        
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+    <a href="../../../learning-graph/" class="md-nav__link">
+      
+  
+  <span class="md-ellipsis">
+    Learning Graph
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+    
+    
+    
+      
+        
+        
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+    <a href="../../" class="md-nav__link">
+      
+  
+  <span class="md-ellipsis">
+    Chapters
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+    
+    
+    
+      
+        
+        
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+    <a href="../../../sims/" class="md-nav__link">
+      
+  
+  <span class="md-ellipsis">
+    MicroSims
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+    
+    
+    
+      
+        
+        
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+    <a href="../../../stories/" class="md-nav__link">
+      
+  
+  <span class="md-ellipsis">
+    Stories
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+    
+    
+    
+      
+        
+        
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+    <a href="../../../circuits/" class="md-nav__link">
+      
+  
+  <span class="md-ellipsis">
+    Circuits
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+    
+    
+    
+      
+        
+        
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+    <a href="../../../research/" class="md-nav__link">
+      
+  
+  <span class="md-ellipsis">
+    Research
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../report-card/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Report Card
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../checklist/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Checklist
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../glossary/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Glossary
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../how-we-built-this-site/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    How We Built This Site
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../license/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    License
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../references/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    References
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../contact/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Contact
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../ieee-paper-changes/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Paper Changes
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+        
+        
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+    <a href="../../../prompts/" class="md-nav__link">
+      
+  
+  <span class="md-ellipsis">
+    Prompts
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#1-what-is-the-primary-function-of-a-digital-filter" class="md-nav__link">
+    <span class="md-ellipsis">
+      1. What is the primary function of a digital filter?
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#2-which-type-of-filter-passes-frequencies-below-a-cutoff-frequency-while-attenuating-higher-frequencies" class="md-nav__link">
+    <span class="md-ellipsis">
+      2. Which type of filter passes frequencies below a cutoff frequency while attenuating higher frequencies?
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#3-what-distinguishes-a-notch-filter-from-a-general-band-stop-filter" class="md-nav__link">
+    <span class="md-ellipsis">
+      3. What distinguishes a notch filter from a general band-stop filter?
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#4-what-is-the-key-structural-difference-between-fir-and-iir-filters" class="md-nav__link">
+    <span class="md-ellipsis">
+      4. What is the key structural difference between FIR and IIR filters?
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#5-which-filter-type-is-inherently-stable-regardless-of-coefficient-values" class="md-nav__link">
+    <span class="md-ellipsis">
+      5. Which filter type is inherently stable regardless of coefficient values?
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#6-what-is-a-key-advantage-of-iir-filters-over-fir-filters" class="md-nav__link">
+    <span class="md-ellipsis">
+      6. What is a key advantage of IIR filters over FIR filters?
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#7-what-does-the-filter-order-fundamentally-determine" class="md-nav__link">
+    <span class="md-ellipsis">
+      7. What does the filter order fundamentally determine?
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#8-what-is-the-bibo-stability-criterion-for-discrete-time-systems" class="md-nav__link">
+    <span class="md-ellipsis">
+      8. What is the BIBO stability criterion for discrete-time systems?
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#9-how-do-pole-locations-in-the-z-plane-relate-to-iir-filter-stability" class="md-nav__link">
+    <span class="md-ellipsis">
+      9. How do pole locations in the z-plane relate to IIR filter stability?
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#10-what-does-a-comb-filters-frequency-response-resemble" class="md-nav__link">
+    <span class="md-ellipsis">
+      10. What does a comb filter's frequency response resemble?
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+  
+    <a href="https://github.com/dmccreary/signal-processing/blob/master/docs/chapters/09-filter-design-fundamentals/quiz.md" title="Edit this page" class="md-content__button md-icon">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M10 20H6V4h7v5h5v3.1l2-2V8l-6-6H6c-1.1 0-2 .9-2 2v16c0 1.1.9 2 2 2h4zm10.2-7c.1 0 .3.1.4.2l1.3 1.3c.2.2.2.6 0 .8l-1 1-2.1-2.1 1-1c.1-.1.2-.2.4-.2m0 3.9L14.1 23H12v-2.1l6.1-6.1z"/></svg>
+    </a>
+  
+  
+
+
+<h1 id="quiz-filter-design-fundamentals">Quiz: Filter Design Fundamentals</h1>
+<p>Test your understanding of filter types, FIR and IIR filters, filter order, and stability analysis.</p>
+<hr />
+<h4 id="1-what-is-the-primary-function-of-a-digital-filter">1. What is the primary function of a digital filter?</h4>
+<div class="upper-alpha">
+<ol>
+<li>To increase the sampling rate of a signal</li>
+<li>To selectively pass certain frequency components while attenuating others</li>
+<li>To convert analog signals to digital signals</li>
+<li>To amplify all frequency components equally</li>
+</ol>
+</div>
+<details class="question">
+<summary>Show Answer</summary>
+<p>The correct answer is <strong>B</strong>. A filter is a system that selectively passes certain frequency components of an input signal while attenuating or blocking others. Filters are characterized by their frequency response <span class="arithmatex">\(H(f)\)</span> or impulse response <span class="arithmatex">\(h[n]\)</span> and serve purposes including noise reduction, signal separation, anti-aliasing, reconstruction, and equalization by discriminating between different frequency components.</p>
+<p><strong>Concept Tested:</strong> Filters</p>
+<p><strong>See:</strong> <a href="../#filters-and-their-role-in-signal-processing">Filters and Their Role in Signal Processing</a></p>
+</details>
+<hr />
+<h4 id="2-which-type-of-filter-passes-frequencies-below-a-cutoff-frequency-while-attenuating-higher-frequencies">2. Which type of filter passes frequencies below a cutoff frequency while attenuating higher frequencies?</h4>
+<div class="upper-alpha">
+<ol>
+<li>High-pass filter</li>
+<li>Band-pass filter</li>
+<li>Low-pass filter</li>
+<li>Band-stop filter</li>
+</ol>
+</div>
+<details class="question">
+<summary>Show Answer</summary>
+<p>The correct answer is <strong>C</strong>. Low-pass filters (LPF) pass frequencies below a cutoff frequency <span class="arithmatex">\(f_c\)</span> while attenuating higher frequencies. The cutoff is typically defined at the -3 dB point where magnitude equals <span class="arithmatex">\(1/\sqrt{2} \approx 0.707\)</span> of passband magnitude. Common applications include audio noise reduction, anti-aliasing before A/D conversion, and smoothing control signals.</p>
+<p><strong>Concept Tested:</strong> Low-Pass Filters</p>
+<p><strong>See:</strong> <a href="../#low-pass-filters">Low-Pass Filters</a></p>
+</details>
+<hr />
+<h4 id="3-what-distinguishes-a-notch-filter-from-a-general-band-stop-filter">3. What distinguishes a notch filter from a general band-stop filter?</h4>
+<div class="upper-alpha">
+<ol>
+<li>Notch filters pass all frequencies while band-stop filters block all frequencies</li>
+<li>Notch filters are extremely narrow band-stop filters designed to eliminate a single frequency</li>
+<li>Notch filters only work with digital signals</li>
+<li>Notch filters have linear phase while band-stop filters do not</li>
+</ol>
+</div>
+<details class="question">
+<summary>Show Answer</summary>
+<p>The correct answer is <strong>B</strong>. Notch filters are extremely narrow band-stop filters designed to eliminate a single frequency component with minimal impact on adjacent frequencies. They typically have very high Q factors (Q &gt; 10) and are used to remove specific interference like 50/60 Hz power line hum or pilot tones while preserving nearby signal content.</p>
+<p><strong>Concept Tested:</strong> Notch Filters, Band-Stop Filters</p>
+<p><strong>See:</strong> <a href="../#specialized-filter-types">Specialized Filter Types</a></p>
+</details>
+<hr />
+<h4 id="4-what-is-the-key-structural-difference-between-fir-and-iir-filters">4. What is the key structural difference between FIR and IIR filters?</h4>
+<div class="upper-alpha">
+<ol>
+<li>FIR filters use only feedforward paths (no feedback), while IIR filters use feedback from previous outputs</li>
+<li>FIR filters can only be implemented in hardware while IIR filters require software</li>
+<li>FIR filters always have higher order than IIR filters</li>
+<li>FIR filters work only with real signals while IIR filters work with complex signals</li>
+</ol>
+</div>
+<details class="question">
+<summary>Show Answer</summary>
+<p>The correct answer is <strong>A</strong>. FIR filters have impulse responses of finite duration and use only feedforward paths: <span class="arithmatex">\(y[n] = \sum_{k=0}^{M} b_k x[n-k]\)</span> (non-recursive). IIR filters have impulse responses of infinite duration and use feedback: <span class="arithmatex">\(y[n] = \sum_{k=0}^{M} b_k x[n-k] - \sum_{k=1}^{N} a_k y[n-k]\)</span> (recursive). This fundamental structural difference leads to distinct advantages and tradeoffs for each filter type.</p>
+<p><strong>Concept Tested:</strong> FIR Filters, IIR Filters</p>
+<p><strong>See:</strong> <a href="../#fir-vs-iir-filter-structures">FIR vs. IIR Filter Structures</a></p>
+</details>
+<hr />
+<h4 id="5-which-filter-type-is-inherently-stable-regardless-of-coefficient-values">5. Which filter type is inherently stable regardless of coefficient values?</h4>
+<div class="upper-alpha">
+<ol>
+<li>All-pass filters</li>
+<li>IIR filters</li>
+<li>FIR filters</li>
+<li>Comb filters</li>
+</ol>
+</div>
+<details class="question">
+<summary>Show Answer</summary>
+<p>The correct answer is <strong>C</strong>. FIR filters are inherently stable regardless of coefficient values because they have no feedback, ensuring bounded outputs for bounded inputs. For any FIR filter with finite-length impulse response, the impulse response is absolutely summable, automatically satisfying the BIBO stability condition. IIR filters require careful pole placement inside the unit circle to ensure stability.</p>
+<p><strong>Concept Tested:</strong> FIR Filters, Filter Stability</p>
+<p><strong>See:</strong> <a href="../#finite-impulse-response-filters">Finite Impulse Response Filters</a></p>
+</details>
+<hr />
+<h4 id="6-what-is-a-key-advantage-of-iir-filters-over-fir-filters">6. What is a key advantage of IIR filters over FIR filters?</h4>
+<div class="upper-alpha">
+<ol>
+<li>IIR filters always have linear phase</li>
+<li>IIR filters achieve sharp frequency responses with lower order (fewer coefficients) than equivalent FIR</li>
+<li>IIR filters are always more stable than FIR filters</li>
+<li>IIR filters require less memory than FIR filters in all cases</li>
+</ol>
+</div>
+<details class="question">
+<summary>Show Answer</summary>
+<p>The correct answer is <strong>B</strong>. IIR filters achieve sharp frequency responses with lower order than equivalent FIR filters due to their recursive structure. This computational efficiency (fewer coefficients means fewer multiplications) makes IIR filters attractive when sharp transitions are needed with minimal resources or when emulating classical analog filter characteristics. However, this comes at the cost of potential stability issues and generally nonlinear phase.</p>
+<p><strong>Concept Tested:</strong> IIR Filters</p>
+<p><strong>See:</strong> <a href="../#infinite-impulse-response-filters">Infinite Impulse Response Filters</a></p>
+</details>
+<hr />
+<h4 id="7-what-does-the-filter-order-fundamentally-determine">7. What does the filter order fundamentally determine?</h4>
+<div class="upper-alpha">
+<ol>
+<li>The sampling rate required for the filter</li>
+<li>The filter's capabilities including transition sharpness, stopband attenuation, and passband ripple</li>
+<li>Whether the filter is high-pass or low-pass</li>
+<li>The number of output samples produced</li>
+</ol>
+</div>
+<details class="question">
+<summary>Show Answer</summary>
+<p>The correct answer is <strong>B</strong>. The filter order fundamentally determines a filter's capabilities and limitations. Higher order enables sharper transitions, greater stopband attenuation, and tighter passband ripple tolerance. For FIR filters, order equals length minus one (<span class="arithmatex">\(M = \text{Length} - 1\)</span>). For IIR filters, order equals the maximum of numerator and denominator polynomial degrees. Required order depends on frequency specifications including transition bandwidth, passband ripple, and stopband attenuation.</p>
+<p><strong>Concept Tested:</strong> Filter Order</p>
+<p><strong>See:</strong> <a href="../#filter-order-and-coefficient-specification">Filter Order and Coefficient Specification</a></p>
+</details>
+<hr />
+<h4 id="8-what-is-the-bibo-stability-criterion-for-discrete-time-systems">8. What is the BIBO stability criterion for discrete-time systems?</h4>
+<div class="upper-alpha">
+<ol>
+<li>The sum of all filter coefficients must equal one</li>
+<li>The impulse response must be absolutely summable: <span class="arithmatex">\(\sum_{n=-\infty}^{\infty} |h[n]| &lt; \infty\)</span></li>
+<li>All zeros must lie inside the unit circle</li>
+<li>The frequency response must be real-valued</li>
+</ol>
+</div>
+<details class="question">
+<summary>Show Answer</summary>
+<p>The correct answer is <strong>B</strong>. A system is bounded-input bounded-output (BIBO) stable if every bounded input produces a bounded output. For discrete-time systems, the BIBO stability condition requires the impulse response to be absolutely summable: <span class="arithmatex">\(\sum_{n=-\infty}^{\infty} |h[n]| &lt; \infty\)</span>. FIR filters automatically satisfy this since they have finite-length impulse responses. IIR filters require verification through pole location analysis.</p>
+<p><strong>Concept Tested:</strong> Filter Stability</p>
+<p><strong>See:</strong> <a href="../#bibo-stability-criterion">BIBO Stability Criterion</a></p>
+</details>
+<hr />
+<h4 id="9-how-do-pole-locations-in-the-z-plane-relate-to-iir-filter-stability">9. How do pole locations in the z-plane relate to IIR filter stability?</h4>
+<div class="upper-alpha">
+<ol>
+<li>Poles must lie on the unit circle for stability</li>
+<li>Poles must lie outside the unit circle for stability</li>
+<li>Poles must lie strictly inside the unit circle (<span class="arithmatex">\(|p_i| &lt; 1\)</span>) for stability</li>
+<li>Pole locations do not affect stability</li>
+</ol>
+</div>
+<details class="question">
+<summary>Show Answer</summary>
+<p>The correct answer is <strong>C</strong>. For IIR filters, stability requires all poles to lie strictly inside the unit circle (<span class="arithmatex">\(|p_i| &lt; 1\)</span> for all poles <span class="arithmatex">\(p_i\)</span>). Each pole contributes a term proportional to <span class="arithmatex">\(p_i^n\)</span> to the impulse response; if <span class="arithmatex">\(|p_i| &lt; 1\)</span>, this decays exponentially. If <span class="arithmatex">\(|p_i| \geq 1\)</span>, the term grows or remains constant, violating absolute summability and causing instability. Even a single pole outside the unit circle causes unbounded output growth.</p>
+<p><strong>Concept Tested:</strong> Filter Stability</p>
+<p><strong>See:</strong> <a href="../#pole-location-and-stability">Pole Location and Stability</a></p>
+</details>
+<hr />
+<h4 id="10-what-does-a-comb-filters-frequency-response-resemble">10. What does a comb filter's frequency response resemble?</h4>
+<div class="upper-alpha">
+<ol>
+<li>A single narrow notch at one frequency</li>
+<li>Multiple evenly-spaced passbands and stopbands resembling comb teeth</li>
+<li>A smooth monotonic rolloff</li>
+<li>Random variations across frequency</li>
+</ol>
+</div>
+<details class="question">
+<summary>Show Answer</summary>
+<p>The correct answer is <strong>B</strong>. Comb filters have periodic frequency responses with multiple evenly-spaced passbands and stopbands, resembling the teeth of a comb. The transfer function <span class="arithmatex">\(H(z) = 1 \pm z^{-N}\)</span> creates notches or peaks at multiples of the sampling frequency divided by N. Applications include acoustic echo cancellation, video signal processing for separating luminance and chrominance, and audio effects like flanging and phasing.</p>
+<p><strong>Concept Tested:</strong> Comb Filters</p>
+<p><strong>See:</strong> <a href="../#specialized-filter-types">Specialized Filter Types</a></p>
+</details>
+<hr />
+
+
+
+
+
+
+
+  
+  
+
+
+
+  
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+          <button type="button" class="md-top md-icon" data-md-component="top" hidden>
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8z"/></svg>
+  Back to top
+</button>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+    
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    <script id="__config" type="application/json">{"base": "../../..", "features": ["content.code.copy", "navigation.expand", "navigation.path", "navigation.prune", "navigation.indexes", "toc.follow", "navigation.top", "navigation.footer", "content.action.edit"], "search": "../../../assets/javascripts/workers/search.6ce7567c.min.js", "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}}</script>
+    
+    
+      <script src="../../../assets/javascripts/bundle.83f73b43.min.js"></script>
+      
+        <script src="../../../js/extra.js"></script>
+      
+        <script src="https://unpkg.com/mathjax@3/es5/tex-mml-chtml.js"></script>
+      
+    
+  </body>
+</html>

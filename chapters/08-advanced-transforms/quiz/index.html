@@ -1,0 +1,1470 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+        <meta name="description" content="College Level Textbook on Signal Processing - License is Commons ShareAlike Attribution Noncommercial">
+      
+      
+        <meta name="author" content="Dan McCreary">
+      
+      
+        <link rel="canonical" href="https://dmccreary.github.io/signal-processing/chapters/08-advanced-transforms/quiz/">
+      
+      
+      
+      
+      <link rel="icon" href="../../../img/favicon.ico">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.5.43">
+    
+    
+      
+        <title>Quiz: Advanced Transforms - Signal Processing with AI</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../../assets/stylesheets/main.0253249f.min.css">
+      
+        
+        <link rel="stylesheet" href="../../../assets/stylesheets/palette.06af60db.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+      <link rel="stylesheet" href="../../../css/extra.css">
+    
+    <script>__md_scope=new URL("../../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+  
+
+
+  
+  
+
+<script id="__analytics">function __md_analytics(){function e(){dataLayer.push(arguments)}window.dataLayer=window.dataLayer||[],e("js",new Date),e("config","G-SY3G2ND80K"),document.addEventListener("DOMContentLoaded",(function(){document.forms.search&&document.forms.search.query.addEventListener("blur",(function(){this.value&&e("event","search",{search_term:this.value})}));document$.subscribe((function(){var t=document.forms.feedback;if(void 0!==t)for(var a of t.querySelectorAll("[type=submit]"))a.addEventListener("click",(function(a){a.preventDefault();var n=document.location.pathname,d=this.getAttribute("data-md-value");e("event","feedback",{page:n,data:d}),t.firstElementChild.disabled=!0;var r=t.querySelector(".md-feedback__note [data-md-value='"+d+"']");r&&(r.hidden=!1)})),t.hidden=!1})),location$.subscribe((function(t){e("config","G-SY3G2ND80K",{page_path:t.pathname})}))}));var t=document.createElement("script");t.async=!0,t.src="https://www.googletagmanager.com/gtag/js?id=G-SY3G2ND80K",document.getElementById("__analytics").insertAdjacentElement("afterEnd",t)}</script>
+  
+    <script>"undefined"!=typeof __md_analytics&&__md_analytics()</script>
+  
+
+    
+    
+      
+        <meta  property="og:type"  content="website" >
+      
+        <meta  property="og:title"  content="Quiz: Advanced Transforms - Signal Processing with AI" >
+      
+        <meta  property="og:description"  content="College Level Textbook on Signal Processing - License is Commons ShareAlike Attribution Noncommercial" >
+      
+        <meta  property="og:image"  content="https://dmccreary.github.io/signal-processing/assets/images/social/chapters/08-advanced-transforms/quiz.png" >
+      
+        <meta  property="og:image:type"  content="image/png" >
+      
+        <meta  property="og:image:width"  content="1200" >
+      
+        <meta  property="og:image:height"  content="630" >
+      
+        <meta  property="og:url"  content="https://dmccreary.github.io/signal-processing/chapters/08-advanced-transforms/quiz/" >
+      
+        <meta  name="twitter:card"  content="summary_large_image" >
+      
+        <meta  name="twitter:title"  content="Quiz: Advanced Transforms - Signal Processing with AI" >
+      
+        <meta  name="twitter:description"  content="College Level Textbook on Signal Processing - License is Commons ShareAlike Attribution Noncommercial" >
+      
+        <meta  name="twitter:image"  content="https://dmccreary.github.io/signal-processing/assets/images/social/chapters/08-advanced-transforms/quiz.png" >
+      
+    
+    
+  </head>
+  
+  
+    
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="maroon" data-md-color-accent="gold">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#quiz-advanced-transforms" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+  
+
+<header class="md-header md-header--shadow" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href="../../.." title="Signal Processing with AI" class="md-header__button md-logo" aria-label="Signal Processing with AI" data-md-component="logo">
+      
+  <img src="../../../img/logo-192.png" alt="logo">
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            Signal Processing with AI
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              Quiz: Advanced Transforms
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+    
+    
+    
+    
+      <label class="md-header__button md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+      </label>
+      <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Search">
+        
+        <button type="reset" class="md-search__icon md-icon" title="Clear" aria-label="Clear" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+        </button>
+      </nav>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+    
+      <div class="md-header__source">
+        <a href="https://github.com/dmccreary/signal-processing" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 6.6.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2024 Fonticons, Inc.--><path d="M439.55 236.05 244 40.45a28.87 28.87 0 0 0-40.81 0l-40.66 40.63 51.52 51.52c27.06-9.14 52.68 16.77 43.39 43.68l49.66 49.66c34.23-11.8 61.18 31 35.47 56.69-26.49 26.49-70.21-2.87-56-37.34L240.22 199v121.85c25.3 12.54 22.26 41.85 9.08 55a34.34 34.34 0 0 1-48.55 0c-17.57-17.6-11.07-46.91 11.25-56v-123c-20.8-8.51-24.6-30.74-18.64-45L142.57 101 8.45 235.14a28.86 28.86 0 0 0 0 40.81l195.61 195.6a28.86 28.86 0 0 0 40.8 0l194.69-194.69a28.86 28.86 0 0 0 0-40.81"/></svg>
+  </div>
+  <div class="md-source__repository">
+    GitHub Repo
+  </div>
+</a>
+      </div>
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+
+<nav class="md-nav md-nav--primary" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../../.." title="Signal Processing with AI" class="md-nav__button md-logo" aria-label="Signal Processing with AI" data-md-component="logo">
+      
+  <img src="../../../img/logo-192.png" alt="logo">
+
+    </a>
+    Signal Processing with AI
+  </label>
+  
+    <div class="md-nav__source">
+      <a href="https://github.com/dmccreary/signal-processing" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 6.6.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2024 Fonticons, Inc.--><path d="M439.55 236.05 244 40.45a28.87 28.87 0 0 0-40.81 0l-40.66 40.63 51.52 51.52c27.06-9.14 52.68 16.77 43.39 43.68l49.66 49.66c34.23-11.8 61.18 31 35.47 56.69-26.49 26.49-70.21-2.87-56-37.34L240.22 199v121.85c25.3 12.54 22.26 41.85 9.08 55a34.34 34.34 0 0 1-48.55 0c-17.57-17.6-11.07-46.91 11.25-56v-123c-20.8-8.51-24.6-30.74-18.64-45L142.57 101 8.45 235.14a28.86 28.86 0 0 0 0 40.81l195.61 195.6a28.86 28.86 0 0 0 40.8 0l194.69-194.69a28.86 28.86 0 0 0 0-40.81"/></svg>
+  </div>
+  <div class="md-source__repository">
+    GitHub Repo
+  </div>
+</a>
+    </div>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../.." class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Home
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Table of Contents
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../about/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    About This Website
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../course-description/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Course Description
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+        
+        
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+    <a href="../../../learning-graph/" class="md-nav__link">
+      
+  
+  <span class="md-ellipsis">
+    Learning Graph
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+    
+    
+    
+      
+        
+        
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+    <a href="../../" class="md-nav__link">
+      
+  
+  <span class="md-ellipsis">
+    Chapters
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+    
+    
+    
+      
+        
+        
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+    <a href="../../../sims/" class="md-nav__link">
+      
+  
+  <span class="md-ellipsis">
+    MicroSims
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+    
+    
+    
+      
+        
+        
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+    <a href="../../../stories/" class="md-nav__link">
+      
+  
+  <span class="md-ellipsis">
+    Stories
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+    
+    
+    
+      
+        
+        
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+    <a href="../../../circuits/" class="md-nav__link">
+      
+  
+  <span class="md-ellipsis">
+    Circuits
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+    
+    
+    
+      
+        
+        
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+    <a href="../../../research/" class="md-nav__link">
+      
+  
+  <span class="md-ellipsis">
+    Research
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../report-card/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Report Card
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../checklist/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Checklist
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../glossary/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Glossary
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../how-we-built-this-site/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    How We Built This Site
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../license/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    License
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../references/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    References
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../contact/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Contact
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../ieee-paper-changes/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Paper Changes
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+        
+        
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+    <a href="../../../prompts/" class="md-nav__link">
+      
+  
+  <span class="md-ellipsis">
+    Prompts
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#1-how-does-the-laplace-transform-generalize-the-fourier-transform" class="md-nav__link">
+    <span class="md-ellipsis">
+      1. How does the Laplace transform generalize the Fourier transform?
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#2-what-is-the-significance-of-the-region-of-convergence-roc-in-the-laplace-and-z-transforms" class="md-nav__link">
+    <span class="md-ellipsis">
+      2. What is the significance of the region of convergence (ROC) in the Laplace and Z-transforms?
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#3-for-a-discrete-time-causal-system-what-condition-on-pole-locations-ensures-bibo-stability" class="md-nav__link">
+    <span class="md-ellipsis">
+      3. For a discrete-time causal system, what condition on pole locations ensures BIBO stability?
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#4-what-do-zeros-of-a-transfer-function-hz-represent" class="md-nav__link">
+    <span class="md-ellipsis">
+      4. What do zeros of a transfer function \(H(z)\) represent?
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#5-why-is-the-discrete-cosine-transform-dct-particularly-effective-for-image-and-audio-compression" class="md-nav__link">
+    <span class="md-ellipsis">
+      5. Why is the Discrete Cosine Transform (DCT) particularly effective for image and audio compression?
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#6-what-advantage-do-wavelet-transforms-provide-over-standard-fourier-transforms-for-analyzing-non-stationary-signals" class="md-nav__link">
+    <span class="md-ellipsis">
+      6. What advantage do wavelet transforms provide over standard Fourier transforms for analyzing non-stationary signals?
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#7-in-the-discrete-wavelet-transform-dwt-what-do-the-approximation-and-detail-coefficients-represent" class="md-nav__link">
+    <span class="md-ellipsis">
+      7. In the Discrete Wavelet Transform (DWT), what do the approximation and detail coefficients represent?
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#8-what-fundamental-tradeoff-does-the-short-time-fourier-transform-stft-face" class="md-nav__link">
+    <span class="md-ellipsis">
+      8. What fundamental tradeoff does the Short-Time Fourier Transform (STFT) face?
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#9-what-information-does-a-spectrogram-display" class="md-nav__link">
+    <span class="md-ellipsis">
+      9. What information does a spectrogram display?
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#10-which-transform-is-most-appropriate-for-analyzing-a-single-component-chirp-signal-when-high-time-frequency-resolution-is-required" class="md-nav__link">
+    <span class="md-ellipsis">
+      10. Which transform is most appropriate for analyzing a single-component chirp signal when high time-frequency resolution is required?
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+  
+    <a href="https://github.com/dmccreary/signal-processing/blob/master/docs/chapters/08-advanced-transforms/quiz.md" title="Edit this page" class="md-content__button md-icon">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M10 20H6V4h7v5h5v3.1l2-2V8l-6-6H6c-1.1 0-2 .9-2 2v16c0 1.1.9 2 2 2h4zm10.2-7c.1 0 .3.1.4.2l1.3 1.3c.2.2.2.6 0 .8l-1 1-2.1-2.1 1-1c.1-.1.2-.2.4-.2m0 3.9L14.1 23H12v-2.1l6.1-6.1z"/></svg>
+    </a>
+  
+  
+
+
+<h1 id="quiz-advanced-transforms">Quiz: Advanced Transforms</h1>
+<p>Test your understanding of Laplace and Z-transforms, pole-zero analysis, wavelet transforms, and time-frequency methods.</p>
+<hr />
+<h4 id="1-how-does-the-laplace-transform-generalize-the-fourier-transform">1. How does the Laplace transform generalize the Fourier transform?</h4>
+<div class="upper-alpha">
+<ol>
+<li>It only works for periodic signals</li>
+<li>It introduces a complex frequency variable <span class="arithmatex">\(s = \sigma + j\omega\)</span> enabling analysis of unstable systems</li>
+<li>It eliminates the need for integration</li>
+<li>It only applies to discrete-time signals</li>
+</ol>
+</div>
+<details class="question">
+<summary>Show Answer</summary>
+<p>The correct answer is <strong>B</strong>. The Laplace transform generalizes the Fourier transform by introducing a complex frequency variable <span class="arithmatex">\(s = \sigma + j\omega\)</span> combining the real part <span class="arithmatex">\(\sigma\)</span> (representing exponential growth or decay) and the imaginary part <span class="arithmatex">\(j\omega\)</span> (representing oscillatory frequency). This powerful generalization allows analysis of systems that the Fourier transform cannot handle directly, including unstable systems and transient behavior.</p>
+<p><strong>Concept Tested:</strong> Laplace Transform</p>
+<p><strong>See:</strong> <a href="../#laplace-transform-and-continuous-time-system-analysis">Laplace Transform and Continuous-Time System Analysis</a></p>
+</details>
+<hr />
+<h4 id="2-what-is-the-significance-of-the-region-of-convergence-roc-in-the-laplace-and-z-transforms">2. What is the significance of the region of convergence (ROC) in the Laplace and Z-transforms?</h4>
+<div class="upper-alpha">
+<ol>
+<li>It determines the sampling rate required</li>
+<li>It specifies the values of <span class="arithmatex">\(s\)</span> or <span class="arithmatex">\(z\)</span> for which the transform converges and determines uniqueness of the inverse transform</li>
+<li>It indicates the bandwidth of the signal</li>
+<li>It represents the energy of the signal</li>
+</ol>
+</div>
+<details class="question">
+<summary>Show Answer</summary>
+<p>The correct answer is <strong>B</strong>. The region of convergence (ROC) specifies the values of <span class="arithmatex">\(s\)</span> (for Laplace) or <span class="arithmatex">\(z\)</span> (for Z-transform) for which the transform integral or sum converges to a finite value. Understanding the ROC is essential because it determines both the existence of the transform and the uniqueness of the inverse transform. Different signals with identical transform expressions can be distinguished only by their ROC specifications.</p>
+<p><strong>Concept Tested:</strong> Region of Convergence</p>
+<p><strong>See:</strong> <a href="../#region-of-convergence-and-the-s-plane">Region of Convergence and the S-Plane</a></p>
+</details>
+<hr />
+<h4 id="3-for-a-discrete-time-causal-system-what-condition-on-pole-locations-ensures-bibo-stability">3. For a discrete-time causal system, what condition on pole locations ensures BIBO stability?</h4>
+<div class="upper-alpha">
+<ol>
+<li>All poles must lie on the unit circle (<span class="arithmatex">\(|p_i| = 1\)</span>)</li>
+<li>All poles must lie strictly inside the unit circle (<span class="arithmatex">\(|p_i| &lt; 1\)</span>)</li>
+<li>All poles must lie outside the unit circle (<span class="arithmatex">\(|p_i| &gt; 1\)</span>)</li>
+<li>Pole locations do not affect stability</li>
+</ol>
+</div>
+<details class="question">
+<summary>Show Answer</summary>
+<p>The correct answer is <strong>B</strong>. For discrete-time systems, the fundamental stability criterion states that all poles must lie strictly inside the unit circle (<span class="arithmatex">\(|p_i| &lt; 1\)</span>) for bounded-input bounded-output (BIBO) stability. Each pole <span class="arithmatex">\(p_i\)</span> contributes a term proportional to <span class="arithmatex">\(p_i^n\)</span> to the impulse response; if <span class="arithmatex">\(|p_i| &lt; 1\)</span>, this term decays exponentially. Even a single pole outside the unit circle causes instability with unbounded output growth.</p>
+<p><strong>Concept Tested:</strong> Poles, Pole-Zero Analysis, Z-Plane</p>
+<p><strong>See:</strong> <a href="../#stability-criteria">Stability Criteria</a></p>
+</details>
+<hr />
+<h4 id="4-what-do-zeros-of-a-transfer-function-hz-represent">4. What do zeros of a transfer function <span class="arithmatex">\(H(z)\)</span> represent?</h4>
+<div class="upper-alpha">
+<ol>
+<li>Frequencies where the system has infinite gain</li>
+<li>Complex values of <span class="arithmatex">\(z\)</span> where the numerator equals zero, making <span class="arithmatex">\(H(z) = 0\)</span></li>
+<li>The DC gain of the system</li>
+<li>The sampling rate of the system</li>
+</ol>
+</div>
+<details class="question">
+<summary>Show Answer</summary>
+<p>The correct answer is <strong>B</strong>. Zeros are complex values of <span class="arithmatex">\(z\)</span> where the numerator <span class="arithmatex">\(N(z) = 0\)</span>, making the transfer function <span class="arithmatex">\(H(z) = 0\)</span>. Zeros affect the magnitude and phase response by creating nulls or notches in the frequency response but do not directly impact stability (which is determined by pole locations). The poles and zeros together completely characterize a linear system's behavior except for an overall gain constant.</p>
+<p><strong>Concept Tested:</strong> Zeros, Pole-Zero Plot</p>
+<p><strong>See:</strong> <a href="../#defining-poles-and-zeros">Defining Poles and Zeros</a></p>
+</details>
+<hr />
+<h4 id="5-why-is-the-discrete-cosine-transform-dct-particularly-effective-for-image-and-audio-compression">5. Why is the Discrete Cosine Transform (DCT) particularly effective for image and audio compression?</h4>
+<div class="upper-alpha">
+<ol>
+<li>It produces complex coefficients for better frequency resolution</li>
+<li>It exhibits excellent energy compaction, concentrating most signal energy in a few low-frequency coefficients</li>
+<li>It requires fewer computations than the DFT</li>
+<li>It eliminates all quantization noise</li>
+</ol>
+</div>
+<details class="question">
+<summary>Show Answer</summary>
+<p>The correct answer is <strong>B</strong>. The DCT exhibits excellent energy compaction properties that concentrate most signal energy in a few low-frequency coefficients, making it particularly efficient for compression. Unlike the DFT which uses complex exponentials, the DCT produces real-valued coefficients and forms the basis of JPEG image compression and MP3 audio encoding because it effectively eliminates redundant phase information while compacting energy.</p>
+<p><strong>Concept Tested:</strong> Discrete Cosine Transform</p>
+<p><strong>See:</strong> <a href="../#discrete-cosine-transform">Discrete Cosine Transform</a></p>
+</details>
+<hr />
+<h4 id="6-what-advantage-do-wavelet-transforms-provide-over-standard-fourier-transforms-for-analyzing-non-stationary-signals">6. What advantage do wavelet transforms provide over standard Fourier transforms for analyzing non-stationary signals?</h4>
+<div class="upper-alpha">
+<ol>
+<li>Wavelets are faster to compute than FFTs</li>
+<li>Wavelets provide simultaneous localization in both time and frequency through multiresolution analysis</li>
+<li>Wavelets only work with discrete signals</li>
+<li>Wavelets eliminate all noise from signals</li>
+</ol>
+</div>
+<details class="question">
+<summary>Show Answer</summary>
+<p>The correct answer is <strong>B</strong>. Wavelet transforms provide simultaneous localization in both time and frequency, overcoming fundamental limitations of the Fourier transform for non-stationary signals. Unlike Fourier basis functions that extend infinitely in time, wavelets are localized in both domains, enabling multiresolution analysis of transient phenomena with better time resolution at high frequencies and better frequency resolution at low frequencies.</p>
+<p><strong>Concept Tested:</strong> Wavelet Transform, Continuous Wavelet Transform</p>
+<p><strong>See:</strong> <a href="../#wavelet-transforms-for-multiresolution-analysis">Wavelet Transforms for Multiresolution Analysis</a></p>
+</details>
+<hr />
+<h4 id="7-in-the-discrete-wavelet-transform-dwt-what-do-the-approximation-and-detail-coefficients-represent">7. In the Discrete Wavelet Transform (DWT), what do the approximation and detail coefficients represent?</h4>
+<div class="upper-alpha">
+<ol>
+<li>Real and imaginary parts of the transform</li>
+<li>Low-frequency content (approximation) and high-frequency content (detail) at multiple resolution levels</li>
+<li>Phase and magnitude information</li>
+<li>Time and frequency domain representations</li>
+</ol>
+</div>
+<details class="question">
+<summary>Show Answer</summary>
+<p>The correct answer is <strong>B</strong>. The DWT decomposes a signal into approximation coefficients representing low-frequency (smooth) content and detail coefficients representing high-frequency (fluctuation) content at multiple resolution levels. At each decomposition level, the signal is filtered by complementary low-pass and high-pass filters and downsampled by 2, producing a multiresolution structure with better time resolution at high frequencies and better frequency resolution at low frequencies.</p>
+<p><strong>Concept Tested:</strong> Discrete Wavelet Transform</p>
+<p><strong>See:</strong> <a href="../#discrete-wavelet-transform">Discrete Wavelet Transform</a></p>
+</details>
+<hr />
+<h4 id="8-what-fundamental-tradeoff-does-the-short-time-fourier-transform-stft-face">8. What fundamental tradeoff does the Short-Time Fourier Transform (STFT) face?</h4>
+<div class="upper-alpha">
+<ol>
+<li>Accuracy vs. computational speed</li>
+<li>Time resolution vs. frequency resolution governed by the Heisenberg uncertainty principle</li>
+<li>Real vs. complex representation</li>
+<li>Memory usage vs. processing power</li>
+</ol>
+</div>
+<details class="question">
+<summary>Show Answer</summary>
+<p>The correct answer is <strong>B</strong>. The STFT faces an inherent tradeoff governed by the Heisenberg uncertainty principle: improving time resolution (using narrow windows) degrades frequency resolution and vice versa. Narrow windows provide excellent time localization but poor frequency resolution (few oscillation cycles), while wide windows provide excellent frequency resolution but poor time localization (averaging over long intervals). The window length must be chosen based on application requirements.</p>
+<p><strong>Concept Tested:</strong> Short-Time Fourier Transform</p>
+<p><strong>See:</strong> <a href="../#time-frequency-resolution-tradeoff">Time-Frequency Resolution Tradeoff</a></p>
+</details>
+<hr />
+<h4 id="9-what-information-does-a-spectrogram-display">9. What information does a spectrogram display?</h4>
+<div class="upper-alpha">
+<ol>
+<li>Time on horizontal axis, frequency on vertical axis, with magnitude/power encoded as color or intensity</li>
+<li>Only the phase information of a signal</li>
+<li>Pole-zero locations in the z-plane</li>
+<li>The autocorrelation function of a signal</li>
+</ol>
+</div>
+<details class="question">
+<summary>Show Answer</summary>
+<p>The correct answer is <strong>A</strong>. The spectrogram displays the magnitude squared of the STFT, <span class="arithmatex">\(|X(t,f)|^2\)</span>, as a time-frequency image with time on the horizontal axis, frequency on the vertical axis, and color or intensity representing magnitude or power. This visualization reveals harmonic structure (horizontal bands), transient events (vertical lines), chirps (diagonal patterns), and formant structure in speech signals.</p>
+<p><strong>Concept Tested:</strong> Short-Time Fourier Transform</p>
+<p><strong>See:</strong> <a href="../#spectrogram-visualization">Spectrogram Visualization</a></p>
+</details>
+<hr />
+<h4 id="10-which-transform-is-most-appropriate-for-analyzing-a-single-component-chirp-signal-when-high-time-frequency-resolution-is-required">10. Which transform is most appropriate for analyzing a single-component chirp signal when high time-frequency resolution is required?</h4>
+<div class="upper-alpha">
+<ol>
+<li>Standard Fourier transform</li>
+<li>Discrete Cosine Transform</li>
+<li>Wigner-Ville distribution (despite potential cross-term issues)</li>
+<li>Laplace transform</li>
+</ol>
+</div>
+<details class="question">
+<summary>Show Answer</summary>
+<p>The correct answer is <strong>C</strong>. The Wigner-Ville distribution achieves superior time-frequency resolution compared to spectrograms and reaches the theoretical minimum time-frequency uncertainty. For single-component signals like chirps, it provides excellent instantaneous frequency tracking. While multi-component signals suffer from cross-term interference, the WVD excels for chirp parameter estimation and single-component analysis where high resolution justifies dealing with potential artifacts.</p>
+<p><strong>Concept Tested:</strong> Wavelet Transform</p>
+<p><strong>See:</strong> <a href="../#applications-and-extensions">Applications and Extensions</a></p>
+</details>
+<hr />
+
+
+
+
+
+
+
+  
+  
+
+
+
+  
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+          <button type="button" class="md-top md-icon" data-md-component="top" hidden>
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8z"/></svg>
+  Back to top
+</button>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+    
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    <script id="__config" type="application/json">{"base": "../../..", "features": ["content.code.copy", "navigation.expand", "navigation.path", "navigation.prune", "navigation.indexes", "toc.follow", "navigation.top", "navigation.footer", "content.action.edit"], "search": "../../../assets/javascripts/workers/search.6ce7567c.min.js", "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}}</script>
+    
+    
+      <script src="../../../assets/javascripts/bundle.83f73b43.min.js"></script>
+      
+        <script src="../../../js/extra.js"></script>
+      
+        <script src="https://unpkg.com/mathjax@3/es5/tex-mml-chtml.js"></script>
+      
+    
+  </body>
+</html>

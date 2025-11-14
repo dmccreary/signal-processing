@@ -1,0 +1,1470 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+        <meta name="description" content="College Level Textbook on Signal Processing - License is Commons ShareAlike Attribution Noncommercial">
+      
+      
+        <meta name="author" content="Dan McCreary">
+      
+      
+        <link rel="canonical" href="https://dmccreary.github.io/signal-processing/chapters/02-introduction-to-signals-and-systems/quiz/">
+      
+      
+      
+      
+      <link rel="icon" href="../../../img/favicon.ico">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.5.43">
+    
+    
+      
+        <title>Quiz: Introduction to Signals and Systems - Signal Processing with AI</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../../assets/stylesheets/main.0253249f.min.css">
+      
+        
+        <link rel="stylesheet" href="../../../assets/stylesheets/palette.06af60db.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+      <link rel="stylesheet" href="../../../css/extra.css">
+    
+    <script>__md_scope=new URL("../../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+  
+
+
+  
+  
+
+<script id="__analytics">function __md_analytics(){function e(){dataLayer.push(arguments)}window.dataLayer=window.dataLayer||[],e("js",new Date),e("config","G-SY3G2ND80K"),document.addEventListener("DOMContentLoaded",(function(){document.forms.search&&document.forms.search.query.addEventListener("blur",(function(){this.value&&e("event","search",{search_term:this.value})}));document$.subscribe((function(){var t=document.forms.feedback;if(void 0!==t)for(var a of t.querySelectorAll("[type=submit]"))a.addEventListener("click",(function(a){a.preventDefault();var n=document.location.pathname,d=this.getAttribute("data-md-value");e("event","feedback",{page:n,data:d}),t.firstElementChild.disabled=!0;var r=t.querySelector(".md-feedback__note [data-md-value='"+d+"']");r&&(r.hidden=!1)})),t.hidden=!1})),location$.subscribe((function(t){e("config","G-SY3G2ND80K",{page_path:t.pathname})}))}));var t=document.createElement("script");t.async=!0,t.src="https://www.googletagmanager.com/gtag/js?id=G-SY3G2ND80K",document.getElementById("__analytics").insertAdjacentElement("afterEnd",t)}</script>
+  
+    <script>"undefined"!=typeof __md_analytics&&__md_analytics()</script>
+  
+
+    
+    
+      
+        <meta  property="og:type"  content="website" >
+      
+        <meta  property="og:title"  content="Quiz: Introduction to Signals and Systems - Signal Processing with AI" >
+      
+        <meta  property="og:description"  content="College Level Textbook on Signal Processing - License is Commons ShareAlike Attribution Noncommercial" >
+      
+        <meta  property="og:image"  content="https://dmccreary.github.io/signal-processing/assets/images/social/chapters/02-introduction-to-signals-and-systems/quiz.png" >
+      
+        <meta  property="og:image:type"  content="image/png" >
+      
+        <meta  property="og:image:width"  content="1200" >
+      
+        <meta  property="og:image:height"  content="630" >
+      
+        <meta  property="og:url"  content="https://dmccreary.github.io/signal-processing/chapters/02-introduction-to-signals-and-systems/quiz/" >
+      
+        <meta  name="twitter:card"  content="summary_large_image" >
+      
+        <meta  name="twitter:title"  content="Quiz: Introduction to Signals and Systems - Signal Processing with AI" >
+      
+        <meta  name="twitter:description"  content="College Level Textbook on Signal Processing - License is Commons ShareAlike Attribution Noncommercial" >
+      
+        <meta  name="twitter:image"  content="https://dmccreary.github.io/signal-processing/assets/images/social/chapters/02-introduction-to-signals-and-systems/quiz.png" >
+      
+    
+    
+  </head>
+  
+  
+    
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="maroon" data-md-color-accent="gold">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#quiz-introduction-to-signals-and-systems" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+  
+
+<header class="md-header md-header--shadow" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href="../../.." title="Signal Processing with AI" class="md-header__button md-logo" aria-label="Signal Processing with AI" data-md-component="logo">
+      
+  <img src="../../../img/logo-192.png" alt="logo">
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            Signal Processing with AI
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              Quiz: Introduction to Signals and Systems
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+    
+    
+    
+    
+      <label class="md-header__button md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+      </label>
+      <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Search">
+        
+        <button type="reset" class="md-search__icon md-icon" title="Clear" aria-label="Clear" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+        </button>
+      </nav>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+    
+      <div class="md-header__source">
+        <a href="https://github.com/dmccreary/signal-processing" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 6.6.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2024 Fonticons, Inc.--><path d="M439.55 236.05 244 40.45a28.87 28.87 0 0 0-40.81 0l-40.66 40.63 51.52 51.52c27.06-9.14 52.68 16.77 43.39 43.68l49.66 49.66c34.23-11.8 61.18 31 35.47 56.69-26.49 26.49-70.21-2.87-56-37.34L240.22 199v121.85c25.3 12.54 22.26 41.85 9.08 55a34.34 34.34 0 0 1-48.55 0c-17.57-17.6-11.07-46.91 11.25-56v-123c-20.8-8.51-24.6-30.74-18.64-45L142.57 101 8.45 235.14a28.86 28.86 0 0 0 0 40.81l195.61 195.6a28.86 28.86 0 0 0 40.8 0l194.69-194.69a28.86 28.86 0 0 0 0-40.81"/></svg>
+  </div>
+  <div class="md-source__repository">
+    GitHub Repo
+  </div>
+</a>
+      </div>
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+
+<nav class="md-nav md-nav--primary" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../../.." title="Signal Processing with AI" class="md-nav__button md-logo" aria-label="Signal Processing with AI" data-md-component="logo">
+      
+  <img src="../../../img/logo-192.png" alt="logo">
+
+    </a>
+    Signal Processing with AI
+  </label>
+  
+    <div class="md-nav__source">
+      <a href="https://github.com/dmccreary/signal-processing" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 6.6.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2024 Fonticons, Inc.--><path d="M439.55 236.05 244 40.45a28.87 28.87 0 0 0-40.81 0l-40.66 40.63 51.52 51.52c27.06-9.14 52.68 16.77 43.39 43.68l49.66 49.66c34.23-11.8 61.18 31 35.47 56.69-26.49 26.49-70.21-2.87-56-37.34L240.22 199v121.85c25.3 12.54 22.26 41.85 9.08 55a34.34 34.34 0 0 1-48.55 0c-17.57-17.6-11.07-46.91 11.25-56v-123c-20.8-8.51-24.6-30.74-18.64-45L142.57 101 8.45 235.14a28.86 28.86 0 0 0 0 40.81l195.61 195.6a28.86 28.86 0 0 0 40.8 0l194.69-194.69a28.86 28.86 0 0 0 0-40.81"/></svg>
+  </div>
+  <div class="md-source__repository">
+    GitHub Repo
+  </div>
+</a>
+    </div>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../.." class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Home
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Table of Contents
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../about/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    About This Website
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../course-description/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Course Description
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+        
+        
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+    <a href="../../../learning-graph/" class="md-nav__link">
+      
+  
+  <span class="md-ellipsis">
+    Learning Graph
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+    
+    
+    
+      
+        
+        
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+    <a href="../../" class="md-nav__link">
+      
+  
+  <span class="md-ellipsis">
+    Chapters
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+    
+    
+    
+      
+        
+        
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+    <a href="../../../sims/" class="md-nav__link">
+      
+  
+  <span class="md-ellipsis">
+    MicroSims
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+    
+    
+    
+      
+        
+        
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+    <a href="../../../stories/" class="md-nav__link">
+      
+  
+  <span class="md-ellipsis">
+    Stories
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+    
+    
+    
+      
+        
+        
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+    <a href="../../../circuits/" class="md-nav__link">
+      
+  
+  <span class="md-ellipsis">
+    Circuits
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+    
+    
+    
+      
+        
+        
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+    <a href="../../../research/" class="md-nav__link">
+      
+  
+  <span class="md-ellipsis">
+    Research
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../report-card/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Report Card
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../checklist/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Checklist
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../glossary/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Glossary
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../how-we-built-this-site/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    How We Built This Site
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../license/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    License
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../references/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    References
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../contact/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Contact
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../ieee-paper-changes/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Paper Changes
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+        
+        
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+    <a href="../../../prompts/" class="md-nav__link">
+      
+  
+  <span class="md-ellipsis">
+    Prompts
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#1-what-is-a-system-in-the-context-of-signal-processing" class="md-nav__link">
+    <span class="md-ellipsis">
+      1. What is a system in the context of signal processing?
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#2-which-notation-is-used-to-distinguish-discrete-time-signals-from-continuous-time-signals" class="md-nav__link">
+    <span class="md-ellipsis">
+      2. Which notation is used to distinguish discrete-time signals from continuous-time signals?
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#3-what-condition-must-a-periodic-signal-satisfy" class="md-nav__link">
+    <span class="md-ellipsis">
+      3. What condition must a periodic signal satisfy?
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#4-what-is-the-definition-of-the-unit-step-function-ut-for-t-geq-0" class="md-nav__link">
+    <span class="md-ellipsis">
+      4. What is the definition of the unit step function \(u(t)\) for \(t \geq 0\)?
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#5-how-can-any-arbitrary-signal-be-decomposed-into-even-and-odd-components" class="md-nav__link">
+    <span class="md-ellipsis">
+      5. How can any arbitrary signal be decomposed into even and odd components?
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#6-what-is-the-key-property-of-the-unit-impulse-dirac-delta-function-deltat" class="md-nav__link">
+    <span class="md-ellipsis">
+      6. What is the key property of the unit impulse (Dirac delta) function \(\delta(t)\)?
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#7-for-a-sinusoidal-signal-xt-acosomega-t-phi-what-does-the-parameter-omega-represent" class="md-nav__link">
+    <span class="md-ellipsis">
+      7. For a sinusoidal signal \(x(t) = A\cos(\omega t + \phi)\), what does the parameter \(\omega\) represent?
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#8-given-a-signal-xt-what-is-the-effect-of-the-time-shifting-operation-yt-xt-3" class="md-nav__link">
+    <span class="md-ellipsis">
+      8. Given a signal \(x(t)\), what is the effect of the time shifting operation \(y(t) = x(t - 3)\)?
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#9-if-you-apply-time-scaling-to-signal-xt-to-create-yt-x2t-what-happens-to-the-signal" class="md-nav__link">
+    <span class="md-ellipsis">
+      9. If you apply time scaling to signal \(x(t)\) to create \(y(t) = x(2t)\), what happens to the signal?
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#10-what-distinguishes-energy-signals-from-power-signals" class="md-nav__link">
+    <span class="md-ellipsis">
+      10. What distinguishes energy signals from power signals?
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+  
+    <a href="https://github.com/dmccreary/signal-processing/blob/master/docs/chapters/02-introduction-to-signals-and-systems/quiz.md" title="Edit this page" class="md-content__button md-icon">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M10 20H6V4h7v5h5v3.1l2-2V8l-6-6H6c-1.1 0-2 .9-2 2v16c0 1.1.9 2 2 2h4zm10.2-7c.1 0 .3.1.4.2l1.3 1.3c.2.2.2.6 0 .8l-1 1-2.1-2.1 1-1c.1-.1.2-.2.4-.2m0 3.9L14.1 23H12v-2.1l6.1-6.1z"/></svg>
+    </a>
+  
+  
+
+
+<h1 id="quiz-introduction-to-signals-and-systems">Quiz: Introduction to Signals and Systems</h1>
+<p>Test your understanding of fundamental signal and system concepts.</p>
+<hr />
+<h4 id="1-what-is-a-system-in-the-context-of-signal-processing">1. What is a system in the context of signal processing?</h4>
+<div class="upper-alpha">
+<ol>
+<li>A collection of unrelated mathematical equations</li>
+<li>An entity that processes input signals to produce output signals according to specific rules</li>
+<li>A physical device only, not including software algorithms</li>
+<li>A method for storing digital data</li>
+</ol>
+</div>
+<details class="question">
+<summary>Show Answer</summary>
+<p>The correct answer is <strong>B</strong>. A system is an entity that processes input signals to produce output signals according to specific rules or mathematical operations. The fundamental relationship is expressed as <span class="arithmatex">\(y(t) = \mathcal{T}[x(t)]\)</span>, where <span class="arithmatex">\(x(t)\)</span> is the input signal, <span class="arithmatex">\(y(t)\)</span> is the output signal, and <span class="arithmatex">\(\mathcal{T}\)</span> represents the transformation operation. Systems can be physical devices like filters or amplifiers, or algorithmic processes implemented in software.</p>
+<p><strong>Concept Tested:</strong> Systems</p>
+<p><strong>See:</strong> <a href="../#systems">Systems</a></p>
+</details>
+<hr />
+<h4 id="2-which-notation-is-used-to-distinguish-discrete-time-signals-from-continuous-time-signals">2. Which notation is used to distinguish discrete-time signals from continuous-time signals?</h4>
+<div class="upper-alpha">
+<ol>
+<li><span class="arithmatex">\(x(t)\)</span> for discrete-time, <span class="arithmatex">\(x[n]\)</span> for continuous-time</li>
+<li><span class="arithmatex">\(x[n]\)</span> for discrete-time where <span class="arithmatex">\(n\)</span> is an integer, <span class="arithmatex">\(x(t)\)</span> for continuous-time where <span class="arithmatex">\(t\)</span> is real-valued</li>
+<li>Both use <span class="arithmatex">\(x(t)\)</span> with different subscripts</li>
+<li><span class="arithmatex">\(x_d(t)\)</span> for discrete-time, <span class="arithmatex">\(x_c(t)\)</span> for continuous-time</li>
+</ol>
+</div>
+<details class="question">
+<summary>Show Answer</summary>
+<p>The correct answer is <strong>B</strong>. Discrete-time signals are represented as <span class="arithmatex">\(x[n]\)</span> where <span class="arithmatex">\(n\)</span> is an integer-valued index, while continuous-time signals are represented as <span class="arithmatex">\(x(t)\)</span> where <span class="arithmatex">\(t\)</span> is a real-valued continuous variable. The square bracket notation <span class="arithmatex">\(x[n]\)</span> emphasizes that the signal exists only at specific discrete time instances, typically at integer multiples of some sampling period.</p>
+<p><strong>Concept Tested:</strong> Discrete-Time Signals, Continuous-Time Signals</p>
+<p><strong>See:</strong> <a href="../#continuous-time-vs-discrete-time-signals">Continuous-Time vs. Discrete-Time Signals</a></p>
+</details>
+<hr />
+<h4 id="3-what-condition-must-a-periodic-signal-satisfy">3. What condition must a periodic signal satisfy?</h4>
+<div class="upper-alpha">
+<ol>
+<li><span class="arithmatex">\(x(t) = -x(-t)\)</span> for all <span class="arithmatex">\(t\)</span></li>
+<li><span class="arithmatex">\(x(t) = x(-t)\)</span> for all <span class="arithmatex">\(t\)</span></li>
+<li><span class="arithmatex">\(x(t) = x(t + T)\)</span> for all <span class="arithmatex">\(t\)</span>, where <span class="arithmatex">\(T\)</span> is the fundamental period</li>
+<li><span class="arithmatex">\(\int_{-\infty}^{\infty} |x(t)|^2 dt &lt; \infty\)</span></li>
+</ol>
+</div>
+<details class="question">
+<summary>Show Answer</summary>
+<p>The correct answer is <strong>C</strong>. Periodic signals must satisfy <span class="arithmatex">\(x(t) = x(t + T)\)</span> for all values of <span class="arithmatex">\(t\)</span>, where <span class="arithmatex">\(T\)</span> is the fundamental period. This means the signal repeats its values at regular intervals. The frequency <span class="arithmatex">\(f = 1/T\)</span> describes how many complete cycles occur per unit time. Common examples include sinusoids, square waves, and carrier signals in radio transmission.</p>
+<p><strong>Concept Tested:</strong> Periodic Signals</p>
+<p><strong>See:</strong> <a href="../#temporal-properties-periodicity">Temporal Properties: Periodicity</a></p>
+</details>
+<hr />
+<h4 id="4-what-is-the-definition-of-the-unit-step-function-ut-for-t-geq-0">4. What is the definition of the unit step function <span class="arithmatex">\(u(t)\)</span> for <span class="arithmatex">\(t \geq 0\)</span>?</h4>
+<div class="upper-alpha">
+<ol>
+<li><span class="arithmatex">\(u(t) = 1\)</span></li>
+<li><span class="arithmatex">\(u(t) = 0\)</span></li>
+<li><span class="arithmatex">\(u(t) = t\)</span></li>
+<li><span class="arithmatex">\(u(t) = \infty\)</span></li>
+</ol>
+</div>
+<details class="question">
+<summary>Show Answer</summary>
+<p>The correct answer is <strong>A</strong>. The unit step function is defined as <span class="arithmatex">\(u(t) = 1\)</span> for <span class="arithmatex">\(t \geq 0\)</span> and <span class="arithmatex">\(u(t) = 0\)</span> for <span class="arithmatex">\(t &lt; 0\)</span>. This function represents an instantaneous transition from zero to one at time zero and serves as a building block for constructing more complex signals and modeling switching operations in circuits and control systems.</p>
+<p><strong>Concept Tested:</strong> Unit Step Function</p>
+<p><strong>See:</strong> <a href="../#unit-step-function">Unit Step Function</a></p>
+</details>
+<hr />
+<h4 id="5-how-can-any-arbitrary-signal-be-decomposed-into-even-and-odd-components">5. How can any arbitrary signal be decomposed into even and odd components?</h4>
+<div class="upper-alpha">
+<ol>
+<li>Using Fourier transform only</li>
+<li>Using the formulas <span class="arithmatex">\(x_e(t) = \frac{x(t) + x(-t)}{2}\)</span> and <span class="arithmatex">\(x_o(t) = \frac{x(t) - x(-t)}{2}\)</span></li>
+<li>By separating positive and negative amplitude values</li>
+<li>Using integration over the entire time domain</li>
+</ol>
+</div>
+<details class="question">
+<summary>Show Answer</summary>
+<p>The correct answer is <strong>B</strong>. Any arbitrary signal can be decomposed into an even component using <span class="arithmatex">\(x_e(t) = \frac{x(t) + x(-t)}{2}\)</span> and an odd component using <span class="arithmatex">\(x_o(t) = \frac{x(t) - x(-t)}{2}\)</span>. The original signal can be reconstructed as <span class="arithmatex">\(x(t) = x_e(t) + x_o(t)\)</span>. This decomposition is valuable in many analytical contexts, particularly for understanding signal behavior under various transformations.</p>
+<p><strong>Concept Tested:</strong> Even Signals, Odd Signals</p>
+<p><strong>See:</strong> <a href="../#symmetry-properties">Symmetry Properties</a></p>
+</details>
+<hr />
+<h4 id="6-what-is-the-key-property-of-the-unit-impulse-dirac-delta-function-deltat">6. What is the key property of the unit impulse (Dirac delta) function <span class="arithmatex">\(\delta(t)\)</span>?</h4>
+<div class="upper-alpha">
+<ol>
+<li>It has infinite duration and unit amplitude</li>
+<li>It equals 1 at <span class="arithmatex">\(t = 0\)</span> and 0 everywhere else</li>
+<li>It satisfies the sifting property: <span class="arithmatex">\(\int_{-\infty}^{\infty} f(t)\delta(t-t_0) dt = f(t_0)\)</span></li>
+<li>It represents a rectangular pulse of unit area</li>
+</ol>
+</div>
+<details class="question">
+<summary>Show Answer</summary>
+<p>The correct answer is <strong>C</strong>. The unit impulse function is defined through its sifting property: <span class="arithmatex">\(\int_{-\infty}^{\infty} f(t)\delta(t-t_0) dt = f(t_0)\)</span>. This represents an infinitely narrow, infinitely tall pulse with unit area. The impulse response of a system (its output when the input is an impulse) completely characterizes the system's behavior for all possible inputs through convolution operations.</p>
+<p><strong>Concept Tested:</strong> Unit Impulse Function</p>
+<p><strong>See:</strong> <a href="../#unit-impulse-function">Unit Impulse Function</a></p>
+</details>
+<hr />
+<h4 id="7-for-a-sinusoidal-signal-xt-acosomega-t-phi-what-does-the-parameter-omega-represent">7. For a sinusoidal signal <span class="arithmatex">\(x(t) = A\cos(\omega t + \phi)\)</span>, what does the parameter <span class="arithmatex">\(\omega\)</span> represent?</h4>
+<div class="upper-alpha">
+<ol>
+<li>The amplitude in volts</li>
+<li>The phase angle in radians</li>
+<li>The period in seconds</li>
+<li>The angular frequency in radians per second</li>
+</ol>
+</div>
+<details class="question">
+<summary>Show Answer</summary>
+<p>The correct answer is <strong>D</strong>. In the sinusoidal signal <span class="arithmatex">\(x(t) = A\cos(\omega t + \phi)\)</span>, the parameter <span class="arithmatex">\(\omega\)</span> represents the angular frequency in radians per second, where <span class="arithmatex">\(\omega = 2\pi f\)</span> and <span class="arithmatex">\(f\)</span> is the frequency in Hertz. The amplitude is represented by <span class="arithmatex">\(A\)</span>, the phase angle by <span class="arithmatex">\(\phi\)</span>, and the period is <span class="arithmatex">\(T = 2\pi/\omega = 1/f\)</span>.</p>
+<p><strong>Concept Tested:</strong> Sinusoidal Signals, Signal Frequency</p>
+<p><strong>See:</strong> <a href="../#sinusoidal-signals">Sinusoidal Signals</a></p>
+</details>
+<hr />
+<h4 id="8-given-a-signal-xt-what-is-the-effect-of-the-time-shifting-operation-yt-xt-3">8. Given a signal <span class="arithmatex">\(x(t)\)</span>, what is the effect of the time shifting operation <span class="arithmatex">\(y(t) = x(t - 3)\)</span>?</h4>
+<div class="upper-alpha">
+<ol>
+<li>The signal is compressed by a factor of 3</li>
+<li>The signal is delayed (shifted right) by 3 time units</li>
+<li>The signal is advanced (shifted left) by 3 time units</li>
+<li>The signal amplitude is multiplied by 3</li>
+</ol>
+</div>
+<details class="question">
+<summary>Show Answer</summary>
+<p>The correct answer is <strong>B</strong>. The operation <span class="arithmatex">\(y(t) = x(t - t_0)\)</span> with <span class="arithmatex">\(t_0 = 3 &gt; 0\)</span> delays the signal, shifting it to the right by 3 time units. A positive value of <span class="arithmatex">\(t_0\)</span> always delays the signal, while a negative value would advance it (shift left). Time shifting translates a signal forward or backward in time without changing its shape.</p>
+<p><strong>Concept Tested:</strong> Time Shifting</p>
+<p><strong>See:</strong> <a href="../#time-shifting">Time Shifting</a></p>
+</details>
+<hr />
+<h4 id="9-if-you-apply-time-scaling-to-signal-xt-to-create-yt-x2t-what-happens-to-the-signal">9. If you apply time scaling to signal <span class="arithmatex">\(x(t)\)</span> to create <span class="arithmatex">\(y(t) = x(2t)\)</span>, what happens to the signal?</h4>
+<div class="upper-alpha">
+<ol>
+<li>The signal is expanded (plays slower) and frequencies decrease</li>
+<li>The signal is compressed (plays faster) and frequencies increase by factor 2</li>
+<li>The signal is reversed in time</li>
+<li>The signal amplitude is doubled</li>
+</ol>
+</div>
+<details class="question">
+<summary>Show Answer</summary>
+<p>The correct answer is <strong>B</strong>. When <span class="arithmatex">\(y(t) = x(at)\)</span> with <span class="arithmatex">\(a = 2 &gt; 1\)</span>, the signal is compressed (plays faster), and all frequencies are increased by factor 2. Time scaling with <span class="arithmatex">\(a &gt; 1\)</span> compresses the signal, while <span class="arithmatex">\(0 &lt; a &lt; 1\)</span> would expand it. The operation affects both the duration and frequency content of signals, with compression increasing frequencies and expansion decreasing them proportionally.</p>
+<p><strong>Concept Tested:</strong> Time Scaling</p>
+<p><strong>See:</strong> <a href="../#time-scaling">Time Scaling</a></p>
+</details>
+<hr />
+<h4 id="10-what-distinguishes-energy-signals-from-power-signals">10. What distinguishes energy signals from power signals?</h4>
+<div class="upper-alpha">
+<ol>
+<li>Energy signals have infinite energy and zero power; power signals have finite power</li>
+<li>Energy signals have finite total energy and zero average power; power signals have infinite energy but finite average power</li>
+<li>Energy signals are always periodic; power signals are always aperiodic</li>
+<li>Energy signals exist only in digital systems; power signals exist only in analog systems</li>
+</ol>
+</div>
+<details class="question">
+<summary>Show Answer</summary>
+<p>The correct answer is <strong>B</strong>. Energy signals possess finite total energy (<span class="arithmatex">\(E = \int_{-\infty}^{\infty} |x(t)|^2 dt &lt; \infty\)</span>) and consequently have zero average power. Power signals have infinite energy but finite average power (<span class="arithmatex">\(P = \lim_{T \to \infty} \frac{1}{2T} \int_{-T}^{T} |x(t)|^2 dt &lt; \infty\)</span>). Energy signals are necessarily time-limited or decay rapidly, while periodic signals constitute the primary class of power signals due to their indefinite repetition.</p>
+<p><strong>Concept Tested:</strong> Energy Signals, Power Signals</p>
+<p><strong>See:</strong> <a href="../#energy-and-power-classifications">Energy and Power Classifications</a></p>
+</details>
+<hr />
+
+
+
+
+
+
+
+  
+  
+
+
+
+  
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+          <button type="button" class="md-top md-icon" data-md-component="top" hidden>
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8z"/></svg>
+  Back to top
+</button>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+    
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    <script id="__config" type="application/json">{"base": "../../..", "features": ["content.code.copy", "navigation.expand", "navigation.path", "navigation.prune", "navigation.indexes", "toc.follow", "navigation.top", "navigation.footer", "content.action.edit"], "search": "../../../assets/javascripts/workers/search.6ce7567c.min.js", "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}}</script>
+    
+    
+      <script src="../../../assets/javascripts/bundle.83f73b43.min.js"></script>
+      
+        <script src="../../../js/extra.js"></script>
+      
+        <script src="https://unpkg.com/mathjax@3/es5/tex-mml-chtml.js"></script>
+      
+    
+  </body>
+</html>
