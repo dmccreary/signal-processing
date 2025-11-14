@@ -4,7 +4,7 @@ hide:
 ---
 # Base and Treble Amplifier Controls
 
-<iframe src="base-and-treble.html" height="420" scrolling="no" style="overflow: hidden;"></iframe>
+<iframe src="main.html" height="420" scrolling="no" style="overflow: hidden;"></iframe>
 
 To use this MicroSim on your web page, just copy this code into your web page.
 ```html
