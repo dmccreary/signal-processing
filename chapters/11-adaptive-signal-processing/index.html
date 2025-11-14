@@ -1,0 +1,2634 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+        <meta name="description" content="College Level Textbook on Signal Processing - License is Commons ShareAlike Attribution Noncommercial">
+      
+      
+        <meta name="author" content="Dan McCreary">
+      
+      
+        <link rel="canonical" href="https://dmccreary.github.io/signal-processing/chapters/11-adaptive-signal-processing/">
+      
+      
+        <link rel="prev" href="../10-advanced-filter-design-and-implementation/">
+      
+      
+        <link rel="next" href="../12-stochastic-processes-and-random-signals/">
+      
+      
+      <link rel="icon" href="../../img/favicon.ico">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.6.12">
+    
+    
+      
+        <title>Ch 11 - Adaptive Processing - Signal Processing with AI</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../assets/stylesheets/main.2afb09e1.min.css">
+      
+        
+        <link rel="stylesheet" href="../../assets/stylesheets/palette.06af60db.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+      <link rel="stylesheet" href="../../css/extra.css">
+    
+    <script>__md_scope=new URL("../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+  
+
+
+  
+  
+
+<script id="__analytics">function __md_analytics(){function e(){dataLayer.push(arguments)}window.dataLayer=window.dataLayer||[],e("js",new Date),e("config","G-SY3G2ND80K"),document.addEventListener("DOMContentLoaded",(function(){document.forms.search&&document.forms.search.query.addEventListener("blur",(function(){this.value&&e("event","search",{search_term:this.value})}));document$.subscribe((function(){var t=document.forms.feedback;if(void 0!==t)for(var a of t.querySelectorAll("[type=submit]"))a.addEventListener("click",(function(a){a.preventDefault();var n=document.location.pathname,d=this.getAttribute("data-md-value");e("event","feedback",{page:n,data:d}),t.firstElementChild.disabled=!0;var r=t.querySelector(".md-feedback__note [data-md-value='"+d+"']");r&&(r.hidden=!1)})),t.hidden=!1})),location$.subscribe((function(t){e("config","G-SY3G2ND80K",{page_path:t.pathname})}))}));var t=document.createElement("script");t.async=!0,t.src="https://www.googletagmanager.com/gtag/js?id=G-SY3G2ND80K",document.getElementById("__analytics").insertAdjacentElement("afterEnd",t)}</script>
+  
+    <script>"undefined"!=typeof __md_analytics&&__md_analytics()</script>
+  
+
+    
+    
+      
+        <meta  property="og:type"  content="website" >
+      
+        <meta  property="og:title"  content="Ch 11 - Adaptive Processing - Signal Processing with AI" >
+      
+        <meta  property="og:description"  content="College Level Textbook on Signal Processing - License is Commons ShareAlike Attribution Noncommercial" >
+      
+        <meta  property="og:image"  content="https://dmccreary.github.io/signal-processing/assets/images/social/chapters/11-adaptive-signal-processing/index.png" >
+      
+        <meta  property="og:image:type"  content="image/png" >
+      
+        <meta  property="og:image:width"  content="1200" >
+      
+        <meta  property="og:image:height"  content="630" >
+      
+        <meta  property="og:url"  content="https://dmccreary.github.io/signal-processing/chapters/11-adaptive-signal-processing/" >
+      
+        <meta  name="twitter:card"  content="summary_large_image" >
+      
+        <meta  name="twitter:title"  content="Ch 11 - Adaptive Processing - Signal Processing with AI" >
+      
+        <meta  name="twitter:description"  content="College Level Textbook on Signal Processing - License is Commons ShareAlike Attribution Noncommercial" >
+      
+        <meta  name="twitter:image"  content="https://dmccreary.github.io/signal-processing/assets/images/social/chapters/11-adaptive-signal-processing/index.png" >
+      
+    
+    
+  </head>
+  
+  
+    
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="maroon" data-md-color-accent="gold">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#adaptive-signal-processing" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+  
+
+<header class="md-header md-header--shadow" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href="../.." title="Signal Processing with AI" class="md-header__button md-logo" aria-label="Signal Processing with AI" data-md-component="logo">
+      
+  <img src="../../img/logo-192.png" alt="logo">
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            Signal Processing with AI
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              Ch 11 - Adaptive Processing
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+    
+    
+    
+    
+      
+      
+        <label class="md-header__button md-icon" for="__search">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        </label>
+        <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Search">
+        
+        <button type="reset" class="md-search__icon md-icon" title="Clear" aria-label="Clear" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+        </button>
+      </nav>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+      
+    
+    
+      <div class="md-header__source">
+        <a href="https://github.com/dmccreary/signal-processing" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 6.7.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2024 Fonticons, Inc.--><path d="M439.55 236.05 244 40.45a28.87 28.87 0 0 0-40.81 0l-40.66 40.63 51.52 51.52c27.06-9.14 52.68 16.77 43.39 43.68l49.66 49.66c34.23-11.8 61.18 31 35.47 56.69-26.49 26.49-70.21-2.87-56-37.34L240.22 199v121.85c25.3 12.54 22.26 41.85 9.08 55a34.34 34.34 0 0 1-48.55 0c-17.57-17.6-11.07-46.91 11.25-56v-123c-20.8-8.51-24.6-30.74-18.64-45L142.57 101 8.45 235.14a28.86 28.86 0 0 0 0 40.81l195.61 195.6a28.86 28.86 0 0 0 40.8 0l194.69-194.69a28.86 28.86 0 0 0 0-40.81"/></svg>
+  </div>
+  <div class="md-source__repository">
+    GitHub Repo
+  </div>
+</a>
+      </div>
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+
+<nav class="md-nav md-nav--primary" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../.." title="Signal Processing with AI" class="md-nav__button md-logo" aria-label="Signal Processing with AI" data-md-component="logo">
+      
+  <img src="../../img/logo-192.png" alt="logo">
+
+    </a>
+    Signal Processing with AI
+  </label>
+  
+    <div class="md-nav__source">
+      <a href="https://github.com/dmccreary/signal-processing" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 6.7.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2024 Fonticons, Inc.--><path d="M439.55 236.05 244 40.45a28.87 28.87 0 0 0-40.81 0l-40.66 40.63 51.52 51.52c27.06-9.14 52.68 16.77 43.39 43.68l49.66 49.66c34.23-11.8 61.18 31 35.47 56.69-26.49 26.49-70.21-2.87-56-37.34L240.22 199v121.85c25.3 12.54 22.26 41.85 9.08 55a34.34 34.34 0 0 1-48.55 0c-17.57-17.6-11.07-46.91 11.25-56v-123c-20.8-8.51-24.6-30.74-18.64-45L142.57 101 8.45 235.14a28.86 28.86 0 0 0 0 40.81l195.61 195.6a28.86 28.86 0 0 0 40.8 0l194.69-194.69a28.86 28.86 0 0 0 0-40.81"/></svg>
+  </div>
+  <div class="md-source__repository">
+    GitHub Repo
+  </div>
+</a>
+    </div>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../.." class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Home
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Table of Contents
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../about/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    About This Website
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../course-description/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Course Description
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+    
+      
+        
+        
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+  
+    <a href="../../learning-graph/" class="md-nav__link">
+      
+  
+  
+  <span class="md-ellipsis">
+    Learning Graph
+    
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+    
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+    
+      
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_6" checked>
+        
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../" class="md-nav__link ">
+              
+  
+  
+  <span class="md-ellipsis">
+    Chapters
+    
+  </span>
+  
+
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_6" id="__nav_6_label" tabindex="0">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_6_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_6">
+            <span class="md-nav__icon md-icon"></span>
+            Chapters
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../01-mathematical-foundations/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Ch 1 - Mathematical Foundations
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../02-introduction-to-signals-and-systems/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Ch 2 - Signals and Systems
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../03-system-properties-and-analysis/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Ch 3 - System Properties
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../04-convolution-and-correlation/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Ch 4 - Convolution and Correlation
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../05-sampling-and-quantization/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Ch 5 - Sampling and Quantization
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../06-fourier-analysis-fundamentals/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Ch 6 - Fourier Analysis
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../07-dft-fft-and-frequency-domain-analysis/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Ch 7 - DFT and FFT
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../08-advanced-transforms/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Ch 8 - Advanced Transforms
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../09-filter-design-fundamentals/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Ch 9 - Filter Design Fundamentals
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../10-advanced-filter-design-and-implementation/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Ch 10 - Advanced Filter Design
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  
+  <span class="md-ellipsis">
+    Ch 11 - Adaptive Processing
+    
+  </span>
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        
+  
+  
+  <span class="md-ellipsis">
+    Ch 11 - Adaptive Processing
+    
+  </span>
+  
+
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#summary" class="md-nav__link">
+    <span class="md-ellipsis">
+      Summary
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#concepts-covered" class="md-nav__link">
+    <span class="md-ellipsis">
+      Concepts Covered
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#prerequisites" class="md-nav__link">
+    <span class="md-ellipsis">
+      Prerequisites
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#introduction" class="md-nav__link">
+    <span class="md-ellipsis">
+      Introduction
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#adaptive-filter-fundamentals" class="md-nav__link">
+    <span class="md-ellipsis">
+      Adaptive Filter Fundamentals
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Adaptive Filter Fundamentals">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#basic-adaptive-filter-architecture" class="md-nav__link">
+    <span class="md-ellipsis">
+      Basic Adaptive Filter Architecture
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#performance-surfaces-and-convergence" class="md-nav__link">
+    <span class="md-ellipsis">
+      Performance Surfaces and Convergence
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#least-mean-squares-algorithm" class="md-nav__link">
+    <span class="md-ellipsis">
+      Least Mean Squares Algorithm
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Least Mean Squares Algorithm">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#lms-update-equation" class="md-nav__link">
+    <span class="md-ellipsis">
+      LMS Update Equation
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#convergence-and-stability-analysis" class="md-nav__link">
+    <span class="md-ellipsis">
+      Convergence and Stability Analysis
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#advantages-and-limitations" class="md-nav__link">
+    <span class="md-ellipsis">
+      Advantages and Limitations
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#normalized-lms-algorithm" class="md-nav__link">
+    <span class="md-ellipsis">
+      Normalized LMS Algorithm
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Normalized LMS Algorithm">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#nlms-update-rule" class="md-nav__link">
+    <span class="md-ellipsis">
+      NLMS Update Rule
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#performance-characteristics" class="md-nav__link">
+    <span class="md-ellipsis">
+      Performance Characteristics
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#recursive-least-squares-algorithm" class="md-nav__link">
+    <span class="md-ellipsis">
+      Recursive Least Squares Algorithm
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Recursive Least Squares Algorithm">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#rls-formulation" class="md-nav__link">
+    <span class="md-ellipsis">
+      RLS Formulation
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#convergence-properties" class="md-nav__link">
+    <span class="md-ellipsis">
+      Convergence Properties
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#computational-complexity" class="md-nav__link">
+    <span class="md-ellipsis">
+      Computational Complexity
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#kalman-filtering" class="md-nav__link">
+    <span class="md-ellipsis">
+      Kalman Filtering
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Kalman Filtering">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#state-space-formulation" class="md-nav__link">
+    <span class="md-ellipsis">
+      State-Space Formulation
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#kalman-filter-algorithm" class="md-nav__link">
+    <span class="md-ellipsis">
+      Kalman Filter Algorithm
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#optimality-and-applications" class="md-nav__link">
+    <span class="md-ellipsis">
+      Optimality and Applications
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#adaptive-noise-cancellation" class="md-nav__link">
+    <span class="md-ellipsis">
+      Adaptive Noise Cancellation
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Adaptive Noise Cancellation">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#anc-system-configuration" class="md-nav__link">
+    <span class="md-ellipsis">
+      ANC System Configuration
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#applications-of-adaptive-noise-cancellation" class="md-nav__link">
+    <span class="md-ellipsis">
+      Applications of Adaptive Noise Cancellation
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#echo-cancellation" class="md-nav__link">
+    <span class="md-ellipsis">
+      Echo Cancellation
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Echo Cancellation">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#acoustic-echo-cancellation" class="md-nav__link">
+    <span class="md-ellipsis">
+      Acoustic Echo Cancellation
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#line-echo-cancellation" class="md-nav__link">
+    <span class="md-ellipsis">
+      Line Echo Cancellation
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#adaptive-equalization" class="md-nav__link">
+    <span class="md-ellipsis">
+      Adaptive Equalization
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Adaptive Equalization">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#channel-equalization-problem" class="md-nav__link">
+    <span class="md-ellipsis">
+      Channel Equalization Problem
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#training-and-decision-directed-modes" class="md-nav__link">
+    <span class="md-ellipsis">
+      Training and Decision-Directed Modes
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#applications" class="md-nav__link">
+    <span class="md-ellipsis">
+      Applications
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#system-identification" class="md-nav__link">
+    <span class="md-ellipsis">
+      System Identification
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="System Identification">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#forward-modeling-configuration" class="md-nav__link">
+    <span class="md-ellipsis">
+      Forward Modeling Configuration
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#inverse-modeling-configuration" class="md-nav__link">
+    <span class="md-ellipsis">
+      Inverse Modeling Configuration
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#identification-accuracy-and-challenges" class="md-nav__link">
+    <span class="md-ellipsis">
+      Identification Accuracy and Challenges
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#summary_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      Summary
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../12-stochastic-processes-and-random-signals/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Ch 12 - Stochastic Processes
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../13-multirate-signal-processing-and-compression/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Ch 13 - Multirate and Compression
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../14-time-frequency-analysis-and-advanced-topics/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Ch 14 - Time-Frequency Analysis
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../15-signal-processing-applications-and-ai-integration/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Ch 15 - Applications and AI
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+    
+      
+        
+        
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+  
+    <a href="../../prompts/" class="md-nav__link">
+      
+  
+  
+  <span class="md-ellipsis">
+    Prompts
+    
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+    
+      
+        
+        
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+  
+    <a href="../../sims/" class="md-nav__link">
+      
+  
+  
+  <span class="md-ellipsis">
+    MicroSims
+    
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+    
+      
+        
+        
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+  
+    <a href="../../stories/" class="md-nav__link">
+      
+  
+  
+  <span class="md-ellipsis">
+    Stories
+    
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+    
+      
+        
+        
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+  
+    <a href="../../circuits/" class="md-nav__link">
+      
+  
+  
+  <span class="md-ellipsis">
+    Circuits
+    
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+    
+    
+    
+    
+      
+        
+        
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+  
+    <a href="../../research/" class="md-nav__link">
+      
+  
+  
+  <span class="md-ellipsis">
+    Research
+    
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../report-card/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Report Card
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../checklist/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Checklist
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../glossary/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Glossary
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../how-we-built-this-site/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    How We Built This Site
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../license/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    License
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../references/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    References
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../contact/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Contact
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../ieee-paper-changes/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Paper Changes
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#summary" class="md-nav__link">
+    <span class="md-ellipsis">
+      Summary
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#concepts-covered" class="md-nav__link">
+    <span class="md-ellipsis">
+      Concepts Covered
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#prerequisites" class="md-nav__link">
+    <span class="md-ellipsis">
+      Prerequisites
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#introduction" class="md-nav__link">
+    <span class="md-ellipsis">
+      Introduction
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#adaptive-filter-fundamentals" class="md-nav__link">
+    <span class="md-ellipsis">
+      Adaptive Filter Fundamentals
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Adaptive Filter Fundamentals">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#basic-adaptive-filter-architecture" class="md-nav__link">
+    <span class="md-ellipsis">
+      Basic Adaptive Filter Architecture
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#performance-surfaces-and-convergence" class="md-nav__link">
+    <span class="md-ellipsis">
+      Performance Surfaces and Convergence
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#least-mean-squares-algorithm" class="md-nav__link">
+    <span class="md-ellipsis">
+      Least Mean Squares Algorithm
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Least Mean Squares Algorithm">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#lms-update-equation" class="md-nav__link">
+    <span class="md-ellipsis">
+      LMS Update Equation
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#convergence-and-stability-analysis" class="md-nav__link">
+    <span class="md-ellipsis">
+      Convergence and Stability Analysis
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#advantages-and-limitations" class="md-nav__link">
+    <span class="md-ellipsis">
+      Advantages and Limitations
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#normalized-lms-algorithm" class="md-nav__link">
+    <span class="md-ellipsis">
+      Normalized LMS Algorithm
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Normalized LMS Algorithm">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#nlms-update-rule" class="md-nav__link">
+    <span class="md-ellipsis">
+      NLMS Update Rule
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#performance-characteristics" class="md-nav__link">
+    <span class="md-ellipsis">
+      Performance Characteristics
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#recursive-least-squares-algorithm" class="md-nav__link">
+    <span class="md-ellipsis">
+      Recursive Least Squares Algorithm
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Recursive Least Squares Algorithm">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#rls-formulation" class="md-nav__link">
+    <span class="md-ellipsis">
+      RLS Formulation
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#convergence-properties" class="md-nav__link">
+    <span class="md-ellipsis">
+      Convergence Properties
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#computational-complexity" class="md-nav__link">
+    <span class="md-ellipsis">
+      Computational Complexity
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#kalman-filtering" class="md-nav__link">
+    <span class="md-ellipsis">
+      Kalman Filtering
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Kalman Filtering">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#state-space-formulation" class="md-nav__link">
+    <span class="md-ellipsis">
+      State-Space Formulation
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#kalman-filter-algorithm" class="md-nav__link">
+    <span class="md-ellipsis">
+      Kalman Filter Algorithm
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#optimality-and-applications" class="md-nav__link">
+    <span class="md-ellipsis">
+      Optimality and Applications
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#adaptive-noise-cancellation" class="md-nav__link">
+    <span class="md-ellipsis">
+      Adaptive Noise Cancellation
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Adaptive Noise Cancellation">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#anc-system-configuration" class="md-nav__link">
+    <span class="md-ellipsis">
+      ANC System Configuration
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#applications-of-adaptive-noise-cancellation" class="md-nav__link">
+    <span class="md-ellipsis">
+      Applications of Adaptive Noise Cancellation
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#echo-cancellation" class="md-nav__link">
+    <span class="md-ellipsis">
+      Echo Cancellation
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Echo Cancellation">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#acoustic-echo-cancellation" class="md-nav__link">
+    <span class="md-ellipsis">
+      Acoustic Echo Cancellation
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#line-echo-cancellation" class="md-nav__link">
+    <span class="md-ellipsis">
+      Line Echo Cancellation
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#adaptive-equalization" class="md-nav__link">
+    <span class="md-ellipsis">
+      Adaptive Equalization
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Adaptive Equalization">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#channel-equalization-problem" class="md-nav__link">
+    <span class="md-ellipsis">
+      Channel Equalization Problem
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#training-and-decision-directed-modes" class="md-nav__link">
+    <span class="md-ellipsis">
+      Training and Decision-Directed Modes
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#applications" class="md-nav__link">
+    <span class="md-ellipsis">
+      Applications
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#system-identification" class="md-nav__link">
+    <span class="md-ellipsis">
+      System Identification
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="System Identification">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#forward-modeling-configuration" class="md-nav__link">
+    <span class="md-ellipsis">
+      Forward Modeling Configuration
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#inverse-modeling-configuration" class="md-nav__link">
+    <span class="md-ellipsis">
+      Inverse Modeling Configuration
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#identification-accuracy-and-challenges" class="md-nav__link">
+    <span class="md-ellipsis">
+      Identification Accuracy and Challenges
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#summary_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      Summary
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+  
+    <a href="https://github.com/dmccreary/signal-processing/blob/master/docs/chapters/11-adaptive-signal-processing/index.md" title="Edit this page" class="md-content__button md-icon">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M10 20H6V4h7v5h5v3.1l2-2V8l-6-6H6c-1.1 0-2 .9-2 2v16c0 1.1.9 2 2 2h4zm10.2-7c.1 0 .3.1.4.2l1.3 1.3c.2.2.2.6 0 .8l-1 1-2.1-2.1 1-1c.1-.1.2-.2.4-.2m0 3.9L14.1 23H12v-2.1l6.1-6.1z"/></svg>
+    </a>
+  
+  
+
+
+<h1 id="adaptive-signal-processing">Adaptive Signal Processing</h1>
+<h2 id="summary">Summary</h2>
+<p>This chapter explores adaptive filtering techniques, algorithms like LMS and RLS, and applications in noise cancellation and equalization.</p>
+<p>Students will explore 10 key concepts that are essential for understanding this area of signal processing. This material provides the foundation for concepts introduced in later chapters.</p>
+<h2 id="concepts-covered">Concepts Covered</h2>
+<p>This chapter covers the following 10 concepts from the learning graph:</p>
+<ol>
+<li>Adaptive Filters</li>
+<li>Adaptive Algorithms</li>
+<li>Least Mean Squares</li>
+<li>Normalized LMS</li>
+<li>Recursive Least Squares</li>
+<li>Kalman Filter</li>
+<li>Adaptive Noise Cancellation</li>
+<li>Echo Cancellation</li>
+<li>Adaptive Equalization</li>
+<li>System Identification</li>
+</ol>
+<h2 id="prerequisites">Prerequisites</h2>
+<p>This chapter builds on concepts from:</p>
+<ul>
+<li><a href="../01-mathematical-foundations/">Chapter 1: Mathematical Foundations</a></li>
+<li><a href="../03-system-properties-and-analysis/">Chapter 3: System Properties and Analysis</a></li>
+<li><a href="../09-filter-design-fundamentals/">Chapter 9: Filter Design Fundamentals</a></li>
+</ul>
+<hr />
+<h2 id="introduction">Introduction</h2>
+<p>Unlike the fixed filters examined in previous chapters, adaptive filters possess the remarkable ability to automatically adjust their coefficients in response to changing signal characteristics and environment conditions. This self-tuning capability makes adaptive filters indispensable for applications where signal properties are unknown, time-varying, or unpredictable in advance. From canceling echoes in telecommunications to tracking rapidly changing channels in wireless communications, adaptive filtering techniques enable robust signal processing in dynamic, uncertain environments.</p>
+<p>Adaptive filter theory combines optimization principles with recursive update algorithms that minimize performance criteria like mean-squared error. Understanding the fundamental algorithms including Least Mean Squares (LMS), Recursive Least Squares (RLS), and Kalman filtering, along with their applications in noise cancellation, echo suppression, equalization, and system identification, prepares you to design intelligent signal processing systems that adapt to their operating conditions automatically.</p>
+<h2 id="adaptive-filter-fundamentals">Adaptive Filter Fundamentals</h2>
+<p>An adaptive filter consists of two primary components: a digital filter with adjustable coefficients and an adaptive algorithm that updates these coefficients to optimize a specified performance criterion. The filter structure typically implements a transversal (FIR) or recursive (IIR) topology, while the algorithm iteratively modifies coefficients based on input signals and error measurements.</p>
+<h3 id="basic-adaptive-filter-architecture">Basic Adaptive Filter Architecture</h3>
+<p>The standard adaptive filter configuration processes an input signal <span class="arithmatex">\(x[n]\)</span> through a filter with coefficients <span class="arithmatex">\(w[n]\)</span> to produce output <span class="arithmatex">\(y[n] = w^T[n]x[n]\)</span>, where <span class="arithmatex">\(w[n] = [w_0[n], w_1[n], \ldots, w_{M-1}[n]]^T\)</span> is the coefficient vector and <span class="arithmatex">\(x[n] = [x[n], x[n-1], \ldots, x[n-M+1]]^T\)</span> is the input vector. A desired response signal <span class="arithmatex">\(d[n]\)</span> provides reference information, and the error signal <span class="arithmatex">\(e[n] = d[n] - y[n]\)</span> quantifies the difference between desired and actual outputs.</p>
+<p>The adaptive algorithm uses the error signal to update coefficients according to:</p>
+<div class="arithmatex">\[w[n+1] = w[n] + \Delta w[n]\]</div>
+<p>where <span class="arithmatex">\(\Delta w[n]\)</span> is determined by the specific algorithm and performance criterion. Most algorithms seek to minimize the mean-squared error (MSE):</p>
+<div class="arithmatex">\[J = E[e^2[n]] = E[(d[n] - w^Tx[n])^2]\]</div>
+<p>where <span class="arithmatex">\(E[\cdot]\)</span> denotes expectation. This optimization framework connects adaptive filtering to fundamental concepts in estimation theory and stochastic optimization.</p>
+<h3 id="performance-surfaces-and-convergence">Performance Surfaces and Convergence</h3>
+<p>The MSE performance criterion creates a multidimensional surface (called the performance surface or error surface) as a function of filter coefficients. For a Wiener filter with stationary inputs, this surface is a paraboloid with a unique minimum at the optimal coefficient vector <span class="arithmatex">\(w^* = R^{-1}p\)</span>, where <span class="arithmatex">\(R = E[x[n]x^T[n]]\)</span> is the input autocorrelation matrix and <span class="arithmatex">\(p = E[d[n]x[n]]\)</span> is the cross-correlation vector.</p>
+<p>Adaptive algorithms navigate this performance surface through iterative updates, ideally converging toward the optimal point. Convergence behavior depends critically on:</p>
+<ul>
+<li><strong>Step size</strong>: Controls update magnitude and convergence speed vs. stability tradeoff</li>
+<li><strong>Input signal statistics</strong>: Eigenvalue spread of autocorrelation matrix affects convergence rate</li>
+<li><strong>Algorithm structure</strong>: Determines computational complexity and tracking capability</li>
+<li><strong>Noise characteristics</strong>: Background noise affects steady-state error floor</li>
+</ul>
+<p>Understanding the geometry of performance surfaces and the factors affecting convergence enables informed algorithm selection and parameter tuning for specific applications.</p>
+<h2 id="least-mean-squares-algorithm">Least Mean Squares Algorithm</h2>
+<p>The Least Mean Squares (LMS) algorithm, developed by Widrow and Hoff in 1960, represents the most widely used adaptive filtering technique due to its simplicity, robustness, and low computational requirements. The LMS algorithm employs a stochastic gradient descent approach to minimize mean-squared error.</p>
+<h3 id="lms-update-equation">LMS Update Equation</h3>
+<p>Rather than computing the true gradient of the MSE performance surface (which requires statistical averages), LMS uses an instantaneous estimate based on the current error sample:</p>
+<div class="arithmatex">\[w[n+1] = w[n] + \mu e[n]x[n]\]</div>
+<p>where <span class="arithmatex">\(\mu\)</span> is the step-size parameter controlling convergence rate and stability. This remarkably simple update requires only M+1 multiplications per iteration for an M-tap filter, making LMS computationally efficient.</p>
+<p>The instantaneous gradient estimate <span class="arithmatex">\(\nabla J \approx -2e[n]x[n]\)</span> introduces noise into the adaptation process, causing coefficient fluctuations even after convergence. However, this noisy gradient averaging over time approximates the true gradient, enabling convergence to near-optimal solutions for stationary signals.</p>
+<h3 id="convergence-and-stability-analysis">Convergence and Stability Analysis</h3>
+<p>LMS algorithm stability requires the step-size parameter to satisfy:</p>
+<div class="arithmatex">\[0 &lt; \mu &lt; \frac{2}{\lambda_{max}}\]</div>
+<p>where <span class="arithmatex">\(\lambda_{max}\)</span> is the maximum eigenvalue of the input autocorrelation matrix <span class="arithmatex">\(R\)</span>. A practical conservative bound uses the trace:</p>
+<div class="arithmatex">\[0 &lt; \mu &lt; \frac{2}{M \cdot P_x}\]</div>
+<p>where <span class="arithmatex">\(M\)</span> is the filter length and <span class="arithmatex">\(P_x\)</span> is the input signal power.</p>
+<p>Convergence speed depends on the eigenvalue spread of <span class="arithmatex">\(R\)</span>, with convergence time constant for the slowest mode approximately:</p>
+<div class="arithmatex">\[\tau_{max} \approx \frac{1}{\mu \lambda_{min}}\]</div>
+<p>Highly correlated input signals (large eigenvalue spread) cause slow convergence as different coefficient modes converge at vastly different rates.</p>
+<h3 id="advantages-and-limitations">Advantages and Limitations</h3>
+<p>LMS algorithm advantages include:</p>
+<ul>
+<li><strong>Computational simplicity</strong>: Minimal operations per update</li>
+<li><strong>Numerical robustness</strong>: No matrix inversions or complex computations</li>
+<li><strong>Implementation ease</strong>: Straightforward to code and deploy</li>
+<li><strong>Low memory</strong>: Stores only current coefficients and data vector</li>
+</ul>
+<p>Limitations include:</p>
+<ul>
+<li><strong>Slow convergence</strong>: Performance depends on input signal correlation structure</li>
+<li><strong>Gradient noise</strong>: Coefficient fluctuations persist at steady state</li>
+<li><strong>Step-size sensitivity</strong>: Tradeoff between speed and stability difficult to optimize</li>
+<li><strong>Poor conditioning</strong>: Slowly converging for highly correlated inputs</li>
+</ul>
+<p>Despite these limitations, LMS remains the algorithm of choice for many applications where computational efficiency outweighs convergence speed requirements.</p>
+<h2 id="normalized-lms-algorithm">Normalized LMS Algorithm</h2>
+<p>The Normalized LMS (NLMS) algorithm addresses LMS step-size sensitivity by normalizing the update based on input signal power, improving robustness to power variations and accelerating convergence.</p>
+<h3 id="nlms-update-rule">NLMS Update Rule</h3>
+<p>The NLMS coefficient update is:</p>
+<div class="arithmatex">\[w[n+1] = w[n] + \frac{\mu}{||x[n]||^2 + \epsilon}e[n]x[n]\]</div>
+<p>where <span class="arithmatex">\(||x[n]||^2 = x^T[n]x[n]\)</span> is the squared Euclidean norm of the input vector and <span class="arithmatex">\(\epsilon\)</span> is a small positive constant preventing division by zero. The normalization automatically adjusts the effective step size based on input power, providing more consistent convergence behavior.</p>
+<p>For the normalized algorithm, stable convergence requires:</p>
+<div class="arithmatex">\[0 &lt; \mu &lt; 2\]</div>
+<p>independent of input signal statistics, offering significant practical advantages over standard LMS.</p>
+<h3 id="performance-characteristics">Performance Characteristics</h3>
+<p>NLMS provides:</p>
+<ul>
+<li><strong>Faster convergence</strong>: Typically 2-4 times faster than LMS for correlated inputs</li>
+<li><strong>Robustness</strong>: Less sensitive to input power variations</li>
+<li><strong>Simpler tuning</strong>: Step-size parameter less critical to optimize</li>
+<li><strong>Minimal overhead</strong>: Slight computational increase (one division per update)</li>
+</ul>
+<p>The normalization makes NLMS particularly effective for speech and communication applications where signal power fluctuates significantly.</p>
+<h2 id="recursive-least-squares-algorithm">Recursive Least Squares Algorithm</h2>
+<p>The Recursive Least Squares (RLS) algorithm provides substantially faster convergence than LMS by explicitly exploiting the input signal correlation structure. RLS minimizes a weighted least-squares cost function using matrix algebra and recursive updates.</p>
+<h3 id="rls-formulation">RLS Formulation</h3>
+<p>RLS minimizes the exponentially weighted cost function:</p>
+<div class="arithmatex">\[J[n] = \sum_{i=0}^{n} \lambda^{n-i}e^2[i]\]</div>
+<p>where <span class="arithmatex">\(\lambda\)</span> (typically 0.95-0.999) is the forgetting factor that exponentially weights recent errors more heavily than past errors. This time-weighting enables tracking of slowly time-varying systems.</p>
+<p>The RLS update equations are:</p>
+<div class="arithmatex">\[k[n] = \frac{\lambda^{-1}P[n-1]x[n]}{1 + \lambda^{-1}x^T[n]P[n-1]x[n]}$$
+$$w[n] = w[n-1] + k[n]e[n]$$
+$$P[n] = \lambda^{-1}(P[n-1] - k[n]x^T[n]P[n-1])\]</div>
+<p>where <span class="arithmatex">\(k[n]\)</span> is the gain vector and <span class="arithmatex">\(P[n]\)</span> is the inverse correlation matrix estimate.</p>
+<h3 id="convergence-properties">Convergence Properties</h3>
+<p>RLS achieves convergence in approximately 2M iterations (where M is filter length), independent of input correlation structure. This represents a dramatic improvement over LMS, which may require 10M to 100M iterations for highly correlated signals.</p>
+<p>The forgetting factor <span class="arithmatex">\(\lambda\)</span> controls:</p>
+<ul>
+<li><strong>Tracking speed</strong>: Smaller <span class="arithmatex">\(\lambda\)</span> (faster forgetting) enables quicker adaptation to changes</li>
+<li><strong>Steady-state error</strong>: Larger <span class="arithmatex">\(\lambda\)</span> reduces misadjustment in stationary environments</li>
+<li><strong>Memory depth</strong>: Effective window length is approximately <span class="arithmatex">\(1/(1-\lambda)\)</span> samples</li>
+</ul>
+<h3 id="computational-complexity">Computational Complexity</h3>
+<p>RLS computational requirements are substantially higher than LMS:</p>
+<ul>
+<li><strong>Operations per update</strong>: <span class="arithmatex">\(O(M^2)\)</span> multiplications vs. <span class="arithmatex">\(O(M)\)</span> for LMS</li>
+<li><strong>Memory requirements</strong>: Stores <span class="arithmatex">\(M \times M\)</span> correlation matrix estimate</li>
+<li><strong>Numerical issues</strong>: Matrix update can suffer numerical instability without careful implementation</li>
+</ul>
+<p>Despite increased complexity, RLS is preferred when rapid convergence is essential and computational resources permit the higher cost.</p>
+<details>
+<summary>MicroSim: Adaptive Algorithm Comparison Tool</summary>
+<p>This simulation would enable interactive comparison of adaptive algorithms:</p>
+<ul>
+<li>Generate test signals: white noise, correlated (AR process), speech-like, sinusoids with noise</li>
+<li>Configure filter parameters: length, initial coefficients</li>
+<li>Select algorithm: LMS (adjust step size), NLMS (adjust step size), RLS (adjust forgetting factor)</li>
+<li>Apply system identification or noise cancellation scenario</li>
+<li>View synchronized displays:</li>
+<li>Input signal and desired response</li>
+<li>Error signal over time</li>
+<li>Learning curve (MSE vs. iteration)</li>
+<li>Coefficient trajectories</li>
+<li>Frequency response evolution</li>
+<li>Compare algorithms side-by-side with identical conditions</li>
+</ul>
+<p>Students would gain intuition about convergence speed differences, step-size effects on stability and speed, forgetting factor influence on RLS tracking, and how input correlation structure affects each algorithm differently.</p>
+</details>
+<h2 id="kalman-filtering">Kalman Filtering</h2>
+<p>The Kalman filter provides optimal recursive state estimation for linear dynamic systems corrupted by noise, combining prediction based on system models with correction based on noisy measurements. While originally developed for aerospace applications, Kalman filtering has become fundamental to adaptive signal processing, navigation, and tracking systems.</p>
+<h3 id="state-space-formulation">State-Space Formulation</h3>
+<p>The Kalman filter operates on a state-space system model:</p>
+<div class="arithmatex">\[x[n+1] = Fx[n] + Gu[n] + w[n]$$
+$$y[n] = Hx[n] + v[n]\]</div>
+<p>where <span class="arithmatex">\(x[n]\)</span> is the state vector, <span class="arithmatex">\(y[n]\)</span> is the measurement vector, <span class="arithmatex">\(F\)</span> is the state transition matrix, <span class="arithmatex">\(G\)</span> is the input matrix, <span class="arithmatex">\(H\)</span> is the measurement matrix, <span class="arithmatex">\(w[n]\)</span> is process noise with covariance <span class="arithmatex">\(Q\)</span>, and <span class="arithmatex">\(v[n]\)</span> is measurement noise with covariance <span class="arithmatex">\(R\)</span>.</p>
+<h3 id="kalman-filter-algorithm">Kalman Filter Algorithm</h3>
+<p>The Kalman filter alternates between prediction and update steps:</p>
+<p><strong>Prediction (Time Update):</strong></p>
+<div class="arithmatex">\[\hat{x}[n|n-1] = F\hat{x}[n-1|n-1] + Gu[n]$$
+$$P[n|n-1] = FP[n-1|n-1]F^T + Q\]</div>
+<p><strong>Update (Measurement Update):</strong></p>
+<div class="arithmatex">\[K[n] = P[n|n-1]H^T(HP[n|n-1]H^T + R)^{-1}$$
+$$\hat{x}[n|n] = \hat{x}[n|n-1] + K[n](y[n] - H\hat{x}[n|n-1])$$
+$$P[n|n] = (I - K[n]H)P[n|n-1]\]</div>
+<p>where <span class="arithmatex">\(K[n]\)</span> is the Kalman gain matrix and <span class="arithmatex">\(P[n|n]\)</span> is the state estimation error covariance matrix.</p>
+<h3 id="optimality-and-applications">Optimality and Applications</h3>
+<p>Under the assumptions of linear system dynamics and Gaussian noise, the Kalman filter provides the minimum mean-squared error state estimate. This optimality, combined with recursive computation enabling real-time implementation, makes Kalman filtering extremely powerful.</p>
+<p>Applications include:</p>
+<ul>
+<li><strong>Navigation systems</strong>: GPS position and velocity estimation</li>
+<li><strong>Target tracking</strong>: Radar and sonar signal processing</li>
+<li><strong>Economic forecasting</strong>: Time series prediction</li>
+<li><strong>Signal enhancement</strong>: Removing noise from measurements</li>
+<li><strong>Adaptive filtering</strong>: RLS algorithm is special case of Kalman filter</li>
+</ul>
+<p>Extended Kalman Filters (EKF) and Unscented Kalman Filters (UKF) generalize the basic algorithm to handle nonlinear systems, vastly expanding applicability.</p>
+<h2 id="adaptive-noise-cancellation">Adaptive Noise Cancellation</h2>
+<p>Adaptive noise cancellation (ANC) removes unwanted interference from signals by subtracting an adaptively filtered version of a reference noise signal. This configuration exploits correlation between primary and reference inputs to suppress noise while preserving the desired signal.</p>
+<h3 id="anc-system-configuration">ANC System Configuration</h3>
+<p>The primary input contains the desired signal <span class="arithmatex">\(s[n]\)</span> plus noise <span class="arithmatex">\(n_0[n]\)</span>:</p>
+<div class="arithmatex">\[d[n] = s[n] + n_0[n]\]</div>
+<p>A reference input provides noise <span class="arithmatex">\(n_1[n]\)</span> correlated with <span class="arithmatex">\(n_0[n]\)</span> but uncorrelated with <span class="arithmatex">\(s[n]\)</span>. The adaptive filter processes the reference to produce <span class="arithmatex">\(y[n] \approx n_0[n]\)</span>, and the system output is:</p>
+<div class="arithmatex">\[e[n] = d[n] - y[n] = s[n] + (n_0[n] - y[n])\]</div>
+<p>As the adaptive filter converges to minimize <span class="arithmatex">\(E[e^2[n]]\)</span>, the output <span class="arithmatex">\(y[n]\)</span> approaches the noise component <span class="arithmatex">\(n_0[n]\)</span>, leaving primarily the desired signal <span class="arithmatex">\(s[n]\)</span> in the error output.</p>
+<h3 id="applications-of-adaptive-noise-cancellation">Applications of Adaptive Noise Cancellation</h3>
+<p>ANC finds extensive use across diverse applications:</p>
+<ul>
+<li><strong>Biomedical instrumentation</strong>: Removing ECG artifacts from EEG recordings, eliminating maternal ECG from fetal ECG</li>
+<li><strong>Active noise control</strong>: Headphone noise cancellation, automotive interior noise reduction</li>
+<li><strong>Seismic exploration</strong>: Suppressing interference in geophysical measurements</li>
+<li><strong>Speech enhancement</strong>: Removing background noise from voice communications</li>
+</ul>
+<p>The key requirement is availability of a reference input correlated with the noise but uncorrelated with the desired signal—a condition met in many practical scenarios.</p>
+<h2 id="echo-cancellation">Echo Cancellation</h2>
+<p>Echo cancellation eliminates acoustic or line echoes that degrade quality in telecommunication systems, enabling full-duplex communication without requiring echo suppression that clips speech.</p>
+<h3 id="acoustic-echo-cancellation">Acoustic Echo Cancellation</h3>
+<p>In hands-free telephony and conferencing, the loudspeaker signal couples back to the microphone through acoustic paths, creating echoes. An adaptive filter models this acoustic path, generating an echo estimate that is subtracted from the microphone signal:</p>
+<ol>
+<li>Far-end speech plays through loudspeaker</li>
+<li>Acoustic path convolves speaker signal with room impulse response</li>
+<li>Adaptive filter estimates this acoustic path</li>
+<li>Echo estimate is subtracted from microphone signal</li>
+<li>Near-end speech passes through; echo is canceled</li>
+</ol>
+<p>Challenges include:</p>
+<ul>
+<li><strong>Long impulse responses</strong>: Acoustic paths require thousands of filter taps</li>
+<li><strong>Time-varying paths</strong>: Movement and environmental changes alter acoustics</li>
+<li><strong>Double-talk</strong>: Simultaneous near-end and far-end speakers confuse adaptation</li>
+<li><strong>Nonlinearities</strong>: Loudspeaker and microphone distortions violate linearity assumption</li>
+</ul>
+<p>Modern echo cancelers employ sophisticated techniques including double-talk detection (freezing adaptation when both ends speak), nonlinear processing, and comfort noise generation to achieve high-quality performance.</p>
+<h3 id="line-echo-cancellation">Line Echo Cancellation</h3>
+<p>Hybrid circuits in telephone networks create impedance mismatches causing signal reflections (line echoes). Adaptive line echo cancelers model the echo path and subtract the echo from the return path, enabling full-duplex transmission. Line echoes typically have shorter impulse responses (tens to hundreds of taps) than acoustic echoes, simplifying implementation.</p>
+<h2 id="adaptive-equalization">Adaptive Equalization</h2>
+<p>Adaptive equalizers compensate for channel distortion in communication systems, inverting the channel frequency response to recover transmitted signals accurately despite dispersive propagation effects.</p>
+<h3 id="channel-equalization-problem">Channel Equalization Problem</h3>
+<p>Communication channels distort transmitted signals through:</p>
+<ul>
+<li><strong>Frequency-selective fading</strong>: Different frequencies attenuate differently</li>
+<li><strong>Multipath propagation</strong>: Multiple signal copies arrive with different delays</li>
+<li><strong>Intersymbol interference (ISI)</strong>: Channel memory causes symbols to overlap</li>
+</ul>
+<p>An adaptive equalizer implements the approximate inverse of the channel transfer function:</p>
+<div class="arithmatex">\[H_{eq}(z) \approx \frac{1}{H_{ch}(z)}\]</div>
+<p>effectively removing distortion and recovering the original transmitted symbols.</p>
+<h3 id="training-and-decision-directed-modes">Training and Decision-Directed Modes</h3>
+<p>Equalizers typically operate in two modes:</p>
+<p><strong>Training mode</strong> uses a known training sequence to establish initial equalizer settings. The transmitted and received training sequences provide <span class="arithmatex">\(d[n]\)</span> and <span class="arithmatex">\(x[n]\)</span> for supervised adaptation.</p>
+<p><strong>Decision-directed mode</strong> uses detected symbols as the desired response after training completes. The equalizer input is the received signal, and the desired response is the symbol detector output. This enables continuous tracking of slowly time-varying channels.</p>
+<h3 id="applications">Applications</h3>
+<p>Adaptive equalization is essential in:</p>
+<ul>
+<li><strong>Digital communications</strong>: Voiceband modems, DSL, cable modems</li>
+<li><strong>Wireless systems</strong>: Cellular networks, WiFi, satellite communications</li>
+<li><strong>Magnetic recording</strong>: Hard disk drives, tape systems</li>
+<li><strong>High-speed digital links</strong>: Backplane interconnects, optical communications</li>
+</ul>
+<p>Modern systems often combine adaptive equalization with channel coding, diversity techniques, and MIMO (multiple-input multiple-output) processing for robust high-data-rate transmission.</p>
+<h2 id="system-identification">System Identification</h2>
+<p>System identification uses adaptive filters to estimate unknown system characteristics from input-output measurements, enabling modeling, prediction, and inverse system design without detailed physical knowledge.</p>
+<h3 id="forward-modeling-configuration">Forward Modeling Configuration</h3>
+<p>In forward modeling, the adaptive filter is placed in parallel with the unknown system. Both receive the same input, and the adaptive filter adjusts to minimize the difference between its output and the unknown system's output. Upon convergence, the adaptive filter coefficients approximate the unknown system's impulse response.</p>
+<p>Applications include:</p>
+<ul>
+<li><strong>Channel modeling</strong>: Characterizing communication channel impulse responses</li>
+<li><strong>Plant identification</strong>: Modeling industrial process dynamics for control design</li>
+<li><strong>Echo path modeling</strong>: Estimating acoustic or line echo characteristics</li>
+<li><strong>Loudspeaker modeling</strong>: Characterizing transducer frequency responses</li>
+</ul>
+<h3 id="inverse-modeling-configuration">Inverse Modeling Configuration</h3>
+<p>Inverse modeling places the adaptive filter in cascade with the unknown system, with the desired response being the original input (possibly delayed). The adaptive filter learns the approximate inverse of the system, enabling equalization and interference cancellation applications.</p>
+<h3 id="identification-accuracy-and-challenges">Identification Accuracy and Challenges</h3>
+<p>System identification accuracy depends on:</p>
+<ul>
+<li><strong>Input signal characteristics</strong>: Persistent excitation across all frequencies required for complete identification</li>
+<li><strong>SNR</strong>: Measurement noise limits achievable accuracy</li>
+<li><strong>System stationarity</strong>: Time-varying systems require tracking algorithms</li>
+<li><strong>Model order</strong>: Sufficient filter length needed to capture system dynamics</li>
+</ul>
+<p>Proper experimental design, including appropriate input signal selection and sufficient data collection, is critical for successful system identification.</p>
+<h2 id="summary_1">Summary</h2>
+<p>This chapter explored adaptive signal processing techniques that enable filters to automatically adjust their coefficients in response to changing conditions and unknown environments. The fundamental architecture combines an adjustable filter structure with an adaptive algorithm that optimizes performance criteria, typically minimizing mean-squared error between desired and actual responses.</p>
+<p>The Least Mean Squares algorithm provides computational simplicity and robustness through stochastic gradient descent, while Normalized LMS improves convergence through power normalization. The Recursive Least Squares algorithm achieves dramatically faster convergence by explicitly exploiting input correlation structure, at the cost of increased computational complexity. Kalman filtering extends these concepts to optimal state estimation in linear dynamic systems, providing a framework that encompasses many adaptive filtering problems.</p>
+<p>Practical applications demonstrate the power of adaptive techniques across diverse domains. Adaptive noise cancellation removes interference by exploiting correlation structure, echo cancellation eliminates acoustic and line echoes enabling full-duplex communication, adaptive equalization compensates for channel distortion in data transmission, and system identification estimates unknown system characteristics from measurements.</p>
+<p>Understanding these adaptive filtering fundamentals equips you to design intelligent signal processing systems that respond automatically to their environments, track time-varying characteristics, and optimize performance without requiring complete a priori knowledge of signal and system properties. The next chapter builds on these foundations by examining random signal characteristics and statistical processing methods that underpin adaptive algorithm analysis and design.</p>
+
+
+
+
+
+
+
+  
+  
+
+
+
+  
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+          <button type="button" class="md-top md-icon" data-md-component="top" hidden>
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8z"/></svg>
+  Back to top
+</button>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+    
+      
+      <nav class="md-footer__inner md-grid" aria-label="Footer" >
+        
+          
+          <a href="../10-advanced-filter-design-and-implementation/" class="md-footer__link md-footer__link--prev" aria-label="Previous: Ch 10 - Advanced Filter Design">
+            <div class="md-footer__button md-icon">
+              
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+            </div>
+            <div class="md-footer__title">
+              <span class="md-footer__direction">
+                Previous
+              </span>
+              <div class="md-ellipsis">
+                Ch 10 - Advanced Filter Design
+              </div>
+            </div>
+          </a>
+        
+        
+          
+          <a href="../12-stochastic-processes-and-random-signals/" class="md-footer__link md-footer__link--next" aria-label="Next: Ch 12 - Stochastic Processes">
+            <div class="md-footer__title">
+              <span class="md-footer__direction">
+                Next
+              </span>
+              <div class="md-ellipsis">
+                Ch 12 - Stochastic Processes
+              </div>
+            </div>
+            <div class="md-footer__button md-icon">
+              
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M4 11v2h12l-5.5 5.5 1.42 1.42L19.84 12l-7.92-7.92L10.5 5.5 16 11z"/></svg>
+            </div>
+          </a>
+        
+      </nav>
+    
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    
+      
+      <script id="__config" type="application/json">{"base": "../..", "features": ["content.code.copy", "navigation.expand", "navigation.path", "navigation.prune", "navigation.indexes", "toc.follow", "navigation.top", "navigation.footer", "content.action.edit"], "search": "../../assets/javascripts/workers/search.f8cc74c7.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": null}</script>
+    
+    
+      <script src="../../assets/javascripts/bundle.c8b220af.min.js"></script>
+      
+        <script src="../../js/extra.js"></script>
+      
+        <script src="https://unpkg.com/mathjax@3/es5/tex-mml-chtml.js"></script>
+      
+    
+  </body>
+</html>

@@ -1,0 +1,1757 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+        <meta name="description" content="College Level Textbook on Signal Processing - License is Commons ShareAlike Attribution Noncommercial">
+      
+      
+        <meta name="author" content="Dan McCreary">
+      
+      
+        <link rel="canonical" href="https://dmccreary.github.io/signal-processing/learning-graph/">
+      
+      
+        <link rel="prev" href="../course-description/">
+      
+      
+        <link rel="next" href="course-description-assessment/">
+      
+      
+      <link rel="icon" href="../img/favicon.ico">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.6.12">
+    
+    
+      
+        <title>Introduction - Signal Processing with AI</title>
+      
+    
+    
+      <link rel="stylesheet" href="../assets/stylesheets/main.2afb09e1.min.css">
+      
+        
+        <link rel="stylesheet" href="../assets/stylesheets/palette.06af60db.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+      <link rel="stylesheet" href="../css/extra.css">
+    
+    <script>__md_scope=new URL("..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+  
+
+
+  
+  
+
+<script id="__analytics">function __md_analytics(){function e(){dataLayer.push(arguments)}window.dataLayer=window.dataLayer||[],e("js",new Date),e("config","G-SY3G2ND80K"),document.addEventListener("DOMContentLoaded",(function(){document.forms.search&&document.forms.search.query.addEventListener("blur",(function(){this.value&&e("event","search",{search_term:this.value})}));document$.subscribe((function(){var t=document.forms.feedback;if(void 0!==t)for(var a of t.querySelectorAll("[type=submit]"))a.addEventListener("click",(function(a){a.preventDefault();var n=document.location.pathname,d=this.getAttribute("data-md-value");e("event","feedback",{page:n,data:d}),t.firstElementChild.disabled=!0;var r=t.querySelector(".md-feedback__note [data-md-value='"+d+"']");r&&(r.hidden=!1)})),t.hidden=!1})),location$.subscribe((function(t){e("config","G-SY3G2ND80K",{page_path:t.pathname})}))}));var t=document.createElement("script");t.async=!0,t.src="https://www.googletagmanager.com/gtag/js?id=G-SY3G2ND80K",document.getElementById("__analytics").insertAdjacentElement("afterEnd",t)}</script>
+  
+    <script>"undefined"!=typeof __md_analytics&&__md_analytics()</script>
+  
+
+    
+    
+      
+        <meta  property="og:type"  content="website" >
+      
+        <meta  property="og:title"  content="Introduction - Signal Processing with AI" >
+      
+        <meta  property="og:description"  content="College Level Textbook on Signal Processing - License is Commons ShareAlike Attribution Noncommercial" >
+      
+        <meta  property="og:image"  content="https://dmccreary.github.io/signal-processing/assets/images/social/learning-graph/index.png" >
+      
+        <meta  property="og:image:type"  content="image/png" >
+      
+        <meta  property="og:image:width"  content="1200" >
+      
+        <meta  property="og:image:height"  content="630" >
+      
+        <meta  property="og:url"  content="https://dmccreary.github.io/signal-processing/learning-graph/" >
+      
+        <meta  name="twitter:card"  content="summary_large_image" >
+      
+        <meta  name="twitter:title"  content="Introduction - Signal Processing with AI" >
+      
+        <meta  name="twitter:description"  content="College Level Textbook on Signal Processing - License is Commons ShareAlike Attribution Noncommercial" >
+      
+        <meta  name="twitter:image"  content="https://dmccreary.github.io/signal-processing/assets/images/social/learning-graph/index.png" >
+      
+    
+    
+  </head>
+  
+  
+    
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="maroon" data-md-color-accent="gold">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#learning-graph-for-signal-processing" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+  
+
+<header class="md-header md-header--shadow" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href=".." title="Signal Processing with AI" class="md-header__button md-logo" aria-label="Signal Processing with AI" data-md-component="logo">
+      
+  <img src="../img/logo-192.png" alt="logo">
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            Signal Processing with AI
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              Introduction
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+    
+    
+    
+    
+      
+      
+        <label class="md-header__button md-icon" for="__search">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        </label>
+        <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Search">
+        
+        <button type="reset" class="md-search__icon md-icon" title="Clear" aria-label="Clear" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+        </button>
+      </nav>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+      
+    
+    
+      <div class="md-header__source">
+        <a href="https://github.com/dmccreary/signal-processing" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 6.7.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2024 Fonticons, Inc.--><path d="M439.55 236.05 244 40.45a28.87 28.87 0 0 0-40.81 0l-40.66 40.63 51.52 51.52c27.06-9.14 52.68 16.77 43.39 43.68l49.66 49.66c34.23-11.8 61.18 31 35.47 56.69-26.49 26.49-70.21-2.87-56-37.34L240.22 199v121.85c25.3 12.54 22.26 41.85 9.08 55a34.34 34.34 0 0 1-48.55 0c-17.57-17.6-11.07-46.91 11.25-56v-123c-20.8-8.51-24.6-30.74-18.64-45L142.57 101 8.45 235.14a28.86 28.86 0 0 0 0 40.81l195.61 195.6a28.86 28.86 0 0 0 40.8 0l194.69-194.69a28.86 28.86 0 0 0 0-40.81"/></svg>
+  </div>
+  <div class="md-source__repository">
+    GitHub Repo
+  </div>
+</a>
+      </div>
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+
+<nav class="md-nav md-nav--primary" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href=".." title="Signal Processing with AI" class="md-nav__button md-logo" aria-label="Signal Processing with AI" data-md-component="logo">
+      
+  <img src="../img/logo-192.png" alt="logo">
+
+    </a>
+    Signal Processing with AI
+  </label>
+  
+    <div class="md-nav__source">
+      <a href="https://github.com/dmccreary/signal-processing" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 6.7.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2024 Fonticons, Inc.--><path d="M439.55 236.05 244 40.45a28.87 28.87 0 0 0-40.81 0l-40.66 40.63 51.52 51.52c27.06-9.14 52.68 16.77 43.39 43.68l49.66 49.66c34.23-11.8 61.18 31 35.47 56.69-26.49 26.49-70.21-2.87-56-37.34L240.22 199v121.85c25.3 12.54 22.26 41.85 9.08 55a34.34 34.34 0 0 1-48.55 0c-17.57-17.6-11.07-46.91 11.25-56v-123c-20.8-8.51-24.6-30.74-18.64-45L142.57 101 8.45 235.14a28.86 28.86 0 0 0 0 40.81l195.61 195.6a28.86 28.86 0 0 0 40.8 0l194.69-194.69a28.86 28.86 0 0 0 0-40.81"/></svg>
+  </div>
+  <div class="md-source__repository">
+    GitHub Repo
+  </div>
+</a>
+    </div>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href=".." class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Home
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../chapters/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Table of Contents
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../about/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    About This Website
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../course-description/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Course Description
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+    
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+    
+      
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_5" checked>
+        
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="./" class="md-nav__link md-nav__link--active">
+              
+  
+  
+  <span class="md-ellipsis">
+    Learning Graph
+    
+  </span>
+  
+
+            </a>
+            
+              
+              <label class="md-nav__link md-nav__link--active" for="__nav_5" id="__nav_5_label" tabindex="0">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_5_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_5">
+            <span class="md-nav__icon md-icon"></span>
+            Learning Graph
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="course-description-assessment/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Course Description Assessment
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="concept-list/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Concept List
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="concept-taxonomy/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Concept Taxonomy
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="quality-metrics/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Quality Metrics
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="taxonomy-distribution/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Taxonomy Distribution
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+    
+      
+        
+        
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+  
+    <a href="../chapters/" class="md-nav__link">
+      
+  
+  
+  <span class="md-ellipsis">
+    Chapters
+    
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+    
+      
+        
+        
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+  
+    <a href="../prompts/" class="md-nav__link">
+      
+  
+  
+  <span class="md-ellipsis">
+    Prompts
+    
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+    
+      
+        
+        
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+  
+    <a href="../sims/" class="md-nav__link">
+      
+  
+  
+  <span class="md-ellipsis">
+    MicroSims
+    
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+    
+      
+        
+        
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+  
+    <a href="../stories/" class="md-nav__link">
+      
+  
+  
+  <span class="md-ellipsis">
+    Stories
+    
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+    
+      
+        
+        
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+  
+    <a href="../circuits/" class="md-nav__link">
+      
+  
+  
+  <span class="md-ellipsis">
+    Circuits
+    
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+    
+    
+    
+    
+      
+        
+        
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+  
+    <a href="../research/" class="md-nav__link">
+      
+  
+  
+  <span class="md-ellipsis">
+    Research
+    
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../report-card/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Report Card
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../checklist/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Checklist
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../glossary/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Glossary
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../how-we-built-this-site/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    How We Built This Site
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../license/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    License
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../references/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    References
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../contact/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Contact
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../ieee-paper-changes/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Paper Changes
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#what-is-a-learning-graph" class="md-nav__link">
+    <span class="md-ellipsis">
+      What is a Learning Graph?
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#course-learning-graph" class="md-nav__link">
+    <span class="md-ellipsis">
+      Course Learning Graph
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#files-in-this-section" class="md-nav__link">
+    <span class="md-ellipsis">
+      Files in this Section
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Files in this Section">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#core-learning-graph-files" class="md-nav__link">
+    <span class="md-ellipsis">
+      Core Learning Graph Files
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#documentation-and-reports" class="md-nav__link">
+    <span class="md-ellipsis">
+      Documentation and Reports
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#configuration-files" class="md-nav__link">
+    <span class="md-ellipsis">
+      Configuration Files
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#the-12-taxonomies" class="md-nav__link">
+    <span class="md-ellipsis">
+      The 12 Taxonomies
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#key-metrics" class="md-nav__link">
+    <span class="md-ellipsis">
+      Key Metrics
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Key Metrics">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#foundational-concepts" class="md-nav__link">
+    <span class="md-ellipsis">
+      Foundational Concepts
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#most-important-concepts" class="md-nav__link">
+    <span class="md-ellipsis">
+      Most Important Concepts
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#dependency-chain" class="md-nav__link">
+    <span class="md-ellipsis">
+      Dependency Chain
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#using-the-learning-graph" class="md-nav__link">
+    <span class="md-ellipsis">
+      Using the Learning Graph
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Using the Learning Graph">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#for-students" class="md-nav__link">
+    <span class="md-ellipsis">
+      For Students
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#for-instructors" class="md-nav__link">
+    <span class="md-ellipsis">
+      For Instructors
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#interactive-visualization" class="md-nav__link">
+    <span class="md-ellipsis">
+      Interactive Visualization
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#quality-assessment" class="md-nav__link">
+    <span class="md-ellipsis">
+      Quality Assessment
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#generation-process" class="md-nav__link">
+    <span class="md-ellipsis">
+      Generation Process
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#next-steps" class="md-nav__link">
+    <span class="md-ellipsis">
+      Next Steps
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Next Steps">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#recommended-improvements" class="md-nav__link">
+    <span class="md-ellipsis">
+      Recommended Improvements
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#integration-with-course-materials" class="md-nav__link">
+    <span class="md-ellipsis">
+      Integration with Course Materials
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#license" class="md-nav__link">
+    <span class="md-ellipsis">
+      License
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+  
+    <a href="https://github.com/dmccreary/signal-processing/blob/master/docs/learning-graph/index.md" title="Edit this page" class="md-content__button md-icon">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M10 20H6V4h7v5h5v3.1l2-2V8l-6-6H6c-1.1 0-2 .9-2 2v16c0 1.1.9 2 2 2h4zm10.2-7c.1 0 .3.1.4.2l1.3 1.3c.2.2.2.6 0 .8l-1 1-2.1-2.1 1-1c.1-.1.2-.2.4-.2m0 3.9L14.1 23H12v-2.1l6.1-6.1z"/></svg>
+    </a>
+  
+  
+
+
+<h1 id="learning-graph-for-signal-processing">Learning Graph for Signal Processing</h1>
+<p>Welcome to the learning graph section for <strong>Introduction to Signal Processing with AI</strong>. This section contains a comprehensive knowledge graph of 200 concepts that map the learning dependencies and structure of this course.</p>
+<h2 id="what-is-a-learning-graph">What is a Learning Graph?</h2>
+<p>A learning graph is a directed acyclic graph (DAG) that represents:</p>
+<ul>
+<li><strong>Concepts</strong>: The key topics and ideas in the course (nodes)</li>
+<li><strong>Dependencies</strong>: Prerequisites relationships between concepts (edges)</li>
+<li><strong>Taxonomies</strong>: Categorical groupings for organizing concepts</li>
+<li><strong>Learning Paths</strong>: Multiple routes through the material based on your goals</li>
+</ul>
+<h2 id="course-learning-graph">Course Learning Graph</h2>
+<p>This learning graph contains:</p>
+<ul>
+<li><strong>200 Concepts</strong> organized into 12 taxonomies</li>
+<li><strong>262 Dependency Relationships</strong> showing prerequisite connections</li>
+<li><strong>12 Concept Categories</strong> for logical organization</li>
+<li><strong>Quality Score: 75/100</strong> - Valid DAG with good structure</li>
+</ul>
+<h2 id="files-in-this-section">Files in this Section</h2>
+<h3 id="core-learning-graph-files">Core Learning Graph Files</h3>
+<ul>
+<li><strong><a href="learning-graph.json">learning-graph.json</a></strong> - Complete learning graph in vis-network.js JSON format</li>
+<li><strong><a href="learning-graph.csv">learning-graph.csv</a></strong> - Tabular format with ConceptID, Label, Dependencies, and TaxonomyID</li>
+</ul>
+<h3 id="documentation-and-reports">Documentation and Reports</h3>
+<ul>
+<li><strong><a href="concept-list/">concept-list.md</a></strong> - Numbered list of all 200 concepts</li>
+<li><strong><a href="concept-taxonomy/">concept-taxonomy.md</a></strong> - Definitions of the 12 taxonomic categories</li>
+<li><strong><a href="course-description-assessment/">course-description-assessment.md</a></strong> - Quality assessment (Score: 93/100)</li>
+<li><strong><a href="quality-metrics/">quality-metrics.md</a></strong> - Graph structure analysis and validation</li>
+<li><strong><a href="taxonomy-distribution/">taxonomy-distribution.md</a></strong> - Distribution analysis across categories</li>
+</ul>
+<h3 id="configuration-files">Configuration Files</h3>
+<ul>
+<li><strong><a href="metadata.json">metadata.json</a></strong> - Course metadata (Dublin Core fields)</li>
+<li><strong><a href="taxonomy-config.json">taxonomy-config.json</a></strong> - Color scheme and category names</li>
+</ul>
+<h2 id="the-12-taxonomies">The 12 Taxonomies</h2>
+<table>
+<thead>
+<tr>
+<th>TaxonomyID</th>
+<th>Category</th>
+<th>Concepts</th>
+<th>Percentage</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>MATH</td>
+<td>Mathematical Foundations</td>
+<td>25</td>
+<td>12.5%</td>
+</tr>
+<tr>
+<td>SIG</td>
+<td>Signal Fundamentals</td>
+<td>25</td>
+<td>12.5%</td>
+</tr>
+<tr>
+<td>FILT</td>
+<td>Filter Design</td>
+<td>25</td>
+<td>12.5%</td>
+</tr>
+<tr>
+<td>SYS</td>
+<td>System Properties</td>
+<td>20</td>
+<td>10.0%</td>
+</tr>
+<tr>
+<td>FOUR</td>
+<td>Fourier Analysis</td>
+<td>20</td>
+<td>10.0%</td>
+</tr>
+<tr>
+<td>SAMP</td>
+<td>Sampling and Quantization</td>
+<td>15</td>
+<td>7.5%</td>
+</tr>
+<tr>
+<td>XFRM</td>
+<td>Advanced Transforms</td>
+<td>15</td>
+<td>7.5%</td>
+</tr>
+<tr>
+<td>ADVN</td>
+<td>Advanced Topics</td>
+<td>15</td>
+<td>7.5%</td>
+</tr>
+<tr>
+<td>CONV</td>
+<td>Convolution and Correlation</td>
+<td>10</td>
+<td>5.0%</td>
+</tr>
+<tr>
+<td>ADAP</td>
+<td>Adaptive Processing</td>
+<td>10</td>
+<td>5.0%</td>
+</tr>
+<tr>
+<td>RAND</td>
+<td>Stochastic Processes</td>
+<td>10</td>
+<td>5.0%</td>
+</tr>
+<tr>
+<td>APPL</td>
+<td>Applications and AI</td>
+<td>10</td>
+<td>5.0%</td>
+</tr>
+</tbody>
+</table>
+<h2 id="key-metrics">Key Metrics</h2>
+<h3 id="foundational-concepts">Foundational Concepts</h3>
+<p>There is <strong>1 foundational concept</strong> with no prerequisites:</p>
+<ul>
+<li><strong>Real Numbers</strong> - The starting point for all mathematical concepts</li>
+</ul>
+<h3 id="most-important-concepts">Most Important Concepts</h3>
+<p>Top 10 concepts by number of dependent concepts:</p>
+<ol>
+<li><strong>Signals</strong> (28 dependencies) - Core concept for signal types</li>
+<li><strong>Filters</strong> (19 dependencies) - Essential for signal processing</li>
+<li><strong>Systems</strong> (19 dependencies) - Foundation for system analysis</li>
+<li><strong>Real Numbers</strong> (13 dependencies) - Mathematical foundation</li>
+<li><strong>Fourier Transform</strong> (8 dependencies) - Key frequency analysis tool</li>
+<li><strong>Discrete-Time Signals</strong> (7 dependencies) - Digital signal foundation</li>
+<li><strong>Z-Transform</strong> (6 dependencies) - Discrete system analysis</li>
+<li><strong>Discrete Fourier Transform</strong> (6 dependencies) - Practical frequency analysis</li>
+<li><strong>Quantization</strong> (6 dependencies) - ADC foundation</li>
+<li><strong>Sampling Rate</strong> (6 dependencies) - Digital signal theory</li>
+</ol>
+<h3 id="dependency-chain">Dependency Chain</h3>
+<p>The <strong>maximum dependency chain length is 11 concepts</strong>, meaning the deepest learning path requires mastering 11 sequential concepts.</p>
+<h2 id="using-the-learning-graph">Using the Learning Graph</h2>
+<h3 id="for-students">For Students</h3>
+<ul>
+<li><strong>Identify Prerequisites</strong>: See what concepts you need to learn before tackling advanced topics</li>
+<li><strong>Find Learning Paths</strong>: Discover multiple routes through the material</li>
+<li><strong>Track Progress</strong>: Mark concepts as you master them</li>
+<li><strong>Understand Connections</strong>: See how concepts relate to each other</li>
+</ul>
+<h3 id="for-instructors">For Instructors</h3>
+<ul>
+<li><strong>Course Planning</strong>: Design curriculum based on concept dependencies</li>
+<li><strong>Assessment Design</strong>: Create tests that respect prerequisite relationships</li>
+<li><strong>Personalized Learning</strong>: Adapt content to student backgrounds</li>
+<li><strong>Gap Analysis</strong>: Identify missing prerequisites for struggling students</li>
+</ul>
+<h3 id="interactive-visualization">Interactive Visualization</h3>
+<p>To explore the learning graph interactively:</p>
+<ol>
+<li>Open the <a href="../sims/graph-viewer/">Graph Viewer</a> (if available)</li>
+<li>Load <code>learning-graph.json</code></li>
+<li>Filter by taxonomy to focus on specific topic areas</li>
+<li>Search for concepts by name</li>
+<li>Visualize dependency paths</li>
+</ol>
+<h2 id="quality-assessment">Quality Assessment</h2>
+<p><strong>Course Description Quality</strong>: 93/100 - Excellent</p>
+<ul>
+<li>Complete Bloom's Taxonomy coverage (all 6 levels)</li>
+<li>50 well-defined topics</li>
+<li>Clear prerequisites and boundaries</li>
+<li>Sufficient depth for 200+ concepts</li>
+</ul>
+<p><strong>Learning Graph Quality</strong>: 75/100 - Acceptable</p>
+<ul>
+<li>✅ Valid DAG (no cycles)</li>
+<li>✅ Balanced taxonomy distribution</li>
+<li>✅ Meaningful dependency relationships</li>
+<li>⚠️ 112 orphaned nodes (concepts that lead to no higher concepts)</li>
+<li>⚠️ Low average dependencies (1.31) - graph could be more interconnected</li>
+</ul>
+<h2 id="generation-process">Generation Process</h2>
+<p>This learning graph was generated using AI assistance through the following steps:</p>
+<ol>
+<li><strong>Course Description Analysis</strong> - Assessed completeness and quality</li>
+<li><strong>Concept Enumeration</strong> - Generated 200 pedagogically sound concepts</li>
+<li><strong>Dependency Mapping</strong> - Created prerequisite relationships</li>
+<li><strong>Quality Validation</strong> - Verified DAG structure and metrics</li>
+<li><strong>Taxonomy Creation</strong> - Organized into 12 balanced categories</li>
+<li><strong>JSON Generation</strong> - Created vis-network.js compatible format</li>
+</ol>
+<h2 id="next-steps">Next Steps</h2>
+<h3 id="recommended-improvements">Recommended Improvements</h3>
+<ol>
+<li><strong>Add More Cross-Dependencies</strong>: Connect orphaned concepts to advanced applications</li>
+<li><strong>Create Learning Modules</strong>: Group related concepts into teachable units</li>
+<li><strong>Add Concept Descriptions</strong>: Provide detailed definitions for each concept</li>
+<li><strong>Create Assessment Items</strong>: Map quiz questions to specific concepts</li>
+<li><strong>Build Interactive Viewer</strong>: Enable graph exploration and filtering</li>
+</ol>
+<h3 id="integration-with-course-materials">Integration with Course Materials</h3>
+<ul>
+<li>Link concepts to chapter sections</li>
+<li>Create concept-specific MicroSims</li>
+<li>Add glossary terms for each concept</li>
+<li>Map learning objectives to concept clusters</li>
+<li>Create pre-assessment based on foundational concepts</li>
+</ul>
+<h2 id="license">License</h2>
+<p>This learning graph is licensed under <strong>CC BY-NC-SA 4.0 DEED</strong> (Creative Commons Attribution-NonCommercial-ShareAlike 4.0).</p>
+<hr />
+<p><strong>Generated</strong>: 2025-11-13
+<strong>Version</strong>: 1.0
+<strong>Course</strong>: Introduction to Signal Processing with AI</p>
+
+
+
+
+
+
+
+  
+  
+
+
+
+  
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+          <button type="button" class="md-top md-icon" data-md-component="top" hidden>
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8z"/></svg>
+  Back to top
+</button>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+    
+      
+      <nav class="md-footer__inner md-grid" aria-label="Footer" >
+        
+          
+          <a href="../course-description/" class="md-footer__link md-footer__link--prev" aria-label="Previous: Course Description">
+            <div class="md-footer__button md-icon">
+              
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+            </div>
+            <div class="md-footer__title">
+              <span class="md-footer__direction">
+                Previous
+              </span>
+              <div class="md-ellipsis">
+                Course Description
+              </div>
+            </div>
+          </a>
+        
+        
+          
+          <a href="course-description-assessment/" class="md-footer__link md-footer__link--next" aria-label="Next: Course Description Assessment">
+            <div class="md-footer__title">
+              <span class="md-footer__direction">
+                Next
+              </span>
+              <div class="md-ellipsis">
+                Course Description Assessment
+              </div>
+            </div>
+            <div class="md-footer__button md-icon">
+              
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M4 11v2h12l-5.5 5.5 1.42 1.42L19.84 12l-7.92-7.92L10.5 5.5 16 11z"/></svg>
+            </div>
+          </a>
+        
+      </nav>
+    
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    
+      
+      <script id="__config" type="application/json">{"base": "..", "features": ["content.code.copy", "navigation.expand", "navigation.path", "navigation.prune", "navigation.indexes", "toc.follow", "navigation.top", "navigation.footer", "content.action.edit"], "search": "../assets/javascripts/workers/search.f8cc74c7.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": null}</script>
+    
+    
+      <script src="../assets/javascripts/bundle.c8b220af.min.js"></script>
+      
+        <script src="../js/extra.js"></script>
+      
+        <script src="https://unpkg.com/mathjax@3/es5/tex-mml-chtml.js"></script>
+      
+    
+  </body>
+</html>

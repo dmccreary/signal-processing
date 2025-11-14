@@ -1,0 +1,2677 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+        <meta name="description" content="College Level Textbook on Signal Processing - License is Commons ShareAlike Attribution Noncommercial">
+      
+      
+        <meta name="author" content="Dan McCreary">
+      
+      
+        <link rel="canonical" href="https://dmccreary.github.io/signal-processing/chapters/02-introduction-to-signals-and-systems/">
+      
+      
+        <link rel="prev" href="../01-mathematical-foundations/">
+      
+      
+        <link rel="next" href="../03-system-properties-and-analysis/">
+      
+      
+      <link rel="icon" href="../../img/favicon.ico">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.6.12">
+    
+    
+      
+        <title>Ch 2 - Signals and Systems - Signal Processing with AI</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../assets/stylesheets/main.2afb09e1.min.css">
+      
+        
+        <link rel="stylesheet" href="../../assets/stylesheets/palette.06af60db.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+      <link rel="stylesheet" href="../../css/extra.css">
+    
+    <script>__md_scope=new URL("../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+  
+
+
+  
+  
+
+<script id="__analytics">function __md_analytics(){function e(){dataLayer.push(arguments)}window.dataLayer=window.dataLayer||[],e("js",new Date),e("config","G-SY3G2ND80K"),document.addEventListener("DOMContentLoaded",(function(){document.forms.search&&document.forms.search.query.addEventListener("blur",(function(){this.value&&e("event","search",{search_term:this.value})}));document$.subscribe((function(){var t=document.forms.feedback;if(void 0!==t)for(var a of t.querySelectorAll("[type=submit]"))a.addEventListener("click",(function(a){a.preventDefault();var n=document.location.pathname,d=this.getAttribute("data-md-value");e("event","feedback",{page:n,data:d}),t.firstElementChild.disabled=!0;var r=t.querySelector(".md-feedback__note [data-md-value='"+d+"']");r&&(r.hidden=!1)})),t.hidden=!1})),location$.subscribe((function(t){e("config","G-SY3G2ND80K",{page_path:t.pathname})}))}));var t=document.createElement("script");t.async=!0,t.src="https://www.googletagmanager.com/gtag/js?id=G-SY3G2ND80K",document.getElementById("__analytics").insertAdjacentElement("afterEnd",t)}</script>
+  
+    <script>"undefined"!=typeof __md_analytics&&__md_analytics()</script>
+  
+
+    
+    
+      
+        <meta  property="og:type"  content="website" >
+      
+        <meta  property="og:title"  content="Ch 2 - Signals and Systems - Signal Processing with AI" >
+      
+        <meta  property="og:description"  content="College Level Textbook on Signal Processing - License is Commons ShareAlike Attribution Noncommercial" >
+      
+        <meta  property="og:image"  content="https://dmccreary.github.io/signal-processing/assets/images/social/chapters/02-introduction-to-signals-and-systems/index.png" >
+      
+        <meta  property="og:image:type"  content="image/png" >
+      
+        <meta  property="og:image:width"  content="1200" >
+      
+        <meta  property="og:image:height"  content="630" >
+      
+        <meta  property="og:url"  content="https://dmccreary.github.io/signal-processing/chapters/02-introduction-to-signals-and-systems/" >
+      
+        <meta  name="twitter:card"  content="summary_large_image" >
+      
+        <meta  name="twitter:title"  content="Ch 2 - Signals and Systems - Signal Processing with AI" >
+      
+        <meta  name="twitter:description"  content="College Level Textbook on Signal Processing - License is Commons ShareAlike Attribution Noncommercial" >
+      
+        <meta  name="twitter:image"  content="https://dmccreary.github.io/signal-processing/assets/images/social/chapters/02-introduction-to-signals-and-systems/index.png" >
+      
+    
+    
+  </head>
+  
+  
+    
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="maroon" data-md-color-accent="gold">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#introduction-to-signals-and-systems" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+  
+
+<header class="md-header md-header--shadow" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href="../.." title="Signal Processing with AI" class="md-header__button md-logo" aria-label="Signal Processing with AI" data-md-component="logo">
+      
+  <img src="../../img/logo-192.png" alt="logo">
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            Signal Processing with AI
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              Ch 2 - Signals and Systems
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+    
+    
+    
+    
+      
+      
+        <label class="md-header__button md-icon" for="__search">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        </label>
+        <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Search">
+        
+        <button type="reset" class="md-search__icon md-icon" title="Clear" aria-label="Clear" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+        </button>
+      </nav>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+      
+    
+    
+      <div class="md-header__source">
+        <a href="https://github.com/dmccreary/signal-processing" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 6.7.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2024 Fonticons, Inc.--><path d="M439.55 236.05 244 40.45a28.87 28.87 0 0 0-40.81 0l-40.66 40.63 51.52 51.52c27.06-9.14 52.68 16.77 43.39 43.68l49.66 49.66c34.23-11.8 61.18 31 35.47 56.69-26.49 26.49-70.21-2.87-56-37.34L240.22 199v121.85c25.3 12.54 22.26 41.85 9.08 55a34.34 34.34 0 0 1-48.55 0c-17.57-17.6-11.07-46.91 11.25-56v-123c-20.8-8.51-24.6-30.74-18.64-45L142.57 101 8.45 235.14a28.86 28.86 0 0 0 0 40.81l195.61 195.6a28.86 28.86 0 0 0 40.8 0l194.69-194.69a28.86 28.86 0 0 0 0-40.81"/></svg>
+  </div>
+  <div class="md-source__repository">
+    GitHub Repo
+  </div>
+</a>
+      </div>
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+
+<nav class="md-nav md-nav--primary" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../.." title="Signal Processing with AI" class="md-nav__button md-logo" aria-label="Signal Processing with AI" data-md-component="logo">
+      
+  <img src="../../img/logo-192.png" alt="logo">
+
+    </a>
+    Signal Processing with AI
+  </label>
+  
+    <div class="md-nav__source">
+      <a href="https://github.com/dmccreary/signal-processing" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 6.7.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2024 Fonticons, Inc.--><path d="M439.55 236.05 244 40.45a28.87 28.87 0 0 0-40.81 0l-40.66 40.63 51.52 51.52c27.06-9.14 52.68 16.77 43.39 43.68l49.66 49.66c34.23-11.8 61.18 31 35.47 56.69-26.49 26.49-70.21-2.87-56-37.34L240.22 199v121.85c25.3 12.54 22.26 41.85 9.08 55a34.34 34.34 0 0 1-48.55 0c-17.57-17.6-11.07-46.91 11.25-56v-123c-20.8-8.51-24.6-30.74-18.64-45L142.57 101 8.45 235.14a28.86 28.86 0 0 0 0 40.81l195.61 195.6a28.86 28.86 0 0 0 40.8 0l194.69-194.69a28.86 28.86 0 0 0 0-40.81"/></svg>
+  </div>
+  <div class="md-source__repository">
+    GitHub Repo
+  </div>
+</a>
+    </div>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../.." class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Home
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Table of Contents
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../about/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    About This Website
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../course-description/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Course Description
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+    
+      
+        
+        
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+  
+    <a href="../../learning-graph/" class="md-nav__link">
+      
+  
+  
+  <span class="md-ellipsis">
+    Learning Graph
+    
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+    
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+    
+      
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_6" checked>
+        
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../" class="md-nav__link ">
+              
+  
+  
+  <span class="md-ellipsis">
+    Chapters
+    
+  </span>
+  
+
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_6" id="__nav_6_label" tabindex="0">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_6_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_6">
+            <span class="md-nav__icon md-icon"></span>
+            Chapters
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../01-mathematical-foundations/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Ch 1 - Mathematical Foundations
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  
+  <span class="md-ellipsis">
+    Ch 2 - Signals and Systems
+    
+  </span>
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        
+  
+  
+  <span class="md-ellipsis">
+    Ch 2 - Signals and Systems
+    
+  </span>
+  
+
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#summary" class="md-nav__link">
+    <span class="md-ellipsis">
+      Summary
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#concepts-covered" class="md-nav__link">
+    <span class="md-ellipsis">
+      Concepts Covered
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#prerequisites" class="md-nav__link">
+    <span class="md-ellipsis">
+      Prerequisites
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#introduction" class="md-nav__link">
+    <span class="md-ellipsis">
+      Introduction
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#fundamental-definitions" class="md-nav__link">
+    <span class="md-ellipsis">
+      Fundamental Definitions
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Fundamental Definitions">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#signals" class="md-nav__link">
+    <span class="md-ellipsis">
+      Signals
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#systems" class="md-nav__link">
+    <span class="md-ellipsis">
+      Systems
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#signal-classifications" class="md-nav__link">
+    <span class="md-ellipsis">
+      Signal Classifications
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Signal Classifications">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#continuous-time-vs-discrete-time-signals" class="md-nav__link">
+    <span class="md-ellipsis">
+      Continuous-Time vs. Discrete-Time Signals
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#analog-vs-digital-signals" class="md-nav__link">
+    <span class="md-ellipsis">
+      Analog vs. Digital Signals
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#temporal-properties-periodicity" class="md-nav__link">
+    <span class="md-ellipsis">
+      Temporal Properties: Periodicity
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#symmetry-properties" class="md-nav__link">
+    <span class="md-ellipsis">
+      Symmetry Properties
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#energy-and-power-classifications" class="md-nav__link">
+    <span class="md-ellipsis">
+      Energy and Power Classifications
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#fundamental-signal-types" class="md-nav__link">
+    <span class="md-ellipsis">
+      Fundamental Signal Types
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Fundamental Signal Types">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#unit-step-function" class="md-nav__link">
+    <span class="md-ellipsis">
+      Unit Step Function
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#unit-impulse-function" class="md-nav__link">
+    <span class="md-ellipsis">
+      Unit Impulse Function
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#sinusoidal-signals" class="md-nav__link">
+    <span class="md-ellipsis">
+      Sinusoidal Signals
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#exponential-signals" class="md-nav__link">
+    <span class="md-ellipsis">
+      Exponential Signals
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#signal-parameters-and-characteristics" class="md-nav__link">
+    <span class="md-ellipsis">
+      Signal Parameters and Characteristics
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Signal Parameters and Characteristics">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#signal-amplitude" class="md-nav__link">
+    <span class="md-ellipsis">
+      Signal Amplitude
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#signal-frequency" class="md-nav__link">
+    <span class="md-ellipsis">
+      Signal Frequency
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#signal-phase" class="md-nav__link">
+    <span class="md-ellipsis">
+      Signal Phase
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#signal-duration" class="md-nav__link">
+    <span class="md-ellipsis">
+      Signal Duration
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#signal-energy-and-power" class="md-nav__link">
+    <span class="md-ellipsis">
+      Signal Energy and Power
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#signal-operations" class="md-nav__link">
+    <span class="md-ellipsis">
+      Signal Operations
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Signal Operations">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#time-shifting" class="md-nav__link">
+    <span class="md-ellipsis">
+      Time Shifting
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#time-scaling" class="md-nav__link">
+    <span class="md-ellipsis">
+      Time Scaling
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#interactive-demonstrations" class="md-nav__link">
+    <span class="md-ellipsis">
+      Interactive Demonstrations
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Interactive Demonstrations">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#purpose" class="md-nav__link">
+    <span class="md-ellipsis">
+      Purpose
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#features" class="md-nav__link">
+    <span class="md-ellipsis">
+      Features
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#learning-objectives" class="md-nav__link">
+    <span class="md-ellipsis">
+      Learning Objectives
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#implementation-requirements" class="md-nav__link">
+    <span class="md-ellipsis">
+      Implementation Requirements
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#purpose_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      Purpose
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#features_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      Features
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#learning-objectives_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      Learning Objectives
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#implementation-requirements_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      Implementation Requirements
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#comparison-tables" class="md-nav__link">
+    <span class="md-ellipsis">
+      Comparison Tables
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#summary_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      Summary
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../03-system-properties-and-analysis/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Ch 3 - System Properties
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../04-convolution-and-correlation/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Ch 4 - Convolution and Correlation
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../05-sampling-and-quantization/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Ch 5 - Sampling and Quantization
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../06-fourier-analysis-fundamentals/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Ch 6 - Fourier Analysis
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../07-dft-fft-and-frequency-domain-analysis/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Ch 7 - DFT and FFT
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../08-advanced-transforms/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Ch 8 - Advanced Transforms
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../09-filter-design-fundamentals/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Ch 9 - Filter Design Fundamentals
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../10-advanced-filter-design-and-implementation/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Ch 10 - Advanced Filter Design
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../11-adaptive-signal-processing/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Ch 11 - Adaptive Processing
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../12-stochastic-processes-and-random-signals/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Ch 12 - Stochastic Processes
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../13-multirate-signal-processing-and-compression/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Ch 13 - Multirate and Compression
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../14-time-frequency-analysis-and-advanced-topics/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Ch 14 - Time-Frequency Analysis
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../15-signal-processing-applications-and-ai-integration/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Ch 15 - Applications and AI
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+    
+      
+        
+        
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+  
+    <a href="../../prompts/" class="md-nav__link">
+      
+  
+  
+  <span class="md-ellipsis">
+    Prompts
+    
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+    
+      
+        
+        
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+  
+    <a href="../../sims/" class="md-nav__link">
+      
+  
+  
+  <span class="md-ellipsis">
+    MicroSims
+    
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+    
+      
+        
+        
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+  
+    <a href="../../stories/" class="md-nav__link">
+      
+  
+  
+  <span class="md-ellipsis">
+    Stories
+    
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+    
+      
+        
+        
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+  
+    <a href="../../circuits/" class="md-nav__link">
+      
+  
+  
+  <span class="md-ellipsis">
+    Circuits
+    
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+    
+    
+    
+    
+      
+        
+        
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+  
+    <a href="../../research/" class="md-nav__link">
+      
+  
+  
+  <span class="md-ellipsis">
+    Research
+    
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../report-card/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Report Card
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../checklist/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Checklist
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../glossary/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Glossary
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../how-we-built-this-site/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    How We Built This Site
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../license/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    License
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../references/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    References
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../contact/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Contact
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../ieee-paper-changes/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Paper Changes
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#summary" class="md-nav__link">
+    <span class="md-ellipsis">
+      Summary
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#concepts-covered" class="md-nav__link">
+    <span class="md-ellipsis">
+      Concepts Covered
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#prerequisites" class="md-nav__link">
+    <span class="md-ellipsis">
+      Prerequisites
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#introduction" class="md-nav__link">
+    <span class="md-ellipsis">
+      Introduction
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#fundamental-definitions" class="md-nav__link">
+    <span class="md-ellipsis">
+      Fundamental Definitions
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Fundamental Definitions">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#signals" class="md-nav__link">
+    <span class="md-ellipsis">
+      Signals
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#systems" class="md-nav__link">
+    <span class="md-ellipsis">
+      Systems
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#signal-classifications" class="md-nav__link">
+    <span class="md-ellipsis">
+      Signal Classifications
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Signal Classifications">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#continuous-time-vs-discrete-time-signals" class="md-nav__link">
+    <span class="md-ellipsis">
+      Continuous-Time vs. Discrete-Time Signals
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#analog-vs-digital-signals" class="md-nav__link">
+    <span class="md-ellipsis">
+      Analog vs. Digital Signals
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#temporal-properties-periodicity" class="md-nav__link">
+    <span class="md-ellipsis">
+      Temporal Properties: Periodicity
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#symmetry-properties" class="md-nav__link">
+    <span class="md-ellipsis">
+      Symmetry Properties
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#energy-and-power-classifications" class="md-nav__link">
+    <span class="md-ellipsis">
+      Energy and Power Classifications
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#fundamental-signal-types" class="md-nav__link">
+    <span class="md-ellipsis">
+      Fundamental Signal Types
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Fundamental Signal Types">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#unit-step-function" class="md-nav__link">
+    <span class="md-ellipsis">
+      Unit Step Function
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#unit-impulse-function" class="md-nav__link">
+    <span class="md-ellipsis">
+      Unit Impulse Function
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#sinusoidal-signals" class="md-nav__link">
+    <span class="md-ellipsis">
+      Sinusoidal Signals
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#exponential-signals" class="md-nav__link">
+    <span class="md-ellipsis">
+      Exponential Signals
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#signal-parameters-and-characteristics" class="md-nav__link">
+    <span class="md-ellipsis">
+      Signal Parameters and Characteristics
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Signal Parameters and Characteristics">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#signal-amplitude" class="md-nav__link">
+    <span class="md-ellipsis">
+      Signal Amplitude
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#signal-frequency" class="md-nav__link">
+    <span class="md-ellipsis">
+      Signal Frequency
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#signal-phase" class="md-nav__link">
+    <span class="md-ellipsis">
+      Signal Phase
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#signal-duration" class="md-nav__link">
+    <span class="md-ellipsis">
+      Signal Duration
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#signal-energy-and-power" class="md-nav__link">
+    <span class="md-ellipsis">
+      Signal Energy and Power
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#signal-operations" class="md-nav__link">
+    <span class="md-ellipsis">
+      Signal Operations
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Signal Operations">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#time-shifting" class="md-nav__link">
+    <span class="md-ellipsis">
+      Time Shifting
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#time-scaling" class="md-nav__link">
+    <span class="md-ellipsis">
+      Time Scaling
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#interactive-demonstrations" class="md-nav__link">
+    <span class="md-ellipsis">
+      Interactive Demonstrations
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Interactive Demonstrations">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#purpose" class="md-nav__link">
+    <span class="md-ellipsis">
+      Purpose
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#features" class="md-nav__link">
+    <span class="md-ellipsis">
+      Features
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#learning-objectives" class="md-nav__link">
+    <span class="md-ellipsis">
+      Learning Objectives
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#implementation-requirements" class="md-nav__link">
+    <span class="md-ellipsis">
+      Implementation Requirements
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#purpose_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      Purpose
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#features_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      Features
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#learning-objectives_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      Learning Objectives
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#implementation-requirements_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      Implementation Requirements
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#comparison-tables" class="md-nav__link">
+    <span class="md-ellipsis">
+      Comparison Tables
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#summary_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      Summary
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+  
+    <a href="https://github.com/dmccreary/signal-processing/blob/master/docs/chapters/02-introduction-to-signals-and-systems/index.md" title="Edit this page" class="md-content__button md-icon">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M10 20H6V4h7v5h5v3.1l2-2V8l-6-6H6c-1.1 0-2 .9-2 2v16c0 1.1.9 2 2 2h4zm10.2-7c.1 0 .3.1.4.2l1.3 1.3c.2.2.2.6 0 .8l-1 1-2.1-2.1 1-1c.1-.1.2-.2.4-.2m0 3.9L14.1 23H12v-2.1l6.1-6.1z"/></svg>
+    </a>
+  
+  
+
+
+<h1 id="introduction-to-signals-and-systems">Introduction to Signals and Systems</h1>
+<h2 id="summary">Summary</h2>
+<p>This chapter defines signals and systems, exploring signal classifications, properties, and basic operations that are fundamental to signal processing analysis.</p>
+<p>Students will explore 25 key concepts that are essential for understanding this area of signal processing. This material provides the foundation for concepts introduced in later chapters.</p>
+<h2 id="concepts-covered">Concepts Covered</h2>
+<p>This chapter covers the following 25 concepts from the learning graph:</p>
+<ol>
+<li>Signals</li>
+<li>Systems</li>
+<li>Continuous-Time Signals</li>
+<li>Discrete-Time Signals</li>
+<li>Analog Signals</li>
+<li>Digital Signals</li>
+<li>Periodic Signals</li>
+<li>Aperiodic Signals</li>
+<li>Even Signals</li>
+<li>Odd Signals</li>
+<li>Energy Signals</li>
+<li>Power Signals</li>
+<li>Unit Step Function</li>
+<li>Unit Impulse Function</li>
+<li>Sinusoidal Signals</li>
+<li>Exponential Signals</li>
+<li>Signal Operations</li>
+<li>Time Shifting</li>
+<li>Time Scaling</li>
+<li>Signal Amplitude</li>
+<li>Signal Frequency</li>
+<li>Signal Phase</li>
+<li>Signal Duration</li>
+<li>Signal Energy</li>
+<li>Signal Power</li>
+</ol>
+<h2 id="prerequisites">Prerequisites</h2>
+<p>This chapter builds on concepts from:</p>
+<ul>
+<li><a href="../01-mathematical-foundations/">Chapter 1: Mathematical Foundations</a></li>
+</ul>
+<hr />
+<h2 id="introduction">Introduction</h2>
+<p>The study of signal processing begins with understanding the fundamental nature of signals and the systems that process them. A signal represents information-bearing quantities that vary with respect to one or more independent variables, typically time or space. Systems, on the other hand, are entities that transform input signals into output signals through specific operations or transformations. This chapter establishes the theoretical foundation for all subsequent signal processing topics by introducing signal classifications, mathematical representations, and basic operations that enable sophisticated analysis and manipulation of real-world phenomena.</p>
+<p>Understanding the diverse characteristics of signals provides engineers and scientists with the vocabulary and conceptual tools necessary to describe, analyze, and predict the behavior of complex communication systems, control systems, and data processing applications. From the continuous voltages in analog circuits to the discrete samples in digital audio files, signals permeate every aspect of modern technology and engineering practice.</p>
+<h2 id="fundamental-definitions">Fundamental Definitions</h2>
+<h3 id="signals">Signals</h3>
+<p>A signal is a function that conveys information about the behavior or attributes of some phenomenon, represented mathematically as a function of one or more independent variables. In electrical engineering contexts, signals typically represent voltages or currents that vary over time, while in other domains they might represent temperature variations, stock prices, or seismic measurements. The mathematical representation of a signal allows engineers to apply analytical techniques from calculus, linear algebra, and complex analysis to understand, predict, and manipulate the information contained within.</p>
+<p>Signals serve as the primary carriers of information in communication systems, the measurements in control systems, and the data sources in computational analysis. The abstract mathematical treatment of signals enables powerful generalizations that apply across diverse application domains, from medical imaging to financial forecasting.</p>
+<h3 id="systems">Systems</h3>
+<p>A system is an entity that processes input signals to produce output signals according to specific rules or mathematical operations. Systems can be physical devices such as electronic filters or amplifiers, or they can be algorithmic processes implemented in software. The fundamental relationship is expressed as <span class="arithmatex">\(y(t) = \mathcal{T}[x(t)]\)</span>, where <span class="arithmatex">\(x(t)\)</span> represents the input signal, <span class="arithmatex">\(y(t)\)</span> represents the output signal, and <span class="arithmatex">\(\mathcal{T}\)</span> represents the transformation operation performed by the system.</p>
+<p>The study of systems focuses on characterizing their behavior, predicting their responses to various inputs, and designing systems that achieve desired transformation objectives. System analysis techniques provide the mathematical framework for understanding how signals are modified as they pass through physical or computational processes.</p>
+<h2 id="signal-classifications">Signal Classifications</h2>
+<p>Signals can be categorized along multiple dimensions, each classification revealing different aspects of signal behavior and suggesting appropriate analysis techniques.</p>
+<h3 id="continuous-time-vs-discrete-time-signals">Continuous-Time vs. Discrete-Time Signals</h3>
+<p><strong>Continuous-Time Signals</strong> are defined for every value of time within some interval, represented mathematically as <span class="arithmatex">\(x(t)\)</span> where <span class="arithmatex">\(t\)</span> is a real-valued continuous variable. These signals naturally arise in physical systems where quantities vary smoothly over time, such as temperature measurements, acoustic pressure waves, or electromagnetic field strengths. The continuous nature allows application of calculus-based analysis techniques including differentiation and integration.</p>
+<p><strong>Discrete-Time Signals</strong> are defined only at specific time instances, typically at uniform intervals, and are represented as <span class="arithmatex">\(x[n]\)</span> where <span class="arithmatex">\(n\)</span> is an integer-valued index. These signals arise naturally from sampling processes or from inherently discrete phenomena such as daily stock prices or monthly rainfall measurements. The notation <span class="arithmatex">\(x[n]\)</span> distinguishes discrete signals from their continuous counterparts, emphasizing that the signal exists only at integer multiples of some sampling period.</p>
+<p>The relationship between these representations is fundamental to digital signal processing, where continuous-time signals from the physical world are converted to discrete-time signals for computational processing.</p>
+<h3 id="analog-vs-digital-signals">Analog vs. Digital Signals</h3>
+<p><strong>Analog Signals</strong> can take any value within a continuous range, both in time and amplitude, providing infinite resolution limited only by measurement precision and noise. Traditional telephone systems, vinyl records, and thermocouple temperature sensors all produce analog signals that vary continuously in both dimensions. The infinite precision of analog representation comes at the cost of susceptibility to noise and degradation during transmission and storage.</p>
+<p><strong>Digital Signals</strong> are quantized in both time and amplitude, taking on only discrete values from a finite set of possible levels. Modern computers, digital communication systems, and compact disc audio all employ digital signals that offer advantages in noise immunity, reproducibility, and compatibility with computational processing. The conversion from analog to digital involves both sampling (discretization in time) and quantization (discretization in amplitude).</p>
+<p>The distinction between analog and digital representations underlies the fundamental trade-offs in modern signal processing system design between precision, cost, power consumption, and computational capability.</p>
+<h3 id="temporal-properties-periodicity">Temporal Properties: Periodicity</h3>
+<p><strong>Periodic Signals</strong> repeat their values at regular intervals, satisfying the condition <span class="arithmatex">\(x(t) = x(t + T)\)</span> for all values of <span class="arithmatex">\(t\)</span>, where <span class="arithmatex">\(T\)</span> is the fundamental period. Common examples include sinusoidal waveforms, square waves, and the carrier signals used in radio transmission. The frequency <span class="arithmatex">\(f = 1/T\)</span> measured in Hertz (Hz) describes how many complete cycles occur per unit time, providing an intuitive characterization of periodic behavior.</p>
+<p><strong>Aperiodic Signals</strong> do not exhibit regular repetition patterns and may be transient (existing for finite duration) or persistent but non-repeating. Speech signals, radar pulses, and most naturally occurring phenomena produce aperiodic signals that require different analytical approaches than their periodic counterparts. While periodic signals can be efficiently represented using Fourier series, aperiodic signals require the more general Fourier transform.</p>
+<h3 id="symmetry-properties">Symmetry Properties</h3>
+<p><strong>Even Signals</strong> satisfy the symmetry condition <span class="arithmatex">\(x(t) = x(-t)\)</span>, meaning they are symmetric about the vertical axis at <span class="arithmatex">\(t=0\)</span>. The cosine function <span class="arithmatex">\(\cos(\omega t)\)</span> exemplifies an even signal, and this property simplifies many mathematical operations in signal analysis. Even signals contain only cosine components in their Fourier representations, eliminating the need to compute sine coefficients.</p>
+<p><strong>Odd Signals</strong> satisfy the condition <span class="arithmatex">\(x(t) = -x(-t)\)</span>, exhibiting antisymmetry about the origin. The sine function <span class="arithmatex">\(\sin(\omega t)\)</span> is the prototypical odd signal, and such signals integrate to zero over symmetric intervals. Odd signals contain only sine components in their Fourier series expansions.</p>
+<p>Any arbitrary signal can be decomposed into the sum of an even component and an odd component using the expressions:</p>
+<div class="arithmatex">\[x_e(t) = \frac{x(t) + x(-t)}{2}\]</div>
+<div class="arithmatex">\[x_o(t) = \frac{x(t) - x(-t)}{2}\]</div>
+<p>This decomposition proves valuable in many analytical contexts, particularly in understanding signal behavior under various system transformations.</p>
+<h3 id="energy-and-power-classifications">Energy and Power Classifications</h3>
+<p><strong>Energy Signals</strong> possess finite total energy, computed as <span class="arithmatex">\(E = \int_{-\infty}^{\infty} |x(t)|^2 dt &lt; \infty\)</span>, and consequently have zero average power. Such signals are necessarily time-limited or decay sufficiently rapidly at infinity, including examples such as rectangular pulses, exponentially decaying functions, and finite-duration speech segments. The energy metric provides a measure of the signal's total effect or magnitude over all time.</p>
+<p><strong>Power Signals</strong> have infinite energy but finite average power, defined as <span class="arithmatex">\(P = \lim_{T \to \infty} \frac{1}{2T} \int_{-T}^{T} |x(t)|^2 dt &lt; \infty\)</span>. Periodic signals constitute the primary class of power signals, as their indefinite repetition leads to unbounded total energy. Constant signals and many random processes also fall into this category. The distinction between energy and power signals reflects fundamental differences in signal duration and long-term behavior.</p>
+<h2 id="fundamental-signal-types">Fundamental Signal Types</h2>
+<h3 id="unit-step-function">Unit Step Function</h3>
+<p>The unit step function <span class="arithmatex">\(u(t)\)</span> represents an instantaneous transition from zero to one at time zero, defined mathematically as:</p>
+<div class="arithmatex">\[u(t) = \begin{cases} 0 &amp; t &lt; 0 \\ 1 &amp; t \geq 0 \end{cases}\]</div>
+<p>This simple function serves as a building block for constructing more complex signals and modeling switching operations in circuits and control systems. The step function enables representation of causal signals (signals that are zero for <span class="arithmatex">\(t &lt; 0\)</span>) through multiplication, and can create rectangular pulses through combinations such as <span class="arithmatex">\(u(t) - u(t-T)\)</span>.</p>
+<p>The discrete-time unit step <span class="arithmatex">\(u[n]\)</span> plays an analogous role in discrete signal processing, enabling representation of causal sequences and accumulation operations.</p>
+<h3 id="unit-impulse-function">Unit Impulse Function</h3>
+<p>The unit impulse or Dirac delta function <span class="arithmatex">\(\delta(t)\)</span> represents an infinitely narrow, infinitely tall pulse with unit area, defined through its sifting property:</p>
+<div class="arithmatex">\[\int_{-\infty}^{\infty} f(t)\delta(t-t_0) dt = f(t_0)\]</div>
+<p>Although not a function in the strict mathematical sense, the impulse is rigorously defined in distribution theory and proves indispensable in system analysis. The impulse response of a system (its output when the input is an impulse) completely characterizes the system's behavior for all possible inputs through convolution operations.</p>
+<p>The discrete-time impulse <span class="arithmatex">\(\delta[n]\)</span> is defined as <span class="arithmatex">\(\delta[0] = 1\)</span> and <span class="arithmatex">\(\delta[n] = 0\)</span> for <span class="arithmatex">\(n \neq 0\)</span>, providing the basis for representing any discrete signal as a weighted sum of shifted impulses:</p>
+<div class="arithmatex">\[x[n] = \sum_{k=-\infty}^{\infty} x[k]\delta[n-k]\]</div>
+<h3 id="sinusoidal-signals">Sinusoidal Signals</h3>
+<p>Sinusoidal signals represent perhaps the most important signal type in engineering analysis, taking the general form:</p>
+<div class="arithmatex">\[x(t) = A\cos(\omega t + \phi)\]</div>
+<p>where <span class="arithmatex">\(A\)</span> represents amplitude, <span class="arithmatex">\(\omega = 2\pi f\)</span> represents angular frequency in radians per second, and <span class="arithmatex">\(\phi\)</span> represents the phase angle in radians. Sinusoids are eigenfunctions of linear time-invariant systems, meaning that a sinusoidal input produces a sinusoidal output at the same frequency (though possibly with altered amplitude and phase).</p>
+<p>The mathematical properties of sinusoids, particularly their relationship to complex exponentials through Euler's formula <span class="arithmatex">\(e^{j\omega t} = \cos(\omega t) + j\sin(\omega t)\)</span>, enable powerful analytical techniques including Fourier analysis and phasor methods. The ubiquity of sinusoidal behavior in physical systems from mechanical vibrations to electromagnetic waves makes these signals central to engineering practice.</p>
+<h3 id="exponential-signals">Exponential Signals</h3>
+<p>Exponential signals take the form <span class="arithmatex">\(x(t) = Ce^{at}\)</span> where <span class="arithmatex">\(C\)</span> and <span class="arithmatex">\(a\)</span> are constants that may be real or complex. Real exponentials with <span class="arithmatex">\(a &lt; 0\)</span> decay to zero, modeling processes such as capacitor discharge, radioactive decay, and thermal cooling. Real exponentials with <span class="arithmatex">\(a &gt; 0\)</span> grow unboundedly, representing unstable or divergent processes.</p>
+<p>Complex exponentials <span class="arithmatex">\(e^{j\omega t}\)</span> are intimately connected to sinusoids and form the basis for frequency domain analysis. The complex exponential combines oscillatory behavior with exponential growth or decay, providing a unified framework for analyzing both the magnitude and phase characteristics of signals and systems.</p>
+<p>The discrete-time exponential <span class="arithmatex">\(x[n] = Ca^n\)</span> serves analogous purposes in discrete signal processing, with <span class="arithmatex">\(|a| &lt; 1\)</span> producing decay and <span class="arithmatex">\(|a| &gt; 1\)</span> producing growth.</p>
+<h2 id="signal-parameters-and-characteristics">Signal Parameters and Characteristics</h2>
+<h3 id="signal-amplitude">Signal Amplitude</h3>
+<p>The amplitude of a signal refers to its maximum deviation from its mean or equilibrium value, providing a measure of signal strength or intensity. For sinusoidal signals <span class="arithmatex">\(A\cos(\omega t)\)</span>, the amplitude <span class="arithmatex">\(A\)</span> directly specifies the peak value. For general signals, various amplitude measures exist including peak amplitude, peak-to-peak amplitude, and root-mean-square (RMS) amplitude given by:</p>
+<div class="arithmatex">\[A_{rms} = \sqrt{\frac{1}{T}\int_0^T x^2(t)dt}\]</div>
+<p>The RMS amplitude relates directly to the average power delivered by the signal, making it particularly relevant in electrical power calculations and audio signal measurements.</p>
+<h3 id="signal-frequency">Signal Frequency</h3>
+<p>Frequency describes the rate of oscillation or repetition in periodic signals, measured in Hertz (Hz) representing cycles per second. The frequency <span class="arithmatex">\(f\)</span> relates to the period <span class="arithmatex">\(T\)</span> by <span class="arithmatex">\(f = 1/T\)</span> and to angular frequency by <span class="arithmatex">\(\omega = 2\pi f\)</span>. Frequency characterizes not only pure sinusoids but also complex periodic waveforms through their harmonic content, where integer multiples of the fundamental frequency combine to create the overall signal shape.</p>
+<p>The concept of frequency extends to aperiodic signals through spectral analysis, where the Fourier transform reveals the distribution of frequency content even in non-repeating signals. This frequency domain perspective provides crucial insights into signal behavior and system design.</p>
+<h3 id="signal-phase">Signal Phase</h3>
+<p>Phase represents the temporal offset or shift of a periodic signal relative to a reference, typically measured in radians or degrees. For a sinusoid <span class="arithmatex">\(A\cos(\omega t + \phi)\)</span>, the phase angle <span class="arithmatex">\(\phi\)</span> determines the signal's value at <span class="arithmatex">\(t=0\)</span> and its relationship to other sinusoids of the same frequency. Phase information proves critical in applications from interference patterns in wave propagation to synchronization in communication systems.</p>
+<p>Relative phase between two signals determines whether they reinforce (in phase) or cancel (out of phase), with intermediate phase differences producing varying degrees of constructive and destructive interference. Phase linearity in systems preserves signal shape, while phase distortion can severely impact signal quality.</p>
+<h3 id="signal-duration">Signal Duration</h3>
+<p>The duration of a signal specifies its extent in time, distinguishing finite-duration (time-limited) signals from infinite-duration signals. Practical signals are always finite in duration, but many useful mathematical models employ infinite-duration signals such as sinusoids and exponentials. The duration of a signal relates inversely to its bandwidth through various uncertainty principles, establishing fundamental limits on simultaneous localization in time and frequency.</p>
+<p>Compact signal duration enables efficient storage and transmission but requires wider frequency bandwidth, while spread-out signals can achieve narrower bandwidths at the cost of extended duration.</p>
+<h3 id="signal-energy-and-power">Signal Energy and Power</h3>
+<p>Signal energy quantifies the total effect of a signal over all time, while signal power measures the energy per unit time. For continuous-time signals:</p>
+<div class="arithmatex">\[E = \int_{-\infty}^{\infty} |x(t)|^2 dt\]</div>
+<div class="arithmatex">\[P = \lim_{T \to \infty} \frac{1}{2T}\int_{-T}^{T} |x(t)|^2 dt\]</div>
+<p>These metrics generalize to discrete-time signals by replacing integrals with summations. Energy and power calculations prove essential in applications from communication system design (where signal power must exceed noise power for reliable detection) to electrical engineering (where power consumption directly impacts cost and thermal management).</p>
+<h2 id="signal-operations">Signal Operations</h2>
+<p>Signal operations enable the manipulation and transformation of signals to extract information, emphasize features, or prepare signals for further processing.</p>
+<h3 id="time-shifting">Time Shifting</h3>
+<p>Time shifting translates a signal forward or backward in time without changing its shape, represented as <span class="arithmatex">\(y(t) = x(t - t_0)\)</span>. A positive value of <span class="arithmatex">\(t_0\)</span> delays the signal (shifts it to the right), while a negative value advances it (shifts left). Time shifting appears in applications from acoustic echo cancellation to alignment of multiple measurement channels for comparative analysis.</p>
+<p>In discrete-time systems, time shifting by an integer number of samples is implemented simply by index manipulation: <span class="arithmatex">\(y[n] = x[n - n_0]\)</span>, where <span class="arithmatex">\(n_0\)</span> represents the shift amount.</p>
+<h3 id="time-scaling">Time Scaling</h3>
+<p>Time scaling expands or compresses a signal in time by replacing <span class="arithmatex">\(t\)</span> with <span class="arithmatex">\(at\)</span>, yielding <span class="arithmatex">\(y(t) = x(at)\)</span>. When <span class="arithmatex">\(a &gt; 1\)</span>, the signal is compressed (plays faster), while <span class="arithmatex">\(0 &lt; a &lt; 1\)</span> expands the signal (plays slower). The case <span class="arithmatex">\(a = -1\)</span> produces time reversal, flipping the signal about <span class="arithmatex">\(t = 0\)</span>.</p>
+<p>Time scaling affects both the duration and the frequency content of signals, with compression increasing all frequencies by factor <span class="arithmatex">\(a\)</span> and expansion decreasing frequencies proportionally. Audio applications exploit time scaling for pitch shifting and time-stretching effects.</p>
+<h2 id="interactive-demonstrations">Interactive Demonstrations</h2>
+<details>
+<summary>MicroSim: Signal Type Explorer</summary>
+<h3 id="purpose">Purpose</h3>
+<p>This interactive simulation allows students to visualize and compare different signal types including continuous-time, discrete-time, periodic, and aperiodic signals.</p>
+<h3 id="features">Features</h3>
+<ul>
+<li>Toggle between continuous and discrete time representations</li>
+<li>Adjust amplitude, frequency, and phase parameters in real-time</li>
+<li>Display multiple signal types simultaneously for comparison</li>
+<li>Show energy and power calculations for selected signals</li>
+<li>Demonstrate time shifting and time scaling operations</li>
+</ul>
+<h3 id="learning-objectives">Learning Objectives</h3>
+<ul>
+<li>Distinguish between continuous-time and discrete-time signal representations</li>
+<li>Understand the impact of amplitude, frequency, and phase on signal characteristics</li>
+<li>Visualize the difference between energy and power signals</li>
+<li>Observe how signal operations affect waveform shape and properties</li>
+</ul>
+<h3 id="implementation-requirements">Implementation Requirements</h3>
+<ul>
+<li>Canvas size: 670px wide, 475px total height (400px drawing + 75px controls)</li>
+<li>Drawing area displays up to four signals in different colors</li>
+<li>Control panel includes sliders for amplitude (0-5), frequency (0.1-10 Hz), and phase (0-360 degrees)</li>
+<li>Dropdown menu selects signal type: sinusoid, square wave, exponential, step function</li>
+<li>Display numerical values for energy, power, and RMS amplitude</li>
+<li>Interactive buttons for time shift and time scale operations</li>
+</ul>
+</details>
+<details>
+<summary>MicroSim: Even and Odd Signal Decomposition</summary>
+<h3 id="purpose_1">Purpose</h3>
+<p>This simulation demonstrates the decomposition of arbitrary signals into even and odd components using the mathematical formulas presented in this chapter.</p>
+<h3 id="features_1">Features</h3>
+<ul>
+<li>Draw custom signal shapes using mouse or select from predefined waveforms</li>
+<li>Automatically compute and display even component <span class="arithmatex">\(x_e(t)\)</span></li>
+<li>Automatically compute and display odd component <span class="arithmatex">\(x_o(t)\)</span></li>
+<li>Verify that <span class="arithmatex">\(x(t) = x_e(t) + x_o(t)\)</span> through visual overlay</li>
+<li>Show mathematical calculations for each component</li>
+</ul>
+<h3 id="learning-objectives_1">Learning Objectives</h3>
+<ul>
+<li>Understand the concept of even and odd signal symmetry</li>
+<li>Apply decomposition formulas to arbitrary signals</li>
+<li>Verify the uniqueness of even/odd decomposition</li>
+<li>Recognize even and odd components in common signal types</li>
+</ul>
+<h3 id="implementation-requirements_1">Implementation Requirements</h3>
+<ul>
+<li>Canvas size: 670px wide, 550px total height (475px drawing + 75px controls)</li>
+<li>Three synchronized plot areas showing original, even component, and odd component</li>
+<li>Time axis from -5 to +5 seconds with vertical axis at t=0</li>
+<li>Predefined signals: pulse, triangle, sawtooth, custom</li>
+<li>Color coding: original (blue), even (green), odd (red), sum (purple dashed)</li>
+<li>Clear button to reset and draw new custom signal</li>
+</ul>
+</details>
+<h2 id="comparison-tables">Comparison Tables</h2>
+<table>
+<thead>
+<tr>
+<th>Signal Classification</th>
+<th>Defining Property</th>
+<th>Examples</th>
+<th>Mathematical Representation</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Continuous-Time</td>
+<td>Defined for all t</td>
+<td>Analog voltage, temperature</td>
+<td><span class="arithmatex">\(x(t)\)</span>, <span class="arithmatex">\(t \in \mathbb{R}\)</span></td>
+</tr>
+<tr>
+<td>Discrete-Time</td>
+<td>Defined at integer indices</td>
+<td>Digital audio samples</td>
+<td><span class="arithmatex">\(x[n]\)</span>, <span class="arithmatex">\(n \in \mathbb{Z}\)</span></td>
+</tr>
+<tr>
+<td>Periodic</td>
+<td>Repeats with period T</td>
+<td>Sinusoid, square wave</td>
+<td><span class="arithmatex">\(x(t) = x(t + T)\)</span></td>
+</tr>
+<tr>
+<td>Aperiodic</td>
+<td>No repetition</td>
+<td>Speech signal, pulse</td>
+<td>No periodicity condition</td>
+</tr>
+<tr>
+<td>Even</td>
+<td>Symmetric about t=0</td>
+<td><span class="arithmatex">\(\cos(\omega t)\)</span>, <span class="arithmatex">\(t^2\)</span></td>
+<td><span class="arithmatex">\(x(t) = x(-t)\)</span></td>
+</tr>
+<tr>
+<td>Odd</td>
+<td>Antisymmetric about t=0</td>
+<td><span class="arithmatex">\(\sin(\omega t)\)</span>, <span class="arithmatex">\(t^3\)</span></td>
+<td><span class="arithmatex">\(x(t) = -x(-t)\)</span></td>
+</tr>
+<tr>
+<td>Energy Signal</td>
+<td>Finite total energy</td>
+<td>Rectangular pulse</td>
+<td><span class="arithmatex">\(E &lt; \infty\)</span>, <span class="arithmatex">\(P = 0\)</span></td>
+</tr>
+<tr>
+<td>Power Signal</td>
+<td>Finite average power</td>
+<td>Constant signal, periodic</td>
+<td><span class="arithmatex">\(P &lt; \infty\)</span>, <span class="arithmatex">\(E = \infty\)</span></td>
+</tr>
+</tbody>
+</table>
+<table>
+<thead>
+<tr>
+<th>Signal Operation</th>
+<th>Mathematical Form</th>
+<th>Effect</th>
+<th>Application</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Time Shift</td>
+<td><span class="arithmatex">\(y(t) = x(t - t_0)\)</span></td>
+<td>Delays (<span class="arithmatex">\(t_0 &gt; 0\)</span>) or advances (<span class="arithmatex">\(t_0 &lt; 0\)</span>) signal</td>
+<td>Echo, synchronization</td>
+</tr>
+<tr>
+<td>Time Scaling</td>
+<td><span class="arithmatex">\(y(t) = x(at)\)</span></td>
+<td>Compresses (<span class="arithmatex">\(a &gt; 1\)</span>) or expands (<span class="arithmatex">\(0 &lt; a &lt; 1\)</span>) signal</td>
+<td>Audio speed change</td>
+</tr>
+<tr>
+<td>Time Reversal</td>
+<td><span class="arithmatex">\(y(t) = x(-t)\)</span></td>
+<td>Flips signal about t=0</td>
+<td>Matched filtering</td>
+</tr>
+<tr>
+<td>Amplitude Scaling</td>
+<td><span class="arithmatex">\(y(t) = cx(t)\)</span></td>
+<td>Multiplies amplitude by constant c</td>
+<td>Volume control, gain</td>
+</tr>
+</tbody>
+</table>
+<table>
+<thead>
+<tr>
+<th>Signal Type</th>
+<th>General Form</th>
+<th>Key Parameters</th>
+<th>Frequency Content</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Sinusoid</td>
+<td><span class="arithmatex">\(A\cos(\omega t + \phi)\)</span></td>
+<td>Amplitude A, frequency <span class="arithmatex">\(\omega\)</span>, phase <span class="arithmatex">\(\phi\)</span></td>
+<td>Single frequency <span class="arithmatex">\(\omega\)</span></td>
+</tr>
+<tr>
+<td>Real Exponential</td>
+<td><span class="arithmatex">\(Ce^{at}\)</span></td>
+<td>Constant C, decay/growth rate a</td>
+<td>Continuous spectrum</td>
+</tr>
+<tr>
+<td>Complex Exponential</td>
+<td><span class="arithmatex">\(Ce^{(σ+j\omega)t}\)</span></td>
+<td>Growth/decay σ, frequency <span class="arithmatex">\(\omega\)</span></td>
+<td>Single complex frequency</td>
+</tr>
+<tr>
+<td>Unit Step</td>
+<td><span class="arithmatex">\(u(t)\)</span></td>
+<td>Step time (usually 0)</td>
+<td>DC plus wide spectrum</td>
+</tr>
+<tr>
+<td>Unit Impulse</td>
+<td><span class="arithmatex">\(\delta(t)\)</span></td>
+<td>Impulse time (usually 0)</td>
+<td>All frequencies equally</td>
+</tr>
+</tbody>
+</table>
+<h2 id="summary_1">Summary</h2>
+<p>This chapter has established the fundamental concepts of signals and systems that form the foundation for all signal processing analysis. Signals represent information-bearing quantities that vary with independent variables, most commonly time, while systems transform input signals into output signals through specific mathematical operations. The classification of signals along multiple dimensions including continuous versus discrete time, analog versus digital amplitude, periodic versus aperiodic behavior, and even versus odd symmetry provides the vocabulary for describing real-world phenomena mathematically.</p>
+<p>Fundamental signal types including the unit step function, unit impulse function, sinusoids, and exponentials serve as building blocks for representing and analyzing more complex signals. Signal parameters such as amplitude, frequency, phase, duration, energy, and power quantify signal characteristics and enable rigorous analysis of signal behavior. Basic signal operations including time shifting and time scaling provide the tools for manipulating signals to extract information and prepare data for processing.</p>
+<p>Understanding these foundational concepts enables students to progress to more advanced topics including system properties, convolution operations, frequency domain analysis, and digital signal processing techniques. The mathematical framework established here applies across diverse application domains from communications and control to biomedical engineering and financial analysis, demonstrating the power and generality of signal processing theory.</p>
+
+
+
+
+
+
+
+  
+  
+
+
+
+  
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+          <button type="button" class="md-top md-icon" data-md-component="top" hidden>
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8z"/></svg>
+  Back to top
+</button>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+    
+      
+      <nav class="md-footer__inner md-grid" aria-label="Footer" >
+        
+          
+          <a href="../01-mathematical-foundations/" class="md-footer__link md-footer__link--prev" aria-label="Previous: Ch 1 - Mathematical Foundations">
+            <div class="md-footer__button md-icon">
+              
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+            </div>
+            <div class="md-footer__title">
+              <span class="md-footer__direction">
+                Previous
+              </span>
+              <div class="md-ellipsis">
+                Ch 1 - Mathematical Foundations
+              </div>
+            </div>
+          </a>
+        
+        
+          
+          <a href="../03-system-properties-and-analysis/" class="md-footer__link md-footer__link--next" aria-label="Next: Ch 3 - System Properties">
+            <div class="md-footer__title">
+              <span class="md-footer__direction">
+                Next
+              </span>
+              <div class="md-ellipsis">
+                Ch 3 - System Properties
+              </div>
+            </div>
+            <div class="md-footer__button md-icon">
+              
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M4 11v2h12l-5.5 5.5 1.42 1.42L19.84 12l-7.92-7.92L10.5 5.5 16 11z"/></svg>
+            </div>
+          </a>
+        
+      </nav>
+    
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    
+      
+      <script id="__config" type="application/json">{"base": "../..", "features": ["content.code.copy", "navigation.expand", "navigation.path", "navigation.prune", "navigation.indexes", "toc.follow", "navigation.top", "navigation.footer", "content.action.edit"], "search": "../../assets/javascripts/workers/search.f8cc74c7.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": null}</script>
+    
+    
+      <script src="../../assets/javascripts/bundle.c8b220af.min.js"></script>
+      
+        <script src="../../js/extra.js"></script>
+      
+        <script src="https://unpkg.com/mathjax@3/es5/tex-mml-chtml.js"></script>
+      
+    
+  </body>
+</html>

@@ -1,0 +1,2457 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+        <meta name="description" content="College Level Textbook on Signal Processing - License is Commons ShareAlike Attribution Noncommercial">
+      
+      
+        <meta name="author" content="Dan McCreary">
+      
+      
+        <link rel="canonical" href="https://dmccreary.github.io/signal-processing/chapters/14-time-frequency-analysis-and-advanced-topics/">
+      
+      
+        <link rel="prev" href="../13-multirate-signal-processing-and-compression/">
+      
+      
+        <link rel="next" href="../15-signal-processing-applications-and-ai-integration/">
+      
+      
+      <link rel="icon" href="../../img/favicon.ico">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.6.12">
+    
+    
+      
+        <title>Ch 14 - Time-Frequency Analysis - Signal Processing with AI</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../assets/stylesheets/main.2afb09e1.min.css">
+      
+        
+        <link rel="stylesheet" href="../../assets/stylesheets/palette.06af60db.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+      <link rel="stylesheet" href="../../css/extra.css">
+    
+    <script>__md_scope=new URL("../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+  
+
+
+  
+  
+
+<script id="__analytics">function __md_analytics(){function e(){dataLayer.push(arguments)}window.dataLayer=window.dataLayer||[],e("js",new Date),e("config","G-SY3G2ND80K"),document.addEventListener("DOMContentLoaded",(function(){document.forms.search&&document.forms.search.query.addEventListener("blur",(function(){this.value&&e("event","search",{search_term:this.value})}));document$.subscribe((function(){var t=document.forms.feedback;if(void 0!==t)for(var a of t.querySelectorAll("[type=submit]"))a.addEventListener("click",(function(a){a.preventDefault();var n=document.location.pathname,d=this.getAttribute("data-md-value");e("event","feedback",{page:n,data:d}),t.firstElementChild.disabled=!0;var r=t.querySelector(".md-feedback__note [data-md-value='"+d+"']");r&&(r.hidden=!1)})),t.hidden=!1})),location$.subscribe((function(t){e("config","G-SY3G2ND80K",{page_path:t.pathname})}))}));var t=document.createElement("script");t.async=!0,t.src="https://www.googletagmanager.com/gtag/js?id=G-SY3G2ND80K",document.getElementById("__analytics").insertAdjacentElement("afterEnd",t)}</script>
+  
+    <script>"undefined"!=typeof __md_analytics&&__md_analytics()</script>
+  
+
+    
+    
+      
+        <meta  property="og:type"  content="website" >
+      
+        <meta  property="og:title"  content="Ch 14 - Time-Frequency Analysis - Signal Processing with AI" >
+      
+        <meta  property="og:description"  content="College Level Textbook on Signal Processing - License is Commons ShareAlike Attribution Noncommercial" >
+      
+        <meta  property="og:image"  content="https://dmccreary.github.io/signal-processing/assets/images/social/chapters/14-time-frequency-analysis-and-advanced-topics/index.png" >
+      
+        <meta  property="og:image:type"  content="image/png" >
+      
+        <meta  property="og:image:width"  content="1200" >
+      
+        <meta  property="og:image:height"  content="630" >
+      
+        <meta  property="og:url"  content="https://dmccreary.github.io/signal-processing/chapters/14-time-frequency-analysis-and-advanced-topics/" >
+      
+        <meta  name="twitter:card"  content="summary_large_image" >
+      
+        <meta  name="twitter:title"  content="Ch 14 - Time-Frequency Analysis - Signal Processing with AI" >
+      
+        <meta  name="twitter:description"  content="College Level Textbook on Signal Processing - License is Commons ShareAlike Attribution Noncommercial" >
+      
+        <meta  name="twitter:image"  content="https://dmccreary.github.io/signal-processing/assets/images/social/chapters/14-time-frequency-analysis-and-advanced-topics/index.png" >
+      
+    
+    
+  </head>
+  
+  
+    
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="maroon" data-md-color-accent="gold">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#time-frequency-analysis-and-advanced-topics" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+  
+
+<header class="md-header md-header--shadow" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href="../.." title="Signal Processing with AI" class="md-header__button md-logo" aria-label="Signal Processing with AI" data-md-component="logo">
+      
+  <img src="../../img/logo-192.png" alt="logo">
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            Signal Processing with AI
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              Ch 14 - Time-Frequency Analysis
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+    
+    
+    
+    
+      
+      
+        <label class="md-header__button md-icon" for="__search">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        </label>
+        <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Search">
+        
+        <button type="reset" class="md-search__icon md-icon" title="Clear" aria-label="Clear" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+        </button>
+      </nav>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+      
+    
+    
+      <div class="md-header__source">
+        <a href="https://github.com/dmccreary/signal-processing" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 6.7.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2024 Fonticons, Inc.--><path d="M439.55 236.05 244 40.45a28.87 28.87 0 0 0-40.81 0l-40.66 40.63 51.52 51.52c27.06-9.14 52.68 16.77 43.39 43.68l49.66 49.66c34.23-11.8 61.18 31 35.47 56.69-26.49 26.49-70.21-2.87-56-37.34L240.22 199v121.85c25.3 12.54 22.26 41.85 9.08 55a34.34 34.34 0 0 1-48.55 0c-17.57-17.6-11.07-46.91 11.25-56v-123c-20.8-8.51-24.6-30.74-18.64-45L142.57 101 8.45 235.14a28.86 28.86 0 0 0 0 40.81l195.61 195.6a28.86 28.86 0 0 0 40.8 0l194.69-194.69a28.86 28.86 0 0 0 0-40.81"/></svg>
+  </div>
+  <div class="md-source__repository">
+    GitHub Repo
+  </div>
+</a>
+      </div>
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+
+<nav class="md-nav md-nav--primary" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../.." title="Signal Processing with AI" class="md-nav__button md-logo" aria-label="Signal Processing with AI" data-md-component="logo">
+      
+  <img src="../../img/logo-192.png" alt="logo">
+
+    </a>
+    Signal Processing with AI
+  </label>
+  
+    <div class="md-nav__source">
+      <a href="https://github.com/dmccreary/signal-processing" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 6.7.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2024 Fonticons, Inc.--><path d="M439.55 236.05 244 40.45a28.87 28.87 0 0 0-40.81 0l-40.66 40.63 51.52 51.52c27.06-9.14 52.68 16.77 43.39 43.68l49.66 49.66c34.23-11.8 61.18 31 35.47 56.69-26.49 26.49-70.21-2.87-56-37.34L240.22 199v121.85c25.3 12.54 22.26 41.85 9.08 55a34.34 34.34 0 0 1-48.55 0c-17.57-17.6-11.07-46.91 11.25-56v-123c-20.8-8.51-24.6-30.74-18.64-45L142.57 101 8.45 235.14a28.86 28.86 0 0 0 0 40.81l195.61 195.6a28.86 28.86 0 0 0 40.8 0l194.69-194.69a28.86 28.86 0 0 0 0-40.81"/></svg>
+  </div>
+  <div class="md-source__repository">
+    GitHub Repo
+  </div>
+</a>
+    </div>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../.." class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Home
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Table of Contents
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../about/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    About This Website
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../course-description/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Course Description
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+    
+      
+        
+        
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+  
+    <a href="../../learning-graph/" class="md-nav__link">
+      
+  
+  
+  <span class="md-ellipsis">
+    Learning Graph
+    
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+    
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+    
+      
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_6" checked>
+        
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../" class="md-nav__link ">
+              
+  
+  
+  <span class="md-ellipsis">
+    Chapters
+    
+  </span>
+  
+
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_6" id="__nav_6_label" tabindex="0">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_6_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_6">
+            <span class="md-nav__icon md-icon"></span>
+            Chapters
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../01-mathematical-foundations/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Ch 1 - Mathematical Foundations
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../02-introduction-to-signals-and-systems/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Ch 2 - Signals and Systems
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../03-system-properties-and-analysis/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Ch 3 - System Properties
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../04-convolution-and-correlation/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Ch 4 - Convolution and Correlation
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../05-sampling-and-quantization/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Ch 5 - Sampling and Quantization
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../06-fourier-analysis-fundamentals/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Ch 6 - Fourier Analysis
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../07-dft-fft-and-frequency-domain-analysis/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Ch 7 - DFT and FFT
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../08-advanced-transforms/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Ch 8 - Advanced Transforms
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../09-filter-design-fundamentals/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Ch 9 - Filter Design Fundamentals
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../10-advanced-filter-design-and-implementation/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Ch 10 - Advanced Filter Design
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../11-adaptive-signal-processing/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Ch 11 - Adaptive Processing
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../12-stochastic-processes-and-random-signals/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Ch 12 - Stochastic Processes
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../13-multirate-signal-processing-and-compression/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Ch 13 - Multirate and Compression
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  
+  <span class="md-ellipsis">
+    Ch 14 - Time-Frequency Analysis
+    
+  </span>
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        
+  
+  
+  <span class="md-ellipsis">
+    Ch 14 - Time-Frequency Analysis
+    
+  </span>
+  
+
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#summary" class="md-nav__link">
+    <span class="md-ellipsis">
+      Summary
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#concepts-covered" class="md-nav__link">
+    <span class="md-ellipsis">
+      Concepts Covered
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#prerequisites" class="md-nav__link">
+    <span class="md-ellipsis">
+      Prerequisites
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#introduction" class="md-nav__link">
+    <span class="md-ellipsis">
+      Introduction
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#time-frequency-analysis-fundamentals" class="md-nav__link">
+    <span class="md-ellipsis">
+      Time-Frequency Analysis Fundamentals
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Time-Frequency Analysis Fundamentals">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#motivation-and-applications" class="md-nav__link">
+    <span class="md-ellipsis">
+      Motivation and Applications
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#time-frequency-resolution-tradeoffs" class="md-nav__link">
+    <span class="md-ellipsis">
+      Time-Frequency Resolution Tradeoffs
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#spectrogram-analysis-and-interpretation" class="md-nav__link">
+    <span class="md-ellipsis">
+      Spectrogram Analysis and Interpretation
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Spectrogram Analysis and Interpretation">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#mathematical-foundation" class="md-nav__link">
+    <span class="md-ellipsis">
+      Mathematical Foundation
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#visualization-and-interpretation" class="md-nav__link">
+    <span class="md-ellipsis">
+      Visualization and Interpretation
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#window-selection-impact" class="md-nav__link">
+    <span class="md-ellipsis">
+      Window Selection Impact
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#overlap-and-hop-size" class="md-nav__link">
+    <span class="md-ellipsis">
+      Overlap and Hop Size
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#wigner-ville-distribution" class="md-nav__link">
+    <span class="md-ellipsis">
+      Wigner-Ville Distribution
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Wigner-Ville Distribution">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#mathematical-formulation" class="md-nav__link">
+    <span class="md-ellipsis">
+      Mathematical Formulation
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#properties-and-characteristics" class="md-nav__link">
+    <span class="md-ellipsis">
+      Properties and Characteristics
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#cross-term-interference" class="md-nav__link">
+    <span class="md-ellipsis">
+      Cross-Term Interference
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#applications-and-extensions" class="md-nav__link">
+    <span class="md-ellipsis">
+      Applications and Extensions
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#ambiguity-function" class="md-nav__link">
+    <span class="md-ellipsis">
+      Ambiguity Function
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Ambiguity Function">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#definition-and-relationship-to-wvd" class="md-nav__link">
+    <span class="md-ellipsis">
+      Definition and Relationship to WVD
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#radar-and-sonar-applications" class="md-nav__link">
+    <span class="md-ellipsis">
+      Radar and Sonar Applications
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#ambiguity-function-properties" class="md-nav__link">
+    <span class="md-ellipsis">
+      Ambiguity Function Properties
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#compressed-sensing" class="md-nav__link">
+    <span class="md-ellipsis">
+      Compressed Sensing
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Compressed Sensing">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#fundamental-principles" class="md-nav__link">
+    <span class="md-ellipsis">
+      Fundamental Principles
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#mathematical-framework" class="md-nav__link">
+    <span class="md-ellipsis">
+      Mathematical Framework
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#applications-and-impact" class="md-nav__link">
+    <span class="md-ellipsis">
+      Applications and Impact
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#reconstruction-algorithms" class="md-nav__link">
+    <span class="md-ellipsis">
+      Reconstruction Algorithms
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#advanced-topics-and-current-research-directions" class="md-nav__link">
+    <span class="md-ellipsis">
+      Advanced Topics and Current Research Directions
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Advanced Topics and Current Research Directions">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#multi-window-spectrograms" class="md-nav__link">
+    <span class="md-ellipsis">
+      Multi-Window Spectrograms
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#synchrosqueezing-transform" class="md-nav__link">
+    <span class="md-ellipsis">
+      Synchrosqueezing Transform
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#sparse-time-frequency-representations" class="md-nav__link">
+    <span class="md-ellipsis">
+      Sparse Time-Frequency Representations
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#machine-learning-integration" class="md-nav__link">
+    <span class="md-ellipsis">
+      Machine Learning Integration
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#summary_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      Summary
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../15-signal-processing-applications-and-ai-integration/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Ch 15 - Applications and AI
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+    
+      
+        
+        
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+  
+    <a href="../../prompts/" class="md-nav__link">
+      
+  
+  
+  <span class="md-ellipsis">
+    Prompts
+    
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+    
+      
+        
+        
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+  
+    <a href="../../sims/" class="md-nav__link">
+      
+  
+  
+  <span class="md-ellipsis">
+    MicroSims
+    
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+    
+      
+        
+        
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+  
+    <a href="../../stories/" class="md-nav__link">
+      
+  
+  
+  <span class="md-ellipsis">
+    Stories
+    
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+    
+      
+        
+        
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+  
+    <a href="../../circuits/" class="md-nav__link">
+      
+  
+  
+  <span class="md-ellipsis">
+    Circuits
+    
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+    
+    
+    
+    
+      
+        
+        
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+  
+    <a href="../../research/" class="md-nav__link">
+      
+  
+  
+  <span class="md-ellipsis">
+    Research
+    
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../report-card/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Report Card
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../checklist/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Checklist
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../glossary/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Glossary
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../how-we-built-this-site/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    How We Built This Site
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../license/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    License
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../references/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    References
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../contact/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Contact
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../ieee-paper-changes/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Paper Changes
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#summary" class="md-nav__link">
+    <span class="md-ellipsis">
+      Summary
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#concepts-covered" class="md-nav__link">
+    <span class="md-ellipsis">
+      Concepts Covered
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#prerequisites" class="md-nav__link">
+    <span class="md-ellipsis">
+      Prerequisites
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#introduction" class="md-nav__link">
+    <span class="md-ellipsis">
+      Introduction
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#time-frequency-analysis-fundamentals" class="md-nav__link">
+    <span class="md-ellipsis">
+      Time-Frequency Analysis Fundamentals
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Time-Frequency Analysis Fundamentals">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#motivation-and-applications" class="md-nav__link">
+    <span class="md-ellipsis">
+      Motivation and Applications
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#time-frequency-resolution-tradeoffs" class="md-nav__link">
+    <span class="md-ellipsis">
+      Time-Frequency Resolution Tradeoffs
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#spectrogram-analysis-and-interpretation" class="md-nav__link">
+    <span class="md-ellipsis">
+      Spectrogram Analysis and Interpretation
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Spectrogram Analysis and Interpretation">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#mathematical-foundation" class="md-nav__link">
+    <span class="md-ellipsis">
+      Mathematical Foundation
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#visualization-and-interpretation" class="md-nav__link">
+    <span class="md-ellipsis">
+      Visualization and Interpretation
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#window-selection-impact" class="md-nav__link">
+    <span class="md-ellipsis">
+      Window Selection Impact
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#overlap-and-hop-size" class="md-nav__link">
+    <span class="md-ellipsis">
+      Overlap and Hop Size
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#wigner-ville-distribution" class="md-nav__link">
+    <span class="md-ellipsis">
+      Wigner-Ville Distribution
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Wigner-Ville Distribution">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#mathematical-formulation" class="md-nav__link">
+    <span class="md-ellipsis">
+      Mathematical Formulation
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#properties-and-characteristics" class="md-nav__link">
+    <span class="md-ellipsis">
+      Properties and Characteristics
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#cross-term-interference" class="md-nav__link">
+    <span class="md-ellipsis">
+      Cross-Term Interference
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#applications-and-extensions" class="md-nav__link">
+    <span class="md-ellipsis">
+      Applications and Extensions
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#ambiguity-function" class="md-nav__link">
+    <span class="md-ellipsis">
+      Ambiguity Function
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Ambiguity Function">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#definition-and-relationship-to-wvd" class="md-nav__link">
+    <span class="md-ellipsis">
+      Definition and Relationship to WVD
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#radar-and-sonar-applications" class="md-nav__link">
+    <span class="md-ellipsis">
+      Radar and Sonar Applications
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#ambiguity-function-properties" class="md-nav__link">
+    <span class="md-ellipsis">
+      Ambiguity Function Properties
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#compressed-sensing" class="md-nav__link">
+    <span class="md-ellipsis">
+      Compressed Sensing
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Compressed Sensing">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#fundamental-principles" class="md-nav__link">
+    <span class="md-ellipsis">
+      Fundamental Principles
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#mathematical-framework" class="md-nav__link">
+    <span class="md-ellipsis">
+      Mathematical Framework
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#applications-and-impact" class="md-nav__link">
+    <span class="md-ellipsis">
+      Applications and Impact
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#reconstruction-algorithms" class="md-nav__link">
+    <span class="md-ellipsis">
+      Reconstruction Algorithms
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#advanced-topics-and-current-research-directions" class="md-nav__link">
+    <span class="md-ellipsis">
+      Advanced Topics and Current Research Directions
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Advanced Topics and Current Research Directions">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#multi-window-spectrograms" class="md-nav__link">
+    <span class="md-ellipsis">
+      Multi-Window Spectrograms
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#synchrosqueezing-transform" class="md-nav__link">
+    <span class="md-ellipsis">
+      Synchrosqueezing Transform
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#sparse-time-frequency-representations" class="md-nav__link">
+    <span class="md-ellipsis">
+      Sparse Time-Frequency Representations
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#machine-learning-integration" class="md-nav__link">
+    <span class="md-ellipsis">
+      Machine Learning Integration
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#summary_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      Summary
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+  
+    <a href="https://github.com/dmccreary/signal-processing/blob/master/docs/chapters/14-time-frequency-analysis-and-advanced-topics/index.md" title="Edit this page" class="md-content__button md-icon">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M10 20H6V4h7v5h5v3.1l2-2V8l-6-6H6c-1.1 0-2 .9-2 2v16c0 1.1.9 2 2 2h4zm10.2-7c.1 0 .3.1.4.2l1.3 1.3c.2.2.2.6 0 .8l-1 1-2.1-2.1 1-1c.1-.1.2-.2.4-.2m0 3.9L14.1 23H12v-2.1l6.1-6.1z"/></svg>
+    </a>
+  
+  
+
+
+<h1 id="time-frequency-analysis-and-advanced-topics">Time-Frequency Analysis and Advanced Topics</h1>
+<h2 id="summary">Summary</h2>
+<p>This chapter covers spectrograms, time-frequency representations, and advanced analysis methods for non-stationary signals.</p>
+<p>Students will explore 5 key concepts that are essential for understanding this area of signal processing. This material provides the foundation for concepts introduced in later chapters.</p>
+<h2 id="concepts-covered">Concepts Covered</h2>
+<p>This chapter covers the following 5 concepts from the learning graph:</p>
+<ol>
+<li>Time-Frequency Analysis</li>
+<li>Spectrogram</li>
+<li>Wigner-Ville Distribution</li>
+<li>Ambiguity Function</li>
+<li>Compressed Sensing</li>
+</ol>
+<h2 id="prerequisites">Prerequisites</h2>
+<p>This chapter builds on concepts from:</p>
+<ul>
+<li><a href="../01-mathematical-foundations/">Chapter 1: Mathematical Foundations</a></li>
+<li><a href="../06-fourier-analysis-fundamentals/">Chapter 6: Fourier Analysis Fundamentals</a></li>
+<li><a href="../07-dft-fft-and-frequency-domain-analysis/">Chapter 7: DFT, FFT and Frequency Domain Analysis</a></li>
+<li><a href="../08-advanced-transforms/">Chapter 8: Advanced Transforms</a></li>
+</ul>
+<hr />
+<h2 id="introduction">Introduction</h2>
+<p>Many real-world signals exhibit time-varying frequency content that cannot be adequately characterized by traditional Fourier analysis, which assumes stationarity and provides no temporal localization of spectral components. Speech signals transition between phonemes with distinct spectral characteristics, music contains notes starting and ending at specific times, radar chirps sweep through frequency ranges, and biological signals like EEG exhibit transient events against varying background activity. Analyzing such non-stationary signals requires joint time-frequency representations that reveal how spectral content evolves over time.</p>
+<p>This chapter explores advanced techniques for time-frequency analysis including spectrograms, the Wigner-Ville distribution, ambiguity functions, and compressed sensing. These methods extend beyond the short-time Fourier transform limitations by providing alternative representations optimized for specific signal characteristics and application requirements. Understanding these sophisticated analytical tools equips you to extract meaningful information from complex, time-varying signals across diverse signal processing domains.</p>
+<h2 id="time-frequency-analysis-fundamentals">Time-Frequency Analysis Fundamentals</h2>
+<p>Time-frequency analysis addresses the fundamental limitation of classical Fourier analysis: the inability to simultaneously localize signal characteristics in both time and frequency domains. The uncertainty principle imposes fundamental limits on achievable joint resolution, but various time-frequency representations offer different tradeoffs suited to particular signal types.</p>
+<h3 id="motivation-and-applications">Motivation and Applications</h3>
+<p>Time-varying signals require analysis methods that capture spectral evolution. Consider speech signals where different phonemes exhibit distinct formant structures, musical performances where notes have specific onset times and durations, or communication signals employing frequency modulation. Standard Fourier analysis reveals which frequencies are present but not when they occur, while pure time-domain analysis shows when events happen but not their spectral content.</p>
+<p>Time-frequency analysis enables:</p>
+<ul>
+<li><strong>Speech and audio</strong>: Analyzing formant trajectories, detecting transients, separating harmonic and percussive content</li>
+<li><strong>Biomedical signals</strong>: Identifying sleep stages from EEG, detecting arrhythmias in ECG</li>
+<li><strong>Radar and sonar</strong>: Analyzing chirp signals, detecting Doppler shifts, target classification</li>
+<li><strong>Vibration analysis</strong>: Machine fault detection, structural health monitoring</li>
+<li><strong>Communications</strong>: Analyzing spread spectrum signals, interference characterization</li>
+</ul>
+<h3 id="time-frequency-resolution-tradeoffs">Time-Frequency Resolution Tradeoffs</h3>
+<p>The Heisenberg uncertainty principle establishes fundamental limits on simultaneous time-frequency resolution:</p>
+<div class="arithmatex">\[\Delta t \cdot \Delta f \geq \frac{1}{4\pi}\]</div>
+<p>This relationship means that improving time localization (decreasing <span class="arithmatex">\(\Delta t\)</span>) necessarily degrades frequency resolution (increasing <span class="arithmatex">\(\Delta f\)</span>) and vice versa. No time-frequency representation can achieve arbitrarily fine resolution in both domains simultaneously.</p>
+<p>Different time-frequency methods manage this tradeoff through:</p>
+<ul>
+<li><strong>Window selection</strong>: Controlling analysis window duration and shape</li>
+<li><strong>Adaptive approaches</strong>: Varying resolution across time-frequency plane</li>
+<li><strong>Alternative kernels</strong>: Different mathematical formulations emphasizing various properties</li>
+</ul>
+<p>Understanding these fundamental constraints guides appropriate method selection and parameter tuning for specific applications.</p>
+<h2 id="spectrogram-analysis-and-interpretation">Spectrogram Analysis and Interpretation</h2>
+<p>The spectrogram, introduced in Chapter 8 as the magnitude squared of the short-time Fourier transform, provides the most widely used time-frequency representation. Its intuitive visualization and computational efficiency make it the standard tool for initial time-frequency analysis across many domains.</p>
+<h3 id="mathematical-foundation">Mathematical Foundation</h3>
+<p>The spectrogram of signal <span class="arithmatex">\(x(t)\)</span> with analysis window <span class="arithmatex">\(w(t)\)</span> is:</p>
+<div class="arithmatex">\[S(t,f) = \left|\int_{-\infty}^{\infty} x(\tau)w(\tau-t)e^{-j2\pi f\tau}d\tau\right|^2\]</div>
+<p>For discrete-time signals:</p>
+<div class="arithmatex">\[S[m,k] = \left|\sum_{n=0}^{N-1} x[n+mH]w[n]e^{-j2\pi kn/N}\right|^2\]</div>
+<p>where <span class="arithmatex">\(m\)</span> is the time frame index, <span class="arithmatex">\(k\)</span> is frequency bin, <span class="arithmatex">\(N\)</span> is window length, and <span class="arithmatex">\(H\)</span> is hop size between successive windows.</p>
+<h3 id="visualization-and-interpretation">Visualization and Interpretation</h3>
+<p>Spectrograms display time on the horizontal axis, frequency on the vertical axis, and intensity (magnitude or power) encoded as color or grayscale. Common interpretation patterns include:</p>
+<p><strong>Horizontal structures</strong>: Sustained tones produce horizontal bands at constant frequencies</p>
+<p><strong>Vertical structures</strong>: Transients and impulses create vertical lines across frequencies</p>
+<p><strong>Diagonal trajectories</strong>: Chirps and frequency sweeps appear as tilted lines</p>
+<p><strong>Harmonic patterns</strong>: Musical notes show multiple parallel horizontal bands at fundamental and harmonic frequencies</p>
+<p><strong>Formant structure</strong>: Speech vowels display broad resonant regions (formants) that shift with articulation</p>
+<h3 id="window-selection-impact">Window Selection Impact</h3>
+<p>Window choice critically affects spectrogram characteristics:</p>
+<ul>
+<li><strong>Rectangular</strong>: Narrowest main lobe but highest sidelobes, rarely used</li>
+<li><strong>Hamming/Hann</strong>: Good general-purpose windows balancing main lobe width and sidelobe suppression</li>
+<li><strong>Gaussian</strong>: Achieves minimum time-frequency uncertainty product</li>
+<li><strong>Kaiser</strong>: Adjustable parameter controls main lobe vs. sidelobe tradeoff</li>
+</ul>
+<p>Longer windows provide better frequency resolution but poorer time localization, while shorter windows improve time resolution at the expense of frequency resolution. Typical window lengths range from 20-30 ms for speech to 50-100 ms for music analysis.</p>
+<h3 id="overlap-and-hop-size">Overlap and Hop Size</h3>
+<p>The hop size <span class="arithmatex">\(H\)</span> (spacing between successive analysis windows) affects:</p>
+<ul>
+<li><strong>Time resolution</strong>: Smaller hop sizes produce finer time sampling</li>
+<li><strong>Computation</strong>: Larger hop sizes reduce computational requirements</li>
+<li><strong>Visualization smoothness</strong>: Greater overlap creates smoother spectrograms</li>
+</ul>
+<p>Typical overlap ranges from 50% (hop size = window length / 2) to 87.5% (hop size = window length / 8), balancing smoothness and computation.</p>
+<details>
+<summary>MicroSim: Interactive Spectrogram Parameter Explorer</summary>
+<p>This simulation would enable deep exploration of spectrogram parameters:</p>
+<ul>
+<li>Load or synthesize test signals: speech, music, chirps, multi-component signals, noise</li>
+<li>Adjust spectrogram parameters:</li>
+<li>Window type: rectangular, Hamming, Hann, Blackman, Gaussian, Kaiser</li>
+<li>Window length: 16 to 4096 samples via slider</li>
+<li>Hop size: 25% to 95% overlap</li>
+<li>Frequency scale: linear or logarithmic</li>
+<li>Color map: perceptually uniform options</li>
+<li>Display synchronized views:</li>
+<li>Waveform with current analysis window position highlighted</li>
+<li>Spectrogram with adjustable dynamic range</li>
+<li>Frequency spectrum at selected time point</li>
+<li>Time series at selected frequency</li>
+<li>Interactive cursor for precise time-frequency measurements</li>
+<li>Compare multiple parameter sets side-by-side</li>
+</ul>
+<p>Students would develop intuition about how window parameters affect time-frequency resolution, understand tradeoffs between temporal and spectral clarity, and learn to select appropriate parameters for different signal types.</p>
+</details>
+<h2 id="wigner-ville-distribution">Wigner-Ville Distribution</h2>
+<p>The Wigner-Ville distribution (WVD) provides an alternative time-frequency representation with superior resolution properties compared to spectrograms, achieving the theoretical minimum time-frequency uncertainty. However, this improved resolution comes at the cost of cross-term interference for multi-component signals.</p>
+<h3 id="mathematical-formulation">Mathematical Formulation</h3>
+<p>The WVD of continuous-time signal <span class="arithmatex">\(x(t)\)</span> is defined as:</p>
+<div class="arithmatex">\[W_x(t,f) = \int_{-\infty}^{\infty} x\left(t+\frac{\tau}{2}\right)x^*\left(t-\frac{\tau}{2}\right)e^{-j2\pi f\tau}d\tau\]</div>
+<p>For discrete-time signals:</p>
+<div class="arithmatex">\[W_x[n,k] = 2\sum_{m=-\infty}^{\infty} x[n+m]x^*[n-m]e^{-j4\pi km/N}\]</div>
+<p>This formulation computes the Fourier transform of the instantaneous autocorrelation function, providing a fundamentally different approach than windowed Fourier analysis.</p>
+<h3 id="properties-and-characteristics">Properties and Characteristics</h3>
+<p>The WVD exhibits several mathematically desirable properties:</p>
+<ol>
+<li><strong>Real-valued</strong>: Always produces real values (unlike STFT which is complex)</li>
+<li><strong>High resolution</strong>: Achieves minimum time-frequency uncertainty product</li>
+<li><strong>Correct marginals</strong>: Time and frequency marginals match signal energy distributions</li>
+<li><strong>Frequency shift covariance</strong>: Shifts in frequency domain correspond to shifts in time-frequency plane</li>
+<li><strong>Time shift covariance</strong>: Shifts in time domain correspond to shifts in time-frequency plane</li>
+</ol>
+<p>These properties make the WVD theoretically attractive for time-frequency analysis.</p>
+<h3 id="cross-term-interference">Cross-Term Interference</h3>
+<p>The WVD's major limitation is cross-term interference for multi-component signals. For a signal with two components <span class="arithmatex">\(x(t) = x_1(t) + x_2(t)\)</span>:</p>
+<div class="arithmatex">\[W_x(t,f) = W_{x_1}(t,f) + W_{x_2}(t,f) + 2\text{Re}\{W_{x_1,x_2}(t,f)\}\]</div>
+<p>The cross-term <span class="arithmatex">\(W_{x_1,x_2}(t,f)\)</span> creates oscillatory interference patterns between signal components, often appearing as artifacts positioned midway between actual components. These cross-terms can obscure the true signal structure and complicate interpretation.</p>
+<h3 id="applications-and-extensions">Applications and Extensions</h3>
+<p>Despite cross-term issues, the WVD finds applications where high resolution justifies dealing with artifacts:</p>
+<ul>
+<li><strong>Single-component analysis</strong>: Chirp parameter estimation, instantaneous frequency tracking</li>
+<li><strong>Radar signal processing</strong>: Target detection and parameter estimation</li>
+<li><strong>Biomedical analysis</strong>: Heart sound analysis, EEG micro-event detection</li>
+</ul>
+<p>Variants like the pseudo-Wigner-Ville distribution and smoothed pseudo-Wigner-Ville distribution introduce smoothing kernels to suppress cross-terms while sacrificing some resolution. The Cohen's class of time-frequency distributions generalizes the WVD by introducing various kernel functions optimized for specific applications.</p>
+<h2 id="ambiguity-function">Ambiguity Function</h2>
+<p>The ambiguity function, closely related to the Wigner-Ville distribution through Fourier duality, provides an alternative representation particularly valuable in radar and sonar signal processing for analyzing matched filter response characteristics and optimizing waveform design.</p>
+<h3 id="definition-and-relationship-to-wvd">Definition and Relationship to WVD</h3>
+<p>The ambiguity function of signal <span class="arithmatex">\(x(t)\)</span> is defined as:</p>
+<div class="arithmatex">\[A_x(\tau, f_d) = \int_{-\infty}^{\infty} x\left(t+\frac{\tau}{2}\right)x^*\left(t-\frac{\tau}{2}\right)e^{-j2\pi f_d t}dt\]</div>
+<p>where <span class="arithmatex">\(\tau\)</span> is time delay and <span class="arithmatex">\(f_d\)</span> is Doppler frequency shift. The ambiguity function and Wigner-Ville distribution form a 2D Fourier transform pair:</p>
+<div class="arithmatex">\[A_x(\tau, f_d) = \int_{-\infty}^{\infty}\int_{-\infty}^{\infty} W_x(t,f)e^{j2\pi(f\tau - f_d t)}dtdf\]</div>
+<p>This duality means information content is equivalent, but the ambiguity function domain (<span class="arithmatex">\(\tau\)</span>, <span class="arithmatex">\(f_d\)</span>) often provides more intuitive interpretation for radar applications.</p>
+<h3 id="radar-and-sonar-applications">Radar and Sonar Applications</h3>
+<p>In radar systems, the ambiguity function characterizes matched filter response when the return signal is delayed by time <span class="arithmatex">\(\tau\)</span> (corresponding to target range) and Doppler shifted by frequency <span class="arithmatex">\(f_d\)</span> (corresponding to target velocity). The ambiguity function reveals:</p>
+<ul>
+<li><strong>Range resolution</strong>: Determined by ambiguity function width in delay dimension</li>
+<li><strong>Velocity resolution</strong>: Determined by width in Doppler dimension</li>
+<li><strong>Sidelobe structure</strong>: Indicates potential ghost targets or interference</li>
+<li><strong>Optimization criteria</strong>: Guide waveform design to achieve desired resolution properties</li>
+</ul>
+<h3 id="ambiguity-function-properties">Ambiguity Function Properties</h3>
+<p>Key properties guiding waveform design:</p>
+<ol>
+<li><strong>Volume theorem</strong>: Total volume under <span class="arithmatex">\(|A_x(\tau, f_d)|^2\)</span> is constant (conserved)</li>
+<li><strong>Maximum at origin</strong>: Peak occurs at <span class="arithmatex">\(A_x(0,0) = E\)</span> (signal energy)</li>
+<li><strong>Symmetry</strong>: <span class="arithmatex">\(|A_x(\tau, f_d)| = |A_x(-\tau, -f_d)|\)</span> for real signals</li>
+<li><strong>Tradeoffs</strong>: Improving resolution in one dimension degrades it in another (uncertainty principle)</li>
+</ol>
+<p>Waveform designers manipulate signal characteristics (bandwidth, duration, modulation) to shape the ambiguity function for specific target detection and parameter estimation requirements. Linear FM chirps, phase-coded waveforms, and frequency-hopping patterns each produce distinct ambiguity function shapes optimized for different radar scenarios.</p>
+<h2 id="compressed-sensing">Compressed Sensing</h2>
+<p>Compressed sensing (also called compressive sensing or compressive sampling) represents a paradigm shift in signal acquisition and reconstruction, enabling recovery of sparse or compressible signals from far fewer measurements than traditional Nyquist sampling requires. This revolutionary approach has transformed numerous signal processing applications by reducing sampling requirements, storage needs, and power consumption.</p>
+<h3 id="fundamental-principles">Fundamental Principles</h3>
+<p>Compressed sensing exploits signal sparsity: most natural signals contain relatively few significant coefficients when represented in an appropriate basis. The key insight is that if a signal is sparse in some transform domain, it can be recovered from incomplete measurements through optimization rather than requiring complete Nyquist-rate sampling.</p>
+<p>Three fundamental requirements enable compressed sensing:</p>
+<ol>
+<li><strong>Sparsity</strong>: Signal must be sparse or compressible in some representation (typically wavelet, DCT, or other transform domain)</li>
+<li><strong>Incoherence</strong>: Measurement basis must be incoherent with sparsity basis (randomly sampled measurements often satisfy this)</li>
+<li><strong>Optimization</strong>: Reconstruction employs convex optimization (typically <span class="arithmatex">\(\ell_1\)</span> minimization) to exploit sparsity</li>
+</ol>
+<h3 id="mathematical-framework">Mathematical Framework</h3>
+<p>Consider signal <span class="arithmatex">\(x \in \mathbb{R}^n\)</span> that is <span class="arithmatex">\(k\)</span>-sparse in transform domain <span class="arithmatex">\(\Psi\)</span>, meaning <span class="arithmatex">\(x = \Psi s\)</span> where <span class="arithmatex">\(s\)</span> has only <span class="arithmatex">\(k \ll n\)</span> non-zero coefficients. We obtain <span class="arithmatex">\(m\)</span> random linear measurements:</p>
+<div class="arithmatex">\[y = \Phi x = \Phi\Psi s\]</div>
+<p>where measurement matrix <span class="arithmatex">\(\Phi \in \mathbb{R}^{m \times n}\)</span> and <span class="arithmatex">\(m \ll n\)</span>. Recovering <span class="arithmatex">\(x\)</span> from <span class="arithmatex">\(y\)</span> is underdetermined (more unknowns than equations), but sparsity enables unique recovery through:</p>
+<div class="arithmatex">\[\min_s ||s||_1 \text{ subject to } y = \Phi\Psi s\]</div>
+<p>This <span class="arithmatex">\(\ell_1\)</span>-minimization problem can be solved efficiently using convex optimization algorithms. Under appropriate conditions (restricted isometry property), perfect reconstruction is guaranteed with high probability when <span class="arithmatex">\(m \geq C k \log(n/k)\)</span> for some constant <span class="arithmatex">\(C\)</span>—dramatically fewer samples than the <span class="arithmatex">\(n\)</span> required by Nyquist.</p>
+<h3 id="applications-and-impact">Applications and Impact</h3>
+<p>Compressed sensing has revolutionized numerous domains:</p>
+<p><strong>Medical imaging</strong>: MRI acceleration acquires fewer k-space samples, reducing scan time while maintaining image quality. Patients benefit from shorter procedures and reduced motion artifacts.</p>
+<p><strong>Imaging systems</strong>: Single-pixel cameras, coded aperture imaging, and computational photography exploit compressed sensing for novel imaging modalities.</p>
+<p><strong>Radar</strong>: Achieve high-resolution imaging with reduced sampling rates and simplified hardware architectures.</p>
+<p><strong>Wireless communications</strong>: Spectrum sensing for cognitive radio, channel estimation in MIMO systems, and efficient data aggregation in sensor networks.</p>
+<p><strong>Analog-to-digital conversion</strong>: Modulated wideband converters (MWC) and random demodulation enable sub-Nyquist sampling of sparse wideband signals.</p>
+<h3 id="reconstruction-algorithms">Reconstruction Algorithms</h3>
+<p>Various algorithms solve the sparse reconstruction problem:</p>
+<ul>
+<li><strong>Basis pursuit</strong>: Standard convex <span class="arithmatex">\(\ell_1\)</span> optimization using linear programming or interior point methods</li>
+<li><strong>Orthogonal matching pursuit (OMP)</strong>: Greedy iterative algorithm selecting basis functions</li>
+<li><strong>Iterative shrinkage/thresholding</strong>: Simple, fast algorithms alternating between measurement projection and soft thresholding</li>
+<li><strong>Approximate message passing</strong>: Leverages statistical physics insights for efficient reconstruction</li>
+</ul>
+<p>Recent deep learning approaches use neural networks trained to perform compressed sensing reconstruction, often outperforming classical optimization algorithms in speed and quality.</p>
+<h2 id="advanced-topics-and-current-research-directions">Advanced Topics and Current Research Directions</h2>
+<p>Time-frequency analysis and compressed sensing represent active research areas with ongoing developments extending capabilities and discovering new applications.</p>
+<h3 id="multi-window-spectrograms">Multi-Window Spectrograms</h3>
+<p>Rather than using a single fixed window, multi-window methods employ several window functions with different lengths simultaneously, combining results to achieve improved time-frequency localization adapted to signal characteristics. This approach partially overcomes the fundamental resolution tradeoff by using narrow windows for transients and wide windows for sustained components.</p>
+<h3 id="synchrosqueezing-transform">Synchrosqueezing Transform</h3>
+<p>The synchrosqueezing transform post-processes continuous wavelet or short-time Fourier transforms to improve frequency localization by reassigning time-frequency coefficients according to instantaneous frequency estimates. This technique produces sharper time-frequency representations while maintaining invertibility, useful for signals with well-separated components like chirps and harmonic decomposition.</p>
+<h3 id="sparse-time-frequency-representations">Sparse Time-Frequency Representations</h3>
+<p>Combining compressed sensing with time-frequency analysis enables sparse representations that adaptively select relevant time-frequency atoms rather than computing complete transforms. This reduces computational requirements and storage while potentially improving resolution and noise robustness.</p>
+<h3 id="machine-learning-integration">Machine Learning Integration</h3>
+<p>Modern approaches integrate classical time-frequency analysis with machine learning:</p>
+<ul>
+<li><strong>Feature extraction</strong>: Spectrogram representations serve as inputs to convolutional neural networks for classification tasks (speech recognition, environmental sound classification, biomedical signal analysis)</li>
+<li><strong>Learned representations</strong>: Auto-encoders discover optimal time-frequency-like representations from data</li>
+<li><strong>Denoi sing and enhancement</strong>: Neural networks trained to remove artifacts from spectrograms and other time-frequency representations</li>
+</ul>
+<h2 id="summary_1">Summary</h2>
+<p>This chapter explored advanced techniques for analyzing non-stationary signals whose spectral characteristics evolve over time. Time-frequency analysis addresses the fundamental limitation of classical Fourier methods by providing joint time-frequency representations revealing how signal spectral content changes temporally.</p>
+<p>Spectrograms, based on the short-time Fourier transform, provide intuitive and widely applicable time-frequency visualization with window selection controlling the fundamental tradeoff between time and frequency resolution. Proper parameter selection enables effective analysis across diverse applications from speech processing to vibration monitoring.</p>
+<p>The Wigner-Ville distribution achieves superior time-frequency resolution through a fundamentally different mathematical formulation, though cross-term interference complicates interpretation for multi-component signals. Variants and extensions within Cohen's class provide flexibility to suppress artifacts while maintaining desirable properties for specific applications.</p>
+<p>Ambiguity functions, dual to the Wigner-Ville distribution, characterize matched filter responses and guide waveform design for radar and sonar systems. Understanding delay-Doppler representations enables optimization of range and velocity resolution for target detection and parameter estimation.</p>
+<p>Compressed sensing revolutionizes signal acquisition by exploiting sparsity to enable reconstruction from far fewer samples than Nyquist theory requires. This paradigm shift enables novel applications across medical imaging, communications, and sensing systems, with ongoing research developing improved reconstruction algorithms and discovering new application domains.</p>
+<p>The final chapter examines practical signal processing applications and integration with modern artificial intelligence techniques, demonstrating how the theoretical foundations developed throughout this textbook enable real-world systems solving complex problems across diverse domains.</p>
+
+
+
+
+
+
+
+  
+  
+
+
+
+  
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+          <button type="button" class="md-top md-icon" data-md-component="top" hidden>
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8z"/></svg>
+  Back to top
+</button>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+    
+      
+      <nav class="md-footer__inner md-grid" aria-label="Footer" >
+        
+          
+          <a href="../13-multirate-signal-processing-and-compression/" class="md-footer__link md-footer__link--prev" aria-label="Previous: Ch 13 - Multirate and Compression">
+            <div class="md-footer__button md-icon">
+              
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+            </div>
+            <div class="md-footer__title">
+              <span class="md-footer__direction">
+                Previous
+              </span>
+              <div class="md-ellipsis">
+                Ch 13 - Multirate and Compression
+              </div>
+            </div>
+          </a>
+        
+        
+          
+          <a href="../15-signal-processing-applications-and-ai-integration/" class="md-footer__link md-footer__link--next" aria-label="Next: Ch 15 - Applications and AI">
+            <div class="md-footer__title">
+              <span class="md-footer__direction">
+                Next
+              </span>
+              <div class="md-ellipsis">
+                Ch 15 - Applications and AI
+              </div>
+            </div>
+            <div class="md-footer__button md-icon">
+              
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M4 11v2h12l-5.5 5.5 1.42 1.42L19.84 12l-7.92-7.92L10.5 5.5 16 11z"/></svg>
+            </div>
+          </a>
+        
+      </nav>
+    
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    
+      
+      <script id="__config" type="application/json">{"base": "../..", "features": ["content.code.copy", "navigation.expand", "navigation.path", "navigation.prune", "navigation.indexes", "toc.follow", "navigation.top", "navigation.footer", "content.action.edit"], "search": "../../assets/javascripts/workers/search.f8cc74c7.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": null}</script>
+    
+    
+      <script src="../../assets/javascripts/bundle.c8b220af.min.js"></script>
+      
+        <script src="../../js/extra.js"></script>
+      
+        <script src="https://unpkg.com/mathjax@3/es5/tex-mml-chtml.js"></script>
+      
+    
+  </body>
+</html>

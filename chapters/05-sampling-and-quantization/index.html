@@ -1,0 +1,2523 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+        <meta name="description" content="College Level Textbook on Signal Processing - License is Commons ShareAlike Attribution Noncommercial">
+      
+      
+        <meta name="author" content="Dan McCreary">
+      
+      
+        <link rel="canonical" href="https://dmccreary.github.io/signal-processing/chapters/05-sampling-and-quantization/">
+      
+      
+        <link rel="prev" href="../04-convolution-and-correlation/">
+      
+      
+        <link rel="next" href="../06-fourier-analysis-fundamentals/">
+      
+      
+      <link rel="icon" href="../../img/favicon.ico">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.6.12">
+    
+    
+      
+        <title>Ch 5 - Sampling and Quantization - Signal Processing with AI</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../assets/stylesheets/main.2afb09e1.min.css">
+      
+        
+        <link rel="stylesheet" href="../../assets/stylesheets/palette.06af60db.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+      <link rel="stylesheet" href="../../css/extra.css">
+    
+    <script>__md_scope=new URL("../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+  
+
+
+  
+  
+
+<script id="__analytics">function __md_analytics(){function e(){dataLayer.push(arguments)}window.dataLayer=window.dataLayer||[],e("js",new Date),e("config","G-SY3G2ND80K"),document.addEventListener("DOMContentLoaded",(function(){document.forms.search&&document.forms.search.query.addEventListener("blur",(function(){this.value&&e("event","search",{search_term:this.value})}));document$.subscribe((function(){var t=document.forms.feedback;if(void 0!==t)for(var a of t.querySelectorAll("[type=submit]"))a.addEventListener("click",(function(a){a.preventDefault();var n=document.location.pathname,d=this.getAttribute("data-md-value");e("event","feedback",{page:n,data:d}),t.firstElementChild.disabled=!0;var r=t.querySelector(".md-feedback__note [data-md-value='"+d+"']");r&&(r.hidden=!1)})),t.hidden=!1})),location$.subscribe((function(t){e("config","G-SY3G2ND80K",{page_path:t.pathname})}))}));var t=document.createElement("script");t.async=!0,t.src="https://www.googletagmanager.com/gtag/js?id=G-SY3G2ND80K",document.getElementById("__analytics").insertAdjacentElement("afterEnd",t)}</script>
+  
+    <script>"undefined"!=typeof __md_analytics&&__md_analytics()</script>
+  
+
+    
+    
+      
+        <meta  property="og:type"  content="website" >
+      
+        <meta  property="og:title"  content="Ch 5 - Sampling and Quantization - Signal Processing with AI" >
+      
+        <meta  property="og:description"  content="College Level Textbook on Signal Processing - License is Commons ShareAlike Attribution Noncommercial" >
+      
+        <meta  property="og:image"  content="https://dmccreary.github.io/signal-processing/assets/images/social/chapters/05-sampling-and-quantization/index.png" >
+      
+        <meta  property="og:image:type"  content="image/png" >
+      
+        <meta  property="og:image:width"  content="1200" >
+      
+        <meta  property="og:image:height"  content="630" >
+      
+        <meta  property="og:url"  content="https://dmccreary.github.io/signal-processing/chapters/05-sampling-and-quantization/" >
+      
+        <meta  name="twitter:card"  content="summary_large_image" >
+      
+        <meta  name="twitter:title"  content="Ch 5 - Sampling and Quantization - Signal Processing with AI" >
+      
+        <meta  name="twitter:description"  content="College Level Textbook on Signal Processing - License is Commons ShareAlike Attribution Noncommercial" >
+      
+        <meta  name="twitter:image"  content="https://dmccreary.github.io/signal-processing/assets/images/social/chapters/05-sampling-and-quantization/index.png" >
+      
+    
+    
+  </head>
+  
+  
+    
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="maroon" data-md-color-accent="gold">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#sampling-and-quantization" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+  
+
+<header class="md-header md-header--shadow" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href="../.." title="Signal Processing with AI" class="md-header__button md-logo" aria-label="Signal Processing with AI" data-md-component="logo">
+      
+  <img src="../../img/logo-192.png" alt="logo">
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            Signal Processing with AI
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              Ch 5 - Sampling and Quantization
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+    
+    
+    
+    
+      
+      
+        <label class="md-header__button md-icon" for="__search">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        </label>
+        <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Search">
+        
+        <button type="reset" class="md-search__icon md-icon" title="Clear" aria-label="Clear" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+        </button>
+      </nav>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+      
+    
+    
+      <div class="md-header__source">
+        <a href="https://github.com/dmccreary/signal-processing" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 6.7.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2024 Fonticons, Inc.--><path d="M439.55 236.05 244 40.45a28.87 28.87 0 0 0-40.81 0l-40.66 40.63 51.52 51.52c27.06-9.14 52.68 16.77 43.39 43.68l49.66 49.66c34.23-11.8 61.18 31 35.47 56.69-26.49 26.49-70.21-2.87-56-37.34L240.22 199v121.85c25.3 12.54 22.26 41.85 9.08 55a34.34 34.34 0 0 1-48.55 0c-17.57-17.6-11.07-46.91 11.25-56v-123c-20.8-8.51-24.6-30.74-18.64-45L142.57 101 8.45 235.14a28.86 28.86 0 0 0 0 40.81l195.61 195.6a28.86 28.86 0 0 0 40.8 0l194.69-194.69a28.86 28.86 0 0 0 0-40.81"/></svg>
+  </div>
+  <div class="md-source__repository">
+    GitHub Repo
+  </div>
+</a>
+      </div>
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+
+<nav class="md-nav md-nav--primary" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../.." title="Signal Processing with AI" class="md-nav__button md-logo" aria-label="Signal Processing with AI" data-md-component="logo">
+      
+  <img src="../../img/logo-192.png" alt="logo">
+
+    </a>
+    Signal Processing with AI
+  </label>
+  
+    <div class="md-nav__source">
+      <a href="https://github.com/dmccreary/signal-processing" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 6.7.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2024 Fonticons, Inc.--><path d="M439.55 236.05 244 40.45a28.87 28.87 0 0 0-40.81 0l-40.66 40.63 51.52 51.52c27.06-9.14 52.68 16.77 43.39 43.68l49.66 49.66c34.23-11.8 61.18 31 35.47 56.69-26.49 26.49-70.21-2.87-56-37.34L240.22 199v121.85c25.3 12.54 22.26 41.85 9.08 55a34.34 34.34 0 0 1-48.55 0c-17.57-17.6-11.07-46.91 11.25-56v-123c-20.8-8.51-24.6-30.74-18.64-45L142.57 101 8.45 235.14a28.86 28.86 0 0 0 0 40.81l195.61 195.6a28.86 28.86 0 0 0 40.8 0l194.69-194.69a28.86 28.86 0 0 0 0-40.81"/></svg>
+  </div>
+  <div class="md-source__repository">
+    GitHub Repo
+  </div>
+</a>
+    </div>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../.." class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Home
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Table of Contents
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../about/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    About This Website
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../course-description/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Course Description
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+    
+      
+        
+        
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+  
+    <a href="../../learning-graph/" class="md-nav__link">
+      
+  
+  
+  <span class="md-ellipsis">
+    Learning Graph
+    
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+    
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+    
+      
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_6" checked>
+        
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../" class="md-nav__link ">
+              
+  
+  
+  <span class="md-ellipsis">
+    Chapters
+    
+  </span>
+  
+
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_6" id="__nav_6_label" tabindex="0">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_6_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_6">
+            <span class="md-nav__icon md-icon"></span>
+            Chapters
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../01-mathematical-foundations/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Ch 1 - Mathematical Foundations
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../02-introduction-to-signals-and-systems/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Ch 2 - Signals and Systems
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../03-system-properties-and-analysis/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Ch 3 - System Properties
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../04-convolution-and-correlation/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Ch 4 - Convolution and Correlation
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  
+  <span class="md-ellipsis">
+    Ch 5 - Sampling and Quantization
+    
+  </span>
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        
+  
+  
+  <span class="md-ellipsis">
+    Ch 5 - Sampling and Quantization
+    
+  </span>
+  
+
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#summary" class="md-nav__link">
+    <span class="md-ellipsis">
+      Summary
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#concepts-covered" class="md-nav__link">
+    <span class="md-ellipsis">
+      Concepts Covered
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#prerequisites" class="md-nav__link">
+    <span class="md-ellipsis">
+      Prerequisites
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#introduction" class="md-nav__link">
+    <span class="md-ellipsis">
+      Introduction
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#sampling-fundamentals" class="md-nav__link">
+    <span class="md-ellipsis">
+      Sampling Fundamentals
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Sampling Fundamentals">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#sampling" class="md-nav__link">
+    <span class="md-ellipsis">
+      Sampling
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#sampling-rate" class="md-nav__link">
+    <span class="md-ellipsis">
+      Sampling Rate
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#sampling-theorem" class="md-nav__link">
+    <span class="md-ellipsis">
+      Sampling Theorem
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#nyquist-rate" class="md-nav__link">
+    <span class="md-ellipsis">
+      Nyquist Rate
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#nyquist-frequency" class="md-nav__link">
+    <span class="md-ellipsis">
+      Nyquist Frequency
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#aliasing" class="md-nav__link">
+    <span class="md-ellipsis">
+      Aliasing
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#anti-aliasing-filter" class="md-nav__link">
+    <span class="md-ellipsis">
+      Anti-Aliasing Filter
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#oversampling" class="md-nav__link">
+    <span class="md-ellipsis">
+      Oversampling
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#undersampling" class="md-nav__link">
+    <span class="md-ellipsis">
+      Undersampling
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#quantization-fundamentals" class="md-nav__link">
+    <span class="md-ellipsis">
+      Quantization Fundamentals
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Quantization Fundamentals">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#quantization" class="md-nav__link">
+    <span class="md-ellipsis">
+      Quantization
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#quantization-error" class="md-nav__link">
+    <span class="md-ellipsis">
+      Quantization Error
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#quantization-noise" class="md-nav__link">
+    <span class="md-ellipsis">
+      Quantization Noise
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#uniform-quantization" class="md-nav__link">
+    <span class="md-ellipsis">
+      Uniform Quantization
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#non-uniform-quantization" class="md-nav__link">
+    <span class="md-ellipsis">
+      Non-Uniform Quantization
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#signal-reconstruction" class="md-nav__link">
+    <span class="md-ellipsis">
+      Signal Reconstruction
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#interactive-demonstrations" class="md-nav__link">
+    <span class="md-ellipsis">
+      Interactive Demonstrations
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Interactive Demonstrations">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#purpose" class="md-nav__link">
+    <span class="md-ellipsis">
+      Purpose
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#features" class="md-nav__link">
+    <span class="md-ellipsis">
+      Features
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#learning-objectives" class="md-nav__link">
+    <span class="md-ellipsis">
+      Learning Objectives
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#implementation-requirements" class="md-nav__link">
+    <span class="md-ellipsis">
+      Implementation Requirements
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#purpose_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      Purpose
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#features_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      Features
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#learning-objectives_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      Learning Objectives
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#implementation-requirements_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      Implementation Requirements
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#comparison-tables" class="md-nav__link">
+    <span class="md-ellipsis">
+      Comparison Tables
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#design-considerations" class="md-nav__link">
+    <span class="md-ellipsis">
+      Design Considerations
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#summary_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      Summary
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../06-fourier-analysis-fundamentals/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Ch 6 - Fourier Analysis
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../07-dft-fft-and-frequency-domain-analysis/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Ch 7 - DFT and FFT
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../08-advanced-transforms/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Ch 8 - Advanced Transforms
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../09-filter-design-fundamentals/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Ch 9 - Filter Design Fundamentals
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../10-advanced-filter-design-and-implementation/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Ch 10 - Advanced Filter Design
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../11-adaptive-signal-processing/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Ch 11 - Adaptive Processing
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../12-stochastic-processes-and-random-signals/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Ch 12 - Stochastic Processes
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../13-multirate-signal-processing-and-compression/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Ch 13 - Multirate and Compression
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../14-time-frequency-analysis-and-advanced-topics/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Ch 14 - Time-Frequency Analysis
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../15-signal-processing-applications-and-ai-integration/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Ch 15 - Applications and AI
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+    
+      
+        
+        
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+  
+    <a href="../../prompts/" class="md-nav__link">
+      
+  
+  
+  <span class="md-ellipsis">
+    Prompts
+    
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+    
+      
+        
+        
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+  
+    <a href="../../sims/" class="md-nav__link">
+      
+  
+  
+  <span class="md-ellipsis">
+    MicroSims
+    
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+    
+      
+        
+        
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+  
+    <a href="../../stories/" class="md-nav__link">
+      
+  
+  
+  <span class="md-ellipsis">
+    Stories
+    
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+    
+      
+        
+        
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+  
+    <a href="../../circuits/" class="md-nav__link">
+      
+  
+  
+  <span class="md-ellipsis">
+    Circuits
+    
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+    
+    
+    
+    
+      
+        
+        
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+  
+    <a href="../../research/" class="md-nav__link">
+      
+  
+  
+  <span class="md-ellipsis">
+    Research
+    
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../report-card/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Report Card
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../checklist/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Checklist
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../glossary/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Glossary
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../how-we-built-this-site/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    How We Built This Site
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../license/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    License
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../references/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    References
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../contact/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Contact
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../ieee-paper-changes/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Paper Changes
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#summary" class="md-nav__link">
+    <span class="md-ellipsis">
+      Summary
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#concepts-covered" class="md-nav__link">
+    <span class="md-ellipsis">
+      Concepts Covered
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#prerequisites" class="md-nav__link">
+    <span class="md-ellipsis">
+      Prerequisites
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#introduction" class="md-nav__link">
+    <span class="md-ellipsis">
+      Introduction
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#sampling-fundamentals" class="md-nav__link">
+    <span class="md-ellipsis">
+      Sampling Fundamentals
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Sampling Fundamentals">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#sampling" class="md-nav__link">
+    <span class="md-ellipsis">
+      Sampling
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#sampling-rate" class="md-nav__link">
+    <span class="md-ellipsis">
+      Sampling Rate
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#sampling-theorem" class="md-nav__link">
+    <span class="md-ellipsis">
+      Sampling Theorem
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#nyquist-rate" class="md-nav__link">
+    <span class="md-ellipsis">
+      Nyquist Rate
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#nyquist-frequency" class="md-nav__link">
+    <span class="md-ellipsis">
+      Nyquist Frequency
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#aliasing" class="md-nav__link">
+    <span class="md-ellipsis">
+      Aliasing
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#anti-aliasing-filter" class="md-nav__link">
+    <span class="md-ellipsis">
+      Anti-Aliasing Filter
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#oversampling" class="md-nav__link">
+    <span class="md-ellipsis">
+      Oversampling
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#undersampling" class="md-nav__link">
+    <span class="md-ellipsis">
+      Undersampling
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#quantization-fundamentals" class="md-nav__link">
+    <span class="md-ellipsis">
+      Quantization Fundamentals
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Quantization Fundamentals">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#quantization" class="md-nav__link">
+    <span class="md-ellipsis">
+      Quantization
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#quantization-error" class="md-nav__link">
+    <span class="md-ellipsis">
+      Quantization Error
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#quantization-noise" class="md-nav__link">
+    <span class="md-ellipsis">
+      Quantization Noise
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#uniform-quantization" class="md-nav__link">
+    <span class="md-ellipsis">
+      Uniform Quantization
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#non-uniform-quantization" class="md-nav__link">
+    <span class="md-ellipsis">
+      Non-Uniform Quantization
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#signal-reconstruction" class="md-nav__link">
+    <span class="md-ellipsis">
+      Signal Reconstruction
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#interactive-demonstrations" class="md-nav__link">
+    <span class="md-ellipsis">
+      Interactive Demonstrations
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Interactive Demonstrations">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#purpose" class="md-nav__link">
+    <span class="md-ellipsis">
+      Purpose
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#features" class="md-nav__link">
+    <span class="md-ellipsis">
+      Features
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#learning-objectives" class="md-nav__link">
+    <span class="md-ellipsis">
+      Learning Objectives
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#implementation-requirements" class="md-nav__link">
+    <span class="md-ellipsis">
+      Implementation Requirements
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#purpose_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      Purpose
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#features_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      Features
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#learning-objectives_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      Learning Objectives
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#implementation-requirements_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      Implementation Requirements
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#comparison-tables" class="md-nav__link">
+    <span class="md-ellipsis">
+      Comparison Tables
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#design-considerations" class="md-nav__link">
+    <span class="md-ellipsis">
+      Design Considerations
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#summary_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      Summary
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+  
+    <a href="https://github.com/dmccreary/signal-processing/blob/master/docs/chapters/05-sampling-and-quantization/index.md" title="Edit this page" class="md-content__button md-icon">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M10 20H6V4h7v5h5v3.1l2-2V8l-6-6H6c-1.1 0-2 .9-2 2v16c0 1.1.9 2 2 2h4zm10.2-7c.1 0 .3.1.4.2l1.3 1.3c.2.2.2.6 0 .8l-1 1-2.1-2.1 1-1c.1-.1.2-.2.4-.2m0 3.9L14.1 23H12v-2.1l6.1-6.1z"/></svg>
+    </a>
+  
+  
+
+
+<h1 id="sampling-and-quantization">Sampling and Quantization</h1>
+<h2 id="summary">Summary</h2>
+<p>This chapter explores the conversion from continuous to discrete signals, covering sampling theory, the Nyquist criterion, aliasing, and quantization methods.</p>
+<p>Students will explore 15 key concepts that are essential for understanding this area of signal processing. This material provides the foundation for concepts introduced in later chapters.</p>
+<h2 id="concepts-covered">Concepts Covered</h2>
+<p>This chapter covers the following 15 concepts from the learning graph:</p>
+<ol>
+<li>Sampling</li>
+<li>Sampling Rate</li>
+<li>Sampling Theorem</li>
+<li>Nyquist Rate</li>
+<li>Nyquist Frequency</li>
+<li>Aliasing</li>
+<li>Anti-Aliasing Filter</li>
+<li>Oversampling</li>
+<li>Undersampling</li>
+<li>Quantization</li>
+<li>Quantization Error</li>
+<li>Quantization Noise</li>
+<li>Uniform Quantization</li>
+<li>Non-Uniform Quantization</li>
+<li>Signal Reconstruction</li>
+</ol>
+<h2 id="prerequisites">Prerequisites</h2>
+<p>This chapter builds on concepts from:</p>
+<ul>
+<li><a href="../02-introduction-to-signals-and-systems/">Chapter 2: Introduction to Signals and Systems</a></li>
+</ul>
+<hr />
+<h2 id="introduction">Introduction</h2>
+<p>The conversion of continuous-time analog signals into discrete-time digital representations forms the cornerstone of modern digital signal processing, enabling computational manipulation, storage, and transmission of real-world signals. This conversion process involves two fundamental operations: sampling, which discretizes time by measuring signal values at specific instants, and quantization, which discretizes amplitude by mapping continuous values to a finite set of levels. Understanding the theoretical foundations and practical limitations of sampling and quantization enables engineers to design systems that preserve essential signal information while minimizing distortion and computational burden.</p>
+<p>The sampling theorem, attributed to Nyquist and Shannon, establishes the conditions under which continuous signals can be perfectly reconstructed from discrete samples, providing fundamental limits on sampling rate requirements. Quantization introduces irreversible error by representing infinite-precision values with finite-precision approximations, creating a trade-off between signal fidelity and data rate or storage requirements. This chapter explores these conversion processes, their theoretical foundations, practical implications, and the engineering considerations that govern analog-to-digital converter design.</p>
+<h2 id="sampling-fundamentals">Sampling Fundamentals</h2>
+<h3 id="sampling">Sampling</h3>
+<p><strong>Sampling</strong> converts continuous-time signals into discrete-time sequences by measuring signal values at regular intervals, transforming <span class="arithmatex">\(x(t)\)</span> into <span class="arithmatex">\(x[n] = x(nT_s)\)</span> where <span class="arithmatex">\(T_s\)</span> is the sampling period and <span class="arithmatex">\(n\)</span> is an integer index. The sampling operation can be modeled mathematically as multiplication with an impulse train followed by integration over infinitesimal intervals, or more practically as the evaluation of the signal at discrete time instants.</p>
+<p>The relationship between the continuous-time signal and its samples determines whether perfect reconstruction is possible. For bandlimited signals (signals with frequency content confined to a finite range), appropriate choice of sampling rate enables complete recovery of the original signal from its samples. For signals with unlimited bandwidth, sampling inevitably causes aliasing, where high-frequency components masquerade as lower frequencies in the sampled representation.</p>
+<h3 id="sampling-rate">Sampling Rate</h3>
+<p>The <strong>sampling rate</strong> <span class="arithmatex">\(f_s = 1/T_s\)</span> specifies how many samples are taken per unit time, typically measured in Hertz (Hz) or samples per second. Higher sampling rates capture more detail from the continuous signal but require greater storage, transmission bandwidth, and computational resources. Lower sampling rates reduce data volume but risk losing information or introducing aliasing artifacts.</p>
+<p>Common sampling rates reflect the bandwidth requirements of various applications: telephone-quality speech uses 8 kHz sampling, professional audio employs 44.1 kHz or 48 kHz, ultrasonic imaging may use megahertz rates, and radar systems can sample at gigahertz rates. The choice of sampling rate balances fidelity requirements against practical constraints of cost, power consumption, and processing capability.</p>
+<h3 id="sampling-theorem">Sampling Theorem</h3>
+<p>The <strong>sampling theorem</strong>, also known as the Nyquist-Shannon sampling theorem, states that a bandlimited continuous-time signal with highest frequency component <span class="arithmatex">\(f_{max}\)</span> can be perfectly reconstructed from its samples if sampled at rate <span class="arithmatex">\(f_s &gt; 2f_{max}\)</span>. The mathematical proof relies on showing that the spectrum of the sampled signal consists of periodic replications of the original spectrum, and that these replications do not overlap when the sampling rate exceeds twice the bandwidth.</p>
+<p>Perfect reconstruction from samples requires an ideal low-pass filter (the sinc function in time domain) to recover the continuous signal:</p>
+<div class="arithmatex">\[x(t) = \sum_{n=-\infty}^{\infty} x[n] \text{sinc}\left(\frac{t - nT_s}{T_s}\right)\]</div>
+<p>where <span class="arithmatex">\(\text{sinc}(x) = \sin(\pi x)/(\pi x)\)</span>. While this ideal reconstruction cannot be implemented exactly (as it requires infinite filter length and perfect frequency cutoff), practical reconstruction filters approximate this behavior to acceptable accuracy.</p>
+<h3 id="nyquist-rate">Nyquist Rate</h3>
+<p>The <strong>Nyquist rate</strong> <span class="arithmatex">\(f_N = 2f_{max}\)</span> represents the minimum sampling rate required to avoid aliasing for a signal with maximum frequency <span class="arithmatex">\(f_{max}\)</span>, establishing a fundamental limit based on signal bandwidth. Sampling at exactly the Nyquist rate theoretically permits perfect reconstruction, though practical systems typically sample at rates somewhat higher than the theoretical minimum to accommodate non-ideal filters and provide margin against bandwidth estimation errors.</p>
+<p>For real-valued signals, which have symmetric spectra, the Nyquist rate is twice the highest frequency component. For complex-valued signals or for real signals represented in complex baseband form, different relationships apply based on the asymmetric nature of complex signal spectra.</p>
+<h3 id="nyquist-frequency">Nyquist Frequency</h3>
+<p>The <strong>Nyquist frequency</strong> <span class="arithmatex">\(f_{Nyq} = f_s/2\)</span> represents the highest frequency that can be unambiguously represented at a given sampling rate <span class="arithmatex">\(f_s\)</span>, defining the upper limit of the usable frequency range for sampled signals. Frequencies above the Nyquist frequency fold back or alias into the range below <span class="arithmatex">\(f_{Nyq}\)</span>, creating false frequency components that cannot be distinguished from true low-frequency content after sampling.</p>
+<p>Digital signal processing operations on sampled signals implicitly operate within the frequency range <span class="arithmatex">\([0, f_{Nyq}]\)</span> for real signals or <span class="arithmatex">\([-f_{Nyq}, f_{Nyq}]\)</span> for complex signals. The Nyquist frequency serves as a critical design parameter, determining the required sampling rate for given application bandwidth requirements.</p>
+<h3 id="aliasing">Aliasing</h3>
+<p><strong>Aliasing</strong> occurs when signal frequency components above the Nyquist frequency appear as false lower frequencies in the sampled signal, creating distortion that cannot be removed after sampling. A sinusoid at frequency <span class="arithmatex">\(f = f_s + \Delta f\)</span> is indistinguishable from a sinusoid at <span class="arithmatex">\(\Delta f\)</span> when sampled at rate <span class="arithmatex">\(f_s\)</span>, as both produce identical sample sequences.</p>
+<p>Mathematically, aliasing arises from the periodicity of the discrete-time Fourier transform: frequency components at <span class="arithmatex">\(f\)</span> and <span class="arithmatex">\(f + kf_s\)</span> for any integer <span class="arithmatex">\(k\)</span> yield identical sampled sequences. This frequency ambiguity corrupts sampled signals whenever input signal energy exists above the Nyquist frequency, emphasizing the critical importance of band-limiting signals before sampling.</p>
+<h3 id="anti-aliasing-filter">Anti-Aliasing Filter</h3>
+<p>An <strong>anti-aliasing filter</strong> is a low-pass filter applied before sampling to remove frequency components above the Nyquist frequency, preventing aliasing distortion. The ideal anti-aliasing filter would have unity gain for <span class="arithmatex">\(f &lt; f_{Nyq}\)</span>, zero gain for <span class="arithmatex">\(f &gt; f_{Nyq}\)</span>, and sharp transition between these regions. Practical filters approximate this ideal with finite roll-off, requiring sampling at rates higher than the strict Nyquist rate to accommodate the transition band.</p>
+<p>The design of anti-aliasing filters involves trade-offs between transition band width (which determines required oversampling), passband ripple (distortion within the desired frequency range), stopband attenuation (residual aliasing from imperfect rejection), and filter complexity (cost and power consumption). Analog anti-aliasing filters typically use Butterworth, Chebyshev, or elliptic designs to meet these specifications.</p>
+<h3 id="oversampling">Oversampling</h3>
+<p><strong>Oversampling</strong> employs sampling rates significantly higher than the minimum Nyquist rate, providing several practical advantages despite increased data rates. Higher sampling rates relax anti-aliasing filter requirements, allowing simpler, lower-order analog filters with wider transition bands. Oversampling also spreads quantization noise over a wider frequency range, enabling noise-shaping techniques to push quantization noise outside the signal band.</p>
+<p>Typical oversampling ratios range from 2× (providing modest filter relaxation) to 64× or higher in delta-sigma analog-to-digital converters that exploit aggressive noise shaping. After digital filtering and decimation (downsampling), oversampled signals return to near-Nyquist rates while benefiting from improved effective resolution and simplified analog components.</p>
+<h3 id="undersampling">Undersampling</h3>
+<p><strong>Undersampling</strong>, also called bandpass sampling or harmonic sampling, deliberately samples signals at rates below the Nyquist rate defined by the highest frequency present, but satisfies the Nyquist criterion based on signal bandwidth rather than center frequency. For bandpass signals occupying a narrow bandwidth centered at a high carrier frequency, the sampling rate need only exceed twice the bandwidth, not twice the carrier frequency.</p>
+<p>Undersampling causes controlled aliasing that shifts the signal spectrum to lower frequencies, effectively implementing frequency translation in the sampling process. This technique finds application in software-defined radio, radar receivers, and communication systems where direct sampling at RF frequencies would require impractically high sampling rates, but the information bandwidth remains manageable.</p>
+<h2 id="quantization-fundamentals">Quantization Fundamentals</h2>
+<h3 id="quantization">Quantization</h3>
+<p><strong>Quantization</strong> maps continuous amplitude values to a discrete set of levels, enabling representation with finite-precision binary words at the cost of introducing irreversible error. The quantization process divides the amplitude range into intervals and represents all values within an interval by a single quantization level, typically at the interval midpoint.</p>
+<p>For a signal amplitude range <span class="arithmatex">\(V\)</span> and <span class="arithmatex">\(b\)</span> bits per sample, uniform quantization provides <span class="arithmatex">\(2^b\)</span> equally spaced levels with step size <span class="arithmatex">\(\Delta = V/2^b\)</span>. The choice of bit depth balances signal fidelity (lower quantization error with more bits) against data rate, storage requirements, and converter cost and power consumption.</p>
+<h3 id="quantization-error">Quantization Error</h3>
+<p><strong>Quantization error</strong> <span class="arithmatex">\(e[n] = x_q[n] - x[n]\)</span> represents the difference between the quantized value <span class="arithmatex">\(x_q[n]\)</span> and the true value <span class="arithmatex">\(x[n]\)</span>, bounded by half the quantization step: <span class="arithmatex">\(|e[n]| \leq \Delta/2\)</span> for midpoint quantization. This error is deterministic for any particular sample but can be modeled statistically as a random variable uniformly distributed over <span class="arithmatex">\([-\Delta/2, \Delta/2]\)</span> when the signal is complex and the quantizer has many levels.</p>
+<p>For signals that span the full quantizer range with sufficient complexity, the mean square quantization error is <span class="arithmatex">\(\sigma_e^2 = \Delta^2/12\)</span>, leading to a signal-to-quantization-noise ratio (SQNR) of approximately <span class="arithmatex">\(6.02b + 1.76\)</span> dB for <span class="arithmatex">\(b\)</span>-bit quantization, yielding about 6 dB improvement per bit. This relationship guides bit depth selection based on required dynamic range.</p>
+<h3 id="quantization-noise">Quantization Noise</h3>
+<p><strong>Quantization noise</strong> represents the error signal introduced by quantization, often modeled as additive white noise uncorrelated with the signal when quantization is fine relative to signal variations. This noise model enables analysis of quantization effects using signal processing techniques developed for additive noise, though the white noise assumption breaks down for coarse quantization or simple signals.</p>
+<p>The power spectral density of quantization noise is theoretically flat (white) across the Nyquist band, with total noise power <span class="arithmatex">\(\sigma_e^2 = \Delta^2/12\)</span> spread uniformly over frequency range <span class="arithmatex">\([0, f_s/2]\)</span>. Oversampling spreads this noise over wider bandwidth, enabling subsequent digital filtering to remove out-of-band noise and improve in-band SNR, the principle underlying oversampling converters.</p>
+<h3 id="uniform-quantization">Uniform Quantization</h3>
+<p><strong>Uniform quantization</strong> employs equal-sized steps <span class="arithmatex">\(\Delta\)</span> throughout the amplitude range, providing consistent quantization error variance independent of signal level. This simplicity makes uniform quantization the standard choice for most applications, particularly when signals have relatively flat amplitude distributions or when subsequent processing (such as automatic gain control) adapts to varying signal levels.</p>
+<p>The uniform quantizer is optimal for uniformly distributed signals in the mean square error sense, and near-optimal for signals with probability densities that vary slowly over the quantization range. Digital audio, images, and most instrumentation applications use uniform quantization in conjunction with sufficient bit depth to achieve acceptable SNR.</p>
+<h3 id="non-uniform-quantization">Non-Uniform Quantization</h3>
+<p><strong>Non-uniform quantization</strong> employs smaller steps for small signal amplitudes and larger steps for large amplitudes, optimizing quantization error distribution to match signal statistics. For signals with probability densities concentrated near zero (such as speech or certain images), non-uniform quantization provides better SNR than uniform quantization for the same number of levels.</p>
+<p>Common implementations include companding (compressing before uniform quantization, expanding after), using logarithmic or near-logarithmic spacing such as μ-law (North America) or A-law (Europe) for telephone speech encoding. These approaches provide approximately constant percentage error rather than constant absolute error, matching the human perception of sound intensity which operates on a logarithmic scale.</p>
+<h3 id="signal-reconstruction">Signal Reconstruction</h3>
+<p><strong>Signal reconstruction</strong> converts discrete-time samples back to continuous-time signals, ideally recovering the original analog waveform before sampling and quantization. Perfect reconstruction (ignoring quantization error) requires sinc interpolation according to the sampling theorem, though practical systems use simpler interpolation methods such as zero-order hold (staircase output), first-order hold (linear interpolation), or higher-order polynomial interpolation.</p>
+<p>Digital-to-analog converters (DACs) typically produce staircase outputs (zero-order hold), requiring analog reconstruction filters to smooth the waveform and remove spectral images at multiples of the sampling frequency. The reconstruction filter specifications mirror anti-aliasing filter requirements, trading off transition band width against passband flatness and stopband image rejection.</p>
+<h2 id="interactive-demonstrations">Interactive Demonstrations</h2>
+<details>
+<summary>MicroSim: Sampling Theorem Explorer</summary>
+<h3 id="purpose">Purpose</h3>
+<p>This interactive simulation demonstrates the sampling theorem, showing how sampling rate affects the ability to reconstruct continuous signals and how aliasing occurs when the Nyquist criterion is violated.</p>
+<h3 id="features">Features</h3>
+<ul>
+<li>Display continuous-time signal with adjustable frequency</li>
+<li>Show sampled version with variable sampling rate</li>
+<li>Demonstrate reconstruction using sinc interpolation</li>
+<li>Visualize aliasing when <span class="arithmatex">\(f_s &lt; 2f_{max}\)</span></li>
+<li>Display frequency spectra showing spectral replications</li>
+<li>Highlight Nyquist frequency and illustrate folding</li>
+<li>Compare ideal vs. practical reconstruction filters</li>
+</ul>
+<h3 id="learning-objectives">Learning Objectives</h3>
+<ul>
+<li>Understand the relationship between signal bandwidth and required sampling rate</li>
+<li>Visualize perfect reconstruction when Nyquist criterion is met</li>
+<li>Observe aliasing artifacts when sampling rate is insufficient</li>
+<li>Connect time-domain sampling to frequency-domain spectral replication</li>
+</ul>
+<h3 id="implementation-requirements">Implementation Requirements</h3>
+<ul>
+<li>Canvas size: 670px wide, 625px total height (550px drawing + 75px controls)</li>
+<li>Four plot panels: continuous signal, sample points, reconstructed signal, frequency spectrum</li>
+<li>Frequency slider for input signal (0-100 Hz)</li>
+<li>Sampling rate slider (1-200 Hz)</li>
+<li>Visual indicators showing <span class="arithmatex">\(f_{max}\)</span>, <span class="arithmatex">\(f_s\)</span>, and <span class="arithmatex">\(f_{Nyq}\)</span></li>
+<li>Color coding for properly sampled (green) vs. aliased (red) conditions</li>
+<li>Option to toggle reconstruction filter between ideal and practical</li>
+</ul>
+</details>
+<details>
+<summary>MicroSim: Quantization and Noise Shaping</summary>
+<h3 id="purpose_1">Purpose</h3>
+<p>This simulation demonstrates quantization effects including quantization error, signal-to-noise ratio as a function of bit depth, and noise shaping in oversampling systems.</p>
+<h3 id="features_1">Features</h3>
+<ul>
+<li>Input continuous-amplitude signal (sine wave, speech sample, or custom)</li>
+<li>Adjust bit depth from 1 to 16 bits</li>
+<li>Display quantized signal and quantization error</li>
+<li>Show time-domain and frequency-domain representations of quantization noise</li>
+<li>Demonstrate oversampling with selectable oversampling ratio</li>
+<li>Illustrate noise shaping and digital filtering to improve SNR</li>
+<li>Calculate and display SQNR in dB</li>
+</ul>
+<h3 id="learning-objectives_1">Learning Objectives</h3>
+<ul>
+<li>Understand quantization as irreversible amplitude discretization</li>
+<li>Observe how bit depth affects signal fidelity</li>
+<li>Visualize quantization noise characteristics</li>
+<li>Recognize benefits of oversampling and noise shaping</li>
+</ul>
+<h3 id="implementation-requirements_1">Implementation Requirements</h3>
+<ul>
+<li>Canvas size: 670px wide, 625px total height (550px drawing + 75px controls)</li>
+<li>Four plot areas: original signal, quantized signal, quantization error, noise spectrum</li>
+<li>Bit depth slider (1-16 bits)</li>
+<li>Oversampling ratio selector (1×, 2×, 4×, 8×, 16×)</li>
+<li>SQNR calculation and display</li>
+<li>Signal source selector (sinusoid, triangle, complex waveform)</li>
+<li>Visual quantization level indicators</li>
+</ul>
+</details>
+<h2 id="comparison-tables">Comparison Tables</h2>
+<table>
+<thead>
+<tr>
+<th>Concept</th>
+<th>Definition</th>
+<th>Mathematical Expression</th>
+<th>Typical Values</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Sampling Period</td>
+<td>Time between samples</td>
+<td><span class="arithmatex">\(T_s\)</span></td>
+<td>Audio: 22.7 μs (44.1 kHz)</td>
+</tr>
+<tr>
+<td>Sampling Rate</td>
+<td>Samples per second</td>
+<td><span class="arithmatex">\(f_s = 1/T_s\)</span></td>
+<td>Audio: 44.1 kHz, Speech: 8 kHz</td>
+</tr>
+<tr>
+<td>Nyquist Rate</td>
+<td>Minimum rate for bandlimited signal</td>
+<td><span class="arithmatex">\(f_N = 2f_{max}\)</span></td>
+<td>2× highest signal frequency</td>
+</tr>
+<tr>
+<td>Nyquist Frequency</td>
+<td>Maximum unambiguous frequency</td>
+<td><span class="arithmatex">\(f_{Nyq} = f_s/2\)</span></td>
+<td>Audio: 22.05 kHz at 44.1 kHz rate</td>
+</tr>
+</tbody>
+</table>
+<table>
+<thead>
+<tr>
+<th>Sampling Strategy</th>
+<th>Rate Requirement</th>
+<th>Advantages</th>
+<th>Applications</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Nyquist Sampling</td>
+<td><span class="arithmatex">\(f_s \geq 2f_{max}\)</span></td>
+<td>Minimal data rate</td>
+<td>Baseband signals, bandwidth-limited applications</td>
+</tr>
+<tr>
+<td>Oversampling</td>
+<td><span class="arithmatex">\(f_s \gg 2f_{max}\)</span></td>
+<td>Relaxed filter specs, noise shaping possible</td>
+<td>High-resolution audio, delta-sigma ADCs</td>
+</tr>
+<tr>
+<td>Undersampling</td>
+<td><span class="arithmatex">\(f_s \geq 2B\)</span> (bandwidth <span class="arithmatex">\(B\)</span>)</td>
+<td>Direct RF sampling, frequency translation</td>
+<td>Software-defined radio, bandpass signals</td>
+</tr>
+</tbody>
+</table>
+<table>
+<thead>
+<tr>
+<th>Quantization Type</th>
+<th>Step Size</th>
+<th>Optimization</th>
+<th>Applications</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Uniform</td>
+<td>Constant <span class="arithmatex">\(\Delta\)</span></td>
+<td>Optimal for uniform distribution</td>
+<td>General purpose, instrumentation</td>
+</tr>
+<tr>
+<td>Non-Uniform (μ-law)</td>
+<td>Variable, denser near zero</td>
+<td>Optimal for speech-like distributions</td>
+<td>Telephony, speech coding</td>
+</tr>
+<tr>
+<td>Non-Uniform (A-law)</td>
+<td>Variable, denser near zero</td>
+<td>Alternative to μ-law</td>
+<td>European telephony</td>
+</tr>
+<tr>
+<td>Lloyd-Max</td>
+<td>Optimized for specific PDF</td>
+<td>Minimal MSE for given PDF</td>
+<td>Specialized applications</td>
+</tr>
+</tbody>
+</table>
+<table>
+<thead>
+<tr>
+<th>Parameter</th>
+<th>Expression</th>
+<th>Typical Range</th>
+<th>Significance</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Quantization Step</td>
+<td><span class="arithmatex">\(\Delta = V/2^b\)</span></td>
+<td>Audio: <span class="arithmatex">\(V=2V\)</span>, <span class="arithmatex">\(b=16\)</span> gives <span class="arithmatex">\(\Delta \approx 30\mu V\)</span></td>
+<td>Determines resolution</td>
+</tr>
+<tr>
+<td>Quantization Error</td>
+<td><span class="arithmatex">\(-\Delta/2 \leq e[n] \leq \Delta/2\)</span></td>
+<td>Bounded by step size</td>
+<td>Fundamental accuracy limit</td>
+</tr>
+<tr>
+<td>SQNR (dB)</td>
+<td><span class="arithmatex">\(6.02b + 1.76\)</span> dB</td>
+<td>8-bit: ~50 dB, 16-bit: ~98 dB</td>
+<td>Quality metric</td>
+</tr>
+<tr>
+<td>Dynamic Range</td>
+<td><span class="arithmatex">\(20 \log_{10}(2^b)\)</span> dB</td>
+<td>8-bit: 48 dB, 16-bit: 96 dB</td>
+<td>Maximum signal range</td>
+</tr>
+</tbody>
+</table>
+<h2 id="design-considerations">Design Considerations</h2>
+<p>The design of sampling and quantization systems involves numerous trade-offs between conflicting requirements. Higher sampling rates improve anti-aliasing filter realizability and enable oversampling benefits, but increase data rates, power consumption, and processing requirements. Greater bit depths reduce quantization noise but increase converter cost, power, and data storage/transmission bandwidth.</p>
+<p>Anti-aliasing filter design must balance transition band width (affecting required oversampling ratio) against filter complexity and passband distortion. Sharper filters require higher order (more components, higher cost) but permit sampling closer to the Nyquist rate. Group delay variation in the filter passband can distort signal phase relationships, particularly critical in communication systems and precision instrumentation.</p>
+<p>Practical ADC selection considers resolution (bit depth), sampling rate, power consumption, cost, interface type (serial vs. parallel), and application-specific features such as simultaneous sampling for multiple channels or built-in programmable gain amplifiers. The effective number of bits (ENOB), which accounts for all noise and distortion sources, typically falls below the nominal bit depth, making ENOB a more realistic performance metric.</p>
+<h2 id="summary_1">Summary</h2>
+<p>This chapter has explored the fundamental processes of sampling and quantization that enable digital signal processing of continuous-time analog signals. The sampling theorem establishes that bandlimited signals can be perfectly reconstructed from samples when the sampling rate exceeds twice the highest frequency component, with the Nyquist rate and Nyquist frequency defining critical thresholds. Violation of the sampling theorem causes aliasing, where high-frequency components fold back into lower frequencies, creating distortion that cannot be removed after sampling occurs.</p>
+<p>Anti-aliasing filters prevent aliasing by band-limiting signals before sampling, while oversampling relaxes filter requirements and enables noise-shaping techniques. Undersampling exploits bandpass signal characteristics to sample at rates based on bandwidth rather than center frequency, enabling direct sampling of high-frequency signals. Quantization converts continuous amplitudes to discrete levels, introducing irreversible error that can be modeled as additive noise when quantization is sufficiently fine.</p>
+<p>Uniform quantization provides constant step sizes suitable for most applications, while non-uniform quantization optimizes error distribution for specific signal statistics such as speech. The signal-to-quantization-noise ratio increases approximately 6 dB per bit, guiding bit depth selection based on dynamic range requirements. Signal reconstruction from samples requires interpolation, ideally using sinc functions though practical systems employ simpler methods followed by analog smoothing filters.</p>
+<p>Understanding sampling and quantization theory, practical limitations, and design trade-offs enables engineers to select appropriate ADC and DAC components, design effective anti-aliasing and reconstruction filters, and optimize overall system performance for diverse applications from audio recording to scientific instrumentation.</p>
+
+
+
+
+
+
+
+  
+  
+
+
+
+  
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+          <button type="button" class="md-top md-icon" data-md-component="top" hidden>
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8z"/></svg>
+  Back to top
+</button>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+    
+      
+      <nav class="md-footer__inner md-grid" aria-label="Footer" >
+        
+          
+          <a href="../04-convolution-and-correlation/" class="md-footer__link md-footer__link--prev" aria-label="Previous: Ch 4 - Convolution and Correlation">
+            <div class="md-footer__button md-icon">
+              
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+            </div>
+            <div class="md-footer__title">
+              <span class="md-footer__direction">
+                Previous
+              </span>
+              <div class="md-ellipsis">
+                Ch 4 - Convolution and Correlation
+              </div>
+            </div>
+          </a>
+        
+        
+          
+          <a href="../06-fourier-analysis-fundamentals/" class="md-footer__link md-footer__link--next" aria-label="Next: Ch 6 - Fourier Analysis">
+            <div class="md-footer__title">
+              <span class="md-footer__direction">
+                Next
+              </span>
+              <div class="md-ellipsis">
+                Ch 6 - Fourier Analysis
+              </div>
+            </div>
+            <div class="md-footer__button md-icon">
+              
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M4 11v2h12l-5.5 5.5 1.42 1.42L19.84 12l-7.92-7.92L10.5 5.5 16 11z"/></svg>
+            </div>
+          </a>
+        
+      </nav>
+    
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    
+      
+      <script id="__config" type="application/json">{"base": "../..", "features": ["content.code.copy", "navigation.expand", "navigation.path", "navigation.prune", "navigation.indexes", "toc.follow", "navigation.top", "navigation.footer", "content.action.edit"], "search": "../../assets/javascripts/workers/search.f8cc74c7.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": null}</script>
+    
+    
+      <script src="../../assets/javascripts/bundle.c8b220af.min.js"></script>
+      
+        <script src="../../js/extra.js"></script>
+      
+        <script src="https://unpkg.com/mathjax@3/es5/tex-mml-chtml.js"></script>
+      
+    
+  </body>
+</html>

@@ -1,0 +1,2630 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+        <meta name="description" content="College Level Textbook on Signal Processing - License is Commons ShareAlike Attribution Noncommercial">
+      
+      
+        <meta name="author" content="Dan McCreary">
+      
+      
+        <link rel="canonical" href="https://dmccreary.github.io/signal-processing/chapters/13-multirate-signal-processing-and-compression/">
+      
+      
+        <link rel="prev" href="../12-stochastic-processes-and-random-signals/">
+      
+      
+        <link rel="next" href="../14-time-frequency-analysis-and-advanced-topics/">
+      
+      
+      <link rel="icon" href="../../img/favicon.ico">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.6.12">
+    
+    
+      
+        <title>Ch 13 - Multirate and Compression - Signal Processing with AI</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../assets/stylesheets/main.2afb09e1.min.css">
+      
+        
+        <link rel="stylesheet" href="../../assets/stylesheets/palette.06af60db.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+      <link rel="stylesheet" href="../../css/extra.css">
+    
+    <script>__md_scope=new URL("../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+  
+
+
+  
+  
+
+<script id="__analytics">function __md_analytics(){function e(){dataLayer.push(arguments)}window.dataLayer=window.dataLayer||[],e("js",new Date),e("config","G-SY3G2ND80K"),document.addEventListener("DOMContentLoaded",(function(){document.forms.search&&document.forms.search.query.addEventListener("blur",(function(){this.value&&e("event","search",{search_term:this.value})}));document$.subscribe((function(){var t=document.forms.feedback;if(void 0!==t)for(var a of t.querySelectorAll("[type=submit]"))a.addEventListener("click",(function(a){a.preventDefault();var n=document.location.pathname,d=this.getAttribute("data-md-value");e("event","feedback",{page:n,data:d}),t.firstElementChild.disabled=!0;var r=t.querySelector(".md-feedback__note [data-md-value='"+d+"']");r&&(r.hidden=!1)})),t.hidden=!1})),location$.subscribe((function(t){e("config","G-SY3G2ND80K",{page_path:t.pathname})}))}));var t=document.createElement("script");t.async=!0,t.src="https://www.googletagmanager.com/gtag/js?id=G-SY3G2ND80K",document.getElementById("__analytics").insertAdjacentElement("afterEnd",t)}</script>
+  
+    <script>"undefined"!=typeof __md_analytics&&__md_analytics()</script>
+  
+
+    
+    
+      
+        <meta  property="og:type"  content="website" >
+      
+        <meta  property="og:title"  content="Ch 13 - Multirate and Compression - Signal Processing with AI" >
+      
+        <meta  property="og:description"  content="College Level Textbook on Signal Processing - License is Commons ShareAlike Attribution Noncommercial" >
+      
+        <meta  property="og:image"  content="https://dmccreary.github.io/signal-processing/assets/images/social/chapters/13-multirate-signal-processing-and-compression/index.png" >
+      
+        <meta  property="og:image:type"  content="image/png" >
+      
+        <meta  property="og:image:width"  content="1200" >
+      
+        <meta  property="og:image:height"  content="630" >
+      
+        <meta  property="og:url"  content="https://dmccreary.github.io/signal-processing/chapters/13-multirate-signal-processing-and-compression/" >
+      
+        <meta  name="twitter:card"  content="summary_large_image" >
+      
+        <meta  name="twitter:title"  content="Ch 13 - Multirate and Compression - Signal Processing with AI" >
+      
+        <meta  name="twitter:description"  content="College Level Textbook on Signal Processing - License is Commons ShareAlike Attribution Noncommercial" >
+      
+        <meta  name="twitter:image"  content="https://dmccreary.github.io/signal-processing/assets/images/social/chapters/13-multirate-signal-processing-and-compression/index.png" >
+      
+    
+    
+  </head>
+  
+  
+    
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="maroon" data-md-color-accent="gold">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#multirate-signal-processing-and-compression" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+  
+
+<header class="md-header md-header--shadow" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href="../.." title="Signal Processing with AI" class="md-header__button md-logo" aria-label="Signal Processing with AI" data-md-component="logo">
+      
+  <img src="../../img/logo-192.png" alt="logo">
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            Signal Processing with AI
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              Ch 13 - Multirate and Compression
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+    
+    
+    
+    
+      
+      
+        <label class="md-header__button md-icon" for="__search">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        </label>
+        <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Search">
+        
+        <button type="reset" class="md-search__icon md-icon" title="Clear" aria-label="Clear" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+        </button>
+      </nav>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+      
+    
+    
+      <div class="md-header__source">
+        <a href="https://github.com/dmccreary/signal-processing" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 6.7.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2024 Fonticons, Inc.--><path d="M439.55 236.05 244 40.45a28.87 28.87 0 0 0-40.81 0l-40.66 40.63 51.52 51.52c27.06-9.14 52.68 16.77 43.39 43.68l49.66 49.66c34.23-11.8 61.18 31 35.47 56.69-26.49 26.49-70.21-2.87-56-37.34L240.22 199v121.85c25.3 12.54 22.26 41.85 9.08 55a34.34 34.34 0 0 1-48.55 0c-17.57-17.6-11.07-46.91 11.25-56v-123c-20.8-8.51-24.6-30.74-18.64-45L142.57 101 8.45 235.14a28.86 28.86 0 0 0 0 40.81l195.61 195.6a28.86 28.86 0 0 0 40.8 0l194.69-194.69a28.86 28.86 0 0 0 0-40.81"/></svg>
+  </div>
+  <div class="md-source__repository">
+    GitHub Repo
+  </div>
+</a>
+      </div>
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+
+<nav class="md-nav md-nav--primary" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../.." title="Signal Processing with AI" class="md-nav__button md-logo" aria-label="Signal Processing with AI" data-md-component="logo">
+      
+  <img src="../../img/logo-192.png" alt="logo">
+
+    </a>
+    Signal Processing with AI
+  </label>
+  
+    <div class="md-nav__source">
+      <a href="https://github.com/dmccreary/signal-processing" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 6.7.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2024 Fonticons, Inc.--><path d="M439.55 236.05 244 40.45a28.87 28.87 0 0 0-40.81 0l-40.66 40.63 51.52 51.52c27.06-9.14 52.68 16.77 43.39 43.68l49.66 49.66c34.23-11.8 61.18 31 35.47 56.69-26.49 26.49-70.21-2.87-56-37.34L240.22 199v121.85c25.3 12.54 22.26 41.85 9.08 55a34.34 34.34 0 0 1-48.55 0c-17.57-17.6-11.07-46.91 11.25-56v-123c-20.8-8.51-24.6-30.74-18.64-45L142.57 101 8.45 235.14a28.86 28.86 0 0 0 0 40.81l195.61 195.6a28.86 28.86 0 0 0 40.8 0l194.69-194.69a28.86 28.86 0 0 0 0-40.81"/></svg>
+  </div>
+  <div class="md-source__repository">
+    GitHub Repo
+  </div>
+</a>
+    </div>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../.." class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Home
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Table of Contents
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../about/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    About This Website
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../course-description/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Course Description
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+    
+      
+        
+        
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+  
+    <a href="../../learning-graph/" class="md-nav__link">
+      
+  
+  
+  <span class="md-ellipsis">
+    Learning Graph
+    
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+    
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+    
+      
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_6" checked>
+        
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../" class="md-nav__link ">
+              
+  
+  
+  <span class="md-ellipsis">
+    Chapters
+    
+  </span>
+  
+
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_6" id="__nav_6_label" tabindex="0">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_6_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_6">
+            <span class="md-nav__icon md-icon"></span>
+            Chapters
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../01-mathematical-foundations/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Ch 1 - Mathematical Foundations
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../02-introduction-to-signals-and-systems/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Ch 2 - Signals and Systems
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../03-system-properties-and-analysis/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Ch 3 - System Properties
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../04-convolution-and-correlation/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Ch 4 - Convolution and Correlation
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../05-sampling-and-quantization/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Ch 5 - Sampling and Quantization
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../06-fourier-analysis-fundamentals/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Ch 6 - Fourier Analysis
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../07-dft-fft-and-frequency-domain-analysis/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Ch 7 - DFT and FFT
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../08-advanced-transforms/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Ch 8 - Advanced Transforms
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../09-filter-design-fundamentals/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Ch 9 - Filter Design Fundamentals
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../10-advanced-filter-design-and-implementation/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Ch 10 - Advanced Filter Design
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../11-adaptive-signal-processing/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Ch 11 - Adaptive Processing
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../12-stochastic-processes-and-random-signals/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Ch 12 - Stochastic Processes
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  
+  <span class="md-ellipsis">
+    Ch 13 - Multirate and Compression
+    
+  </span>
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        
+  
+  
+  <span class="md-ellipsis">
+    Ch 13 - Multirate and Compression
+    
+  </span>
+  
+
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#summary" class="md-nav__link">
+    <span class="md-ellipsis">
+      Summary
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#concepts-covered" class="md-nav__link">
+    <span class="md-ellipsis">
+      Concepts Covered
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#prerequisites" class="md-nav__link">
+    <span class="md-ellipsis">
+      Prerequisites
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#introduction" class="md-nav__link">
+    <span class="md-ellipsis">
+      Introduction
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#multirate-signal-processing-fundamentals" class="md-nav__link">
+    <span class="md-ellipsis">
+      Multirate Signal Processing Fundamentals
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Multirate Signal Processing Fundamentals">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#benefits-and-applications" class="md-nav__link">
+    <span class="md-ellipsis">
+      Benefits and Applications
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#decimation-and-downsampling" class="md-nav__link">
+    <span class="md-ellipsis">
+      Decimation and Downsampling
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Decimation and Downsampling">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#downsampling-operation" class="md-nav__link">
+    <span class="md-ellipsis">
+      Downsampling Operation
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#anti-aliasing-filtering" class="md-nav__link">
+    <span class="md-ellipsis">
+      Anti-Aliasing Filtering
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#computational-considerations" class="md-nav__link">
+    <span class="md-ellipsis">
+      Computational Considerations
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#interpolation-and-upsampling" class="md-nav__link">
+    <span class="md-ellipsis">
+      Interpolation and Upsampling
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Interpolation and Upsampling">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#upsampling-operation" class="md-nav__link">
+    <span class="md-ellipsis">
+      Upsampling Operation
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#interpolation-filtering" class="md-nav__link">
+    <span class="md-ellipsis">
+      Interpolation Filtering
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#polyphase-implementation" class="md-nav__link">
+    <span class="md-ellipsis">
+      Polyphase Implementation
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#fractional-rate-conversion" class="md-nav__link">
+    <span class="md-ellipsis">
+      Fractional Rate Conversion
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Fractional Rate Conversion">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#combined-interpolation-and-decimation" class="md-nav__link">
+    <span class="md-ellipsis">
+      Combined Interpolation and Decimation
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#multistage-implementation" class="md-nav__link">
+    <span class="md-ellipsis">
+      Multistage Implementation
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#signal-compression-fundamentals" class="md-nav__link">
+    <span class="md-ellipsis">
+      Signal Compression Fundamentals
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Signal Compression Fundamentals">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#compression-metrics-and-terminology" class="md-nav__link">
+    <span class="md-ellipsis">
+      Compression Metrics and Terminology
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#source-coding-theorem" class="md-nav__link">
+    <span class="md-ellipsis">
+      Source Coding Theorem
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#lossy-vs-lossless-compression" class="md-nav__link">
+    <span class="md-ellipsis">
+      Lossy vs. Lossless Compression
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Lossy vs. Lossless Compression">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#lossless-compression" class="md-nav__link">
+    <span class="md-ellipsis">
+      Lossless Compression
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#lossy-compression" class="md-nav__link">
+    <span class="md-ellipsis">
+      Lossy Compression
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#transform-coding" class="md-nav__link">
+    <span class="md-ellipsis">
+      Transform Coding
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Transform Coding">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#transform-selection" class="md-nav__link">
+    <span class="md-ellipsis">
+      Transform Selection
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#jpeg-image-compression" class="md-nav__link">
+    <span class="md-ellipsis">
+      JPEG Image Compression
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#rate-distortion-optimization" class="md-nav__link">
+    <span class="md-ellipsis">
+      Rate-Distortion Optimization
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#huffman-coding-and-entropy-coding" class="md-nav__link">
+    <span class="md-ellipsis">
+      Huffman Coding and Entropy Coding
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Huffman Coding and Entropy Coding">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#huffman-coding" class="md-nav__link">
+    <span class="md-ellipsis">
+      Huffman Coding
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#arithmetic-coding" class="md-nav__link">
+    <span class="md-ellipsis">
+      Arithmetic Coding
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#adaptive-entropy-coding" class="md-nav__link">
+    <span class="md-ellipsis">
+      Adaptive Entropy Coding
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#applications-audio-and-image-compression" class="md-nav__link">
+    <span class="md-ellipsis">
+      Applications: Audio and Image Compression
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Applications: Audio and Image Compression">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#audio-compression-mp3" class="md-nav__link">
+    <span class="md-ellipsis">
+      Audio Compression (MP3)
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#image-compression-jpeg" class="md-nav__link">
+    <span class="md-ellipsis">
+      Image Compression (JPEG)
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#modern-alternatives" class="md-nav__link">
+    <span class="md-ellipsis">
+      Modern Alternatives
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#summary_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      Summary
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../14-time-frequency-analysis-and-advanced-topics/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Ch 14 - Time-Frequency Analysis
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../15-signal-processing-applications-and-ai-integration/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Ch 15 - Applications and AI
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+    
+      
+        
+        
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+  
+    <a href="../../prompts/" class="md-nav__link">
+      
+  
+  
+  <span class="md-ellipsis">
+    Prompts
+    
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+    
+      
+        
+        
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+  
+    <a href="../../sims/" class="md-nav__link">
+      
+  
+  
+  <span class="md-ellipsis">
+    MicroSims
+    
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+    
+      
+        
+        
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+  
+    <a href="../../stories/" class="md-nav__link">
+      
+  
+  
+  <span class="md-ellipsis">
+    Stories
+    
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+    
+      
+        
+        
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+  
+    <a href="../../circuits/" class="md-nav__link">
+      
+  
+  
+  <span class="md-ellipsis">
+    Circuits
+    
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+    
+    
+    
+    
+      
+        
+        
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+  
+    <a href="../../research/" class="md-nav__link">
+      
+  
+  
+  <span class="md-ellipsis">
+    Research
+    
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../report-card/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Report Card
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../checklist/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Checklist
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../glossary/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Glossary
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../how-we-built-this-site/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    How We Built This Site
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../license/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    License
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../references/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    References
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../contact/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Contact
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../ieee-paper-changes/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Paper Changes
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#summary" class="md-nav__link">
+    <span class="md-ellipsis">
+      Summary
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#concepts-covered" class="md-nav__link">
+    <span class="md-ellipsis">
+      Concepts Covered
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#prerequisites" class="md-nav__link">
+    <span class="md-ellipsis">
+      Prerequisites
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#introduction" class="md-nav__link">
+    <span class="md-ellipsis">
+      Introduction
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#multirate-signal-processing-fundamentals" class="md-nav__link">
+    <span class="md-ellipsis">
+      Multirate Signal Processing Fundamentals
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Multirate Signal Processing Fundamentals">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#benefits-and-applications" class="md-nav__link">
+    <span class="md-ellipsis">
+      Benefits and Applications
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#decimation-and-downsampling" class="md-nav__link">
+    <span class="md-ellipsis">
+      Decimation and Downsampling
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Decimation and Downsampling">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#downsampling-operation" class="md-nav__link">
+    <span class="md-ellipsis">
+      Downsampling Operation
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#anti-aliasing-filtering" class="md-nav__link">
+    <span class="md-ellipsis">
+      Anti-Aliasing Filtering
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#computational-considerations" class="md-nav__link">
+    <span class="md-ellipsis">
+      Computational Considerations
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#interpolation-and-upsampling" class="md-nav__link">
+    <span class="md-ellipsis">
+      Interpolation and Upsampling
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Interpolation and Upsampling">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#upsampling-operation" class="md-nav__link">
+    <span class="md-ellipsis">
+      Upsampling Operation
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#interpolation-filtering" class="md-nav__link">
+    <span class="md-ellipsis">
+      Interpolation Filtering
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#polyphase-implementation" class="md-nav__link">
+    <span class="md-ellipsis">
+      Polyphase Implementation
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#fractional-rate-conversion" class="md-nav__link">
+    <span class="md-ellipsis">
+      Fractional Rate Conversion
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Fractional Rate Conversion">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#combined-interpolation-and-decimation" class="md-nav__link">
+    <span class="md-ellipsis">
+      Combined Interpolation and Decimation
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#multistage-implementation" class="md-nav__link">
+    <span class="md-ellipsis">
+      Multistage Implementation
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#signal-compression-fundamentals" class="md-nav__link">
+    <span class="md-ellipsis">
+      Signal Compression Fundamentals
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Signal Compression Fundamentals">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#compression-metrics-and-terminology" class="md-nav__link">
+    <span class="md-ellipsis">
+      Compression Metrics and Terminology
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#source-coding-theorem" class="md-nav__link">
+    <span class="md-ellipsis">
+      Source Coding Theorem
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#lossy-vs-lossless-compression" class="md-nav__link">
+    <span class="md-ellipsis">
+      Lossy vs. Lossless Compression
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Lossy vs. Lossless Compression">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#lossless-compression" class="md-nav__link">
+    <span class="md-ellipsis">
+      Lossless Compression
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#lossy-compression" class="md-nav__link">
+    <span class="md-ellipsis">
+      Lossy Compression
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#transform-coding" class="md-nav__link">
+    <span class="md-ellipsis">
+      Transform Coding
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Transform Coding">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#transform-selection" class="md-nav__link">
+    <span class="md-ellipsis">
+      Transform Selection
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#jpeg-image-compression" class="md-nav__link">
+    <span class="md-ellipsis">
+      JPEG Image Compression
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#rate-distortion-optimization" class="md-nav__link">
+    <span class="md-ellipsis">
+      Rate-Distortion Optimization
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#huffman-coding-and-entropy-coding" class="md-nav__link">
+    <span class="md-ellipsis">
+      Huffman Coding and Entropy Coding
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Huffman Coding and Entropy Coding">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#huffman-coding" class="md-nav__link">
+    <span class="md-ellipsis">
+      Huffman Coding
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#arithmetic-coding" class="md-nav__link">
+    <span class="md-ellipsis">
+      Arithmetic Coding
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#adaptive-entropy-coding" class="md-nav__link">
+    <span class="md-ellipsis">
+      Adaptive Entropy Coding
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#applications-audio-and-image-compression" class="md-nav__link">
+    <span class="md-ellipsis">
+      Applications: Audio and Image Compression
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Applications: Audio and Image Compression">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#audio-compression-mp3" class="md-nav__link">
+    <span class="md-ellipsis">
+      Audio Compression (MP3)
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#image-compression-jpeg" class="md-nav__link">
+    <span class="md-ellipsis">
+      Image Compression (JPEG)
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#modern-alternatives" class="md-nav__link">
+    <span class="md-ellipsis">
+      Modern Alternatives
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#summary_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      Summary
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+  
+    <a href="https://github.com/dmccreary/signal-processing/blob/master/docs/chapters/13-multirate-signal-processing-and-compression/index.md" title="Edit this page" class="md-content__button md-icon">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M10 20H6V4h7v5h5v3.1l2-2V8l-6-6H6c-1.1 0-2 .9-2 2v16c0 1.1.9 2 2 2h4zm10.2-7c.1 0 .3.1.4.2l1.3 1.3c.2.2.2.6 0 .8l-1 1-2.1-2.1 1-1c.1-.1.2-.2.4-.2m0 3.9L14.1 23H12v-2.1l6.1-6.1z"/></svg>
+    </a>
+  
+  
+
+
+<h1 id="multirate-signal-processing-and-compression">Multirate Signal Processing and Compression</h1>
+<h2 id="summary">Summary</h2>
+<p>This chapter examines multirate techniques including decimation, interpolation, and signal compression methods for efficient data representation.</p>
+<p>Students will explore 10 key concepts that are essential for understanding this area of signal processing. This material provides the foundation for concepts introduced in later chapters.</p>
+<h2 id="concepts-covered">Concepts Covered</h2>
+<p>This chapter covers the following 10 concepts from the learning graph:</p>
+<ol>
+<li>Multirate Signal Processing</li>
+<li>Decimation</li>
+<li>Interpolation</li>
+<li>Upsampling</li>
+<li>Downsampling</li>
+<li>Signal Compression</li>
+<li>Lossy Compression</li>
+<li>Lossless Compression</li>
+<li>Transform Coding</li>
+<li>Huffman Coding</li>
+</ol>
+<h2 id="prerequisites">Prerequisites</h2>
+<p>This chapter builds on concepts from:</p>
+<ul>
+<li><a href="../02-introduction-to-signals-and-systems/">Chapter 2: Introduction to Signals and Systems</a></li>
+<li><a href="../05-sampling-and-quantization/">Chapter 5: Sampling and Quantization</a></li>
+<li><a href="../06-fourier-analysis-fundamentals/">Chapter 6: Fourier Analysis Fundamentals</a></li>
+</ul>
+<hr />
+<h2 id="introduction">Introduction</h2>
+<p>Multirate signal processing involves systems that operate on signals at different sampling rates, enabling efficient implementation of digital filters, flexible rate conversion, and sophisticated subband decomposition schemes. By strategically changing sampling rates throughout the processing chain, multirate techniques dramatically reduce computational requirements compared to single-rate implementations while enabling applications impossible at fixed rates. From sample rate conversion in digital audio to channel banks in telecommunications, multirate methods have become fundamental to modern signal processing system design.</p>
+<p>Signal compression exploits redundancy and perceptual irrelevance to represent signals with fewer bits while preserving essential information, enabling efficient storage and transmission across bandwidth-limited channels. Understanding decimation, interpolation, and polyphase filter structures provides the foundation for efficient multirate implementations, while compression techniques including transform coding, predictive coding, and entropy coding enable modern multimedia applications from MP3 audio to JPEG images and H.264 video.</p>
+<h2 id="multirate-signal-processing-fundamentals">Multirate Signal Processing Fundamentals</h2>
+<p>Multirate systems process signals at multiple sampling rates, changing rates through decimation (downsampling) and interpolation (upsampling) operations. These rate changes, combined with appropriate filtering, enable computational efficiency and flexible system designs.</p>
+<h3 id="benefits-and-applications">Benefits and Applications</h3>
+<p>Multirate processing provides several key advantages:</p>
+<ul>
+<li><strong>Computational efficiency</strong>: Reduced rate means fewer operations per second</li>
+<li><strong>Flexible interfacing</strong>: Connect systems operating at different native rates</li>
+<li><strong>Subband processing</strong>: Analyze and manipulate specific frequency regions independently</li>
+<li><strong>Implementation efficiency</strong>: Simplified filter designs at appropriate rates</li>
+</ul>
+<p>Applications spanning signal processing domains include:</p>
+<ul>
+<li><strong>Sample rate conversion</strong>: Audio between 44.1 kHz (CD) and 48 kHz (DAT/DVD)</li>
+<li><strong>Oversampling converters</strong>: High-rate conversion with relaxed analog filtering</li>
+<li><strong>Digital communication</strong>: Matched filtering, interpolation, symbol synchronization</li>
+<li><strong>Image processing</strong>: Pyramidal decomposition, resolution conversion, zooming</li>
+<li><strong>Audio compression</strong>: MP3, AAC use filter banks for perceptual coding</li>
+</ul>
+<h2 id="decimation-and-downsampling">Decimation and Downsampling</h2>
+<p>Decimation reduces the sampling rate by an integer factor M, keeping only every M-th sample while discarding the rest. This operation is fundamental to multirate processing but must be performed carefully to avoid aliasing.</p>
+<h3 id="downsampling-operation">Downsampling Operation</h3>
+<p>The downsampling operation by factor M is mathematically defined as:</p>
+<div class="arithmatex">\[y[n] = x[nM]\]</div>
+<p>In the frequency domain, downsampling causes the spectrum to be compressed and replicated M times across the frequency range <span class="arithmatex">\([-\pi, \pi]\)</span>:</p>
+<div class="arithmatex">\[Y(e^{j\omega}) = \frac{1}{M}\sum_{k=0}^{M-1} X\left(e^{j(\omega-2\pi k)/M}\right)\]</div>
+<p>This spectral replication creates aliasing if the input signal contains frequency components above <span class="arithmatex">\(\pi/M\)</span> (half the new Nyquist frequency).</p>
+<h3 id="anti-aliasing-filtering">Anti-Aliasing Filtering</h3>
+<p>To prevent aliasing, the input signal must be filtered before downsampling to eliminate frequency content above <span class="arithmatex">\(\pi/M\)</span>. The decimation process therefore consists of two steps:</p>
+<ol>
+<li><strong>Low-pass filtering</strong>: Apply filter with cutoff frequency <span class="arithmatex">\(\omega_c \leq \pi/M\)</span></li>
+<li><strong>Downsample</strong>: Keep every M-th sample, discard others</li>
+</ol>
+<p>The combined decimator is represented as:</p>
+<div class="arithmatex">\[y[n] = \left(h[k] * x[k]\right)\Big|_{k=nM}\]</div>
+<p>where <span class="arithmatex">\(h[k]\)</span> is the anti-aliasing filter impulse response.</p>
+<h3 id="computational-considerations">Computational Considerations</h3>
+<p>A naive implementation filters at the high rate then downsamples, but this wastes computation on samples that will be discarded. Polyphase decomposition, discussed later, reorganizes the computation to operate primarily at the low output rate, reducing operations by approximately factor M.</p>
+<h2 id="interpolation-and-upsampling">Interpolation and Upsampling</h2>
+<p>Interpolation increases the sampling rate by an integer factor L, inserting (L-1) zeros between each input sample, then filtering to remove spectral replications and smooth the result.</p>
+<h3 id="upsampling-operation">Upsampling Operation</h3>
+<p>The upsampling operation by factor L inserts (L-1) zeros between samples:</p>
+<div class="arithmatex">\[y[n] = \begin{cases} x[n/L] &amp; \text{if } n = 0, \pm L, \pm 2L, \ldots \\ 0 &amp; \text{otherwise} \end{cases}\]</div>
+<p>In the frequency domain, upsampling causes spectral compression without introducing new frequency content:</p>
+<div class="arithmatex">\[Y(e^{j\omega}) = X(e^{j\omega L})\]</div>
+<p>The output spectrum repeats L times within <span class="arithmatex">\([-\pi, \pi]\)</span>, requiring lowpass filtering to remove the (L-1) spectral images.</p>
+<h3 id="interpolation-filtering">Interpolation Filtering</h3>
+<p>To reconstruct a smooth signal, the upsampled sequence is filtered with a lowpass interpolation filter with cutoff frequency <span class="arithmatex">\(\omega_c \leq \pi/L\)</span> and passband gain of L:</p>
+<ol>
+<li><strong>Upsample</strong>: Insert (L-1) zeros between samples</li>
+<li><strong>Low-pass filtering</strong>: Apply filter with cutoff <span class="arithmatex">\(\omega_c \leq \pi/L\)</span> and gain L</li>
+</ol>
+<p>The combined interpolator is:</p>
+<div class="arithmatex">\[y[n] = L \cdot h[n] * u[n]\]</div>
+<p>where <span class="arithmatex">\(u[n]\)</span> is the upsampled sequence and <span class="arithmatex">\(h[n]\)</span> is the interpolation filter.</p>
+<h3 id="polyphase-implementation">Polyphase Implementation</h3>
+<p>Direct implementation filters the upsampled signal containing (L-1) zeros out of every L samples, wasting computation multiplying by zero. Polyphase structure reorganizes computation to avoid these wasted multiplications, operating efficiently at the input rate for most computations.</p>
+<h2 id="fractional-rate-conversion">Fractional Rate Conversion</h2>
+<p>Many applications require non-integer rate changes, such as converting between 44.1 kHz and 48 kHz audio (ratio 147:160). Rational rate conversion achieves fractional factor L/M through cascaded interpolation by L and decimation by M.</p>
+<h3 id="combined-interpolation-and-decimation">Combined Interpolation and Decimation</h3>
+<p>The fractional rate converter implements:</p>
+<ol>
+<li><strong>Interpolate by L</strong>: Increase rate to L times original</li>
+<li><strong>Decimate by M</strong>: Reduce rate to L/M times original</li>
+</ol>
+<p>The intermediate high rate L times the input rate never needs to be explicitly computed—polyphase implementation performs the necessary filtering efficiently.</p>
+<p>The combined filter must satisfy both interpolation and decimation requirements:</p>
+<ul>
+<li>Passband width: <span class="arithmatex">\(\min(\pi/L, \pi/M)\)</span></li>
+<li>Passband gain: L (to compensate for upsampling)</li>
+<li>Stopband attenuation: Sufficient to prevent aliasing from decimation</li>
+</ul>
+<h3 id="multistage-implementation">Multistage Implementation</h3>
+<p>For large rate change factors, multistage cascaded conversion is more efficient than single-stage. The rate change L/M is factored as products of smaller rational factors:</p>
+<div class="arithmatex">\[\frac{L}{M} = \frac{L_1}{M_1} \cdot \frac{L_2}{M_2} \cdot \ldots \cdot \frac{L_K}{M_K}\]</div>
+<p>Each stage operates at an intermediate rate, with filter complexities distributed across stages. Proper factorization minimizes total computational cost.</p>
+<p>Typical strategies include:</p>
+<ul>
+<li>Use small prime factors (2, 3, 5) when possible</li>
+<li>Place stages with higher intermediate rates later in the chain</li>
+<li>Optimize filter lengths at each stage for computational efficiency</li>
+</ul>
+<details>
+<summary>MicroSim: Multirate Sample Rate Converter</summary>
+<p>This simulation would demonstrate multirate conversion interactively:</p>
+<ul>
+<li>Generate test signals: sinusoids, chirps, speech, music</li>
+<li>Configure input and output sampling rates (or specify rational factor L/M)</li>
+<li>Select single-stage or multistage implementation</li>
+<li>Adjust filter parameters: length, window type, stopband attenuation</li>
+<li>View displays showing:</li>
+<li>Input signal waveform and spectrum</li>
+<li>Intermediate rate signals (if multistage)</li>
+<li>Output signal waveform and spectrum</li>
+<li>Frequency response of conversion filters</li>
+<li>Computational complexity metrics (multiplications per output sample)</li>
+<li>Compare single-stage vs. optimized multistage implementations</li>
+</ul>
+<p>Students would understand how upsampling creates spectral images, how downsampling causes aliasing without proper filtering, and how multistage structures dramatically reduce computational requirements for large rate changes.</p>
+</details>
+<h2 id="signal-compression-fundamentals">Signal Compression Fundamentals</h2>
+<p>Signal compression reduces the number of bits required to represent signals by exploiting redundancy (statistical dependencies) and irrelevance (perceptually insignificant information). Compression enables efficient storage and transmission across capacity-limited channels.</p>
+<h3 id="compression-metrics-and-terminology">Compression Metrics and Terminology</h3>
+<p>Key compression performance metrics include:</p>
+<p><strong>Compression ratio</strong> compares original to compressed sizes:</p>
+<div class="arithmatex">\[CR = \frac{\text{Original Size}}{\text{Compressed Size}}\]</div>
+<p><strong>Bit rate</strong> specifies compressed data rate in bits per second or bits per sample:</p>
+<div class="arithmatex">\[\text{Bit Rate} = \frac{\text{Compressed Bits}}{\text{Duration}}\]</div>
+<p><strong>Quality metrics</strong> quantify fidelity loss:</p>
+<ul>
+<li><strong>Mean Squared Error (MSE)</strong>: <span class="arithmatex">\(\frac{1}{N}\sum_{n=0}^{N-1}(x[n] - \hat{x}[n])^2\)</span></li>
+<li><strong>Peak SNR (PSNR)</strong>: <span class="arithmatex">\(10\log_{10}(\frac{\text{MAX}^2}{\text{MSE}})\)</span></li>
+<li><strong>Perceptual metrics</strong>: Account for human perception characteristics</li>
+</ul>
+<h3 id="source-coding-theorem">Source Coding Theorem</h3>
+<p>Shannon's source coding theorem establishes fundamental compression limits. For a source with entropy <span class="arithmatex">\(H\)</span> bits per symbol, lossless compression cannot achieve average bit rates below <span class="arithmatex">\(H\)</span> without information loss. The entropy is:</p>
+<div class="arithmatex">\[H = -\sum_{i} p_i \log_2 p_i\]</div>
+<p>where <span class="arithmatex">\(p_i\)</span> is the probability of symbol <span class="arithmatex">\(i\)</span>. Highly redundant sources (low entropy) can be compressed more than random sources (high entropy approaching maximum).</p>
+<h2 id="lossy-vs-lossless-compression">Lossy vs. Lossless Compression</h2>
+<p>Compression techniques are categorized based on whether perfect reconstruction is possible or if some information is permanently discarded.</p>
+<h3 id="lossless-compression">Lossless Compression</h3>
+<p>Lossless compression enables perfect reconstruction of the original signal from the compressed representation. Techniques exploit statistical redundancy without discarding information:</p>
+<ul>
+<li><strong>Run-length encoding</strong>: Represents sequences of identical symbols efficiently</li>
+<li><strong>Huffman coding</strong>: Assigns shorter codes to more probable symbols</li>
+<li><strong>Arithmetic coding</strong>: Achieves compression approaching entropy limits</li>
+<li><strong>Dictionary methods</strong>: LZ77, LZ78, LZW encode repeated patterns efficiently</li>
+</ul>
+<p>Lossless compression is essential when perfect fidelity is required:</p>
+<ul>
+<li>Medical images (legal/diagnostic requirements)</li>
+<li>Text documents (no acceptable loss)</li>
+<li>Scientific data (analysis precision requirements)</li>
+<li>Archival storage (future access needs unknown)</li>
+</ul>
+<p>Typical lossless compression ratios range from 1.5:1 to 4:1 depending on signal redundancy.</p>
+<h3 id="lossy-compression">Lossy Compression</h3>
+<p>Lossy compression permanently discards information deemed perceptually insignificant or less important, achieving much higher compression ratios. The key challenge is determining what to discard while maintaining acceptable quality.</p>
+<p>Lossy techniques include:</p>
+<ul>
+<li><strong>Quantization</strong>: Reduce precision of coefficients or samples</li>
+<li><strong>Transform coding</strong>: Discard small-magnitude transform coefficients</li>
+<li><strong>Perceptual modeling</strong>: Remove information below perception thresholds</li>
+<li><strong>Prediction</strong>: Encode prediction errors rather than original samples</li>
+</ul>
+<p>Lossy compression dominates multimedia applications:</p>
+<ul>
+<li>Audio: MP3 (10:1 to 12:1), AAC, Opus</li>
+<li>Images: JPEG (10:1 to 50:1), WebP</li>
+<li>Video: H.264/AVC (50:1 to 200:1), H.265/HEVC</li>
+</ul>
+<p>The compression ratio vs. quality tradeoff is controlled through bit rate or quality parameters.</p>
+<h2 id="transform-coding">Transform Coding</h2>
+<p>Transform coding represents signals in alternative domains where energy compaction concentrates most signal energy in a few coefficients, enabling efficient compression by quantizing and encoding only significant coefficients.</p>
+<h3 id="transform-selection">Transform Selection</h3>
+<p>Effective transforms for compression exhibit:</p>
+<ul>
+<li><strong>Energy compaction</strong>: Few large coefficients, many near-zero coefficients</li>
+<li><strong>Decorrelation</strong>: Transform coefficients uncorrelated (independent)</li>
+<li><strong>Fast computation</strong>: Efficient algorithms for practical implementation</li>
+<li><strong>Invertibility</strong>: Perfect reconstruction possible from transform domain</li>
+</ul>
+<p>Common transforms include:</p>
+<p><strong>Discrete Cosine Transform (DCT)</strong>: Optimal for highly correlated signals, forms basis of JPEG and MPEG standards. The DCT provides excellent energy compaction for smooth, correlated image blocks.</p>
+<p><strong>Wavelet Transform</strong>: Provides multiresolution analysis with good localization in both time/space and frequency, used in JPEG2000 and modern audio codecs.</p>
+<p><strong>Karhunen-Lo\u00e8ve Transform (KLT)</strong>: Theoretically optimal for given signal statistics but requires computing signal-dependent basis functions, limiting practical use.</p>
+<h3 id="jpeg-image-compression">JPEG Image Compression</h3>
+<p>JPEG (Joint Photographic Experts Group) exemplifies transform coding principles:</p>
+<ol>
+<li><strong>Block decomposition</strong>: Divide image into 8×8 pixel blocks</li>
+<li><strong>2D DCT</strong>: Transform each block to frequency domain</li>
+<li><strong>Quantization</strong>: Coarsely quantize high-frequency coefficients</li>
+<li><strong>Zigzag scan</strong>: Order coefficients from low to high frequency</li>
+<li><strong>Entropy coding</strong>: Apply Huffman or arithmetic coding</li>
+</ol>
+<p>The quantization table determines quality vs. compression tradeoff, with human visual perception guiding quantization strength across frequencies. Low frequencies (visually important) use fine quantization while high frequencies (less visible) use coarse quantization.</p>
+<h3 id="rate-distortion-optimization">Rate-Distortion Optimization</h3>
+<p>Transform coding involves allocating bits across transform coefficients to minimize distortion for a target bit rate (or equivalently, minimize bit rate for target quality). This optimization problem is solved through:</p>
+<ul>
+<li><strong>Bit allocation algorithms</strong>: Distribute bits based on coefficient statistics</li>
+<li><strong>Lagrangian optimization</strong>: Balance rate and distortion with parameter <span class="arithmatex">\(\lambda\)</span></li>
+<li><strong>Perceptual weighting</strong>: Account for human perception sensitivities</li>
+</ul>
+<p>Modern codecs employ sophisticated rate-distortion optimization during encoding to achieve maximum compression for desired quality.</p>
+<h2 id="huffman-coding-and-entropy-coding">Huffman Coding and Entropy Coding</h2>
+<p>Entropy coding achieves compression by assigning shorter codewords to more frequent symbols and longer codewords to rarer symbols, approaching the entropy bound for lossless compression.</p>
+<h3 id="huffman-coding">Huffman Coding</h3>
+<p>Huffman coding constructs optimal prefix-free codes given symbol probabilities through a bottom-up tree construction algorithm:</p>
+<ol>
+<li><strong>Order symbols</strong> by probability</li>
+<li><strong>Combine</strong> two least probable symbols into parent node</li>
+<li><strong>Repeat</strong> until single root node remains</li>
+<li><strong>Assign codes</strong> by traversing tree from root to leaves</li>
+</ol>
+<p>The resulting variable-length codes satisfy the prefix property (no code is a prefix of another) enabling unambiguous decoding. Huffman coding is optimal for integer-length codes and widely used in JPEG, MPEG, and data compression utilities.</p>
+<h3 id="arithmetic-coding">Arithmetic Coding</h3>
+<p>Arithmetic coding represents message sequences as intervals within [0,1), achieving compression arbitrarily close to entropy limits. Unlike Huffman coding which assigns integer bit lengths, arithmetic coding allows fractional bits per symbol.</p>
+<p>The algorithm:</p>
+<ol>
+<li><strong>Initialize</strong> interval to [0,1)</li>
+<li><strong>For each symbol</strong>, subdivide interval proportionally to symbol probabilities</li>
+<li><strong>Final interval</strong> is represented as binary fraction</li>
+</ol>
+<p>Arithmetic coding outperforms Huffman coding for highly skewed probability distributions and is used in modern image and video compression standards (JPEG2000, H.264/AVC, H.265/HEVC).</p>
+<h3 id="adaptive-entropy-coding">Adaptive Entropy Coding</h3>
+<p>Adaptive methods update probability models as data is encoded, handling non-stationary sources more effectively than fixed models. Both encoder and decoder maintain synchronized models, avoiding overhead of transmitting probability tables.</p>
+<h2 id="applications-audio-and-image-compression">Applications: Audio and Image Compression</h2>
+<p>Multirate and compression techniques underpin modern multimedia standards that enable practical storage and transmission of audio, images, and video.</p>
+<h3 id="audio-compression-mp3">Audio Compression (MP3)</h3>
+<p>MP3 (MPEG-1 Audio Layer 3) achieves 10:1 to 12:1 compression while maintaining near-CD quality through psychoacoustic modeling:</p>
+<ol>
+<li><strong>Filter bank</strong>: 32-band polyphase filter bank divides spectrum</li>
+<li><strong>Psychoacoustic model</strong>: Identifies masked frequency components</li>
+<li><strong>Quantization</strong>: Allocates bits based on perceptual importance</li>
+<li><strong>Huffman coding</strong>: Entropy codes quantized values</li>
+</ol>
+<p>Critical features include:</p>
+<ul>
+<li>Exploiting frequency masking (loud sounds mask nearby quiet sounds)</li>
+<li>Temporal masking (pre- and post-masking around transients)</li>
+<li>Bit reservoir for variable bit rate encoding</li>
+<li>Joint stereo coding for correlated channels</li>
+</ul>
+<h3 id="image-compression-jpeg">Image Compression (JPEG)</h3>
+<p>JPEG achieves typical compression ratios of 10:1 to 50:1 for photographic images:</p>
+<ul>
+<li>8×8 DCT blocks capture local correlation</li>
+<li>Perceptually weighted quantization prioritizes low frequencies</li>
+<li>Zigzag scanning groups coefficients for run-length encoding</li>
+<li>Separate DC and AC entropy coding paths</li>
+</ul>
+<p>JPEG quality parameter controls quantization table scaling, enabling user tradeoff between file size and visual quality.</p>
+<h3 id="modern-alternatives">Modern Alternatives</h3>
+<p>Advanced standards improve upon classical approaches:</p>
+<ul>
+<li><strong>AAC (Advanced Audio Coding)</strong>: Successor to MP3 with better quality at same bit rates</li>
+<li><strong>JPEG 2000</strong>: Wavelet-based image coding with better compression and features</li>
+<li><strong>WebP</strong>: Google's image format with superior compression than JPEG</li>
+<li><strong>Opus</strong>: Modern audio codec optimizing for internet streaming</li>
+</ul>
+<p>These leverage improved transforms, more sophisticated perceptual models, and advanced entropy coding.</p>
+<h2 id="summary_1">Summary</h2>
+<p>This chapter examined multirate signal processing techniques that enable efficient implementation through strategic sampling rate changes. Decimation reduces sampling rates through low-pass filtering followed by downsampling, while interpolation increases rates through upsampling followed by filtering to remove spectral images. Polyphase decomposition reorganizes filter structures to minimize computation by avoiding operations on zero-valued samples, providing dramatic computational savings.</p>
+<p>Fractional rate conversion combines interpolation and decimation to achieve arbitrary rational sampling rate changes, with multistage implementations optimizing computational efficiency for large factors. These techniques enable flexible interfacing between systems operating at different rates and support efficient implementation of sample rate converters across audio, communications, and image processing applications.</p>
+<p>Signal compression exploits redundancy and irrelevance to minimize representation size, with lossless techniques enabling perfect reconstruction and lossy techniques achieving higher compression by discarding perceptually insignificant information. Transform coding concentrates signal energy into few coefficients, enabling efficient quantization and encoding. Huffman and arithmetic entropy coding approaches assign shorter codes to more probable symbols, approaching theoretical compression limits.</p>
+<p>Practical compression systems including MP3 audio and JPEG images demonstrate how multirate filter banks, perceptual models, transform coding, quantization, and entropy coding combine to achieve compression ratios enabling modern multimedia applications. Understanding these fundamental techniques prepares you for advanced topics in video compression, speech coding, and emerging compression standards optimizing for machine learning and AI applications.</p>
+<p>The next chapter explores time-frequency analysis methods including spectrograms and advanced techniques for analyzing non-stationary signals whose characteristics evolve over time, building on the transform and multirate concepts developed here.</p>
+
+
+
+
+
+
+
+  
+  
+
+
+
+  
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+          <button type="button" class="md-top md-icon" data-md-component="top" hidden>
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8z"/></svg>
+  Back to top
+</button>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+    
+      
+      <nav class="md-footer__inner md-grid" aria-label="Footer" >
+        
+          
+          <a href="../12-stochastic-processes-and-random-signals/" class="md-footer__link md-footer__link--prev" aria-label="Previous: Ch 12 - Stochastic Processes">
+            <div class="md-footer__button md-icon">
+              
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+            </div>
+            <div class="md-footer__title">
+              <span class="md-footer__direction">
+                Previous
+              </span>
+              <div class="md-ellipsis">
+                Ch 12 - Stochastic Processes
+              </div>
+            </div>
+          </a>
+        
+        
+          
+          <a href="../14-time-frequency-analysis-and-advanced-topics/" class="md-footer__link md-footer__link--next" aria-label="Next: Ch 14 - Time-Frequency Analysis">
+            <div class="md-footer__title">
+              <span class="md-footer__direction">
+                Next
+              </span>
+              <div class="md-ellipsis">
+                Ch 14 - Time-Frequency Analysis
+              </div>
+            </div>
+            <div class="md-footer__button md-icon">
+              
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M4 11v2h12l-5.5 5.5 1.42 1.42L19.84 12l-7.92-7.92L10.5 5.5 16 11z"/></svg>
+            </div>
+          </a>
+        
+      </nav>
+    
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    
+      
+      <script id="__config" type="application/json">{"base": "../..", "features": ["content.code.copy", "navigation.expand", "navigation.path", "navigation.prune", "navigation.indexes", "toc.follow", "navigation.top", "navigation.footer", "content.action.edit"], "search": "../../assets/javascripts/workers/search.f8cc74c7.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": null}</script>
+    
+    
+      <script src="../../assets/javascripts/bundle.c8b220af.min.js"></script>
+      
+        <script src="../../js/extra.js"></script>
+      
+        <script src="https://unpkg.com/mathjax@3/es5/tex-mml-chtml.js"></script>
+      
+    
+  </body>
+</html>

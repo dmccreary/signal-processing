@@ -1,0 +1,2861 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+        <meta name="description" content="College Level Textbook on Signal Processing - License is Commons ShareAlike Attribution Noncommercial">
+      
+      
+        <meta name="author" content="Dan McCreary">
+      
+      
+        <link rel="canonical" href="https://dmccreary.github.io/signal-processing/chapters/01-mathematical-foundations/">
+      
+      
+        <link rel="prev" href="../">
+      
+      
+        <link rel="next" href="../02-introduction-to-signals-and-systems/">
+      
+      
+      <link rel="icon" href="../../img/favicon.ico">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.6.12">
+    
+    
+      
+        <title>Ch 1 - Mathematical Foundations - Signal Processing with AI</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../assets/stylesheets/main.2afb09e1.min.css">
+      
+        
+        <link rel="stylesheet" href="../../assets/stylesheets/palette.06af60db.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+      <link rel="stylesheet" href="../../css/extra.css">
+    
+    <script>__md_scope=new URL("../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+  
+
+
+  
+  
+
+<script id="__analytics">function __md_analytics(){function e(){dataLayer.push(arguments)}window.dataLayer=window.dataLayer||[],e("js",new Date),e("config","G-SY3G2ND80K"),document.addEventListener("DOMContentLoaded",(function(){document.forms.search&&document.forms.search.query.addEventListener("blur",(function(){this.value&&e("event","search",{search_term:this.value})}));document$.subscribe((function(){var t=document.forms.feedback;if(void 0!==t)for(var a of t.querySelectorAll("[type=submit]"))a.addEventListener("click",(function(a){a.preventDefault();var n=document.location.pathname,d=this.getAttribute("data-md-value");e("event","feedback",{page:n,data:d}),t.firstElementChild.disabled=!0;var r=t.querySelector(".md-feedback__note [data-md-value='"+d+"']");r&&(r.hidden=!1)})),t.hidden=!1})),location$.subscribe((function(t){e("config","G-SY3G2ND80K",{page_path:t.pathname})}))}));var t=document.createElement("script");t.async=!0,t.src="https://www.googletagmanager.com/gtag/js?id=G-SY3G2ND80K",document.getElementById("__analytics").insertAdjacentElement("afterEnd",t)}</script>
+  
+    <script>"undefined"!=typeof __md_analytics&&__md_analytics()</script>
+  
+
+    
+    
+      
+        <meta  property="og:type"  content="website" >
+      
+        <meta  property="og:title"  content="Ch 1 - Mathematical Foundations - Signal Processing with AI" >
+      
+        <meta  property="og:description"  content="College Level Textbook on Signal Processing - License is Commons ShareAlike Attribution Noncommercial" >
+      
+        <meta  property="og:image"  content="https://dmccreary.github.io/signal-processing/assets/images/social/chapters/01-mathematical-foundations/index.png" >
+      
+        <meta  property="og:image:type"  content="image/png" >
+      
+        <meta  property="og:image:width"  content="1200" >
+      
+        <meta  property="og:image:height"  content="630" >
+      
+        <meta  property="og:url"  content="https://dmccreary.github.io/signal-processing/chapters/01-mathematical-foundations/" >
+      
+        <meta  name="twitter:card"  content="summary_large_image" >
+      
+        <meta  name="twitter:title"  content="Ch 1 - Mathematical Foundations - Signal Processing with AI" >
+      
+        <meta  name="twitter:description"  content="College Level Textbook on Signal Processing - License is Commons ShareAlike Attribution Noncommercial" >
+      
+        <meta  name="twitter:image"  content="https://dmccreary.github.io/signal-processing/assets/images/social/chapters/01-mathematical-foundations/index.png" >
+      
+    
+    
+  </head>
+  
+  
+    
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="maroon" data-md-color-accent="gold">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#mathematical-foundations" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+  
+
+<header class="md-header md-header--shadow" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href="../.." title="Signal Processing with AI" class="md-header__button md-logo" aria-label="Signal Processing with AI" data-md-component="logo">
+      
+  <img src="../../img/logo-192.png" alt="logo">
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            Signal Processing with AI
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              Ch 1 - Mathematical Foundations
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+    
+    
+    
+    
+      
+      
+        <label class="md-header__button md-icon" for="__search">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        </label>
+        <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Search">
+        
+        <button type="reset" class="md-search__icon md-icon" title="Clear" aria-label="Clear" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+        </button>
+      </nav>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+      
+    
+    
+      <div class="md-header__source">
+        <a href="https://github.com/dmccreary/signal-processing" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 6.7.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2024 Fonticons, Inc.--><path d="M439.55 236.05 244 40.45a28.87 28.87 0 0 0-40.81 0l-40.66 40.63 51.52 51.52c27.06-9.14 52.68 16.77 43.39 43.68l49.66 49.66c34.23-11.8 61.18 31 35.47 56.69-26.49 26.49-70.21-2.87-56-37.34L240.22 199v121.85c25.3 12.54 22.26 41.85 9.08 55a34.34 34.34 0 0 1-48.55 0c-17.57-17.6-11.07-46.91 11.25-56v-123c-20.8-8.51-24.6-30.74-18.64-45L142.57 101 8.45 235.14a28.86 28.86 0 0 0 0 40.81l195.61 195.6a28.86 28.86 0 0 0 40.8 0l194.69-194.69a28.86 28.86 0 0 0 0-40.81"/></svg>
+  </div>
+  <div class="md-source__repository">
+    GitHub Repo
+  </div>
+</a>
+      </div>
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+
+<nav class="md-nav md-nav--primary" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../.." title="Signal Processing with AI" class="md-nav__button md-logo" aria-label="Signal Processing with AI" data-md-component="logo">
+      
+  <img src="../../img/logo-192.png" alt="logo">
+
+    </a>
+    Signal Processing with AI
+  </label>
+  
+    <div class="md-nav__source">
+      <a href="https://github.com/dmccreary/signal-processing" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 6.7.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2024 Fonticons, Inc.--><path d="M439.55 236.05 244 40.45a28.87 28.87 0 0 0-40.81 0l-40.66 40.63 51.52 51.52c27.06-9.14 52.68 16.77 43.39 43.68l49.66 49.66c34.23-11.8 61.18 31 35.47 56.69-26.49 26.49-70.21-2.87-56-37.34L240.22 199v121.85c25.3 12.54 22.26 41.85 9.08 55a34.34 34.34 0 0 1-48.55 0c-17.57-17.6-11.07-46.91 11.25-56v-123c-20.8-8.51-24.6-30.74-18.64-45L142.57 101 8.45 235.14a28.86 28.86 0 0 0 0 40.81l195.61 195.6a28.86 28.86 0 0 0 40.8 0l194.69-194.69a28.86 28.86 0 0 0 0-40.81"/></svg>
+  </div>
+  <div class="md-source__repository">
+    GitHub Repo
+  </div>
+</a>
+    </div>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../.." class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Home
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Table of Contents
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../about/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    About This Website
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../course-description/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Course Description
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+    
+      
+        
+        
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+  
+    <a href="../../learning-graph/" class="md-nav__link">
+      
+  
+  
+  <span class="md-ellipsis">
+    Learning Graph
+    
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+    
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+    
+      
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_6" checked>
+        
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../" class="md-nav__link ">
+              
+  
+  
+  <span class="md-ellipsis">
+    Chapters
+    
+  </span>
+  
+
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_6" id="__nav_6_label" tabindex="0">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_6_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_6">
+            <span class="md-nav__icon md-icon"></span>
+            Chapters
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  
+  <span class="md-ellipsis">
+    Ch 1 - Mathematical Foundations
+    
+  </span>
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        
+  
+  
+  <span class="md-ellipsis">
+    Ch 1 - Mathematical Foundations
+    
+  </span>
+  
+
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#summary" class="md-nav__link">
+    <span class="md-ellipsis">
+      Summary
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#concepts-covered" class="md-nav__link">
+    <span class="md-ellipsis">
+      Concepts Covered
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#prerequisites" class="md-nav__link">
+    <span class="md-ellipsis">
+      Prerequisites
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#introduction" class="md-nav__link">
+    <span class="md-ellipsis">
+      Introduction
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#number-systems-and-complex-analysis" class="md-nav__link">
+    <span class="md-ellipsis">
+      Number Systems and Complex Analysis
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Number Systems and Complex Analysis">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#real-numbers" class="md-nav__link">
+    <span class="md-ellipsis">
+      Real Numbers
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#complex-numbers" class="md-nav__link">
+    <span class="md-ellipsis">
+      Complex Numbers
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Complex Numbers">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#diagram-complex-plane-representation" class="md-nav__link">
+    <span class="md-ellipsis">
+      Diagram: Complex Plane Representation
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#the-imaginary-unit" class="md-nav__link">
+    <span class="md-ellipsis">
+      The Imaginary Unit
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#eulers-formula" class="md-nav__link">
+    <span class="md-ellipsis">
+      Euler's Formula
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Euler&#39;s Formula">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#microsim-eulers-formula-visualization" class="md-nav__link">
+    <span class="md-ellipsis">
+      MicroSim: Euler's Formula Visualization
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#phasors" class="md-nav__link">
+    <span class="md-ellipsis">
+      Phasors
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#linear-algebra-foundations" class="md-nav__link">
+    <span class="md-ellipsis">
+      Linear Algebra Foundations
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Linear Algebra Foundations">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#vectors" class="md-nav__link">
+    <span class="md-ellipsis">
+      Vectors
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#matrices" class="md-nav__link">
+    <span class="md-ellipsis">
+      Matrices
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#linear-algebra" class="md-nav__link">
+    <span class="md-ellipsis">
+      Linear Algebra
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#eigenvalues-and-eigenvectors" class="md-nav__link">
+    <span class="md-ellipsis">
+      Eigenvalues and Eigenvectors
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#inner-product" class="md-nav__link">
+    <span class="md-ellipsis">
+      Inner Product
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#norms-and-metrics" class="md-nav__link">
+    <span class="md-ellipsis">
+      Norms and Metrics
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#calculus-and-differential-equations" class="md-nav__link">
+    <span class="md-ellipsis">
+      Calculus and Differential Equations
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Calculus and Differential Equations">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#differential-calculus" class="md-nav__link">
+    <span class="md-ellipsis">
+      Differential Calculus
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#integral-calculus" class="md-nav__link">
+    <span class="md-ellipsis">
+      Integral Calculus
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#differential-equations" class="md-nav__link">
+    <span class="md-ellipsis">
+      Differential Equations
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#partial-derivatives" class="md-nav__link">
+    <span class="md-ellipsis">
+      Partial Derivatives
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#probability-and-statistics" class="md-nav__link">
+    <span class="md-ellipsis">
+      Probability and Statistics
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Probability and Statistics">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#probability-theory" class="md-nav__link">
+    <span class="md-ellipsis">
+      Probability Theory
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#random-variables" class="md-nav__link">
+    <span class="md-ellipsis">
+      Random Variables
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#statistical-distributions" class="md-nav__link">
+    <span class="md-ellipsis">
+      Statistical Distributions
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#mean-and-expected-value" class="md-nav__link">
+    <span class="md-ellipsis">
+      Mean and Expected Value
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#variance" class="md-nav__link">
+    <span class="md-ellipsis">
+      Variance
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#standard-deviation" class="md-nav__link">
+    <span class="md-ellipsis">
+      Standard Deviation
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#trigonometry-and-special-functions" class="md-nav__link">
+    <span class="md-ellipsis">
+      Trigonometry and Special Functions
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Trigonometry and Special Functions">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#trigonometry" class="md-nav__link">
+    <span class="md-ellipsis">
+      Trigonometry
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#exponential-functions" class="md-nav__link">
+    <span class="md-ellipsis">
+      Exponential Functions
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#logarithmic-functions" class="md-nav__link">
+    <span class="md-ellipsis">
+      Logarithmic Functions
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#series-and-sequences" class="md-nav__link">
+    <span class="md-ellipsis">
+      Series and Sequences
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#summary_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      Summary
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../02-introduction-to-signals-and-systems/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Ch 2 - Signals and Systems
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../03-system-properties-and-analysis/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Ch 3 - System Properties
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../04-convolution-and-correlation/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Ch 4 - Convolution and Correlation
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../05-sampling-and-quantization/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Ch 5 - Sampling and Quantization
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../06-fourier-analysis-fundamentals/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Ch 6 - Fourier Analysis
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../07-dft-fft-and-frequency-domain-analysis/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Ch 7 - DFT and FFT
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../08-advanced-transforms/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Ch 8 - Advanced Transforms
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../09-filter-design-fundamentals/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Ch 9 - Filter Design Fundamentals
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../10-advanced-filter-design-and-implementation/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Ch 10 - Advanced Filter Design
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../11-adaptive-signal-processing/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Ch 11 - Adaptive Processing
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../12-stochastic-processes-and-random-signals/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Ch 12 - Stochastic Processes
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../13-multirate-signal-processing-and-compression/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Ch 13 - Multirate and Compression
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../14-time-frequency-analysis-and-advanced-topics/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Ch 14 - Time-Frequency Analysis
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../15-signal-processing-applications-and-ai-integration/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Ch 15 - Applications and AI
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+    
+      
+        
+        
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+  
+    <a href="../../prompts/" class="md-nav__link">
+      
+  
+  
+  <span class="md-ellipsis">
+    Prompts
+    
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+    
+      
+        
+        
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+  
+    <a href="../../sims/" class="md-nav__link">
+      
+  
+  
+  <span class="md-ellipsis">
+    MicroSims
+    
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+    
+      
+        
+        
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+  
+    <a href="../../stories/" class="md-nav__link">
+      
+  
+  
+  <span class="md-ellipsis">
+    Stories
+    
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+    
+      
+        
+        
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+  
+    <a href="../../circuits/" class="md-nav__link">
+      
+  
+  
+  <span class="md-ellipsis">
+    Circuits
+    
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+    
+    
+    
+    
+      
+        
+        
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+  
+    <a href="../../research/" class="md-nav__link">
+      
+  
+  
+  <span class="md-ellipsis">
+    Research
+    
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../report-card/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Report Card
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../checklist/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Checklist
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../glossary/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Glossary
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../how-we-built-this-site/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    How We Built This Site
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../license/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    License
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../references/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    References
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../contact/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Contact
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../ieee-paper-changes/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Paper Changes
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#summary" class="md-nav__link">
+    <span class="md-ellipsis">
+      Summary
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#concepts-covered" class="md-nav__link">
+    <span class="md-ellipsis">
+      Concepts Covered
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#prerequisites" class="md-nav__link">
+    <span class="md-ellipsis">
+      Prerequisites
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#introduction" class="md-nav__link">
+    <span class="md-ellipsis">
+      Introduction
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#number-systems-and-complex-analysis" class="md-nav__link">
+    <span class="md-ellipsis">
+      Number Systems and Complex Analysis
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Number Systems and Complex Analysis">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#real-numbers" class="md-nav__link">
+    <span class="md-ellipsis">
+      Real Numbers
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#complex-numbers" class="md-nav__link">
+    <span class="md-ellipsis">
+      Complex Numbers
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Complex Numbers">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#diagram-complex-plane-representation" class="md-nav__link">
+    <span class="md-ellipsis">
+      Diagram: Complex Plane Representation
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#the-imaginary-unit" class="md-nav__link">
+    <span class="md-ellipsis">
+      The Imaginary Unit
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#eulers-formula" class="md-nav__link">
+    <span class="md-ellipsis">
+      Euler's Formula
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Euler&#39;s Formula">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#microsim-eulers-formula-visualization" class="md-nav__link">
+    <span class="md-ellipsis">
+      MicroSim: Euler's Formula Visualization
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#phasors" class="md-nav__link">
+    <span class="md-ellipsis">
+      Phasors
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#linear-algebra-foundations" class="md-nav__link">
+    <span class="md-ellipsis">
+      Linear Algebra Foundations
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Linear Algebra Foundations">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#vectors" class="md-nav__link">
+    <span class="md-ellipsis">
+      Vectors
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#matrices" class="md-nav__link">
+    <span class="md-ellipsis">
+      Matrices
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#linear-algebra" class="md-nav__link">
+    <span class="md-ellipsis">
+      Linear Algebra
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#eigenvalues-and-eigenvectors" class="md-nav__link">
+    <span class="md-ellipsis">
+      Eigenvalues and Eigenvectors
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#inner-product" class="md-nav__link">
+    <span class="md-ellipsis">
+      Inner Product
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#norms-and-metrics" class="md-nav__link">
+    <span class="md-ellipsis">
+      Norms and Metrics
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#calculus-and-differential-equations" class="md-nav__link">
+    <span class="md-ellipsis">
+      Calculus and Differential Equations
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Calculus and Differential Equations">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#differential-calculus" class="md-nav__link">
+    <span class="md-ellipsis">
+      Differential Calculus
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#integral-calculus" class="md-nav__link">
+    <span class="md-ellipsis">
+      Integral Calculus
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#differential-equations" class="md-nav__link">
+    <span class="md-ellipsis">
+      Differential Equations
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#partial-derivatives" class="md-nav__link">
+    <span class="md-ellipsis">
+      Partial Derivatives
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#probability-and-statistics" class="md-nav__link">
+    <span class="md-ellipsis">
+      Probability and Statistics
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Probability and Statistics">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#probability-theory" class="md-nav__link">
+    <span class="md-ellipsis">
+      Probability Theory
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#random-variables" class="md-nav__link">
+    <span class="md-ellipsis">
+      Random Variables
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#statistical-distributions" class="md-nav__link">
+    <span class="md-ellipsis">
+      Statistical Distributions
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#mean-and-expected-value" class="md-nav__link">
+    <span class="md-ellipsis">
+      Mean and Expected Value
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#variance" class="md-nav__link">
+    <span class="md-ellipsis">
+      Variance
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#standard-deviation" class="md-nav__link">
+    <span class="md-ellipsis">
+      Standard Deviation
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#trigonometry-and-special-functions" class="md-nav__link">
+    <span class="md-ellipsis">
+      Trigonometry and Special Functions
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Trigonometry and Special Functions">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#trigonometry" class="md-nav__link">
+    <span class="md-ellipsis">
+      Trigonometry
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#exponential-functions" class="md-nav__link">
+    <span class="md-ellipsis">
+      Exponential Functions
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#logarithmic-functions" class="md-nav__link">
+    <span class="md-ellipsis">
+      Logarithmic Functions
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#series-and-sequences" class="md-nav__link">
+    <span class="md-ellipsis">
+      Series and Sequences
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#summary_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      Summary
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+  
+    <a href="https://github.com/dmccreary/signal-processing/blob/master/docs/chapters/01-mathematical-foundations/index.md" title="Edit this page" class="md-content__button md-icon">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M10 20H6V4h7v5h5v3.1l2-2V8l-6-6H6c-1.1 0-2 .9-2 2v16c0 1.1.9 2 2 2h4zm10.2-7c.1 0 .3.1.4.2l1.3 1.3c.2.2.2.6 0 .8l-1 1-2.1-2.1 1-1c.1-.1.2-.2.4-.2m0 3.9L14.1 23H12v-2.1l6.1-6.1z"/></svg>
+    </a>
+  
+  
+
+
+<h1 id="mathematical-foundations">Mathematical Foundations</h1>
+<h2 id="summary">Summary</h2>
+<p>This chapter introduces the essential mathematical concepts that form the foundation for signal processing, including complex numbers, linear algebra, calculus, probability, and trigonometry.</p>
+<p>Students will explore 25 key concepts that are essential for understanding this area of signal processing. This material provides the foundation for concepts introduced in later chapters.</p>
+<h2 id="concepts-covered">Concepts Covered</h2>
+<p>This chapter covers the following 25 concepts from the learning graph:</p>
+<ol>
+<li>Real Numbers</li>
+<li>Complex Numbers</li>
+<li>Imaginary Unit</li>
+<li>Euler's Formula</li>
+<li>Phasors</li>
+<li>Vectors</li>
+<li>Matrices</li>
+<li>Linear Algebra</li>
+<li>Differential Calculus</li>
+<li>Integral Calculus</li>
+<li>Differential Equations</li>
+<li>Partial Derivatives</li>
+<li>Probability Theory</li>
+<li>Random Variables</li>
+<li>Statistical Distributions</li>
+<li>Mean and Expected Value</li>
+<li>Variance</li>
+<li>Standard Deviation</li>
+<li>Trigonometry</li>
+<li>Exponential Functions</li>
+<li>Logarithmic Functions</li>
+<li>Series and Sequences</li>
+<li>Eigenvalues and Eigenvectors</li>
+<li>Inner Product</li>
+<li>Norms and Metrics</li>
+</ol>
+<h2 id="prerequisites">Prerequisites</h2>
+<p>This chapter assumes only the prerequisites listed in the <a href="../../course-description/">course description</a>.</p>
+<hr />
+<h2 id="introduction">Introduction</h2>
+<p>Signal processing relies on a robust mathematical framework that enables us to analyze, manipulate, and understand signals in both continuous and discrete forms. This chapter establishes the mathematical foundation necessary for comprehending advanced signal processing techniques. While some concepts may be familiar from prior coursework, we present them here in the context of their specific applications to signal analysis and transformation.</p>
+<p>The mathematical tools we develop in this chapter fall into several key categories: number systems (particularly complex numbers), linear algebra for representing and transforming signals, calculus for analyzing continuous changes, probability theory for handling uncertainty and noise, and trigonometry for understanding periodic phenomena. Each concept builds upon previous knowledge while introducing signal processing-specific applications.</p>
+<h2 id="number-systems-and-complex-analysis">Number Systems and Complex Analysis</h2>
+<h3 id="real-numbers">Real Numbers</h3>
+<p>Real numbers form the foundational number system for measuring continuous quantities in signal processing. The real number line <span class="arithmatex">\(\mathbb{R}\)</span> includes all rational and irrational numbers, providing a complete ordered field essential for representing signal amplitudes, frequencies, and time indices.</p>
+<p>In signal processing, real numbers represent:</p>
+<ul>
+<li>Signal amplitudes at specific time instants</li>
+<li>Sampling rates and frequencies</li>
+<li>Filter coefficients and gain values</li>
+<li>Time delays and phase shifts</li>
+</ul>
+<p>The properties of real numbers—particularly their completeness, ordering, and arithmetic operations—enable rigorous analysis of signal behavior. The real number system supports the limit operations fundamental to calculus, which we apply extensively in continuous-time signal analysis.</p>
+<h3 id="complex-numbers">Complex Numbers</h3>
+<p>Complex numbers extend the real number system to include solutions to equations like <span class="arithmatex">\(x^2 + 1 = 0\)</span>, which have no real solutions. A complex number <span class="arithmatex">\(z\)</span> takes the form:</p>
+<div class="arithmatex">\[z = a + bi\]</div>
+<p>where <span class="arithmatex">\(a\)</span> is the real part, <span class="arithmatex">\(b\)</span> is the imaginary part, and <span class="arithmatex">\(i\)</span> is the imaginary unit.</p>
+<p><strong>Why complex numbers matter in signal processing:</strong></p>
+<ul>
+<li>They provide a compact representation of sinusoidal signals</li>
+<li>They simplify frequency domain analysis</li>
+<li>They enable elegant formulations of filters and transforms</li>
+<li>They naturally represent magnitude and phase information</li>
+</ul>
+<p>Complex numbers can be visualized on the complex plane, where the horizontal axis represents the real part and the vertical axis represents the imaginary part. This geometric interpretation proves invaluable when analyzing signal transformations.</p>
+<h4 id="diagram-complex-plane-representation">Diagram: Complex Plane Representation</h4>
+<details>
+<summary>Complex Plane Visualization</summary>
+<p>Type: diagram</p>
+<p>Purpose: Illustrate the geometric representation of complex numbers in the complex plane, showing both rectangular and polar forms.</p>
+<p>Components to show:
+- Coordinate axes (Real axis horizontal, Imaginary axis vertical)
+- A sample complex number z = 3 + 4i plotted as a point
+- Vector from origin to the point
+- Right triangle showing real part (3), imaginary part (4), and magnitude (5)
+- Angle θ from positive real axis to the vector
+- Labels for magnitude |z| and phase angle θ</p>
+<p>Annotations:
+- "Real Part: Re(z) = 3"
+- "Imaginary Part: Im(z) = 4"
+- "Magnitude: |z| = 5"
+- "Phase: θ = tan⁻¹(4/3) ≈ 53.1°"</p>
+<p>Connections:
+- Dashed lines from point to axes showing projection
+- Arc showing angle measurement</p>
+<p>Style: Clean geometric diagram with grid</p>
+<p>Color scheme: Blue for real axis, red for imaginary axis, green for the complex number vector</p>
+<p>Implementation: SVG or interactive p5.js sketch allowing exploration of different complex numbers</p>
+</details>
+<h3 id="the-imaginary-unit">The Imaginary Unit</h3>
+<p>The imaginary unit <span class="arithmatex">\(i\)</span> is defined by the property:</p>
+<div class="arithmatex">\[i^2 = -1\]</div>
+<p>This seemingly simple definition has profound implications. Powers of <span class="arithmatex">\(i\)</span> cycle through four values:</p>
+<ul>
+<li><span class="arithmatex">\(i^1 = i\)</span></li>
+<li><span class="arithmatex">\(i^2 = -1\)</span></li>
+<li><span class="arithmatex">\(i^3 = -i\)</span></li>
+<li><span class="arithmatex">\(i^4 = 1\)</span></li>
+</ul>
+<p>This cyclic behavior relates directly to periodic signals and rotations in the complex plane. When we multiply a complex number by <span class="arithmatex">\(i\)</span>, we rotate it 90° counterclockwise—a geometric operation that appears frequently in signal processing operations like Hilbert transforms and quadrature modulation.</p>
+<h3 id="eulers-formula">Euler's Formula</h3>
+<p>Euler's formula establishes a fundamental relationship between exponential functions and trigonometric functions:</p>
+<div class="arithmatex">\[e^{i\theta} = \cos(\theta) + i\sin(\theta)\]</div>
+<p>This elegant equation is arguably the most important formula in signal processing. It allows us to express sinusoidal signals as complex exponentials, dramatically simplifying mathematical manipulations.</p>
+<p><strong>Key consequences of Euler's formula:</strong></p>
+<ol>
+<li><strong>Sinusoids as complex exponentials</strong>: Any sinusoidal signal can be expressed as the real or imaginary part of a complex exponential</li>
+<li><strong>Addition of phases</strong>: Multiplying complex exponentials adds their phases</li>
+<li><strong>Fourier analysis foundation</strong>: The formula underlies the Fourier transform's ability to decompose signals into frequency components</li>
+</ol>
+<p>From Euler's formula, we derive the relationships:</p>
+<div class="arithmatex">\[\cos(\theta) = \frac{e^{i\theta} + e^{-i\theta}}{2}\]</div>
+<div class="arithmatex">\[\sin(\theta) = \frac{e^{i\theta} - e^{-i\theta}}{2i}\]</div>
+<p>These expressions allow us to manipulate trigonometric functions using the powerful tools of complex analysis.</p>
+<h4 id="microsim-eulers-formula-visualization">MicroSim: Euler's Formula Visualization</h4>
+<details>
+<summary>Interactive Euler's Formula Explorer</summary>
+<p>Type: microsim</p>
+<p>Learning Objective (Understanding): Students will visualize and understand how Euler's formula connects complex exponentials with circular motion and sinusoidal signals.</p>
+<p>Purpose: Demonstrate the relationship between <span class="arithmatex">\(e^{i\theta}\)</span>, rotation on the unit circle, and sine/cosine functions.</p>
+<p>Canvas size: 800 x 600 pixels</p>
+<p>Layout:
+- Left side (400x600): Unit circle in complex plane showing rotation
+- Right side (400x600): Two plots showing cos(θ) and sin(θ) over time</p>
+<p>Visual elements:
+- Unit circle with labeled axes (Re and Im)
+- Rotating point on circle as θ increases
+- Vector from origin to rotating point (magnitude 1)
+- Real and imaginary projections (dashed lines)
+- Synchronized plots of cos(θ) and sin(θ) vs θ
+- Current θ value highlighted on both displays</p>
+<p>Interactive controls:
+- Play/Pause button
+- Speed slider (0.1x to 5x)
+- Reset button
+- θ value slider (0 to 4π)</p>
+<p>Behavior:
+- Point rotates counterclockwise on unit circle
+- As point moves, corresponding values trace out on sin/cos plots
+- Real projection shows cos(θ)
+- Imaginary projection shows sin(θ)
+- Display equation: e^(iθ) = cos(θ) + i·sin(θ)</p>
+<p>Color coding:
+- Real component/cos(θ): Blue
+- Imaginary component/sin(θ): Red
+- Rotating vector: Green</p>
+<p>Implementation: p5.js with synchronized animation</p>
+</details>
+<h3 id="phasors">Phasors</h3>
+<p>A phasor is a complex number representing a sinusoidal signal's amplitude and phase. For a sinusoidal signal:</p>
+<div class="arithmatex">\[x(t) = A\cos(\omega t + \phi)\]</div>
+<p>we define the phasor:</p>
+<div class="arithmatex">\[\tilde{X} = Ae^{i\phi}\]</div>
+<p>The phasor captures the amplitude <span class="arithmatex">\(A\)</span> and initial phase <span class="arithmatex">\(\phi\)</span> while implicitly assuming the frequency <span class="arithmatex">\(\omega\)</span> is known from context. This representation transforms differential equations into algebraic equations, greatly simplifying circuit and system analysis.</p>
+<p><strong>Phasor arithmetic:</strong></p>
+<ul>
+<li>Addition of sinusoids at the same frequency becomes complex number addition</li>
+<li>Differentiation becomes multiplication by <span class="arithmatex">\(i\omega\)</span></li>
+<li>Integration becomes division by <span class="arithmatex">\(i\omega\)</span></li>
+</ul>
+<p>Phasors form the foundation of AC circuit analysis and are extensively used in communications and power systems engineering.</p>
+<h2 id="linear-algebra-foundations">Linear Algebra Foundations</h2>
+<h3 id="vectors">Vectors</h3>
+<p>Vectors represent quantities with both magnitude and direction. In signal processing, we use vectors to represent:</p>
+<ul>
+<li>Discrete-time signals as ordered collections of samples</li>
+<li>Feature vectors extracted from signals</li>
+<li>State variables in dynamic systems</li>
+<li>Multi-channel signals (stereo audio, RGB images)</li>
+</ul>
+<p>A vector in <span class="arithmatex">\(\mathbb{R}^n\)</span> can be written as:</p>
+<div class="arithmatex">\[\mathbf{v} = \begin{bmatrix} v_1 \\ v_2 \\ \vdots \\ v_n \end{bmatrix}\]</div>
+<p>Vector operations include:</p>
+<table>
+<thead>
+<tr>
+<th>Operation</th>
+<th>Notation</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Addition</td>
+<td><span class="arithmatex">\(\mathbf{u} + \mathbf{v}\)</span></td>
+<td>Component-wise addition</td>
+</tr>
+<tr>
+<td>Scalar multiplication</td>
+<td><span class="arithmatex">\(c\mathbf{v}\)</span></td>
+<td>Multiply each component by scalar c</td>
+</tr>
+<tr>
+<td>Dot product</td>
+<td><span class="arithmatex">\(\mathbf{u} \cdot \mathbf{v}\)</span></td>
+<td>Sum of products of components</td>
+</tr>
+<tr>
+<td>Norm</td>
+<td><span class="arithmatex">\(\|\|\mathbf{v}\|\|\)</span></td>
+<td>Length or magnitude of vector</td>
+</tr>
+</tbody>
+</table>
+<h3 id="matrices">Matrices</h3>
+<p>Matrices represent linear transformations and systems of linear equations. In signal processing, matrices appear in:</p>
+<ul>
+<li>Filter banks and transform matrices (DFT, DCT, wavelet transforms)</li>
+<li>System state-space representations</li>
+<li>Correlation and covariance matrices</li>
+<li>Image representations (2D signals)</li>
+</ul>
+<p>A matrix <span class="arithmatex">\(\mathbf{A}\)</span> of size <span class="arithmatex">\(m \times n\)</span> contains <span class="arithmatex">\(m\)</span> rows and <span class="arithmatex">\(n\)</span> columns:</p>
+<div class="arithmatex">\[\mathbf{A} = \begin{bmatrix} a_{11} &amp; a_{12} &amp; \cdots &amp; a_{1n} \\ a_{21} &amp; a_{22} &amp; \cdots &amp; a_{2n} \\ \vdots &amp; \vdots &amp; \ddots &amp; \vdots \\ a_{m1} &amp; a_{m2} &amp; \cdots &amp; a_{mn} \end{bmatrix}\]</div>
+<p><strong>Essential matrix operations:</strong></p>
+<ul>
+<li>Matrix addition and subtraction (component-wise, same dimensions)</li>
+<li>Matrix multiplication (row-by-column, dimensions must be compatible)</li>
+<li>Matrix transpose (flip rows and columns): <span class="arithmatex">\((\mathbf{A}^T)_{ij} = (\mathbf{A})_{ji}\)</span></li>
+<li>Matrix inverse (when it exists): <span class="arithmatex">\(\mathbf{A}\mathbf{A}^{-1} = \mathbf{I}\)</span></li>
+</ul>
+<h3 id="linear-algebra">Linear Algebra</h3>
+<p>Linear algebra is the study of vector spaces and linear transformations. Key concepts for signal processing include:</p>
+<p><strong>Vector spaces</strong>: Sets closed under addition and scalar multiplication, providing the framework for signal representation</p>
+<p><strong>Linear independence</strong>: Vectors are linearly independent if none can be expressed as a linear combination of the others</p>
+<p><strong>Basis and dimension</strong>: A basis is a linearly independent set that spans the entire space; dimension is the number of basis vectors</p>
+<p><strong>Linear transformations</strong>: Functions <span class="arithmatex">\(T\)</span> satisfying <span class="arithmatex">\(T(a\mathbf{u} + b\mathbf{v}) = aT(\mathbf{u}) + bT(\mathbf{v})\)</span>, represented by matrices</p>
+<p>These concepts enable us to decompose signals into components, change representations (via transforms), and analyze system behavior.</p>
+<h3 id="eigenvalues-and-eigenvectors">Eigenvalues and Eigenvectors</h3>
+<p>Eigenvalues and eigenvectors reveal the intrinsic geometric properties of linear transformations. For a square matrix <span class="arithmatex">\(\mathbf{A}\)</span>, an eigenvector <span class="arithmatex">\(\mathbf{v}\)</span> and eigenvalue <span class="arithmatex">\(\lambda\)</span> satisfy:</p>
+<div class="arithmatex">\[\mathbf{A}\mathbf{v} = \lambda\mathbf{v}\]</div>
+<p>This means the transformation <span class="arithmatex">\(\mathbf{A}\)</span> merely scales the eigenvector <span class="arithmatex">\(\mathbf{v}\)</span> by factor <span class="arithmatex">\(\lambda\)</span> without changing its direction.</p>
+<p><strong>Applications in signal processing:</strong></p>
+<ul>
+<li>Principal Component Analysis (PCA) for dimensionality reduction</li>
+<li>Stability analysis of recursive systems</li>
+<li>Diagonalization of circulant matrices in DFT analysis</li>
+<li>Power iteration methods in spectral analysis</li>
+</ul>
+<p>The eigenvalue decomposition of a matrix <span class="arithmatex">\(\mathbf{A}\)</span> (when it exists) expresses:</p>
+<div class="arithmatex">\[\mathbf{A} = \mathbf{V}\mathbf{\Lambda}\mathbf{V}^{-1}\]</div>
+<p>where <span class="arithmatex">\(\mathbf{V}\)</span> contains eigenvectors and <span class="arithmatex">\(\mathbf{\Lambda}\)</span> is diagonal with eigenvalues.</p>
+<h3 id="inner-product">Inner Product</h3>
+<p>The inner product generalizes the dot product to abstract vector spaces. For real vectors <span class="arithmatex">\(\mathbf{u}\)</span> and <span class="arithmatex">\(\mathbf{v}\)</span>:</p>
+<div class="arithmatex">\[\langle \mathbf{u}, \mathbf{v} \rangle = \sum_{i=1}^{n} u_i v_i\]</div>
+<p>For complex vectors, we use the conjugate:</p>
+<div class="arithmatex">\[\langle \mathbf{u}, \mathbf{v} \rangle = \sum_{i=1}^{n} u_i v_i^*\]</div>
+<p><strong>Properties and applications:</strong></p>
+<ul>
+<li>Measures similarity between signals</li>
+<li>Projects one signal onto another</li>
+<li>Defines orthogonality: <span class="arithmatex">\(\langle \mathbf{u}, \mathbf{v} \rangle = 0\)</span> means orthogonal</li>
+<li>Enables matched filtering for signal detection</li>
+<li>Forms the basis for correlation analysis</li>
+</ul>
+<h3 id="norms-and-metrics">Norms and Metrics</h3>
+<p>Norms measure the "size" or "length" of vectors, while metrics measure distances between vectors. Common norms include:</p>
+<p><strong><span class="arithmatex">\(L^1\)</span> norm (Manhattan)</strong>: <span class="arithmatex">\(\|\|\mathbf{v}\|\|_1 = \sum_{i=1}^{n} |v_i|\)</span></p>
+<p><strong><span class="arithmatex">\(L^2\)</span> norm (Euclidean)</strong>: <span class="arithmatex">\(\|\|\mathbf{v}\|\|_2 = \sqrt{\sum_{i=1}^{n} |v_i|^2}\)</span></p>
+<p><strong><span class="arithmatex">\(L^\infty\)</span> norm (maximum)</strong>: <span class="arithmatex">\(\|\|\mathbf{v}\|\|_\infty = \max_i |v_i|\)</span></p>
+<p>These norms lead to different notions of signal energy and distance, each appropriate for different applications. The <span class="arithmatex">\(L^2\)</span> norm is particularly important as it relates to signal energy.</p>
+<h2 id="calculus-and-differential-equations">Calculus and Differential Equations</h2>
+<h3 id="differential-calculus">Differential Calculus</h3>
+<p>Differential calculus studies rates of change. The derivative of a function <span class="arithmatex">\(f(t)\)</span> at point <span class="arithmatex">\(t\)</span> is:</p>
+<div class="arithmatex">\[f'(t) = \lim_{h \to 0} \frac{f(t+h) - f(t)}{h}\]</div>
+<p>In signal processing, derivatives represent:</p>
+<ul>
+<li>Instantaneous rate of change of signals</li>
+<li>Velocity and acceleration in motion analysis</li>
+<li>Edge detection in images (spatial derivatives)</li>
+<li>Frequency content (derivatives increase with frequency)</li>
+</ul>
+<p><strong>Key derivative rules:</strong></p>
+<ul>
+<li>Power rule: <span class="arithmatex">\((t^n)' = nt^{n-1}\)</span></li>
+<li>Product rule: <span class="arithmatex">\((fg)' = f'g + fg'\)</span></li>
+<li>Chain rule: <span class="arithmatex">\((f(g(t)))' = f'(g(t)) \cdot g'(t)\)</span></li>
+<li>Exponential: <span class="arithmatex">\((e^{at})' = ae^{at}\)</span></li>
+<li>Sinusoid: <span class="arithmatex">\((\sin(\omega t))' = \omega\cos(\omega t)\)</span></li>
+</ul>
+<h3 id="integral-calculus">Integral Calculus</h3>
+<p>Integral calculus deals with accumulation and areas under curves. The definite integral:</p>
+<div class="arithmatex">\[\int_a^b f(t) \, dt\]</div>
+<p>represents the accumulated value of <span class="arithmatex">\(f(t)\)</span> from <span class="arithmatex">\(t=a\)</span> to <span class="arithmatex">\(t=b\)</span>.</p>
+<p><strong>Signal processing applications:</strong></p>
+<ul>
+<li>Signal energy: <span class="arithmatex">\(E = \int_{-\infty}^{\infty} |x(t)|^2 \, dt\)</span></li>
+<li>Averaging filters: <span class="arithmatex">\(y(t) = \frac{1}{T}\int_{t-T}^{t} x(\tau) \, d\tau\)</span></li>
+<li>Convolution integral: <span class="arithmatex">\(y(t) = \int_{-\infty}^{\infty} h(\tau)x(t-\tau) \, d\tau\)</span></li>
+<li>Fourier transform computation</li>
+</ul>
+<h3 id="differential-equations">Differential Equations</h3>
+<p>Differential equations relate a function to its derivatives, modeling dynamic systems. An ordinary differential equation (ODE) has the general form:</p>
+<div class="arithmatex">\[a_n \frac{d^n y}{dt^n} + a_{n-1}\frac{d^{n-1}y}{dt^{n-1}} + \cdots + a_1\frac{dy}{dt} + a_0 y = f(t)\]</div>
+<p><strong>Linear time-invariant (LTI) systems</strong> are characterized by linear constant-coefficient differential equations. These equations:</p>
+<ul>
+<li>Model analog filters (RC circuits, op-amp circuits)</li>
+<li>Describe mechanical and electrical oscillators</li>
+<li>Define continuous-time system dynamics</li>
+<li>Lead to transfer function representations</li>
+</ul>
+<p><strong>Solution methods:</strong></p>
+<ul>
+<li>Characteristic equation for homogeneous equations</li>
+<li>Method of undetermined coefficients</li>
+<li>Laplace transform methods (covered in Chapter 8)</li>
+<li>Numerical integration for complex systems</li>
+</ul>
+<h3 id="partial-derivatives">Partial Derivatives</h3>
+<p>Partial derivatives extend differentiation to multivariable functions. For <span class="arithmatex">\(f(x,y)\)</span>, the partial derivatives are:</p>
+<div class="arithmatex">\[\frac{\partial f}{\partial x} = \lim_{h \to 0} \frac{f(x+h, y) - f(x,y)}{h}\]</div>
+<div class="arithmatex">\[\frac{\partial f}{\partial y} = \lim_{h \to 0} \frac{f(x, y+h) - f(x,y)}{h}\]</div>
+<p><strong>Applications in signal processing:</strong></p>
+<ul>
+<li>Image processing (2D signals): <span class="arithmatex">\(I(x,y)\)</span></li>
+<li>Gradient calculation for edge detection</li>
+<li>Heat equation and diffusion processes</li>
+<li>Video analysis: <span class="arithmatex">\(V(x,y,t)\)</span> has spatial and temporal derivatives</li>
+<li>Optimization algorithms (gradient descent)</li>
+</ul>
+<p>The gradient vector <span class="arithmatex">\(\nabla f = [\frac{\partial f}{\partial x}, \frac{\partial f}{\partial y}]\)</span> points in the direction of steepest increase.</p>
+<h2 id="probability-and-statistics">Probability and Statistics</h2>
+<h3 id="probability-theory">Probability Theory</h3>
+<p>Probability theory provides a mathematical framework for quantifying uncertainty. A probability measure <span class="arithmatex">\(P\)</span> assigns numbers in <span class="arithmatex">\([0,1]\)</span> to events, satisfying:</p>
+<ul>
+<li><span class="arithmatex">\(P(\Omega) = 1\)</span> (certainty)</li>
+<li><span class="arithmatex">\(P(\emptyset) = 0\)</span> (impossibility)</li>
+<li><span class="arithmatex">\(P(A \cup B) = P(A) + P(B)\)</span> for disjoint events</li>
+</ul>
+<p><strong>Key concepts for signal processing:</strong></p>
+<ul>
+<li>Random signals and noise modeling</li>
+<li>Detection and estimation theory</li>
+<li>Statistical signal processing</li>
+<li>Error analysis and performance bounds</li>
+</ul>
+<p><strong>Conditional probability</strong>: <span class="arithmatex">\(P(A|B) = \frac{P(A \cap B)}{P(B)}\)</span> describes the probability of <span class="arithmatex">\(A\)</span> given that <span class="arithmatex">\(B\)</span> has occurred.</p>
+<p><strong>Independence</strong>: Events <span class="arithmatex">\(A\)</span> and <span class="arithmatex">\(B\)</span> are independent if <span class="arithmatex">\(P(A \cap B) = P(A)P(B)\)</span>.</p>
+<h3 id="random-variables">Random Variables</h3>
+<p>A random variable <span class="arithmatex">\(X\)</span> is a function mapping outcomes to real numbers. Random variables model:</p>
+<ul>
+<li>Noise in signals</li>
+<li>Measurement errors</li>
+<li>Channel fading in communications</li>
+<li>Detection thresholds</li>
+</ul>
+<p>Random variables can be <strong>discrete</strong> (taking countable values) or <strong>continuous</strong> (taking values in intervals).</p>
+<p><strong>Probability mass function (PMF)</strong> for discrete <span class="arithmatex">\(X\)</span>: <span class="arithmatex">\(p_X(x) = P(X = x)\)</span></p>
+<p><strong>Probability density function (PDF)</strong> for continuous <span class="arithmatex">\(X\)</span>: <span class="arithmatex">\(f_X(x)\)</span> where <span class="arithmatex">\(P(a \leq X \leq b) = \int_a^b f_X(x) \, dx\)</span></p>
+<p><strong>Cumulative distribution function (CDF)</strong>: <span class="arithmatex">\(F_X(x) = P(X \leq x)\)</span></p>
+<h3 id="statistical-distributions">Statistical Distributions</h3>
+<p>Common probability distributions in signal processing include:</p>
+<table>
+<thead>
+<tr>
+<th>Distribution</th>
+<th>PDF/PMF</th>
+<th>Parameters</th>
+<th>Applications</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Uniform</td>
+<td><span class="arithmatex">\(f(x) = \frac{1}{b-a}\)</span> for <span class="arithmatex">\(x \in [a,b]\)</span></td>
+<td><span class="arithmatex">\(a, b\)</span></td>
+<td>Quantization, random sampling</td>
+</tr>
+<tr>
+<td>Gaussian</td>
+<td><span class="arithmatex">\(f(x) = \frac{1}{\sigma\sqrt{2\pi}}e^{-(x-\mu)^2/2\sigma^2}\)</span></td>
+<td><span class="arithmatex">\(\mu, \sigma\)</span></td>
+<td>Thermal noise, measurement errors</td>
+</tr>
+<tr>
+<td>Exponential</td>
+<td><span class="arithmatex">\(f(x) = \lambda e^{-\lambda x}\)</span> for <span class="arithmatex">\(x \geq 0\)</span></td>
+<td><span class="arithmatex">\(\lambda\)</span></td>
+<td>Waiting times, decay processes</td>
+</tr>
+<tr>
+<td>Rayleigh</td>
+<td><span class="arithmatex">\(f(x) = \frac{x}{\sigma^2}e^{-x^2/2\sigma^2}\)</span> for <span class="arithmatex">\(x \geq 0\)</span></td>
+<td><span class="arithmatex">\(\sigma\)</span></td>
+<td>Fading channels, envelope detection</td>
+</tr>
+</tbody>
+</table>
+<p>The <strong>Gaussian (normal) distribution</strong> is particularly important due to the Central Limit Theorem, which states that sums of independent random variables tend toward Gaussian distributions.</p>
+<h3 id="mean-and-expected-value">Mean and Expected Value</h3>
+<p>The expected value (mean) of a random variable <span class="arithmatex">\(X\)</span> represents its average value:</p>
+<p><strong>Discrete</strong>: <span class="arithmatex">\(E[X] = \sum_x x \cdot p_X(x)\)</span></p>
+<p><strong>Continuous</strong>: <span class="arithmatex">\(E[X] = \int_{-\infty}^{\infty} x \cdot f_X(x) \, dx\)</span></p>
+<p><strong>Properties of expectation:</strong></p>
+<ul>
+<li>Linearity: <span class="arithmatex">\(E[aX + bY] = aE[X] + bE[Y]\)</span></li>
+<li>For independent <span class="arithmatex">\(X, Y\)</span>: <span class="arithmatex">\(E[XY] = E[X]E[Y]\)</span></li>
+<li><span class="arithmatex">\(E[X + c] = E[X] + c\)</span></li>
+</ul>
+<p>The mean of a signal <span class="arithmatex">\(x(t)\)</span> over time <span class="arithmatex">\(T\)</span> is:</p>
+<div class="arithmatex">\[\mu_x = \frac{1}{T}\int_0^T x(t) \, dt\]</div>
+<p>This DC (direct current) component represents the signal's average level.</p>
+<h3 id="variance">Variance</h3>
+<p>Variance measures the spread of a random variable around its mean:</p>
+<div class="arithmatex">\[\text{Var}(X) = E[(X - \mu)^2] = E[X^2] - (E[X])^2\]</div>
+<p>where <span class="arithmatex">\(\mu = E[X]\)</span>.</p>
+<p><strong>Properties:</strong></p>
+<ul>
+<li>Always non-negative: <span class="arithmatex">\(\text{Var}(X) \geq 0\)</span></li>
+<li><span class="arithmatex">\(\text{Var}(aX + b) = a^2\text{Var}(X)\)</span></li>
+<li>For independent <span class="arithmatex">\(X, Y\)</span>: <span class="arithmatex">\(\text{Var}(X + Y) = \text{Var}(X) + \text{Var}(Y)\)</span></li>
+</ul>
+<p>In signal processing, variance relates to:</p>
+<ul>
+<li>Signal power (after removing DC component)</li>
+<li>Noise power</li>
+<li>Estimation error bounds</li>
+</ul>
+<h3 id="standard-deviation">Standard Deviation</h3>
+<p>Standard deviation is the square root of variance:</p>
+<div class="arithmatex">\[\sigma = \sqrt{\text{Var}(X)}\]</div>
+<p>Standard deviation has the same units as the random variable itself, making it more interpretable than variance. For a Gaussian distribution with mean <span class="arithmatex">\(\mu\)</span> and standard deviation <span class="arithmatex">\(\sigma\)</span>:</p>
+<ul>
+<li>Approximately 68% of values fall within <span class="arithmatex">\(\mu \pm \sigma\)</span></li>
+<li>Approximately 95% fall within <span class="arithmatex">\(\mu \pm 2\sigma\)</span></li>
+<li>Approximately 99.7% fall within <span class="arithmatex">\(\mu \pm 3\sigma\)</span></li>
+</ul>
+<p>This "68-95-99.7 rule" provides intuition for the spread of Gaussian-distributed signals and noise.</p>
+<h2 id="trigonometry-and-special-functions">Trigonometry and Special Functions</h2>
+<h3 id="trigonometry">Trigonometry</h3>
+<p>Trigonometric functions are fundamental to signal processing because they describe periodic phenomena. The basic trigonometric functions—sine, cosine, and tangent—relate angles in a right triangle to side lengths.</p>
+<p><strong>Unit circle definitions:</strong></p>
+<ul>
+<li><span class="arithmatex">\(\sin(\theta)\)</span>: vertical coordinate of point on unit circle</li>
+<li><span class="arithmatex">\(\cos(\theta)\)</span>: horizontal coordinate of point on unit circle</li>
+<li><span class="arithmatex">\(\tan(\theta) = \frac{\sin(\theta)}{\cos(\theta)}\)</span></li>
+</ul>
+<p><strong>Key identities:</strong></p>
+<ul>
+<li>Pythagorean: <span class="arithmatex">\(\sin^2(\theta) + \cos^2(\theta) = 1\)</span></li>
+<li>Angle sum: <span class="arithmatex">\(\sin(A \pm B) = \sin A \cos B \pm \cos A \sin B\)</span></li>
+<li>Double angle: <span class="arithmatex">\(\cos(2\theta) = \cos^2(\theta) - \sin^2(\theta)\)</span></li>
+<li>Product-to-sum: <span class="arithmatex">\(2\sin A \cos B = \sin(A+B) + \sin(A-B)\)</span></li>
+</ul>
+<p>These identities enable manipulation and simplification of signal expressions.</p>
+<h3 id="exponential-functions">Exponential Functions</h3>
+<p>The exponential function <span class="arithmatex">\(e^x\)</span> has the unique property that it equals its own derivative. For signal processing, we use exponentials to represent:</p>
+<ul>
+<li>Growth and decay processes: <span class="arithmatex">\(x(t) = Ae^{-t/\tau}\)</span></li>
+<li>Complex sinusoids: <span class="arithmatex">\(e^{i\omega t}\)</span></li>
+<li>Stability regions in system analysis</li>
+<li>Modulation envelopes</li>
+</ul>
+<p><strong>Properties:</strong></p>
+<ul>
+<li><span class="arithmatex">\(e^{a+b} = e^a \cdot e^b\)</span></li>
+<li><span class="arithmatex">\((e^x)' = e^x\)</span></li>
+<li><span class="arithmatex">\(e^0 = 1\)</span></li>
+<li><span class="arithmatex">\(\lim_{x \to -\infty} e^x = 0\)</span></li>
+</ul>
+<p>The complex exponential <span class="arithmatex">\(e^{i\omega t}\)</span> represents pure oscillation at frequency <span class="arithmatex">\(\omega\)</span> radians per second.</p>
+<h3 id="logarithmic-functions">Logarithmic Functions</h3>
+<p>The natural logarithm <span class="arithmatex">\(\ln(x) = \log_e(x)\)</span> is the inverse of the exponential function. Logarithms appear in signal processing for:</p>
+<ul>
+<li>Decibel (dB) scale: <span class="arithmatex">\(\text{dB} = 10\log_{10}(P/P_0)\)</span> or <span class="arithmatex">\(20\log_{10}(A/A_0)\)</span></li>
+<li>Cepstral analysis (log of log-spectrum)</li>
+<li>Information theory and entropy</li>
+<li>Dynamic range compression</li>
+</ul>
+<p><strong>Properties:</strong></p>
+<ul>
+<li><span class="arithmatex">\(\ln(ab) = \ln(a) + \ln(b)\)</span></li>
+<li><span class="arithmatex">\(\ln(a^n) = n\ln(a)\)</span></li>
+<li><span class="arithmatex">\(\ln(1) = 0\)</span></li>
+<li><span class="arithmatex">\(\frac{d}{dx}\ln(x) = \frac{1}{x}\)</span></li>
+</ul>
+<p>The logarithmic decibel scale compresses large dynamic ranges into manageable numbers, crucial for representing signal power and frequency response.</p>
+<h3 id="series-and-sequences">Series and Sequences</h3>
+<p>Sequences are ordered lists of numbers: <span class="arithmatex">\(\{x_0, x_1, x_2, \ldots\}\)</span>. Series are sums of sequence terms: <span class="arithmatex">\(\sum_{n=0}^{\infty} x_n\)</span>.</p>
+<p><strong>Important series in signal processing:</strong></p>
+<p><strong>Geometric series</strong>: <span class="arithmatex">\(\sum_{n=0}^{\infty} ar^n = \frac{a}{1-r}\)</span> for <span class="arithmatex">\(|r| &lt; 1\)</span></p>
+<p>This series appears in recursive filter analysis and Z-transform convergence.</p>
+<p><strong>Taylor series</strong>: Represents functions as infinite polynomials</p>
+<div class="arithmatex">\[f(x) = f(a) + f'(a)(x-a) + \frac{f''(a)}{2!}(x-a)^2 + \cdots\]</div>
+<p>Taylor series enable approximations and analytical solutions.</p>
+<p><strong>Fourier series</strong>: Decomposes periodic signals into sums of sinusoids (covered in Chapter 6)</p>
+<p>Understanding convergence criteria and manipulation of series is essential for transform analysis and filter design.</p>
+<h2 id="summary_1">Summary</h2>
+<p>This chapter established the mathematical foundations essential for signal processing. We covered five major areas:</p>
+<ol>
+<li>
+<p><strong>Complex numbers and analysis</strong>: Complex numbers, Euler's formula, and phasors provide elegant representations of sinusoidal signals and simplify frequency domain manipulations.</p>
+</li>
+<li>
+<p><strong>Linear algebra</strong>: Vectors, matrices, eigenvalues, and inner products enable signal representation, transformation, and decomposition techniques.</p>
+</li>
+<li>
+<p><strong>Calculus</strong>: Differential and integral calculus, along with differential equations, model continuous-time signals and systems.</p>
+</li>
+<li>
+<p><strong>Probability and statistics</strong>: Random variables, distributions, and statistical measures handle noise, uncertainty, and stochastic signals.</p>
+</li>
+<li>
+<p><strong>Trigonometry and special functions</strong>: Trigonometric, exponential, and logarithmic functions represent periodic signals and model growth/decay processes.</p>
+</li>
+</ol>
+<p>These mathematical tools recur throughout signal processing. Complex exponentials form the basis of Fourier analysis. Linear algebra underlies transform matrices and filter banks. Calculus enables continuous-time system analysis. Probability theory models noise and enables statistical signal processing. Mastering these fundamentals prepares you for the rich theory and powerful techniques in subsequent chapters.</p>
+<p><strong>Key takeaways:</strong></p>
+<ul>
+<li>Complex numbers simplify sinusoidal signal representation through Euler's formula</li>
+<li>Linear algebra provides frameworks for signal decomposition and transformation</li>
+<li>Calculus enables continuous-time signal and system analysis</li>
+<li>Probability theory quantifies uncertainty and noise in signals</li>
+<li>These mathematical foundations interconnect throughout signal processing applications</li>
+</ul>
+
+
+
+
+
+
+
+  
+  
+
+
+
+  
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+          <button type="button" class="md-top md-icon" data-md-component="top" hidden>
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8z"/></svg>
+  Back to top
+</button>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+    
+      
+      <nav class="md-footer__inner md-grid" aria-label="Footer" >
+        
+          
+          <a href="../" class="md-footer__link md-footer__link--prev" aria-label="Previous: Table of Contents">
+            <div class="md-footer__button md-icon">
+              
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+            </div>
+            <div class="md-footer__title">
+              <span class="md-footer__direction">
+                Previous
+              </span>
+              <div class="md-ellipsis">
+                Table of Contents
+              </div>
+            </div>
+          </a>
+        
+        
+          
+          <a href="../02-introduction-to-signals-and-systems/" class="md-footer__link md-footer__link--next" aria-label="Next: Ch 2 - Signals and Systems">
+            <div class="md-footer__title">
+              <span class="md-footer__direction">
+                Next
+              </span>
+              <div class="md-ellipsis">
+                Ch 2 - Signals and Systems
+              </div>
+            </div>
+            <div class="md-footer__button md-icon">
+              
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M4 11v2h12l-5.5 5.5 1.42 1.42L19.84 12l-7.92-7.92L10.5 5.5 16 11z"/></svg>
+            </div>
+          </a>
+        
+      </nav>
+    
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    
+      
+      <script id="__config" type="application/json">{"base": "../..", "features": ["content.code.copy", "navigation.expand", "navigation.path", "navigation.prune", "navigation.indexes", "toc.follow", "navigation.top", "navigation.footer", "content.action.edit"], "search": "../../assets/javascripts/workers/search.f8cc74c7.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": null}</script>
+    
+    
+      <script src="../../assets/javascripts/bundle.c8b220af.min.js"></script>
+      
+        <script src="../../js/extra.js"></script>
+      
+        <script src="https://unpkg.com/mathjax@3/es5/tex-mml-chtml.js"></script>
+      
+    
+  </body>
+</html>

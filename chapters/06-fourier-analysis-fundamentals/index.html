@@ -1,0 +1,2553 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+        <meta name="description" content="College Level Textbook on Signal Processing - License is Commons ShareAlike Attribution Noncommercial">
+      
+      
+        <meta name="author" content="Dan McCreary">
+      
+      
+        <link rel="canonical" href="https://dmccreary.github.io/signal-processing/chapters/06-fourier-analysis-fundamentals/">
+      
+      
+        <link rel="prev" href="../05-sampling-and-quantization/">
+      
+      
+        <link rel="next" href="../07-dft-fft-and-frequency-domain-analysis/">
+      
+      
+      <link rel="icon" href="../../img/favicon.ico">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.6.12">
+    
+    
+      
+        <title>Ch 6 - Fourier Analysis - Signal Processing with AI</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../assets/stylesheets/main.2afb09e1.min.css">
+      
+        
+        <link rel="stylesheet" href="../../assets/stylesheets/palette.06af60db.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+      <link rel="stylesheet" href="../../css/extra.css">
+    
+    <script>__md_scope=new URL("../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+  
+
+
+  
+  
+
+<script id="__analytics">function __md_analytics(){function e(){dataLayer.push(arguments)}window.dataLayer=window.dataLayer||[],e("js",new Date),e("config","G-SY3G2ND80K"),document.addEventListener("DOMContentLoaded",(function(){document.forms.search&&document.forms.search.query.addEventListener("blur",(function(){this.value&&e("event","search",{search_term:this.value})}));document$.subscribe((function(){var t=document.forms.feedback;if(void 0!==t)for(var a of t.querySelectorAll("[type=submit]"))a.addEventListener("click",(function(a){a.preventDefault();var n=document.location.pathname,d=this.getAttribute("data-md-value");e("event","feedback",{page:n,data:d}),t.firstElementChild.disabled=!0;var r=t.querySelector(".md-feedback__note [data-md-value='"+d+"']");r&&(r.hidden=!1)})),t.hidden=!1})),location$.subscribe((function(t){e("config","G-SY3G2ND80K",{page_path:t.pathname})}))}));var t=document.createElement("script");t.async=!0,t.src="https://www.googletagmanager.com/gtag/js?id=G-SY3G2ND80K",document.getElementById("__analytics").insertAdjacentElement("afterEnd",t)}</script>
+  
+    <script>"undefined"!=typeof __md_analytics&&__md_analytics()</script>
+  
+
+    
+    
+      
+        <meta  property="og:type"  content="website" >
+      
+        <meta  property="og:title"  content="Ch 6 - Fourier Analysis - Signal Processing with AI" >
+      
+        <meta  property="og:description"  content="College Level Textbook on Signal Processing - License is Commons ShareAlike Attribution Noncommercial" >
+      
+        <meta  property="og:image"  content="https://dmccreary.github.io/signal-processing/assets/images/social/chapters/06-fourier-analysis-fundamentals/index.png" >
+      
+        <meta  property="og:image:type"  content="image/png" >
+      
+        <meta  property="og:image:width"  content="1200" >
+      
+        <meta  property="og:image:height"  content="630" >
+      
+        <meta  property="og:url"  content="https://dmccreary.github.io/signal-processing/chapters/06-fourier-analysis-fundamentals/" >
+      
+        <meta  name="twitter:card"  content="summary_large_image" >
+      
+        <meta  name="twitter:title"  content="Ch 6 - Fourier Analysis - Signal Processing with AI" >
+      
+        <meta  name="twitter:description"  content="College Level Textbook on Signal Processing - License is Commons ShareAlike Attribution Noncommercial" >
+      
+        <meta  name="twitter:image"  content="https://dmccreary.github.io/signal-processing/assets/images/social/chapters/06-fourier-analysis-fundamentals/index.png" >
+      
+    
+    
+  </head>
+  
+  
+    
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="maroon" data-md-color-accent="gold">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#fourier-analysis-fundamentals" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+  
+
+<header class="md-header md-header--shadow" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href="../.." title="Signal Processing with AI" class="md-header__button md-logo" aria-label="Signal Processing with AI" data-md-component="logo">
+      
+  <img src="../../img/logo-192.png" alt="logo">
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            Signal Processing with AI
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              Ch 6 - Fourier Analysis
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+    
+    
+    
+    
+      
+      
+        <label class="md-header__button md-icon" for="__search">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        </label>
+        <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Search">
+        
+        <button type="reset" class="md-search__icon md-icon" title="Clear" aria-label="Clear" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+        </button>
+      </nav>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+      
+    
+    
+      <div class="md-header__source">
+        <a href="https://github.com/dmccreary/signal-processing" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 6.7.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2024 Fonticons, Inc.--><path d="M439.55 236.05 244 40.45a28.87 28.87 0 0 0-40.81 0l-40.66 40.63 51.52 51.52c27.06-9.14 52.68 16.77 43.39 43.68l49.66 49.66c34.23-11.8 61.18 31 35.47 56.69-26.49 26.49-70.21-2.87-56-37.34L240.22 199v121.85c25.3 12.54 22.26 41.85 9.08 55a34.34 34.34 0 0 1-48.55 0c-17.57-17.6-11.07-46.91 11.25-56v-123c-20.8-8.51-24.6-30.74-18.64-45L142.57 101 8.45 235.14a28.86 28.86 0 0 0 0 40.81l195.61 195.6a28.86 28.86 0 0 0 40.8 0l194.69-194.69a28.86 28.86 0 0 0 0-40.81"/></svg>
+  </div>
+  <div class="md-source__repository">
+    GitHub Repo
+  </div>
+</a>
+      </div>
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+
+<nav class="md-nav md-nav--primary" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../.." title="Signal Processing with AI" class="md-nav__button md-logo" aria-label="Signal Processing with AI" data-md-component="logo">
+      
+  <img src="../../img/logo-192.png" alt="logo">
+
+    </a>
+    Signal Processing with AI
+  </label>
+  
+    <div class="md-nav__source">
+      <a href="https://github.com/dmccreary/signal-processing" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 6.7.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2024 Fonticons, Inc.--><path d="M439.55 236.05 244 40.45a28.87 28.87 0 0 0-40.81 0l-40.66 40.63 51.52 51.52c27.06-9.14 52.68 16.77 43.39 43.68l49.66 49.66c34.23-11.8 61.18 31 35.47 56.69-26.49 26.49-70.21-2.87-56-37.34L240.22 199v121.85c25.3 12.54 22.26 41.85 9.08 55a34.34 34.34 0 0 1-48.55 0c-17.57-17.6-11.07-46.91 11.25-56v-123c-20.8-8.51-24.6-30.74-18.64-45L142.57 101 8.45 235.14a28.86 28.86 0 0 0 0 40.81l195.61 195.6a28.86 28.86 0 0 0 40.8 0l194.69-194.69a28.86 28.86 0 0 0 0-40.81"/></svg>
+  </div>
+  <div class="md-source__repository">
+    GitHub Repo
+  </div>
+</a>
+    </div>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../.." class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Home
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Table of Contents
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../about/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    About This Website
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../course-description/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Course Description
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+    
+      
+        
+        
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+  
+    <a href="../../learning-graph/" class="md-nav__link">
+      
+  
+  
+  <span class="md-ellipsis">
+    Learning Graph
+    
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+    
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+    
+      
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_6" checked>
+        
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../" class="md-nav__link ">
+              
+  
+  
+  <span class="md-ellipsis">
+    Chapters
+    
+  </span>
+  
+
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_6" id="__nav_6_label" tabindex="0">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_6_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_6">
+            <span class="md-nav__icon md-icon"></span>
+            Chapters
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../01-mathematical-foundations/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Ch 1 - Mathematical Foundations
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../02-introduction-to-signals-and-systems/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Ch 2 - Signals and Systems
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../03-system-properties-and-analysis/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Ch 3 - System Properties
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../04-convolution-and-correlation/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Ch 4 - Convolution and Correlation
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../05-sampling-and-quantization/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Ch 5 - Sampling and Quantization
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  
+  <span class="md-ellipsis">
+    Ch 6 - Fourier Analysis
+    
+  </span>
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        
+  
+  
+  <span class="md-ellipsis">
+    Ch 6 - Fourier Analysis
+    
+  </span>
+  
+
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#summary" class="md-nav__link">
+    <span class="md-ellipsis">
+      Summary
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#concepts-covered" class="md-nav__link">
+    <span class="md-ellipsis">
+      Concepts Covered
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#prerequisites" class="md-nav__link">
+    <span class="md-ellipsis">
+      Prerequisites
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#introduction" class="md-nav__link">
+    <span class="md-ellipsis">
+      Introduction
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#fourier-series" class="md-nav__link">
+    <span class="md-ellipsis">
+      Fourier Series
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Fourier Series">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#fourier-series_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      Fourier Series
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#fourier-coefficients" class="md-nav__link">
+    <span class="md-ellipsis">
+      Fourier Coefficients
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#continuous-time-fourier-transform" class="md-nav__link">
+    <span class="md-ellipsis">
+      Continuous-Time Fourier Transform
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Continuous-Time Fourier Transform">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#fourier-transform" class="md-nav__link">
+    <span class="md-ellipsis">
+      Fourier Transform
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#inverse-fourier-transform" class="md-nav__link">
+    <span class="md-ellipsis">
+      Inverse Fourier Transform
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#discrete-fourier-transform" class="md-nav__link">
+    <span class="md-ellipsis">
+      Discrete Fourier Transform
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Discrete Fourier Transform">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#discrete-fourier-transform_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      Discrete Fourier Transform
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#inverse-dft" class="md-nav__link">
+    <span class="md-ellipsis">
+      Inverse DFT
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#fast-fourier-transform" class="md-nav__link">
+    <span class="md-ellipsis">
+      Fast Fourier Transform
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Fast Fourier Transform">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#fast-fourier-transform_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      Fast Fourier Transform
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#fft-algorithms" class="md-nav__link">
+    <span class="md-ellipsis">
+      FFT Algorithms
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#radix-2-fft" class="md-nav__link">
+    <span class="md-ellipsis">
+      Radix-2 FFT
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#cooley-tukey-algorithm" class="md-nav__link">
+    <span class="md-ellipsis">
+      Cooley-Tukey Algorithm
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#properties-and-applications" class="md-nav__link">
+    <span class="md-ellipsis">
+      Properties and Applications
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#interactive-demonstrations" class="md-nav__link">
+    <span class="md-ellipsis">
+      Interactive Demonstrations
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Interactive Demonstrations">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#purpose" class="md-nav__link">
+    <span class="md-ellipsis">
+      Purpose
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#features" class="md-nav__link">
+    <span class="md-ellipsis">
+      Features
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#learning-objectives" class="md-nav__link">
+    <span class="md-ellipsis">
+      Learning Objectives
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#implementation-requirements" class="md-nav__link">
+    <span class="md-ellipsis">
+      Implementation Requirements
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#purpose_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      Purpose
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#features_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      Features
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#learning-objectives_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      Learning Objectives
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#implementation-requirements_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      Implementation Requirements
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#comparison-tables" class="md-nav__link">
+    <span class="md-ellipsis">
+      Comparison Tables
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#practical-considerations" class="md-nav__link">
+    <span class="md-ellipsis">
+      Practical Considerations
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#summary_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      Summary
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../07-dft-fft-and-frequency-domain-analysis/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Ch 7 - DFT and FFT
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../08-advanced-transforms/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Ch 8 - Advanced Transforms
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../09-filter-design-fundamentals/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Ch 9 - Filter Design Fundamentals
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../10-advanced-filter-design-and-implementation/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Ch 10 - Advanced Filter Design
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../11-adaptive-signal-processing/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Ch 11 - Adaptive Processing
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../12-stochastic-processes-and-random-signals/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Ch 12 - Stochastic Processes
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../13-multirate-signal-processing-and-compression/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Ch 13 - Multirate and Compression
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../14-time-frequency-analysis-and-advanced-topics/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Ch 14 - Time-Frequency Analysis
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../15-signal-processing-applications-and-ai-integration/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Ch 15 - Applications and AI
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+    
+      
+        
+        
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+  
+    <a href="../../prompts/" class="md-nav__link">
+      
+  
+  
+  <span class="md-ellipsis">
+    Prompts
+    
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+    
+      
+        
+        
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+  
+    <a href="../../sims/" class="md-nav__link">
+      
+  
+  
+  <span class="md-ellipsis">
+    MicroSims
+    
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+    
+      
+        
+        
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+  
+    <a href="../../stories/" class="md-nav__link">
+      
+  
+  
+  <span class="md-ellipsis">
+    Stories
+    
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+    
+      
+        
+        
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+  
+    <a href="../../circuits/" class="md-nav__link">
+      
+  
+  
+  <span class="md-ellipsis">
+    Circuits
+    
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+    
+    
+    
+    
+      
+        
+        
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+  
+    <a href="../../research/" class="md-nav__link">
+      
+  
+  
+  <span class="md-ellipsis">
+    Research
+    
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../report-card/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Report Card
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../checklist/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Checklist
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../glossary/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Glossary
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../how-we-built-this-site/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    How We Built This Site
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../license/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    License
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../references/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    References
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../contact/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Contact
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../ieee-paper-changes/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Paper Changes
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#summary" class="md-nav__link">
+    <span class="md-ellipsis">
+      Summary
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#concepts-covered" class="md-nav__link">
+    <span class="md-ellipsis">
+      Concepts Covered
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#prerequisites" class="md-nav__link">
+    <span class="md-ellipsis">
+      Prerequisites
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#introduction" class="md-nav__link">
+    <span class="md-ellipsis">
+      Introduction
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#fourier-series" class="md-nav__link">
+    <span class="md-ellipsis">
+      Fourier Series
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Fourier Series">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#fourier-series_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      Fourier Series
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#fourier-coefficients" class="md-nav__link">
+    <span class="md-ellipsis">
+      Fourier Coefficients
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#continuous-time-fourier-transform" class="md-nav__link">
+    <span class="md-ellipsis">
+      Continuous-Time Fourier Transform
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Continuous-Time Fourier Transform">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#fourier-transform" class="md-nav__link">
+    <span class="md-ellipsis">
+      Fourier Transform
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#inverse-fourier-transform" class="md-nav__link">
+    <span class="md-ellipsis">
+      Inverse Fourier Transform
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#discrete-fourier-transform" class="md-nav__link">
+    <span class="md-ellipsis">
+      Discrete Fourier Transform
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Discrete Fourier Transform">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#discrete-fourier-transform_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      Discrete Fourier Transform
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#inverse-dft" class="md-nav__link">
+    <span class="md-ellipsis">
+      Inverse DFT
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#fast-fourier-transform" class="md-nav__link">
+    <span class="md-ellipsis">
+      Fast Fourier Transform
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Fast Fourier Transform">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#fast-fourier-transform_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      Fast Fourier Transform
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#fft-algorithms" class="md-nav__link">
+    <span class="md-ellipsis">
+      FFT Algorithms
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#radix-2-fft" class="md-nav__link">
+    <span class="md-ellipsis">
+      Radix-2 FFT
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#cooley-tukey-algorithm" class="md-nav__link">
+    <span class="md-ellipsis">
+      Cooley-Tukey Algorithm
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#properties-and-applications" class="md-nav__link">
+    <span class="md-ellipsis">
+      Properties and Applications
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#interactive-demonstrations" class="md-nav__link">
+    <span class="md-ellipsis">
+      Interactive Demonstrations
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Interactive Demonstrations">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#purpose" class="md-nav__link">
+    <span class="md-ellipsis">
+      Purpose
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#features" class="md-nav__link">
+    <span class="md-ellipsis">
+      Features
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#learning-objectives" class="md-nav__link">
+    <span class="md-ellipsis">
+      Learning Objectives
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#implementation-requirements" class="md-nav__link">
+    <span class="md-ellipsis">
+      Implementation Requirements
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#purpose_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      Purpose
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#features_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      Features
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#learning-objectives_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      Learning Objectives
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#implementation-requirements_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      Implementation Requirements
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#comparison-tables" class="md-nav__link">
+    <span class="md-ellipsis">
+      Comparison Tables
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#practical-considerations" class="md-nav__link">
+    <span class="md-ellipsis">
+      Practical Considerations
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#summary_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      Summary
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+  
+    <a href="https://github.com/dmccreary/signal-processing/blob/master/docs/chapters/06-fourier-analysis-fundamentals/index.md" title="Edit this page" class="md-content__button md-icon">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M10 20H6V4h7v5h5v3.1l2-2V8l-6-6H6c-1.1 0-2 .9-2 2v16c0 1.1.9 2 2 2h4zm10.2-7c.1 0 .3.1.4.2l1.3 1.3c.2.2.2.6 0 .8l-1 1-2.1-2.1 1-1c.1-.1.2-.2.4-.2m0 3.9L14.1 23H12v-2.1l6.1-6.1z"/></svg>
+    </a>
+  
+  
+
+
+<h1 id="fourier-analysis-fundamentals">Fourier Analysis Fundamentals</h1>
+<h2 id="summary">Summary</h2>
+<p>This chapter introduces Fourier analysis techniques for decomposing signals into frequency components, including Fourier series, continuous and discrete Fourier transforms.</p>
+<p>Students will explore 10 key concepts that are essential for understanding this area of signal processing. This material provides the foundation for concepts introduced in later chapters.</p>
+<h2 id="concepts-covered">Concepts Covered</h2>
+<p>This chapter covers the following 10 concepts from the learning graph:</p>
+<ol>
+<li>Fourier Series</li>
+<li>Fourier Coefficients</li>
+<li>Fourier Transform</li>
+<li>Inverse Fourier Transform</li>
+<li>Discrete Fourier Transform</li>
+<li>Inverse DFT</li>
+<li>Fast Fourier Transform</li>
+<li>FFT Algorithms</li>
+<li>Radix-2 FFT</li>
+<li>Cooley-Tukey Algorithm</li>
+</ol>
+<h2 id="prerequisites">Prerequisites</h2>
+<p>This chapter builds on concepts from:</p>
+<ul>
+<li><a href="../01-mathematical-foundations/">Chapter 1: Mathematical Foundations</a></li>
+<li><a href="../02-introduction-to-signals-and-systems/">Chapter 2: Introduction to Signals and Systems</a></li>
+</ul>
+<hr />
+<h2 id="introduction">Introduction</h2>
+<p>Fourier analysis provides one of the most powerful frameworks in signal processing, enabling decomposition of complex time-domain signals into constituent frequency components through mathematical transformations. The fundamental insight, developed by Joseph Fourier in the early 19th century, states that virtually any periodic function can be represented as a sum of sinusoids with appropriately chosen frequencies, amplitudes, and phases. This frequency-domain representation reveals spectral content invisible in time-domain waveforms, facilitating filtering, compression, modulation, and numerous other signal processing operations.</p>
+<p>The family of Fourier transforms includes the Fourier series for periodic signals, the continuous-time Fourier transform for aperiodic signals, the discrete-time Fourier transform for sampled signals, and the discrete Fourier transform for computational implementation. Each variant addresses specific signal characteristics while maintaining the core principle of frequency decomposition. The Fast Fourier Transform algorithm revolutionized practical application of Fourier methods by reducing computational complexity from <span class="arithmatex">\(O(N^2)\)</span> to <span class="arithmatex">\(O(N \log N)\)</span>, enabling real-time spectral analysis on modest hardware.</p>
+<h2 id="fourier-series">Fourier Series</h2>
+<h3 id="fourier-series_1">Fourier Series</h3>
+<p>The <strong>Fourier series</strong> represents periodic signals as sums of sinusoids at integer multiples of the fundamental frequency, providing a complete orthogonal decomposition for signals that repeat with period <span class="arithmatex">\(T\)</span>. For a periodic signal <span class="arithmatex">\(x(t) = x(t + T)\)</span>, the Fourier series takes the form:</p>
+<div class="arithmatex">\[x(t) = a_0 + \sum_{n=1}^{\infty} \left[a_n \cos(n\omega_0 t) + b_n \sin(n\omega_0 t)\right]\]</div>
+<p>where <span class="arithmatex">\(\omega_0 = 2\pi/T\)</span> is the fundamental angular frequency, <span class="arithmatex">\(a_0\)</span> represents the DC component (average value), and the coefficients <span class="arithmatex">\(a_n\)</span> and <span class="arithmatex">\(b_n\)</span> determine the amplitude of each harmonic component. The series converges to the signal value at points of continuity and to the average of left and right limits at discontinuities.</p>
+<p>Alternative exponential form uses complex exponentials, providing more compact notation and simplifying many derivations:</p>
+<div class="arithmatex">\[x(t) = \sum_{n=-\infty}^{\infty} c_n e^{jn\omega_0 t}\]</div>
+<p>The orthogonality of sinusoids over one period ensures that each Fourier coefficient can be computed independently, making the representation unique and complete for square-integrable periodic functions.</p>
+<h3 id="fourier-coefficients">Fourier Coefficients</h3>
+<p><strong>Fourier coefficients</strong> quantify the amplitude and phase of each frequency component in the Fourier series representation, computed through integration over one period. For the trigonometric form, the coefficients are:</p>
+<div class="arithmatex">\[a_0 = \frac{1}{T}\int_0^T x(t) dt\]</div>
+<div class="arithmatex">\[a_n = \frac{2}{T}\int_0^T x(t)\cos(n\omega_0 t) dt\]</div>
+<div class="arithmatex">\[b_n = \frac{2}{T}\int_0^T x(t)\sin(n\omega_0 t) dt\]</div>
+<p>These integrals project the signal onto the orthogonal basis functions, extracting the component of <span class="arithmatex">\(x(t)\)</span> that aligns with each sinusoid. For the exponential form, the coefficients are:</p>
+<div class="arithmatex">\[c_n = \frac{1}{T}\int_0^T x(t)e^{-jn\omega_0 t} dt\]</div>
+<p>The relationship <span class="arithmatex">\(c_n = (a_n - jb_n)/2\)</span> connects the two representations. The magnitude <span class="arithmatex">\(|c_n|\)</span> indicates the strength of the <span class="arithmatex">\(n\)</span>-th harmonic, while the phase <span class="arithmatex">\(\angle c_n\)</span> indicates its temporal offset. For real signals, the coefficients satisfy <span class="arithmatex">\(c_{-n} = c_n^*\)</span>, ensuring the series produces real values.</p>
+<h2 id="continuous-time-fourier-transform">Continuous-Time Fourier Transform</h2>
+<h3 id="fourier-transform">Fourier Transform</h3>
+<p>The <strong>Fourier Transform</strong> extends Fourier analysis from periodic signals to aperiodic signals by treating them as the limit of periodic signals with infinite period. For an aperiodic signal <span class="arithmatex">\(x(t)\)</span>, the Fourier transform is defined as:</p>
+<div class="arithmatex">\[X(f) = \int_{-\infty}^{\infty} x(t)e^{-j2\pi ft} dt\]</div>
+<p>This transformation maps time-domain signals <span class="arithmatex">\(x(t)\)</span> to frequency-domain representations <span class="arithmatex">\(X(f)\)</span> that specify the complex amplitude (magnitude and phase) of each frequency component. The Fourier transform exists for signals that are absolutely integrable (<span class="arithmatex">\(\int_{-\infty}^{\infty} |x(t)| dt &lt; \infty\)</span>) or satisfy certain generalized conditions, including many engineering signals of practical interest.</p>
+<p>The Fourier transform reveals the spectral content of signals, showing which frequencies are present and at what strengths. This frequency-domain perspective enables intuitive understanding of filtering (which removes or emphasizes certain frequency ranges), modulation (which shifts signals in frequency), and bandwidth requirements for communication channels.</p>
+<h3 id="inverse-fourier-transform">Inverse Fourier Transform</h3>
+<p>The <strong>Inverse Fourier Transform</strong> recovers the time-domain signal from its frequency-domain representation, completing the bidirectional relationship between time and frequency domains:</p>
+<div class="arithmatex">\[x(t) = \int_{-\infty}^{\infty} X(f)e^{j2\pi ft} df\]</div>
+<p>The existence of this inverse transformation for all square-integrable functions demonstrates that the frequency-domain representation contains complete information about the signal, losing nothing in the transformation. The inverse transform can be viewed as synthesizing the time signal by summing sinusoidal components <span class="arithmatex">\(e^{j2\pi ft}\)</span> weighted by their complex amplitudes <span class="arithmatex">\(X(f)\)</span>.</p>
+<p>The symmetry between the forward and inverse transforms (differing only in the sign of the exponent and normalization constants) reveals a fundamental duality: operations in one domain correspond to related operations in the other domain, such as convolution in time corresponding to multiplication in frequency.</p>
+<h2 id="discrete-fourier-transform">Discrete Fourier Transform</h2>
+<h3 id="discrete-fourier-transform_1">Discrete Fourier Transform</h3>
+<p>The <strong>Discrete Fourier Transform (DFT)</strong> adapts Fourier analysis to finite-length discrete-time sequences, making it suitable for digital computation. For a sequence <span class="arithmatex">\(x[n]\)</span> of length <span class="arithmatex">\(N\)</span>, the DFT is defined as:</p>
+<div class="arithmatex">\[X[k] = \sum_{n=0}^{N-1} x[n]e^{-j2\pi kn/N}\]</div>
+<p>for <span class="arithmatex">\(k = 0, 1, \ldots, N-1\)</span>. The DFT produces <span class="arithmatex">\(N\)</span> complex frequency-domain samples <span class="arithmatex">\(X[k]\)</span> from <span class="arithmatex">\(N\)</span> time-domain samples <span class="arithmatex">\(x[n]\)</span>, with <span class="arithmatex">\(X[k]\)</span> representing the frequency bin centered at <span class="arithmatex">\(f = k f_s/N\)</span> where <span class="arithmatex">\(f_s\)</span> is the sampling rate.</p>
+<p>The DFT implicitly assumes the input sequence is periodic with period <span class="arithmatex">\(N\)</span>, leading to circular convolution when DFT-based filtering is performed. Despite this periodicity assumption, the DFT approximates the continuous Fourier transform for finite-duration signals when appropriate windowing and zero-padding are applied. Computational implementation requires <span class="arithmatex">\(N^2\)</span> complex multiplications for direct calculation, making it expensive for large <span class="arithmatex">\(N\)</span> until the FFT algorithm appeared.</p>
+<h3 id="inverse-dft">Inverse DFT</h3>
+<p>The <strong>Inverse DFT (IDFT)</strong> reconstructs the time-domain sequence from its DFT representation, defined as:</p>
+<div class="arithmatex">\[x[n] = \frac{1}{N}\sum_{k=0}^{N-1} X[k]e^{j2\pi kn/N}\]</div>
+<p>for <span class="arithmatex">\(n = 0, 1, \ldots, N-1\)</span>. The factor <span class="arithmatex">\(1/N\)</span> normalizes the transformation, ensuring that applying the DFT followed by IDFT recovers the original sequence exactly (within numerical precision). The IDFT and DFT have nearly identical structure, differing only in the sign of the exponent and the normalization factor.</p>
+<p>This bidirectional transformation enables frequency-domain processing of discrete signals: apply DFT to obtain frequency samples, manipulate those samples (filtering, analysis, modification), then apply IDFT to return to the time domain. Many signal processing algorithms exploit this capability to perform operations more efficiently or intuitively in the frequency domain.</p>
+<h2 id="fast-fourier-transform">Fast Fourier Transform</h2>
+<h3 id="fast-fourier-transform_1">Fast Fourier Transform</h3>
+<p>The <strong>Fast Fourier Transform (FFT)</strong> comprises a family of algorithms that compute the DFT with reduced computational complexity, typically from <span class="arithmatex">\(O(N^2)\)</span> for direct calculation to <span class="arithmatex">\(O(N \log N)\)</span> for FFT algorithms. This dramatic improvement enables real-time spectral analysis and frequency-domain processing for sequences of substantial length, transforming Fourier methods from academic curiosities to essential engineering tools.</p>
+<p>The FFT exploits symmetry and periodicity properties of the DFT's complex exponential basis functions, reusing intermediate calculations through a divide-and-conquer strategy. While numerous FFT algorithms exist (including Cooley-Tukey, split-radix, Winograd, and others), all achieve similar asymptotic complexity and differ primarily in implementation details and suitability for specific sequence lengths or hardware architectures.</p>
+<p>FFT implementations are available in virtually all programming languages and signal processing libraries, making Fourier analysis accessible without requiring deep understanding of the algorithms' internal mechanics. However, awareness of FFT properties such as input length requirements (often powers of two for maximum efficiency), scaling factors, and normalization conventions remains important for correct application.</p>
+<h3 id="fft-algorithms">FFT Algorithms</h3>
+<p><strong>FFT algorithms</strong> employ various decomposition strategies to reduce DFT computational burden. The most common algorithms include decimation-in-time (breaking the sequence into even and odd indexed samples), decimation-in-frequency (breaking the DFT into even and odd frequency bins), split-radix approaches (combining both decompositions), and prime factor algorithms (for lengths with multiple prime factors).</p>
+<p>Each algorithm makes trade-offs between computational efficiency, memory requirements, and implementation complexity. Modern FFT libraries automatically select appropriate algorithms based on sequence length, achieving near-optimal performance for most practical cases. Specialized FFT variants exist for real-valued input sequences, exploiting symmetry to halve the computation, and for multidimensional transforms used in image and video processing.</p>
+<h3 id="radix-2-fft">Radix-2 FFT</h3>
+<p>The <strong>Radix-2 FFT</strong> represents the most widely taught FFT algorithm, applicable when the sequence length is a power of two (<span class="arithmatex">\(N = 2^m\)</span>). The algorithm recursively decomposes an <span class="arithmatex">\(N\)</span>-point DFT into two <span class="arithmatex">\((N/2)\)</span>-point DFTs, continuing until reaching trivial one-point DFTs that require no computation. Each decomposition level combines results from the previous level using "butterfly" operations that compute pairs of DFT outputs efficiently.</p>
+<p>For an <span class="arithmatex">\(N\)</span>-point sequence, the radix-2 FFT requires <span class="arithmatex">\((N/2)\log_2 N\)</span> complex multiplications and <span class="arithmatex">\(N\log_2 N\)</span> complex additions, compared to <span class="arithmatex">\(N^2\)</span> operations for direct DFT calculation. For <span class="arithmatex">\(N = 1024\)</span>, this represents a reduction from about one million to about five thousand multiplications, explaining the FFT's transformative impact on signal processing practice.</p>
+<p>The requirement that <span class="arithmatex">\(N\)</span> be a power of two can be accommodated by zero-padding sequences to the next higher power of two, introducing modest inefficiency for non-power-of-two lengths but maintaining the algorithm's fundamental speed advantage.</p>
+<h3 id="cooley-tukey-algorithm">Cooley-Tukey Algorithm</h3>
+<p>The <strong>Cooley-Tukey algorithm</strong>, published in 1965 though variants existed earlier, provides the most general FFT approach, applicable to any composite sequence length <span class="arithmatex">\(N = N_1 N_2\)</span>. The algorithm decomposes the <span class="arithmatex">\(N\)</span>-point DFT into <span class="arithmatex">\(N_1\)</span> DFTs of length <span class="arithmatex">\(N_2\)</span> followed by <span class="arithmatex">\(N_2\)</span> DFTs of length <span class="arithmatex">\(N_1\)</span>, with twiddle factor multiplications between stages.</p>
+<p>When <span class="arithmatex">\(N\)</span> is a power of two, the Cooley-Tukey algorithm reduces to the radix-2 FFT. For other factorable lengths, the algorithm achieves similar <span class="arithmatex">\(O(N \log N)\)</span> complexity with different constants. The flexibility to accommodate various sequence lengths makes Cooley-Tukey the basis for most general-purpose FFT implementations, which factor the input length and apply optimal decompositions for each factor.</p>
+<p>The historical importance of the Cooley-Tukey algorithm extends beyond its technical merits: its publication catalyzed widespread adoption of FFT-based spectral analysis across engineering disciplines, fundamentally changing how signals are analyzed and processed.</p>
+<h2 id="properties-and-applications">Properties and Applications</h2>
+<p>The Fourier transform possesses numerous properties that simplify analysis and enable efficient computation of transforms for modified signals:</p>
+<ul>
+<li><strong>Linearity</strong>: <span class="arithmatex">\(\mathcal{F}\{ax_1(t) + bx_2(t)\} = aX_1(f) + bX_2(f)\)</span> allows transform computation for sums of signals</li>
+<li><strong>Time Shifting</strong>: <span class="arithmatex">\(\mathcal{F}\{x(t-t_0)\} = X(f)e^{-j2\pi ft_0}\)</span> shows delays introduce linear phase</li>
+<li><strong>Frequency Shifting</strong>: <span class="arithmatex">\(\mathcal{F}\{x(t)e^{j2\pi f_0 t}\} = X(f-f_0)\)</span> demonstrates modulation as spectral translation</li>
+<li><strong>Time Scaling</strong>: <span class="arithmatex">\(\mathcal{F}\{x(at)\} = \frac{1}{|a|}X(f/a)\)</span> reveals time-frequency reciprocity (compression in time expands in frequency)</li>
+<li><strong>Duality</strong>: The similar forms of forward and inverse transforms imply that time and frequency play symmetric roles</li>
+<li><strong>Convolution Theorem</strong>: Already discussed in Chapter 4, this critical property connects time-domain convolution to frequency-domain multiplication</li>
+</ul>
+<p>These properties enable problem-solving strategies where difficult operations in one domain become simple in the other, such as implementing filtering through frequency-domain multiplication rather than time-domain convolution.</p>
+<h2 id="interactive-demonstrations">Interactive Demonstrations</h2>
+<details>
+<summary>MicroSim: Fourier Series Explorer</summary>
+<h3 id="purpose">Purpose</h3>
+<p>This interactive simulation demonstrates how periodic signals decompose into harmonic components through Fourier series representation, showing the contribution of each harmonic to the overall waveform.</p>
+<h3 id="features">Features</h3>
+<ul>
+<li>Select waveform type: square wave, triangle wave, sawtooth, pulse train, custom</li>
+<li>Display individual Fourier series components (fundamental, harmonics)</li>
+<li>Show progressive synthesis: sum of first <span class="arithmatex">\(N\)</span> harmonics</li>
+<li>Animate coefficient values <span class="arithmatex">\(a_n\)</span> and <span class="arithmatex">\(b_n\)</span> as bar charts</li>
+<li>Display magnitude and phase spectra</li>
+<li>Adjust number of harmonics to visualize convergence</li>
+<li>Compare original waveform to partial sum reconstruction</li>
+</ul>
+<h3 id="learning-objectives">Learning Objectives</h3>
+<ul>
+<li>Understand Fourier series as decomposition into harmonics</li>
+<li>Observe how different waveforms have different harmonic content</li>
+<li>Visualize convergence as more harmonics are included</li>
+<li>Connect harmonic amplitudes to spectral representation</li>
+</ul>
+<h3 id="implementation-requirements">Implementation Requirements</h3>
+<ul>
+<li>Canvas size: 670px wide, 625px total height (550px drawing + 75px controls)</li>
+<li>Three plot panels: time-domain waveform with partial sum overlay, magnitude spectrum, phase spectrum</li>
+<li>Waveform selector dropdown</li>
+<li>Number of harmonics slider (1-50)</li>
+<li>Individual harmonic display with toggles to show/hide each component</li>
+<li>Play animation showing sequential addition of harmonics</li>
+<li>Numerical coefficient display for selected harmonics</li>
+</ul>
+</details>
+<details>
+<summary>MicroSim: FFT Spectrum Analyzer</summary>
+<h3 id="purpose_1">Purpose</h3>
+<p>This simulation demonstrates real-time FFT-based spectral analysis, showing how time-domain signals transform to frequency-domain representations and enabling exploration of FFT parameters and windowing effects.</p>
+<h3 id="features_1">Features</h3>
+<ul>
+<li>Input signal selection: microphone input, generated signals, uploaded audio file</li>
+<li>Real-time FFT computation and display</li>
+<li>Adjustable FFT size (128, 256, 512, 1024, 2048, 4096 points)</li>
+<li>Window function selector: rectangular, Hamming, Hanning, Blackman, Kaiser</li>
+<li>Magnitude spectrum display (linear or dB scale)</li>
+<li>Phase spectrum display</li>
+<li>Spectrogram view showing time evolution of spectrum</li>
+<li>Peak detection and frequency readout</li>
+</ul>
+<h3 id="learning-objectives_1">Learning Objectives</h3>
+<ul>
+<li>Understand FFT as computational tool for spectral analysis</li>
+<li>Observe effects of window functions on spectral leakage</li>
+<li>Recognize trade-offs between frequency resolution and time resolution</li>
+<li>Apply FFT analysis to real audio signals</li>
+</ul>
+<h3 id="implementation-requirements_1">Implementation Requirements</h3>
+<ul>
+<li>Canvas size: 670px wide, 625px total height (550px drawing + 75px controls)</li>
+<li>Dual plot areas: time-domain waveform, frequency-domain spectrum</li>
+<li>Optional spectrogram display mode</li>
+<li>FFT size selector (powers of two from 128 to 4096)</li>
+<li>Window function dropdown</li>
+<li>Scale selector: linear magnitude, log magnitude (dB), phase</li>
+<li>Cursor readout for frequency and amplitude at mouse position</li>
+<li>Peak marker display for strongest frequency components</li>
+</ul>
+</details>
+<h2 id="comparison-tables">Comparison Tables</h2>
+<table>
+<thead>
+<tr>
+<th>Transform Type</th>
+<th>Domain</th>
+<th>Formula</th>
+<th>Primary Use</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Fourier Series</td>
+<td>Periodic continuous-time</td>
+<td><span class="arithmatex">\(x(t) = \sum c_n e^{jn\omega_0 t}\)</span></td>
+<td>Analysis of periodic waveforms</td>
+</tr>
+<tr>
+<td>Fourier Transform</td>
+<td>Aperiodic continuous-time</td>
+<td><span class="arithmatex">\(X(f) = \int x(t)e^{-j2\pi ft} dt\)</span></td>
+<td>Theoretical analysis, continuous signals</td>
+</tr>
+<tr>
+<td>DTFT</td>
+<td>Aperiodic discrete-time</td>
+<td><span class="arithmatex">\(X(e^{j\omega}) = \sum x[n]e^{-j\omega n}\)</span></td>
+<td>Frequency response of discrete systems</td>
+</tr>
+<tr>
+<td>DFT</td>
+<td>Periodic discrete-time</td>
+<td><span class="arithmatex">\(X[k] = \sum_{n=0}^{N-1} x[n]e^{-j2\pi kn/N}\)</span></td>
+<td>Computational spectral analysis</td>
+</tr>
+</tbody>
+</table>
+<table>
+<thead>
+<tr>
+<th>Property</th>
+<th>Time Domain</th>
+<th>Frequency Domain</th>
+<th>Significance</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Linearity</td>
+<td><span class="arithmatex">\(ax_1(t) + bx_2(t)\)</span></td>
+<td><span class="arithmatex">\(aX_1(f) + bX_2(f)\)</span></td>
+<td>Transforms preserve superposition</td>
+</tr>
+<tr>
+<td>Time Shift</td>
+<td><span class="arithmatex">\(x(t - t_0)\)</span></td>
+<td><span class="arithmatex">\(X(f)e^{-j2\pi ft_0}\)</span></td>
+<td>Delays introduce linear phase</td>
+</tr>
+<tr>
+<td>Frequency Shift</td>
+<td><span class="arithmatex">\(x(t)e^{j2\pi f_0 t}\)</span></td>
+<td><span class="arithmatex">\(X(f - f_0)\)</span></td>
+<td>Modulation shifts spectrum</td>
+</tr>
+<tr>
+<td>Time Scaling</td>
+<td><span class="arithmatex">\(x(at)\)</span></td>
+<td>$\frac{1}{</td>
+<td>a</td>
+</tr>
+<tr>
+<td>Convolution</td>
+<td><span class="arithmatex">\(x(t) * h(t)\)</span></td>
+<td><span class="arithmatex">\(X(f) \cdot H(f)\)</span></td>
+<td>Filtering as frequency multiplication</td>
+</tr>
+<tr>
+<td>Multiplication</td>
+<td><span class="arithmatex">\(x(t) \cdot h(t)\)</span></td>
+<td><span class="arithmatex">\(X(f) * H(f)\)</span></td>
+<td>Modulation creates spectral sidebands</td>
+</tr>
+</tbody>
+</table>
+<table>
+<thead>
+<tr>
+<th>FFT Algorithm</th>
+<th>Complexity</th>
+<th>Length Requirements</th>
+<th>Characteristics</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Cooley-Tukey Radix-2</td>
+<td><span class="arithmatex">\(O(N \log N)\)</span></td>
+<td><span class="arithmatex">\(N = 2^m\)</span></td>
+<td>Most common, highly optimized</td>
+</tr>
+<tr>
+<td>Mixed-Radix</td>
+<td><span class="arithmatex">\(O(N \log N)\)</span></td>
+<td><span class="arithmatex">\(N\)</span> composite</td>
+<td>General composite lengths</td>
+</tr>
+<tr>
+<td>Prime Factor</td>
+<td><span class="arithmatex">\(O(N \log N)\)</span></td>
+<td><span class="arithmatex">\(N = p_1 p_2 \cdots p_k\)</span> (coprime factors)</td>
+<td>Efficient for certain lengths</td>
+</tr>
+<tr>
+<td>Bluestein (Chirp-Z)</td>
+<td><span class="arithmatex">\(O(N \log N)\)</span></td>
+<td>Any <span class="arithmatex">\(N\)</span></td>
+<td>Works for prime lengths</td>
+</tr>
+<tr>
+<td>Direct DFT</td>
+<td><span class="arithmatex">\(O(N^2)\)</span></td>
+<td>Any <span class="arithmatex">\(N\)</span></td>
+<td>Small <span class="arithmatex">\(N\)</span> only</td>
+</tr>
+</tbody>
+</table>
+<table>
+<thead>
+<tr>
+<th>Waveform</th>
+<th>DC Component</th>
+<th>Fundamental</th>
+<th>Harmonics Present</th>
+<th>Spectral Characteristic</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Square Wave</td>
+<td>0 (symmetric)</td>
+<td>Strong</td>
+<td>Odd harmonics only, <span class="arithmatex">\(1/n\)</span> decay</td>
+<td>Slow roll-off</td>
+</tr>
+<tr>
+<td>Triangle Wave</td>
+<td>0 (symmetric)</td>
+<td>Strong</td>
+<td>Odd harmonics only, <span class="arithmatex">\(1/n^2\)</span> decay</td>
+<td>Fast roll-off</td>
+</tr>
+<tr>
+<td>Sawtooth</td>
+<td>0 (symmetric)</td>
+<td>Strong</td>
+<td>All harmonics, <span class="arithmatex">\(1/n\)</span> decay</td>
+<td>Slow roll-off</td>
+</tr>
+<tr>
+<td>Pulse Train</td>
+<td>Non-zero</td>
+<td>Variable</td>
+<td>All harmonics, sinc envelope</td>
+<td>Sinc-shaped spectrum</td>
+</tr>
+</tbody>
+</table>
+<h2 id="practical-considerations">Practical Considerations</h2>
+<p>When applying Fourier analysis to real signals, several practical issues arise. Finite signal duration creates spectral leakage, where energy from one frequency spreads to neighboring frequencies, obscured by rectangular windowing in time. Window functions taper signal endpoints to reduce leakage at the cost of frequency resolution. Common choices include Hamming, Hanning, Blackman, and Kaiser windows, each trading off main lobe width against sidelobe suppression.</p>
+<p>Zero-padding extends signal length before FFT computation, increasing the number of frequency bins without adding new information. While zero-padding does not improve frequency resolution (determined by signal duration), it provides finer frequency sampling and can improve visualization of spectral features. Overlap processing combines multiple short FFTs on overlapping signal segments, trading computation for improved time-frequency resolution.</p>
+<p>Numerical precision affects FFT accuracy, with finite wordlength arithmetic introducing round-off errors that accumulate through the algorithm's recursive structure. Most implementations use floating-point arithmetic providing sufficient precision for practical applications, though fixed-point FFTs require careful scaling to prevent overflow while maintaining numerical accuracy.</p>
+<h2 id="summary_1">Summary</h2>
+<p>This chapter has introduced Fourier analysis methods that decompose signals into frequency components, revealing spectral structure invisible in time-domain representations. The Fourier series represents periodic signals as sums of harmonics at integer multiples of the fundamental frequency, with Fourier coefficients specifying the amplitude and phase of each component. The Fourier transform extends this concept to aperiodic signals, providing a continuous frequency representation through forward and inverse integral transforms.</p>
+<p>The Discrete Fourier Transform adapts Fourier analysis to finite-length discrete sequences, enabling computational spectral analysis through direct calculation or efficient FFT algorithms. The FFT, particularly the Cooley-Tukey algorithm and its radix-2 variant, reduces computational complexity from <span class="arithmatex">\(O(N^2)\)</span> to <span class="arithmatex">\(O(N \log N)\)</span>, making real-time frequency analysis practical for sequences of substantial length. This algorithmic breakthrough revolutionized signal processing practice across engineering disciplines.</p>
+<p>Fourier transform properties including linearity, time shifting, frequency shifting, time scaling, and the convolution theorem simplify analysis and enable efficient computation of transforms for modified signals. These properties establish fundamental relationships between time and frequency domains, such as the reciprocal relationship between time duration and frequency bandwidth. Understanding Fourier analysis provides the foundation for subsequent topics in filtering, spectral estimation, modulation, and numerous advanced signal processing techniques.</p>
+
+
+
+
+
+
+
+  
+  
+
+
+
+  
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+          <button type="button" class="md-top md-icon" data-md-component="top" hidden>
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8z"/></svg>
+  Back to top
+</button>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+    
+      
+      <nav class="md-footer__inner md-grid" aria-label="Footer" >
+        
+          
+          <a href="../05-sampling-and-quantization/" class="md-footer__link md-footer__link--prev" aria-label="Previous: Ch 5 - Sampling and Quantization">
+            <div class="md-footer__button md-icon">
+              
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+            </div>
+            <div class="md-footer__title">
+              <span class="md-footer__direction">
+                Previous
+              </span>
+              <div class="md-ellipsis">
+                Ch 5 - Sampling and Quantization
+              </div>
+            </div>
+          </a>
+        
+        
+          
+          <a href="../07-dft-fft-and-frequency-domain-analysis/" class="md-footer__link md-footer__link--next" aria-label="Next: Ch 7 - DFT and FFT">
+            <div class="md-footer__title">
+              <span class="md-footer__direction">
+                Next
+              </span>
+              <div class="md-ellipsis">
+                Ch 7 - DFT and FFT
+              </div>
+            </div>
+            <div class="md-footer__button md-icon">
+              
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M4 11v2h12l-5.5 5.5 1.42 1.42L19.84 12l-7.92-7.92L10.5 5.5 16 11z"/></svg>
+            </div>
+          </a>
+        
+      </nav>
+    
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    
+      
+      <script id="__config" type="application/json">{"base": "../..", "features": ["content.code.copy", "navigation.expand", "navigation.path", "navigation.prune", "navigation.indexes", "toc.follow", "navigation.top", "navigation.footer", "content.action.edit"], "search": "../../assets/javascripts/workers/search.f8cc74c7.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": null}</script>
+    
+    
+      <script src="../../assets/javascripts/bundle.c8b220af.min.js"></script>
+      
+        <script src="../../js/extra.js"></script>
+      
+        <script src="https://unpkg.com/mathjax@3/es5/tex-mml-chtml.js"></script>
+      
+    
+  </body>
+</html>

@@ -1,0 +1,2699 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+        <meta name="description" content="College Level Textbook on Signal Processing - License is Commons ShareAlike Attribution Noncommercial">
+      
+      
+        <meta name="author" content="Dan McCreary">
+      
+      
+        <link rel="canonical" href="https://dmccreary.github.io/signal-processing/chapters/03-system-properties-and-analysis/">
+      
+      
+        <link rel="prev" href="../02-introduction-to-signals-and-systems/">
+      
+      
+        <link rel="next" href="../04-convolution-and-correlation/">
+      
+      
+      <link rel="icon" href="../../img/favicon.ico">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.6.12">
+    
+    
+      
+        <title>Ch 3 - System Properties - Signal Processing with AI</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../assets/stylesheets/main.2afb09e1.min.css">
+      
+        
+        <link rel="stylesheet" href="../../assets/stylesheets/palette.06af60db.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+      <link rel="stylesheet" href="../../css/extra.css">
+    
+    <script>__md_scope=new URL("../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+  
+
+
+  
+  
+
+<script id="__analytics">function __md_analytics(){function e(){dataLayer.push(arguments)}window.dataLayer=window.dataLayer||[],e("js",new Date),e("config","G-SY3G2ND80K"),document.addEventListener("DOMContentLoaded",(function(){document.forms.search&&document.forms.search.query.addEventListener("blur",(function(){this.value&&e("event","search",{search_term:this.value})}));document$.subscribe((function(){var t=document.forms.feedback;if(void 0!==t)for(var a of t.querySelectorAll("[type=submit]"))a.addEventListener("click",(function(a){a.preventDefault();var n=document.location.pathname,d=this.getAttribute("data-md-value");e("event","feedback",{page:n,data:d}),t.firstElementChild.disabled=!0;var r=t.querySelector(".md-feedback__note [data-md-value='"+d+"']");r&&(r.hidden=!1)})),t.hidden=!1})),location$.subscribe((function(t){e("config","G-SY3G2ND80K",{page_path:t.pathname})}))}));var t=document.createElement("script");t.async=!0,t.src="https://www.googletagmanager.com/gtag/js?id=G-SY3G2ND80K",document.getElementById("__analytics").insertAdjacentElement("afterEnd",t)}</script>
+  
+    <script>"undefined"!=typeof __md_analytics&&__md_analytics()</script>
+  
+
+    
+    
+      
+        <meta  property="og:type"  content="website" >
+      
+        <meta  property="og:title"  content="Ch 3 - System Properties - Signal Processing with AI" >
+      
+        <meta  property="og:description"  content="College Level Textbook on Signal Processing - License is Commons ShareAlike Attribution Noncommercial" >
+      
+        <meta  property="og:image"  content="https://dmccreary.github.io/signal-processing/assets/images/social/chapters/03-system-properties-and-analysis/index.png" >
+      
+        <meta  property="og:image:type"  content="image/png" >
+      
+        <meta  property="og:image:width"  content="1200" >
+      
+        <meta  property="og:image:height"  content="630" >
+      
+        <meta  property="og:url"  content="https://dmccreary.github.io/signal-processing/chapters/03-system-properties-and-analysis/" >
+      
+        <meta  name="twitter:card"  content="summary_large_image" >
+      
+        <meta  name="twitter:title"  content="Ch 3 - System Properties - Signal Processing with AI" >
+      
+        <meta  name="twitter:description"  content="College Level Textbook on Signal Processing - License is Commons ShareAlike Attribution Noncommercial" >
+      
+        <meta  name="twitter:image"  content="https://dmccreary.github.io/signal-processing/assets/images/social/chapters/03-system-properties-and-analysis/index.png" >
+      
+    
+    
+  </head>
+  
+  
+    
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="maroon" data-md-color-accent="gold">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#system-properties-and-analysis" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+  
+
+<header class="md-header md-header--shadow" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href="../.." title="Signal Processing with AI" class="md-header__button md-logo" aria-label="Signal Processing with AI" data-md-component="logo">
+      
+  <img src="../../img/logo-192.png" alt="logo">
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            Signal Processing with AI
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              Ch 3 - System Properties
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+    
+    
+    
+    
+      
+      
+        <label class="md-header__button md-icon" for="__search">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        </label>
+        <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Search">
+        
+        <button type="reset" class="md-search__icon md-icon" title="Clear" aria-label="Clear" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+        </button>
+      </nav>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+      
+    
+    
+      <div class="md-header__source">
+        <a href="https://github.com/dmccreary/signal-processing" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 6.7.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2024 Fonticons, Inc.--><path d="M439.55 236.05 244 40.45a28.87 28.87 0 0 0-40.81 0l-40.66 40.63 51.52 51.52c27.06-9.14 52.68 16.77 43.39 43.68l49.66 49.66c34.23-11.8 61.18 31 35.47 56.69-26.49 26.49-70.21-2.87-56-37.34L240.22 199v121.85c25.3 12.54 22.26 41.85 9.08 55a34.34 34.34 0 0 1-48.55 0c-17.57-17.6-11.07-46.91 11.25-56v-123c-20.8-8.51-24.6-30.74-18.64-45L142.57 101 8.45 235.14a28.86 28.86 0 0 0 0 40.81l195.61 195.6a28.86 28.86 0 0 0 40.8 0l194.69-194.69a28.86 28.86 0 0 0 0-40.81"/></svg>
+  </div>
+  <div class="md-source__repository">
+    GitHub Repo
+  </div>
+</a>
+      </div>
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+
+<nav class="md-nav md-nav--primary" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../.." title="Signal Processing with AI" class="md-nav__button md-logo" aria-label="Signal Processing with AI" data-md-component="logo">
+      
+  <img src="../../img/logo-192.png" alt="logo">
+
+    </a>
+    Signal Processing with AI
+  </label>
+  
+    <div class="md-nav__source">
+      <a href="https://github.com/dmccreary/signal-processing" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 6.7.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2024 Fonticons, Inc.--><path d="M439.55 236.05 244 40.45a28.87 28.87 0 0 0-40.81 0l-40.66 40.63 51.52 51.52c27.06-9.14 52.68 16.77 43.39 43.68l49.66 49.66c34.23-11.8 61.18 31 35.47 56.69-26.49 26.49-70.21-2.87-56-37.34L240.22 199v121.85c25.3 12.54 22.26 41.85 9.08 55a34.34 34.34 0 0 1-48.55 0c-17.57-17.6-11.07-46.91 11.25-56v-123c-20.8-8.51-24.6-30.74-18.64-45L142.57 101 8.45 235.14a28.86 28.86 0 0 0 0 40.81l195.61 195.6a28.86 28.86 0 0 0 40.8 0l194.69-194.69a28.86 28.86 0 0 0 0-40.81"/></svg>
+  </div>
+  <div class="md-source__repository">
+    GitHub Repo
+  </div>
+</a>
+    </div>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../.." class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Home
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Table of Contents
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../about/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    About This Website
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../course-description/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Course Description
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+    
+      
+        
+        
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+  
+    <a href="../../learning-graph/" class="md-nav__link">
+      
+  
+  
+  <span class="md-ellipsis">
+    Learning Graph
+    
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+    
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+    
+      
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_6" checked>
+        
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../" class="md-nav__link ">
+              
+  
+  
+  <span class="md-ellipsis">
+    Chapters
+    
+  </span>
+  
+
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_6" id="__nav_6_label" tabindex="0">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_6_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_6">
+            <span class="md-nav__icon md-icon"></span>
+            Chapters
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../01-mathematical-foundations/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Ch 1 - Mathematical Foundations
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../02-introduction-to-signals-and-systems/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Ch 2 - Signals and Systems
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  
+  <span class="md-ellipsis">
+    Ch 3 - System Properties
+    
+  </span>
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        
+  
+  
+  <span class="md-ellipsis">
+    Ch 3 - System Properties
+    
+  </span>
+  
+
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#summary" class="md-nav__link">
+    <span class="md-ellipsis">
+      Summary
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#concepts-covered" class="md-nav__link">
+    <span class="md-ellipsis">
+      Concepts Covered
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#prerequisites" class="md-nav__link">
+    <span class="md-ellipsis">
+      Prerequisites
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#introduction" class="md-nav__link">
+    <span class="md-ellipsis">
+      Introduction
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#fundamental-system-properties" class="md-nav__link">
+    <span class="md-ellipsis">
+      Fundamental System Properties
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Fundamental System Properties">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#linear-systems" class="md-nav__link">
+    <span class="md-ellipsis">
+      Linear Systems
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#nonlinear-systems" class="md-nav__link">
+    <span class="md-ellipsis">
+      Nonlinear Systems
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#time-invariant-systems" class="md-nav__link">
+    <span class="md-ellipsis">
+      Time-Invariant Systems
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#time-varying-systems" class="md-nav__link">
+    <span class="md-ellipsis">
+      Time-Varying Systems
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#causality" class="md-nav__link">
+    <span class="md-ellipsis">
+      Causality
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#non-causal-systems" class="md-nav__link">
+    <span class="md-ellipsis">
+      Non-Causal Systems
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#stability" class="md-nav__link">
+    <span class="md-ellipsis">
+      Stability
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#unstable-systems" class="md-nav__link">
+    <span class="md-ellipsis">
+      Unstable Systems
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#memory-properties" class="md-nav__link">
+    <span class="md-ellipsis">
+      Memory Properties
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Memory Properties">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#memory-systems" class="md-nav__link">
+    <span class="md-ellipsis">
+      Memory Systems
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#memoryless-systems" class="md-nav__link">
+    <span class="md-ellipsis">
+      Memoryless Systems
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#invertible-systems" class="md-nav__link">
+    <span class="md-ellipsis">
+      Invertible Systems
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#system-response-characterization" class="md-nav__link">
+    <span class="md-ellipsis">
+      System Response Characterization
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="System Response Characterization">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#system-response" class="md-nav__link">
+    <span class="md-ellipsis">
+      System Response
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#impulse-response" class="md-nav__link">
+    <span class="md-ellipsis">
+      Impulse Response
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#step-response" class="md-nav__link">
+    <span class="md-ellipsis">
+      Step Response
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#frequency-response" class="md-nav__link">
+    <span class="md-ellipsis">
+      Frequency Response
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#transfer-function" class="md-nav__link">
+    <span class="md-ellipsis">
+      Transfer Function
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#system-analysis-and-interconnection" class="md-nav__link">
+    <span class="md-ellipsis">
+      System Analysis and Interconnection
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="System Analysis and Interconnection">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#system-identification" class="md-nav__link">
+    <span class="md-ellipsis">
+      System Identification
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#feedback-systems" class="md-nav__link">
+    <span class="md-ellipsis">
+      Feedback Systems
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#feedforward-systems" class="md-nav__link">
+    <span class="md-ellipsis">
+      Feedforward Systems
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#system-interconnections" class="md-nav__link">
+    <span class="md-ellipsis">
+      System Interconnections
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#interactive-demonstrations" class="md-nav__link">
+    <span class="md-ellipsis">
+      Interactive Demonstrations
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Interactive Demonstrations">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#purpose" class="md-nav__link">
+    <span class="md-ellipsis">
+      Purpose
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#features" class="md-nav__link">
+    <span class="md-ellipsis">
+      Features
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#learning-objectives" class="md-nav__link">
+    <span class="md-ellipsis">
+      Learning Objectives
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#implementation-requirements" class="md-nav__link">
+    <span class="md-ellipsis">
+      Implementation Requirements
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#purpose_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      Purpose
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#features_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      Features
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#learning-objectives_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      Learning Objectives
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#implementation-requirements_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      Implementation Requirements
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#comparison-tables" class="md-nav__link">
+    <span class="md-ellipsis">
+      Comparison Tables
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#summary_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      Summary
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../04-convolution-and-correlation/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Ch 4 - Convolution and Correlation
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../05-sampling-and-quantization/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Ch 5 - Sampling and Quantization
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../06-fourier-analysis-fundamentals/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Ch 6 - Fourier Analysis
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../07-dft-fft-and-frequency-domain-analysis/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Ch 7 - DFT and FFT
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../08-advanced-transforms/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Ch 8 - Advanced Transforms
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../09-filter-design-fundamentals/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Ch 9 - Filter Design Fundamentals
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../10-advanced-filter-design-and-implementation/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Ch 10 - Advanced Filter Design
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../11-adaptive-signal-processing/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Ch 11 - Adaptive Processing
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../12-stochastic-processes-and-random-signals/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Ch 12 - Stochastic Processes
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../13-multirate-signal-processing-and-compression/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Ch 13 - Multirate and Compression
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../14-time-frequency-analysis-and-advanced-topics/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Ch 14 - Time-Frequency Analysis
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../15-signal-processing-applications-and-ai-integration/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Ch 15 - Applications and AI
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+    
+      
+        
+        
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+  
+    <a href="../../prompts/" class="md-nav__link">
+      
+  
+  
+  <span class="md-ellipsis">
+    Prompts
+    
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+    
+      
+        
+        
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+  
+    <a href="../../sims/" class="md-nav__link">
+      
+  
+  
+  <span class="md-ellipsis">
+    MicroSims
+    
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+    
+      
+        
+        
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+  
+    <a href="../../stories/" class="md-nav__link">
+      
+  
+  
+  <span class="md-ellipsis">
+    Stories
+    
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+    
+      
+        
+        
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+  
+    <a href="../../circuits/" class="md-nav__link">
+      
+  
+  
+  <span class="md-ellipsis">
+    Circuits
+    
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+    
+    
+    
+    
+      
+        
+        
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+  
+    <a href="../../research/" class="md-nav__link">
+      
+  
+  
+  <span class="md-ellipsis">
+    Research
+    
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../report-card/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Report Card
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../checklist/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Checklist
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../glossary/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Glossary
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../how-we-built-this-site/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    How We Built This Site
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../license/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    License
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../references/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    References
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../contact/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Contact
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../ieee-paper-changes/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Paper Changes
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#summary" class="md-nav__link">
+    <span class="md-ellipsis">
+      Summary
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#concepts-covered" class="md-nav__link">
+    <span class="md-ellipsis">
+      Concepts Covered
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#prerequisites" class="md-nav__link">
+    <span class="md-ellipsis">
+      Prerequisites
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#introduction" class="md-nav__link">
+    <span class="md-ellipsis">
+      Introduction
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#fundamental-system-properties" class="md-nav__link">
+    <span class="md-ellipsis">
+      Fundamental System Properties
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Fundamental System Properties">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#linear-systems" class="md-nav__link">
+    <span class="md-ellipsis">
+      Linear Systems
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#nonlinear-systems" class="md-nav__link">
+    <span class="md-ellipsis">
+      Nonlinear Systems
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#time-invariant-systems" class="md-nav__link">
+    <span class="md-ellipsis">
+      Time-Invariant Systems
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#time-varying-systems" class="md-nav__link">
+    <span class="md-ellipsis">
+      Time-Varying Systems
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#causality" class="md-nav__link">
+    <span class="md-ellipsis">
+      Causality
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#non-causal-systems" class="md-nav__link">
+    <span class="md-ellipsis">
+      Non-Causal Systems
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#stability" class="md-nav__link">
+    <span class="md-ellipsis">
+      Stability
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#unstable-systems" class="md-nav__link">
+    <span class="md-ellipsis">
+      Unstable Systems
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#memory-properties" class="md-nav__link">
+    <span class="md-ellipsis">
+      Memory Properties
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Memory Properties">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#memory-systems" class="md-nav__link">
+    <span class="md-ellipsis">
+      Memory Systems
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#memoryless-systems" class="md-nav__link">
+    <span class="md-ellipsis">
+      Memoryless Systems
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#invertible-systems" class="md-nav__link">
+    <span class="md-ellipsis">
+      Invertible Systems
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#system-response-characterization" class="md-nav__link">
+    <span class="md-ellipsis">
+      System Response Characterization
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="System Response Characterization">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#system-response" class="md-nav__link">
+    <span class="md-ellipsis">
+      System Response
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#impulse-response" class="md-nav__link">
+    <span class="md-ellipsis">
+      Impulse Response
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#step-response" class="md-nav__link">
+    <span class="md-ellipsis">
+      Step Response
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#frequency-response" class="md-nav__link">
+    <span class="md-ellipsis">
+      Frequency Response
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#transfer-function" class="md-nav__link">
+    <span class="md-ellipsis">
+      Transfer Function
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#system-analysis-and-interconnection" class="md-nav__link">
+    <span class="md-ellipsis">
+      System Analysis and Interconnection
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="System Analysis and Interconnection">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#system-identification" class="md-nav__link">
+    <span class="md-ellipsis">
+      System Identification
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#feedback-systems" class="md-nav__link">
+    <span class="md-ellipsis">
+      Feedback Systems
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#feedforward-systems" class="md-nav__link">
+    <span class="md-ellipsis">
+      Feedforward Systems
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#system-interconnections" class="md-nav__link">
+    <span class="md-ellipsis">
+      System Interconnections
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#interactive-demonstrations" class="md-nav__link">
+    <span class="md-ellipsis">
+      Interactive Demonstrations
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Interactive Demonstrations">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#purpose" class="md-nav__link">
+    <span class="md-ellipsis">
+      Purpose
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#features" class="md-nav__link">
+    <span class="md-ellipsis">
+      Features
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#learning-objectives" class="md-nav__link">
+    <span class="md-ellipsis">
+      Learning Objectives
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#implementation-requirements" class="md-nav__link">
+    <span class="md-ellipsis">
+      Implementation Requirements
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#purpose_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      Purpose
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#features_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      Features
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#learning-objectives_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      Learning Objectives
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#implementation-requirements_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      Implementation Requirements
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#comparison-tables" class="md-nav__link">
+    <span class="md-ellipsis">
+      Comparison Tables
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#summary_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      Summary
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+  
+    <a href="https://github.com/dmccreary/signal-processing/blob/master/docs/chapters/03-system-properties-and-analysis/index.md" title="Edit this page" class="md-content__button md-icon">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M10 20H6V4h7v5h5v3.1l2-2V8l-6-6H6c-1.1 0-2 .9-2 2v16c0 1.1.9 2 2 2h4zm10.2-7c.1 0 .3.1.4.2l1.3 1.3c.2.2.2.6 0 .8l-1 1-2.1-2.1 1-1c.1-.1.2-.2.4-.2m0 3.9L14.1 23H12v-2.1l6.1-6.1z"/></svg>
+    </a>
+  
+  
+
+
+<h1 id="system-properties-and-analysis">System Properties and Analysis</h1>
+<h2 id="summary">Summary</h2>
+<p>This chapter examines key system properties including linearity, time-invariance, causality, stability, and various types of system responses.</p>
+<p>Students will explore 20 key concepts that are essential for understanding this area of signal processing. This material provides the foundation for concepts introduced in later chapters.</p>
+<h2 id="concepts-covered">Concepts Covered</h2>
+<p>This chapter covers the following 20 concepts from the learning graph:</p>
+<ol>
+<li>Linear Systems</li>
+<li>Nonlinear Systems</li>
+<li>Time-Invariant Systems</li>
+<li>Time-Varying Systems</li>
+<li>Causality</li>
+<li>Non-Causal Systems</li>
+<li>Stability</li>
+<li>Unstable Systems</li>
+<li>Memory Systems</li>
+<li>Memoryless Systems</li>
+<li>Invertible Systems</li>
+<li>System Response</li>
+<li>Impulse Response</li>
+<li>Step Response</li>
+<li>Frequency Response</li>
+<li>Transfer Function</li>
+<li>System Identification</li>
+<li>Feedback Systems</li>
+<li>Feedforward Systems</li>
+<li>System Interconnections</li>
+</ol>
+<h2 id="prerequisites">Prerequisites</h2>
+<p>This chapter builds on concepts from:</p>
+<ul>
+<li><a href="../02-introduction-to-signals-and-systems/">Chapter 2: Introduction to Signals and Systems</a></li>
+</ul>
+<hr />
+<h2 id="introduction">Introduction</h2>
+<p>The behavior of systems that process signals can be characterized through a set of fundamental properties that determine how systems respond to various inputs and how they can be analyzed mathematically. Understanding system properties enables engineers to predict system behavior, design systems with desired characteristics, and select appropriate analysis techniques for complex signal processing tasks. This chapter examines the key properties that distinguish different classes of systems and introduces the mathematical frameworks used to characterize system responses.</p>
+<p>System analysis provides the theoretical foundation for understanding everything from simple electronic circuits to complex communication networks, control systems, and digital signal processors. By classifying systems according to properties such as linearity, time-invariance, causality, and stability, we gain powerful analytical tools that simplify system design and enable prediction of system behavior without exhaustive simulation or testing.</p>
+<h2 id="fundamental-system-properties">Fundamental System Properties</h2>
+<h3 id="linear-systems">Linear Systems</h3>
+<p>A system is linear if it satisfies both the additivity property and the homogeneity (scaling) property, which together constitute the principle of superposition. Mathematically, a system <span class="arithmatex">\(\mathcal{T}\)</span> is linear if for any inputs <span class="arithmatex">\(x_1(t)\)</span> and <span class="arithmatex">\(x_2(t)\)</span> and any constants <span class="arithmatex">\(a\)</span> and <span class="arithmatex">\(b\)</span>, the relationship holds:</p>
+<div class="arithmatex">\[\mathcal{T}[ax_1(t) + bx_2(t)] = a\mathcal{T}[x_1(t)] + b\mathcal{T}[x_2(t)]\]</div>
+<p>Linear systems are crucial in signal processing because they preserve the structure of input signals and can be analyzed using powerful mathematical techniques from linear algebra. The impulse response completely characterizes a linear system, and the frequency response can be computed directly from the impulse response. Examples of linear systems include resistor-capacitor circuits (without diodes or transistors), ideal operational amplifiers, and many digital filters.</p>
+<p>The linearity property enables decomposition of complex inputs into simpler components, analysis of each component separately, and recombination through superposition to obtain the total response. This divide-and-conquer approach underlies much of signal processing theory.</p>
+<h3 id="nonlinear-systems">Nonlinear Systems</h3>
+<p><strong>Nonlinear Systems</strong> violate the superposition principle, exhibiting behaviors where the response to a sum of inputs differs from the sum of individual responses. Nonlinearity introduces phenomena including harmonic generation, intermodulation distortion, and limit cycles that cannot occur in linear systems. Examples include amplifiers operating in saturation, diode rectifiers, and most biological systems.</p>
+<p>Nonlinear systems are generally more difficult to analyze than linear systems, requiring specialized techniques such as describing functions, phase plane analysis, or numerical simulation. However, nonlinearity also enables important functions including modulation, demodulation, mixing, and signal detection that cannot be achieved with purely linear operations.</p>
+<h3 id="time-invariant-systems">Time-Invariant Systems</h3>
+<p>A system is <strong>time-invariant</strong> if a time shift in the input produces an equivalent time shift in the output, with no change in the output waveform. Mathematically, if <span class="arithmatex">\(y(t) = \mathcal{T}[x(t)]\)</span>, then the system is time-invariant if:</p>
+<div class="arithmatex">\[\mathcal{T}[x(t - t_0)] = y(t - t_0)\]</div>
+<p>for all signals <span class="arithmatex">\(x(t)\)</span> and all time shifts <span class="arithmatex">\(t_0\)</span>. Time-invariant systems have constant parameters that do not change over time, ensuring consistent behavior regardless of when an input is applied. Most passive electronic components (resistors, capacitors, inductors) form time-invariant systems, as do many digital filters with constant coefficients.</p>
+<p>The combination of linearity and time-invariance (LTI systems) creates a particularly powerful class of systems that can be completely characterized by their impulse response and analyzed using convolution and Fourier transform techniques.</p>
+<h3 id="time-varying-systems">Time-Varying Systems</h3>
+<p><strong>Time-Varying Systems</strong> have parameters or characteristics that change over time, causing the system response to depend on when the input is applied. A time shift in the input does not produce a simple time shift in the output. Examples include amplitude modulators (where a carrier signal varies the system gain), adaptive filters (where coefficients update based on signal statistics), and switches that open or close at specific times.</p>
+<p>Time-varying systems require more complex analysis techniques than time-invariant systems and generally cannot be characterized by a single impulse response. However, slowly time-varying systems can often be approximated as locally time-invariant over short intervals.</p>
+<h3 id="causality">Causality</h3>
+<p>A system is <strong>causal</strong> if the output at any time depends only on present and past input values, never on future inputs. Mathematically, for a causal system, <span class="arithmatex">\(y(t_0)\)</span> depends only on <span class="arithmatex">\(x(t)\)</span> for <span class="arithmatex">\(t \leq t_0\)</span>. All physical systems that operate in real time must be causal, as they cannot respond to inputs that have not yet occurred.</p>
+<p>Causality constrains the form of system impulse responses: for causal systems, the impulse response <span class="arithmatex">\(h(t)\)</span> must be zero for <span class="arithmatex">\(t &lt; 0\)</span>. This requirement affects filter design, imposing limitations on achievable frequency responses. The Paley-Wiener criterion provides necessary and sufficient conditions for a frequency response to correspond to a causal, stable system.</p>
+<h3 id="non-causal-systems">Non-Causal Systems</h3>
+<p><strong>Non-Causal Systems</strong> produce outputs that depend on future input values, which is physically impossible for real-time operation but mathematically permissible and useful for off-line processing of recorded signals. Examples include the ideal delay-free low-pass filter (which requires infinite look-ahead) and certain image processing operations that access entire frames before producing output.</p>
+<p>Non-causal systems can achieve ideal frequency responses that causal systems can only approximate, making them valuable in applications where signals are fully available before processing begins.</p>
+<h3 id="stability">Stability</h3>
+<p>A system is <strong>stable</strong> in the bounded-input, bounded-output (BIBO) sense if every bounded input produces a bounded output. Mathematically, if <span class="arithmatex">\(|x(t)| &lt; M_x\)</span> for all <span class="arithmatex">\(t\)</span> implies <span class="arithmatex">\(|y(t)| &lt; M_y\)</span> for all <span class="arithmatex">\(t\)</span> (where <span class="arithmatex">\(M_x\)</span> and <span class="arithmatex">\(M_y\)</span> are finite constants), then the system is BIBO stable. For LTI systems, stability requires that the impulse response be absolutely integrable:</p>
+<div class="arithmatex">\[\int_{-\infty}^{\infty} |h(t)| dt &lt; \infty\]</div>
+<p>Stability is essential for practical systems, as unstable systems produce unbounded outputs that saturate physical components or cause numerical overflow in digital implementations. Control systems must be designed for stability, and filters must have poles inside the unit circle (for discrete-time) or in the left half-plane (for continuous-time).</p>
+<h3 id="unstable-systems">Unstable Systems</h3>
+<p><strong>Unstable Systems</strong> produce unbounded outputs for at least some bounded inputs, leading to divergent behavior that can damage physical systems or cause computational failures. Examples include amplifiers with positive feedback exceeding unity gain and discrete-time systems with poles outside the unit circle. While generally undesirable, controlled instability is sometimes used intentionally, such as in oscillators where a stable limit cycle provides a periodic output.</p>
+<h2 id="memory-properties">Memory Properties</h2>
+<h3 id="memory-systems">Memory Systems</h3>
+<p><strong>Memory Systems</strong> have outputs at time <span class="arithmatex">\(t\)</span> that depend on past input values, not just the current input. Such systems store information about previous inputs, either in physical form (charge on capacitors, current in inductors) or in computational form (previous samples in digital filter delays). The impulse response of a memory system extends over time, with <span class="arithmatex">\(h(t) \neq 0\)</span> for some <span class="arithmatex">\(t \neq 0\)</span>.</p>
+<p>Memory systems are essential for filtering, equalization, prediction, and most signal processing operations that extract information from temporal patterns. The amount of memory (the duration over which past inputs affect the output) relates to system complexity and computational requirements.</p>
+<h3 id="memoryless-systems">Memoryless Systems</h3>
+<p><strong>Memoryless Systems</strong> produce outputs that depend only on the current input value, with no dependence on past or future inputs. The input-output relationship takes the form <span class="arithmatex">\(y(t) = f[x(t)]\)</span> where <span class="arithmatex">\(f\)</span> is some function. The impulse response of a memoryless system is <span class="arithmatex">\(h(t) = K\delta(t)\)</span> where <span class="arithmatex">\(K\)</span> is a constant gain.</p>
+<p>Examples of memoryless systems include resistive voltage dividers, linear amplifiers with pure gain, and nonlinear operations such as squaring or absolute value. Memoryless systems respond instantaneously to input changes and require no storage of past information.</p>
+<h3 id="invertible-systems">Invertible Systems</h3>
+<p><strong>Invertible Systems</strong> allow the input signal to be recovered from the output signal through an inverse system. If <span class="arithmatex">\(y(t) = \mathcal{T}[x(t)]\)</span>, then an inverse system <span class="arithmatex">\(\mathcal{T}^{-1}\)</span> exists such that <span class="arithmatex">\(x(t) = \mathcal{T}^{-1}[y(t)]\)</span>. For invertibility, the system must be one-to-one: different inputs must produce different outputs.</p>
+<p>Invertibility is important in communication systems where signals must be recovered after transmission through a channel, in control systems where disturbances must be canceled, and in signal restoration where degradations must be removed. For LTI systems, invertibility requires that the frequency response <span class="arithmatex">\(H(f)\)</span> never be zero.</p>
+<h2 id="system-response-characterization">System Response Characterization</h2>
+<h3 id="system-response">System Response</h3>
+<p>The <strong>system response</strong> describes the output produced by a system for a given input, encompassing both transient behavior (response to sudden changes) and steady-state behavior (long-term response to sustained inputs). Complete characterization of system response for LTI systems requires knowledge of the impulse response, from which responses to all other inputs can be computed via convolution.</p>
+<p>For linear systems, the total response to an input can be decomposed into the zero-input response (due to initial conditions) and the zero-state response (due to the applied input). This decomposition separates the effects of energy stored in the system from the effects of external excitation.</p>
+<h3 id="impulse-response">Impulse Response</h3>
+<p>The <strong>impulse response</strong> <span class="arithmatex">\(h(t)\)</span> is the output of a system when the input is the unit impulse function <span class="arithmatex">\(\delta(t)\)</span>, representing the most fundamental characterization of an LTI system. Knowledge of <span class="arithmatex">\(h(t)\)</span> enables computation of the response to any input through the convolution integral:</p>
+<div class="arithmatex">\[y(t) = \int_{-\infty}^{\infty} x(\tau)h(t-\tau) d\tau = x(t) * h(t)\]</div>
+<p>The impulse response reveals crucial system properties: causality requires <span class="arithmatex">\(h(t) = 0\)</span> for <span class="arithmatex">\(t &lt; 0\)</span>, stability requires <span class="arithmatex">\(\int_{-\infty}^{\infty} |h(t)| dt &lt; \infty\)</span>, and memory duration is indicated by the effective width of <span class="arithmatex">\(h(t)\)</span>. In discrete-time systems, the impulse response <span class="arithmatex">\(h[n]\)</span> plays an analogous role.</p>
+<h3 id="step-response">Step Response</h3>
+<p>The <strong>step response</strong> <span class="arithmatex">\(s(t)\)</span> is the output when the input is the unit step function <span class="arithmatex">\(u(t)\)</span>, providing insight into system dynamics and transient behavior. For LTI systems, the step response is the integral of the impulse response:</p>
+<div class="arithmatex">\[s(t) = \int_{-\infty}^{t} h(\tau) d\tau\]</div>
+<p>The step response reveals important system characteristics including rise time (speed of response), settling time (time to reach steady state), overshoot (extent of oscillation), and steady-state error (long-term accuracy). Step response measurements are commonly performed in experimental system identification because step inputs are easy to generate.</p>
+<h3 id="frequency-response">Frequency Response</h3>
+<p>The <strong>frequency response</strong> <span class="arithmatex">\(H(f)\)</span> describes how a system modifies the amplitude and phase of sinusoidal inputs as a function of frequency. For LTI systems, the frequency response is the Fourier transform of the impulse response:</p>
+<div class="arithmatex">\[H(f) = \int_{-\infty}^{\infty} h(t)e^{-j2\pi ft} dt\]</div>
+<p>The magnitude <span class="arithmatex">\(|H(f)|\)</span> shows how the system amplifies or attenuates different frequencies, while the phase <span class="arithmatex">\(\angle H(f)\)</span> shows how the system delays sinusoidal components. Frequency response characterization is fundamental to filter design and provides intuitive understanding of system behavior in terms of which frequency components pass through and which are blocked.</p>
+<h3 id="transfer-function">Transfer Function</h3>
+<p>The <strong>transfer function</strong> <span class="arithmatex">\(H(s)\)</span> is the Laplace transform of the impulse response for continuous-time systems, or the Z-transform for discrete-time systems, providing a compact representation of system behavior in the complex frequency domain:</p>
+<div class="arithmatex">\[H(s) = \frac{Y(s)}{X(s)} = \int_{-\infty}^{\infty} h(t)e^{-st} dt\]</div>
+<p>The transfer function enables analysis of system stability through pole locations, frequency response through evaluation on the imaginary axis (<span class="arithmatex">\(s = j\omega\)</span>), and transient response through inverse transform techniques. Rational transfer functions (ratios of polynomials) correspond to systems described by linear differential equations with constant coefficients.</p>
+<h2 id="system-analysis-and-interconnection">System Analysis and Interconnection</h2>
+<h3 id="system-identification">System Identification</h3>
+<p><strong>System Identification</strong> is the process of constructing mathematical models of systems based on observed input-output data, enabling prediction and control of system behavior without detailed knowledge of internal structure. Techniques include impulse response measurement, frequency response measurement using swept sinusoids, correlation analysis using white noise excitation, and parametric modeling using least-squares or maximum likelihood estimation.</p>
+<p>System identification bridges the gap between theoretical models and physical reality, accounting for unmodeled dynamics, parameter variations, and measurement noise. Applications span from control system design to audio equalization to channel characterization in communications.</p>
+<h3 id="feedback-systems">Feedback Systems</h3>
+<p><strong>Feedback Systems</strong> route all or part of the output signal back to the input, creating a closed loop where the output affects subsequent output values. Negative feedback (where the fed-back signal opposes changes) provides stability, disturbance rejection, and reduced sensitivity to parameter variations, though at the cost of reduced gain. The closed-loop transfer function for a system with forward path <span class="arithmatex">\(G(s)\)</span> and feedback path <span class="arithmatex">\(H(s)\)</span> is:</p>
+<div class="arithmatex">\[T(s) = \frac{G(s)}{1 + G(s)H(s)}\]</div>
+<p>Positive feedback (where the fed-back signal reinforces changes) can cause instability but is used intentionally in oscillators and certain nonlinear circuits. Feedback system design must carefully balance stability margins against performance requirements.</p>
+<h3 id="feedforward-systems">Feedforward Systems</h3>
+<p><strong>Feedforward Systems</strong> process signals in one direction only, from input to output, without feedback loops. Such systems are inherently stable (if each component is stable) and have simpler analysis, but lack the disturbance rejection and robustness properties of feedback systems. Feedforward compensation adds a parallel path that anticipates and cancels disturbances, complementing feedback control.</p>
+<p>Many signal processing systems use pure feedforward architectures, particularly in cases where feedback would introduce unwanted latency or where open-loop control suffices.</p>
+<h3 id="system-interconnections">System Interconnections</h3>
+<p><strong>System Interconnections</strong> combine multiple subsystems through series (cascade), parallel, or feedback configurations to achieve overall system objectives. For LTI systems in cascade, the overall impulse response is the convolution of individual impulse responses, and the overall transfer function is the product of individual transfer functions:</p>
+<div class="arithmatex">\[H_{total}(s) = H_1(s) \cdot H_2(s) \cdot \ldots \cdot H_N(s)\]</div>
+<p>For parallel systems, the overall transfer function is the sum of individual transfer functions. These composition rules enable hierarchical system design where complex systems are built from simpler, well-understood components.</p>
+<h2 id="interactive-demonstrations">Interactive Demonstrations</h2>
+<details>
+<summary>MicroSim: System Property Explorer</summary>
+<h3 id="purpose">Purpose</h3>
+<p>This interactive simulation allows students to explore fundamental system properties including linearity, time-invariance, causality, and stability through visual demonstrations and interactive tests.</p>
+<h3 id="features">Features</h3>
+<ul>
+<li>Apply test signals to various system types with visual output display</li>
+<li>Test linearity by comparing <span class="arithmatex">\(\mathcal{T}[ax_1 + bx_2]\)</span> with <span class="arithmatex">\(a\mathcal{T}[x_1] + b\mathcal{T}[x_2]\)</span></li>
+<li>Test time-invariance by comparing <span class="arithmatex">\(\mathcal{T}[x(t-t_0)]\)</span> with <span class="arithmatex">\(y(t-t_0)\)</span></li>
+<li>Demonstrate causal versus non-causal system responses</li>
+<li>Show stable versus unstable system behavior with bounded inputs</li>
+<li>Predefined systems: linear filter, amplifier, time-varying multiplier, nonlinear compressor</li>
+</ul>
+<h3 id="learning-objectives">Learning Objectives</h3>
+<ul>
+<li>Understand the superposition principle for linear systems</li>
+<li>Recognize time-invariant versus time-varying behavior</li>
+<li>Distinguish causal from non-causal systems</li>
+<li>Identify stable versus unstable system responses</li>
+</ul>
+<h3 id="implementation-requirements">Implementation Requirements</h3>
+<ul>
+<li>Canvas size: 670px wide, 550px total height (475px drawing + 75px controls)</li>
+<li>Dual plot areas showing input signal (top) and output signal (bottom)</li>
+<li>System selector dropdown with 6-8 example systems</li>
+<li>Test type selector: linearity test, time-invariance test, causality test, stability test</li>
+<li>Visual indicators showing pass/fail for each property test</li>
+<li>Adjustable input parameters: amplitude, frequency, time shift</li>
+</ul>
+</details>
+<details>
+<summary>MicroSim: Impulse and Frequency Response Analyzer</summary>
+<h3 id="purpose_1">Purpose</h3>
+<p>This simulation demonstrates the relationship between impulse response, step response, and frequency response for LTI systems, showing how these different characterizations provide complementary information about system behavior.</p>
+<h3 id="features_1">Features</h3>
+<ul>
+<li>Display impulse response <span class="arithmatex">\(h(t)\)</span> for selected system types</li>
+<li>Compute and display step response <span class="arithmatex">\(s(t) = \int h(\tau) d\tau\)</span></li>
+<li>Compute and display frequency response magnitude <span class="arithmatex">\(|H(f)|\)</span> and phase <span class="arithmatex">\(\angle H(f)\)</span></li>
+<li>Interactive cursor shows corresponding values across all three representations</li>
+<li>Apply arbitrary input signals and show convolution-based output</li>
+<li>System library: low-pass filter, high-pass filter, differentiator, integrator, resonant system</li>
+</ul>
+<h3 id="learning-objectives_1">Learning Objectives</h3>
+<ul>
+<li>Understand the impulse response as complete characterization of LTI systems</li>
+<li>Relate step response to impulse response through integration</li>
+<li>Connect time-domain impulse response to frequency-domain frequency response</li>
+<li>Visualize how different system types modify signals in time and frequency domains</li>
+</ul>
+<h3 id="implementation-requirements_1">Implementation Requirements</h3>
+<ul>
+<li>Canvas size: 670px wide, 625px total height (550px drawing + 75px controls)</li>
+<li>Four synchronized plot areas: impulse response, step response, magnitude response, phase response</li>
+<li>System parameter sliders: cutoff frequency, damping ratio, filter order</li>
+<li>Input signal generator for testing system response</li>
+<li>Export functionality for impulse response coefficients</li>
+</ul>
+</details>
+<h2 id="comparison-tables">Comparison Tables</h2>
+<table>
+<thead>
+<tr>
+<th>Property</th>
+<th>Definition</th>
+<th>Mathematical Test</th>
+<th>Implication</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Linearity</td>
+<td>Superposition holds</td>
+<td><span class="arithmatex">\(\mathcal{T}[ax_1 + bx_2] = a\mathcal{T}[x_1] + b\mathcal{T}[x_2]\)</span></td>
+<td>Impulse response characterization valid</td>
+</tr>
+<tr>
+<td>Time-Invariance</td>
+<td>Time shifts preserve response</td>
+<td><span class="arithmatex">\(\mathcal{T}[x(t-t_0)] = y(t-t_0)\)</span></td>
+<td>Constant parameters, convolution applies</td>
+</tr>
+<tr>
+<td>Causality</td>
+<td>No future dependence</td>
+<td><span class="arithmatex">\(y(t_0)\)</span> depends only on <span class="arithmatex">\(x(t)\)</span> for <span class="arithmatex">\(t \leq t_0\)</span></td>
+<td>Real-time implementable</td>
+</tr>
+<tr>
+<td>BIBO Stability</td>
+<td>Bounded inputs yield bounded outputs</td>
+<td><span class="arithmatex">\(\|x(t)\| &lt; M_x \Rightarrow \|y(t)\| &lt; M_y\)</span></td>
+<td>Practical, safe operation</td>
+</tr>
+<tr>
+<td>Memory</td>
+<td>Output depends on past inputs</td>
+<td><span class="arithmatex">\(h(t) \neq 0\)</span> for some <span class="arithmatex">\(t \neq 0\)</span></td>
+<td>Storage or delays required</td>
+</tr>
+<tr>
+<td>Invertibility</td>
+<td>Input recoverable from output</td>
+<td>Inverse system <span class="arithmatex">\(\mathcal{T}^{-1}\)</span> exists</td>
+<td>Signal recovery possible</td>
+</tr>
+</tbody>
+</table>
+<table>
+<thead>
+<tr>
+<th>System Type</th>
+<th>Impulse Response</th>
+<th>Frequency Response</th>
+<th>Applications</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Low-Pass Filter</td>
+<td>Sinc-like, decaying</td>
+<td>Passes low frequencies, blocks high</td>
+<td>Anti-aliasing, smoothing</td>
+</tr>
+<tr>
+<td>High-Pass Filter</td>
+<td>Derivative of sinc</td>
+<td>Blocks low frequencies, passes high</td>
+<td>Edge detection, AC coupling</td>
+</tr>
+<tr>
+<td>Band-Pass Filter</td>
+<td>Modulated sinc</td>
+<td>Passes band, blocks outside</td>
+<td>Channel selection, resonance</td>
+</tr>
+<tr>
+<td>Differentiator</td>
+<td><span class="arithmatex">\(\delta'(t)\)</span> approximation</td>
+<td><span class="arithmatex">\(\|H(f)\| \propto f\)</span></td>
+<td>Edge detection, rate-of-change</td>
+</tr>
+<tr>
+<td>Integrator</td>
+<td>Step-like</td>
+<td><span class="arithmatex">\(\|H(f)\| \propto 1/f\)</span></td>
+<td>Accumulation, DC gain</td>
+</tr>
+<tr>
+<td>All-Pass Filter</td>
+<td>Complex phase shift</td>
+<td><span class="arithmatex">\(\|H(f)\| = 1\)</span>, variable phase</td>
+<td>Phase equalization, delay</td>
+</tr>
+</tbody>
+</table>
+<table>
+<thead>
+<tr>
+<th>Response Type</th>
+<th>Domain</th>
+<th>Computation</th>
+<th>Primary Use</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Impulse Response <span class="arithmatex">\(h(t)\)</span></td>
+<td>Time</td>
+<td>Measure or compute from transfer function</td>
+<td>Convolution, time-domain analysis</td>
+</tr>
+<tr>
+<td>Step Response <span class="arithmatex">\(s(t)\)</span></td>
+<td>Time</td>
+<td>Integrate impulse response</td>
+<td>Transient analysis, rise/settling time</td>
+</tr>
+<tr>
+<td>Frequency Response <span class="arithmatex">\(H(f)\)</span></td>
+<td>Frequency</td>
+<td>Fourier transform of <span class="arithmatex">\(h(t)\)</span></td>
+<td>Filter design, frequency analysis</td>
+</tr>
+<tr>
+<td>Transfer Function <span class="arithmatex">\(H(s)\)</span></td>
+<td>Complex frequency</td>
+<td>Laplace transform of <span class="arithmatex">\(h(t)\)</span></td>
+<td>Stability analysis, control design</td>
+</tr>
+</tbody>
+</table>
+<table>
+<thead>
+<tr>
+<th>Interconnection</th>
+<th>Overall Transfer Function</th>
+<th>Overall Impulse Response</th>
+<th>Common Use</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Series (Cascade)</td>
+<td><span class="arithmatex">\(H(s) = H_1(s) H_2(s)\)</span></td>
+<td><span class="arithmatex">\(h(t) = h_1(t) * h_2(t)\)</span></td>
+<td>Filter cascades, gain stages</td>
+</tr>
+<tr>
+<td>Parallel</td>
+<td><span class="arithmatex">\(H(s) = H_1(s) + H_2(s)\)</span></td>
+<td><span class="arithmatex">\(h(t) = h_1(t) + h_2(t)\)</span></td>
+<td>Filter banks, multipath</td>
+</tr>
+<tr>
+<td>Feedback</td>
+<td><span class="arithmatex">\(H(s) = \frac{G(s)}{1 + G(s)H(s)}\)</span></td>
+<td>Complex, requires Laplace methods</td>
+<td>Control systems, oscillators</td>
+</tr>
+</tbody>
+</table>
+<h2 id="summary_1">Summary</h2>
+<p>This chapter has explored the fundamental properties that characterize systems and enable their analysis through systematic mathematical frameworks. Linear systems satisfy the superposition principle, enabling powerful analytical techniques based on impulse response characterization and frequency domain methods. Time-invariant systems maintain constant parameters, allowing the use of convolution and transform methods that simplify analysis and design. Causal systems respond only to present and past inputs, reflecting the constraints of real-time physical implementation, while stable systems ensure bounded outputs for bounded inputs, a prerequisite for practical operation.</p>
+<p>The distinction between memory and memoryless systems determines whether past input values affect current outputs, with memory systems enabling filtering and temporal pattern recognition. Invertible systems allow input recovery from outputs, essential for communication and control applications. System responses including impulse response, step response, frequency response, and transfer function provide complementary views of system behavior, each highlighting different aspects crucial for design and analysis.</p>
+<p>System interconnections through series, parallel, and feedback configurations enable construction of complex systems from simpler building blocks, with composition rules that preserve linearity and time-invariance. Understanding these fundamental properties and analysis techniques prepares students for advanced topics in filtering, control, and signal processing where these concepts apply to diverse practical applications from communication systems to biomedical instrumentation.</p>
+
+
+
+
+
+
+
+  
+  
+
+
+
+  
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+          <button type="button" class="md-top md-icon" data-md-component="top" hidden>
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8z"/></svg>
+  Back to top
+</button>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+    
+      
+      <nav class="md-footer__inner md-grid" aria-label="Footer" >
+        
+          
+          <a href="../02-introduction-to-signals-and-systems/" class="md-footer__link md-footer__link--prev" aria-label="Previous: Ch 2 - Signals and Systems">
+            <div class="md-footer__button md-icon">
+              
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+            </div>
+            <div class="md-footer__title">
+              <span class="md-footer__direction">
+                Previous
+              </span>
+              <div class="md-ellipsis">
+                Ch 2 - Signals and Systems
+              </div>
+            </div>
+          </a>
+        
+        
+          
+          <a href="../04-convolution-and-correlation/" class="md-footer__link md-footer__link--next" aria-label="Next: Ch 4 - Convolution and Correlation">
+            <div class="md-footer__title">
+              <span class="md-footer__direction">
+                Next
+              </span>
+              <div class="md-ellipsis">
+                Ch 4 - Convolution and Correlation
+              </div>
+            </div>
+            <div class="md-footer__button md-icon">
+              
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M4 11v2h12l-5.5 5.5 1.42 1.42L19.84 12l-7.92-7.92L10.5 5.5 16 11z"/></svg>
+            </div>
+          </a>
+        
+      </nav>
+    
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    
+      
+      <script id="__config" type="application/json">{"base": "../..", "features": ["content.code.copy", "navigation.expand", "navigation.path", "navigation.prune", "navigation.indexes", "toc.follow", "navigation.top", "navigation.footer", "content.action.edit"], "search": "../../assets/javascripts/workers/search.f8cc74c7.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": null}</script>
+    
+    
+      <script src="../../assets/javascripts/bundle.c8b220af.min.js"></script>
+      
+        <script src="../../js/extra.js"></script>
+      
+        <script src="https://unpkg.com/mathjax@3/es5/tex-mml-chtml.js"></script>
+      
+    
+  </body>
+</html>

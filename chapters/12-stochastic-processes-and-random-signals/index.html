@@ -1,0 +1,2575 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+        <meta name="description" content="College Level Textbook on Signal Processing - License is Commons ShareAlike Attribution Noncommercial">
+      
+      
+        <meta name="author" content="Dan McCreary">
+      
+      
+        <link rel="canonical" href="https://dmccreary.github.io/signal-processing/chapters/12-stochastic-processes-and-random-signals/">
+      
+      
+        <link rel="prev" href="../11-adaptive-signal-processing/">
+      
+      
+        <link rel="next" href="../13-multirate-signal-processing-and-compression/">
+      
+      
+      <link rel="icon" href="../../img/favicon.ico">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.6.12">
+    
+    
+      
+        <title>Ch 12 - Stochastic Processes - Signal Processing with AI</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../assets/stylesheets/main.2afb09e1.min.css">
+      
+        
+        <link rel="stylesheet" href="../../assets/stylesheets/palette.06af60db.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+      <link rel="stylesheet" href="../../css/extra.css">
+    
+    <script>__md_scope=new URL("../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+  
+
+
+  
+  
+
+<script id="__analytics">function __md_analytics(){function e(){dataLayer.push(arguments)}window.dataLayer=window.dataLayer||[],e("js",new Date),e("config","G-SY3G2ND80K"),document.addEventListener("DOMContentLoaded",(function(){document.forms.search&&document.forms.search.query.addEventListener("blur",(function(){this.value&&e("event","search",{search_term:this.value})}));document$.subscribe((function(){var t=document.forms.feedback;if(void 0!==t)for(var a of t.querySelectorAll("[type=submit]"))a.addEventListener("click",(function(a){a.preventDefault();var n=document.location.pathname,d=this.getAttribute("data-md-value");e("event","feedback",{page:n,data:d}),t.firstElementChild.disabled=!0;var r=t.querySelector(".md-feedback__note [data-md-value='"+d+"']");r&&(r.hidden=!1)})),t.hidden=!1})),location$.subscribe((function(t){e("config","G-SY3G2ND80K",{page_path:t.pathname})}))}));var t=document.createElement("script");t.async=!0,t.src="https://www.googletagmanager.com/gtag/js?id=G-SY3G2ND80K",document.getElementById("__analytics").insertAdjacentElement("afterEnd",t)}</script>
+  
+    <script>"undefined"!=typeof __md_analytics&&__md_analytics()</script>
+  
+
+    
+    
+      
+        <meta  property="og:type"  content="website" >
+      
+        <meta  property="og:title"  content="Ch 12 - Stochastic Processes - Signal Processing with AI" >
+      
+        <meta  property="og:description"  content="College Level Textbook on Signal Processing - License is Commons ShareAlike Attribution Noncommercial" >
+      
+        <meta  property="og:image"  content="https://dmccreary.github.io/signal-processing/assets/images/social/chapters/12-stochastic-processes-and-random-signals/index.png" >
+      
+        <meta  property="og:image:type"  content="image/png" >
+      
+        <meta  property="og:image:width"  content="1200" >
+      
+        <meta  property="og:image:height"  content="630" >
+      
+        <meta  property="og:url"  content="https://dmccreary.github.io/signal-processing/chapters/12-stochastic-processes-and-random-signals/" >
+      
+        <meta  name="twitter:card"  content="summary_large_image" >
+      
+        <meta  name="twitter:title"  content="Ch 12 - Stochastic Processes - Signal Processing with AI" >
+      
+        <meta  name="twitter:description"  content="College Level Textbook on Signal Processing - License is Commons ShareAlike Attribution Noncommercial" >
+      
+        <meta  name="twitter:image"  content="https://dmccreary.github.io/signal-processing/assets/images/social/chapters/12-stochastic-processes-and-random-signals/index.png" >
+      
+    
+    
+  </head>
+  
+  
+    
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="maroon" data-md-color-accent="gold">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#stochastic-processes-and-random-signals" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+  
+
+<header class="md-header md-header--shadow" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href="../.." title="Signal Processing with AI" class="md-header__button md-logo" aria-label="Signal Processing with AI" data-md-component="logo">
+      
+  <img src="../../img/logo-192.png" alt="logo">
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            Signal Processing with AI
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              Ch 12 - Stochastic Processes
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+    
+    
+    
+    
+      
+      
+        <label class="md-header__button md-icon" for="__search">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        </label>
+        <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Search">
+        
+        <button type="reset" class="md-search__icon md-icon" title="Clear" aria-label="Clear" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+        </button>
+      </nav>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+      
+    
+    
+      <div class="md-header__source">
+        <a href="https://github.com/dmccreary/signal-processing" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 6.7.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2024 Fonticons, Inc.--><path d="M439.55 236.05 244 40.45a28.87 28.87 0 0 0-40.81 0l-40.66 40.63 51.52 51.52c27.06-9.14 52.68 16.77 43.39 43.68l49.66 49.66c34.23-11.8 61.18 31 35.47 56.69-26.49 26.49-70.21-2.87-56-37.34L240.22 199v121.85c25.3 12.54 22.26 41.85 9.08 55a34.34 34.34 0 0 1-48.55 0c-17.57-17.6-11.07-46.91 11.25-56v-123c-20.8-8.51-24.6-30.74-18.64-45L142.57 101 8.45 235.14a28.86 28.86 0 0 0 0 40.81l195.61 195.6a28.86 28.86 0 0 0 40.8 0l194.69-194.69a28.86 28.86 0 0 0 0-40.81"/></svg>
+  </div>
+  <div class="md-source__repository">
+    GitHub Repo
+  </div>
+</a>
+      </div>
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+
+<nav class="md-nav md-nav--primary" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../.." title="Signal Processing with AI" class="md-nav__button md-logo" aria-label="Signal Processing with AI" data-md-component="logo">
+      
+  <img src="../../img/logo-192.png" alt="logo">
+
+    </a>
+    Signal Processing with AI
+  </label>
+  
+    <div class="md-nav__source">
+      <a href="https://github.com/dmccreary/signal-processing" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 6.7.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2024 Fonticons, Inc.--><path d="M439.55 236.05 244 40.45a28.87 28.87 0 0 0-40.81 0l-40.66 40.63 51.52 51.52c27.06-9.14 52.68 16.77 43.39 43.68l49.66 49.66c34.23-11.8 61.18 31 35.47 56.69-26.49 26.49-70.21-2.87-56-37.34L240.22 199v121.85c25.3 12.54 22.26 41.85 9.08 55a34.34 34.34 0 0 1-48.55 0c-17.57-17.6-11.07-46.91 11.25-56v-123c-20.8-8.51-24.6-30.74-18.64-45L142.57 101 8.45 235.14a28.86 28.86 0 0 0 0 40.81l195.61 195.6a28.86 28.86 0 0 0 40.8 0l194.69-194.69a28.86 28.86 0 0 0 0-40.81"/></svg>
+  </div>
+  <div class="md-source__repository">
+    GitHub Repo
+  </div>
+</a>
+    </div>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../.." class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Home
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Table of Contents
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../about/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    About This Website
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../course-description/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Course Description
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+    
+      
+        
+        
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+  
+    <a href="../../learning-graph/" class="md-nav__link">
+      
+  
+  
+  <span class="md-ellipsis">
+    Learning Graph
+    
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+    
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+    
+      
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_6" checked>
+        
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../" class="md-nav__link ">
+              
+  
+  
+  <span class="md-ellipsis">
+    Chapters
+    
+  </span>
+  
+
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_6" id="__nav_6_label" tabindex="0">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_6_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_6">
+            <span class="md-nav__icon md-icon"></span>
+            Chapters
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../01-mathematical-foundations/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Ch 1 - Mathematical Foundations
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../02-introduction-to-signals-and-systems/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Ch 2 - Signals and Systems
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../03-system-properties-and-analysis/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Ch 3 - System Properties
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../04-convolution-and-correlation/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Ch 4 - Convolution and Correlation
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../05-sampling-and-quantization/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Ch 5 - Sampling and Quantization
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../06-fourier-analysis-fundamentals/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Ch 6 - Fourier Analysis
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../07-dft-fft-and-frequency-domain-analysis/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Ch 7 - DFT and FFT
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../08-advanced-transforms/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Ch 8 - Advanced Transforms
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../09-filter-design-fundamentals/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Ch 9 - Filter Design Fundamentals
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../10-advanced-filter-design-and-implementation/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Ch 10 - Advanced Filter Design
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../11-adaptive-signal-processing/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Ch 11 - Adaptive Processing
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  
+  <span class="md-ellipsis">
+    Ch 12 - Stochastic Processes
+    
+  </span>
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        
+  
+  
+  <span class="md-ellipsis">
+    Ch 12 - Stochastic Processes
+    
+  </span>
+  
+
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#summary" class="md-nav__link">
+    <span class="md-ellipsis">
+      Summary
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#concepts-covered" class="md-nav__link">
+    <span class="md-ellipsis">
+      Concepts Covered
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#prerequisites" class="md-nav__link">
+    <span class="md-ellipsis">
+      Prerequisites
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#introduction" class="md-nav__link">
+    <span class="md-ellipsis">
+      Introduction
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#random-processes-and-stochastic-signals" class="md-nav__link">
+    <span class="md-ellipsis">
+      Random Processes and Stochastic Signals
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Random Processes and Stochastic Signals">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#statistical-description" class="md-nav__link">
+    <span class="md-ellipsis">
+      Statistical Description
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#stationarity" class="md-nav__link">
+    <span class="md-ellipsis">
+      Stationarity
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#ergodicity" class="md-nav__link">
+    <span class="md-ellipsis">
+      Ergodicity
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#white-noise-and-colored-noise" class="md-nav__link">
+    <span class="md-ellipsis">
+      White Noise and Colored Noise
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="White Noise and Colored Noise">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#white-noise" class="md-nav__link">
+    <span class="md-ellipsis">
+      White Noise
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#colored-noise" class="md-nav__link">
+    <span class="md-ellipsis">
+      Colored Noise
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#generating-colored-noise-from-white-noise" class="md-nav__link">
+    <span class="md-ellipsis">
+      Generating Colored Noise from White Noise
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#gaussian-noise" class="md-nav__link">
+    <span class="md-ellipsis">
+      Gaussian Noise
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Gaussian Noise">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#properties-of-gaussian-processes" class="md-nav__link">
+    <span class="md-ellipsis">
+      Properties of Gaussian Processes
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#additive-white-gaussian-noise-awgn" class="md-nav__link">
+    <span class="md-ellipsis">
+      Additive White Gaussian Noise (AWGN)
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#signal-to-noise-ratio" class="md-nav__link">
+    <span class="md-ellipsis">
+      Signal-to-Noise Ratio
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Signal-to-Noise Ratio">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#snr-definitions" class="md-nav__link">
+    <span class="md-ellipsis">
+      SNR Definitions
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#snr-and-system-performance" class="md-nav__link">
+    <span class="md-ellipsis">
+      SNR and System Performance
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#noise-reduction-techniques" class="md-nav__link">
+    <span class="md-ellipsis">
+      Noise Reduction Techniques
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Noise Reduction Techniques">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#time-domain-averaging" class="md-nav__link">
+    <span class="md-ellipsis">
+      Time-Domain Averaging
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#frequency-domain-filtering" class="md-nav__link">
+    <span class="md-ellipsis">
+      Frequency-Domain Filtering
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#nonlinear-noise-reduction" class="md-nav__link">
+    <span class="md-ellipsis">
+      Nonlinear Noise Reduction
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#statistical-signal-processing" class="md-nav__link">
+    <span class="md-ellipsis">
+      Statistical Signal Processing
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Statistical Signal Processing">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#detection-theory" class="md-nav__link">
+    <span class="md-ellipsis">
+      Detection Theory
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#estimation-theory" class="md-nav__link">
+    <span class="md-ellipsis">
+      Estimation Theory
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#applications" class="md-nav__link">
+    <span class="md-ellipsis">
+      Applications
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#power-spectral-density" class="md-nav__link">
+    <span class="md-ellipsis">
+      Power Spectral Density
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Power Spectral Density">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#definition-and-properties" class="md-nav__link">
+    <span class="md-ellipsis">
+      Definition and Properties
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#psd-estimation" class="md-nav__link">
+    <span class="md-ellipsis">
+      PSD Estimation
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#wiener-khinchin-theorem" class="md-nav__link">
+    <span class="md-ellipsis">
+      Wiener-Khinchin Theorem
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Wiener-Khinchin Theorem">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#theoretical-significance" class="md-nav__link">
+    <span class="md-ellipsis">
+      Theoretical Significance
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#applications_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      Applications
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#summary_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      Summary
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../13-multirate-signal-processing-and-compression/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Ch 13 - Multirate and Compression
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../14-time-frequency-analysis-and-advanced-topics/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Ch 14 - Time-Frequency Analysis
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../15-signal-processing-applications-and-ai-integration/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Ch 15 - Applications and AI
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+    
+      
+        
+        
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+  
+    <a href="../../prompts/" class="md-nav__link">
+      
+  
+  
+  <span class="md-ellipsis">
+    Prompts
+    
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+    
+      
+        
+        
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+  
+    <a href="../../sims/" class="md-nav__link">
+      
+  
+  
+  <span class="md-ellipsis">
+    MicroSims
+    
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+    
+      
+        
+        
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+  
+    <a href="../../stories/" class="md-nav__link">
+      
+  
+  
+  <span class="md-ellipsis">
+    Stories
+    
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+    
+      
+        
+        
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+  
+    <a href="../../circuits/" class="md-nav__link">
+      
+  
+  
+  <span class="md-ellipsis">
+    Circuits
+    
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+    
+    
+    
+    
+      
+        
+        
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+  
+    <a href="../../research/" class="md-nav__link">
+      
+  
+  
+  <span class="md-ellipsis">
+    Research
+    
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../report-card/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Report Card
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../checklist/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Checklist
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../glossary/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Glossary
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../how-we-built-this-site/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    How We Built This Site
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../license/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    License
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../references/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    References
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../contact/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Contact
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../ieee-paper-changes/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Paper Changes
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#summary" class="md-nav__link">
+    <span class="md-ellipsis">
+      Summary
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#concepts-covered" class="md-nav__link">
+    <span class="md-ellipsis">
+      Concepts Covered
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#prerequisites" class="md-nav__link">
+    <span class="md-ellipsis">
+      Prerequisites
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#introduction" class="md-nav__link">
+    <span class="md-ellipsis">
+      Introduction
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#random-processes-and-stochastic-signals" class="md-nav__link">
+    <span class="md-ellipsis">
+      Random Processes and Stochastic Signals
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Random Processes and Stochastic Signals">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#statistical-description" class="md-nav__link">
+    <span class="md-ellipsis">
+      Statistical Description
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#stationarity" class="md-nav__link">
+    <span class="md-ellipsis">
+      Stationarity
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#ergodicity" class="md-nav__link">
+    <span class="md-ellipsis">
+      Ergodicity
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#white-noise-and-colored-noise" class="md-nav__link">
+    <span class="md-ellipsis">
+      White Noise and Colored Noise
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="White Noise and Colored Noise">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#white-noise" class="md-nav__link">
+    <span class="md-ellipsis">
+      White Noise
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#colored-noise" class="md-nav__link">
+    <span class="md-ellipsis">
+      Colored Noise
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#generating-colored-noise-from-white-noise" class="md-nav__link">
+    <span class="md-ellipsis">
+      Generating Colored Noise from White Noise
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#gaussian-noise" class="md-nav__link">
+    <span class="md-ellipsis">
+      Gaussian Noise
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Gaussian Noise">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#properties-of-gaussian-processes" class="md-nav__link">
+    <span class="md-ellipsis">
+      Properties of Gaussian Processes
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#additive-white-gaussian-noise-awgn" class="md-nav__link">
+    <span class="md-ellipsis">
+      Additive White Gaussian Noise (AWGN)
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#signal-to-noise-ratio" class="md-nav__link">
+    <span class="md-ellipsis">
+      Signal-to-Noise Ratio
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Signal-to-Noise Ratio">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#snr-definitions" class="md-nav__link">
+    <span class="md-ellipsis">
+      SNR Definitions
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#snr-and-system-performance" class="md-nav__link">
+    <span class="md-ellipsis">
+      SNR and System Performance
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#noise-reduction-techniques" class="md-nav__link">
+    <span class="md-ellipsis">
+      Noise Reduction Techniques
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Noise Reduction Techniques">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#time-domain-averaging" class="md-nav__link">
+    <span class="md-ellipsis">
+      Time-Domain Averaging
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#frequency-domain-filtering" class="md-nav__link">
+    <span class="md-ellipsis">
+      Frequency-Domain Filtering
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#nonlinear-noise-reduction" class="md-nav__link">
+    <span class="md-ellipsis">
+      Nonlinear Noise Reduction
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#statistical-signal-processing" class="md-nav__link">
+    <span class="md-ellipsis">
+      Statistical Signal Processing
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Statistical Signal Processing">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#detection-theory" class="md-nav__link">
+    <span class="md-ellipsis">
+      Detection Theory
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#estimation-theory" class="md-nav__link">
+    <span class="md-ellipsis">
+      Estimation Theory
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#applications" class="md-nav__link">
+    <span class="md-ellipsis">
+      Applications
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#power-spectral-density" class="md-nav__link">
+    <span class="md-ellipsis">
+      Power Spectral Density
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Power Spectral Density">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#definition-and-properties" class="md-nav__link">
+    <span class="md-ellipsis">
+      Definition and Properties
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#psd-estimation" class="md-nav__link">
+    <span class="md-ellipsis">
+      PSD Estimation
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#wiener-khinchin-theorem" class="md-nav__link">
+    <span class="md-ellipsis">
+      Wiener-Khinchin Theorem
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Wiener-Khinchin Theorem">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#theoretical-significance" class="md-nav__link">
+    <span class="md-ellipsis">
+      Theoretical Significance
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#applications_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      Applications
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#summary_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      Summary
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+  
+    <a href="https://github.com/dmccreary/signal-processing/blob/master/docs/chapters/12-stochastic-processes-and-random-signals/index.md" title="Edit this page" class="md-content__button md-icon">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M10 20H6V4h7v5h5v3.1l2-2V8l-6-6H6c-1.1 0-2 .9-2 2v16c0 1.1.9 2 2 2h4zm10.2-7c.1 0 .3.1.4.2l1.3 1.3c.2.2.2.6 0 .8l-1 1-2.1-2.1 1-1c.1-.1.2-.2.4-.2m0 3.9L14.1 23H12v-2.1l6.1-6.1z"/></svg>
+    </a>
+  
+  
+
+
+<h1 id="stochastic-processes-and-random-signals">Stochastic Processes and Random Signals</h1>
+<h2 id="summary">Summary</h2>
+<p>This chapter covers random signal analysis, noise characterization, power spectral density, and statistical signal processing methods.</p>
+<p>Students will explore 10 key concepts that are essential for understanding this area of signal processing. This material provides the foundation for concepts introduced in later chapters.</p>
+<h2 id="concepts-covered">Concepts Covered</h2>
+<p>This chapter covers the following 10 concepts from the learning graph:</p>
+<ol>
+<li>Random Processes</li>
+<li>Stochastic Signals</li>
+<li>White Noise</li>
+<li>Colored Noise</li>
+<li>Gaussian Noise</li>
+<li>Signal-to-Noise Ratio</li>
+<li>Noise Reduction</li>
+<li>Statistical Signal Processing</li>
+<li>Power Spectral Density</li>
+<li>Wiener-Khinchin Theorem</li>
+</ol>
+<h2 id="prerequisites">Prerequisites</h2>
+<p>This chapter builds on concepts from:</p>
+<ul>
+<li><a href="../01-mathematical-foundations/">Chapter 1: Mathematical Foundations</a></li>
+<li><a href="../02-introduction-to-signals-and-systems/">Chapter 2: Introduction to Signals and Systems</a></li>
+<li><a href="../04-convolution-and-correlation/">Chapter 4: Convolution and Correlation</a></li>
+<li><a href="../07-dft-fft-and-frequency-domain-analysis/">Chapter 7: DFT, FFT and Frequency Domain Analysis</a></li>
+<li><a href="../09-filter-design-fundamentals/">Chapter 9: Filter Design Fundamentals</a></li>
+</ul>
+<hr />
+<h2 id="introduction">Introduction</h2>
+<p>Real-world signals inevitably contain random components arising from thermal noise, quantum effects, measurement uncertainties, and unpredictable environmental fluctuations. Unlike the deterministic signals examined in earlier chapters, random signals cannot be described by explicit mathematical functions but instead require statistical characterization through probability distributions, correlation functions, and spectral densities. Understanding stochastic signal analysis is essential for designing systems that extract information from noisy measurements, estimate signal parameters in uncertain environments, and optimize performance under statistical constraints.</p>
+<p>This chapter develops the mathematical framework for analyzing random processes, examining different noise types and their characteristics, introducing power spectral density as the frequency-domain description of random signals, and exploring statistical signal processing methods that leverage probabilistic models. These concepts underpin adaptive filter analysis, optimal estimation theory, and modern machine learning approaches to signal processing covered in subsequent chapters.</p>
+<h2 id="random-processes-and-stochastic-signals">Random Processes and Stochastic Signals</h2>
+<p>A random process (also called a stochastic process) is a collection of random variables indexed by time, representing signals whose exact values cannot be predicted but whose statistical properties can be characterized. Each time instance <span class="arithmatex">\(t\)</span> corresponds to a random variable <span class="arithmatex">\(X(t)\)</span> with an associated probability distribution.</p>
+<h3 id="statistical-description">Statistical Description</h3>
+<p>Random processes are characterized through ensemble statistics computed across multiple realizations of the process. Key statistical descriptors include:</p>
+<p><strong>Mean function</strong> describes the expected value at each time:</p>
+<div class="arithmatex">\[\mu_X(t) = E[X(t)] = \int_{-\infty}^{\infty} x f_X(x,t)dx\]</div>
+<p>where <span class="arithmatex">\(f_X(x,t)\)</span> is the probability density function at time <span class="arithmatex">\(t\)</span>.</p>
+<p><strong>Autocorrelation function</strong> quantifies how signal values at different times relate statistically:</p>
+<div class="arithmatex">\[R_X(t_1, t_2) = E[X(t_1)X(t_2)]\]</div>
+<p>This function reveals temporal dependencies, periodicity, and memory characteristics of the random process.</p>
+<p><strong>Autocovariance function</strong> measures correlation of deviations from the mean:</p>
+<div class="arithmatex">\[C_X(t_1, t_2) = E[(X(t_1)-\mu_X(t_1))(X(t_2)-\mu_X(t_2))] = R_X(t_1,t_2) - \mu_X(t_1)\mu_X(t_2)\]</div>
+<p>The variance at time <span class="arithmatex">\(t\)</span> is the autocovariance evaluated at equal times: <span class="arithmatex">\(\sigma_X^2(t) = C_X(t,t)\)</span>.</p>
+<h3 id="stationarity">Stationarity</h3>
+<p>A random process is stationary if its statistical properties remain constant over time. <strong>Strict-sense stationarity</strong> requires that all statistical properties (distributions of all orders) are time-invariant. The more practical <strong>wide-sense stationary</strong> (WSS) process requires only:</p>
+<ol>
+<li>Constant mean: <span class="arithmatex">\(\mu_X(t) = \mu_X\)</span> for all <span class="arithmatex">\(t\)</span></li>
+<li>Autocorrelation depends only on time difference: <span class="arithmatex">\(R_X(t_1, t_2) = R_X(\tau)\)</span> where <span class="arithmatex">\(\tau = t_2 - t_1\)</span></li>
+</ol>
+<p>WSS processes simplify analysis significantly because their correlation structure depends only on the time lag <span class="arithmatex">\(\tau\)</span> rather than absolute time. Most naturally occurring noise sources approximate WSS conditions over reasonable time scales.</p>
+<h3 id="ergodicity">Ergodicity</h3>
+<p>An ergodic process has the property that time averages computed from a single realization equal ensemble averages computed across multiple realizations. For a WSS ergodic process:</p>
+<div class="arithmatex">\[\lim_{T\to\infty} \frac{1}{T}\int_0^T x(t)dt = E[X(t)] = \mu_X\]</div>
+<p>Ergodicity enables practical signal analysis because we can estimate statistical properties from time-averaged measurements of single signal recordings rather than requiring multiple independent realizations.</p>
+<h2 id="white-noise-and-colored-noise">White Noise and Colored Noise</h2>
+<p>Noise processes are categorized by their frequency domain characteristics, with white and colored noise representing two fundamental classes with distinct spectral properties.</p>
+<h3 id="white-noise">White Noise</h3>
+<p>White noise is a random process with constant power spectral density across all frequencies, analogous to white light containing all visible wavelengths equally. For white noise <span class="arithmatex">\(w[n]\)</span>:</p>
+<div class="arithmatex">\[R_w[k] = \sigma^2 \delta[k]$$
+$$S_w(f) = \sigma^2\]</div>
+<p>where <span class="arithmatex">\(\sigma^2\)</span> is the noise variance and <span class="arithmatex">\(S_w(f)\)</span> is the power spectral density. The autocorrelation being a delta function means samples are completely uncorrelated: <span class="arithmatex">\(E[w[n]w[m]] = 0\)</span> for <span class="arithmatex">\(n \neq m\)</span>.</p>
+<p>White noise properties include:</p>
+<ul>
+<li><strong>Flat spectrum</strong>: Equal power at all frequencies</li>
+<li><strong>Zero correlation</strong>: Future values unpredictable from past values</li>
+<li><strong>Infinite bandwidth</strong>: Theoretical white noise has unbounded power</li>
+<li><strong>Idealized model</strong>: Physical processes have finite bandwidth</li>
+</ul>
+<p>In practice, "white" noise is approximately white over the frequency range of interest, with negligible correlation at the sampling rate used. Thermal noise in resistors and shot noise in electronic devices closely approximate white noise characteristics.</p>
+<h3 id="colored-noise">Colored Noise</h3>
+<p>Colored noise has non-uniform power spectral density, with power concentrated in specific frequency ranges. The autocorrelation function of colored noise is not a delta function, indicating temporal correlation between samples.</p>
+<p>Common colored noise types include:</p>
+<p><strong>Pink noise</strong> (<span class="arithmatex">\(1/f\)</span> noise) has power spectral density inversely proportional to frequency:</p>
+<div class="arithmatex">\[S(f) \propto \frac{1}{f}\]</div>
+<p>Equal power per octave characterizes pink noise, making it prevalent in natural phenomena and electronic devices. Applications include audio testing, fractal signal modeling, and characterizing low-frequency fluctuations.</p>
+<p><strong>Brown noise</strong> (Brownian noise or red noise) has power spectral density:</p>
+<div class="arithmatex">\[S(f) \propto \frac{1}{f^2}\]</div>
+<p>This corresponds to integrated white noise (random walk), appearing in Brownian motion, economic time series, and certain physical processes.</p>
+<p><strong>Band-limited white noise</strong> restricts white noise to finite bandwidth through filtering, providing a more realistic noise model for practical systems with finite bandwidths.</p>
+<h3 id="generating-colored-noise-from-white-noise">Generating Colored Noise from White Noise</h3>
+<p>Colored noise can be synthesized by filtering white noise through appropriately designed systems. For desired power spectral density <span class="arithmatex">\(S_d(f)\)</span>, design filter <span class="arithmatex">\(H(f)\)</span> such that:</p>
+<div class="arithmatex">\[S_d(f) = |H(f)|^2 S_w(f)\]</div>
+<p>For white noise input with <span class="arithmatex">\(S_w(f) = \sigma^2\)</span>:</p>
+<div class="arithmatex">\[H(f) = \frac{1}{\sigma}\sqrt{S_d(f)}\]</div>
+<p>This technique enables generation of arbitrary noise processes with specified spectral characteristics, useful for testing, simulation, and noise injection applications.</p>
+<h2 id="gaussian-noise">Gaussian Noise</h2>
+<p>Gaussian noise follows the normal (Gaussian) probability distribution, completely characterized by mean <span class="arithmatex">\(\mu\)</span> and variance <span class="arithmatex">\(\sigma^2\)</span>. The probability density function is:</p>
+<div class="arithmatex">\[f_X(x) = \frac{1}{\sqrt{2\pi\sigma^2}}\exp\left(-\frac{(x-\mu)^2}{2\sigma^2}\right)\]</div>
+<h3 id="properties-of-gaussian-processes">Properties of Gaussian Processes</h3>
+<p>Gaussian random processes possess unique properties making them particularly important in signal processing:</p>
+<ol>
+<li><strong>Complete characterization</strong>: Mean and covariance fully specify all statistics</li>
+<li><strong>Central limit theorem</strong>: Sums of independent random variables approach Gaussian distribution</li>
+<li><strong>Linear system preservation</strong>: Gaussian input to linear system produces Gaussian output</li>
+<li><strong>Analytical tractability</strong>: Many calculations have closed-form solutions</li>
+</ol>
+<p>The central limit theorem explains why Gaussian noise models are so prevalent—many noise sources arise from summing numerous independent contributing factors, yielding approximately Gaussian distributions.</p>
+<h3 id="additive-white-gaussian-noise-awgn">Additive White Gaussian Noise (AWGN)</h3>
+<p>The most common noise model in communications and signal processing is additive white Gaussian noise, where:</p>
+<div class="arithmatex">\[y[n] = s[n] + w[n]\]</div>
+<p>with <span class="arithmatex">\(w[n]\)</span> being zero-mean white Gaussian noise. This model assumes:</p>
+<ul>
+<li>Noise adds to signal (additive)</li>
+<li>Samples are uncorrelated (white)</li>
+<li>Amplitude follows Gaussian distribution</li>
+<li>Zero mean (no DC bias)</li>
+</ul>
+<p>AWGN provides a tractable mathematical model enabling analytical performance evaluation for many signal processing algorithms and communication systems. While idealized, it accurately approximates thermal noise and aggregated interference from many independent sources.</p>
+<h2 id="signal-to-noise-ratio">Signal-to-Noise Ratio</h2>
+<p>The signal-to-noise ratio (SNR) quantifies the relative strength of desired signal to background noise, fundamentally limiting system performance in detection, estimation, and communication applications.</p>
+<h3 id="snr-definitions">SNR Definitions</h3>
+<p>SNR can be defined in several ways depending on context:</p>
+<p><strong>Power ratio</strong> (most common):</p>
+<div class="arithmatex">\[\text{SNR} = \frac{P_{signal}}{P_{noise}} = \frac{\sigma_s^2}{\sigma_n^2}\]</div>
+<p><strong>Decibel scale</strong>:</p>
+<div class="arithmatex">\[\text{SNR}_{dB} = 10\log_{10}\left(\frac{P_{signal}}{P_{noise}}\right)\]</div>
+<p><strong>Peak SNR</strong> (for images and communications):</p>
+<div class="arithmatex">\[\text{PSNR} = 10\log_{10}\left(\frac{\text{MAX}^2}{\text{MSE}}\right)\]</div>
+<p>where MAX is the maximum possible signal value and MSE is mean-squared error.</p>
+<h3 id="snr-and-system-performance">SNR and System Performance</h3>
+<p>SNR directly impacts system capabilities:</p>
+<table>
+<thead>
+<tr>
+<th>SNR (dB)</th>
+<th>Performance Implications</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>&lt; 0</td>
+<td>Noise power exceeds signal power, detection very difficult</td>
+</tr>
+<tr>
+<td>0-10</td>
+<td>Low quality, significant degradation</td>
+</tr>
+<tr>
+<td>10-20</td>
+<td>Moderate quality, noticeable noise</td>
+</tr>
+<tr>
+<td>20-40</td>
+<td>Good quality, noise tolerable</td>
+</tr>
+<tr>
+<td>&gt; 40</td>
+<td>Excellent quality, noise negligible</td>
+</tr>
+</tbody>
+</table>
+<p>Communication systems require minimum SNR thresholds for reliable operation. Shannon's channel capacity theorem establishes fundamental limits:</p>
+<div class="arithmatex">\[C = B\log_2(1 + \text{SNR})\]</div>
+<p>where <span class="arithmatex">\(C\)</span> is channel capacity (bits/second), <span class="arithmatex">\(B\)</span> is bandwidth (Hz), and SNR is the signal-to-noise power ratio. No communication system can reliably transmit data faster than this capacity limit.</p>
+<h2 id="noise-reduction-techniques">Noise Reduction Techniques</h2>
+<p>Reducing noise while preserving signal content is fundamental to extracting information from noisy measurements. Various filtering and processing strategies exploit signal and noise characteristics to improve SNR.</p>
+<h3 id="time-domain-averaging">Time-Domain Averaging</h3>
+<p>For repetitive signals corrupted by uncorrelated noise, averaging multiple observations reduces noise power. If <span class="arithmatex">\(x_i[n] = s[n] + w_i[n]\)</span> for <span class="arithmatex">\(i = 1, \ldots, K\)</span> independent observations:</p>
+<div class="arithmatex">\[\hat{s}[n] = \frac{1}{K}\sum_{i=1}^K x_i[n] = s[n] + \frac{1}{K}\sum_{i=1}^K w_i[n]\]</div>
+<p>The signal component remains unchanged while noise variance decreases:</p>
+<div class="arithmatex">\[\sigma_{\text{noise}}^2 = \frac{\sigma_w^2}{K}\]</div>
+<p>improving SNR by factor <span class="arithmatex">\(K\)</span> (or <span class="arithmatex">\(10\log_{10}K\)</span> dB). This technique is fundamental in medical imaging, evoked potential measurements, and signal averaging oscilloscopes.</p>
+<h3 id="frequency-domain-filtering">Frequency-Domain Filtering</h3>
+<p>When signal and noise occupy different frequency bands, linear filters can separate them. Low-pass filtering removes high-frequency noise from low-frequency signals, band-pass filtering extracts signals in specific frequency ranges, and adaptive notch filtering eliminates narrowband interference.</p>
+<p>Filter design for noise reduction balances:</p>
+<ul>
+<li><strong>Noise suppression</strong>: Narrower bandwidth reduces more noise</li>
+<li><strong>Signal distortion</strong>: Excessive filtering attenuates or distorts signal content</li>
+<li><strong>Transient response</strong>: Sharp filters introduce ringing and delay</li>
+</ul>
+<p>Wiener filtering provides optimal linear filtering for noise reduction, designing filter frequency response:</p>
+<div class="arithmatex">\[H(f) = \frac{S_s(f)}{S_s(f) + S_n(f)}\]</div>
+<p>where <span class="arithmatex">\(S_s(f)\)</span> and <span class="arithmatex">\(S_n(f)\)</span> are signal and noise power spectral densities. This filter minimizes mean-squared error between filtered output and desired signal.</p>
+<h3 id="nonlinear-noise-reduction">Nonlinear Noise Reduction</h3>
+<p>Nonlinear methods exploit signal structure beyond frequency domain characteristics:</p>
+<p><strong>Median filtering</strong> replaces each sample with the median of a local neighborhood, effectively removing impulsive noise (salt-and-pepper noise in images) while preserving edges better than linear smoothing.</p>
+<p><strong>Wavelet denoising</strong> decomposes signals using wavelet transforms, applies thresholding to wavelet coefficients to suppress small-amplitude noise components, then reconstructs the denoised signal. This approach preserves transients and discontinuities while removing noise.</p>
+<p><strong>Morphological filtering</strong> uses nonlinear mathematical morphology operations to remove noise while preserving specific signal shapes and structures.</p>
+<details>
+<summary>MicroSim: Noise Analysis and Reduction Tool</summary>
+<p>This simulation would provide interactive exploration of noise characteristics and reduction techniques:</p>
+<ul>
+<li>Generate test signals: sinusoidal, pulse, speech-like, with adjustable parameters</li>
+<li>Add noise: white, pink, brown, Gaussian, uniform, impulsive, with controllable SNR</li>
+<li>View time-domain waveforms and frequency spectra of signal, noise, and combined</li>
+<li>Apply noise reduction methods:</li>
+<li>Averaging (adjust number of realizations)</li>
+<li>Linear filtering (low-pass, band-pass, Wiener)</li>
+<li>Median filtering (adjust window size)</li>
+<li>Wavelet thresholding (select wavelet, threshold level)</li>
+<li>Display performance metrics: output SNR, MSE, correlation coefficient</li>
+<li>Compare multiple methods simultaneously to understand tradeoffs</li>
+</ul>
+<p>Students would develop intuition about noise type identification, appropriate reduction strategy selection, and parameter tuning effects on signal quality vs. noise suppression tradeoffs.</p>
+</details>
+<h2 id="statistical-signal-processing">Statistical Signal Processing</h2>
+<p>Statistical signal processing applies probability theory and statistical methods to extract information from signals in the presence of uncertainty, leveraging knowledge of signal and noise statistical properties.</p>
+<h3 id="detection-theory">Detection Theory</h3>
+<p>Detection theory addresses deciding whether a signal is present or absent based on noisy observations. The binary hypothesis testing problem formulates as:</p>
+<ul>
+<li><strong>Hypothesis <span class="arithmatex">\(H_0\)</span></strong>: Only noise present, <span class="arithmatex">\(x[n] = w[n]\)</span></li>
+<li><strong>Hypothesis <span class="arithmatex">\(H_1\)</span></strong>: Signal plus noise present, <span class="arithmatex">\(x[n] = s[n] + w[n]\)</span></li>
+</ul>
+<p>The optimal detector computes the likelihood ratio:</p>
+<div class="arithmatex">\[\Lambda = \frac{p(x|H_1)}{p(x|H_0)}\]</div>
+<p>and compares to threshold <span class="arithmatex">\(\gamma\)</span>, choosing <span class="arithmatex">\(H_1\)</span> if <span class="arithmatex">\(\Lambda &gt; \gamma\)</span> and <span class="arithmatex">\(H_0\)</span> otherwise. The Neyman-Pearson criterion selects threshold to maximize detection probability for a fixed false alarm probability.</p>
+<p>Detection performance metrics include:</p>
+<ul>
+<li><strong>Probability of detection</strong> <span class="arithmatex">\(P_D\)</span>: Correctly identifying signal presence</li>
+<li><strong>Probability of false alarm</strong> <span class="arithmatex">\(P_{FA}\)</span>: Incorrectly declaring signal present when absent</li>
+<li><strong>Receiver operating characteristic (ROC)</strong>: Plot of <span class="arithmatex">\(P_D\)</span> vs. <span class="arithmatex">\(P_{FA}\)</span> for various thresholds</li>
+</ul>
+<h3 id="estimation-theory">Estimation Theory</h3>
+<p>Estimation theory develops methods to infer signal parameters from noisy measurements. Two principal approaches are:</p>
+<p><strong>Maximum likelihood estimation</strong> selects parameter values that maximize the probability of observed data:</p>
+<div class="arithmatex">\[\hat{\theta}_{ML} = \arg\max_{\theta} p(x|\theta)\]</div>
+<p>ML estimators are asymptotically unbiased and efficient, achieving Cramer-Rao lower bound on variance for large sample sizes.</p>
+<p><strong>Minimum mean-squared error estimation</strong> minimizes expected squared error:</p>
+<div class="arithmatex">\[\hat{\theta}_{MMSE} = \arg\min_{\theta} E[(\\theta - \hat{\theta})^2]\]</div>
+<p>The MMSE estimate equals the conditional expectation <span class="arithmatex">\(E[\theta|x]\)</span>, requiring knowledge of prior parameter distribution.</p>
+<h3 id="applications">Applications</h3>
+<p>Statistical signal processing techniques enable:</p>
+<ul>
+<li><strong>Radar detection</strong>: Identifying targets in clutter and noise</li>
+<li><strong>Biomedical signal analysis</strong>: Detecting abnormal patterns in ECG, EEG</li>
+<li><strong>Speech processing</strong>: Voice activity detection, speaker identification</li>
+<li><strong>Communications</strong>: Symbol detection, channel estimation, synchronization</li>
+</ul>
+<h2 id="power-spectral-density">Power Spectral Density</h2>
+<p>The power spectral density (PSD) describes how signal power distributes across frequency, providing the frequency-domain characterization of random processes complementary to the time-domain autocorrelation function.</p>
+<h3 id="definition-and-properties">Definition and Properties</h3>
+<p>For a WSS random process <span class="arithmatex">\(X(t)\)</span> with autocorrelation <span class="arithmatex">\(R_X(\tau)\)</span>, the power spectral density is the Fourier transform:</p>
+<div class="arithmatex">\[S_X(f) = \int_{-\infty}^{\infty} R_X(\tau)e^{-j2\pi f\tau}d\tau\]</div>
+<p>This fundamental relationship, known as the Wiener-Khinchin theorem, establishes that autocorrelation and power spectral density form a Fourier transform pair. The inverse relationship is:</p>
+<div class="arithmatex">\[R_X(\tau) = \int_{-\infty}^{\infty} S_X(f)e^{j2\pi f\tau}df\]</div>
+<p>Key PSD properties include:</p>
+<ul>
+<li><strong>Non-negative</strong>: <span class="arithmatex">\(S_X(f) \geq 0\)</span> for all <span class="arithmatex">\(f\)</span> (power cannot be negative)</li>
+<li><strong>Real-valued</strong>: For real processes, PSD is purely real</li>
+<li><strong>Even symmetry</strong>: For real processes, <span class="arithmatex">\(S_X(-f) = S_X(f)\)</span></li>
+<li><strong>Total power</strong>: Integrating PSD over all frequencies yields total power: <span class="arithmatex">\(\int_{-\infty}^{\infty} S_X(f)df = R_X(0) = E[X^2(t)]\)</span></li>
+</ul>
+<h3 id="psd-estimation">PSD Estimation</h3>
+<p>In practice, PSD must be estimated from finite-length signal observations. Two primary approaches are:</p>
+<p><strong>Periodogram method</strong> computes:</p>
+<div class="arithmatex">\[\hat{S}_X(f) = \frac{1}{N}|X(f)|^2\]</div>
+<p>where <span class="arithmatex">\(X(f)\)</span> is the DFT of N samples. While simple, the periodogram is an inconsistent estimator—variance does not decrease with increased data length.</p>
+<p><strong>Welch's method</strong> improves periodogram estimation by:</p>
+<ol>
+<li>Dividing data into overlapping segments</li>
+<li>Windowing each segment</li>
+<li>Computing periodogram for each segment</li>
+<li>Averaging periodograms across segments</li>
+</ol>
+<p>This averaging reduces variance at the cost of decreased frequency resolution, providing a practical bias-variance tradeoff.</p>
+<p><strong>Parametric methods</strong> model the process using autoregressive (AR), moving average (MA), or ARMA models, then estimate model parameters and compute theoretical PSD. These methods can provide better resolution for short data records when the model appropriately matches the process.</p>
+<h2 id="wiener-khinchin-theorem">Wiener-Khinchin Theorem</h2>
+<p>The Wiener-Khinchin theorem establishes the fundamental relationship between autocorrelation and power spectral density, unifying time-domain and frequency-domain characterizations of random processes. For wide-sense stationary processes, the autocorrelation function and power spectral density form a Fourier transform pair:</p>
+<div class="arithmatex">\[S_X(f) = \mathcal{F}\{R_X(\tau)\}$$
+$$R_X(\tau) = \mathcal{F}^{-1}\{S_X(f)\}\]</div>
+<h3 id="theoretical-significance">Theoretical Significance</h3>
+<p>This theorem bridges correlation analysis and spectral analysis, enabling computation of one from the other. Physical interpretations include:</p>
+<ul>
+<li>Autocorrelation at <span class="arithmatex">\(\tau = 0\)</span> equals total signal power</li>
+<li>PSD integrated over frequency equals total signal power</li>
+<li>Narrow autocorrelation (rapid decorrelation) corresponds to wide PSD (wideband signal)</li>
+<li>Wide autocorrelation (slow decorrelation) corresponds to narrow PSD (narrowband signal)</li>
+</ul>
+<h3 id="applications_1">Applications</h3>
+<p>The Wiener-Khinchin relationship enables:</p>
+<ul>
+<li><strong>Spectral estimation</strong>: Computing PSD from estimated autocorrelation</li>
+<li><strong>Filter design</strong>: Wiener filtering uses PSD to design optimal filters</li>
+<li><strong>System identification</strong>: Estimating system characteristics from correlation measurements</li>
+<li><strong>Random process synthesis</strong>: Generating processes with specified spectral characteristics</li>
+</ul>
+<p>For linear systems with input <span class="arithmatex">\(x[n]\)</span> and output <span class="arithmatex">\(y[n]\)</span>, the output PSD relates to input PSD through:</p>
+<div class="arithmatex">\[S_y(f) = |H(f)|^2 S_x(f)\]</div>
+<p>where <span class="arithmatex">\(H(f)\)</span> is the system frequency response. This enables output noise analysis and signal-to-noise ratio calculation for cascaded systems.</p>
+<h2 id="summary_1">Summary</h2>
+<p>This chapter developed the mathematical framework for analyzing random signals and stochastic processes that pervade real-world signal processing applications. Random processes require statistical characterization through probability distributions, mean functions, and autocorrelation functions, with wide-sense stationary processes providing particularly tractable analysis through their time-invariant statistical properties.</p>
+<p>White noise exhibits flat power spectral density and uncorrelated samples, serving as a fundamental building block for noise modeling, while colored noise concentrates power in specific frequency ranges, modeling many physical noise sources. Gaussian noise, characterized by normal probability distributions, appears ubiquitously due to the central limit theorem and provides analytical tractability for performance analysis.</p>
+<p>Signal-to-noise ratio quantifies the fundamental limitation noise imposes on system performance, with various reduction techniques including averaging, filtering, and nonlinear processing exploiting signal and noise characteristics to improve SNR. Statistical signal processing applies detection and estimation theory to extract information optimally from noisy observations, enabling applications from radar to biomedical instrumentation.</p>
+<p>Power spectral density provides frequency-domain characterization of random processes, with the Wiener-Khinchin theorem establishing its fundamental relationship to autocorrelation. PSD estimation techniques enable practical analysis of measured signals, while parametric modeling approaches provide enhanced resolution when appropriate models match the underlying processes.</p>
+<p>These stochastic signal analysis concepts underpin adaptive filtering, optimal estimation, and modern machine learning approaches examined in subsequent chapters, providing essential tools for designing robust signal processing systems that operate effectively despite uncertainty and noise.</p>
+
+
+
+
+
+
+
+  
+  
+
+
+
+  
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+          <button type="button" class="md-top md-icon" data-md-component="top" hidden>
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8z"/></svg>
+  Back to top
+</button>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+    
+      
+      <nav class="md-footer__inner md-grid" aria-label="Footer" >
+        
+          
+          <a href="../11-adaptive-signal-processing/" class="md-footer__link md-footer__link--prev" aria-label="Previous: Ch 11 - Adaptive Processing">
+            <div class="md-footer__button md-icon">
+              
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+            </div>
+            <div class="md-footer__title">
+              <span class="md-footer__direction">
+                Previous
+              </span>
+              <div class="md-ellipsis">
+                Ch 11 - Adaptive Processing
+              </div>
+            </div>
+          </a>
+        
+        
+          
+          <a href="../13-multirate-signal-processing-and-compression/" class="md-footer__link md-footer__link--next" aria-label="Next: Ch 13 - Multirate and Compression">
+            <div class="md-footer__title">
+              <span class="md-footer__direction">
+                Next
+              </span>
+              <div class="md-ellipsis">
+                Ch 13 - Multirate and Compression
+              </div>
+            </div>
+            <div class="md-footer__button md-icon">
+              
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M4 11v2h12l-5.5 5.5 1.42 1.42L19.84 12l-7.92-7.92L10.5 5.5 16 11z"/></svg>
+            </div>
+          </a>
+        
+      </nav>
+    
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    
+      
+      <script id="__config" type="application/json">{"base": "../..", "features": ["content.code.copy", "navigation.expand", "navigation.path", "navigation.prune", "navigation.indexes", "toc.follow", "navigation.top", "navigation.footer", "content.action.edit"], "search": "../../assets/javascripts/workers/search.f8cc74c7.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": null}</script>
+    
+    
+      <script src="../../assets/javascripts/bundle.c8b220af.min.js"></script>
+      
+        <script src="../../js/extra.js"></script>
+      
+        <script src="https://unpkg.com/mathjax@3/es5/tex-mml-chtml.js"></script>
+      
+    
+  </body>
+</html>

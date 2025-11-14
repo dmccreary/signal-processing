@@ -1,0 +1,2444 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+        <meta name="description" content="College Level Textbook on Signal Processing - License is Commons ShareAlike Attribution Noncommercial">
+      
+      
+        <meta name="author" content="Dan McCreary">
+      
+      
+        <link rel="canonical" href="https://dmccreary.github.io/signal-processing/chapters/10-advanced-filter-design-and-implementation/">
+      
+      
+        <link rel="prev" href="../09-filter-design-fundamentals/">
+      
+      
+        <link rel="next" href="../11-adaptive-signal-processing/">
+      
+      
+      <link rel="icon" href="../../img/favicon.ico">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.6.12">
+    
+    
+      
+        <title>Ch 10 - Advanced Filter Design - Signal Processing with AI</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../assets/stylesheets/main.2afb09e1.min.css">
+      
+        
+        <link rel="stylesheet" href="../../assets/stylesheets/palette.06af60db.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+      <link rel="stylesheet" href="../../css/extra.css">
+    
+    <script>__md_scope=new URL("../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+  
+
+
+  
+  
+
+<script id="__analytics">function __md_analytics(){function e(){dataLayer.push(arguments)}window.dataLayer=window.dataLayer||[],e("js",new Date),e("config","G-SY3G2ND80K"),document.addEventListener("DOMContentLoaded",(function(){document.forms.search&&document.forms.search.query.addEventListener("blur",(function(){this.value&&e("event","search",{search_term:this.value})}));document$.subscribe((function(){var t=document.forms.feedback;if(void 0!==t)for(var a of t.querySelectorAll("[type=submit]"))a.addEventListener("click",(function(a){a.preventDefault();var n=document.location.pathname,d=this.getAttribute("data-md-value");e("event","feedback",{page:n,data:d}),t.firstElementChild.disabled=!0;var r=t.querySelector(".md-feedback__note [data-md-value='"+d+"']");r&&(r.hidden=!1)})),t.hidden=!1})),location$.subscribe((function(t){e("config","G-SY3G2ND80K",{page_path:t.pathname})}))}));var t=document.createElement("script");t.async=!0,t.src="https://www.googletagmanager.com/gtag/js?id=G-SY3G2ND80K",document.getElementById("__analytics").insertAdjacentElement("afterEnd",t)}</script>
+  
+    <script>"undefined"!=typeof __md_analytics&&__md_analytics()</script>
+  
+
+    
+    
+      
+        <meta  property="og:type"  content="website" >
+      
+        <meta  property="og:title"  content="Ch 10 - Advanced Filter Design - Signal Processing with AI" >
+      
+        <meta  property="og:description"  content="College Level Textbook on Signal Processing - License is Commons ShareAlike Attribution Noncommercial" >
+      
+        <meta  property="og:image"  content="https://dmccreary.github.io/signal-processing/assets/images/social/chapters/10-advanced-filter-design-and-implementation/index.png" >
+      
+        <meta  property="og:image:type"  content="image/png" >
+      
+        <meta  property="og:image:width"  content="1200" >
+      
+        <meta  property="og:image:height"  content="630" >
+      
+        <meta  property="og:url"  content="https://dmccreary.github.io/signal-processing/chapters/10-advanced-filter-design-and-implementation/" >
+      
+        <meta  name="twitter:card"  content="summary_large_image" >
+      
+        <meta  name="twitter:title"  content="Ch 10 - Advanced Filter Design - Signal Processing with AI" >
+      
+        <meta  name="twitter:description"  content="College Level Textbook on Signal Processing - License is Commons ShareAlike Attribution Noncommercial" >
+      
+        <meta  name="twitter:image"  content="https://dmccreary.github.io/signal-processing/assets/images/social/chapters/10-advanced-filter-design-and-implementation/index.png" >
+      
+    
+    
+  </head>
+  
+  
+    
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="maroon" data-md-color-accent="gold">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#advanced-filter-design-and-implementation" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+  
+
+<header class="md-header md-header--shadow" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href="../.." title="Signal Processing with AI" class="md-header__button md-logo" aria-label="Signal Processing with AI" data-md-component="logo">
+      
+  <img src="../../img/logo-192.png" alt="logo">
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            Signal Processing with AI
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              Ch 10 - Advanced Filter Design
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+    
+    
+    
+    
+      
+      
+        <label class="md-header__button md-icon" for="__search">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        </label>
+        <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Search">
+        
+        <button type="reset" class="md-search__icon md-icon" title="Clear" aria-label="Clear" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+        </button>
+      </nav>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+      
+    
+    
+      <div class="md-header__source">
+        <a href="https://github.com/dmccreary/signal-processing" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 6.7.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2024 Fonticons, Inc.--><path d="M439.55 236.05 244 40.45a28.87 28.87 0 0 0-40.81 0l-40.66 40.63 51.52 51.52c27.06-9.14 52.68 16.77 43.39 43.68l49.66 49.66c34.23-11.8 61.18 31 35.47 56.69-26.49 26.49-70.21-2.87-56-37.34L240.22 199v121.85c25.3 12.54 22.26 41.85 9.08 55a34.34 34.34 0 0 1-48.55 0c-17.57-17.6-11.07-46.91 11.25-56v-123c-20.8-8.51-24.6-30.74-18.64-45L142.57 101 8.45 235.14a28.86 28.86 0 0 0 0 40.81l195.61 195.6a28.86 28.86 0 0 0 40.8 0l194.69-194.69a28.86 28.86 0 0 0 0-40.81"/></svg>
+  </div>
+  <div class="md-source__repository">
+    GitHub Repo
+  </div>
+</a>
+      </div>
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+
+<nav class="md-nav md-nav--primary" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../.." title="Signal Processing with AI" class="md-nav__button md-logo" aria-label="Signal Processing with AI" data-md-component="logo">
+      
+  <img src="../../img/logo-192.png" alt="logo">
+
+    </a>
+    Signal Processing with AI
+  </label>
+  
+    <div class="md-nav__source">
+      <a href="https://github.com/dmccreary/signal-processing" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 6.7.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2024 Fonticons, Inc.--><path d="M439.55 236.05 244 40.45a28.87 28.87 0 0 0-40.81 0l-40.66 40.63 51.52 51.52c27.06-9.14 52.68 16.77 43.39 43.68l49.66 49.66c34.23-11.8 61.18 31 35.47 56.69-26.49 26.49-70.21-2.87-56-37.34L240.22 199v121.85c25.3 12.54 22.26 41.85 9.08 55a34.34 34.34 0 0 1-48.55 0c-17.57-17.6-11.07-46.91 11.25-56v-123c-20.8-8.51-24.6-30.74-18.64-45L142.57 101 8.45 235.14a28.86 28.86 0 0 0 0 40.81l195.61 195.6a28.86 28.86 0 0 0 40.8 0l194.69-194.69a28.86 28.86 0 0 0 0-40.81"/></svg>
+  </div>
+  <div class="md-source__repository">
+    GitHub Repo
+  </div>
+</a>
+    </div>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../.." class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Home
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Table of Contents
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../about/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    About This Website
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../course-description/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Course Description
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+    
+      
+        
+        
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+  
+    <a href="../../learning-graph/" class="md-nav__link">
+      
+  
+  
+  <span class="md-ellipsis">
+    Learning Graph
+    
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+    
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+    
+      
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_6" checked>
+        
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../" class="md-nav__link ">
+              
+  
+  
+  <span class="md-ellipsis">
+    Chapters
+    
+  </span>
+  
+
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_6" id="__nav_6_label" tabindex="0">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_6_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_6">
+            <span class="md-nav__icon md-icon"></span>
+            Chapters
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../01-mathematical-foundations/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Ch 1 - Mathematical Foundations
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../02-introduction-to-signals-and-systems/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Ch 2 - Signals and Systems
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../03-system-properties-and-analysis/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Ch 3 - System Properties
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../04-convolution-and-correlation/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Ch 4 - Convolution and Correlation
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../05-sampling-and-quantization/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Ch 5 - Sampling and Quantization
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../06-fourier-analysis-fundamentals/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Ch 6 - Fourier Analysis
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../07-dft-fft-and-frequency-domain-analysis/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Ch 7 - DFT and FFT
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../08-advanced-transforms/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Ch 8 - Advanced Transforms
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../09-filter-design-fundamentals/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Ch 9 - Filter Design Fundamentals
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  
+  <span class="md-ellipsis">
+    Ch 10 - Advanced Filter Design
+    
+  </span>
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        
+  
+  
+  <span class="md-ellipsis">
+    Ch 10 - Advanced Filter Design
+    
+  </span>
+  
+
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#summary" class="md-nav__link">
+    <span class="md-ellipsis">
+      Summary
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#concepts-covered" class="md-nav__link">
+    <span class="md-ellipsis">
+      Concepts Covered
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#prerequisites" class="md-nav__link">
+    <span class="md-ellipsis">
+      Prerequisites
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#introduction" class="md-nav__link">
+    <span class="md-ellipsis">
+      Introduction
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#classical-filter-approximations" class="md-nav__link">
+    <span class="md-ellipsis">
+      Classical Filter Approximations
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Classical Filter Approximations">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#butterworth-filters-maximally-flat-response" class="md-nav__link">
+    <span class="md-ellipsis">
+      Butterworth Filters: Maximally Flat Response
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#chebyshev-filters-equiripple-characteristics" class="md-nav__link">
+    <span class="md-ellipsis">
+      Chebyshev Filters: Equiripple Characteristics
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#elliptic-filters-optimal-transition-bandwidth" class="md-nav__link">
+    <span class="md-ellipsis">
+      Elliptic Filters: Optimal Transition Bandwidth
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#bessel-filters-linear-phase-response" class="md-nav__link">
+    <span class="md-ellipsis">
+      Bessel Filters: Linear Phase Response
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#comparison-of-classical-approximations" class="md-nav__link">
+    <span class="md-ellipsis">
+      Comparison of Classical Approximations
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#fir-filter-design-methods" class="md-nav__link">
+    <span class="md-ellipsis">
+      FIR Filter Design Methods
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="FIR Filter Design Methods">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#window-method" class="md-nav__link">
+    <span class="md-ellipsis">
+      Window Method
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#frequency-sampling-method" class="md-nav__link">
+    <span class="md-ellipsis">
+      Frequency Sampling Method
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#optimal-fir-filter-design" class="md-nav__link">
+    <span class="md-ellipsis">
+      Optimal FIR Filter Design
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#analog-to-digital-filter-transformations" class="md-nav__link">
+    <span class="md-ellipsis">
+      Analog-to-Digital Filter Transformations
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Analog-to-Digital Filter Transformations">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#impulse-invariance-method" class="md-nav__link">
+    <span class="md-ellipsis">
+      Impulse Invariance Method
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#bilinear-transform" class="md-nav__link">
+    <span class="md-ellipsis">
+      Bilinear Transform
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#multirate-signal-processing-fundamentals" class="md-nav__link">
+    <span class="md-ellipsis">
+      Multirate Signal Processing Fundamentals
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Multirate Signal Processing Fundamentals">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#filter-banks" class="md-nav__link">
+    <span class="md-ellipsis">
+      Filter Banks
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#multirate-filters-and-polyphase-implementation" class="md-nav__link">
+    <span class="md-ellipsis">
+      Multirate Filters and Polyphase Implementation
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#computational-efficiency" class="md-nav__link">
+    <span class="md-ellipsis">
+      Computational Efficiency
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#practical-implementation-considerations" class="md-nav__link">
+    <span class="md-ellipsis">
+      Practical Implementation Considerations
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Practical Implementation Considerations">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#coefficient-quantization-effects" class="md-nav__link">
+    <span class="md-ellipsis">
+      Coefficient Quantization Effects
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#filter-structures" class="md-nav__link">
+    <span class="md-ellipsis">
+      Filter Structures
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#fixed-point-vs-floating-point-implementation" class="md-nav__link">
+    <span class="md-ellipsis">
+      Fixed-Point vs. Floating-Point Implementation
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#summary_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      Summary
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../11-adaptive-signal-processing/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Ch 11 - Adaptive Processing
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../12-stochastic-processes-and-random-signals/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Ch 12 - Stochastic Processes
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../13-multirate-signal-processing-and-compression/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Ch 13 - Multirate and Compression
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../14-time-frequency-analysis-and-advanced-topics/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Ch 14 - Time-Frequency Analysis
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../15-signal-processing-applications-and-ai-integration/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Ch 15 - Applications and AI
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+    
+      
+        
+        
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+  
+    <a href="../../prompts/" class="md-nav__link">
+      
+  
+  
+  <span class="md-ellipsis">
+    Prompts
+    
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+    
+      
+        
+        
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+  
+    <a href="../../sims/" class="md-nav__link">
+      
+  
+  
+  <span class="md-ellipsis">
+    MicroSims
+    
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+    
+      
+        
+        
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+  
+    <a href="../../stories/" class="md-nav__link">
+      
+  
+  
+  <span class="md-ellipsis">
+    Stories
+    
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+    
+      
+        
+        
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+  
+    <a href="../../circuits/" class="md-nav__link">
+      
+  
+  
+  <span class="md-ellipsis">
+    Circuits
+    
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+    
+    
+    
+    
+      
+        
+        
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+  
+    <a href="../../research/" class="md-nav__link">
+      
+  
+  
+  <span class="md-ellipsis">
+    Research
+    
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../report-card/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Report Card
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../checklist/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Checklist
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../glossary/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Glossary
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../how-we-built-this-site/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    How We Built This Site
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../license/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    License
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../references/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    References
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../contact/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Contact
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../ieee-paper-changes/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Paper Changes
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#summary" class="md-nav__link">
+    <span class="md-ellipsis">
+      Summary
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#concepts-covered" class="md-nav__link">
+    <span class="md-ellipsis">
+      Concepts Covered
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#prerequisites" class="md-nav__link">
+    <span class="md-ellipsis">
+      Prerequisites
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#introduction" class="md-nav__link">
+    <span class="md-ellipsis">
+      Introduction
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#classical-filter-approximations" class="md-nav__link">
+    <span class="md-ellipsis">
+      Classical Filter Approximations
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Classical Filter Approximations">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#butterworth-filters-maximally-flat-response" class="md-nav__link">
+    <span class="md-ellipsis">
+      Butterworth Filters: Maximally Flat Response
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#chebyshev-filters-equiripple-characteristics" class="md-nav__link">
+    <span class="md-ellipsis">
+      Chebyshev Filters: Equiripple Characteristics
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#elliptic-filters-optimal-transition-bandwidth" class="md-nav__link">
+    <span class="md-ellipsis">
+      Elliptic Filters: Optimal Transition Bandwidth
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#bessel-filters-linear-phase-response" class="md-nav__link">
+    <span class="md-ellipsis">
+      Bessel Filters: Linear Phase Response
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#comparison-of-classical-approximations" class="md-nav__link">
+    <span class="md-ellipsis">
+      Comparison of Classical Approximations
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#fir-filter-design-methods" class="md-nav__link">
+    <span class="md-ellipsis">
+      FIR Filter Design Methods
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="FIR Filter Design Methods">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#window-method" class="md-nav__link">
+    <span class="md-ellipsis">
+      Window Method
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#frequency-sampling-method" class="md-nav__link">
+    <span class="md-ellipsis">
+      Frequency Sampling Method
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#optimal-fir-filter-design" class="md-nav__link">
+    <span class="md-ellipsis">
+      Optimal FIR Filter Design
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#analog-to-digital-filter-transformations" class="md-nav__link">
+    <span class="md-ellipsis">
+      Analog-to-Digital Filter Transformations
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Analog-to-Digital Filter Transformations">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#impulse-invariance-method" class="md-nav__link">
+    <span class="md-ellipsis">
+      Impulse Invariance Method
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#bilinear-transform" class="md-nav__link">
+    <span class="md-ellipsis">
+      Bilinear Transform
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#multirate-signal-processing-fundamentals" class="md-nav__link">
+    <span class="md-ellipsis">
+      Multirate Signal Processing Fundamentals
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Multirate Signal Processing Fundamentals">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#filter-banks" class="md-nav__link">
+    <span class="md-ellipsis">
+      Filter Banks
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#multirate-filters-and-polyphase-implementation" class="md-nav__link">
+    <span class="md-ellipsis">
+      Multirate Filters and Polyphase Implementation
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#computational-efficiency" class="md-nav__link">
+    <span class="md-ellipsis">
+      Computational Efficiency
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#practical-implementation-considerations" class="md-nav__link">
+    <span class="md-ellipsis">
+      Practical Implementation Considerations
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Practical Implementation Considerations">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#coefficient-quantization-effects" class="md-nav__link">
+    <span class="md-ellipsis">
+      Coefficient Quantization Effects
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#filter-structures" class="md-nav__link">
+    <span class="md-ellipsis">
+      Filter Structures
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#fixed-point-vs-floating-point-implementation" class="md-nav__link">
+    <span class="md-ellipsis">
+      Fixed-Point vs. Floating-Point Implementation
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#summary_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      Summary
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+  
+    <a href="https://github.com/dmccreary/signal-processing/blob/master/docs/chapters/10-advanced-filter-design-and-implementation/index.md" title="Edit this page" class="md-content__button md-icon">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M10 20H6V4h7v5h5v3.1l2-2V8l-6-6H6c-1.1 0-2 .9-2 2v16c0 1.1.9 2 2 2h4zm10.2-7c.1 0 .3.1.4.2l1.3 1.3c.2.2.2.6 0 .8l-1 1-2.1-2.1 1-1c.1-.1.2-.2.4-.2m0 3.9L14.1 23H12v-2.1l6.1-6.1z"/></svg>
+    </a>
+  
+  
+
+
+<h1 id="advanced-filter-design-and-implementation">Advanced Filter Design and Implementation</h1>
+<h2 id="summary">Summary</h2>
+<p>This chapter covers classical filter approximations, design methods, multirate filters, and practical implementation considerations.</p>
+<p>Students will explore 12 key concepts that are essential for understanding this area of signal processing. This material provides the foundation for concepts introduced in later chapters.</p>
+<h2 id="concepts-covered">Concepts Covered</h2>
+<p>This chapter covers the following 12 concepts from the learning graph:</p>
+<ol>
+<li>Filter Design Methods</li>
+<li>Butterworth Filter</li>
+<li>Chebyshev Filter</li>
+<li>Elliptic Filter</li>
+<li>Bessel Filter</li>
+<li>Window Method</li>
+<li>Frequency Sampling Method</li>
+<li>Bilinear Transform</li>
+<li>Impulse Invariance</li>
+<li>Filter Banks</li>
+<li>Multirate Filters</li>
+<li>Polyphase Filters</li>
+</ol>
+<h2 id="prerequisites">Prerequisites</h2>
+<p>This chapter builds on concepts from:</p>
+<ul>
+<li><a href="../03-system-properties-and-analysis/">Chapter 3: System Properties and Analysis</a></li>
+<li><a href="../06-fourier-analysis-fundamentals/">Chapter 6: Fourier Analysis Fundamentals</a></li>
+<li><a href="../07-dft-fft-and-frequency-domain-analysis/">Chapter 7: DFT, FFT and Frequency Domain Analysis</a></li>
+<li><a href="../08-advanced-transforms/">Chapter 8: Advanced Transforms</a></li>
+<li><a href="../09-filter-design-fundamentals/">Chapter 9: Filter Design Fundamentals</a></li>
+</ul>
+<hr />
+<h2 id="introduction">Introduction</h2>
+<p>Building upon the fundamental filter concepts established in the previous chapter, we now explore systematic methods for designing digital filters that meet precise performance specifications while optimizing key characteristics like selectivity, flatness, and phase response. Classical analog filter approximations including Butterworth, Chebyshev, Elliptic, and Bessel designs provide proven frameworks that can be transformed into digital equivalents using mathematical mapping techniques. Modern filter design also employs computational approaches like the window method and frequency sampling for FIR filters, while multirate techniques enable efficient implementations for rate conversion and subband processing applications.</p>
+<p>Understanding these advanced design methodologies equips you with the tools to translate application requirements into optimized filter implementations that balance competing objectives like sharp cutoff transitions, minimal passband ripple, and computational efficiency. We will examine how different approximation techniques achieve distinct frequency response characteristics, how analog-to-digital transformation methods preserve or modify these properties, and how multirate filter structures provide computational advantages in complex signal processing systems.</p>
+<h2 id="classical-filter-approximations">Classical Filter Approximations</h2>
+<p>Classical filter approximations emerged from decades of analog circuit design research, providing systematic methods to approximate ideal filter characteristics while accepting different compromises. Each approximation optimizes specific response characteristics, making it suited to particular application requirements.</p>
+<h3 id="butterworth-filters-maximally-flat-response">Butterworth Filters: Maximally Flat Response</h3>
+<p>Butterworth filters, also known as maximally flat filters, provide the smoothest possible passband response with no ripple. The magnitude squared frequency response for an N-th order Butterworth low-pass filter is:</p>
+<div class="arithmatex">\[|H(\omega)|^2 = \frac{1}{1 + \left(\frac{\omega}{\omega_c}\right)^{2N}}\]</div>
+<p>where <span class="arithmatex">\(\omega_c\)</span> is the cutoff frequency and <span class="arithmatex">\(N\)</span> is the filter order. This elegant expression yields a monotonically decreasing response from DC to infinity with maximum flatness at <span class="arithmatex">\(\omega = 0\)</span>.</p>
+<p>Key Butterworth characteristics include:</p>
+<ul>
+<li><strong>Passband</strong>: Perfectly flat with zero ripple, maximum derivative flatness at DC</li>
+<li><strong>Transition</strong>: Moderate rolloff rate of 20N dB/decade or 6N dB/octave</li>
+<li><strong>Phase</strong>: Reasonably linear near cutoff but becomes increasingly nonlinear with order</li>
+<li><strong>Poles</strong>: Equally spaced on semicircle in left-half s-plane</li>
+</ul>
+<p>Butterworth filters are excellent general-purpose filters when smooth, predictable frequency response without passband distortion is more important than sharp cutoff transitions. Audio crossover networks, anti-aliasing filters, and general signal conditioning frequently employ Butterworth designs.</p>
+<p>The filter order required to meet given specifications can be calculated from:</p>
+<div class="arithmatex">\[N \geq \frac{\log_{10}\left(\frac{10^{0.1A_s}-1}{10^{0.1A_p}-1}\right)}{2\log_{10}(\omega_s/\omega_p)}\]</div>
+<p>where <span class="arithmatex">\(A_p\)</span> and <span class="arithmatex">\(A_s\)</span> are passband and stopband attenuations in dB.</p>
+<h3 id="chebyshev-filters-equiripple-characteristics">Chebyshev Filters: Equiripple Characteristics</h3>
+<p>Chebyshev filters optimize cutoff sharpness by allowing controlled ripple in either the passband (Type I) or stopband (Type II). This tradeoff achieves steeper rolloff than Butterworth filters of the same order, at the cost of magnitude response variations.</p>
+<p>Chebyshev Type I filters exhibit equiripple passband behavior with magnitude squared:</p>
+<div class="arithmatex">\[|H(\omega)|^2 = \frac{1}{1 + \epsilon^2 T_N^2(\omega/\omega_c)}\]</div>
+<p>where <span class="arithmatex">\(T_N\)</span> is the N-th order Chebyshev polynomial and <span class="arithmatex">\(\epsilon\)</span> controls ripple magnitude. The ripple amplitude in dB is <span class="arithmatex">\(A_p = 10\log_{10}(1+\epsilon^2)\)</span>.</p>
+<p>Chebyshev Type II (inverse Chebyshev) filters instead ripple in the stopband while maintaining monotonic passband response. They provide sharper cutoff than Butterworth with smoother passband than Type I.</p>
+<p>Chebyshev characteristics include:</p>
+<ul>
+<li><strong>Transition</strong>: Steeper rolloff than Butterworth for same order</li>
+<li><strong>Ripple</strong>: Equiripple in passband (Type I) or stopband (Type II)</li>
+<li><strong>Phase</strong>: More nonlinear than Butterworth, especially near cutoff</li>
+<li><strong>Poles</strong>: Lie on ellipse in s-plane rather than circle</li>
+</ul>
+<p>Chebyshev filters suit applications prioritizing sharp transitions over passband flatness, such as channel selection in communication receivers, where some passband ripple is acceptable if out-of-band rejection improves.</p>
+<h3 id="elliptic-filters-optimal-transition-bandwidth">Elliptic Filters: Optimal Transition Bandwidth</h3>
+<p>Elliptic filters (also called Cauer filters) achieve the sharpest possible transition bandwidth for a given filter order by allowing ripple in both passband and stopband. They provide optimal performance when measured by the ratio of transition bandwidth to filter order.</p>
+<p>The elliptic filter magnitude response involves Jacobi elliptic functions:</p>
+<div class="arithmatex">\[|H(\omega)|^2 = \frac{1}{1 + \epsilon^2 R_N^2(\omega/\omega_c)}\]</div>
+<p>where <span class="arithmatex">\(R_N\)</span> is the N-th order elliptic rational function exhibiting equiripple characteristics in both passband and stopband.</p>
+<p>Elliptic filter characteristics include:</p>
+<ul>
+<li><strong>Transition</strong>: Sharpest possible for given order and ripple specifications</li>
+<li><strong>Ripple</strong>: Equiripple in both passband and stopband with independent control</li>
+<li><strong>Phase</strong>: Highly nonlinear, particularly in transition region</li>
+<li><strong>Poles and zeros</strong>: Finite zeros create stopband transmission nulls</li>
+</ul>
+<p>Elliptic filters excel when sharp transitions are paramount and both passband and stopband ripple are acceptable. Biomedical instrumentation, speech processing, and data acquisition systems often employ elliptic designs when computational resources are limited and maximum selectivity is required.</p>
+<h3 id="bessel-filters-linear-phase-response">Bessel Filters: Linear Phase Response</h3>
+<p>Bessel filters (also called Thomson filters) optimize phase linearity rather than magnitude response characteristics, providing maximally flat group delay in the passband. This property preserves signal waveshapes by maintaining consistent delay across frequencies.</p>
+<p>The Bessel filter transfer function is derived from Bessel polynomials that maximize phase linearity. The magnitude response is less selective than Butterworth, but the group delay is nearly constant across the passband.</p>
+<p>Bessel characteristics include:</p>
+<ul>
+<li><strong>Magnitude</strong>: Monotonic rolloff, less sharp than Butterworth</li>
+<li><strong>Phase</strong>: Maximally linear, preserving pulse shapes</li>
+<li><strong>Group delay</strong>: Nearly constant in passband, minimal overshoot</li>
+<li><strong>Applications</strong>: Pulse transmission, data acquisition, video processing</li>
+</ul>
+<p>When signal timing and waveshape preservation are critical, Bessel filters provide optimal performance despite their gentler magnitude rolloff. Oscilloscope amplifiers, pulse shaping networks, and high-fidelity audio systems frequently employ Bessel designs.</p>
+<h2 id="comparison-of-classical-approximations">Comparison of Classical Approximations</h2>
+<p>The following table summarizes the tradeoffs among classical filter types:</p>
+<table>
+<thead>
+<tr>
+<th>Filter Type</th>
+<th>Passband</th>
+<th>Stopband</th>
+<th>Transition</th>
+<th>Phase</th>
+<th>Best For</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Butterworth</td>
+<td>Flat, no ripple</td>
+<td>Monotonic</td>
+<td>Moderate</td>
+<td>Moderately nonlinear</td>
+<td>General purpose, smooth response</td>
+</tr>
+<tr>
+<td>Chebyshev I</td>
+<td>Equiripple</td>
+<td>Monotonic</td>
+<td>Sharp</td>
+<td>Nonlinear</td>
+<td>Sharp cutoff, ripple acceptable</td>
+</tr>
+<tr>
+<td>Chebyshev II</td>
+<td>Flat</td>
+<td>Equiripple</td>
+<td>Sharp</td>
+<td>Nonlinear</td>
+<td>Smooth passband, sharp cutoff</td>
+</tr>
+<tr>
+<td>Elliptic</td>
+<td>Equiripple</td>
+<td>Equiripple</td>
+<td>Sharpest</td>
+<td>Very nonlinear</td>
+<td>Maximum selectivity</td>
+</tr>
+<tr>
+<td>Bessel</td>
+<td>Monotonic</td>
+<td>Monotonic</td>
+<td>Gradual</td>
+<td>Maximally linear</td>
+<td>Pulse preservation</td>
+</tr>
+</tbody>
+</table>
+<h2 id="fir-filter-design-methods">FIR Filter Design Methods</h2>
+<p>Finite impulse response filters offer distinct design approaches that directly compute coefficients from frequency domain specifications or optimize approximation error using computational algorithms.</p>
+<h3 id="window-method">Window Method</h3>
+<p>The window method designs FIR filters by truncating and windowing the ideal infinite-length impulse response. The procedure involves:</p>
+<ol>
+<li>Specify desired frequency response <span class="arithmatex">\(H_d(\omega)\)</span></li>
+<li>Compute ideal impulse response via inverse Fourier transform: <span class="arithmatex">\(h_d[n] = \frac{1}{2\pi}\int_{-\pi}^{\pi} H_d(\omega)e^{j\omega n}d\omega\)</span></li>
+<li>Select window function <span class="arithmatex">\(w[n]\)</span> of length <span class="arithmatex">\(M+1\)</span></li>
+<li>Compute FIR coefficients: <span class="arithmatex">\(h[n] = h_d[n]w[n]\)</span> for <span class="arithmatex">\(n = 0, 1, \ldots, M\)</span></li>
+</ol>
+<p>Common window functions include:</p>
+<ul>
+<li><strong>Rectangular</strong>: <span class="arithmatex">\(w[n] = 1\)</span>, sharpest transition but largest ripple</li>
+<li><strong>Hamming</strong>: <span class="arithmatex">\(w[n] = 0.54 - 0.46\cos(2\pi n/M)\)</span>, good general purpose</li>
+<li><strong>Hann</strong>: <span class="arithmatex">\(w[n] = 0.5(1 - \cos(2\pi n/M))\)</span>, slightly wider transition</li>
+<li><strong>Blackman</strong>: Higher sidelobe suppression, wider main lobe</li>
+<li><strong>Kaiser</strong>: Adjustable parameter <span class="arithmatex">\(\beta\)</span> controls transition vs. ripple tradeoff</li>
+</ul>
+<p>The Kaiser window provides optimal flexibility through its parameter <span class="arithmatex">\(\beta\)</span>, which can be selected to meet specific passband ripple and stopband attenuation requirements. The Kaiser window design equations estimate required filter length and parameter values directly from specifications.</p>
+<h3 id="frequency-sampling-method">Frequency Sampling Method</h3>
+<p>The frequency sampling method specifies the desired frequency response at equally-spaced discrete frequencies, then computes filter coefficients through the inverse DFT. For an M+1 length filter:</p>
+<div class="arithmatex">\[h[n] = \frac{1}{M+1}\sum_{k=0}^{M} H[k]e^{j2\pi kn/(M+1)}\]</div>
+<p>where <span class="arithmatex">\(H[k]\)</span> are the specified frequency response samples. This direct approach allows precise control of the frequency response at sample points, though behavior between samples is not explicitly controlled.</p>
+<p>Transition band optimization improves frequency sampling designs by introducing additional variable samples in the transition region, providing degrees of freedom to minimize ripple while maintaining sharp cutoffs.</p>
+<h3 id="optimal-fir-filter-design">Optimal FIR Filter Design</h3>
+<p>The Parks-McClellan algorithm designs optimal equiripple FIR filters by minimizing the maximum approximation error across frequency bands. This computational approach uses the Remez exchange algorithm to find coefficient sets that achieve minimum Chebyshev (minimax) error.</p>
+<p>Optimal designs provide:</p>
+<ul>
+<li>Minimum filter order for given specifications</li>
+<li>Equiripple passband and stopband (optimal error distribution)</li>
+<li>Independent control of band edge frequencies and weights</li>
+<li>Guaranteed linear phase for symmetric coefficient designs</li>
+</ul>
+<p>Most modern filter design software implements Parks-McClellan optimization as the preferred FIR design method when linear phase and minimum order are desired. The algorithm is particularly effective for multiband filter designs with complex frequency response requirements.</p>
+<details>
+<summary>MicroSim: FIR Filter Design Comparison Tool</summary>
+<p>This simulation would enable students to compare FIR design methods interactively:</p>
+<ul>
+<li>Specify filter requirements: type (low-pass, high-pass, band-pass), cutoff frequencies, ripple tolerances</li>
+<li>Select design method: window (with window type selection), frequency sampling, or Parks-McClellan optimal</li>
+<li>View synchronized displays showing:</li>
+<li>Filter coefficients (impulse response)</li>
+<li>Magnitude response with specification template overlay</li>
+<li>Phase response and group delay</li>
+<li>Pole-zero plot</li>
+<li>Compare multiple designs simultaneously to understand tradeoffs</li>
+<li>Adjust specifications and immediately see how different methods respond</li>
+</ul>
+<p>Students would develop intuition about when each design method excels, how window selection affects response characteristics, and how optimal designs minimize filter order while meeting specifications exactly.</p>
+</details>
+<h2 id="analog-to-digital-filter-transformations">Analog-to-Digital Filter Transformations</h2>
+<p>Many powerful filter design techniques originated in analog circuit theory, requiring transformation methods to convert continuous-time designs into discrete-time digital equivalents. Two primary transformation approaches predominate: impulse invariance and the bilinear transform.</p>
+<h3 id="impulse-invariance-method">Impulse Invariance Method</h3>
+<p>Impulse invariance creates digital filters by sampling the analog filter's impulse response:</p>
+<div class="arithmatex">\[h[n] = T \cdot h_a(nT)\]</div>
+<p>where <span class="arithmatex">\(h_a(t)\)</span> is the analog impulse response, <span class="arithmatex">\(T\)</span> is the sampling period, and <span class="arithmatex">\(h[n]\)</span> is the discrete-time impulse response. This direct sampling preserves the time-domain impulse response shape.</p>
+<p>The transformation procedure involves:</p>
+<ol>
+<li>Perform partial fraction expansion of analog transfer function <span class="arithmatex">\(H_a(s)\)</span></li>
+<li>Map each pole <span class="arithmatex">\(s_k\)</span> to corresponding digital pole <span class="arithmatex">\(z_k = e^{s_k T}\)</span></li>
+<li>Scale numerator coefficients by <span class="arithmatex">\(T\)</span> to maintain impulse response magnitude</li>
+</ol>
+<p>Advantages of impulse invariance include:</p>
+<ul>
+<li>Preserves time-domain characteristics accurately</li>
+<li>Direct, intuitive mapping from analog to digital</li>
+<li>Maintains stability (left-half s-plane maps to inside unit circle)</li>
+</ul>
+<p>Disadvantages include:</p>
+<ul>
+<li><strong>Aliasing</strong>: Frequency response is periodic sum of shifted analog responses</li>
+<li>Limited to band-limited filters (primarily low-pass and band-pass)</li>
+<li>Cannot design high-pass or band-stop filters without aliasing</li>
+</ul>
+<p>Impulse invariance works well for low-pass and band-pass filters when the sampling rate significantly exceeds the highest significant frequency component, minimizing aliasing effects.</p>
+<h3 id="bilinear-transform">Bilinear Transform</h3>
+<p>The bilinear transform maps the entire s-plane to the z-plane through the transformation:</p>
+<div class="arithmatex">\[s = \frac{2}{T}\frac{1-z^{-1}}{1+z^{-1}}\]</div>
+<p>or equivalently:</p>
+<div class="arithmatex">\[z = \frac{1 + sT/2}{1 - sT/2}\]</div>
+<p>This mapping wraps the infinite-frequency analog axis onto the unit circle without aliasing, though it introduces frequency warping.</p>
+<p>The transformation procedure involves:</p>
+<ol>
+<li>Pre-warp critical frequencies: <span class="arithmatex">\(\omega_a = \frac{2}{T}\tan(\omega_d T/2)\)</span></li>
+<li>Design analog filter <span class="arithmatex">\(H_a(s)\)</span> using pre-warped frequencies</li>
+<li>Substitute <span class="arithmatex">\(s = \frac{2}{T}\frac{1-z^{-1}}{1+z^{-1}}\)</span> to obtain <span class="arithmatex">\(H(z)\)</span></li>
+</ol>
+<p>Advantages of the bilinear transform include:</p>
+<ul>
+<li><strong>No aliasing</strong>: One-to-one mapping prevents frequency overlap</li>
+<li><strong>Stability preservation</strong>: Left-half s-plane maps exactly to inside unit circle</li>
+<li><strong>All filter types</strong>: Works for low-pass, high-pass, band-pass, and band-stop</li>
+<li><strong>Well-established</strong>: Direct mapping from classical analog designs</li>
+</ul>
+<p>The primary disadvantage is frequency warping, where the relationship between analog and digital frequencies becomes nonlinear:</p>
+<div class="arithmatex">\[\omega_d = 2\arctan(\omega_a T/2)\]</div>
+<p>Pre-warping critical frequencies (cutoff, band edges) before designing the analog prototype compensates for this distortion at specified points, though warping persists between critical frequencies.</p>
+<p>The bilinear transform is the most widely used analog-to-digital conversion method, particularly for IIR filter designs based on Butterworth, Chebyshev, Elliptic, and other classical approximations.</p>
+<h2 id="multirate-signal-processing-fundamentals">Multirate Signal Processing Fundamentals</h2>
+<p>Multirate signal processing involves systems that operate on signals at multiple sampling rates, enabling efficient implementations of filters, rate conversion, and subband decomposition. These techniques reduce computational costs and enable applications impossible at single sampling rates.</p>
+<h3 id="filter-banks">Filter Banks</h3>
+<p>Filter banks decompose signals into multiple frequency subbands using parallel filter structures. An M-channel analysis filter bank splits the input signal into M subbands, each typically downsampled by factor M. The synthesis filter bank reconstructs the signal from subband components.</p>
+<p>Applications of filter banks include:</p>
+<ul>
+<li><strong>Audio compression</strong>: MP3 and AAC encode different frequency bands with varying precision</li>
+<li><strong>Image compression</strong>: JPEG divides images into frequency subbands for efficient coding</li>
+<li><strong>Spectrum analysis</strong>: Constant-Q filter banks model human auditory perception</li>
+<li><strong>Noise reduction</strong>: Process different frequency regions with adapted algorithms</li>
+</ul>
+<p>Perfect reconstruction filter banks satisfy the property that analysis followed by synthesis exactly recovers the original signal (within computational precision). Careful design of analysis and synthesis filters ensures aliasing cancellation and amplitude/phase distortion elimination.</p>
+<h3 id="multirate-filters-and-polyphase-implementation">Multirate Filters and Polyphase Implementation</h3>
+<p>Multirate filters implement filtering combined with rate changes (decimation or interpolation) more efficiently than separate operations. The polyphase decomposition reorganizes filter structures to minimize computation by operating only on retained samples.</p>
+<p>For decimation by factor M, the polyphase structure computes:</p>
+<ol>
+<li>Decompose filter <span class="arithmatex">\(H(z)\)</span> into M polyphase components: <span class="arithmatex">\(H(z) = \sum_{k=0}^{M-1} z^{-k}E_k(z^M)\)</span></li>
+<li>Apply polyphase filters <span class="arithmatex">\(E_k(z^M)\)</span> at the input rate</li>
+<li>Downsample commuted outputs</li>
+</ol>
+<p>This reorganization reduces multiplications by factor M compared to filtering at high rate then downsampling.</p>
+<p>For interpolation by factor L, the polyphase structure:</p>
+<ol>
+<li>Upsamples input by inserting <span class="arithmatex">\((L-1)\)</span> zeros between samples</li>
+<li>Applies polyphase filters operating at output rate</li>
+<li>Interleaves polyphase component outputs</li>
+</ol>
+<h3 id="computational-efficiency">Computational Efficiency</h3>
+<p>Multirate techniques provide substantial computational savings:</p>
+<ul>
+<li><strong>Decimation filter</strong>: Polyphase reduces multiplications from <span class="arithmatex">\(N \cdot f_{in}\)</span> to <span class="arithmatex">\(N \cdot f_{out}\)</span></li>
+<li><strong>Interpolation filter</strong>: Polyphase eliminates multiplications by zero-valued samples</li>
+<li><strong>Cascaded rate changes</strong>: Multiple small rate-change stages beat single large change</li>
+<li><strong>Filter banks</strong>: Polyphase implementation processes all channels simultaneously with shared computations</li>
+</ul>
+<p>Modern applications like software-defined radios, audio sample rate converters, and video scalers rely heavily on multirate techniques to achieve real-time performance with constrained computational resources.</p>
+<h2 id="practical-implementation-considerations">Practical Implementation Considerations</h2>
+<p>Translating theoretical filter designs into working implementations requires addressing numerical precision, computational structures, and resource constraints that affect real-world performance.</p>
+<h3 id="coefficient-quantization-effects">Coefficient Quantization Effects</h3>
+<p>Finite precision arithmetic limits coefficient accuracy, potentially degrading filter performance significantly. Effects include:</p>
+<ul>
+<li><strong>Pole/zero movement</strong>: Quantized coefficients shift pole and zero locations</li>
+<li><strong>Passband/stopband ripple increase</strong>: Approximation error grows with quantization</li>
+<li><strong>Instability</strong>: Poles may move outside unit circle for high-order IIR filters</li>
+</ul>
+<p>Sensitivity analysis quantifies how coefficient variations affect filter characteristics. High-order IIR filters exhibit extreme sensitivity, with small coefficient changes causing large response deviations.</p>
+<h3 id="filter-structures">Filter Structures</h3>
+<p>Different structural realizations of the same transfer function exhibit vastly different numerical properties:</p>
+<p><strong>Direct Form</strong> implements transfer function directly but shows high coefficient sensitivity and poor numerical properties for high-order filters.</p>
+<p><strong>Cascade Form</strong> factors transfer function into second-order sections (biquads):</p>
+<div class="arithmatex">\[H(z) = G\prod_{k=1}^{L} \frac{b_{k0} + b_{k1}z^{-1} + b_{k2}z^{-2}}{1 + a_{k1}z^{-1} + a_{k2}z^{-2}}\]</div>
+<p>This structure provides excellent numerical properties with low coefficient sensitivity and is preferred for IIR implementations.</p>
+<p><strong>Parallel Form</strong> decomposes transfer function into parallel second-order sections, offering similar numerical advantages with different computational patterns.</p>
+<p><strong>Lattice structures</strong> provide guaranteed stability and adaptive filter applications despite higher computational cost.</p>
+<h3 id="fixed-point-vs-floating-point-implementation">Fixed-Point vs. Floating-Point Implementation</h3>
+<p>Implementation platform determines numerical precision and dynamic range:</p>
+<p><strong>Fixed-point</strong> arithmetic uses integer representation with implied scaling:</p>
+<ul>
+<li>Advantages: Lower power consumption, smaller silicon area, deterministic timing</li>
+<li>Disadvantages: Limited dynamic range, scaling complexity, overflow risk</li>
+<li>Applications: Embedded DSP, FPGA, low-power devices</li>
+</ul>
+<p><strong>Floating-point</strong> arithmetic uses exponent and mantissa representation:</p>
+<ul>
+<li>Advantages: Wide dynamic range, simplified scaling, development ease</li>
+<li>Disadvantages: Higher power consumption, larger area, variable timing</li>
+<li>Applications: General-purpose processors, development platforms, high-precision systems</li>
+</ul>
+<p>Modern practice often employs floating-point for algorithm development and validation, then converts to fixed-point for production embedded implementations, using simulation to verify equivalence.</p>
+<h2 id="summary_1">Summary</h2>
+<p>This chapter explored advanced filter design methodologies that transform specifications into optimized implementations. Classical analog approximations including Butterworth, Chebyshev, Elliptic, and Bessel filters each optimize different characteristics, with Butterworth providing flat passband, Chebyshev offering sharp transitions with ripple, Elliptic achieving minimum order for given specifications, and Bessel preserving phase linearity. Understanding these tradeoffs enables appropriate selection for specific application requirements.</p>
+<p>FIR filter design methods including window-based approaches, frequency sampling, and optimal Parks-McClellan algorithms provide systematic frameworks for computing filter coefficients that meet frequency response specifications while guaranteeing stability and potentially achieving linear phase. The window method offers design simplicity, while optimal algorithms minimize filter order for exact specification satisfaction.</p>
+<p>Transformation methods convert proven analog designs to digital equivalents, with impulse invariance preserving time-domain characteristics but risking aliasing, while the bilinear transform eliminates aliasing through frequency warping that can be pre-compensated. These techniques enable digital implementation of classical approximations with well-understood performance characteristics.</p>
+<p>Multirate signal processing techniques including filter banks, polyphase filters, and efficient decimation/interpolation structures enable computational savings and sophisticated subband analysis applications. These methods are fundamental to modern compression, communications, and audio processing systems that must process signals efficiently at multiple rates.</p>
+<p>The practical implementation considerations discussed prepare you for real-world filter deployment, addressing coefficient quantization, structural choices, and arithmetic precision issues that bridge theoretical designs and working systems. The next chapter builds on these foundations to explore adaptive filters that automatically adjust coefficients based on signal characteristics and performance criteria.</p>
+
+
+
+
+
+
+
+  
+  
+
+
+
+  
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+          <button type="button" class="md-top md-icon" data-md-component="top" hidden>
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8z"/></svg>
+  Back to top
+</button>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+    
+      
+      <nav class="md-footer__inner md-grid" aria-label="Footer" >
+        
+          
+          <a href="../09-filter-design-fundamentals/" class="md-footer__link md-footer__link--prev" aria-label="Previous: Ch 9 - Filter Design Fundamentals">
+            <div class="md-footer__button md-icon">
+              
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+            </div>
+            <div class="md-footer__title">
+              <span class="md-footer__direction">
+                Previous
+              </span>
+              <div class="md-ellipsis">
+                Ch 9 - Filter Design Fundamentals
+              </div>
+            </div>
+          </a>
+        
+        
+          
+          <a href="../11-adaptive-signal-processing/" class="md-footer__link md-footer__link--next" aria-label="Next: Ch 11 - Adaptive Processing">
+            <div class="md-footer__title">
+              <span class="md-footer__direction">
+                Next
+              </span>
+              <div class="md-ellipsis">
+                Ch 11 - Adaptive Processing
+              </div>
+            </div>
+            <div class="md-footer__button md-icon">
+              
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M4 11v2h12l-5.5 5.5 1.42 1.42L19.84 12l-7.92-7.92L10.5 5.5 16 11z"/></svg>
+            </div>
+          </a>
+        
+      </nav>
+    
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    
+      
+      <script id="__config" type="application/json">{"base": "../..", "features": ["content.code.copy", "navigation.expand", "navigation.path", "navigation.prune", "navigation.indexes", "toc.follow", "navigation.top", "navigation.footer", "content.action.edit"], "search": "../../assets/javascripts/workers/search.f8cc74c7.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": null}</script>
+    
+    
+      <script src="../../assets/javascripts/bundle.c8b220af.min.js"></script>
+      
+        <script src="../../js/extra.js"></script>
+      
+        <script src="https://unpkg.com/mathjax@3/es5/tex-mml-chtml.js"></script>
+      
+    
+  </body>
+</html>
