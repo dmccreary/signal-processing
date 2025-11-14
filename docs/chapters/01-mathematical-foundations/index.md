@@ -81,6 +81,7 @@ where $a$ is the real part, $b$ is the imaginary part, and $i$ is the imaginary 
 Complex numbers can be visualized on the complex plane, where the horizontal axis represents the real part and the vertical axis represents the imaginary part. This geometric interpretation proves invaluable when analyzing signal transformations.
 
 #### Diagram: Complex Plane Representation
+
 <details markdown="1">
 <summary>Complex Plane Visualization</summary>
 Type: diagram

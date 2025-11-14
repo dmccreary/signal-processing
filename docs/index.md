@@ -14,7 +14,7 @@ hide:
 </style>
 # Signal Processing with AI
 
-![](./img/cover-banner.png)
+![](./img/cover-social-media.png)
 
 Welcome to our website on using generative AI to create
 and maintain a Signal Processing online course.  This site
@@ -45,6 +45,7 @@ Thanks! - Dan
 When we first created the outline for this course in October of 2024 the generative AI tools were in their infancy.  We now have much more
 robust tools such as [Cursor](./glossary.md#cursor-ide) and [WindSurf] to create and modify the content of these online textbooks.
 
+* [November 14, 2025 - Generated new learning graph and content using Claude Skills](./learning-graph/graph-viewer-installation.md)
 * [January 11, 2025 - Added 100 Signal Processing Equations](./prompts/12-equations.md)
 * [Updates for IEEE paper](https://dmccreary.github.io/signal-processing/ieee-paper-changes/)
 * [GitHub Commit Log](https://github.com/dmccreary/signal-processing/commits)
