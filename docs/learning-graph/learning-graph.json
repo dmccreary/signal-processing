@@ -1,0 +1,2412 @@
+{
+  "metadata": {
+    "title": "Introduction to Signal Processing with AI",
+    "description": "A comprehensive college-level course covering signal processing fundamentals from mathematical foundations through modern AI applications. This course emphasizes practical applications and interactive learning through MicroSims, covering signals, systems, Fourier analysis, filtering, adaptive processing, and AI-driven signal analysis.",
+    "creator": "Dan McCreary",
+    "date": "2025-11-13",
+    "version": "1.0",
+    "format": "Learning Graph JSON v1.0",
+    "schema": "https://raw.githubusercontent.com/dmccreary/learning-graphs/refs/heads/main/src/schema/learning-graph-schema.json",
+    "license": "CC BY-NC-SA 4.0 DEED"
+  },
+  "groups": {
+    "MATH": {
+      "classifierName": "Mathematical Foundations",
+      "color": "#8B0000",
+      "font": {
+        "color": "white"
+      }
+    },
+    "SIG": {
+      "classifierName": "Signal Fundamentals",
+      "color": "#FF4500",
+      "font": {
+        "color": "black"
+      }
+    },
+    "SYS": {
+      "classifierName": "System Properties",
+      "color": "#FFD700",
+      "font": {
+        "color": "white"
+      }
+    },
+    "CONV": {
+      "classifierName": "Convolution and Correlation",
+      "color": "#32CD32",
+      "font": {
+        "color": "black"
+      }
+    },
+    "SAMP": {
+      "classifierName": "Sampling and Quantization",
+      "color": "#1E90FF",
+      "font": {
+        "color": "white"
+      }
+    },
+    "FOUR": {
+      "classifierName": "Fourier Analysis",
+      "color": "#9370DB",
+      "font": {
+        "color": "black"
+      }
+    },
+    "XFRM": {
+      "classifierName": "Advanced Transforms",
+      "color": "#FF1493",
+      "font": {
+        "color": "white"
+      }
+    },
+    "FILT": {
+      "classifierName": "Filter Design",
+      "color": "#00CED1",
+      "font": {
+        "color": "black"
+      }
+    },
+    "ADAP": {
+      "classifierName": "Adaptive Processing",
+      "color": "#FF69B4",
+      "font": {
+        "color": "black"
+      }
+    },
+    "RAND": {
+      "classifierName": "Stochastic Processes",
+      "color": "#8B4513",
+      "font": {
+        "color": "white"
+      }
+    },
+    "ADVN": {
+      "classifierName": "Advanced Topics",
+      "color": "#4B0082",
+      "font": {
+        "color": "white"
+      }
+    },
+    "APPL": {
+      "classifierName": "Applications and AI",
+      "color": "#2F4F4F",
+      "font": {
+        "color": "white"
+      }
+    }
+  },
+  "nodes": [
+    {
+      "id": 1,
+      "label": "Real Numbers",
+      "group": "MATH"
+    },
+    {
+      "id": 2,
+      "label": "Complex Numbers",
+      "group": "MATH"
+    },
+    {
+      "id": 3,
+      "label": "Imaginary Unit",
+      "group": "MATH"
+    },
+    {
+      "id": 4,
+      "label": "Euler's Formula",
+      "group": "MATH"
+    },
+    {
+      "id": 5,
+      "label": "Phasors",
+      "group": "MATH"
+    },
+    {
+      "id": 6,
+      "label": "Vectors",
+      "group": "MATH"
+    },
+    {
+      "id": 7,
+      "label": "Matrices",
+      "group": "MATH"
+    },
+    {
+      "id": 8,
+      "label": "Linear Algebra",
+      "group": "MATH"
+    },
+    {
+      "id": 9,
+      "label": "Differential Calculus",
+      "group": "MATH"
+    },
+    {
+      "id": 10,
+      "label": "Integral Calculus",
+      "group": "MATH"
+    },
+    {
+      "id": 11,
+      "label": "Differential Equations",
+      "group": "MATH"
+    },
+    {
+      "id": 12,
+      "label": "Partial Derivatives",
+      "group": "MATH"
+    },
+    {
+      "id": 13,
+      "label": "Probability Theory",
+      "group": "MATH"
+    },
+    {
+      "id": 14,
+      "label": "Random Variables",
+      "group": "MATH"
+    },
+    {
+      "id": 15,
+      "label": "Statistical Distributions",
+      "group": "MATH"
+    },
+    {
+      "id": 16,
+      "label": "Mean and Expected Value",
+      "group": "MATH"
+    },
+    {
+      "id": 17,
+      "label": "Variance",
+      "group": "MATH"
+    },
+    {
+      "id": 18,
+      "label": "Standard Deviation",
+      "group": "MATH"
+    },
+    {
+      "id": 19,
+      "label": "Trigonometry",
+      "group": "MATH"
+    },
+    {
+      "id": 20,
+      "label": "Exponential Functions",
+      "group": "MATH"
+    },
+    {
+      "id": 21,
+      "label": "Logarithmic Functions",
+      "group": "MATH"
+    },
+    {
+      "id": 22,
+      "label": "Series and Sequences",
+      "group": "MATH"
+    },
+    {
+      "id": 23,
+      "label": "Eigenvalues and Eigenvectors",
+      "group": "MATH"
+    },
+    {
+      "id": 24,
+      "label": "Inner Product",
+      "group": "MATH"
+    },
+    {
+      "id": 25,
+      "label": "Norms and Metrics",
+      "group": "MATH"
+    },
+    {
+      "id": 26,
+      "label": "Signals",
+      "group": "SIG"
+    },
+    {
+      "id": 27,
+      "label": "Systems",
+      "group": "SIG"
+    },
+    {
+      "id": 28,
+      "label": "Continuous-Time Signals",
+      "group": "SIG"
+    },
+    {
+      "id": 29,
+      "label": "Discrete-Time Signals",
+      "group": "SIG"
+    },
+    {
+      "id": 30,
+      "label": "Analog Signals",
+      "group": "SIG"
+    },
+    {
+      "id": 31,
+      "label": "Digital Signals",
+      "group": "SIG"
+    },
+    {
+      "id": 32,
+      "label": "Periodic Signals",
+      "group": "SIG"
+    },
+    {
+      "id": 33,
+      "label": "Aperiodic Signals",
+      "group": "SIG"
+    },
+    {
+      "id": 34,
+      "label": "Even Signals",
+      "group": "SIG"
+    },
+    {
+      "id": 35,
+      "label": "Odd Signals",
+      "group": "SIG"
+    },
+    {
+      "id": 36,
+      "label": "Energy Signals",
+      "group": "SIG"
+    },
+    {
+      "id": 37,
+      "label": "Power Signals",
+      "group": "SIG"
+    },
+    {
+      "id": 38,
+      "label": "Unit Step Function",
+      "group": "SIG"
+    },
+    {
+      "id": 39,
+      "label": "Unit Impulse Function",
+      "group": "SIG"
+    },
+    {
+      "id": 40,
+      "label": "Sinusoidal Signals",
+      "group": "SIG"
+    },
+    {
+      "id": 41,
+      "label": "Exponential Signals",
+      "group": "SIG"
+    },
+    {
+      "id": 42,
+      "label": "Signal Operations",
+      "group": "SIG"
+    },
+    {
+      "id": 43,
+      "label": "Time Shifting",
+      "group": "SIG"
+    },
+    {
+      "id": 44,
+      "label": "Time Scaling",
+      "group": "SIG"
+    },
+    {
+      "id": 45,
+      "label": "Signal Amplitude",
+      "group": "SIG"
+    },
+    {
+      "id": 46,
+      "label": "Signal Frequency",
+      "group": "SIG"
+    },
+    {
+      "id": 47,
+      "label": "Signal Phase",
+      "group": "SIG"
+    },
+    {
+      "id": 48,
+      "label": "Signal Duration",
+      "group": "SIG"
+    },
+    {
+      "id": 49,
+      "label": "Signal Energy",
+      "group": "SIG"
+    },
+    {
+      "id": 50,
+      "label": "Signal Power",
+      "group": "SIG"
+    },
+    {
+      "id": 51,
+      "label": "Linear Systems",
+      "group": "SYS"
+    },
+    {
+      "id": 52,
+      "label": "Nonlinear Systems",
+      "group": "SYS"
+    },
+    {
+      "id": 53,
+      "label": "Time-Invariant Systems",
+      "group": "SYS"
+    },
+    {
+      "id": 54,
+      "label": "Time-Varying Systems",
+      "group": "SYS"
+    },
+    {
+      "id": 55,
+      "label": "Causality",
+      "group": "SYS"
+    },
+    {
+      "id": 56,
+      "label": "Non-Causal Systems",
+      "group": "SYS"
+    },
+    {
+      "id": 57,
+      "label": "Stability",
+      "group": "SYS"
+    },
+    {
+      "id": 58,
+      "label": "Unstable Systems",
+      "group": "SYS"
+    },
+    {
+      "id": 59,
+      "label": "Memory Systems",
+      "group": "SYS"
+    },
+    {
+      "id": 60,
+      "label": "Memoryless Systems",
+      "group": "SYS"
+    },
+    {
+      "id": 61,
+      "label": "Invertible Systems",
+      "group": "SYS"
+    },
+    {
+      "id": 62,
+      "label": "System Response",
+      "group": "SYS"
+    },
+    {
+      "id": 63,
+      "label": "Impulse Response",
+      "group": "SYS"
+    },
+    {
+      "id": 64,
+      "label": "Step Response",
+      "group": "SYS"
+    },
+    {
+      "id": 65,
+      "label": "Frequency Response",
+      "group": "SYS"
+    },
+    {
+      "id": 66,
+      "label": "Transfer Function",
+      "group": "SYS"
+    },
+    {
+      "id": 67,
+      "label": "System Identification",
+      "group": "SYS"
+    },
+    {
+      "id": 68,
+      "label": "Feedback Systems",
+      "group": "SYS"
+    },
+    {
+      "id": 69,
+      "label": "Feedforward Systems",
+      "group": "SYS"
+    },
+    {
+      "id": 70,
+      "label": "System Interconnections",
+      "group": "SYS"
+    },
+    {
+      "id": 71,
+      "label": "Convolution",
+      "group": "CONV"
+    },
+    {
+      "id": 72,
+      "label": "Discrete Convolution",
+      "group": "CONV"
+    },
+    {
+      "id": 73,
+      "label": "Circular Convolution",
+      "group": "CONV"
+    },
+    {
+      "id": 74,
+      "label": "Convolution Theorem",
+      "group": "CONV"
+    },
+    {
+      "id": 75,
+      "label": "Correlation",
+      "group": "CONV"
+    },
+    {
+      "id": 76,
+      "label": "Autocorrelation",
+      "group": "CONV"
+    },
+    {
+      "id": 77,
+      "label": "Cross-Correlation",
+      "group": "CONV"
+    },
+    {
+      "id": 78,
+      "label": "Correlation Coefficient",
+      "group": "CONV"
+    },
+    {
+      "id": 79,
+      "label": "Matched Filter",
+      "group": "CONV"
+    },
+    {
+      "id": 80,
+      "label": "Wiener Filter",
+      "group": "CONV"
+    },
+    {
+      "id": 81,
+      "label": "Sampling",
+      "group": "SAMP"
+    },
+    {
+      "id": 82,
+      "label": "Sampling Rate",
+      "group": "SAMP"
+    },
+    {
+      "id": 83,
+      "label": "Sampling Theorem",
+      "group": "SAMP"
+    },
+    {
+      "id": 84,
+      "label": "Nyquist Rate",
+      "group": "SAMP"
+    },
+    {
+      "id": 85,
+      "label": "Nyquist Frequency",
+      "group": "SAMP"
+    },
+    {
+      "id": 86,
+      "label": "Aliasing",
+      "group": "SAMP"
+    },
+    {
+      "id": 87,
+      "label": "Anti-Aliasing Filter",
+      "group": "SAMP"
+    },
+    {
+      "id": 88,
+      "label": "Oversampling",
+      "group": "SAMP"
+    },
+    {
+      "id": 89,
+      "label": "Undersampling",
+      "group": "SAMP"
+    },
+    {
+      "id": 90,
+      "label": "Quantization",
+      "group": "SAMP"
+    },
+    {
+      "id": 91,
+      "label": "Quantization Error",
+      "group": "SAMP"
+    },
+    {
+      "id": 92,
+      "label": "Quantization Noise",
+      "group": "SAMP"
+    },
+    {
+      "id": 93,
+      "label": "Uniform Quantization",
+      "group": "SAMP"
+    },
+    {
+      "id": 94,
+      "label": "Non-Uniform Quantization",
+      "group": "SAMP"
+    },
+    {
+      "id": 95,
+      "label": "Signal Reconstruction",
+      "group": "SAMP"
+    },
+    {
+      "id": 96,
+      "label": "Fourier Series",
+      "group": "FOUR"
+    },
+    {
+      "id": 97,
+      "label": "Fourier Coefficients",
+      "group": "FOUR"
+    },
+    {
+      "id": 98,
+      "label": "Fourier Transform",
+      "group": "FOUR"
+    },
+    {
+      "id": 99,
+      "label": "Inverse Fourier Transform",
+      "group": "FOUR"
+    },
+    {
+      "id": 100,
+      "label": "Discrete Fourier Transform",
+      "group": "FOUR"
+    },
+    {
+      "id": 101,
+      "label": "Inverse DFT",
+      "group": "FOUR"
+    },
+    {
+      "id": 102,
+      "label": "Fast Fourier Transform",
+      "group": "FOUR"
+    },
+    {
+      "id": 103,
+      "label": "FFT Algorithms",
+      "group": "FOUR"
+    },
+    {
+      "id": 104,
+      "label": "Radix-2 FFT",
+      "group": "FOUR"
+    },
+    {
+      "id": 105,
+      "label": "Cooley-Tukey Algorithm",
+      "group": "FOUR"
+    },
+    {
+      "id": 106,
+      "label": "Frequency Domain",
+      "group": "FOUR"
+    },
+    {
+      "id": 107,
+      "label": "Time Domain",
+      "group": "FOUR"
+    },
+    {
+      "id": 108,
+      "label": "Spectrum",
+      "group": "FOUR"
+    },
+    {
+      "id": 109,
+      "label": "Magnitude Spectrum",
+      "group": "FOUR"
+    },
+    {
+      "id": 110,
+      "label": "Phase Spectrum",
+      "group": "FOUR"
+    },
+    {
+      "id": 111,
+      "label": "Power Spectrum",
+      "group": "FOUR"
+    },
+    {
+      "id": 112,
+      "label": "Spectral Analysis",
+      "group": "FOUR"
+    },
+    {
+      "id": 113,
+      "label": "Spectral Leakage",
+      "group": "FOUR"
+    },
+    {
+      "id": 114,
+      "label": "Window Functions",
+      "group": "FOUR"
+    },
+    {
+      "id": 115,
+      "label": "Windowing Techniques",
+      "group": "FOUR"
+    },
+    {
+      "id": 116,
+      "label": "Laplace Transform",
+      "group": "XFRM"
+    },
+    {
+      "id": 117,
+      "label": "Z-Transform",
+      "group": "XFRM"
+    },
+    {
+      "id": 118,
+      "label": "Inverse Z-Transform",
+      "group": "XFRM"
+    },
+    {
+      "id": 119,
+      "label": "Region of Convergence",
+      "group": "XFRM"
+    },
+    {
+      "id": 120,
+      "label": "Poles",
+      "group": "XFRM"
+    },
+    {
+      "id": 121,
+      "label": "Zeros",
+      "group": "XFRM"
+    },
+    {
+      "id": 122,
+      "label": "Pole-Zero Plot",
+      "group": "XFRM"
+    },
+    {
+      "id": 123,
+      "label": "Pole-Zero Analysis",
+      "group": "XFRM"
+    },
+    {
+      "id": 124,
+      "label": "S-Plane",
+      "group": "XFRM"
+    },
+    {
+      "id": 125,
+      "label": "Z-Plane",
+      "group": "XFRM"
+    },
+    {
+      "id": 126,
+      "label": "Discrete Cosine Transform",
+      "group": "XFRM"
+    },
+    {
+      "id": 127,
+      "label": "Wavelet Transform",
+      "group": "XFRM"
+    },
+    {
+      "id": 128,
+      "label": "Discrete Wavelet Transform",
+      "group": "XFRM"
+    },
+    {
+      "id": 129,
+      "label": "Continuous Wavelet Transform",
+      "group": "XFRM"
+    },
+    {
+      "id": 130,
+      "label": "Short-Time Fourier Transform",
+      "group": "XFRM"
+    },
+    {
+      "id": 131,
+      "label": "Filters",
+      "group": "FILT"
+    },
+    {
+      "id": 132,
+      "label": "Low-Pass Filters",
+      "group": "FILT"
+    },
+    {
+      "id": 133,
+      "label": "High-Pass Filters",
+      "group": "FILT"
+    },
+    {
+      "id": 134,
+      "label": "Band-Pass Filters",
+      "group": "FILT"
+    },
+    {
+      "id": 135,
+      "label": "Band-Stop Filters",
+      "group": "FILT"
+    },
+    {
+      "id": 136,
+      "label": "Notch Filters",
+      "group": "FILT"
+    },
+    {
+      "id": 137,
+      "label": "Comb Filters",
+      "group": "FILT"
+    },
+    {
+      "id": 138,
+      "label": "All-Pass Filters",
+      "group": "FILT"
+    },
+    {
+      "id": 139,
+      "label": "FIR Filters",
+      "group": "FILT"
+    },
+    {
+      "id": 140,
+      "label": "IIR Filters",
+      "group": "FILT"
+    },
+    {
+      "id": 141,
+      "label": "Filter Order",
+      "group": "FILT"
+    },
+    {
+      "id": 142,
+      "label": "Filter Coefficients",
+      "group": "FILT"
+    },
+    {
+      "id": 143,
+      "label": "Filter Stability",
+      "group": "FILT"
+    },
+    {
+      "id": 144,
+      "label": "Filter Design Methods",
+      "group": "FILT"
+    },
+    {
+      "id": 145,
+      "label": "Butterworth Filter",
+      "group": "FILT"
+    },
+    {
+      "id": 146,
+      "label": "Chebyshev Filter",
+      "group": "FILT"
+    },
+    {
+      "id": 147,
+      "label": "Elliptic Filter",
+      "group": "FILT"
+    },
+    {
+      "id": 148,
+      "label": "Bessel Filter",
+      "group": "FILT"
+    },
+    {
+      "id": 149,
+      "label": "Window Method",
+      "group": "FILT"
+    },
+    {
+      "id": 150,
+      "label": "Frequency Sampling Method",
+      "group": "FILT"
+    },
+    {
+      "id": 151,
+      "label": "Bilinear Transform",
+      "group": "FILT"
+    },
+    {
+      "id": 152,
+      "label": "Impulse Invariance",
+      "group": "FILT"
+    },
+    {
+      "id": 153,
+      "label": "Filter Banks",
+      "group": "FILT"
+    },
+    {
+      "id": 154,
+      "label": "Multirate Filters",
+      "group": "FILT"
+    },
+    {
+      "id": 155,
+      "label": "Polyphase Filters",
+      "group": "FILT"
+    },
+    {
+      "id": 156,
+      "label": "Adaptive Filters",
+      "group": "ADAP"
+    },
+    {
+      "id": 157,
+      "label": "Adaptive Algorithms",
+      "group": "ADAP"
+    },
+    {
+      "id": 158,
+      "label": "Least Mean Squares",
+      "group": "ADAP"
+    },
+    {
+      "id": 159,
+      "label": "Normalized LMS",
+      "group": "ADAP"
+    },
+    {
+      "id": 160,
+      "label": "Recursive Least Squares",
+      "group": "ADAP"
+    },
+    {
+      "id": 161,
+      "label": "Kalman Filter",
+      "group": "ADAP"
+    },
+    {
+      "id": 162,
+      "label": "Adaptive Noise Cancellation",
+      "group": "ADAP"
+    },
+    {
+      "id": 163,
+      "label": "Echo Cancellation",
+      "group": "ADAP"
+    },
+    {
+      "id": 164,
+      "label": "Adaptive Equalization",
+      "group": "ADAP"
+    },
+    {
+      "id": 165,
+      "label": "System Identification",
+      "group": "ADAP"
+    },
+    {
+      "id": 166,
+      "label": "Random Processes",
+      "group": "RAND"
+    },
+    {
+      "id": 167,
+      "label": "Stochastic Signals",
+      "group": "RAND"
+    },
+    {
+      "id": 168,
+      "label": "White Noise",
+      "group": "RAND"
+    },
+    {
+      "id": 169,
+      "label": "Colored Noise",
+      "group": "RAND"
+    },
+    {
+      "id": 170,
+      "label": "Gaussian Noise",
+      "group": "RAND"
+    },
+    {
+      "id": 171,
+      "label": "Signal-to-Noise Ratio",
+      "group": "RAND"
+    },
+    {
+      "id": 172,
+      "label": "Noise Reduction",
+      "group": "RAND"
+    },
+    {
+      "id": 173,
+      "label": "Statistical Signal Processing",
+      "group": "RAND"
+    },
+    {
+      "id": 174,
+      "label": "Power Spectral Density",
+      "group": "RAND"
+    },
+    {
+      "id": 175,
+      "label": "Wiener-Khinchin Theorem",
+      "group": "RAND"
+    },
+    {
+      "id": 176,
+      "label": "Multirate Signal Processing",
+      "group": "ADVN"
+    },
+    {
+      "id": 177,
+      "label": "Decimation",
+      "group": "ADVN"
+    },
+    {
+      "id": 178,
+      "label": "Interpolation",
+      "group": "ADVN"
+    },
+    {
+      "id": 179,
+      "label": "Upsampling",
+      "group": "ADVN"
+    },
+    {
+      "id": 180,
+      "label": "Downsampling",
+      "group": "ADVN"
+    },
+    {
+      "id": 181,
+      "label": "Signal Compression",
+      "group": "ADVN"
+    },
+    {
+      "id": 182,
+      "label": "Lossy Compression",
+      "group": "ADVN"
+    },
+    {
+      "id": 183,
+      "label": "Lossless Compression",
+      "group": "ADVN"
+    },
+    {
+      "id": 184,
+      "label": "Transform Coding",
+      "group": "ADVN"
+    },
+    {
+      "id": 185,
+      "label": "Huffman Coding",
+      "group": "ADVN"
+    },
+    {
+      "id": 186,
+      "label": "Time-Frequency Analysis",
+      "group": "ADVN"
+    },
+    {
+      "id": 187,
+      "label": "Spectrogram",
+      "group": "ADVN"
+    },
+    {
+      "id": 188,
+      "label": "Wigner-Ville Distribution",
+      "group": "ADVN"
+    },
+    {
+      "id": 189,
+      "label": "Ambiguity Function",
+      "group": "ADVN"
+    },
+    {
+      "id": 190,
+      "label": "Compressed Sensing",
+      "group": "ADVN"
+    },
+    {
+      "id": 191,
+      "label": "Digital Signal Processors",
+      "group": "APPL"
+    },
+    {
+      "id": 192,
+      "label": "FPGA Implementation",
+      "group": "APPL"
+    },
+    {
+      "id": 193,
+      "label": "Real-Time Processing",
+      "group": "APPL"
+    },
+    {
+      "id": 194,
+      "label": "Audio Signal Processing",
+      "group": "APPL"
+    },
+    {
+      "id": 195,
+      "label": "Image Processing",
+      "group": "APPL"
+    },
+    {
+      "id": 196,
+      "label": "Video Processing",
+      "group": "APPL"
+    },
+    {
+      "id": 197,
+      "label": "Machine Learning in DSP",
+      "group": "APPL"
+    },
+    {
+      "id": 198,
+      "label": "Convolutional Neural Networks",
+      "group": "APPL"
+    },
+    {
+      "id": 199,
+      "label": "Deep Learning for Signals",
+      "group": "APPL"
+    },
+    {
+      "id": 200,
+      "label": "AI-Driven Signal Analysis",
+      "group": "APPL"
+    }
+  ],
+  "edges": [
+    {
+      "from": 1,
+      "to": 2,
+      "arrows": "to"
+    },
+    {
+      "from": 1,
+      "to": 3,
+      "arrows": "to"
+    },
+    {
+      "from": 2,
+      "to": 4,
+      "arrows": "to"
+    },
+    {
+      "from": 3,
+      "to": 4,
+      "arrows": "to"
+    },
+    {
+      "from": 2,
+      "to": 5,
+      "arrows": "to"
+    },
+    {
+      "from": 4,
+      "to": 5,
+      "arrows": "to"
+    },
+    {
+      "from": 1,
+      "to": 6,
+      "arrows": "to"
+    },
+    {
+      "from": 6,
+      "to": 7,
+      "arrows": "to"
+    },
+    {
+      "from": 6,
+      "to": 8,
+      "arrows": "to"
+    },
+    {
+      "from": 7,
+      "to": 8,
+      "arrows": "to"
+    },
+    {
+      "from": 1,
+      "to": 9,
+      "arrows": "to"
+    },
+    {
+      "from": 1,
+      "to": 10,
+      "arrows": "to"
+    },
+    {
+      "from": 9,
+      "to": 11,
+      "arrows": "to"
+    },
+    {
+      "from": 9,
+      "to": 12,
+      "arrows": "to"
+    },
+    {
+      "from": 1,
+      "to": 13,
+      "arrows": "to"
+    },
+    {
+      "from": 13,
+      "to": 14,
+      "arrows": "to"
+    },
+    {
+      "from": 14,
+      "to": 15,
+      "arrows": "to"
+    },
+    {
+      "from": 14,
+      "to": 16,
+      "arrows": "to"
+    },
+    {
+      "from": 16,
+      "to": 17,
+      "arrows": "to"
+    },
+    {
+      "from": 17,
+      "to": 18,
+      "arrows": "to"
+    },
+    {
+      "from": 1,
+      "to": 19,
+      "arrows": "to"
+    },
+    {
+      "from": 1,
+      "to": 20,
+      "arrows": "to"
+    },
+    {
+      "from": 1,
+      "to": 21,
+      "arrows": "to"
+    },
+    {
+      "from": 1,
+      "to": 22,
+      "arrows": "to"
+    },
+    {
+      "from": 8,
+      "to": 23,
+      "arrows": "to"
+    },
+    {
+      "from": 6,
+      "to": 24,
+      "arrows": "to"
+    },
+    {
+      "from": 6,
+      "to": 25,
+      "arrows": "to"
+    },
+    {
+      "from": 1,
+      "to": 26,
+      "arrows": "to"
+    },
+    {
+      "from": 26,
+      "to": 27,
+      "arrows": "to"
+    },
+    {
+      "from": 26,
+      "to": 28,
+      "arrows": "to"
+    },
+    {
+      "from": 26,
+      "to": 29,
+      "arrows": "to"
+    },
+    {
+      "from": 28,
+      "to": 30,
+      "arrows": "to"
+    },
+    {
+      "from": 29,
+      "to": 31,
+      "arrows": "to"
+    },
+    {
+      "from": 26,
+      "to": 32,
+      "arrows": "to"
+    },
+    {
+      "from": 26,
+      "to": 33,
+      "arrows": "to"
+    },
+    {
+      "from": 26,
+      "to": 34,
+      "arrows": "to"
+    },
+    {
+      "from": 26,
+      "to": 35,
+      "arrows": "to"
+    },
+    {
+      "from": 26,
+      "to": 36,
+      "arrows": "to"
+    },
+    {
+      "from": 26,
+      "to": 37,
+      "arrows": "to"
+    },
+    {
+      "from": 1,
+      "to": 38,
+      "arrows": "to"
+    },
+    {
+      "from": 1,
+      "to": 39,
+      "arrows": "to"
+    },
+    {
+      "from": 19,
+      "to": 40,
+      "arrows": "to"
+    },
+    {
+      "from": 26,
+      "to": 40,
+      "arrows": "to"
+    },
+    {
+      "from": 20,
+      "to": 41,
+      "arrows": "to"
+    },
+    {
+      "from": 26,
+      "to": 41,
+      "arrows": "to"
+    },
+    {
+      "from": 26,
+      "to": 42,
+      "arrows": "to"
+    },
+    {
+      "from": 42,
+      "to": 43,
+      "arrows": "to"
+    },
+    {
+      "from": 42,
+      "to": 44,
+      "arrows": "to"
+    },
+    {
+      "from": 26,
+      "to": 45,
+      "arrows": "to"
+    },
+    {
+      "from": 26,
+      "to": 46,
+      "arrows": "to"
+    },
+    {
+      "from": 26,
+      "to": 47,
+      "arrows": "to"
+    },
+    {
+      "from": 19,
+      "to": 47,
+      "arrows": "to"
+    },
+    {
+      "from": 26,
+      "to": 48,
+      "arrows": "to"
+    },
+    {
+      "from": 26,
+      "to": 49,
+      "arrows": "to"
+    },
+    {
+      "from": 10,
+      "to": 49,
+      "arrows": "to"
+    },
+    {
+      "from": 26,
+      "to": 50,
+      "arrows": "to"
+    },
+    {
+      "from": 27,
+      "to": 51,
+      "arrows": "to"
+    },
+    {
+      "from": 27,
+      "to": 52,
+      "arrows": "to"
+    },
+    {
+      "from": 27,
+      "to": 53,
+      "arrows": "to"
+    },
+    {
+      "from": 27,
+      "to": 54,
+      "arrows": "to"
+    },
+    {
+      "from": 27,
+      "to": 55,
+      "arrows": "to"
+    },
+    {
+      "from": 27,
+      "to": 56,
+      "arrows": "to"
+    },
+    {
+      "from": 27,
+      "to": 57,
+      "arrows": "to"
+    },
+    {
+      "from": 27,
+      "to": 58,
+      "arrows": "to"
+    },
+    {
+      "from": 27,
+      "to": 59,
+      "arrows": "to"
+    },
+    {
+      "from": 27,
+      "to": 60,
+      "arrows": "to"
+    },
+    {
+      "from": 27,
+      "to": 61,
+      "arrows": "to"
+    },
+    {
+      "from": 27,
+      "to": 62,
+      "arrows": "to"
+    },
+    {
+      "from": 39,
+      "to": 63,
+      "arrows": "to"
+    },
+    {
+      "from": 62,
+      "to": 63,
+      "arrows": "to"
+    },
+    {
+      "from": 38,
+      "to": 64,
+      "arrows": "to"
+    },
+    {
+      "from": 62,
+      "to": 64,
+      "arrows": "to"
+    },
+    {
+      "from": 62,
+      "to": 65,
+      "arrows": "to"
+    },
+    {
+      "from": 46,
+      "to": 65,
+      "arrows": "to"
+    },
+    {
+      "from": 65,
+      "to": 66,
+      "arrows": "to"
+    },
+    {
+      "from": 27,
+      "to": 67,
+      "arrows": "to"
+    },
+    {
+      "from": 62,
+      "to": 67,
+      "arrows": "to"
+    },
+    {
+      "from": 27,
+      "to": 68,
+      "arrows": "to"
+    },
+    {
+      "from": 27,
+      "to": 69,
+      "arrows": "to"
+    },
+    {
+      "from": 27,
+      "to": 70,
+      "arrows": "to"
+    },
+    {
+      "from": 10,
+      "to": 71,
+      "arrows": "to"
+    },
+    {
+      "from": 26,
+      "to": 71,
+      "arrows": "to"
+    },
+    {
+      "from": 27,
+      "to": 71,
+      "arrows": "to"
+    },
+    {
+      "from": 71,
+      "to": 72,
+      "arrows": "to"
+    },
+    {
+      "from": 29,
+      "to": 72,
+      "arrows": "to"
+    },
+    {
+      "from": 71,
+      "to": 73,
+      "arrows": "to"
+    },
+    {
+      "from": 71,
+      "to": 74,
+      "arrows": "to"
+    },
+    {
+      "from": 26,
+      "to": 75,
+      "arrows": "to"
+    },
+    {
+      "from": 75,
+      "to": 76,
+      "arrows": "to"
+    },
+    {
+      "from": 75,
+      "to": 77,
+      "arrows": "to"
+    },
+    {
+      "from": 75,
+      "to": 78,
+      "arrows": "to"
+    },
+    {
+      "from": 17,
+      "to": 78,
+      "arrows": "to"
+    },
+    {
+      "from": 77,
+      "to": 79,
+      "arrows": "to"
+    },
+    {
+      "from": 76,
+      "to": 80,
+      "arrows": "to"
+    },
+    {
+      "from": 28,
+      "to": 81,
+      "arrows": "to"
+    },
+    {
+      "from": 29,
+      "to": 81,
+      "arrows": "to"
+    },
+    {
+      "from": 81,
+      "to": 82,
+      "arrows": "to"
+    },
+    {
+      "from": 81,
+      "to": 83,
+      "arrows": "to"
+    },
+    {
+      "from": 82,
+      "to": 83,
+      "arrows": "to"
+    },
+    {
+      "from": 83,
+      "to": 84,
+      "arrows": "to"
+    },
+    {
+      "from": 84,
+      "to": 85,
+      "arrows": "to"
+    },
+    {
+      "from": 81,
+      "to": 86,
+      "arrows": "to"
+    },
+    {
+      "from": 85,
+      "to": 86,
+      "arrows": "to"
+    },
+    {
+      "from": 86,
+      "to": 87,
+      "arrows": "to"
+    },
+    {
+      "from": 82,
+      "to": 88,
+      "arrows": "to"
+    },
+    {
+      "from": 82,
+      "to": 89,
+      "arrows": "to"
+    },
+    {
+      "from": 26,
+      "to": 90,
+      "arrows": "to"
+    },
+    {
+      "from": 90,
+      "to": 91,
+      "arrows": "to"
+    },
+    {
+      "from": 90,
+      "to": 92,
+      "arrows": "to"
+    },
+    {
+      "from": 90,
+      "to": 93,
+      "arrows": "to"
+    },
+    {
+      "from": 90,
+      "to": 94,
+      "arrows": "to"
+    },
+    {
+      "from": 81,
+      "to": 95,
+      "arrows": "to"
+    },
+    {
+      "from": 90,
+      "to": 95,
+      "arrows": "to"
+    },
+    {
+      "from": 10,
+      "to": 96,
+      "arrows": "to"
+    },
+    {
+      "from": 19,
+      "to": 96,
+      "arrows": "to"
+    },
+    {
+      "from": 32,
+      "to": 96,
+      "arrows": "to"
+    },
+    {
+      "from": 96,
+      "to": 97,
+      "arrows": "to"
+    },
+    {
+      "from": 10,
+      "to": 98,
+      "arrows": "to"
+    },
+    {
+      "from": 96,
+      "to": 98,
+      "arrows": "to"
+    },
+    {
+      "from": 98,
+      "to": 99,
+      "arrows": "to"
+    },
+    {
+      "from": 98,
+      "to": 100,
+      "arrows": "to"
+    },
+    {
+      "from": 29,
+      "to": 100,
+      "arrows": "to"
+    },
+    {
+      "from": 100,
+      "to": 101,
+      "arrows": "to"
+    },
+    {
+      "from": 100,
+      "to": 102,
+      "arrows": "to"
+    },
+    {
+      "from": 102,
+      "to": 103,
+      "arrows": "to"
+    },
+    {
+      "from": 103,
+      "to": 104,
+      "arrows": "to"
+    },
+    {
+      "from": 104,
+      "to": 105,
+      "arrows": "to"
+    },
+    {
+      "from": 98,
+      "to": 106,
+      "arrows": "to"
+    },
+    {
+      "from": 26,
+      "to": 107,
+      "arrows": "to"
+    },
+    {
+      "from": 98,
+      "to": 108,
+      "arrows": "to"
+    },
+    {
+      "from": 108,
+      "to": 109,
+      "arrows": "to"
+    },
+    {
+      "from": 108,
+      "to": 110,
+      "arrows": "to"
+    },
+    {
+      "from": 108,
+      "to": 111,
+      "arrows": "to"
+    },
+    {
+      "from": 50,
+      "to": 111,
+      "arrows": "to"
+    },
+    {
+      "from": 108,
+      "to": 112,
+      "arrows": "to"
+    },
+    {
+      "from": 100,
+      "to": 113,
+      "arrows": "to"
+    },
+    {
+      "from": 113,
+      "to": 114,
+      "arrows": "to"
+    },
+    {
+      "from": 114,
+      "to": 115,
+      "arrows": "to"
+    },
+    {
+      "from": 10,
+      "to": 116,
+      "arrows": "to"
+    },
+    {
+      "from": 20,
+      "to": 116,
+      "arrows": "to"
+    },
+    {
+      "from": 28,
+      "to": 116,
+      "arrows": "to"
+    },
+    {
+      "from": 100,
+      "to": 117,
+      "arrows": "to"
+    },
+    {
+      "from": 29,
+      "to": 117,
+      "arrows": "to"
+    },
+    {
+      "from": 117,
+      "to": 118,
+      "arrows": "to"
+    },
+    {
+      "from": 117,
+      "to": 119,
+      "arrows": "to"
+    },
+    {
+      "from": 117,
+      "to": 120,
+      "arrows": "to"
+    },
+    {
+      "from": 117,
+      "to": 121,
+      "arrows": "to"
+    },
+    {
+      "from": 120,
+      "to": 122,
+      "arrows": "to"
+    },
+    {
+      "from": 121,
+      "to": 122,
+      "arrows": "to"
+    },
+    {
+      "from": 122,
+      "to": 123,
+      "arrows": "to"
+    },
+    {
+      "from": 116,
+      "to": 124,
+      "arrows": "to"
+    },
+    {
+      "from": 117,
+      "to": 125,
+      "arrows": "to"
+    },
+    {
+      "from": 100,
+      "to": 126,
+      "arrows": "to"
+    },
+    {
+      "from": 98,
+      "to": 127,
+      "arrows": "to"
+    },
+    {
+      "from": 127,
+      "to": 128,
+      "arrows": "to"
+    },
+    {
+      "from": 29,
+      "to": 128,
+      "arrows": "to"
+    },
+    {
+      "from": 127,
+      "to": 129,
+      "arrows": "to"
+    },
+    {
+      "from": 28,
+      "to": 129,
+      "arrows": "to"
+    },
+    {
+      "from": 98,
+      "to": 130,
+      "arrows": "to"
+    },
+    {
+      "from": 114,
+      "to": 130,
+      "arrows": "to"
+    },
+    {
+      "from": 27,
+      "to": 131,
+      "arrows": "to"
+    },
+    {
+      "from": 106,
+      "to": 131,
+      "arrows": "to"
+    },
+    {
+      "from": 131,
+      "to": 132,
+      "arrows": "to"
+    },
+    {
+      "from": 131,
+      "to": 133,
+      "arrows": "to"
+    },
+    {
+      "from": 131,
+      "to": 134,
+      "arrows": "to"
+    },
+    {
+      "from": 131,
+      "to": 135,
+      "arrows": "to"
+    },
+    {
+      "from": 135,
+      "to": 136,
+      "arrows": "to"
+    },
+    {
+      "from": 131,
+      "to": 137,
+      "arrows": "to"
+    },
+    {
+      "from": 131,
+      "to": 138,
+      "arrows": "to"
+    },
+    {
+      "from": 131,
+      "to": 139,
+      "arrows": "to"
+    },
+    {
+      "from": 72,
+      "to": 139,
+      "arrows": "to"
+    },
+    {
+      "from": 131,
+      "to": 140,
+      "arrows": "to"
+    },
+    {
+      "from": 68,
+      "to": 140,
+      "arrows": "to"
+    },
+    {
+      "from": 131,
+      "to": 141,
+      "arrows": "to"
+    },
+    {
+      "from": 131,
+      "to": 142,
+      "arrows": "to"
+    },
+    {
+      "from": 131,
+      "to": 143,
+      "arrows": "to"
+    },
+    {
+      "from": 57,
+      "to": 143,
+      "arrows": "to"
+    },
+    {
+      "from": 131,
+      "to": 144,
+      "arrows": "to"
+    },
+    {
+      "from": 132,
+      "to": 145,
+      "arrows": "to"
+    },
+    {
+      "from": 144,
+      "to": 145,
+      "arrows": "to"
+    },
+    {
+      "from": 132,
+      "to": 146,
+      "arrows": "to"
+    },
+    {
+      "from": 144,
+      "to": 146,
+      "arrows": "to"
+    },
+    {
+      "from": 132,
+      "to": 147,
+      "arrows": "to"
+    },
+    {
+      "from": 144,
+      "to": 147,
+      "arrows": "to"
+    },
+    {
+      "from": 132,
+      "to": 148,
+      "arrows": "to"
+    },
+    {
+      "from": 144,
+      "to": 148,
+      "arrows": "to"
+    },
+    {
+      "from": 139,
+      "to": 149,
+      "arrows": "to"
+    },
+    {
+      "from": 114,
+      "to": 149,
+      "arrows": "to"
+    },
+    {
+      "from": 139,
+      "to": 150,
+      "arrows": "to"
+    },
+    {
+      "from": 100,
+      "to": 150,
+      "arrows": "to"
+    },
+    {
+      "from": 116,
+      "to": 151,
+      "arrows": "to"
+    },
+    {
+      "from": 117,
+      "to": 151,
+      "arrows": "to"
+    },
+    {
+      "from": 140,
+      "to": 152,
+      "arrows": "to"
+    },
+    {
+      "from": 63,
+      "to": 152,
+      "arrows": "to"
+    },
+    {
+      "from": 131,
+      "to": 153,
+      "arrows": "to"
+    },
+    {
+      "from": 131,
+      "to": 154,
+      "arrows": "to"
+    },
+    {
+      "from": 154,
+      "to": 155,
+      "arrows": "to"
+    },
+    {
+      "from": 131,
+      "to": 156,
+      "arrows": "to"
+    },
+    {
+      "from": 156,
+      "to": 157,
+      "arrows": "to"
+    },
+    {
+      "from": 157,
+      "to": 158,
+      "arrows": "to"
+    },
+    {
+      "from": 158,
+      "to": 159,
+      "arrows": "to"
+    },
+    {
+      "from": 157,
+      "to": 160,
+      "arrows": "to"
+    },
+    {
+      "from": 160,
+      "to": 161,
+      "arrows": "to"
+    },
+    {
+      "from": 14,
+      "to": 161,
+      "arrows": "to"
+    },
+    {
+      "from": 156,
+      "to": 162,
+      "arrows": "to"
+    },
+    {
+      "from": 156,
+      "to": 163,
+      "arrows": "to"
+    },
+    {
+      "from": 156,
+      "to": 164,
+      "arrows": "to"
+    },
+    {
+      "from": 67,
+      "to": 165,
+      "arrows": "to"
+    },
+    {
+      "from": 156,
+      "to": 165,
+      "arrows": "to"
+    },
+    {
+      "from": 14,
+      "to": 166,
+      "arrows": "to"
+    },
+    {
+      "from": 26,
+      "to": 166,
+      "arrows": "to"
+    },
+    {
+      "from": 166,
+      "to": 167,
+      "arrows": "to"
+    },
+    {
+      "from": 166,
+      "to": 168,
+      "arrows": "to"
+    },
+    {
+      "from": 168,
+      "to": 169,
+      "arrows": "to"
+    },
+    {
+      "from": 168,
+      "to": 170,
+      "arrows": "to"
+    },
+    {
+      "from": 15,
+      "to": 170,
+      "arrows": "to"
+    },
+    {
+      "from": 26,
+      "to": 171,
+      "arrows": "to"
+    },
+    {
+      "from": 168,
+      "to": 171,
+      "arrows": "to"
+    },
+    {
+      "from": 168,
+      "to": 172,
+      "arrows": "to"
+    },
+    {
+      "from": 131,
+      "to": 172,
+      "arrows": "to"
+    },
+    {
+      "from": 166,
+      "to": 173,
+      "arrows": "to"
+    },
+    {
+      "from": 111,
+      "to": 174,
+      "arrows": "to"
+    },
+    {
+      "from": 166,
+      "to": 174,
+      "arrows": "to"
+    },
+    {
+      "from": 76,
+      "to": 175,
+      "arrows": "to"
+    },
+    {
+      "from": 174,
+      "to": 175,
+      "arrows": "to"
+    },
+    {
+      "from": 82,
+      "to": 176,
+      "arrows": "to"
+    },
+    {
+      "from": 29,
+      "to": 176,
+      "arrows": "to"
+    },
+    {
+      "from": 176,
+      "to": 177,
+      "arrows": "to"
+    },
+    {
+      "from": 176,
+      "to": 178,
+      "arrows": "to"
+    },
+    {
+      "from": 82,
+      "to": 179,
+      "arrows": "to"
+    },
+    {
+      "from": 82,
+      "to": 180,
+      "arrows": "to"
+    },
+    {
+      "from": 26,
+      "to": 181,
+      "arrows": "to"
+    },
+    {
+      "from": 90,
+      "to": 181,
+      "arrows": "to"
+    },
+    {
+      "from": 181,
+      "to": 182,
+      "arrows": "to"
+    },
+    {
+      "from": 181,
+      "to": 183,
+      "arrows": "to"
+    },
+    {
+      "from": 181,
+      "to": 184,
+      "arrows": "to"
+    },
+    {
+      "from": 98,
+      "to": 184,
+      "arrows": "to"
+    },
+    {
+      "from": 183,
+      "to": 185,
+      "arrows": "to"
+    },
+    {
+      "from": 98,
+      "to": 186,
+      "arrows": "to"
+    },
+    {
+      "from": 107,
+      "to": 186,
+      "arrows": "to"
+    },
+    {
+      "from": 130,
+      "to": 187,
+      "arrows": "to"
+    },
+    {
+      "from": 186,
+      "to": 187,
+      "arrows": "to"
+    },
+    {
+      "from": 186,
+      "to": 188,
+      "arrows": "to"
+    },
+    {
+      "from": 186,
+      "to": 189,
+      "arrows": "to"
+    },
+    {
+      "from": 112,
+      "to": 190,
+      "arrows": "to"
+    },
+    {
+      "from": 8,
+      "to": 190,
+      "arrows": "to"
+    },
+    {
+      "from": 31,
+      "to": 191,
+      "arrows": "to"
+    },
+    {
+      "from": 31,
+      "to": 192,
+      "arrows": "to"
+    },
+    {
+      "from": 191,
+      "to": 192,
+      "arrows": "to"
+    },
+    {
+      "from": 27,
+      "to": 193,
+      "arrows": "to"
+    },
+    {
+      "from": 26,
+      "to": 194,
+      "arrows": "to"
+    },
+    {
+      "from": 131,
+      "to": 194,
+      "arrows": "to"
+    },
+    {
+      "from": 26,
+      "to": 195,
+      "arrows": "to"
+    },
+    {
+      "from": 131,
+      "to": 195,
+      "arrows": "to"
+    },
+    {
+      "from": 195,
+      "to": 196,
+      "arrows": "to"
+    },
+    {
+      "from": 26,
+      "to": 197,
+      "arrows": "to"
+    },
+    {
+      "from": 131,
+      "to": 197,
+      "arrows": "to"
+    },
+    {
+      "from": 71,
+      "to": 198,
+      "arrows": "to"
+    },
+    {
+      "from": 8,
+      "to": 198,
+      "arrows": "to"
+    },
+    {
+      "from": 198,
+      "to": 199,
+      "arrows": "to"
+    },
+    {
+      "from": 197,
+      "to": 200,
+      "arrows": "to"
+    },
+    {
+      "from": 199,
+      "to": 200,
+      "arrows": "to"
+    }
+  ]
+}
