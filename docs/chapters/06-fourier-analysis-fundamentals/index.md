@@ -159,6 +159,8 @@ These properties enable problem-solving strategies where difficult operations in
 
 ## Interactive Demonstrations
 
+#### Diagram: Fourier Series Explorer
+
 <details markdown="1">
 <summary>MicroSim: Fourier Series Explorer</summary>
 
@@ -194,6 +196,8 @@ This interactive simulation demonstrates how periodic signals decompose into har
 - Numerical coefficient display for selected harmonics
 
 </details>
+
+#### Diagram: FFT Spectrum Analyzer
 
 <details markdown="1">
 <summary>MicroSim: FFT Spectrum Analyzer</summary>

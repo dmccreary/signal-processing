@@ -208,6 +208,8 @@ Time scaling affects both the duration and the frequency content of signals, wit
 
 ## Interactive Demonstrations
 
+#### Diagram: Signal Type Explorer
+
 <details markdown="1">
 <summary>MicroSim: Signal Type Explorer</summary>
 
@@ -240,6 +242,8 @@ This interactive simulation allows students to visualize and compare different s
 - Interactive buttons for time shift and time scale operations
 
 </details>
+
+#### Diagram: Even and Odd Signal Decomposition
 
 <details markdown="1">
 <summary>MicroSim: Even and Odd Signal Decomposition</summary>

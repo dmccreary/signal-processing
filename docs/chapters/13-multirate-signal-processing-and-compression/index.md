@@ -157,6 +157,8 @@ Typical strategies include:
 - Place stages with higher intermediate rates later in the chain
 - Optimize filter lengths at each stage for computational efficiency
 
+#### Diagram: Multirate Sample Rate Converter
+
 <details markdown="1">
 <summary>MicroSim: Multirate Sample Rate Converter</summary>
 

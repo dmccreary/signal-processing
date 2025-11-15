@@ -146,6 +146,8 @@ Wiener filtering applications include speech enhancement (removing background no
 
 ## Interactive Demonstrations
 
+#### Diagram: Convolution Visualizer
+
 <details markdown="1">
 <summary>MicroSim: Convolution Visualizer</summary>
 
@@ -181,6 +183,8 @@ This interactive simulation provides a visual, step-by-step demonstration of the
 - Visual highlighting of current computation point
 
 </details>
+
+#### Diagram: Correlation and Matched Filtering
 
 <details markdown="1">
 <summary>MicroSim: Correlation and Matched Filtering</summary>

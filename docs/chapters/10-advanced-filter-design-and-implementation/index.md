@@ -181,6 +181,8 @@ Optimal designs provide:
 
 Most modern filter design software implements Parks-McClellan optimization as the preferred FIR design method when linear phase and minimum order are desired. The algorithm is particularly effective for multiband filter designs with complex frequency response requirements.
 
+#### Diagram: FIR Filter Design Comparison Tool
+
 <details markdown="1">
 <summary>MicroSim: FIR Filter Design Comparison Tool</summary>
 

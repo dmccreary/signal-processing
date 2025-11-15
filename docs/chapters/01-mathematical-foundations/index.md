@@ -151,6 +151,9 @@ $$\sin(\theta) = \frac{e^{i\theta} - e^{-i\theta}}{2i}$$
 These expressions allow us to manipulate trigonometric functions using the powerful tools of complex analysis.
 
 #### MicroSim: Euler's Formula Visualization
+
+#### Diagram: Interactive Euler's Formula Explorer
+
 <details markdown="1">
 <summary>Interactive Euler's Formula Explorer</summary>
 Type: microsim

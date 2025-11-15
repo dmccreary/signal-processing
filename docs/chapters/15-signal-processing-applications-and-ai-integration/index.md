@@ -161,6 +161,8 @@ Real-time system development requires:
 - **Stress testing**: Verify performance under maximum expected load conditions
 - **Timing margins**: Maintain reserves (typically 20-50%) beyond worst-case requirements
 
+#### Diagram: Real-Time Processing Simulator
+
 <details markdown="1">
 <summary>MicroSim: Real-Time Processing Simulator</summary>
 

@@ -140,6 +140,8 @@ Digital-to-analog converters (DACs) typically produce staircase outputs (zero-or
 
 ## Interactive Demonstrations
 
+#### Diagram: Sampling Theorem Explorer
+
 <details markdown="1">
 <summary>MicroSim: Sampling Theorem Explorer</summary>
 
@@ -175,6 +177,8 @@ This interactive simulation demonstrates the sampling theorem, showing how sampl
 - Option to toggle reconstruction filter between ideal and practical
 
 </details>
+
+#### Diagram: Quantization and Noise Shaping
 
 <details markdown="1">
 <summary>MicroSim: Quantization and Noise Shaping</summary>

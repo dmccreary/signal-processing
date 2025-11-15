@@ -116,6 +116,8 @@ The hop size $H$ (spacing between successive analysis windows) affects:
 
 Typical overlap ranges from 50% (hop size = window length / 2) to 87.5% (hop size = window length / 8), balancing smoothness and computation.
 
+#### Diagram: Interactive Spectrogram Parameter Explorer
+
 <details markdown="1">
 <summary>MicroSim: Interactive Spectrogram Parameter Explorer</summary>
 

@@ -187,6 +187,8 @@ RLS computational requirements are substantially higher than LMS:
 
 Despite increased complexity, RLS is preferred when rapid convergence is essential and computational resources permit the higher cost.
 
+#### Diagram: Adaptive Algorithm Comparison Tool
+
 <details markdown="1">
 <summary>MicroSim: Adaptive Algorithm Comparison Tool</summary>
 

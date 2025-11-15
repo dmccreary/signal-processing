@@ -274,6 +274,8 @@ Several practical methods verify filter stability:
 
 In practical implementations, finite precision arithmetic can move poles outside the unit circle even when infinite-precision coefficients would yield stability. This sensitivity motivates careful numerical analysis and the use of robust filter structures like second-order sections rather than high-order direct forms.
 
+#### Diagram: Interactive Filter Design and Analysis Tool
+
 <details markdown="1">
 <summary>MicroSim: Interactive Filter Design and Analysis Tool</summary>
 

@@ -250,6 +250,8 @@ Nonlinear methods exploit signal structure beyond frequency domain characteristi
 
 **Morphological filtering** uses nonlinear mathematical morphology operations to remove noise while preserving specific signal shapes and structures.
 
+#### Diagram: Noise Analysis and Reduction Tool
+
 <details markdown="1">
 <summary>MicroSim: Noise Analysis and Reduction Tool</summary>
 

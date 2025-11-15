@@ -195,6 +195,8 @@ For parallel systems, the overall transfer function is the sum of individual tra
 
 ## Interactive Demonstrations
 
+#### Diagram: System Property Explorer
+
 <details markdown="1">
 <summary>MicroSim: System Property Explorer</summary>
 
@@ -228,6 +230,8 @@ This interactive simulation allows students to explore fundamental system proper
 - Adjustable input parameters: amplitude, frequency, time shift
 
 </details>
+
+#### Diagram: Impulse and Frequency Response Analyzer
 
 <details markdown="1">
 <summary>MicroSim: Impulse and Frequency Response Analyzer</summary>

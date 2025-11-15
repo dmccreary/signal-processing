@@ -126,6 +126,8 @@ For discrete-time systems, the fundamental stability criterion states that all p
 
 For continuous-time systems analyzed with Laplace transforms, stability requires all poles to lie in the left-half s-plane (real parts negative). This ensures exponentially decaying transient responses rather than growing instabilities.
 
+#### Diagram: Interactive Pole-Zero Analysis Tool
+
 <details markdown="1">
 <summary>MicroSim: Interactive Pole-Zero Analysis Tool</summary>
 
@@ -237,6 +239,8 @@ The spectrogram displays the magnitude squared of the STFT, $|X(t,f)|^2$, as a t
 - **Transient events**: Vertical lines indicate sudden changes like note onsets or consonants
 - **Chirps**: Diagonal patterns show frequency sweeps
 - **Formant structure**: Broad resonance peaks in speech signals
+
+#### Diagram: Interactive STFT Spectrogram Analyzer
 
 <details markdown="1">
 <summary>MicroSim: Interactive STFT Spectrogram Analyzer</summary>

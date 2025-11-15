@@ -122,6 +122,8 @@ Windowing generally reduces the effective signal amplitude by a factor called th
 
 ## Interactive Demonstrations
 
+#### Diagram: Spectral Leakage and Windowing
+
 <details markdown="1">
 <summary>MicroSim: Spectral Leakage and Windowing</summary>
 
@@ -159,6 +161,8 @@ This interactive simulation demonstrates spectral leakage effects and how window
 - Cursor-based frequency and amplitude readout
 
 </details>
+
+#### Diagram: Time-Frequency Analysis Explorer
 
 <details markdown="1">
 <summary>MicroSim: Time-Frequency Analysis Explorer</summary>
