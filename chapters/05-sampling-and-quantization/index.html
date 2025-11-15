@@ -342,65 +342,6 @@
       
   
   
-  
-  
-    
-    
-      
-        
-          
-        
-      
-        
-      
-        
-      
-        
-      
-        
-      
-        
-      
-        
-      
-        
-      
-    
-    
-    
-      
-        
-        
-      
-    
-    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
-      
-        
-  
-  
-    <a href="../../learning-graph/" class="md-nav__link">
-      
-  
-  <span class="md-ellipsis">
-    Learning Graph
-  </span>
-  
-
-      
-        <span class="md-nav__icon md-icon"></span>
-      
-    </a>
-  
-
-      
-    </li>
-  
-
-    
-      
-      
-  
-  
     
   
   
@@ -451,7 +392,7 @@
       
         
         
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_6" checked>
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_5" checked>
         
           
           
@@ -467,14 +408,14 @@
             </a>
             
               
-              <label class="md-nav__link " for="__nav_6" id="__nav_6_label" tabindex="0">
+              <label class="md-nav__link " for="__nav_5" id="__nav_5_label" tabindex="0">
                 <span class="md-nav__icon md-icon"></span>
               </label>
             
           </div>
         
-        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_6_label" aria-expanded="true">
-          <label class="md-nav__title" for="__nav_6">
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_5_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_5">
             <span class="md-nav__icon md-icon"></span>
             Chapters
           </label>
@@ -700,7 +641,7 @@
       
         
         
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_6_6" checked>
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_5_6" checked>
         
           
           
@@ -716,14 +657,14 @@
             </a>
             
               
-              <label class="md-nav__link md-nav__link--active" for="__nav_6_6" id="__nav_6_6_label" tabindex="0">
+              <label class="md-nav__link md-nav__link--active" for="__nav_5_6" id="__nav_5_6_label" tabindex="0">
                 <span class="md-nav__icon md-icon"></span>
               </label>
             
           </div>
         
-        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_6_6_label" aria-expanded="true">
-          <label class="md-nav__title" for="__nav_6_6">
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_5_6_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_5_6">
             <span class="md-nav__icon md-icon"></span>
             Ch 5 - Sampling and Quantization
           </label>
@@ -1557,6 +1498,73 @@
       
         
       
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+        
+        
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+    <a href="../../learning-graph/" class="md-nav__link">
+      
+  
+  <span class="md-ellipsis">
+    Learning Graph
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
     
     
     
@@ -1621,6 +1629,26 @@
   
   <span class="md-ellipsis">
     Checklist
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../faq/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    FAQs
   </span>
   
 
@@ -2082,6 +2110,15 @@
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
+  <a href="#diagram-sampling-theorem-explorer" class="md-nav__link">
+    <span class="md-ellipsis">
+      Diagram: Sampling Theorem Explorer
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
   <a href="#purpose" class="md-nav__link">
     <span class="md-ellipsis">
       Purpose
@@ -2114,6 +2151,21 @@
       Implementation Requirements
     </span>
   </a>
+  
+    <nav class="md-nav" aria-label="Implementation Requirements">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#diagram-quantization-and-noise-shaping" class="md-nav__link">
+    <span class="md-ellipsis">
+      Diagram: Quantization and Noise Shaping
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
   
 </li>
         
@@ -2290,6 +2342,7 @@
 <p><strong>Signal reconstruction</strong> converts discrete-time samples back to continuous-time signals, ideally recovering the original analog waveform before sampling and quantization. Perfect reconstruction (ignoring quantization error) requires sinc interpolation according to the sampling theorem, though practical systems use simpler interpolation methods such as zero-order hold (staircase output), first-order hold (linear interpolation), or higher-order polynomial interpolation.</p>
 <p>Digital-to-analog converters (DACs) typically produce staircase outputs (zero-order hold), requiring analog reconstruction filters to smooth the waveform and remove spectral images at multiples of the sampling frequency. The reconstruction filter specifications mirror anti-aliasing filter requirements, trading off transition band width against passband flatness and stopband image rejection.</p>
 <h2 id="interactive-demonstrations">Interactive Demonstrations</h2>
+<h4 id="diagram-sampling-theorem-explorer">Diagram: Sampling Theorem Explorer</h4>
 <details>
 <summary>MicroSim: Sampling Theorem Explorer</summary>
 <h3 id="purpose">Purpose</h3>
@@ -2322,6 +2375,7 @@
 <li>Option to toggle reconstruction filter between ideal and practical</li>
 </ul>
 </details>
+<h4 id="diagram-quantization-and-noise-shaping">Diagram: Quantization and Noise Shaping</h4>
 <details>
 <summary>MicroSim: Quantization and Noise Shaping</summary>
 <h3 id="purpose_1">Purpose</h3>

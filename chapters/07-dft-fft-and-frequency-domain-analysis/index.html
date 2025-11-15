@@ -342,65 +342,6 @@
       
   
   
-  
-  
-    
-    
-      
-        
-          
-        
-      
-        
-      
-        
-      
-        
-      
-        
-      
-        
-      
-        
-      
-        
-      
-    
-    
-    
-      
-        
-        
-      
-    
-    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
-      
-        
-  
-  
-    <a href="../../learning-graph/" class="md-nav__link">
-      
-  
-  <span class="md-ellipsis">
-    Learning Graph
-  </span>
-  
-
-      
-        <span class="md-nav__icon md-icon"></span>
-      
-    </a>
-  
-
-      
-    </li>
-  
-
-    
-      
-      
-  
-  
     
   
   
@@ -451,7 +392,7 @@
       
         
         
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_6" checked>
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_5" checked>
         
           
           
@@ -467,14 +408,14 @@
             </a>
             
               
-              <label class="md-nav__link " for="__nav_6" id="__nav_6_label" tabindex="0">
+              <label class="md-nav__link " for="__nav_5" id="__nav_5_label" tabindex="0">
                 <span class="md-nav__icon md-icon"></span>
               </label>
             
           </div>
         
-        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_6_label" aria-expanded="true">
-          <label class="md-nav__title" for="__nav_6">
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_5_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_5">
             <span class="md-nav__icon md-icon"></span>
             Chapters
           </label>
@@ -796,7 +737,7 @@
       
         
         
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_6_8" checked>
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_5_8" checked>
         
           
           
@@ -812,14 +753,14 @@
             </a>
             
               
-              <label class="md-nav__link md-nav__link--active" for="__nav_6_8" id="__nav_6_8_label" tabindex="0">
+              <label class="md-nav__link md-nav__link--active" for="__nav_5_8" id="__nav_5_8_label" tabindex="0">
                 <span class="md-nav__icon md-icon"></span>
               </label>
             
           </div>
         
-        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_6_8_label" aria-expanded="true">
-          <label class="md-nav__title" for="__nav_6_8">
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_5_8_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_5_8">
             <span class="md-nav__icon md-icon"></span>
             Ch 7 - DFT and FFT
           </label>
@@ -1557,6 +1498,73 @@
       
         
       
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+        
+        
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+    <a href="../../learning-graph/" class="md-nav__link">
+      
+  
+  <span class="md-ellipsis">
+    Learning Graph
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
     
     
     
@@ -1621,6 +1629,26 @@
   
   <span class="md-ellipsis">
     Checklist
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../faq/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    FAQs
   </span>
   
 
@@ -2052,6 +2080,15 @@
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
+  <a href="#diagram-spectral-leakage-and-windowing" class="md-nav__link">
+    <span class="md-ellipsis">
+      Diagram: Spectral Leakage and Windowing
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
   <a href="#purpose" class="md-nav__link">
     <span class="md-ellipsis">
       Purpose
@@ -2084,6 +2121,21 @@
       Implementation Requirements
     </span>
   </a>
+  
+    <nav class="md-nav" aria-label="Implementation Requirements">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#diagram-time-frequency-analysis-explorer" class="md-nav__link">
+    <span class="md-ellipsis">
+      Diagram: Time-Frequency Analysis Explorer
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
   
 </li>
         
@@ -2253,6 +2305,7 @@
 <p>Advanced windowing techniques include time-varying windows for spectrograms (short-time Fourier transform), multitapering (averaging spectra obtained with multiple orthogonal windows), and coherent versus non-coherent averaging. The proper application of windowing can dramatically improve spectral estimate quality, revealing spectral features that would be obscured by leakage with rectangular windows.</p>
 <p>Windowing generally reduces the effective signal amplitude by a factor called the coherent gain or window gain, which must be compensated when accurate amplitude measurements are required. Similarly, the equivalent noise bandwidth of the window (wider than the frequency bin spacing) affects noise and power measurements.</p>
 <h2 id="interactive-demonstrations">Interactive Demonstrations</h2>
+<h4 id="diagram-spectral-leakage-and-windowing">Diagram: Spectral Leakage and Windowing</h4>
 <details>
 <summary>MicroSim: Spectral Leakage and Windowing</summary>
 <h3 id="purpose">Purpose</h3>
@@ -2287,6 +2340,7 @@
 <li>Cursor-based frequency and amplitude readout</li>
 </ul>
 </details>
+<h4 id="diagram-time-frequency-analysis-explorer">Diagram: Time-Frequency Analysis Explorer</h4>
 <details>
 <summary>MicroSim: Time-Frequency Analysis Explorer</summary>
 <h3 id="purpose_1">Purpose</h3>
