@@ -7,22 +7,22 @@ This file contains overall metrics for the intelligent textbook.
 | Chapters | 15 | [Chapters](../chapters/index.md) | Number of chapter directories |
 | Concepts | 200 | [Concept List](./concept-list.md) | Concepts from learning graph |
 | Glossary Terms | 111 | [Glossary](../glossary.md) | Defined terms |
-| FAQs | 6 | [FAQ](../faq.md) | Frequently asked questions |
-| Quiz Questions | 0 | - | Questions across all chapters |
+| FAQs | 87 | [FAQ](../faq.md) | Frequently asked questions |
+| Quiz Questions | 150 | - | Questions across all chapters |
 | Diagrams | 23 | - | Level 4 headers starting with '#### Diagram:' |
-| Equations | 2420 | - | LaTeX expressions (inline and display) |
+| Equations | 2421 | - | LaTeX expressions (inline and display) |
 | MicroSims | 32 | [Simulations](../sims/index.md) | Interactive MicroSims |
-| Total Words | 164,313 | - | Words in all markdown files |
-| Links | 610 | - | Hyperlinks in markdown format |
-| Equivalent Pages | 679 | - | Estimated pages (250 words/page + visuals) |
+| Total Words | 164,865 | - | Words in all markdown files |
+| Links | 632 | - | Hyperlinks in markdown format |
+| Equivalent Pages | 681 | - | Estimated pages (250 words/page + visuals) |
 
 ## Metrics Explanation
 
 - **Chapters**: Count of chapter directories containing index.md files
 - **Concepts**: Number of rows in learning-graph.csv
 - **Glossary Terms**: H4 headers in glossary.md
-- **FAQs**: H2 headers in faq.md
-- **Quiz Questions**: H2 headers in all quiz.md files
+- **FAQs**: H3 headers in faq.md
+- **Quiz Questions**: H4 headers with numbered questions (e.g., '#### 1.') or H2 headers in quiz.md files
 - **Diagrams**: H4 headers starting with '#### Diagram:'
 - **Equations**: LaTeX expressions using $ and $$ delimiters
 - **MicroSims**: Directories in docs/sims/ with index.md files
