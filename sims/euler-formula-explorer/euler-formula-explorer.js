@@ -8,7 +8,7 @@ let drawHeight = 520;
 let controlHeight = 80;
 let canvasHeight = drawHeight + controlHeight;
 let margin = 20;
-let sliderLeftMargin = 240;  // Space for buttons and labels
+let sliderLeftMargin = 230;  // Space for buttons and labels
 let defaultTextSize = 14;
 
 // Animation state
@@ -122,22 +122,15 @@ function draw() {
 
   // Drawing area background
   fill('aliceblue');
-  noStroke();
+  stroke('silver');
   rect(0, 0, canvasWidth, drawHeight);
 
   // Control area background
   fill('white');
   rect(0, drawHeight, canvasWidth, controlHeight);
-  stroke('silver');
-  strokeWeight(1);
-  line(0, drawHeight, canvasWidth, drawHeight);
 
-  // Draw title
-  fill('black');
-  noStroke();
-  textSize(20);
-  textAlign(CENTER, TOP);
-  text("Euler's Formula: e^(iθ) = cos(θ) + i·sin(θ)", canvasWidth / 2, 8);
+  // Draw title with proper superscript
+  drawTitle();
 
   // Draw left side - Unit Circle
   drawUnitCircle();
@@ -150,6 +143,36 @@ function draw() {
 
   // Draw control labels
   drawControlLabels();
+}
+
+function drawTitle() {
+  fill('black');
+  noStroke();
+  textAlign(LEFT, TOP);
+
+  // Calculate starting position to center the title
+  let titleY = 8;
+  let mainSize = 20;
+  let superSize = 14;
+
+  // Measure approximate total width to center
+  textSize(mainSize);
+  let totalWidth = textWidth("Euler's Formula: e") + textWidth("iθ") * 0.7 + textWidth(" = cos(θ) + i·sin(θ)");
+  let startX = (canvasWidth - totalWidth) / 2;
+
+  // Draw "Euler's Formula: e"
+  textSize(mainSize);
+  text("Euler's Formula: e", startX, titleY);
+  let xPos = startX + textWidth("Euler's Formula: e");
+
+  // Draw superscript "iθ" (smaller and raised)
+  textSize(superSize);
+  text("iθ", xPos, titleY - 2);
+  xPos += textWidth("iθ") + 2;
+
+  // Draw " = cos(θ) + i·sin(θ)"
+  textSize(mainSize);
+  text(" = cos(θ) + i·sin(θ)", xPos, titleY);
 }
 
 function drawUnitCircle() {
@@ -356,7 +379,7 @@ function drawEquationDisplay() {
   let boxX = leftWidth / 2 - 80;
   let boxY = drawHeight - 80;
   let boxW = 160;
-  let boxH = 65;
+  let boxH = 75;
 
   fill(255, 255, 255, 240);
   stroke(200);
