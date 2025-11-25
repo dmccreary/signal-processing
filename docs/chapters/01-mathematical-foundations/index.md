@@ -82,9 +82,12 @@ Complex numbers can be visualized on the complex plane, where the horizontal axi
 
 #### Diagram: Complex Plane Representation
 
+<iframe src="../../sims/complex-plane/main.html" height="532px" width="100%" scrolling="no"></iframe>
+
 <details markdown="1">
 <summary>Complex Plane Visualization</summary>
 Type: diagram
+Status: Done
 
 Purpose: Illustrate the geometric representation of complex numbers in the complex plane, showing both rectangular and polar forms.
 
@@ -153,6 +156,7 @@ These expressions allow us to manipulate trigonometric functions using the power
 #### MicroSim: Euler's Formula Visualization
 
 #### Diagram: Interactive Euler's Formula Explorer
+<iframe>
 
 <details markdown="1">
 <summary>Interactive Euler's Formula Explorer</summary>
