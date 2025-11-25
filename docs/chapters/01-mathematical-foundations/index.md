@@ -113,7 +113,7 @@ Style: Clean geometric diagram with grid
 
 Color scheme: Blue for real axis, red for imaginary axis, green for the complex number vector
 
-Implementation: SVG or interactive p5.js sketch allowing exploration of different complex numbers
+Implementation: microsim-p5 skill
 </details>
 
 ### The Imaginary Unit
@@ -157,22 +157,26 @@ These expressions allow us to manipulate trigonometric functions using the power
 
 #### Diagram: Interactive Euler's Formula Explorer
 
+<iframe src="../../sims/euler-formula-explorer/main.html" height="602px" width="100%" scrolling="no"></iframe>
+
 <details markdown="1">
 <summary>Interactive Euler's Formula Explorer</summary>
 Type: microsim
+MicroSim Name: euler-formula-explorer
+Status: Done
 
 Learning Objective (Understanding): Students will visualize and understand how Euler's formula connects complex exponentials with circular motion and sinusoidal signals.
 
 Purpose: Demonstrate the relationship between $e^{i\theta}$, rotation on the unit circle, and sine/cosine functions.
 
-Canvas size: 800 x 600 pixels
+Canvas size: 600 pixel high and width responsive to fill the container
 
 Layout:
-- Left side (400x600): Unit circle in complex plane showing rotation
-- Right side (400x600): Two plots showing cos(θ) and sin(θ) over time
+- Left side (50% width): Unit circle in complex plane showing rotation
+- Right side (50% width): Two plots showing cos(θ) and sin(θ) over time
 
 Visual elements:
-- Unit circle with labeled axes (Re and Im)
+- Unit circle with labeled axes (Real and Imaginary)
 - Rotating point on circle as θ increases
 - Vector from origin to rotating point (magnitude 1)
 - Real and imaginary projections (dashed lines)
@@ -181,9 +185,9 @@ Visual elements:
 
 Interactive controls:
 - Play/Pause button
-- Speed slider (0.1x to 5x)
+- Circle angle slider between 0 and 2π for manual control
+- Speed slider (0.1x to 5x) for animation speed
 - Reset button
-- θ value slider (0 to 4π)
 
 Behavior:
 - Point rotates counterclockwise on unit circle
