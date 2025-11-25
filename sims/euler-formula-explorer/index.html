@@ -6,19 +6,19 @@
       <meta charset="utf-8">
       <meta name="viewport" content="width=device-width,initial-scale=1">
       
-        <meta name="description" content="College Level Textbook on Signal Processing - License is Commons ShareAlike Attribution Noncommercial">
+        <meta name="description" content="Interactive visualization demonstrating Euler's formula e^(iθ) = cos(θ) + i·sin(θ) with synchronized unit circle rotation and sine/cosine wave traces.">
       
       
         <meta name="author" content="Dan McCreary">
       
       
-        <link rel="canonical" href="https://dmccreary.github.io/signal-processing/sims/rc-lowpass-filter/">
+        <link rel="canonical" href="https://dmccreary.github.io/signal-processing/sims/euler-formula-explorer/">
       
       
-        <link rel="prev" href="../mobius-transform/">
+        <link rel="prev" href="../complex-plane/">
       
       
-        <link rel="next" href="../openai-gpts/">
+        <link rel="next" href="../../stories/">
       
       
       <link rel="icon" href="../../img/favicon.ico">
@@ -26,7 +26,7 @@
     
     
       
-        <title>RC Lowpass Filter - Signal Processing with AI</title>
+        <title>Euler's Formula Explorer - Signal Processing with AI</title>
       
     
     
@@ -63,11 +63,11 @@
       
         <meta  property="og:type"  content="website" >
       
-        <meta  property="og:title"  content="RC Lowpass Filter - Signal Processing with AI" >
+        <meta  property="og:title"  content="Euler's Formula Explorer - Signal Processing with AI" >
       
-        <meta  property="og:description"  content="College Level Textbook on Signal Processing - License is Commons ShareAlike Attribution Noncommercial" >
+        <meta  property="og:description"  content="Interactive visualization demonstrating Euler's formula e^(iθ) = cos(θ) + i·sin(θ) with synchronized unit circle rotation and sine/cosine wave traces." >
       
-        <meta  property="og:image"  content="https://dmccreary.github.io/signal-processing/assets/images/social/sims/rc-lowpass-filter/index.png" >
+        <meta property="og:image" content="https://dmccreary.github.io/signal-processing/sims/euler-formula-explorer/euler-formula-explorer.png">
       
         <meta  property="og:image:type"  content="image/png" >
       
@@ -75,15 +75,15 @@
       
         <meta  property="og:image:height"  content="630" >
       
-        <meta  property="og:url"  content="https://dmccreary.github.io/signal-processing/sims/rc-lowpass-filter/" >
+        <meta  property="og:url"  content="https://dmccreary.github.io/signal-processing/sims/euler-formula-explorer/" >
       
         <meta  name="twitter:card"  content="summary_large_image" >
       
-        <meta  name="twitter:title"  content="RC Lowpass Filter - Signal Processing with AI" >
+        <meta  name="twitter:title"  content="Euler's Formula Explorer - Signal Processing with AI" >
       
-        <meta  name="twitter:description"  content="College Level Textbook on Signal Processing - License is Commons ShareAlike Attribution Noncommercial" >
+        <meta  name="twitter:description"  content="Interactive visualization demonstrating Euler's formula e^(iθ) = cos(θ) + i·sin(θ) with synchronized unit circle rotation and sine/cosine wave traces." >
       
-        <meta  name="twitter:image"  content="https://dmccreary.github.io/signal-processing/assets/images/social/sims/rc-lowpass-filter/index.png" >
+        <meta name="twitter:image" content="https://dmccreary.github.io/signal-processing/sims/euler-formula-explorer/euler-formula-explorer.png">
       
     
     
@@ -104,7 +104,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#rc-lowpass-filter" class="md-skip">
+        <a href="#eulers-formula-explorer" class="md-skip">
           Skip to content
         </a>
       
@@ -139,7 +139,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              RC Lowpass Filter
+              Euler's Formula Explorer
             
           </span>
         </div>
@@ -1159,19 +1159,10 @@
                 
   
   
-    
   
   
-  
-    <li class="md-nav__item md-nav__item--active">
-      
-      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
-      
-      
-        
-      
-      
-      <a href="./" class="md-nav__link md-nav__link--active">
+    <li class="md-nav__item">
+      <a href="../rc-lowpass-filter/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -1180,7 +1171,6 @@
   
 
       </a>
-      
     </li>
   
 
@@ -1274,10 +1264,30 @@
                 
   
   
+    
   
   
-    <li class="md-nav__item">
-      <a href="../euler-formula-explorer/" class="md-nav__link">
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  <span class="md-ellipsis">
+    Euler's Formula Explorer
+  </span>
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
         
   
   <span class="md-ellipsis">
@@ -1286,6 +1296,257 @@
   
 
       </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#about-this-microsim" class="md-nav__link">
+    <span class="md-ellipsis">
+      About This MicroSim
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#embedding-this-microsim" class="md-nav__link">
+    <span class="md-ellipsis">
+      Embedding This MicroSim
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#key-features" class="md-nav__link">
+    <span class="md-ellipsis">
+      Key Features
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Key Features">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#left-panel-unit-circle" class="md-nav__link">
+    <span class="md-ellipsis">
+      Left Panel: Unit Circle
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#right-panel-wave-traces" class="md-nav__link">
+    <span class="md-ellipsis">
+      Right Panel: Wave Traces
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#interactive-controls" class="md-nav__link">
+    <span class="md-ellipsis">
+      Interactive Controls
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#mathematical-background" class="md-nav__link">
+    <span class="md-ellipsis">
+      Mathematical Background
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Mathematical Background">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#why-eulers-formula-matters" class="md-nav__link">
+    <span class="md-ellipsis">
+      Why Euler's Formula Matters
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#the-unit-circle-connection" class="md-nav__link">
+    <span class="md-ellipsis">
+      The Unit Circle Connection
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#special-values" class="md-nav__link">
+    <span class="md-ellipsis">
+      Special Values
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#lesson-plan" class="md-nav__link">
+    <span class="md-ellipsis">
+      Lesson Plan
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Lesson Plan">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#learning-objectives" class="md-nav__link">
+    <span class="md-ellipsis">
+      Learning Objectives
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#grade-level" class="md-nav__link">
+    <span class="md-ellipsis">
+      Grade Level
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#duration" class="md-nav__link">
+    <span class="md-ellipsis">
+      Duration
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#prerequisites" class="md-nav__link">
+    <span class="md-ellipsis">
+      Prerequisites
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#suggested-activities" class="md-nav__link">
+    <span class="md-ellipsis">
+      Suggested Activities
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#assessment-questions" class="md-nav__link">
+    <span class="md-ellipsis">
+      Assessment Questions
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#applications-in-signal-processing" class="md-nav__link">
+    <span class="md-ellipsis">
+      Applications in Signal Processing
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Applications in Signal Processing">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#phasors" class="md-nav__link">
+    <span class="md-ellipsis">
+      Phasors
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#fourier-transform" class="md-nav__link">
+    <span class="md-ellipsis">
+      Fourier Transform
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#modulation" class="md-nav__link">
+    <span class="md-ellipsis">
+      Modulation
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#filter-design" class="md-nav__link">
+    <span class="md-ellipsis">
+      Filter Design
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#references" class="md-nav__link">
+    <span class="md-ellipsis">
+      References
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
     </li>
   
 
@@ -1839,6 +2100,245 @@
     
   
   
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#about-this-microsim" class="md-nav__link">
+    <span class="md-ellipsis">
+      About This MicroSim
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#embedding-this-microsim" class="md-nav__link">
+    <span class="md-ellipsis">
+      Embedding This MicroSim
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#key-features" class="md-nav__link">
+    <span class="md-ellipsis">
+      Key Features
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Key Features">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#left-panel-unit-circle" class="md-nav__link">
+    <span class="md-ellipsis">
+      Left Panel: Unit Circle
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#right-panel-wave-traces" class="md-nav__link">
+    <span class="md-ellipsis">
+      Right Panel: Wave Traces
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#interactive-controls" class="md-nav__link">
+    <span class="md-ellipsis">
+      Interactive Controls
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#mathematical-background" class="md-nav__link">
+    <span class="md-ellipsis">
+      Mathematical Background
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Mathematical Background">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#why-eulers-formula-matters" class="md-nav__link">
+    <span class="md-ellipsis">
+      Why Euler's Formula Matters
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#the-unit-circle-connection" class="md-nav__link">
+    <span class="md-ellipsis">
+      The Unit Circle Connection
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#special-values" class="md-nav__link">
+    <span class="md-ellipsis">
+      Special Values
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#lesson-plan" class="md-nav__link">
+    <span class="md-ellipsis">
+      Lesson Plan
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Lesson Plan">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#learning-objectives" class="md-nav__link">
+    <span class="md-ellipsis">
+      Learning Objectives
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#grade-level" class="md-nav__link">
+    <span class="md-ellipsis">
+      Grade Level
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#duration" class="md-nav__link">
+    <span class="md-ellipsis">
+      Duration
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#prerequisites" class="md-nav__link">
+    <span class="md-ellipsis">
+      Prerequisites
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#suggested-activities" class="md-nav__link">
+    <span class="md-ellipsis">
+      Suggested Activities
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#assessment-questions" class="md-nav__link">
+    <span class="md-ellipsis">
+      Assessment Questions
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#applications-in-signal-processing" class="md-nav__link">
+    <span class="md-ellipsis">
+      Applications in Signal Processing
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Applications in Signal Processing">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#phasors" class="md-nav__link">
+    <span class="md-ellipsis">
+      Phasors
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#fourier-transform" class="md-nav__link">
+    <span class="md-ellipsis">
+      Fourier Transform
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#modulation" class="md-nav__link">
+    <span class="md-ellipsis">
+      Modulation
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#filter-design" class="md-nav__link">
+    <span class="md-ellipsis">
+      Filter Design
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#references" class="md-nav__link">
+    <span class="md-ellipsis">
+      References
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
 </nav>
                   </div>
                 </div>
@@ -1852,7 +2352,7 @@
                   
 
   
-    <a href="https://github.com/dmccreary/signal-processing/blob/master/docs/sims/rc-lowpass-filter/index.md" title="Edit this page" class="md-content__button md-icon">
+    <a href="https://github.com/dmccreary/signal-processing/blob/master/docs/sims/euler-formula-explorer/index.md" title="Edit this page" class="md-content__button md-icon">
       
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M10 20H6V4h7v5h5v3.1l2-2V8l-6-6H6c-1.1 0-2 .9-2 2v16c0 1.1.9 2 2 2h4zm10.2-7c.1 0 .3.1.4.2l1.3 1.3c.2.2.2.6 0 .8l-1 1-2.1-2.1 1-1c.1-.1.2-.2.4-.2m0 3.9L14.1 23H12v-2.1l6.1-6.1z"/></svg>
     </a>
@@ -1860,15 +2360,189 @@
   
 
 
-<h1 id="rc-lowpass-filter">RC Lowpass Filter</h1>
-<p>Creates a Bode Plot showing phase and magnitude for any inputted RC filter combination</p>
-<figure>
-<p><img alt="" src="rc-lowpass-filter.png" width="400" /></p>
-</figure>
-<form action="rc-lowpass-filter.html" style="text-align:center;">
-<button style="align-content: center;" class="md-button md-button--primary">Run the RC Lowpass Filter Simulation
-</button>
-</form>
+<h1 id="eulers-formula-explorer">Euler's Formula Explorer</h1>
+<iframe src="main.html" height="602px" width="100%" scrolling="no"></iframe>
+
+<p><a class="md-button md-button--primary" href="main.html">Run the Euler's Formula Explorer Fullscreen</a>
+<br/>
+<a href="https://editor.p5js.org/">Edit this MicroSim with the p5.js Editor</a></p>
+<h2 id="about-this-microsim">About This MicroSim</h2>
+<p>This interactive simulation demonstrates <strong>Euler's Formula</strong>, one of the most beautiful and important equations in mathematics:</p>
+<div class="arithmatex">\[e^{i\theta} = \cos(\theta) + i\sin(\theta)\]</div>
+<p>The visualization shows how a point rotating on the unit circle in the complex plane generates both cosine and sine waves simultaneously. Students can observe the deep connection between exponential functions, trigonometry, and complex numbers.</p>
+<h2 id="embedding-this-microsim">Embedding This MicroSim</h2>
+<p>You can include this MicroSim on your website using the following <code>iframe</code>:</p>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="p">&lt;</span><span class="nt">iframe</span> <span class="na">src</span><span class="o">=</span><span class="s">&quot;https://dmccreary.github.io/signal-processing/sims/euler-formula-explorer/main.html&quot;</span> <span class="na">height</span><span class="o">=</span><span class="s">&quot;602px&quot;</span> <span class="na">scrolling</span><span class="o">=</span><span class="s">&quot;no&quot;</span><span class="p">&gt;&lt;/</span><span class="nt">iframe</span><span class="p">&gt;</span>
+</code></pre></div></td></tr></table></div>
+<h2 id="key-features">Key Features</h2>
+<h3 id="left-panel-unit-circle">Left Panel: Unit Circle</h3>
+<ul>
+<li><strong>Unit circle</strong> in the complex plane (radius = 1)</li>
+<li><strong>Rotating green vector</strong> from origin showing <span class="arithmatex">\(e^{i\theta}\)</span></li>
+<li><strong>Blue projection</strong> on real axis showing <span class="arithmatex">\(\cos(\theta)\)</span></li>
+<li><strong>Red projection</strong> on imaginary axis showing <span class="arithmatex">\(\sin(\theta)\)</span></li>
+<li><strong>Dashed lines</strong> connecting the point to its axis projections</li>
+<li><strong>Angle arc</strong> showing the current value of <span class="arithmatex">\(\theta\)</span></li>
+</ul>
+<h3 id="right-panel-wave-traces">Right Panel: Wave Traces</h3>
+<ul>
+<li><strong>Cosine plot</strong> (blue) showing <span class="arithmatex">\(\cos(\theta)\)</span> vs <span class="arithmatex">\(\theta\)</span></li>
+<li><strong>Sine plot</strong> (red) showing <span class="arithmatex">\(\sin(\theta)\)</span> vs <span class="arithmatex">\(\theta\)</span></li>
+<li><strong>Current position</strong> highlighted on each trace</li>
+<li><strong>Connecting lines</strong> from unit circle to corresponding plot values</li>
+</ul>
+<h3 id="interactive-controls">Interactive Controls</h3>
+<table>
+<thead>
+<tr>
+<th>Control</th>
+<th>Function</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Play/Pause</strong></td>
+<td>Start or stop the automatic rotation</td>
+</tr>
+<tr>
+<td><strong>Angle Slider</strong></td>
+<td>Manually set θ from 0 to 2π</td>
+</tr>
+<tr>
+<td><strong>Speed Slider</strong></td>
+<td>Adjust animation speed (0.1x to 5x)</td>
+</tr>
+<tr>
+<td><strong>Reset</strong></td>
+<td>Return to θ = 0 and clear traces</td>
+</tr>
+</tbody>
+</table>
+<h2 id="mathematical-background">Mathematical Background</h2>
+<h3 id="why-eulers-formula-matters">Why Euler's Formula Matters</h3>
+<p>Euler's formula connects three fundamental mathematical operations:
+- <strong>Exponentiation</strong> (<span class="arithmatex">\(e^x\)</span>)
+- <strong>Trigonometry</strong> (<span class="arithmatex">\(\cos\)</span>, <span class="arithmatex">\(\sin\)</span>)
+- <strong>Complex numbers</strong> (<span class="arithmatex">\(i\)</span>)</p>
+<p>This relationship is essential in signal processing because it allows us to:</p>
+<ol>
+<li><strong>Represent sinusoids compactly</strong>: <span class="arithmatex">\(A\cos(\omega t + \phi) = \text{Re}[Ae^{i(\omega t + \phi)}]\)</span></li>
+<li><strong>Simplify calculations</strong>: Multiplication of complex exponentials adds phases</li>
+<li><strong>Understand frequency analysis</strong>: The Fourier transform decomposes signals into complex exponentials</li>
+</ol>
+<h3 id="the-unit-circle-connection">The Unit Circle Connection</h3>
+<p>When <span class="arithmatex">\(\theta\)</span> increases from 0 to <span class="arithmatex">\(2\pi\)</span>:
+- The point <span class="arithmatex">\(e^{i\theta}\)</span> traces the unit circle counterclockwise
+- The real part traces out exactly one period of cosine
+- The imaginary part traces out exactly one period of sine</p>
+<p>This is why <span class="arithmatex">\(e^{i\theta}\)</span> is called a <strong>complex sinusoid</strong> or <strong>phasor</strong>.</p>
+<h3 id="special-values">Special Values</h3>
+<table>
+<thead>
+<tr>
+<th><span class="arithmatex">\(\theta\)</span></th>
+<th><span class="arithmatex">\(e^{i\theta}\)</span></th>
+<th><span class="arithmatex">\(\cos(\theta)\)</span></th>
+<th><span class="arithmatex">\(\sin(\theta)\)</span></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>0</td>
+<td>1</td>
+<td>1</td>
+<td>0</td>
+</tr>
+<tr>
+<td><span class="arithmatex">\(\pi/2\)</span></td>
+<td><span class="arithmatex">\(i\)</span></td>
+<td>0</td>
+<td>1</td>
+</tr>
+<tr>
+<td><span class="arithmatex">\(\pi\)</span></td>
+<td>-1</td>
+<td>-1</td>
+<td>0</td>
+</tr>
+<tr>
+<td><span class="arithmatex">\(3\pi/2\)</span></td>
+<td><span class="arithmatex">\(-i\)</span></td>
+<td>0</td>
+<td>-1</td>
+</tr>
+<tr>
+<td><span class="arithmatex">\(2\pi\)</span></td>
+<td>1</td>
+<td>1</td>
+<td>0</td>
+</tr>
+</tbody>
+</table>
+<h2 id="lesson-plan">Lesson Plan</h2>
+<h3 id="learning-objectives">Learning Objectives</h3>
+<p>By the end of this lesson, students will be able to:</p>
+<ol>
+<li><strong>Visualize</strong> Euler's formula as rotation on the unit circle</li>
+<li><strong>Explain</strong> how cosine and sine relate to the real and imaginary parts</li>
+<li><strong>Connect</strong> complex exponentials to sinusoidal signals</li>
+<li><strong>Apply</strong> this understanding to phasor representation in signal processing</li>
+</ol>
+<h3 id="grade-level">Grade Level</h3>
+<p>College-level signal processing, pre-calculus, or complex analysis courses</p>
+<h3 id="duration">Duration</h3>
+<p>15-25 minutes for exploration, 45 minutes with full instruction</p>
+<h3 id="prerequisites">Prerequisites</h3>
+<ul>
+<li>Understanding of complex numbers and the complex plane</li>
+<li>Basic trigonometry (sine, cosine, unit circle)</li>
+<li>Familiarity with exponential functions</li>
+</ul>
+<h3 id="suggested-activities">Suggested Activities</h3>
+<p><strong>Activity 1: Trace the Circle (5 min)</strong></p>
+<ol>
+<li>Set speed to 0.5x and press Play</li>
+<li>Watch the green point rotate around the unit circle</li>
+<li>Observe how the blue and red dots move along the axes</li>
+<li>Notice how the traces build up on the right</li>
+</ol>
+<p><strong>Activity 2: Find Special Points (5 min)</strong></p>
+<p>Use the angle slider to find:
+- Where is <span class="arithmatex">\(\cos(\theta) = 0\)</span>? What is <span class="arithmatex">\(\sin(\theta)\)</span> there?
+- Where is <span class="arithmatex">\(\sin(\theta) = 0\)</span>? What is <span class="arithmatex">\(\cos(\theta)\)</span> there?
+- Where are both <span class="arithmatex">\(|\cos(\theta)| = |\sin(\theta)|\)</span>?</p>
+<p><strong>Activity 3: Phase Relationships (5 min)</strong></p>
+<ol>
+<li>Notice that sine lags cosine by <span class="arithmatex">\(\pi/2\)</span> radians (90°)</li>
+<li>Verify: when cosine is at maximum, where is sine?</li>
+<li>When sine is at maximum, where is cosine?</li>
+</ol>
+<p><strong>Activity 4: Frequency Connection (5 min)</strong></p>
+<p>If the point rotates once per second (frequency = 1 Hz):
+- How many cycles of cosine appear in one second?
+- What determines the frequency of the output sinusoid?</p>
+<h3 id="assessment-questions">Assessment Questions</h3>
+<ol>
+<li>What is the value of <span class="arithmatex">\(e^{i\pi}\)</span>? Explain geometrically.</li>
+<li>Why does the point move counterclockwise as <span class="arithmatex">\(\theta\)</span> increases?</li>
+<li>How does multiplying two complex exponentials <span class="arithmatex">\(e^{i\theta_1} \cdot e^{i\theta_2}\)</span> relate to their angles?</li>
+<li>Why is Euler's formula useful for representing AC signals?</li>
+</ol>
+<h2 id="applications-in-signal-processing">Applications in Signal Processing</h2>
+<h3 id="phasors">Phasors</h3>
+<p>In AC circuit analysis, sinusoidal voltages and currents are represented as phasors <span class="arithmatex">\(Ve^{i\phi}\)</span>, simplifying impedance calculations.</p>
+<h3 id="fourier-transform">Fourier Transform</h3>
+<p>The Fourier transform uses <span class="arithmatex">\(e^{-i\omega t}\)</span> as basis functions, decomposing signals into frequency components.</p>
+<h3 id="modulation">Modulation</h3>
+<p>AM, FM, and PM modulation schemes can be understood as manipulating the amplitude, frequency, or phase of complex exponentials.</p>
+<h3 id="filter-design">Filter Design</h3>
+<p>Transfer functions and frequency responses are expressed using complex exponentials, making analysis tractable.</p>
+<h2 id="references">References</h2>
+<ul>
+<li>Euler, L. (1748). <em>Introductio in analysin infinitorum</em></li>
+<li>Oppenheim, A. V., &amp; Schafer, R. W. (2010). <em>Discrete-Time Signal Processing</em></li>
+<li>Nahin, P. J. (2006). <em>Dr. Euler's Fabulous Formula</em></li>
+</ul>
 
 
 
@@ -1907,7 +2581,7 @@
       <nav class="md-footer__inner md-grid" aria-label="Footer" >
         
           
-          <a href="../mobius-transform/" class="md-footer__link md-footer__link--prev" aria-label="Previous: Mobius Transformation">
+          <a href="../complex-plane/" class="md-footer__link md-footer__link--prev" aria-label="Previous: Complex Plane">
             <div class="md-footer__button md-icon">
               
               <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
@@ -1917,20 +2591,20 @@
                 Previous
               </span>
               <div class="md-ellipsis">
-                Mobius Transformation
+                Complex Plane
               </div>
             </div>
           </a>
         
         
           
-          <a href="../openai-gpts/" class="md-footer__link md-footer__link--next" aria-label="Next: OpenAI GPTs">
+          <a href="../../stories/" class="md-footer__link md-footer__link--next" aria-label="Next: List of Stories">
             <div class="md-footer__title">
               <span class="md-footer__direction">
                 Next
               </span>
               <div class="md-ellipsis">
-                OpenAI GPTs
+                List of Stories
               </div>
             </div>
             <div class="md-footer__button md-icon">
