@@ -156,7 +156,6 @@ These expressions allow us to manipulate trigonometric functions using the power
 #### MicroSim: Euler's Formula Visualization
 
 #### Diagram: Interactive Euler's Formula Explorer
-<iframe>
 
 <details markdown="1">
 <summary>Interactive Euler's Formula Explorer</summary>
