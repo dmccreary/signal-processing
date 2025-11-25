@@ -10,7 +10,7 @@ This file contains overall metrics for the intelligent textbook.
 | FAQs | 87 | [FAQ](../faq.md) | Frequently asked questions |
 | Quiz Questions | 150 | - | Questions across all chapters |
 | Diagrams | 23 | - | Level 4 headers starting with '#### Diagram:' |
-| Equations | 2421 | - | LaTeX expressions (inline and display) |
+| Equations | 2089 | - | LaTeX expressions (inline and display) |
 | MicroSims | 32 | [Simulations](../sims/index.md) | Interactive MicroSims |
 | Total Words | 164,865 | - | Words in all markdown files |
 | Links | 632 | - | Hyperlinks in markdown format |
