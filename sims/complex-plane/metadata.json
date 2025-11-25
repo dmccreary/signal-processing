@@ -1,0 +1,85 @@
+{
+  "title": "Complex Plane",
+  "description": "Interactive visualization of complex numbers in the complex plane showing both rectangular (a + bi) and polar (r angle theta) forms with geometric representations including magnitude, phase, and projections.",
+  "creator": "Dan McCreary",
+  "subject": ["Mathematics", "Signal Processing", "Complex Analysis"],
+  "date": "2025-01-25",
+  "type": "Interactive Simulation",
+  "format": "text/html",
+  "language": "en",
+  "rights": "CC BY-NC-SA 4.0",
+  "educational": {
+    "gradeLevel": "Undergraduate",
+    "subjectArea": "Signal Processing",
+    "topic": "Complex Numbers and Phasors",
+    "learningObjectives": [
+      "Understand the geometric interpretation of complex numbers",
+      "Convert between rectangular and polar forms",
+      "Calculate magnitude and phase from components",
+      "Connect complex plane to phasor representation"
+    ],
+    "bloomsTaxonomy": ["Understand", "Apply", "Analyze"],
+    "duration": "15-20 minutes",
+    "prerequisites": [
+      "Cartesian coordinate system",
+      "Basic trigonometry",
+      "Pythagorean theorem"
+    ]
+  },
+  "technical": {
+    "framework": "p5.js",
+    "version": "1.11.10",
+    "canvasDimensions": {
+      "width": "responsive",
+      "drawHeight": 450,
+      "controlHeight": 80
+    },
+    "responsive": true,
+    "dependencies": ["p5.js CDN"],
+    "accessibility": {
+      "screenReaderSupport": true,
+      "keyboardNavigation": false
+    }
+  },
+  "controls": [
+    {
+      "type": "slider",
+      "name": "realSlider",
+      "label": "Real Part",
+      "min": -5,
+      "max": 5,
+      "default": 3,
+      "step": 0.1,
+      "description": "Adjusts the real component of the complex number"
+    },
+    {
+      "type": "slider",
+      "name": "imagSlider",
+      "label": "Imaginary Part",
+      "min": -5,
+      "max": 5,
+      "default": 4,
+      "step": 0.1,
+      "description": "Adjusts the imaginary component of the complex number"
+    }
+  ],
+  "model": {
+    "type": "mathematical",
+    "variables": [
+      "realPart (a)",
+      "imagPart (b)",
+      "magnitude (r)",
+      "phase (theta)"
+    ],
+    "equations": [
+      "z = a + bi (rectangular form)",
+      "r = sqrt(a^2 + b^2) (magnitude)",
+      "theta = atan2(b, a) (phase angle)",
+      "z = r * e^(i*theta) (polar/exponential form)"
+    ],
+    "assumptions": [
+      "2D complex plane representation",
+      "Standard mathematical conventions for angle measurement"
+    ]
+  }
+}
