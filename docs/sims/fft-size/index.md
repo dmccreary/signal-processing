@@ -3,9 +3,10 @@ title: FFT Size MicroSim
 description: A basic demonstration of FFT on a single oscillator and radio button to control the size
 image: /sims/fft-size/fft-size.png
 og:image: /sims/fft-size/fft-size.png
-twitter:image: /fft-size/fft-size.png
+twitter:image: /sims/fft-size/fft-size.png
 social:
    cards: false
+quality_score: 80
 ---
 # FFT Size MicroSim
 

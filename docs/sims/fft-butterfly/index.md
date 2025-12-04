@@ -1,3 +1,12 @@
+---
+title: FFT Butterfly
+description: Visualization of the FFT butterfly algorithm showing how the Fast Fourier Transform breaks down signal computation.
+image: /sims/fft-butterfly/fft-butterfly.png
+og:image: /sims/fft-butterfly/fft-butterfly.png
+social:
+   cards: false
+quality_score: 40
+---
 # FFT Butterfly
 
 <iframe src="main.html" height="550" scrolling="no" style="overflow: hidden;"></iframe>

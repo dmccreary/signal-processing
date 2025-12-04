@@ -6,6 +6,7 @@ og:image: /sims/fft-basic/fft-basic.png
 twitter:image: /sims/fft-basic/fft-basic.png
 social:
    cards: false
+quality_score: 90
 ---
 # Basic FFT MicroSim
 

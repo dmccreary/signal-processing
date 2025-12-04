@@ -6,6 +6,7 @@ og:image: /sims/citation-graph/citation-graph.png
 twitter:image: /sims/citation-graph/citation-graph.png
 social:
    cards: false
+quality_score: 55
 hide:
   - toc
 ---

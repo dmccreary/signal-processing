@@ -1,4 +1,11 @@
 ---
+title: Book Build Workflow
+description: Interactive infographic showing the workflow for building intelligent textbooks.
+image: /sims/book-gen-workflow/book-gen-workflow.png
+og:image: /sims/book-gen-workflow/book-gen-workflow.png
+social:
+   cards: false
+quality_score: 40
 hide:
   - toc
 ---

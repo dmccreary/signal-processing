@@ -6,6 +6,7 @@ og:image: /sims/fft-sound-file/fft-sound-file.png
 twitter:image: /sims/fft-sound-file/fft-sound-file.png
 social:
    cards: false
+quality_score: 35
 hide:
    toc
 ---

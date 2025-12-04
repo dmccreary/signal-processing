@@ -1,4 +1,11 @@
 ---
+title: The Accelerating Pace of AI
+description: Interactive visualization showing the exponential growth and acceleration of AI capabilities over time.
+image: /sims/ai-pace-accelerating/ai-pace-accelerating.png
+og:image: /sims/ai-pace-accelerating/ai-pace-accelerating.png
+social:
+   cards: false
+quality_score: 30
 hide:
   - toc
 ---

@@ -6,6 +6,7 @@ og:image: /sims/complex-plane/complex-plane.png
 twitter:image: /sims/complex-plane/complex-plane.png
 social:
    cards: false
+quality_score: 90
 ---
 
 # Complex Plane

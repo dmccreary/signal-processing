@@ -1,4 +1,11 @@
 ---
+title: Bloom's Taxonomy MicroSim
+description: Interactive visualization of Bloom's Taxonomy cognitive levels for educational design.
+image: /sims/blooms-taxonomy/blooms-taxonomy.png
+og:image: /sims/blooms-taxonomy/blooms-taxonomy.png
+social:
+   cards: false
+quality_score: 30
 hide:
   - toc
 ---

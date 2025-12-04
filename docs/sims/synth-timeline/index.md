@@ -1,4 +1,11 @@
 ---
+title: Synth Timeline
+description: Interactive timeline visualization of synthesizer history and evolution.
+image: /sims/synth-timeline/synth-timeline.png
+og:image: /sims/synth-timeline/synth-timeline.png
+social:
+   cards: false
+quality_score: 25
 hide:
   - toc
 ---

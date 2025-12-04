@@ -1,4 +1,11 @@
 ---
+title: Convolution
+description: Interactive visualization demonstrating convolution as a measure of overlap between functions using a square and triangle example.
+image: /sims/convolution/convolution.png
+og:image: /sims/convolution/convolution.png
+social:
+   cards: false
+quality_score: 60
 hide:
   - toc
 ---

@@ -1,4 +1,13 @@
-# Learning Graph Viewer
+---
+title: Learning Graph Viewer V1
+description: First version of the learning graph viewer with pinned foundation and goal nodes.
+image: /sims/graph-viewer-v1/view-graph.png
+og:image: /sims/graph-viewer-v1/view-graph.png
+social:
+   cards: false
+quality_score: 35
+---
+# Learning Graph Viewer V1
 
 ![](./view-graph.png)
 

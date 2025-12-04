@@ -1,11 +1,12 @@
 ---
 title: FFT Live Audio from Microphone
 description: Display the frequency spectrum for the computer's microphone.
-image: /img/cover-preview.png
-og:image: /img/cover-preview.png
-twitter:image: /img/cover-preview.png
+image: /sims/fft-live-audio/fft-live-audio.png
+og:image: /sims/fft-live-audio/fft-live-audio.png
+twitter:image: /sims/fft-live-audio/fft-live-audio.png
 social:
    cards: false
+quality_score: 45
 hide:
   - toc
 ---

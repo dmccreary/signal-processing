@@ -6,6 +6,7 @@ og:image: /sims/euler-formula-explorer/euler-formula-explorer.png
 twitter:image: /sims/euler-formula-explorer/euler-formula-explorer.png
 social:
    cards: false
+quality_score: 85
 ---
 
 # Euler's Formula Explorer

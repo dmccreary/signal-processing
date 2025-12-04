@@ -6,6 +6,7 @@ og:image: /sims/fft-mic/fft-mic.png
 twitter:image: /sims/fft-mic/fft-mic.png
 social:
    cards: false
+quality_score: 55
 hide:
    toc
 ---

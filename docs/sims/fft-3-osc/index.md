@@ -1,11 +1,12 @@
---
-title: Basic FFT MicroSim
-description: A basic demonstration of FFT with time on the top and frequency on the bottom of the MicroSim
-image: /sims/fft-basic/fft-basic.png
-og:image: /sims/fft-basic/fft-basic.png
-twitter:image: /sims/fft-basic/fft-basic.png
+---
+title: FFT Three Oscillators MicroSim
+description: FFT demonstration with three oscillators showing superposition of sine waves in time and frequency domains.
+image: /sims/fft-3-osc/fft-3-osc.png
+og:image: /sims/fft-3-osc/fft-3-osc.png
+twitter:image: /sims/fft-3-osc/fft-3-osc.png
 social:
    cards: false
+quality_score: 45
 ---
 # Basic FFT MicroSim
 

@@ -1,11 +1,12 @@
 ---
-title: A title under 60 characters.
-description: A description under 110 characters.
-image: /img/tone-gen/tone-gen.png
-og:image: /img/tone-gen/tone-gen.png
-twitter:image: /img/tone-gen/tone-gen.png
+title: Tone Generator MicroSim
+description: Interactive tone generator allowing users to create and hear audio tones at different frequencies.
+image: /sims/tone-gen/tone-gen.png
+og:image: /sims/tone-gen/tone-gen.png
+twitter:image: /sims/tone-gen/tone-gen.png
 social:
    cards: false
+quality_score: 35
 hide:
   - toc
 ---

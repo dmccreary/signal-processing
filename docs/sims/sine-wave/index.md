@@ -1,4 +1,12 @@
 ---
+title: Sine Wave
+description: Interactive demonstration of sine wave parameters including amplitude, period, and phase with adjustable sliders.
+image: /sims/sine-wave/sine-wave.png
+og:image: /sims/sine-wave/sine-wave.png
+twitter:image: /sims/sine-wave/sine-wave.png
+social:
+   cards: false
+quality_score: 75
 hide:
   - toc
 ---

@@ -1,4 +1,11 @@
 ---
+title: Book Levels MicroSim
+description: Interactive visualization showing the five levels of intelligent textbooks from static to autonomous AI.
+image: /sims/book-levels/book-levels.png
+og:image: /sims/book-levels/book-levels.png
+social:
+   cards: false
+quality_score: 60
 hide:
   - toc
 ---

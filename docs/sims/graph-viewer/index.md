@@ -1,3 +1,12 @@
+---
+title: Learning Graph Viewer
+description: Interactive visualization of learning graphs showing concept dependencies and taxonomy filtering.
+image: /sims/graph-viewer/graph-viewer.png
+og:image: /sims/graph-viewer/graph-viewer.png
+social:
+   cards: false
+quality_score: 45
+---
 # Learning Graph Viewer
 
 [Run the Learning Graph Viewer](main.html){ .md-button .md-button--primary }

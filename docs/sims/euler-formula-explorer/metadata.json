@@ -2,96 +2,31 @@
   "title": "Euler's Formula Explorer",
   "description": "Interactive visualization demonstrating Euler's formula e^(iθ) = cos(θ) + i·sin(θ) with synchronized unit circle rotation and sine/cosine wave traces.",
   "creator": "Dan McCreary",
-  "subject": ["Mathematics", "Signal Processing", "Complex Analysis"],
   "date": "2025-01-25",
+  "subject": ["Mathematics", "Signal Processing", "Complex Analysis", "Euler's Formula"],
   "type": "Interactive Simulation",
   "format": "text/html",
   "language": "en",
   "rights": "CC BY-NC-SA 4.0",
-  "educational": {
-    "gradeLevel": "Undergraduate",
-    "subjectArea": "Signal Processing",
-    "topic": "Euler's Formula and Complex Exponentials",
-    "learningObjectives": [
-      "Visualize Euler's formula as rotation on the unit circle",
-      "Explain how cosine and sine relate to real and imaginary parts",
-      "Connect complex exponentials to sinusoidal signals",
-      "Apply understanding to phasor representation"
-    ],
-    "bloomsTaxonomy": ["Understand", "Apply", "Analyze"],
-    "duration": "15-25 minutes",
-    "prerequisites": [
-      "Complex numbers and complex plane",
-      "Basic trigonometry",
-      "Exponential functions"
-    ]
-  },
-  "technical": {
-    "framework": "p5.js",
-    "version": "1.11.10",
-    "canvasDimensions": {
-      "width": "responsive",
-      "drawHeight": 520,
-      "controlHeight": 80
-    },
-    "responsive": true,
-    "dependencies": ["p5.js CDN"],
-    "accessibility": {
-      "screenReaderSupport": true,
-      "keyboardNavigation": false
-    }
-  },
-  "controls": [
-    {
-      "type": "button",
-      "name": "playButton",
-      "label": "Play/Pause",
-      "description": "Start or stop the automatic rotation animation"
-    },
-    {
-      "type": "button",
-      "name": "resetButton",
-      "label": "Reset",
-      "description": "Reset angle to zero and clear trace history"
-    },
-    {
-      "type": "slider",
-      "name": "angleSlider",
-      "label": "Angle (θ)",
-      "min": 0,
-      "max": "2π",
-      "default": 0,
-      "step": 0.01,
-      "description": "Manually control the angle theta from 0 to 2π radians"
-    },
-    {
-      "type": "slider",
-      "name": "speedSlider",
-      "label": "Speed",
-      "min": 0.1,
-      "max": 5,
-      "default": 1,
-      "step": 0.1,
-      "description": "Control animation speed multiplier"
-    }
+  "identifier": "https://dmccreary.github.io/signal-processing/sims/euler-formula-explorer/",
+  "publisher": "Dan McCreary",
+  "educationalLevel": "Undergraduate",
+  "learningResourceType": "simulation",
+  "audience": "Students, Educators",
+  "version": "1.0.0",
+  "bloomLevel": ["Understand", "Apply", "Analyze"],
+  "concepts": [
+    "Euler's formula",
+    "Complex exponentials",
+    "Unit circle",
+    "Sine and cosine",
+    "Phasors",
+    "Angular rotation"
   ],
-  "model": {
-    "type": "mathematical",
-    "variables": [
-      "theta (angle in radians)",
-      "cos(theta) (real part)",
-      "sin(theta) (imaginary part)"
-    ],
-    "equations": [
-      "e^(iθ) = cos(θ) + i·sin(θ) (Euler's formula)",
-      "x = cos(θ) (real/horizontal coordinate)",
-      "y = sin(θ) (imaginary/vertical coordinate)",
-      "|e^(iθ)| = 1 (magnitude is always 1)"
-    ],
-    "assumptions": [
-      "Unit circle representation",
-      "Standard mathematical conventions",
-      "Counterclockwise positive rotation"
-    ]
-  }
+  "prerequisites": [
+    "Complex numbers and complex plane",
+    "Basic trigonometry",
+    "Exponential functions"
+  ],
+  "library": "p5.js"
 }

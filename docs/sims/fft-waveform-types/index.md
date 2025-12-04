@@ -6,6 +6,7 @@ og:image: /sims/fft-waveform-types/fft-waveform-types.png
 twitter:image: /sims/fft-waveform-types/fft-waveform-types.png
 social:
    cards: false
+quality_score: 65
 ---
 # FFT Waveform Types MicroSim
 

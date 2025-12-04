@@ -1,8 +1,15 @@
 ---
+title: Bass and Treble Amplifier Controls
+description: Interactive simulation of classic amplifier frequency response with adjustable bass and treble controls.
+image: /sims/base-and-treble/base-and-treble.png
+og:image: /sims/base-and-treble/base-and-treble.png
+social:
+   cards: false
+quality_score: 45
 hide:
   - toc
 ---
-# Base and Treble Amplifier Controls
+# Bass and Treble Amplifier Controls
 
 <iframe src="main.html" height="420" scrolling="no" style="overflow: hidden;"></iframe>
 
