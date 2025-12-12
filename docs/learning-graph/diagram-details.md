@@ -1,4 +1,4 @@
-# Geometry Course - Diagram and MicroSim Details
+# Diagram and MicroSim Details
 
 **Total Visual Elements:** 23
 **Diagrams:** 0
@@ -14,10 +14,10 @@
 - **UI Elements:** 0
 - **Difficulty:** Medium
 
-### [Interactive Euler's Formula Explorer](../chapters/01-mathematical-foundations/index.md#diagram-interactive-euler's-formula-explorer)
+### [Interactive Euler's Formula Explorer](../chapters/01-mathematical-foundations/index.md#diagram-interactive-eulers-formula-explorer)
 - **Type:** Microsim
 - **Bloom's Taxonomy:** Not specified
-- **UI Elements:** 7
+- **UI Elements:** 8
 - **Difficulty:** Hard
 
 ## Chapter 2: Introduction To Signals And Systems
