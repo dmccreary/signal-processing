@@ -124,8 +124,4 @@ This simulation demonstrates several key signal processing principles you'll enc
 
 -   **Axes and Labels:** Axes are drawn to represent 0 dB gain, and labels are added for clarity. The labels for the sliders are positioned above them.
 
-**Note:** This code should be run in a p5.js environment. The canvas size and control regions are set according to the template provided. Adjustments can be made to the EQ parameters to simulate different amplifier characteristics.
-
-## Refinement of Placement of Sliders
-conds
-
+**Note:** This code can be run in the p5.js editor environment with no changes. The canvas size and control regions are set according to the template provided. Adjustments can be made to the EQ parameters to simulate different amplifier characteristics.
