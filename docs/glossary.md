@@ -1,10 +1,22 @@
 # Signal Processing Glossary of Terms
 
+#### Adaptive Filters
+
+Adaptive filters are digital filters that automatically adjust their coefficients in real-time to optimize performance based on changing input conditions. They are essential for applications where signal statistics are unknown or time-varying, such as noise cancellation, echo removal, and channel equalization.
+
+**Example:** Students implement adaptive filters using the LMS algorithm to cancel acoustic echo in a speakerphone simulation, observing how the filter converges to the optimal solution.
+
 #### Adaptive filtering
 
 Adaptive filtering is a type of digital filter that self-adjusts its parameters based on the input signal to minimize a certain error criterion. It is used in environments where signal characteristics change over time.
 
 **Example:** In the course, students implement an adaptive filter to cancel noise in real-time audio recordings by continuously adjusting the filter coefficients to match the changing noise profile.
+
+#### Aliasing
+
+Aliasing is a phenomenon that occurs when a signal is sampled at a rate below twice its highest frequency component, causing high-frequency components to appear as lower frequencies in the sampled signal. It results in distortion that cannot be corrected after sampling.
+
+**Example:** Students observe aliasing by sampling a high-frequency sine wave at an insufficient rate, watching the sampled signal appear as a lower frequency than the original.
 
 #### Amplitude Modulation (AM)
 
@@ -12,11 +24,23 @@ Amplitude Modulation is a modulation technique where the amplitude of a carrier 
 
 **Example:** Students explore AM by transmitting audio signals over simulated radio waves, observing how changes in amplitude affect signal transmission and reception.
 
+#### Analog Signals
+
+Analog signals are continuous signals that vary smoothly over time and can take any value within a continuous range. They represent physical quantities such as sound, light, temperature, or pressure in their natural continuous form.
+
+**Example:** Students analyze analog audio signals from a microphone, observing how the continuous waveform represents the varying air pressure of sound waves before digital conversion.
+
 #### Autoencoders
 
 Autoencoders are a type of artificial neural network used to learn efficient codings of input data by compressing and then reconstructing the input. They are commonly used for dimensionality reduction and feature learning.
 
 **Example:** In assignments, students use autoencoders to compress image data, demonstrating how the network can learn to retain essential features while reducing data size.
+
+#### Autocorrelation
+
+Autocorrelation measures the similarity between a signal and a time-shifted version of itself, quantifying how correlated the signal is with its own past values. It is used to detect repeating patterns, periodicity, and to analyze signal characteristics.
+
+**Example:** Students compute the autocorrelation of a speech signal to identify its fundamental frequency and detect periodic components like pitch in voiced speech.
 
 #### Band-pass filter (BPF)
 
@@ -108,6 +132,12 @@ Complex numbers are numbers that have both a real and an imaginary component, ty
 
 **Example:** Students use complex numbers to represent phasors in AC circuit analysis, facilitating the calculation of impedances and signal interactions.
 
+#### Compressed Sensing
+
+Compressed sensing is a signal processing technique that enables the reconstruction of sparse signals from far fewer samples than traditional methods require. It exploits signal sparsity in some transform domain to recover signals with high fidelity from undersampled measurements.
+
+**Example:** Students apply compressed sensing algorithms to reconstruct MRI images from reduced scan data, demonstrating how sparsity assumptions enable faster medical imaging.
+
 #### Continuous Wavelet Transform (CWT)
 
 The Continuous Wavelet Transform is a signal processing technique that decomposes a signal into wavelets, providing both time and frequency information. It is useful for analyzing non-stationary signals.
@@ -125,6 +155,24 @@ Continuous-time signals are defined for every instant of time and can take any v
 Convolution is a mathematical operation that combines two signals to produce a third signal, representing the amount of overlap between one signal as it is shifted over another. It is fundamental in system analysis and filter design.
 
 **Example:** In assignments, students perform convolution of a signal with an impulse response to determine the output of a linear time-invariant (LTI) system.
+
+#### Convolution Theorem
+
+The convolution theorem states that convolution in the time domain is equivalent to multiplication in the frequency domain, and vice versa. This fundamental property enables efficient computation of convolutions using the Fast Fourier Transform.
+
+**Example:** Students verify the convolution theorem by computing a convolution both directly and via FFT multiplication, comparing the results to understand the computational efficiency gains.
+
+#### Convolutional Neural Networks (CNNs)
+
+Convolutional Neural Networks are deep learning architectures that use convolutional layers to automatically learn spatial hierarchies of features from input data. They are particularly effective for image and signal processing tasks.
+
+**Example:** Students implement a CNN to classify spectrograms of audio signals, learning how convolutional layers extract frequency and temporal patterns for sound recognition.
+
+#### Correlation
+
+Correlation is a statistical measure that quantifies the strength and direction of the relationship between two signals or variables. It indicates how one signal changes in relation to another and is used for pattern matching and signal analysis.
+
+**Example:** Students calculate the correlation between two sensor signals to determine if they are measuring related phenomena, such as temperature and humidity in environmental monitoring.
 
 #### Cross-correlation
 
@@ -181,6 +229,18 @@ Digital signals are discrete-time signals that have quantized amplitude levels. 
 
 **Example:** In assignments, students convert analog audio signals into digital form through sampling and quantization, then process them using digital filters.
 
+#### Digital Signal Processors (DSPs)
+
+Digital Signal Processors are specialized microprocessors designed specifically for performing digital signal processing operations efficiently. They feature architectures optimized for repetitive mathematical operations like multiply-accumulate, making them ideal for real-time signal processing applications.
+
+**Example:** Students program a DSP to implement a real-time audio filter, learning how the specialized hardware enables low-latency processing that general-purpose processors cannot achieve.
+
+#### Discrete Cosine Transform
+
+The Discrete Cosine Transform (DCT) is a transform that expresses a signal as a sum of cosine functions oscillating at different frequencies. Unlike the DFT, it uses only real numbers and is widely used in image and audio compression algorithms like JPEG and MP3.
+
+**Example:** Students apply the DCT to image blocks in a JPEG compression exercise, observing how most image energy concentrates in low-frequency coefficients enabling efficient compression.
+
 #### Discrete Fourier Transform (DFT)
 
 The Discrete Fourier Transform is a mathematical transform that converts a finite sequence of time-domain samples into a sequence of frequency-domain components. It is fundamental for digital signal processing.
@@ -224,6 +284,12 @@ An Elliptic filter, also known as a Cauer filter, is a type of analog or digital
 
 **Example:** Students design an Elliptic filter to achieve a specific cutoff frequency with minimal filter order, comparing its performance to other filter types.
 
+#### Energy Signals
+
+Energy signals are signals that have finite total energy, calculated as the integral of the squared magnitude over all time. They typically decay to zero as time approaches infinity and are contrasted with power signals which have infinite energy but finite average power.
+
+**Example:** Students classify different signal types by computing their energy and power, learning that a decaying exponential pulse is an energy signal while a constant sinusoid is a power signal.
+
 #### Energy Spectral Density (ESD)
 
 Energy Spectral Density represents the distribution of signal energy over frequency. It is used to analyze how energy is distributed across different frequency components of a signal.
@@ -253,6 +319,12 @@ Error detection is the process of identifying errors in transmitted or stored da
 Euler's formula establishes a fundamental relationship between complex exponentials and trigonometric functions, expressed as \(e^{j\theta} = \cos(\theta) + j\sin(\theta)\). It is essential for analyzing sinusoidal signals and phasors in signal processing.
 
 **Example:** Students use Euler's formula to convert time-domain sinusoidal signals into their phasor representations, simplifying the analysis of AC circuits.
+
+#### Even Signals
+
+Even signals are signals that exhibit symmetry about the vertical axis, meaning \(x(t) = x(-t)\) for all time \(t\). A cosine wave is a classic example of an even signal, and even signals have purely real Fourier transforms.
+
+**Example:** Students decompose arbitrary signals into even and odd components, learning that any signal can be expressed as the sum of an even part and an odd part.
 
 #### FIR filters
 
@@ -284,6 +356,18 @@ Filter design is the process of creating filters with specific frequency respons
 
 **Example:** Students engage in filter design projects where they create low-pass, high-pass, and band-pass filters tailored to remove specific noise frequencies from sensor data.
 
+#### Filter Order
+
+Filter order refers to the number of reactive elements or the degree of the transfer function polynomial in a filter design. Higher-order filters provide steeper roll-off transitions between passband and stopband but require more computational resources and may introduce more phase distortion.
+
+**Example:** Students compare filters of different orders, observing how increasing the order of a Butterworth filter from 2nd to 8th order creates a sharper cutoff but increases computational complexity.
+
+#### Filter Stability
+
+Filter stability is a property ensuring that a filter produces bounded outputs for all bounded inputs, preventing runaway oscillations or unbounded growth in the output signal. For digital IIR filters, stability requires all poles of the transfer function to lie inside the unit circle in the z-plane.
+
+**Example:** Students analyze the pole-zero plots of various IIR filter designs, identifying which configurations produce stable filters and which lead to unstable behavior.
+
 #### Fourier Transform (FT)
 
 The Fourier Transform is a mathematical transform that decomposes a continuous-time signal into its constituent frequencies. It provides a frequency-domain representation of time-domain signals.
@@ -295,6 +379,12 @@ The Fourier Transform is a mathematical transform that decomposes a continuous-t
 Fourier series decompose periodic signals into sums of sine and cosine functions with discrete frequencies. It is fundamental for analyzing periodic signals in both time and frequency domains.
 
 **Example:** Students represent a square wave using Fourier series, analyzing how adding higher harmonics affects the signal's approximation to the ideal waveform.
+
+#### Frequency Domain
+
+The frequency domain is a representation of signals or systems as functions of frequency rather than time. It reveals the frequency components present in a signal and their relative amplitudes and phases, enabling analysis and design of filters and systems.
+
+**Example:** Students transform time-domain audio signals into the frequency domain using FFT, visualizing the spectral content to identify noise frequencies for removal.
 
 #### Frequency Modulation (FM)
 
@@ -332,6 +422,12 @@ Infinite Impulse Response filters are a type of digital filter that, unlike FIR 
 
 **Example:** Students design IIR filters using the bilinear transform method, comparing their performance and computational efficiency to FIR filters in real-time audio processing.
 
+#### Impulse Response
+
+The impulse response is the output of a linear time-invariant (LTI) system when the input is a unit impulse function. It completely characterizes the system's behavior, as the response to any input can be computed by convolving the input with the impulse response.
+
+**Example:** Students measure the impulse response of an audio system by playing a short click and recording the output, then use it to predict the system's response to music signals.
+
 #### ISO Definition
 
 A term definition is considered to be consistent with ISO metadata registry guideline 11179 if it meets the following criteria:
@@ -366,6 +462,12 @@ The Kalman filter is an algorithm that provides estimates of unknown variables b
 
 **Example:** Students implement a Kalman filter to estimate the position and velocity of a moving object using noisy sensor data, demonstrating its effectiveness in real-time tracking.
 
+#### Laplace Transform
+
+The Laplace Transform is a mathematical transform that converts a time-domain function into a complex frequency-domain representation using the complex variable \(s = \sigma + j\omega\). It is essential for analyzing continuous-time systems, solving differential equations, and studying system stability.
+
+**Example:** Students use the Laplace Transform to solve RLC circuit differential equations, converting them to algebraic equations in the s-domain for easier manipulation and solution.
+
 #### Least Mean Squares (LMS) algorithm
 
 The Least Mean Squares algorithm is an adaptive filter algorithm that iteratively adjusts filter coefficients to minimize the mean square error between the desired and actual outputs. It is simple and widely used in adaptive filtering applications.
@@ -377,6 +479,12 @@ The Least Mean Squares algorithm is an adaptive filter algorithm that iterativel
 Linear algebra is a branch of mathematics dealing with vectors, matrices, and linear transformations. It is fundamental for understanding and implementing signal processing algorithms.
 
 **Example:** Students use linear algebra concepts to solve systems of equations arising in filter design and to perform operations like matrix multiplication in signal transformations.
+
+#### Linear Systems
+
+Linear systems are systems that satisfy the principles of superposition (additivity) and homogeneity (scaling), meaning the response to a sum of inputs equals the sum of individual responses, and scaling the input scales the output proportionally. Linear systems are fundamental to signal processing analysis.
+
+**Example:** Students verify linearity by applying multiple inputs to a filter separately and combined, confirming that the combined output equals the sum of individual outputs.
 
 #### Low-pass filter (LPF)
 
@@ -432,6 +540,12 @@ The Nyquist theorem states that to accurately sample a continuous-time signal wi
 
 **Example:** Students apply the Nyquist theorem to determine appropriate sampling rates for different audio signals, ensuring accurate digital representation without loss of information.
 
+#### Odd Signals
+
+Odd signals are signals that exhibit anti-symmetry about the origin, meaning \(x(t) = -x(-t)\) for all time \(t\). A sine wave is a classic example of an odd signal, and odd signals have purely imaginary Fourier transforms.
+
+**Example:** Students analyze the symmetry properties of various signals, learning that the odd component of a signal corresponds to the imaginary part of its Fourier transform.
+
 #### Orthogonal Frequency Division Multiplexing (OFDM)
 
 OFDM is a digital modulation technique that splits a signal into multiple orthogonal subcarriers, each carrying a portion of the data. It is widely used in modern communication systems like Wi-Fi and LTE.
@@ -443,6 +557,12 @@ OFDM is a digital modulation technique that splits a signal into multiple orthog
 Pattern recognition involves identifying patterns and regularities in data, enabling classification and prediction based on learned models. It is essential in applications like speech and image recognition.
 
 **Example:** In assignments, students develop pattern recognition systems to identify specific gestures from motion sensor data, applying feature extraction and classification algorithms.
+
+#### Periodic Signals
+
+Periodic signals are signals that repeat their pattern at regular intervals, satisfying \(x(t) = x(t + T)\) for all time \(t\), where \(T\) is the fundamental period. They can be represented using Fourier series as sums of harmonically related sinusoids.
+
+**Example:** Students analyze periodic waveforms like square waves and sawtooth waves, computing their Fourier series coefficients to understand their harmonic content.
 
 #### Phase Modulation (PM)
 
@@ -468,6 +588,12 @@ Polyphase filters are filter structures that decompose filtering operations into
 
 **Example:** Students design polyphase filter banks for efficient upsampling and downsampling of audio signals, reducing computational complexity compared to standard filtering approaches.
 
+#### Poles
+
+Poles are the values of the complex variable \(s\) (in continuous-time) or \(z\) (in discrete-time) for which the transfer function of a system becomes infinite. They determine the system's natural frequencies, stability, and transient response characteristics.
+
+**Example:** Students plot the poles of various filter transfer functions on the s-plane or z-plane, learning how pole locations affect stability and the shape of the impulse response.
+
 #### Power Spectral Density (PSD)
 
 Power Spectral Density quantifies how the power of a signal is distributed across different frequency components. It is used to analyze the frequency content and energy distribution of signals.
@@ -486,6 +612,12 @@ Quadrature Amplitude Modulation is a modulation scheme that combines both amplit
 
 **Example:** Students implement QAM in a simulated communication system, analyzing its capacity and resilience to noise compared to simpler modulation schemes.
 
+#### Quantization
+
+Quantization is the process of mapping a continuous range of amplitude values to a finite set of discrete levels in analog-to-digital conversion. It introduces quantization error, which is the difference between the original continuous value and its quantized representation.
+
+**Example:** Students experiment with different quantization bit depths on audio signals, listening to how reducing bits from 16 to 8 to 4 introduces increasingly audible noise and distortion.
+
 #### Random processes
 
 Random processes are collections of random variables indexed by time or space, used to model signals that evolve unpredictably. They are fundamental in understanding noise and stochastic signals.
@@ -497,6 +629,12 @@ Random processes are collections of random variables indexed by time or space, u
 Random variables are variables that can take on different values based on probabilistic outcomes. They are used to model and analyze stochastic processes and noise in signal processing.
 
 **Example:** Students model thermal noise in electronic circuits as a Gaussian random variable, applying statistical techniques to predict its impact on signal quality.
+
+#### Real-time Processing
+
+Real-time processing is the ability to process signals fast enough that the output is available within a specified time constraint, typically before the next input sample arrives. It is essential for applications like live audio processing, control systems, and telecommunications.
+
+**Example:** Students implement a real-time audio equalizer that processes samples within the sampling period, learning about buffer management and computational constraints.
 
 #### Recursive Least Squares (RLS) algorithm
 
@@ -587,11 +725,29 @@ Signal reconstruction is the process of rebuilding a continuous-time signal from
 
 **Example:** Students reconstruct audio signals from their samples using sinc interpolation, assessing the fidelity of the reconstructed signal compared to the original.
 
+#### Signal-to-Noise Ratio (SNR)
+
+Signal-to-Noise Ratio is a measure that compares the level of a desired signal to the level of background noise, typically expressed in decibels (dB). Higher SNR indicates a cleaner signal with less noise interference, and it is a key metric for evaluating signal quality in communication and measurement systems.
+
+**Example:** Students measure the SNR of audio recordings under different conditions, learning how various noise sources degrade signal quality and how filtering can improve SNR.
+
 #### Sparse representation
 
 Sparse representation involves expressing a signal as a linear combination of a few non-zero elements from a dictionary of possible basis functions. It is useful for efficient signal representation and compression.
 
 **Example:** Students apply sparse coding techniques to represent natural images with fewer coefficients, achieving compression without significant loss of detail.
+
+#### Spectral Leakage
+
+Spectral leakage is an artifact that occurs in Fourier analysis when the signal being analyzed is not perfectly periodic within the analysis window, causing energy to spread from the true frequency into adjacent frequency bins. Window functions are used to minimize this effect.
+
+**Example:** Students observe spectral leakage by computing the FFT of a sine wave that doesn't complete an integer number of cycles in the window, then apply Hamming and Hanning windows to reduce the leakage.
+
+#### Spectrogram
+
+A spectrogram is a visual representation of the frequency spectrum of a signal as it varies with time, typically displayed as a heat map with time on the horizontal axis, frequency on the vertical axis, and color or intensity representing magnitude. It is created using the Short-Time Fourier Transform (STFT).
+
+**Example:** Students generate spectrograms of speech signals to visualize how formant frequencies change during vowel sounds, aiding in understanding speech production and recognition.
 
 #### Stability
 
@@ -629,6 +785,12 @@ Time-frequency analysis examines signals in both time and frequency domains simu
 
 **Example:** Students apply time-frequency analysis to analyze transient events in biomedical signals, identifying when specific frequency components occur over time.
 
+#### Time-Invariant Systems
+
+Time-invariant systems are systems whose behavior and characteristics do not change over time, meaning a time-shifted input produces an identically time-shifted output. Combined with linearity, they form the important class of Linear Time-Invariant (LTI) systems that are central to signal processing.
+
+**Example:** Students test whether a system is time-invariant by applying the same input at different times and verifying that the output is simply delayed by the same amount.
+
 #### Transfer function
 
 A transfer function describes the relationship between the input and output of a linear time-invariant system in the frequency domain. It characterizes the system's behavior and response to different frequencies.
@@ -640,6 +802,18 @@ A transfer function describes the relationship between the input and output of a
 Unsupervised learning is a machine learning paradigm where models find patterns and relationships in unlabeled data without explicit instructions. It is used in signal processing for clustering, dimensionality reduction, and anomaly detection.
 
 **Example:** Students apply unsupervised learning techniques like k-means clustering to group similar signal patterns, identifying underlying structures without predefined labels.
+
+#### Unit Impulse Function
+
+The unit impulse function, also known as the Dirac delta function \(\delta(t)\) in continuous time or the Kronecker delta \(\delta[n]\) in discrete time, is a mathematical function that is zero everywhere except at the origin, where it is infinitely large with a total integral of one. It is fundamental for characterizing system responses.
+
+**Example:** Students use the unit impulse as an input to LTI systems to determine their impulse responses, which completely characterize the system's behavior.
+
+#### Unit Step Function
+
+The unit step function, denoted \(u(t)\) in continuous time or \(u[n]\) in discrete time, is a function that equals zero for negative arguments and one for non-negative arguments. It is used to represent signals that turn on at a specific time and to analyze system step responses.
+
+**Example:** Students apply the unit step function as input to a first-order RC circuit, analyzing how the system responds to a suddenly applied voltage.
 
 #### Variance
 
@@ -682,4 +856,10 @@ The Z-Transform is a mathematical transform that converts discrete-time signals 
 Zero-crossing rate is the rate at which a signal changes sign, indicating the number of times the signal crosses the zero amplitude axis. It is used as a feature in signal classification tasks.
 
 **Example:** Students calculate the zero-crossing rate of audio signals to distinguish between different types of sounds, such as voiced and unvoiced speech.
+
+#### Zeros
+
+Zeros are the values of the complex variable \(s\) (in continuous-time) or \(z\) (in discrete-time) for which the transfer function of a system equals zero. They affect the frequency response by creating notches or nulls at specific frequencies and shape the overall filter characteristics.
+
+**Example:** Students design notch filters by placing zeros at specific frequencies on the unit circle, effectively eliminating unwanted interference like 60 Hz power line noise.
 
