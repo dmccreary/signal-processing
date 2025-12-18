@@ -1,9 +1,9 @@
 ---
 title: Signal Processing with AI
 description: A college-level course in signal processing with extensive interactive MicroSims.
-image: /img/cover-social-media.png
-og:image: /img/cover-social-media.png
-twitter:image: /img/cover-social-media.png
+image: /img/cover-social-media.jpg
+og:image: /img/cover-social-media.jpg
+twitter:image: /img/cover-social-media.jpg
 social:
    cards: false
 hide:
@@ -14,7 +14,7 @@ hide:
 </style>
 # Signal Processing with AI
 
-![](./img/cover-social-media.png)
+![](./img/cover-social-media.jpg)
 
 Welcome to our website on using generative AI to create
 and maintain a Signal Processing online course.  This site
