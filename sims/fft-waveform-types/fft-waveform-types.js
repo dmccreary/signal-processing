@@ -201,13 +201,15 @@ function drawTitle() {
 
 function drawTimeWaveform() {
   // Time-domain waveform (top half)
-  let topHeight = drawHeight / 2 - 10;
-  let yCenter = topHeight / 2;
+  let topHeight = drawHeight / 2 - 30;
+  let yCenter = topHeight*.5;
   
   stroke('green');
   strokeWeight(2);
   noFill();
   
+  push();
+  translate(0, 30);
   if (waveformData.length > 0) {
     beginShape();
     for (let i = 0; i < waveformData.length; i++) {
@@ -222,6 +224,7 @@ function drawTimeWaveform() {
   stroke('gray');
   strokeWeight(1);
   line(margin, yCenter, canvasWidth - margin, yCenter);
+  pop();
 }
 
 function drawFrequencySpectrum() {
