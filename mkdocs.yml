@@ -195,13 +195,16 @@ theme:
 plugins:
   - search
   - social
-  - social_override
   # exclude template files from the build
   - exclude:
       glob:
         - "*template/*.md"
         - "*templates/*.md"
         - "chapters-v1/*/*.md"
+
+hooks:
+  - plugins/social_override.py
+
 markdown_extensions:
   - admonition
   - attr_list
