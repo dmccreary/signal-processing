@@ -2,10 +2,6 @@
 title: Signal Processing with AI
 description: A college-level course in signal processing with extensive interactive MicroSims.
 image: /img/cover-social-media.jpg
-og:image: /img/cover-social-media.jpg
-twitter:image: /img/cover-social-media.jpg
-social:
-   cards: false
 hide:
     toc
 ---
