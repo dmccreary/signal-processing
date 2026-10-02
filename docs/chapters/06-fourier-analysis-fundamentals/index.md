@@ -161,6 +161,8 @@ These properties enable problem-solving strategies where difficult operations in
 
 #### Diagram: Fourier Series Explorer
 
+<iframe src="../../sims/fourier-series-explorer/main.html" height="627px" width="100%" scrolling="no"></iframe>
+
 <details markdown="1">
 <summary>MicroSim: Fourier Series Explorer</summary>
 

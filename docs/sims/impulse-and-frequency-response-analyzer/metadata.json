@@ -1,0 +1,119 @@
+{
+  "title": "Impulse and Frequency Response Analyzer",
+  "creator": "Dan McCreary",
+  "subject": [
+    "Signal Processing",
+    "Signals and Systems",
+    "Impulse Response",
+    "Step Response",
+    "Frequency Response",
+    "LTI Systems"
+  ],
+  "description": "Shows the impulse response, step response, magnitude response and phase response of five LTI systems (Butterworth low-pass and high-pass filters, differentiator, integrator and second-order resonant system) side by side, with linked cursors and sliders for cutoff frequency, filter order and damping ratio.",
+  "date": "2026-10-02",
+  "type": "Interactive Simulation",
+  "format": "text/html",
+  "language": "en",
+  "rights": "CC BY-NC-SA 4.0",
+  "identifier": "https://dmccreary.github.io/signal-processing/sims/impulse-and-frequency-response-analyzer/",
+  "library": "p5.js",
+  "educational": {
+    "gradeLevel": [
+      "Undergraduate"
+    ],
+    "subjectArea": "Signal Processing",
+    "topic": "Impulse response, step response and frequency response of LTI systems",
+    "learningObjectives": [
+      "Explain why the impulse response completely characterizes an LTI system",
+      "Relate the step response to the impulse response through integration",
+      "Connect features of the impulse response to features of the frequency response",
+      "Compare how low-pass, high-pass, differentiating, integrating and resonant systems change a signal in time and in frequency"
+    ],
+    "bloomsTaxonomy": "Analyze",
+    "duration": "20-30 minutes",
+    "prerequisites": [
+      "Unit impulse and unit step functions",
+      "Convolution",
+      "Complex magnitude and phase",
+      "Decibels"
+    ],
+    "standards": []
+  },
+  "technical": {
+    "framework": "p5.js",
+    "version": "1.11.10",
+    "canvasDimensions": {
+      "width": "responsive",
+      "height": 625
+    },
+    "responsive": true,
+    "dependencies": [
+      "p5.js 1.11.10 (CDN)"
+    ],
+    "accessibility": {
+      "hasAltText": true,
+      "keyboardNavigable": true
+    }
+  },
+  "userInterface": {
+    "controls": [
+      { "type": "select", "label": "System", "options": ["Low-pass filter", "High-pass filter", "Differentiator", "Integrator", "Resonant system"], "default": "Low-pass filter" },
+      { "type": "select", "label": "Input", "options": ["Unit step u(t)", "Rectangular pulse", "Square wave"], "default": "Unit step u(t)" },
+      { "type": "slider", "label": "Cutoff / natural / unity-gain frequency (Hz)", "min": 0.5, "max": 5, "step": 0.1, "default": 1 },
+      { "type": "slider", "label": "Filter order N", "min": 1, "max": 4, "step": 1, "default": 2 },
+      { "type": "slider", "label": "Damping ratio", "min": 0.05, "max": 2, "step": 0.05, "default": 0.2 },
+      { "type": "button", "label": "Export h(t) as CSV" },
+      { "type": "canvas-hover", "label": "Hover over a plot to move the time or frequency cursor" }
+    ]
+  },
+  "simulation": {
+    "modelType": "mathematical",
+    "equations": [
+      "y(t) = x(t) * h(t)",
+      "s(t) = integral of h from -infinity to t",
+      "H(f) = integral of h(t) exp(-j 2 pi f t) dt",
+      "Butterworth low-pass: |H(f)| = 1 / sqrt(1 + (f/fc)^(2N))",
+      "Resonant: H(s) = wn^2 / (s^2 + 2 zeta wn s + wn^2)"
+    ],
+    "assumptions": [
+      "All responses are closed-form; impulses and doublets are drawn as arrows",
+      "Pulse and square-wave outputs are built by superposing shifted step responses"
+    ]
+  },
+  "pedagogical": {
+    "teachingStrategy": "Linked multiple representations",
+    "pattern": "comparison",
+    "bloomAlignment": [
+      "understand",
+      "analyze"
+    ],
+    "bloomVerbs": [
+      "relate",
+      "compare",
+      "connect"
+    ],
+    "pacing": "self-paced",
+    "supportsPrediction": true,
+    "dataVisibility": "high",
+    "interactionStyle": "manipulate",
+    "keyQuestions": [
+      "How does raising the cutoff frequency change the width of the impulse response?",
+      "What does a sharper cutoff cost in the step response?",
+      "How is ringing in the time domain related to a resonant peak in the frequency domain?"
+    ],
+    "commonMisconceptions": [
+      "The impulse response and the frequency response describe different aspects of a system rather than the same system",
+      "A higher filter order only changes the frequency response",
+      "A system with a wide bandwidth responds slowly"
+    ],
+    "assessmentOpportunities": [
+      "Read the time constant from the step response and the cutoff from the magnitude response and check that tau = 1/(2 pi fc)",
+      "Predict the pulse response from the step response"
+    ]
+  },
+  "visualizationType": [
+    "graph",
+    "interactive-demo"
+  ],
+  "chapter": "03-system-properties-and-analysis"
+}

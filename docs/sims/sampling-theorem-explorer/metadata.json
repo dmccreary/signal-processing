@@ -1,0 +1,116 @@
+{
+  "title": "Sampling Theorem Explorer",
+  "creator": "Dan McCreary",
+  "subject": [
+    "Signal Processing",
+    "Sampling Theorem",
+    "Nyquist Frequency",
+    "Aliasing",
+    "Signal Reconstruction"
+  ],
+  "description": "Sample a sine wave at an adjustable rate and rebuild it from the samples with ideal sinc interpolation, a zero-order hold or linear interpolation. Time plots and a spectrum with the Nyquist frequency marked show why a tone above half the sampling rate folds to a lower alias frequency.",
+  "date": "2026-10-02",
+  "type": "Interactive Simulation",
+  "format": "text/html",
+  "language": "en",
+  "rights": "CC BY-NC-SA 4.0",
+  "identifier": "https://dmccreary.github.io/signal-processing/sims/sampling-theorem-explorer/",
+  "library": "p5.js",
+  "educational": {
+    "gradeLevel": [
+      "Undergraduate"
+    ],
+    "subjectArea": "Signal Processing",
+    "topic": "The sampling theorem, aliasing and reconstruction",
+    "learningObjectives": [
+      "State the sampling theorem and the meaning of the Nyquist rate and the Nyquist frequency",
+      "Predict the alias frequency of an under-sampled tone",
+      "Explain aliasing as the overlap of spectral copies created by sampling",
+      "Compare ideal sinc reconstruction with zero-order hold and linear interpolation"
+    ],
+    "bloomsTaxonomy": "Analyze",
+    "duration": "20-25 minutes",
+    "prerequisites": [
+      "Sinusoids, frequency and period",
+      "Frequency spectrum",
+      "Discrete-time signals"
+    ],
+    "standards": []
+  },
+  "technical": {
+    "framework": "p5.js",
+    "version": "1.11.10",
+    "canvasDimensions": {
+      "width": "responsive",
+      "height": 625
+    },
+    "responsive": true,
+    "dependencies": [
+      "p5.js 1.11.10 (CDN)"
+    ],
+    "accessibility": {
+      "hasAltText": true,
+      "keyboardNavigable": true
+    }
+  },
+  "userInterface": {
+    "controls": [
+      { "type": "slider", "label": "Signal frequency fmax (Hz)", "min": 1, "max": 100, "step": 1, "default": 20 },
+      { "type": "slider", "label": "Sampling rate fs (Hz)", "min": 1, "max": 200, "step": 1, "default": 50 },
+      { "type": "select", "label": "Reconstruction", "options": ["Ideal (sinc interpolation)", "Practical: zero-order hold", "Practical: linear interpolation"], "default": "Ideal (sinc interpolation)" },
+      { "type": "checkbox", "label": "Show sinc pulses", "default": false }
+    ]
+  },
+  "simulation": {
+    "modelType": "mathematical",
+    "equations": [
+      "x(t) = sin(2 pi fmax t)",
+      "x[n] = x(n Ts), Ts = 1/fs",
+      "No aliasing when fs > 2 fmax",
+      "alias frequency = |fmax - k fs|, k = round(fmax / fs)",
+      "x_r(t) = sum over n of x[n] sinc((t - n Ts) / Ts)",
+      "zero-order hold gain = |sinc(f / fs)|, linear interpolation gain = sinc^2(f / fs)"
+    ],
+    "assumptions": [
+      "The input is a single sine with zero phase, so fmax is the tone frequency",
+      "The ideal reconstruction is drawn from the closed-form result of the infinite sinc sum"
+    ]
+  },
+  "pedagogical": {
+    "teachingStrategy": "Predict, test and explain with linked time and frequency views",
+    "pattern": "exploration",
+    "bloomAlignment": [
+      "understand",
+      "apply",
+      "analyze"
+    ],
+    "bloomVerbs": [
+      "predict",
+      "explain",
+      "compare"
+    ],
+    "pacing": "self-paced",
+    "supportsPrediction": true,
+    "dataVisibility": "high",
+    "interactionStyle": "manipulate",
+    "keyQuestions": [
+      "What happens to the reconstructed signal as the sampling rate falls below twice the signal frequency?",
+      "Why is sampling at exactly twice the signal frequency not enough?",
+      "Why does a zero-order hold need a smoothing filter after it?"
+    ],
+    "commonMisconceptions": [
+      "Sampling at exactly twice the highest frequency always allows perfect reconstruction",
+      "Aliasing can be removed by filtering after sampling",
+      "An under-sampled tone simply disappears instead of appearing at another frequency"
+    ],
+    "assessmentOpportunities": [
+      "Predict the alias frequency for (fmax, fs) = (40, 50), (70, 50), (30, 50) and (100, 30) Hz and check each",
+      "Explain the line heights in the spectrum for the zero-order hold"
+    ]
+  },
+  "visualizationType": [
+    "graph",
+    "interactive-demo"
+  ],
+  "chapter": "05-sampling-and-quantization"
+}
