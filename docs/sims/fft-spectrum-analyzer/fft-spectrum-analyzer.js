@@ -42,7 +42,7 @@ let running = false;
 let simTime = 0;                 // s, start time of the current frame of a generated signal
 let lastRowTime = -1;
 let frame = null, frameKey = '';
-let specImage = null;
+let spec = null;                 // offscreen canvas and pixel buffer of the spectrogram
 let mic = { ctx: null, analyser: null, stream: null, buffer: null, status: 'idle', message: '' };
 let plot = null;                 // geometry of the spectrum panel, for the cursor
 
@@ -87,7 +87,11 @@ function setup() {
     .forEach(c => c.parent(mainElement));
   positionControls();
 
-  specImage = createImage(SPEC_COLS, SPEC_ROWS);
+  const specCanvas = document.createElement('canvas');
+  specCanvas.width = SPEC_COLS;
+  specCanvas.height = SPEC_ROWS;
+  const specContext = specCanvas.getContext('2d');
+  spec = { canvas: specCanvas, context: specContext, data: specContext.createImageData(SPEC_COLS, SPEC_ROWS) };
   clearSpectrogram();
 
   describe('A spectrum analyzer. The upper plot shows one frame of the input signal before and after the window function. ' +
@@ -280,7 +284,7 @@ function toDb(a) { return 20 * Math.log10(Math.max(a, 1e-12)); }
 // a parabola to the dB values of the peak bin and its two neighbours.
 function findPeaks(amp, df, maxAmp) {
   const peaks = [];
-  if (maxAmp < 1e-6) return peaks;
+  if (maxAmp < 1e-4) return peaks;        // nothing but silence or numerical noise
   for (let k = 1; k < amp.length - 1; k++) {
     if (amp[k] < 0.1 * maxAmp) continue;
     if (amp[k] <= amp[k - 1] || amp[k] < amp[k + 1]) continue;
@@ -361,17 +365,15 @@ function viridis(v) {
 }
 
 function clearSpectrogram() {
-  specImage.loadPixels();
-  const c = viridis(0);
-  for (let i = 0; i < specImage.pixels.length; i += 4) {
-    specImage.pixels[i] = c[0]; specImage.pixels[i + 1] = c[1]; specImage.pixels[i + 2] = c[2]; specImage.pixels[i + 3] = 255;
+  const px = spec.data.data, c = viridis(0);
+  for (let i = 0; i < px.length; i += 4) {
+    px[i] = c[0]; px[i + 1] = c[1]; px[i + 2] = c[2]; px[i + 3] = 255;
   }
-  specImage.updatePixels();
+  spec.context.putImageData(spec.data, 0, 0);
 }
 
 function addSpectrogramRow(fr, fMax) {
-  specImage.loadPixels();
-  const px = specImage.pixels, rowBytes = SPEC_COLS * 4;
+  const px = spec.data.data, rowBytes = SPEC_COLS * 4;
   px.copyWithin(rowBytes, 0, px.length - rowBytes);          // move every row down by one
   const half = fr.n / 2;
   for (let c = 0; c < SPEC_COLS; c++) {
@@ -382,7 +384,7 @@ function addSpectrogramRow(fr, fMax) {
     const col = viridis((toDb(a) + 80) / 80);                // -80 dB ... 0 dB
     px[c * 4] = col[0]; px[c * 4 + 1] = col[1]; px[c * 4 + 2] = col[2]; px[c * 4 + 3] = 255;
   }
-  specImage.updatePixels();
+  spec.context.putImageData(spec.data, 0, 0);
 }
 
 // ---------------------------------------------------------------------------
@@ -538,7 +540,7 @@ function drawSpectrum(p, fr, fMax, mode) {
     ticks = [0, yMax / 3, 2 * yMax / 3, yMax].map(v => [v, String(parseFloat(v.toPrecision(2)))]);
     value = k => fr.amp[k];
   } else if (mode === 'db') {
-    yMin = DB_FLOOR; yMax = 10;
+    yMin = DB_FLOOR; yMax = 20;
     ticks = [0, -20, -40, -60, -80, -100].map(v => [v, String(v)]);
     value = k => toDb(fr.amp[k]);
   } else {
@@ -591,19 +593,29 @@ function drawSpectrum(p, fr, fMax, mode) {
       fill('crimson');
       for (let k = 0; k <= kMax; k++) circle(X(k * fr.df), Y(value(k)), 4);
     }
-    // peak markers
+    // peak markers; a label is moved up a row, or left out, rather than drawn over another label
     textSize(12);
+    const placed = [];
     for (const pk of fr.peaks) {
       if (pk.f > fMax) continue;
       const px = X(pk.f), py = Y(value(pk.k));
       noStroke();
       fill('darkorange');
       triangle(px - 5, py - 12, px + 5, py - 12, px, py - 3);
-      fill('black');
-      const label = '≈ ' + pk.f.toFixed(pk.f < 1000 && fr.df < 20 ? 1 : 0) + ' Hz';
+      const label = '≈ ' + pk.f.toFixed(fr.df < 20 ? 1 : 0) + ' Hz';
       const tw = textWidth(label);
-      textAlign(LEFT, BOTTOM);
-      text(label, constrain(px - tw / 2, p.x + 2, p.x + p.w - tw - 2), Math.max(p.y + 14, py - 14));
+      // candidate positions (left edge, baseline): centred above the marker, one row higher, beside the peak
+      const centred = constrain(px - tw / 2, p.x + 2, p.x + p.w - tw - 2);
+      const beside = px + 9 + tw < p.x + p.w ? px + 9 : px - 9 - tw;
+      for (const c of [[centred, py - 14], [centred, py - 27], [beside, py + 3]]) {
+        if (c[1] - 12 < p.y + 1 || c[1] > p.y + p.h - 2) continue;
+        if (placed.some(q => c[0] < q.x + q.w + 4 && c[0] + tw + 4 > q.x && Math.abs(c[1] - q.y) < 13)) continue;
+        fill('black');
+        textAlign(LEFT, BOTTOM);
+        text(label, c[0], c[1]);
+        placed.push({ x: c[0], y: c[1], w: tw });
+        break;
+      }
     }
   }
 
@@ -641,7 +653,7 @@ function drawSpectrogram(p) {
   noFill();
   rect(p.x, p.y, p.w, p.h);
   drawingContext.imageSmoothingEnabled = false;
-  image(specImage, p.x + 1, p.y + 1, p.w - 2, p.h - 2);
+  drawingContext.drawImage(spec.canvas, p.x + 1, p.y + 1, p.w - 2, p.h - 2);
   drawingContext.imageSmoothingEnabled = true;
   noStroke();
   fill('black');
@@ -662,9 +674,10 @@ function drawFrequencyAxis(p, fMax) {
   noStroke();
   fill('black');
   textSize(12);
-  for (let j = 0; j <= 8; j++) {
-    textAlign(j === 0 ? LEFT : (j === 8 ? RIGHT : CENTER), TOP);
-    text(Math.round(fMax * j / 8), p.x + j / 8 * p.w, p.y + p.h + 4);
+  const parts = canvasWidth < 600 ? 4 : 8;
+  for (let j = 0; j <= parts; j++) {
+    textAlign(j === 0 ? LEFT : (j === parts ? RIGHT : CENTER), TOP);
+    text(Math.round(fMax * j / parts), p.x + j / parts * p.w, p.y + p.h + 4);
   }
   textSize(13);
   textAlign(CENTER, TOP);

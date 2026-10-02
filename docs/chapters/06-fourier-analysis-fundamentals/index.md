@@ -201,6 +201,8 @@ This interactive simulation demonstrates how periodic signals decompose into har
 
 #### Diagram: FFT Spectrum Analyzer
 
+<iframe src="../../sims/fft-spectrum-analyzer/main.html" height="607px" width="100%" scrolling="no"></iframe>
+
 <details markdown="1">
 <summary>MicroSim: FFT Spectrum Analyzer</summary>
 

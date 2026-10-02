@@ -1,0 +1,122 @@
+{
+  "title": "Interactive Pole-Zero Analysis Tool",
+  "creator": "Dan McCreary",
+  "subject": [
+    "Signal Processing",
+    "Z-Transform",
+    "Poles and Zeros",
+    "Stability",
+    "Frequency Response",
+    "Digital Filters"
+  ],
+  "description": "Poles and zeros of a discrete-time system are dragged on the z-plane or set with radius and angle sliders. The magnitude and phase response are computed from the vectors between each pole or zero and a point on the unit circle, the impulse and step responses from the matching difference equation, and a banner reports whether the causal system is stable.",
+  "date": "2026-10-02",
+  "type": "Interactive Simulation",
+  "format": "text/html",
+  "language": "en",
+  "rights": "CC BY-NC-SA 4.0",
+  "identifier": "https://dmccreary.github.io/signal-processing/sims/interactive-pole-zero-analysis-tool/",
+  "library": "p5.js",
+  "educational": {
+    "gradeLevel": [
+      "Undergraduate"
+    ],
+    "subjectArea": "Signal Processing",
+    "topic": "Pole-zero analysis of discrete-time systems in the z-plane",
+    "learningObjectives": [
+      "Determine from a pole-zero plot whether a causal discrete-time system is stable",
+      "Explain the magnitude response as a ratio of distances from zeros and poles to a point on the unit circle",
+      "Relate the radius and angle of a pole pair to the decay rate and oscillation frequency of the impulse response",
+      "Design a simple resonator or notch by placing poles and zeros"
+    ],
+    "bloomsTaxonomy": "Analyze",
+    "duration": "25-30 minutes",
+    "prerequisites": [
+      "Complex numbers in polar form",
+      "The z-transform and transfer functions",
+      "Impulse response and frequency response"
+    ],
+    "standards": []
+  },
+  "technical": {
+    "framework": "p5.js",
+    "version": "1.11.10",
+    "canvasDimensions": {
+      "width": "responsive",
+      "height": 545
+    },
+    "responsive": true,
+    "dependencies": [
+      "p5.js 1.11.10 (CDN)"
+    ],
+    "accessibility": {
+      "hasAltText": true,
+      "keyboardNavigable": true
+    }
+  },
+  "userInterface": {
+    "controls": [
+      { "type": "select", "label": "System", "options": ["Resonator (pole pair)", "Notch filter", "Low-pass (one real pole)", "High-pass (one real pole)", "Moving average of 4 (FIR)", "All-pass (zeros at 1/r)", "Oscillator (poles on the circle)", "Unstable (poles outside)"], "default": "Resonator (pole pair)" },
+      { "type": "button", "label": "Add pole" },
+      { "type": "button", "label": "Add zero" },
+      { "type": "button", "label": "Remove", "description": "Delete the selected pole or zero" },
+      { "type": "slider", "label": "Radius |z|", "min": 0, "max": 1.5, "step": 0.01, "default": 0.9 },
+      { "type": "slider", "label": "Angle of z (degrees)", "min": 0, "max": 180, "step": 1, "default": 45 },
+      { "type": "canvas", "label": "Click to select and drag poles and zeros on the z-plane; move the mouse over the magnitude or phase plot to set the frequency cursor" }
+    ]
+  },
+  "simulation": {
+    "modelType": "mathematical",
+    "equations": [
+      "H(z) = G (z - z_1)...(z - z_M) / ((z - p_1)...(z - p_N)), G = 1",
+      "|H(e^jw)| = product of distances from zeros to e^jw / product of distances from poles to e^jw",
+      "y[n] = sum_k b[k] x[n-k] - sum_{k>=1} a[k] y[n-k]",
+      "stable (causal, discrete time) if and only if every pole satisfies |p| < 1"
+    ],
+    "assumptions": [
+      "The system is causal and has real coefficients, so complex poles and zeros are kept in conjugate pairs",
+      "When the numbers of poles and zeros differ, zeros or poles at z = 0 make up the difference; they change the phase but not the magnitude",
+      "A simple pole on the unit circle is reported as marginally stable and a repeated one as unstable",
+      "The frequency axis runs from 0 to pi radians per sample; 50 samples of the impulse and step responses are shown"
+    ]
+  },
+  "pedagogical": {
+    "teachingStrategy": "Manipulate the pole-zero plot and link each move to the frequency response, the time response and the stability verdict",
+    "pattern": "exploration",
+    "bloomAlignment": [
+      "understand",
+      "analyze",
+      "create"
+    ],
+    "bloomVerbs": [
+      "determine",
+      "explain",
+      "relate",
+      "design"
+    ],
+    "pacing": "self-paced",
+    "supportsPrediction": true,
+    "dataVisibility": "high",
+    "interactionStyle": "manipulate",
+    "keyQuestions": [
+      "Where must the poles of a causal discrete-time system lie for it to be stable?",
+      "Why does a pole near the unit circle produce a resonance peak?",
+      "What do the radius and the angle of a pole pair control in the impulse response?"
+    ],
+    "commonMisconceptions": [
+      "Zeros outside the unit circle make a system unstable",
+      "Stability in the z-plane means poles in the left half of the plane",
+      "A single complex pole can exist without its conjugate in a real system"
+    ],
+    "assessmentOpportunities": [
+      "Classify each preset as stable, marginally stable or unstable before loading it",
+      "Verify the magnitude at the resonance from the two pole distances"
+    ]
+  },
+  "visualizationType": [
+    "diagram",
+    "graph",
+    "interactive-demo"
+  ],
+  "chapter": "08-advanced-transforms"
+}

@@ -1,45 +1,125 @@
 {
   "title": "FFT Spectrum Analyzer",
   "creator": "Dan McCreary",
-  "subject": "High School Geometry",
-  "description": "Interactive MicroSim for fft spectrum analyzer",
+  "subject": [
+    "Signal Processing",
+    "Fast Fourier Transform",
+    "Discrete Fourier Transform",
+    "Spectral Analysis",
+    "Window Functions",
+    "Spectrogram"
+  ],
+  "description": "A spectrum analyzer built on a radix-2 FFT. Generated test signals or the microphone are analyzed frame by frame with a selectable FFT size and window function, and shown as a linear magnitude, dB or phase spectrum with peak markers, a cursor readout and an optional scrolling spectrogram.",
   "date": "2026-10-02",
+  "type": "Interactive Simulation",
+  "format": "text/html",
+  "language": "en",
+  "rights": "CC BY-NC-SA 4.0",
+  "identifier": "https://dmccreary.github.io/signal-processing/sims/fft-spectrum-analyzer/",
+  "library": "p5.js",
   "educational": {
     "gradeLevel": [
-      "9",
-      "10",
-      "11",
-      "12"
+      "Undergraduate"
     ],
-    "subjectArea": "Mathematics",
-    "topic": "FFT Spectrum Analyzer",
+    "subjectArea": "Signal Processing",
+    "topic": "FFT-based spectral analysis: bin spacing, amplitude scaling, windows and spectrograms",
     "learningObjectives": [
-      "TODO: Add learning objectives"
+      "Compute the bin spacing and frame length of an FFT from the sampling rate and the FFT size",
+      "Use the relation |X[k]| = A N / 2 to read the amplitude of a tone from an FFT",
+      "Compare the leakage of rectangular, Hamming, Hanning, Blackman and Kaiser windows",
+      "Explain the trade-off between frequency resolution and time resolution when the FFT size changes"
     ],
     "bloomsTaxonomy": "Apply",
-    "duration": "10-15 minutes",
-    "prerequisites": [],
+    "duration": "25-30 minutes",
+    "prerequisites": [
+      "Sampling and the Nyquist frequency",
+      "The DFT and frequency bins",
+      "Decibels"
+    ],
     "standards": []
   },
   "technical": {
     "framework": "p5.js",
-    "version": "1.0",
+    "version": "1.11.10",
     "canvasDimensions": {
       "width": "responsive",
-      "height": 450
+      "height": 605
     },
     "responsive": true,
-    "dependencies": [],
+    "dependencies": [
+      "p5.js 1.11.10 (CDN)",
+      "Web Audio API (microphone source only)"
+    ],
     "accessibility": {
-      "hasAltText": false,
-      "keyboardNavigable": false
+      "hasAltText": true,
+      "keyboardNavigable": true
     }
   },
-  "pedagogical": {
-    "teachingStrategy": "Interactive exploration",
-    "keyQuestions": [],
-    "commonMisconceptions": [],
-    "assessmentOpportunities": []
+  "userInterface": {
+    "controls": [
+      { "type": "select", "label": "Source", "options": ["Sine", "Two tones (f and f + 100 Hz)", "Square wave", "Sawtooth wave", "Sine + white noise", "Chirp (100 to 3900 Hz sweep)", "Microphone"], "default": "Sine" },
+      { "type": "button", "label": "Run / Pause", "description": "Lets time advance; starts paused" },
+      { "type": "slider", "label": "Signal frequency f (Hz)", "min": 50, "max": 3900, "step": 1, "default": 1000 },
+      { "type": "select", "label": "FFT size N", "options": ["128", "256", "512", "1024", "2048", "4096"], "default": "1024" },
+      { "type": "select", "label": "Window", "options": ["Rectangular", "Hamming", "Hanning (Hann)", "Blackman", "Kaiser (beta = 8.6)"], "default": "Rectangular" },
+      { "type": "select", "label": "Display", "options": ["Magnitude (linear)", "Magnitude (dB)", "Phase"], "default": "Magnitude (linear)" },
+      { "type": "checkbox", "label": "Spectrogram", "default": false },
+      { "type": "canvas", "label": "Move the mouse over the spectrum for a cursor readout of bin, frequency, magnitude and phase" }
+    ]
   },
+  "simulation": {
+    "modelType": "mathematical",
+    "equations": [
+      "X[k] = sum over n of x[n] w[n] e^(-j 2 pi k n / N)",
+      "bin spacing = fs / N, frame length = N / fs",
+      "bin-centred sine of amplitude A: |X[k]| = A N / 2 (rectangular window)",
+      "displayed amplitude = 2 |X[k]| / (N mean(w))",
+      "Hanning: w[n] = 0.5 - 0.5 cos(2 pi n / N); Hamming: w[n] = 0.54 - 0.46 cos(2 pi n / N)",
+      "Blackman: w[n] = 0.42 - 0.5 cos(2 pi n / N) + 0.08 cos(4 pi n / N)"
+    ],
+    "assumptions": [
+      "Generated signals are sampled at 8000 Hz; square and sawtooth waves are built from their harmonics below 4000 Hz",
+      "Peak frequencies are refined by a parabola through the dB values of three bins and are approximate",
+      "The Kaiser window uses beta = 8.6",
+      "The microphone is read through a Web Audio AnalyserNode at the sound card's sampling rate"
+    ]
+  },
+  "pedagogical": {
+    "teachingStrategy": "Measure known test signals first, then apply the same analyzer to live audio",
+    "pattern": "exploration",
+    "bloomAlignment": [
+      "understand",
+      "apply",
+      "analyze"
+    ],
+    "bloomVerbs": [
+      "compute",
+      "use",
+      "compare",
+      "explain"
+    ],
+    "pacing": "self-paced",
+    "supportsPrediction": true,
+    "dataVisibility": "high",
+    "interactionStyle": "manipulate",
+    "keyQuestions": [
+      "What sets the spacing of the frequency bins?",
+      "Why does a tone between two bins read a lower amplitude and spread into other bins?",
+      "What do you give up when you make the FFT longer?"
+    ],
+    "commonMisconceptions": [
+      "The height of an FFT peak is the amplitude of the tone without any scaling",
+      "A longer FFT always gives a better picture of the signal",
+      "Leakage is an error in the FFT algorithm"
+    ],
+    "assessmentOpportunities": [
+      "Verify |X[k]| = N / 2 for a unit sine at every FFT size",
+      "Compare the amplitude read for a 1004 Hz tone with each window at N = 1024"
+    ]
+  },
+  "visualizationType": [
+    "graph",
+    "interactive-demo"
+  ],
   "chapter": "06-fourier-analysis-fundamentals"
 }
