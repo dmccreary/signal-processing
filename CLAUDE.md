@@ -91,3 +91,9 @@ When adding educational content:
 2. Include mathematical concepts with LaTeX via MathJax
 3. Add relevant circuit diagrams using Schemadraw when applicable
 4. Cross-reference related simulations and stories
+
+## Student-Facing Content
+
+Before generating content for the chapters, lesson plans, quizzes, FAQ or other student-facing
+text, read the `CONTENT-GENERATION-GUIDE.md` file. Note that the teacher guide, instructor guide,
+or other instructor-facing content does not use the mascot described in CONTENT-GENERATION-GUIDE.md.
