@@ -4,6 +4,15 @@
 // radix-2 FFT.  The spectrum is shown as amplitude, in dB or as phase, with peak
 // markers, a cursor readout and an optional scrolling spectrogram.  The input is
 // a generated test signal (fs = 8000 Hz) or the microphone.
+// p5.js 2.3.2 + p5.sound 0.4.1 (p5.sound is used only to read the microphone).
+// p5.sound 0.4.1 notes:
+//   * new p5.AudioIn() is routed to the speakers like every p5.sound node, so the
+//     sketch calls disconnect() first: the microphone is analysed, never played back.
+//   * The raw samples come from p5.FFT.waveform() (samples.size = 4096).  Its
+//     analyze() spectrum is not used: it always applies a Blackman window and
+//     smoothing, while this sketch needs its own window choice, scaling and phase.
+//   * AudioIn.start() opens the device asynchronously and has no callback, so the
+//     sketch watches micIn.node.state to learn when the stream is live.
 
 // ---- canvas layout (standard MicroSim regions) ----
 let canvasWidth = 670;
@@ -20,6 +29,8 @@ const CHIRP_PERIOD = 4;       // s, the sweep repeats after this time
 const CHIRP_F0 = 100, CHIRP_F1 = 3900;
 const KAISER_BETA = 8.6;
 const MIC_F_MAX = 8000;       // Hz, upper limit of the frequency axis for the microphone
+const MIC_BUFFER = 4096;      // raw microphone samples kept per frame (the largest FFT size)
+const MIC_WAIT = 10;          // s to wait for the microphone before showing a hint
 const ROW_INTERVAL = 0.05;    // s of signal time between spectrogram rows
 const SPEC_COLS = 512, SPEC_ROWS = 100;
 const DB_FLOOR = -100;
@@ -43,7 +54,11 @@ let simTime = 0;                 // s, start time of the current frame of a gene
 let lastRowTime = -1;
 let frame = null, frameKey = '';
 let spec = null;                 // offscreen canvas and pixel buffer of the spectrogram
-let mic = { ctx: null, analyser: null, stream: null, buffer: null, status: 'idle', message: '' };
+let micIn = null;                // p5.AudioIn in use (built on the first Run with the microphone source)
+let micPending = false;          // micIn.start() was called and the stream has not been seen live yet
+let micOld = [];                 // earlier AudioIns whose request may still succeed; closed if it does
+let micTap = null;               // p5.FFT used only for waveform(): the latest MIC_BUFFER raw samples
+let mic = { status: 'idle', message: '', since: 0, slow: false, buffer: null };
 let plot = null;                 // geometry of the spectrum panel, for the cursor
 
 function setup() {
@@ -95,7 +110,8 @@ function setup() {
   clearSpectrogram();
 
   describe('A spectrum analyzer. The upper plot shows one frame of the input signal before and after the window function. ' +
-    'The lower plot shows its FFT spectrum with peak markers, and optionally a scrolling spectrogram.', LABEL);
+    'The lower plot shows its FFT spectrum with peak markers, and optionally a scrolling spectrogram. ' +
+    'Choose a source, FFT size, window and display below the plots and press Run to let time advance.');
 }
 
 // ---------------------------------------------------------------------------
@@ -216,39 +232,94 @@ function generated(kind, f, i) {
   return Math.sin(2 * Math.PI * (CHIRP_F0 * t + 0.5 * (CHIRP_F1 - CHIRP_F0) / CHIRP_PERIOD * t * t));
 }
 
-// ---- microphone (Web Audio) ----
+// ---- microphone (p5.sound 0.4.1) ----
 
+// Called from the Run click (a user gesture), so the audio context may start.
 function startMic() {
-  if (mic.status === 'on' || mic.status === 'asking') return;
+  if (mic.status === 'on' || (mic.status === 'asking' && !mic.slow)) return;
   if (!navigator.mediaDevices || !navigator.mediaDevices.getUserMedia) {
     mic.status = 'error';
     mic.message = 'This browser gives no access to a microphone here.';
     stopRunning();
     return;
   }
+  userStartAudio();                         // the audio context starts suspended
+  if (!micTap) {
+    micTap = new p5.FFT(1024);              // its analyze() spectrum is not used
+    micTap.samples.size = MIC_BUFFER;       // waveform() now returns MIC_BUFFER samples
+  }
+  // p5.sound reports no failure, so an earlier request may still be pending: never call start()
+  // twice on one AudioIn (a second stream would be left open); use a fresh one instead.
+  if (micIn && micPending) retireMic();
+  if (!micIn) {
+    micIn = new p5.AudioIn();
+    micIn.disconnect();                     // analyse only: do not send the microphone to the speakers
+    micIn.connect(micTap);
+  }
+  micIn.start();                            // opens asynchronously; pollMic() sees when it is live
+  micPending = true;
   mic.status = 'asking';
+  mic.since = millis();
+  mic.slow = false;
   mic.message = 'Waiting for permission to use the microphone...';
-  navigator.mediaDevices.getUserMedia({ audio: true }).then(stream => {
-    const Ctx = window.AudioContext || window.webkitAudioContext;
-    mic.ctx = new Ctx();
-    mic.stream = stream;
-    mic.analyser = mic.ctx.createAnalyser();
-    mic.analyser.fftSize = 4096;
-    mic.ctx.createMediaStreamSource(stream).connect(mic.analyser);
-    mic.buffer = new Float32Array(4096);
-    mic.status = 'on';
-    mic.message = '';
-  }).catch(err => {
-    mic.status = 'error';
-    mic.message = 'Microphone not available (' + (err && err.name ? err.name : 'error') + ').';
-    stopRunning();
-  });
+  // A blocked microphone gives no error through p5.sound, so ask the Permissions API (where it exists).
+  if (navigator.permissions && navigator.permissions.query) {
+    navigator.permissions.query({ name: 'microphone' }).then(p => {
+      const check = () => { if (p.state === 'denied' && mic.status === 'asking') micBlocked(); };
+      check();
+      p.onchange = check;
+    }).catch(() => {});
+  }
+}
+
+function micBlocked() {
+  mic.status = 'error';
+  mic.message = 'Microphone not available: access is blocked for this page.';
+  stopRunning();
+}
+
+function retireMic() {
+  micIn.disconnect();                       // a late stream from this request must not reach the analyser
+  micOld.push(micIn);
+  micIn = null;
+  micPending = false;
 }
 
 function stopMic() {
-  if (mic.stream) mic.stream.getTracks().forEach(t => t.stop());
-  if (mic.ctx) mic.ctx.close();
-  mic = { ctx: null, analyser: null, stream: null, buffer: mic.buffer, status: 'idle', message: '' };
+  if (micIn) {
+    micIn.stop();                           // closes the stream, so the browser's microphone indicator goes off
+    if (micPending) retireMic();            // permission may still arrive for this request
+  }
+  mic = { status: 'idle', message: '', since: 0, slow: false, buffer: mic.buffer };
+}
+
+// Once per frame: follow the state of the microphone stream.
+function pollMic() {
+  micOld = micOld.filter(m => {             // a retired request that succeeded late is closed at once
+    if (m.node.state !== 'started') return true;
+    m.stop();
+    return false;
+  });
+  if (!micIn || mic.status === 'idle') return;
+  const live = micIn.node.state === 'started';
+  if (live) micPending = false;
+  if (live && mic.status !== 'on') {
+    mic.status = 'on';
+    mic.slow = false;
+    mic.message = '';
+  } else if (!live && mic.status === 'on') {
+    mic.status = 'error';
+    mic.message = 'The microphone stopped. Press Run to open it again.';
+    stopRunning();
+  } else if (mic.status === 'asking' && !mic.slow && millis() - mic.since > MIC_WAIT * 1000) {
+    mic.slow = true;
+    mic.message = 'No microphone yet. Allow access in the browser, then press Run.';
+    stopRunning();
+  }
+}
+
+function micSampleRate() {
+  try { return getAudioContext().sampleRate; } catch (e) { return 48000; }
 }
 
 // ---------------------------------------------------------------------------
@@ -301,15 +372,16 @@ function currentFrame() {
   const kind = sourceSelect.value(), n = parseInt(sizeSelect.value()), win = windowSelect.value();
   if (kind === 'mic') {
     if (mic.status === 'on' && running) {
-      mic.analyser.getFloatTimeDomainData(mic.buffer);
-      frame = analyze(Float64Array.from(mic.buffer.subarray(4096 - n)), mic.ctx.sampleRate, win);
+      if (!mic.buffer) mic.buffer = new Float32Array(MIC_BUFFER);
+      mic.buffer.set(micTap.waveform());          // the latest MIC_BUFFER raw samples, in [-1, 1]
+      frame = analyze(Float64Array.from(mic.buffer.subarray(MIC_BUFFER - n)), micSampleRate(), win);
       frameKey = '';
     } else {
       // hold the last captured buffer (or silence) while paused
       const key = ['mic', n, win, mic.status].join('|');
       if (key !== frameKey) {
-        const src = mic.buffer ? Float64Array.from(mic.buffer.subarray(4096 - n)) : new Float64Array(n);
-        frame = analyze(src, mic.ctx ? mic.ctx.sampleRate : 48000, win);
+        const src = mic.buffer ? Float64Array.from(mic.buffer.subarray(MIC_BUFFER - n)) : new Float64Array(n);
+        frame = analyze(src, micSampleRate(), win);
         frameKey = key;
       }
     }
@@ -395,6 +467,7 @@ function draw() {
   updateCanvasSize();
 
   const kind = sourceSelect.value();
+  pollMic();
   if (running && kind !== 'mic') simTime += Math.min(0.1, deltaTime / 1000);
 
   fill('aliceblue');
@@ -442,6 +515,22 @@ function draw() {
 
 function fmtHz(v) { return v >= 100 ? v.toFixed(1) : v.toFixed(2); }
 
+// A polyline of n points drawn straight onto the 2D context.  The traces have up to 4096
+// points, and p5 2.x beginShape()/vertex() is too slow for that many every frame.
+function polyline(n, xAt, yAt, col, weight) {
+  const g = drawingContext;
+  g.save();
+  g.strokeStyle = col;
+  g.lineWidth = weight;
+  g.beginPath();
+  for (let i = 0; i < n; i++) {
+    if (i === 0) g.moveTo(xAt(i), yAt(i));
+    else g.lineTo(xAt(i), yAt(i));
+  }
+  g.stroke();
+  g.restore();
+}
+
 function drawBanner(fr, kind) {
   const narrow = canvasWidth < 600;
   let msg = 'N = ' + fr.n + ' samples at fs = ' + Math.round(fr.fs) + ' Hz:   bin spacing Δf = fs/N = ' + fmtHz(fr.df) +
@@ -449,8 +538,9 @@ function drawBanner(fr, kind) {
   if (narrow) msg = 'Δf = fs/N = ' + fmtHz(fr.df) + ' Hz,  frame ' + (1000 * fr.n / fr.fs).toFixed(1) + ' ms';
   let warn = false;
   if (kind === 'mic' && mic.status !== 'on') {
-    warn = mic.status === 'error';
-    msg = mic.message || 'Press Run to start the microphone. The browser will ask for permission.';
+    warn = mic.status === 'error' || mic.slow;
+    msg = mic.message || (narrow ? 'Press Run to start the microphone.'
+      : 'Press Run to start the microphone. The browser will ask for permission.');
   }
   stroke(warn ? 'firebrick' : 'steelblue');
   strokeWeight(1.5);
@@ -459,8 +549,10 @@ function drawBanner(fr, kind) {
   strokeWeight(1);
   noStroke();
   fill(warn ? 'firebrick' : 'midnightblue');
-  textSize(narrow ? 12 : 14);
   textStyle(BOLD);
+  let size = narrow ? 12 : 14;              // shrink a long message until it fits in the banner
+  textSize(size);
+  while (size > 9 && fontWidth(msg) > canvasWidth - 32) textSize(size -= 0.5);
   textAlign(CENTER, CENTER);
   text(msg, canvasWidth / 2, 46);
   textStyle(NORMAL);
@@ -514,16 +606,8 @@ function drawTimePlot(p, fr) {
     text(parseFloat((duration * j / 4).toFixed(1)), x, p.y + p.h + 4);
   }
 
-  const trace = (data, col, weight) => {
-    stroke(col);
-    strokeWeight(weight);
-    noFill();
-    beginShape();
-    for (let i = 0; i < fr.n; i++) vertex(X(i), Y(data[i]));
-    endShape();
-  };
-  trace(fr.x, 'silver', 1);
-  trace(fr.windowed, 'blue', 1.5);
+  polyline(fr.n, X, i => Y(fr.x[i]), 'silver', 1);
+  polyline(fr.n, X, i => Y(fr.windowed[i]), 'blue', 1.5);
   strokeWeight(1);
   caption(p, canvasWidth < 600 ? 'Frame x[n] (grey), windowed (blue)' : 'Time frame of N samples: x[n] (grey) and after the window, x[n]·w[n] (blue)',
     'blue', 't (ms)');
@@ -581,39 +665,36 @@ function drawSpectrum(p, fr, fMax, mode) {
       circle(X(k * fr.df), Y(fr.phase[k]), 5);
     }
   } else {
-    stroke('crimson');
-    strokeWeight(1.5);
-    noFill();
-    beginShape();
-    for (let k = 0; k <= kMax; k++) vertex(X(k * fr.df), Y(value(k)));
-    endShape();
+    polyline(kMax + 1, k => X(k * fr.df), k => Y(value(k)), 'crimson', 1.5);
     strokeWeight(1);
     if (dots) {
       noStroke();
       fill('crimson');
       for (let k = 0; k <= kMax; k++) circle(X(k * fr.df), Y(value(k)), 4);
     }
-    // peak markers; a label is moved up a row, or left out, rather than drawn over another label
+    // peak markers; a label is moved up a row, or left out, rather than drawn over another
+    // label or marker (each entry of placed is a box x0..x1, y0..y1)
     textSize(12);
-    const placed = [];
-    for (const pk of fr.peaks) {
-      if (pk.f > fMax) continue;
-      const px = X(pk.f), py = Y(value(pk.k));
-      noStroke();
-      fill('darkorange');
-      triangle(px - 5, py - 12, px + 5, py - 12, px, py - 3);
-      const label = '≈ ' + pk.f.toFixed(fr.df < 20 ? 1 : 0) + ' Hz';
-      const tw = textWidth(label);
+    const marks = fr.peaks.filter(pk => pk.f <= fMax).map(pk => ({ pk: pk, px: X(pk.f), py: Y(value(pk.k)) }));
+    const placed = marks.map(m => ({ x0: m.px - 5, x1: m.px + 5, y0: m.py - 12, y1: m.py - 3 }));
+    noStroke();
+    fill('darkorange');
+    for (const m of marks) triangle(m.px - 5, m.py - 12, m.px + 5, m.py - 12, m.px, m.py - 3);
+    for (const m of marks) {
+      const px = m.px, py = m.py;
+      const label = '≈ ' + m.pk.f.toFixed(fr.df < 20 ? 1 : 0) + ' Hz';
+      const tw = fontWidth(label);              // p5 2.x textWidth() ignores spaces
       // candidate positions (left edge, baseline): centred above the marker, one row higher, beside the peak
       const centred = constrain(px - tw / 2, p.x + 2, p.x + p.w - tw - 2);
       const beside = px + 9 + tw < p.x + p.w ? px + 9 : px - 9 - tw;
       for (const c of [[centred, py - 14], [centred, py - 27], [beside, py + 3]]) {
         if (c[1] - 12 < p.y + 1 || c[1] > p.y + p.h - 2) continue;
-        if (placed.some(q => c[0] < q.x + q.w + 4 && c[0] + tw + 4 > q.x && Math.abs(c[1] - q.y) < 13)) continue;
+        const box = { x0: c[0], x1: c[0] + tw, y0: c[1] - 12, y1: c[1] };
+        if (placed.some(q => box.x0 < q.x1 + 4 && box.x1 + 4 > q.x0 && box.y0 < q.y1 + 1 && box.y1 + 1 > q.y0)) continue;
         fill('black');
         textAlign(LEFT, BOTTOM);
         text(label, c[0], c[1]);
-        placed.push({ x: c[0], y: c[1], w: tw });
+        placed.push(box);
         break;
       }
     }
@@ -666,7 +747,12 @@ function drawSpectrogram(p) {
     fill('white');
     textAlign(CENTER, CENTER);
     textSize(13);
-    text('Press Run to scroll the spectrogram (colour: −80 dB dark to 0 dB bright)', p.x + p.w / 2, p.y + p.h / 2);
+    const hint = 'Press Run to scroll the spectrogram', scale = '(colour: −80 dB dark to 0 dB bright)';
+    if (fontWidth(hint + ' ' + scale) < p.w - 10) text(hint + ' ' + scale, p.x + p.w / 2, p.y + p.h / 2);
+    else {                                  // narrow screens: two lines
+      text(hint, p.x + p.w / 2, p.y + p.h / 2 - 9);
+      text(scale, p.x + p.w / 2, p.y + p.h / 2 + 9);
+    }
   }
 }
 

@@ -6,139 +6,119 @@ og:image: /sims/complex-plane/complex-plane.png
 twitter:image: /sims/complex-plane/complex-plane.png
 social:
    cards: false
-quality_score: 90
+quality_score: 95
 ---
 
 # Complex Plane
 
-<iframe src="main.html" height="532px" width="100%" scrolling="no"></iframe>
+<iframe src="main.html" width="100%" height="532px" scrolling="no"></iframe>
 
-[Run the Complex Plane MicroSim Fullscreen](./main.html){ .md-button .md-button--primary }
-<br/>
-[Edit the Complex Plane MicroSim with the p5.js Editor](https://editor.p5js.org/dmccreary/sketches/wnEDizl5_)
-
-## About This MicroSim
-
-This interactive simulation demonstrates the geometric representation of complex numbers in the complex plane (also known as the Argand diagram). Students can manipulate the real and imaginary parts of a complex number and observe how the rectangular and polar forms change in real-time.
-
-## Embedding This MicroSim
-
-You can include this MicroSim on your website using the following `iframe`:
+Copy this iframe to your website:
 
 ```html
-<iframe src="https://dmccreary.github.io/signal-processing/sims/complex-plane/main.html" height="532px" scrolling="no"></iframe>
+<iframe src="https://dmccreary.github.io/signal-processing/sims/complex-plane/main.html" width="100%" height="532px" scrolling="no"></iframe>
 ```
 
-## Key Features
+[Run MicroSim in Fullscreen](main.html){ .md-button .md-button--primary }
 
-**Visual Components:**
+[Edit in the p5.js Editor](https://editor.p5js.org/dmccreary/sketches/wnEDizl5_)
 
-- **Coordinate Axes**: Blue horizontal axis represents the Real axis, red vertical axis represents the Imaginary axis
-- **Complex Number Vector**: Green arrow from the origin to the plotted point z
-- **Right Triangle**: Shows the geometric relationship between real part, imaginary part, and magnitude
-- **Angle Arc**: Green arc showing the phase angle θ from the positive real axis
-- **Dashed Projections**: Lines showing how the complex number projects onto both axes
+## Description
 
-**Information Displays:**
+This MicroSim shows the geometric representation of a complex number in the complex plane (the Argand diagram).
+Drag the two sliders to set the real part $a$ and the imaginary part $b$ of $z = a + bi$.
+The green vector, the right triangle beneath it, and the green arc update immediately, and the two panels show
+the same number in rectangular form and in polar form.
 
-- **Left Panel**: Shows Re(z), Im(z), magnitude |z|, and phase angle θ
-- **Right Panel**: Displays both rectangular (a + bi) and polar (r∠θ) forms
-- **On-Graph Labels**: Magnitude label on the vector
+This simulation is used in [Chapter 1: Mathematical Foundations](../../chapters/01-mathematical-foundations/index.md).
 
-## Mathematical Concepts
+**Visual components**
 
-### Rectangular Form
-A complex number z can be written as:
+- **Coordinate axes**: the blue horizontal axis is the Real axis and the red vertical axis is the Imaginary axis
+- **Complex number vector**: a green arrow from the origin to the point $z$
+- **Right triangle**: shows how the real part, imaginary part, and magnitude are related
+- **Angle arc**: a green arc showing the phase angle $\theta$ measured from the positive real axis
+- **Dashed projections**: lines showing how the point projects onto both axes
+
+**Information displays**
+
+- **Left panel**: $\mathrm{Re}(z)$, $\mathrm{Im}(z)$, the magnitude $|z|$, and the phase angle $\theta$
+- **Right panel**: the rectangular form $a + bi$ and the polar form $r\angle\theta$
+
+### Mathematical Concepts
+
+A complex number can be written in rectangular form
 
 $$z = a + bi$$
 
-where:
-- $a$ = Real part (Re(z))
-- $b$ = Imaginary part (Im(z))
-- $i$ = Imaginary unit ($i^2 = -1$)
+where $a = \mathrm{Re}(z)$, $b = \mathrm{Im}(z)$, and $i^2 = -1$. The same number in polar form is
 
-### Polar Form
-The same complex number can be expressed as:
+$$z = r\angle\theta = r(\cos\theta + i\sin\theta) = re^{i\theta}$$
 
-$$z = r \angle \theta = r(\cos\theta + i\sin\theta) = re^{i\theta}$$
-
-where:
-- $r = |z| = \sqrt{a^2 + b^2}$ (magnitude/modulus)
-- $\theta = \tan^{-1}(b/a)$ (phase angle/argument)
-
-### Euler's Formula Connection
-The polar form connects to Euler's famous formula:
+with magnitude $r = |z| = \sqrt{a^2 + b^2}$ and phase angle $\theta = \operatorname{atan2}(b, a)$.
+The polar form connects directly to Euler's formula,
 
 $$e^{i\theta} = \cos\theta + i\sin\theta$$
 
-This relationship is fundamental to signal processing, allowing sinusoidal signals to be represented as rotating phasors in the complex plane.
+which is why sinusoidal signals can be written as rotating phasors in signal processing.
 
 ## Lesson Plan
 
 ### Learning Objectives
 
-By the end of this lesson, students will be able to:
+After using this MicroSim, students will be able to:
 
-1. **Understand** the geometric interpretation of complex numbers as points in a 2D plane
-2. **Convert** between rectangular (a + bi) and polar (r∠θ) forms
-3. **Calculate** magnitude and phase from real and imaginary components
-4. **Explain** how changing real and imaginary parts affects the polar representation
-5. **Connect** complex plane concepts to phasor representation of signals
+1. **Understand** the geometric interpretation of complex numbers as points in a two-dimensional plane
+2. **Convert** between rectangular ($a + bi$) and polar ($r\angle\theta$) forms
+3. **Calculate** magnitude and phase from the real and imaginary components
+4. **Explain** how changing the real and imaginary parts affects the polar representation
+5. **Connect** the complex plane to the phasor representation of signals
 
-### Grade Level
-College-level introductory signal processing or pre-calculus/calculus courses
+### Target Audience
 
-### Duration
-15-20 minutes for exploration, 30-45 minutes with instruction
+College-level introductory signal processing, or pre-calculus and calculus courses.
+Plan 15-20 minutes for exploration and 30-45 minutes with instruction.
 
 ### Prerequisites
-- Basic understanding of the Cartesian coordinate system
-- Familiarity with trigonometry (sine, cosine, tangent)
-- Knowledge of the Pythagorean theorem
 
-### Suggested Activities
+- The Cartesian coordinate system
+- Basic trigonometry (sine, cosine, tangent)
+- The Pythagorean theorem
 
-**Activity 1: Quadrant Exploration (5 min)**
+### Activities
 
-Have students move the sliders to place the complex number in each quadrant and observe:
+**Activity 1: Quadrant Exploration (5 min).** Move the sliders so the number lies in each quadrant.
+How does the phase angle change from quadrant to quadrant? When is the phase positive and when is it negative?
 
-- How does the phase angle change in each quadrant?
-- When is the phase positive? Negative?
+**Activity 2: Special Cases (5 min).** Set the sliders to each of these and discuss what you see:
 
-**Activity 2: Special Cases (5 min)**
+- Real = 1, Imag = 0 (a pure real number)
+- Real = 0, Imag = 1 (a pure imaginary number)
+- Real = 1, Imag = 1 (the 45 degree case)
+- Real = 0, Imag = 0 (the origin)
 
-Set the sliders to these values and discuss:
+**Activity 3: Pythagorean Triples (5 min).** Find slider settings where the magnitude is exactly 5
+(for example $3 + 4i$, $4 + 3i$, and $-3 + 4i$).
 
-- Real = 1, Imag = 0 (pure real number)
-- Real = 0, Imag = 1 (pure imaginary number)
-- Real = 1, Imag = 1 (45° angle case)
-- Real = 0, Imag = 0 (origin)
+**Activity 4: The Unit Circle (5 min).** Find real and imaginary values that give a magnitude of exactly 1.
+What shape do all of these points trace out?
 
-**Activity 3: Pythagorean Relationship (5 min)**
+### Assessment
 
-Find combinations where the magnitude equals exactly 5 (like 3+4i, 4+3i, -3+4i, etc.)
+1. If $z = 3 + 4i$, what is the magnitude $|z|$? *(Answer: 5)*
+2. What is the phase angle of $z = -1 + i$ in degrees? *(Answer: 135 degrees)*
+3. Convert $z = 2\angle 60^\circ$ to rectangular form. *(Answer: $1 + 1.73i$)*
+4. Why is the complex plane useful for representing signals? *(Answer: a sinusoid's amplitude and phase become the magnitude and angle of one number, so adding and scaling signals becomes simple vector arithmetic.)*
 
-**Activity 4: Unit Circle (5 min)**
+### Common Misconceptions
 
-Find real/imaginary combinations that produce a magnitude of exactly 1 (points on the unit circle)
-
-### Assessment Questions
-
-1. If z = 3 + 4i, what is the magnitude |z|?
-2. What is the phase angle of z = -1 + i in degrees?
-3. Convert z = 2∠60° to rectangular form
-4. Why is the complex plane useful for representing signals in signal processing?
-
-## Applications in Signal Processing
-
-The complex plane representation is essential in signal processing for:
-
-- **Phasor Analysis**: Representing sinusoidal signals as rotating vectors
-- **Fourier Transform**: Complex exponentials form the basis of frequency analysis
-- **Filter Design**: Pole-zero plots in the complex plane characterize filter behavior
-- **Modulation**: AM, FM, and PM signals can be visualized as trajectories in the complex plane
+Students often compute the phase as $\arctan(b/a)$ and stop. That formula cannot tell $1 + i$ from $-1 - i$.
+Move the point across the origin and watch the arc: the angle must be placed in the quadrant where the point lies.
 
 ## References
 
-- Oppenheim, A. V., & Schafer, R. W. (2010). *Discrete-Time Signal Processing*
-- Proakis, J. G., & Manolakis, D. G. (2006). *Digital Signal Processing*
+1. [Complex number](https://en.wikipedia.org/wiki/Complex_number) - Wikipedia - overview of rectangular and polar forms, arithmetic, and the complex plane
+2. [Complex plane](https://en.wikipedia.org/wiki/Complex_plane) - Wikipedia - the Argand diagram, modulus and argument
+3. [Phasor](https://en.wikipedia.org/wiki/Phasor) - Wikipedia - how rotating complex numbers represent sinusoidal signals
+4. [The Scientist and Engineer's Guide to Digital Signal Processing](https://www.dspguide.com/) - Steven W. Smith - free online textbook with a chapter on complex numbers
+5. [Euler's formula](https://en.wikipedia.org/wiki/Euler%27s_formula) - Wikipedia - the link from the polar form to $e^{i\theta}$

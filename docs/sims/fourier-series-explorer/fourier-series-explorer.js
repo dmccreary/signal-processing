@@ -77,7 +77,7 @@ function setup() {
   positionControls();
 
   describe('A periodic waveform and the sum of its first N Fourier harmonics drawn over two periods, ' +
-    'with bar charts of the amplitude and phase of each harmonic. Buttons step the number of harmonics up and down.', LABEL);
+    'with bar charts of the amplitude and phase of each harmonic. Buttons step the number of harmonics up and down.');
 }
 
 // ---------------------------------------------------------------------------

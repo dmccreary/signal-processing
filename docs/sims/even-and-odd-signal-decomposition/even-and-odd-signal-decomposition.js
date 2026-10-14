@@ -65,7 +65,7 @@ function setup() {
 
   describe('Three stacked plots from minus five to plus five seconds showing a signal, its even part ' +
     'and its odd part, with a probe time whose values are worked through the decomposition formulas. ' +
-    'The signal is chosen from presets or drawn with the mouse.', LABEL);
+    'The signal is chosen from presets or drawn with the mouse.');
 }
 
 // ---------------------------------------------------------------------------
@@ -172,8 +172,8 @@ function draw() {
   noStroke();
   fill('black');
   textAlign(CENTER, TOP);
-  textSize(22);
-  text('Even and Odd Signal Decomposition', canvasWidth / 2, 9);
+  textSize(canvasWidth < 600 ? 19 : 22);
+  text('Even and Odd Signal Decomposition', canvasWidth / 2, canvasWidth < 600 ? 12 : 9);
 
   // curves
   drawCurve(plots[0], x, 'blue', 2.5, false);
@@ -199,12 +199,13 @@ function draw() {
   caption('Even part x_{e}(t) = [x(t) + x(−t)] / 2', plots[1].x + 6, plots[1].y + 4, 'green');
   caption('Odd part x_{o}(t) = [x(t) − x(−t)] / 2', plots[2].x + 6, plots[2].y + 4, 'red');
 
-  textSize(12);
+  textSize(canvasWidth < 600 ? 12 : 14);
   const hint = canvasWidth < 600 ? 'Drag here to draw x(t)' : 'Drag in this plot to draw a custom x(t)';
-  const hintW = textWidth(hint) + 8;
+  const hintW = runWidth(hint) + 8;
+  const hintH = textSize() + 5;
   noStroke();
   fill(255, 255, 255, 200);
-  rect(plots[0].x + plots[0].w - hintW - 4, plots[0].y + plots[0].h - 20, hintW, 17, 4);
+  rect(plots[0].x + plots[0].w - hintW - 4, plots[0].y + plots[0].h - hintH - 3, hintW, hintH, 4);
   fill('dimgray');
   textAlign(RIGHT, BOTTOM);
   text(hint, plots[0].x + plots[0].w - 8, plots[0].y + plots[0].h - 5);
@@ -221,7 +222,7 @@ function drawPlotFrame(p, showTimeLabels) {
   stroke('silver');
   strokeWeight(1);
   rect(p.x, p.y, p.w, p.h);
-  textSize(12);
+  textSize(14);
   for (let v = -1; v <= 1; v++) {
     const y = plotY(p, v);
     stroke(v === 0 ? 'gray' : 'gainsboro');
@@ -249,13 +250,13 @@ function drawPlotFrame(p, showTimeLabels) {
     fill('black');
     textSize(14);
     textAlign(CENTER, TOP);
-    text('Time t (s)', p.x + p.w / 2, p.y + p.h + 20);
+    text('Time t (s)', p.x + p.w / 2, p.y + p.h + 22);
   }
   // shared amplitude label
   push();
   noStroke();
   fill('black');
-  textSize(13);
+  textSize(14);
   translate(16, p.y + p.h / 2);
   rotate(-HALF_PI);
   textAlign(CENTER, CENTER);
@@ -303,14 +304,20 @@ function richText(str, xPos, yPos, col) {
     if (i % 2 === 1) {
       textSize(size * 0.72);
       text(parts[i], cx, yPos + size * 0.42);
-      cx += textWidth(parts[i]);
+      cx += runWidth(parts[i]);
       textSize(size);
     } else {
       text(parts[i], cx, yPos);
-      cx += textWidth(parts[i]);
+      cx += runWidth(parts[i]);
     }
   }
   return cx - xPos;
+}
+
+// p5 2.x textWidth() measures tight glyph bounds and drops spaces, so text pieces
+// placed side by side are measured with fontWidth() (advance width) instead.
+function runWidth(str) {
+  return typeof fontWidth === 'function' ? fontWidth(String(str)) : textWidth(String(str));
 }
 
 // Width of a string that may contain _{...} subscript markers.
@@ -321,10 +328,10 @@ function richWidth(str) {
   for (let i = 0; i < parts.length; i++) {
     if (i % 2 === 1) {
       textSize(size * 0.72);
-      w += textWidth(parts[i]);
+      w += runWidth(parts[i]);
       textSize(size);
     } else {
-      w += textWidth(parts[i]);
+      w += runWidth(parts[i]);
     }
   }
   return w;

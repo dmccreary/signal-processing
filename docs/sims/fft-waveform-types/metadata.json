@@ -1,84 +1,145 @@
 {
-  "title": "FFT Waveform Types",
-  "description": "Interactive simulation showing how different waveform shapes (sine, square, triangle, sawtooth) appear in both time and frequency domains.",
-  "creator": "Dan McCreary",
-  "date": "2024-01-01",
-  "subject": [
-    "Signal Processing",
-    "FFT",
-    "Harmonics",
-    "Waveforms"
-  ],
-  "type": "Interactive Simulation",
-  "format": "text/html",
-  "language": "en",
-  "rights": "CC BY-NC-SA 4.0",
-  "identifier": "https://dmccreary.github.io/signal-processing/sims/fft-waveform-types/",
-  "publisher": "Dan McCreary",
-  "educationalLevel": "Undergraduate",
-  "learningResourceType": "simulation",
-  "audience": "Students, Educators",
-  "version": "1.0.0",
-  "bloomLevel": [
-    "Understand",
-    "Apply",
-    "Analyze"
-  ],
-  "concepts": [
-    "FFT",
-    "Harmonic content",
-    "Sine wave",
-    "Square wave",
-    "Triangle wave",
-    "Sawtooth wave"
-  ],
-  "prerequisites": [
-    "Basic trigonometry",
-    "Understanding of frequency"
-  ],
-  "library": "p5.js",
-  "visualizationType": [
-    "graph",
-    "interactive-demo",
-    "map",
-    "network",
-    "simulation"
-  ],
-  "learningObjectives": [
-    "Compare the harmonic spectra of sine, square, triangle, and sawtooth waves at the same fundamental frequency",
-    "Explain why square and triangle waves contain only odd harmonics while sawtooth waves contain every integer harmonic",
-    "Distinguish the 1/n amplitude decay of a square wave from the 1/n^2 decay of a triangle wave in the spectrum plot",
-    "Predict how raising the fundamental frequency slider rescales the position of every harmonic peak",
-    "Relate the angularity of a waveform in the time domain to the amount of high-frequency energy in its spectrum"
-  ],
-  "bloomsTaxonomy": [
-    "Understand",
-    "Apply",
-    "Analyze"
-  ],
-  "pedagogical": {
-    "pattern": "demonstration",
-    "bloomAlignment": [
-      "understand",
-      "apply",
-      "analyze"
-    ],
-    "bloomVerbs": [
-      "compare",
-      "describe",
-      "explain",
-      "apply",
-      "calculate"
-    ],
-    "pacing": "self-paced",
-    "supportsPrediction": false,
-    "dataVisibility": "high",
-    "feedbackType": [
-      "immediate",
-      "delayed",
-      "corrective",
-      "explanatory"
-    ],
-    "interactionStyle": "construct"
-  }
+  "microsim": {
+    "dublinCore": {
+      "title": "FFT Waveform Types",
+      "creator": ["Dan McCreary"],
+      "subject": ["Signal Processing", "FFT", "Fourier Series", "Harmonics", "Waveforms"],
+      "description": "Interactive comparison of sine, square, triangle and sawtooth waves: a 50 ms window of the waveform in the time domain on top and its harmonic line spectrum from 0 to 500 Hz below, with each line scaled relative to the fundamental, so students can see which harmonics each shape contains and how fast they decay.",
+      "publisher": "Dan McCreary",
+      "contributor": ["Claude (Anthropic)"],
+      "date": "2025-05-30",
+      "type": "Interactive Simulation",
+      "format": "text/html",
+      "identifier": "https://dmccreary.github.io/signal-processing/sims/fft-waveform-types/",
+      "language": "en",
+      "relation": ["Chapter 6: Fourier Analysis Fundamentals", "Basic FFT MicroSim"],
+      "rights": "CC BY-NC-SA 4.0"
+    },
+    "search": {
+      "tags": ["FFT", "harmonics", "Fourier series", "square wave", "triangle wave", "sawtooth wave", "sine wave", "spectrum", "timbre"],
+      "searchKeywords": ["waveform harmonics", "odd harmonics", "square wave spectrum", "triangle wave 1/n^2", "sawtooth all harmonics", "harmonic decay"],
+      "visualizationType": ["graph", "interactive-demo", "simulation"],
+      "interactionLevel": "moderate",
+      "complexity": 4,
+      "relatedConcepts": ["Fourier Series", "Fourier Coefficients", "Spectrum", "Magnitude Spectrum", "Periodic Signals", "Sinusoidal Signals", "Signal Frequency", "Time Domain", "Frequency Domain", "Fast Fourier Transform"],
+      "applicationDomains": ["education", "demonstration", "exploration"],
+      "showcase": false
+    },
+    "educational": {
+      "gradeLevel": ["Undergraduate"],
+      "subjectArea": ["Engineering", "Mathematics", "Music"],
+      "topic": ["Fourier series", "Harmonic content", "Sine wave", "Square wave", "Triangle wave", "Sawtooth wave", "Harmonic decay"],
+      "learningObjectives": [
+        "Compare the harmonic spectra of sine, square, triangle and sawtooth waves at the same fundamental frequency",
+        "Explain why square and triangle waves contain only odd harmonics while sawtooth waves contain every integer harmonic",
+        "Distinguish the 1/n amplitude decay of a square wave from the 1/n^2 decay of a triangle wave in the spectrum plot",
+        "Predict how raising the fundamental frequency slider rescales the position of every harmonic line",
+        "Relate jumps and corners of a waveform in the time domain to the amount of high-frequency energy in its spectrum"
+      ],
+      "bloomsTaxonomy": ["Understand", "Apply", "Analyze"],
+      "prerequisites": ["Basic trigonometry", "Frequency and period of a sinusoid", "Idea of a frequency-domain plot (spectrum)"],
+      "duration": {"typical": 20, "range": {"min": 15, "max": 40}},
+      "difficulty": "Beginner",
+      "scaffolding": {
+        "type": ["guided-discovery", "feedback"],
+        "adaptability": "fixed",
+        "removal": "user-controlled"
+      },
+      "misconceptions": [
+        {
+          "misconception": "Harmonics are extra tones that the analyser adds to every signal",
+          "correction": "Harmonics are part of the waveform's shape; a pure sine has none",
+          "evidence": "Select Sine: only one line appears at the slider frequency, whatever the frequency"
+        },
+        {
+          "misconception": "Square and triangle waves have the same spectrum because both contain only odd harmonics",
+          "correction": "The lines sit at the same frequencies but decay at different rates, 1/n versus 1/n^2",
+          "evidence": "At 100 Hz the 3rd harmonic is 0.333 of the fundamental for the square wave and 0.111 for the triangle wave"
+        }
+      ]
+    },
+    "technical": {
+      "framework": "p5.js",
+      "version": "2.0.0",
+      "canvasDimensions": {"width": 800, "height": 530, "responsive": true},
+      "regions": {"drawHeight": 450, "controlHeight": 80},
+      "dependencies": ["p5.js 2.3.2"],
+      "browserCompatibility": ["Chrome 90+", "Firefox 88+", "Safari 14+", "Edge 90+"],
+      "performance": {"memoryUsage": "low", "computationalComplexity": "O(n)"},
+      "deviceRequirements": {
+        "minScreenWidth": 360,
+        "touchSupport": true,
+        "keyboardRequired": false,
+        "mouseRequired": false,
+        "networkRequired": false
+      },
+      "accessibility": {
+        "screenReader": true,
+        "keyboardNavigation": true,
+        "colorContrast": true,
+        "altText": true,
+        "screenReaderScript": "Waveform type FFT analysis. The top plot shows 50 milliseconds of a sine, square, triangle or sawtooth wave; the bottom plot shows its harmonic spectrum from 0 to 500 Hz, with each line scaled relative to the fundamental. Choose the waveform with the radio buttons and set the fundamental frequency with the slider."
+      }
+    },
+    "userInterface": {
+      "layoutType": "responsive-width",
+      "layoutPattern": "drawing-region-above-controls",
+      "colorScheme": {
+        "drawingArea": "aliceblue",
+        "controlArea": "white",
+        "timeDomain": "green",
+        "spectrum": "purple",
+        "highlight": "goldenrod",
+        "text": "black"
+      },
+      "controls": [
+        {
+          "id": "waveformRadio",
+          "type": "radio",
+          "label": "Waveform",
+          "description": "Selects the waveform shape: Sine, Square, Triangle or Sawtooth",
+          "group": "signal",
+          "properties": {"value": "sine", "checked": true}
+        },
+        {
+          "id": "frequencySlider",
+          "type": "slider",
+          "label": "Frequency",
+          "description": "Sets the fundamental frequency f of the waveform",
+          "group": "signal",
+          "properties": {"min": 0, "max": 500, "default": 50, "step": 1, "units": "Hz", "showValue": true}
+        }
+      ],
+      "visualElements": [
+        {"type": "graph", "description": "Time-domain plot (green): 50 ms of the waveform with amplitude gridlines at +1 and -1, a 10 ms time grid, and a read-out of the period T = 1/f", "interactive": false, "updateTriggers": ["waveformRadio", "frequencySlider"]},
+        {"type": "chart", "description": "Frequency-domain plot (purple): one line per harmonic from 0 to 500 Hz, height relative to the fundamental, labelled with its harmonic number; hovering a line highlights it in gold and shows its frequency and magnitude", "interactive": true, "updateTriggers": ["waveformRadio", "frequencySlider"]},
+        {"type": "text-display", "description": "Harmonic-content summary (for example 'Odd harmonics, 1/n decay') and the frequency read-out", "interactive": false, "updateTriggers": ["waveformRadio", "frequencySlider"]}
+      ]
+    },
+    "simulation": {
+      "model": {
+        "type": "mathematical",
+        "description": "Generates one of four periodic waveforms of peak amplitude 1 and plots the magnitudes of its Fourier-series harmonics up to 500 Hz, divided by the magnitude of the fundamental.",
+        "equations": [
+          "square(t) = (4/pi) sum over odd n of sin(n w t)/n",
+          "triangle(t) = (8/pi^2) sum over odd n of (-1)^((n-1)/2) sin(n w t)/n^2",
+          "sawtooth(t) = (2/pi) sum over n >= 1 of (-1)^(n+1) sin(n w t)/n",
+          "relative magnitude: sine 1 (n = 1 only); square 1/n (odd n); triangle 1/n^2 (odd n); sawtooth 1/n (all n)",
+          "harmonic frequency f_n = n f, period T = 1/f"
+        ],
+        "algorithms": ["Analytic Fourier-series line spectrum (equivalent to the peak heights of an ideal FFT over a whole number of periods)"],
+        "limitations": [
+          "The spectrum is computed from the Fourier series, not by running an FFT on samples, so it shows no leakage, windowing or aliasing",
+          "Magnitudes are relative to each waveform's own fundamental, so the absolute difference between waveforms (4/pi for the square, 8/pi^2 for the triangle, 2/pi for the sawtooth) is not shown",
+          "The triangle and sawtooth are drawn starting from -1, a time shift that changes only the phases of the harmonics, not their magnitudes"
+        ]
+      }
+    },
+    "usage": {
+      "recommendedUsage": ["demonstration", "exploration", "guided-practice"],
+      "instructionalStrategies": ["Predict-then-verify: predict which harmonic lines appear before switching the waveform", "Compare-and-contrast square and triangle waves at the same frequency", "Read exact magnitudes by hovering over a line"],
+      "extensions": ["Add audio output so students can hear the timbre of each waveform", "Add a dB (logarithmic) magnitude scale to make the small triangle-wave harmonics visible", "Add partial-sum reconstruction to show the Gibbs phenomenon"]
+    }
+  },
+  "canvasHeight": 530
 }

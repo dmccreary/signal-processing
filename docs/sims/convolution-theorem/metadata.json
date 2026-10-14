@@ -1,0 +1,211 @@
+{
+  "microsim": {
+    "dublinCore": {
+      "title": "Convolution Theorem and Circular Convolution",
+      "creator": ["Dan McCreary"],
+      "subject": ["Convolution theorem", "Circular convolution", "Linear convolution", "Discrete Fourier transform", "Zero padding", "Time aliasing"],
+      "description": "Interactive MicroSim that compares the linear convolution of two short sequences (length N + M - 1) with their L-point circular convolution, computed both by wrapping the linear result onto itself and by the DFT route IDFT_L(DFT_L(x) DFT_L(h)). When L < N + M - 1 the wrapped samples are drawn in red with arrows to where they land, an error panel shows the difference, and the magnitude spectra |X[k]|, |H[k]| and |Y[k]| = |X[k]||H[k]| can be read bin by bin.",
+      "publisher": "Dan McCreary",
+      "contributor": ["Claude (Anthropic)"],
+      "date": "2026-10-14",
+      "type": "Interactive Simulation",
+      "format": "text/html",
+      "identifier": "https://dmccreary.github.io/signal-processing/sims/convolution-theorem/",
+      "language": "en",
+      "relation": ["Chapter 4: Convolution and Correlation", "Convolution Visualizer"],
+      "rights": "CC BY-NC-SA 4.0"
+    },
+    "search": {
+      "tags": ["convolution theorem", "circular convolution", "linear convolution", "DFT", "FFT convolution", "zero padding", "time aliasing", "wrap-around"],
+      "searchKeywords": ["circular vs linear convolution", "N + M - 1 zero padding", "IDFT of product of DFTs", "fast convolution length", "time-domain aliasing", "circular shift delayed impulse"],
+      "visualizationType": ["chart", "interactive-demo", "simulation"],
+      "interactionLevel": "high",
+      "complexity": 6,
+      "relatedConcepts": ["Circular Convolution", "Convolution Theorem", "Discrete Convolution", "Discrete Fourier Transform", "Zero Padding"],
+      "applicationDomains": ["education", "exploration", "demonstration", "analysis"]
+    },
+    "educational": {
+      "gradeLevel": ["Undergraduate"],
+      "subjectArea": ["Engineering", "Mathematics"],
+      "topic": ["Convolution theorem", "Circular convolution", "Linear convolution with the DFT", "Zero padding", "Time aliasing"],
+      "learningObjectives": [
+        "Calculate the length N + M - 1 of a linear convolution and the smallest DFT length L for which IDFT_L{X[k]H[k]} equals it",
+        "Explain circular convolution as linear convolution with its tail wrapped around, y_c[n] = sum_m y[n + mL], and identify the time-aliased samples when L < N + M - 1",
+        "Verify the convolution theorem Y[k] = X[k]H[k] by comparing the DFT route with the wrap-around sum and by reading |X[k]|, |H[k]| and |Y[k]| at one bin",
+        "Evaluate whether a transform length L is adequate for a given pair of sequences, including cases where the wrapped samples happen to be zero",
+        "Predict that a delay becomes a circular shift (rotation) when L is too short"
+      ],
+      "bloomsTaxonomy": ["Understand", "Apply", "Analyze", "Evaluate"],
+      "prerequisites": ["The convolution sum", "Definition of the DFT and its inverse", "Magnitude of a complex number"],
+      "duration": {"typical": 25, "range": {"min": 15, "max": 40}},
+      "difficulty": "Intermediate",
+      "scaffolding": {
+        "type": ["guided-discovery", "feedback"],
+        "adaptability": "fixed",
+        "removal": "user-controlled"
+      },
+      "misconceptions": [
+        {
+          "misconception": "Multiplying two FFTs gives the (linear) convolution",
+          "correction": "The product of two L-point DFTs is the DFT of the circular convolution; it equals the linear convolution only when L >= N + M - 1",
+          "evidence": "With the defaults (triangle N = 8, rectangle M = 4, L = 8) the gold IDFT rings agree with the wrap-around sum to about 1e-15, yet the error panel shows a maximum error of 6 against the linear result"
+        },
+        {
+          "misconception": "Extra zero padding changes the convolution result",
+          "correction": "Any L >= N + M - 1 gives the same linear result followed by zeros; extra padding only samples the spectrum more finely",
+          "evidence": "With the defaults, L = 11, 16 and 64 all show the same 11 samples and a maximum error of 0"
+        }
+      ]
+    },
+    "technical": {
+      "framework": "p5.js",
+      "version": "1.0.0",
+      "canvasDimensions": {"width": 900, "height": 742, "responsive": true},
+      "regions": {"drawHeight": 606, "controlHeight": 136},
+      "dependencies": ["p5.js 2.3.2"],
+      "browserCompatibility": ["Chrome 90+", "Firefox 88+", "Safari 14+", "Edge 90+"],
+      "performance": {"memoryUsage": "low", "loadTime": 500, "computationalComplexity": "O(n²)"},
+      "deviceRequirements": {
+        "minScreenWidth": 375,
+        "touchSupport": true,
+        "keyboardRequired": false,
+        "mouseRequired": false,
+        "networkRequired": false
+      },
+      "accessibility": {
+        "screenReader": true,
+        "keyboardNavigation": true,
+        "colorContrast": true,
+        "altText": true,
+        "screenReaderScript": "Five stacked stem plots compare linear and circular convolution. Top: the input x[n] and the impulse response h[n]. Second: the linear convolution y[n] of length N + M - 1. Third: the L-point circular convolution, with gold rings showing the result of the DFT route IDFT(DFT(x) times DFT(h)). When L is shorter than N + M - 1 the samples of y beyond L are drawn in red and arrows show where they wrap around. Fourth: the error between circular and linear convolution. Bottom: the DFT magnitudes |X[k]|, |H[k]| and |Y[k]|. Drop-down lists and sliders choose the two sequences, their lengths N and M, and the transform length L."
+      }
+    },
+    "userInterface": {
+      "layoutType": "responsive-width",
+      "layoutPattern": "drawing-region-above-controls",
+      "colorScheme": {
+        "drawingArea": "aliceblue",
+        "controlArea": "white",
+        "input": "blue",
+        "impulseResponse": "purple",
+        "linearConvolution": "green",
+        "circularConvolution": "teal",
+        "dftRoute": "gold",
+        "wrapAroundAndError": "red",
+        "outputSpectrum": "maroon",
+        "text": "black"
+      },
+      "controls": [
+        {
+          "id": "xSelect",
+          "type": "dropdown",
+          "label": "x[n]",
+          "description": "Chooses the input sequence x[n]",
+          "group": "input",
+          "properties": {
+            "options": [
+              {"value": "rect", "label": "rectangle"},
+              {"value": "tri", "label": "triangle"},
+              {"value": "exp", "label": "exponential 0.8^n"},
+              {"value": "alt", "label": "alternating (-1)^n"},
+              {"value": "rand", "label": "random"},
+              {"value": "delta", "label": "impulse delta[n]"},
+              {"value": "delay", "label": "delayed impulse"}
+            ],
+            "default": "tri"
+          }
+        },
+        {
+          "id": "nSlider",
+          "type": "slider",
+          "label": "N",
+          "description": "Sets the length N of x[n]",
+          "group": "input",
+          "properties": {"min": 1, "max": 16, "default": 8, "step": 1, "units": "samples", "showValue": true}
+        },
+        {
+          "id": "hSelect",
+          "type": "dropdown",
+          "label": "h[n]",
+          "description": "Chooses the impulse response h[n] from the same library",
+          "group": "impulse-response",
+          "properties": {
+            "options": [
+              {"value": "rect", "label": "rectangle"},
+              {"value": "tri", "label": "triangle"},
+              {"value": "exp", "label": "exponential 0.8^n"},
+              {"value": "alt", "label": "alternating (-1)^n"},
+              {"value": "rand", "label": "random"},
+              {"value": "delta", "label": "impulse delta[n]"},
+              {"value": "delay", "label": "delayed impulse"}
+            ],
+            "default": "rect"
+          }
+        },
+        {
+          "id": "mSlider",
+          "type": "slider",
+          "label": "M",
+          "description": "Sets the length M of h[n]",
+          "group": "impulse-response",
+          "properties": {"min": 1, "max": 16, "default": 4, "step": 1, "units": "samples", "showValue": true}
+        },
+        {
+          "id": "lSlider",
+          "type": "slider",
+          "label": "Transform length L",
+          "description": "Sets the DFT length L; its minimum follows max(N, M) and both sequences are zero-padded to L samples",
+          "group": "transform",
+          "properties": {"min": 8, "max": 64, "default": 8, "step": 1, "units": "samples", "showValue": true}
+        },
+        {
+          "id": "showXCheckbox",
+          "type": "checkbox",
+          "label": "|X[k]|",
+          "description": "Shows the DFT magnitude of x[n] (blue) in the spectrum panel",
+          "group": "spectra",
+          "properties": {"checked": true}
+        },
+        {
+          "id": "showHCheckbox",
+          "type": "checkbox",
+          "label": "|H[k]|",
+          "description": "Shows the DFT magnitude of h[n] (purple) in the spectrum panel",
+          "group": "spectra",
+          "properties": {"checked": true}
+        },
+        {
+          "id": "showYCheckbox",
+          "type": "checkbox",
+          "label": "|Y[k]|",
+          "description": "Shows |Y[k]| = |X[k]||H[k]| (maroon) in the spectrum panel",
+          "group": "spectra",
+          "properties": {"checked": true}
+        }
+      ],
+      "visualElements": [
+        {"type": "chart", "description": "Stem plots of x[n] (blue) and h[n] (purple) on n = 0..15", "interactive": false, "updateTriggers": ["xSelect", "nSlider", "hSelect", "mSlider"]},
+        {"type": "chart", "description": "Linear convolution y[n] (green), with the samples at n >= L shaded and drawn in red", "interactive": false, "updateTriggers": ["xSelect", "nSlider", "hSelect", "mSlider", "lSlider"]},
+        {"type": "diagram", "description": "Red arrows from each wrapped sample of y[n] to the circular sample n mod L where it lands", "interactive": false, "updateTriggers": ["lSlider", "nSlider", "mSlider"]},
+        {"type": "chart", "description": "L-point circular convolution y_c[n] (teal, time-aliased samples red, labelled with their sums) with gold rings for IDFT_L(X[k]H[k])", "interactive": false, "updateTriggers": ["xSelect", "nSlider", "hSelect", "mSlider", "lSlider"]},
+        {"type": "chart", "description": "Error e[n] = y_c[n] - y[n] (red) with its maximum", "interactive": false, "updateTriggers": ["xSelect", "nSlider", "hSelect", "mSlider", "lSlider"]},
+        {"type": "chart", "description": "Scaled magnitude spectra |X[k]|, |H[k]| and |Y[k]|; hovering a bin prints its three magnitudes", "interactive": true, "updateTriggers": ["lSlider", "showXCheckbox", "showHCheckbox", "showYCheckbox"]},
+        {"type": "text-display", "description": "Required length N + M - 1, chosen L, number of wrapped samples, maximum error and whether circular equals linear", "interactive": false, "updateTriggers": ["nSlider", "mSlider", "lSlider", "xSelect", "hSelect"]}
+      ]
+    },
+    "simulation": {
+      "model": {
+        "type": "mathematical",
+        "description": "Computes the linear convolution y[n], the L-point circular convolution by periodic summation y_c[n] = sum_m y[n + mL], and the DFT route IDFT_L(DFT_L(x) DFT_L(h)) with a naive O(L^2) DFT; the error is y_c[n] - y[n] with each sequence zero outside its own length",
+        "equations": ["y[n] = sum_k x[k] h[n - k], length N + M - 1", "y_c[n] = sum_m y[n + mL], 0 <= n < L", "DFT_L{y_c}[k] = X[k] H[k]", "y_c = y (zero-padded) if L >= N + M - 1"],
+        "algorithms": ["Direct convolution sum", "Periodic summation (wrap-around)", "Naive DFT and inverse DFT, O(L^2)"]
+      }
+    },
+    "usage": {
+      "recommendedUsage": ["demonstration", "exploration", "guided-practice"],
+      "instructionalStrategies": ["Predict the wrapped samples before reading the labels", "Increase L one step at a time until the error vanishes", "Read |X[k]|, |H[k]| and |Y[k]| at one bin to confirm the product"],
+      "extensions": ["Add the phase spectra to show that a delayed impulse changes only phase", "Add an overlap-add mode that filters a long signal block by block"]
+    }
+  },
+  "canvasHeight": 742
+}

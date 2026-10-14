@@ -1,0 +1,184 @@
+{
+  "microsim": {
+    "dublinCore": {
+      "title": "Signal Operations: Shift, Scale and Reverse",
+      "creator": ["Dan McCreary"],
+      "subject": ["Signal operations", "Time shifting", "Time scaling", "Time reversal", "Elementary signals", "Decimation and expansion"],
+      "description": "Interactive MicroSim that transforms an elementary signal x(t) into y(t) = A x(a(t - t0)) and tracks three landmark points from x to y (t_y = t_x/a + t0). It can overlay the common shift-before-scale mistake z(t) = A x(at - t0), which shifts by t0/a, and switch to discrete time to show decimation x[Mn] discarding samples and expansion x[n/L] inserting zeros.",
+      "publisher": "Dan McCreary",
+      "contributor": ["Claude (Anthropic)"],
+      "date": "2026-10-14",
+      "type": "Interactive Simulation",
+      "format": "text/html",
+      "identifier": "https://dmccreary.github.io/signal-processing/sims/signal-operations/",
+      "language": "en",
+      "relation": ["Chapter 2: Introduction to Signals and Systems"],
+      "rights": "CC BY-NC-SA 4.0"
+    },
+    "search": {
+      "tags": ["signal operations", "time shift", "time scaling", "time reversal", "unit step", "unit impulse", "exponential signal", "decimation", "upsampling"],
+      "searchKeywords": ["x(a(t - t0))", "shift and scale order", "time reversal x(-t)", "x[2n] downsampling", "x[n/2] zero insertion", "impulse scaling property"],
+      "visualizationType": ["chart", "interactive-demo", "simulation"],
+      "interactionLevel": "high",
+      "complexity": 4,
+      "relatedConcepts": ["Unit Step Function", "Unit Impulse Function", "Exponential Signals", "Signal Operations", "Time Shifting", "Time Scaling"],
+      "applicationDomains": ["education", "exploration", "demonstration"]
+    },
+    "educational": {
+      "gradeLevel": ["Undergraduate"],
+      "subjectArea": ["Engineering", "Mathematics"],
+      "topic": ["Signal operations", "Time shifting", "Time scaling", "Time reversal", "Decimation and expansion of sequences"],
+      "learningObjectives": [
+        "Calculate where a point of x(t) at time t_x appears in y(t) = A x(a(t - t0)), using t_y = t_x/a + t0",
+        "Distinguish x(a(t - t0)) from x(at - t0) and calculate the actual shift t0/a produced by the second form",
+        "Predict the effect of a < 0 (reversal), |a| > 1 (compression), |a| < 1 (stretching) and A on a signal's shape and position",
+        "Explain why decimation x[Mn] loses samples and why expansion x[n/L] needs inserted zeros or interpolation",
+        "Calculate the area of a time-scaled impulse using delta(at) = delta(t)/|a|"
+      ],
+      "bloomsTaxonomy": ["Apply", "Analyze"],
+      "prerequisites": ["Function notation and piecewise functions", "Unit step and unit impulse", "Continuous-time versus discrete-time signals"],
+      "duration": {"typical": 20, "range": {"min": 10, "max": 30}},
+      "difficulty": "Intermediate",
+      "scaffolding": {
+        "type": ["guided-discovery", "feedback"],
+        "adaptability": "fixed",
+        "removal": "user-controlled"
+      },
+      "misconceptions": [
+        {
+          "misconception": "x(at - t0) is x(at) delayed by t0",
+          "correction": "x(at - t0) = x(a(t - t0/a)), so the delay is t0/a; the correct form is x(a(t - t0))",
+          "evidence": "Check 'Show the common mistake': with a = 2 and t0 = 2 s the red z(t) lands 1 s to the left of the blue y(t), and with a = -1 it moves the opposite way"
+        },
+        {
+          "misconception": "x[n/2] stretches a sequence just as x(t/2) stretches a waveform",
+          "correction": "x[n/2] is undefined at odd n; zeros are inserted there and interpolation is needed to fill them, while samples discarded by x[2n] cannot be recovered",
+          "evidence": "In DT mode set a = 1/2 to see hollow inserted-zero circles, and a = 2 or 4 to see crossed-out samples of x that never reach y"
+        }
+      ]
+    },
+    "technical": {
+      "framework": "p5.js",
+      "version": "1.0.0",
+      "canvasDimensions": {"width": 700, "height": 658, "responsive": true},
+      "regions": {"drawHeight": 492, "controlHeight": 166},
+      "dependencies": ["p5.js 2.3.2"],
+      "browserCompatibility": ["Chrome 90+", "Firefox 88+", "Safari 14+", "Edge 90+"],
+      "performance": {"memoryUsage": "low", "loadTime": 500},
+      "deviceRequirements": {
+        "minScreenWidth": 375,
+        "touchSupport": true,
+        "keyboardRequired": false,
+        "mouseRequired": false,
+        "networkRequired": false
+      },
+      "accessibility": {
+        "screenReader": true,
+        "keyboardNavigation": true,
+        "colorContrast": true,
+        "altText": true,
+        "screenReaderScript": "Two stacked plots on the same time axis: the original signal x(t) in gray and the transformed signal y(t) = A x(a(t - t0)) in blue. Three colored landmark points P, Q and R are joined by dashed lines from x to y, and a table lists their times. Sliders set the shift t0, the scale a and the amplitude A; checkboxes reverse time, overlay the common shift-before-scale mistake in red, and switch to discrete time."
+      }
+    },
+    "userInterface": {
+      "layoutType": "responsive-width",
+      "layoutPattern": "drawing-region-above-controls",
+      "colorScheme": {
+        "drawingArea": "aliceblue",
+        "controlArea": "white",
+        "originalSignal": "gray",
+        "transformedSignal": "blue",
+        "mistake": "red",
+        "landmarks": "gold (P), purple (Q), green (R)",
+        "text": "black"
+      },
+      "controls": [
+        {
+          "id": "shiftSlider",
+          "type": "slider",
+          "label": "Shift t0",
+          "description": "Sets the time shift t0 in seconds; in DT mode it moves in whole samples (n0)",
+          "group": "transformation",
+          "properties": {"min": -5, "max": 5, "default": 2, "step": 0.1, "units": "s", "showValue": true}
+        },
+        {
+          "id": "scaleSlider",
+          "type": "slider",
+          "label": "Scale a",
+          "description": "Sets the magnitude of the time-scale factor a; in DT mode it steps through 1/4, 1/3, 1/2, 1, 2, 3, 4",
+          "group": "transformation",
+          "properties": {"min": 0.25, "max": 4, "default": 2, "step": 0.05, "showValue": true}
+        },
+        {
+          "id": "ampSlider",
+          "type": "slider",
+          "label": "Amplitude A",
+          "description": "Sets the amplitude scale factor A; negative values flip the signal upside down",
+          "group": "transformation",
+          "properties": {"min": -2, "max": 2, "default": 1, "step": 0.1, "showValue": true}
+        },
+        {
+          "id": "signalSelect",
+          "type": "dropdown",
+          "label": "Base signal",
+          "description": "Chooses the elementary signal x(t)",
+          "group": "signal",
+          "properties": {
+            "options": [
+              {"value": "step", "label": "unit step u(t)"},
+              {"value": "impulse", "label": "unit impulse delta(t)"},
+              {"value": "rect", "label": "rectangular pulse"},
+              {"value": "triangle", "label": "triangle"},
+              {"value": "exp", "label": "exponential e^(-t)u(t)"},
+              {"value": "sine", "label": "one sine period"},
+              {"value": "ramp", "label": "ramp r(t) = t u(t)"}
+            ],
+            "default": "triangle"
+          }
+        },
+        {
+          "id": "dtCheckbox",
+          "type": "checkbox",
+          "label": "Discrete time (DT)",
+          "description": "Switches to stem plots on integer n with integer shifts and scale factors M or 1/L",
+          "group": "mode",
+          "properties": {"checked": false}
+        },
+        {
+          "id": "reverseCheckbox",
+          "type": "checkbox",
+          "label": "Reverse time",
+          "description": "Replaces a with -a, flipping the signal about t = 0 before the shift",
+          "group": "transformation",
+          "properties": {"checked": false}
+        },
+        {
+          "id": "mistakeCheckbox",
+          "type": "checkbox",
+          "label": "Show the common mistake",
+          "description": "Overlays z(t) = A x(at - t0) in red and explains that it shifts by t0/a, not t0",
+          "group": "mode",
+          "properties": {"checked": false}
+        }
+      ],
+      "visualElements": [
+        {"type": "chart", "description": "Upper plot: the original signal x(t) or x[n] in gray with landmarks P, Q, R", "interactive": true, "updateTriggers": ["signalSelect", "dtCheckbox"]},
+        {"type": "chart", "description": "Lower plot: y(t) = A x(a(t - t0)) in blue, optional mistake z(t) in red, landmark connectors from the upper plot", "interactive": true, "updateTriggers": ["shiftSlider", "scaleSlider", "ampSlider", "reverseCheckbox", "mistakeCheckbox", "dtCheckbox", "signalSelect"]},
+        {"type": "text-display", "description": "Formula read-out, order-of-operations or mistake explanation, and a landmark table t_x -> t_y = t_x/a + t0 (and t_z)", "interactive": false, "updateTriggers": ["shiftSlider", "scaleSlider", "ampSlider", "reverseCheckbox", "mistakeCheckbox", "dtCheckbox", "signalSelect"]}
+      ]
+    },
+    "simulation": {
+      "model": {
+        "type": "mathematical",
+        "description": "Evaluates y(t) = A x(a(t - t0)) and z(t) = A x(at - t0) for an elementary signal and maps landmark times with t_y = t_x/a + t0 and t_z = (t_x + t0)/a; in discrete time y[n] = A x[a(n - n0)] is defined only where a(n - n0) is an integer, otherwise a zero is inserted",
+        "equations": ["y(t) = A x(a(t - t0))", "t_y = t_x / a + t0", "z(t) = A x(at - t0) = A x(a(t - t0/a))", "delta(at) = delta(t) / |a|", "y[n] = x[Mn] (decimation)", "y[n] = x[n/L] if L divides n, else 0 (expansion)"]
+      }
+    },
+    "usage": {
+      "recommendedUsage": ["demonstration", "exploration", "guided-practice"],
+      "instructionalStrategies": ["Predict landmark positions before reading the table", "Contrast the correct and mistaken transformation side by side", "Compare continuous-time and discrete-time scaling"],
+      "extensions": ["Add a second stage so students can compose two operations and compare the result with a single combined operation"]
+    }
+  },
+  "canvasHeight": 658
+}

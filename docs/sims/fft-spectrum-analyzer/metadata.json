@@ -1,125 +1,239 @@
 {
-  "title": "FFT Spectrum Analyzer",
-  "creator": "Dan McCreary",
-  "subject": [
-    "Signal Processing",
-    "Fast Fourier Transform",
-    "Discrete Fourier Transform",
-    "Spectral Analysis",
-    "Window Functions",
-    "Spectrogram"
-  ],
-  "description": "A spectrum analyzer built on a radix-2 FFT. Generated test signals or the microphone are analyzed frame by frame with a selectable FFT size and window function, and shown as a linear magnitude, dB or phase spectrum with peak markers, a cursor readout and an optional scrolling spectrogram.",
-  "date": "2026-10-02",
-  "type": "Interactive Simulation",
-  "format": "text/html",
-  "language": "en",
-  "rights": "CC BY-NC-SA 4.0",
-  "identifier": "https://dmccreary.github.io/signal-processing/sims/fft-spectrum-analyzer/",
-  "library": "p5.js",
-  "educational": {
-    "gradeLevel": [
-      "Undergraduate"
-    ],
-    "subjectArea": "Signal Processing",
-    "topic": "FFT-based spectral analysis: bin spacing, amplitude scaling, windows and spectrograms",
-    "learningObjectives": [
-      "Compute the bin spacing and frame length of an FFT from the sampling rate and the FFT size",
-      "Use the relation |X[k]| = A N / 2 to read the amplitude of a tone from an FFT",
-      "Compare the leakage of rectangular, Hamming, Hanning, Blackman and Kaiser windows",
-      "Explain the trade-off between frequency resolution and time resolution when the FFT size changes"
-    ],
-    "bloomsTaxonomy": "Apply",
-    "duration": "25-30 minutes",
-    "prerequisites": [
-      "Sampling and the Nyquist frequency",
-      "The DFT and frequency bins",
-      "Decibels"
-    ],
-    "standards": []
-  },
-  "technical": {
-    "framework": "p5.js",
-    "version": "1.11.10",
-    "canvasDimensions": {
-      "width": "responsive",
-      "height": 605
+  "microsim": {
+    "dublinCore": {
+      "title": "FFT Spectrum Analyzer",
+      "creator": ["Dan McCreary"],
+      "subject": ["Signal Processing", "Fast Fourier Transform", "Discrete Fourier Transform", "Spectral Analysis", "Window Functions", "Spectrogram"],
+      "description": "A spectrum analyzer built on a radix-2 FFT. Generated test signals or the microphone are analyzed frame by frame with a selectable FFT size and window function, and shown as a linear magnitude, dB or phase spectrum with peak markers, a cursor readout and an optional scrolling spectrogram.",
+      "publisher": "Dan McCreary",
+      "contributor": ["Claude (Anthropic)"],
+      "date": "2026-10-02",
+      "type": "Interactive Simulation",
+      "format": "text/html",
+      "identifier": "https://dmccreary.github.io/signal-processing/sims/fft-spectrum-analyzer/",
+      "language": "en",
+      "relation": ["Chapter 6: Fourier Analysis Fundamentals"],
+      "rights": "CC BY-NC-SA 4.0"
     },
-    "responsive": true,
-    "dependencies": [
-      "p5.js 1.11.10 (CDN)",
-      "Web Audio API (microphone source only)"
-    ],
-    "accessibility": {
-      "hasAltText": true,
-      "keyboardNavigable": true
+    "search": {
+      "tags": ["FFT", "spectrum analyzer", "window function", "spectral leakage", "frequency resolution", "spectrogram", "microphone", "decibels", "phase spectrum"],
+      "searchKeywords": ["FFT spectrum analyzer", "bin spacing fs/N", "Hamming Hanning Blackman Kaiser window", "spectral leakage between bins", "frequency resolution versus time resolution", "live microphone spectrum"],
+      "visualizationType": ["graph", "interactive-demo", "simulation"],
+      "interactionLevel": "high",
+      "complexity": 6,
+      "relatedConcepts": ["Fast Fourier Transform", "Discrete Fourier Transform", "Radix-2 FFT", "Frequency Bin", "Spectral Leakage", "Window Function", "Frequency Resolution", "Magnitude Spectrum", "Phase Spectrum", "Decibels", "Spectrogram", "Harmonics"],
+      "applicationDomains": ["education", "exploration", "analysis", "demonstration"],
+      "showcase": false
+    },
+    "educational": {
+      "gradeLevel": ["Undergraduate"],
+      "subjectArea": ["Engineering", "Mathematics"],
+      "topic": ["FFT-based spectral analysis", "Bin spacing and amplitude scaling", "Window functions and leakage", "Frequency and time resolution", "Spectrograms"],
+      "learningObjectives": [
+        "Compute the bin spacing and frame length of an FFT from the sampling rate and the FFT size",
+        "Use the relation |X[k]| = A N / 2 to read the amplitude of a tone from an FFT",
+        "Compare the leakage of rectangular, Hamming, Hanning, Blackman and Kaiser windows",
+        "Explain the trade-off between frequency resolution and time resolution when the FFT size changes",
+        "Interpret a spectrogram of a steady tone, a frequency sweep and live sound"
+      ],
+      "bloomsTaxonomy": ["Understand", "Apply", "Analyze"],
+      "prerequisites": ["Sampling and the Nyquist frequency", "The DFT and frequency bins", "Decibels"],
+      "duration": {"typical": 30, "range": {"min": 25, "max": 45}},
+      "difficulty": "Intermediate",
+      "scaffolding": {
+        "type": ["guided-discovery", "feedback"],
+        "adaptability": "fixed",
+        "removal": "user-controlled"
+      },
+      "misconceptions": [
+        {
+          "misconception": "The height of an FFT peak is the amplitude of the tone without any scaling",
+          "correction": "A bin-centred sine of amplitude A gives |X[k]| = A N / 2 with a rectangular window; the display divides by N/2 and the window's mean",
+          "evidence": "For a unit sine at 1000 Hz the readout shows |X[k]| = 512 at N = 1024 and 2048 at N = 4096, while the amplitude reads 1.000 in both cases"
+        },
+        {
+          "misconception": "Leakage is an error in the FFT algorithm",
+          "correction": "Leakage comes from analysing a frame that does not hold a whole number of cycles; windows trade main-lobe width for lower side lobes",
+          "evidence": "At N = 1024 a 1000 Hz tone gives one clean line and a 1004 Hz tone spreads out; 20 bins from the peak the level is about -36 dB with the rectangular window and about -95 dB with Blackman"
+        },
+        {
+          "misconception": "A longer FFT always gives a better picture of the signal",
+          "correction": "A longer frame gives finer bins but averages over more time, so a changing signal smears",
+          "evidence": "The chirp reads about 0.9 at N = 256 but only about 0.13 at N = 4096, where its frequency rises 486 Hz during one frame"
+        }
+      ]
+    },
+    "technical": {
+      "framework": "p5.js",
+      "version": "2.0.0",
+      "canvasDimensions": {"width": 670, "height": 605, "responsive": true},
+      "regions": {"drawHeight": 455, "controlHeight": 150},
+      "dependencies": ["p5.js 2.3.2", "p5.sound 0.4.1"],
+      "browserCompatibility": ["Chrome 90+", "Firefox 88+", "Safari 14.1+", "Edge 90+"],
+      "performance": {"memoryUsage": "low", "computationalComplexity": "O(n log n)"},
+      "deviceRequirements": {
+        "minScreenWidth": 360,
+        "touchSupport": true,
+        "keyboardRequired": false,
+        "mouseRequired": false,
+        "networkRequired": true
+      },
+      "accessibility": {
+        "screenReader": true,
+        "keyboardNavigation": true,
+        "colorContrast": true,
+        "altText": true,
+        "screenReaderScript": "A spectrum analyzer. The upper plot shows one frame of the input signal before and after the window function. The lower plot shows its FFT spectrum with peak markers, and optionally a scrolling spectrogram. Choose a source, FFT size, window and display below the plots and press Run to let time advance."
+      }
+    },
+    "userInterface": {
+      "layoutType": "responsive-width",
+      "layoutPattern": "drawing-region-above-controls",
+      "colorScheme": {
+        "drawingArea": "aliceblue",
+        "controlArea": "white",
+        "timeSignal": "blue",
+        "spectrum": "crimson",
+        "phase": "seagreen",
+        "peakMarkers": "darkorange",
+        "spectrogram": "viridis",
+        "text": "black"
+      },
+      "controls": [
+        {
+          "id": "sourceSelect",
+          "type": "dropdown",
+          "label": "Source",
+          "description": "Chooses a generated test signal (fs = 8000 Hz) or the microphone",
+          "group": "signal",
+          "properties": {
+            "options": [
+              {"value": "sine", "label": "Sine"},
+              {"value": "two", "label": "Two tones (f and f + 100 Hz)"},
+              {"value": "square", "label": "Square wave"},
+              {"value": "sawtooth", "label": "Sawtooth wave"},
+              {"value": "noisy", "label": "Sine + white noise"},
+              {"value": "chirp", "label": "Chirp (100 to 3900 Hz sweep)"},
+              {"value": "mic", "label": "Microphone"}
+            ],
+            "default": "sine"
+          }
+        },
+        {
+          "id": "runButton",
+          "type": "toggle-button",
+          "label": "Run / Pause",
+          "description": "Lets time advance (the MicroSim starts paused); with the microphone source the first Run opens the microphone",
+          "group": "playback",
+          "properties": {"text": "Run", "action": "toggleRun", "toggleable": true, "style": "primary"}
+        },
+        {
+          "id": "freqSlider",
+          "type": "slider",
+          "label": "Signal frequency f",
+          "description": "Sets the frequency of the generated tone; disabled for the chirp and the microphone",
+          "group": "signal",
+          "properties": {"min": 50, "max": 3900, "default": 1000, "step": 1, "units": "Hz", "showValue": true}
+        },
+        {
+          "id": "sizeSelect",
+          "type": "dropdown",
+          "label": "FFT size N",
+          "description": "Number of samples in each frame and in the FFT",
+          "group": "analysis",
+          "properties": {
+            "options": [
+              {"value": "128", "label": "128"},
+              {"value": "256", "label": "256"},
+              {"value": "512", "label": "512"},
+              {"value": "1024", "label": "1024"},
+              {"value": "2048", "label": "2048"},
+              {"value": "4096", "label": "4096"}
+            ],
+            "default": "1024"
+          }
+        },
+        {
+          "id": "windowSelect",
+          "type": "dropdown",
+          "label": "Window",
+          "description": "Window function applied to the frame before the FFT",
+          "group": "analysis",
+          "properties": {
+            "options": [
+              {"value": "rect", "label": "Rectangular"},
+              {"value": "hamming", "label": "Hamming"},
+              {"value": "hann", "label": "Hanning (Hann)"},
+              {"value": "blackman", "label": "Blackman"},
+              {"value": "kaiser", "label": "Kaiser (β = 8.6)"}
+            ],
+            "default": "rect"
+          }
+        },
+        {
+          "id": "scaleSelect",
+          "type": "dropdown",
+          "label": "Display",
+          "description": "Shows the spectrum as linear amplitude, amplitude in dB or phase",
+          "group": "display",
+          "properties": {
+            "options": [
+              {"value": "linear", "label": "Magnitude (linear)"},
+              {"value": "db", "label": "Magnitude (dB)"},
+              {"value": "phase", "label": "Phase"}
+            ],
+            "default": "linear"
+          }
+        },
+        {
+          "id": "spectrogramCheckbox",
+          "type": "checkbox",
+          "label": "Spectrogram",
+          "description": "Adds a scrolling spectrogram (last 5 s, -80 dB to 0 dB) below the spectrum",
+          "group": "display",
+          "properties": {"checked": false}
+        }
+      ],
+      "visualElements": [
+        {"type": "graph", "description": "Time plot: the frame x[n] (grey) and the windowed frame x[n]w[n] (blue) against time in ms", "interactive": false, "updateTriggers": ["sourceSelect", "freqSlider", "sizeSelect", "windowSelect", "runButton"]},
+        {"type": "chart", "description": "Spectrum plot from 0 to fs/2 (8 kHz for the microphone) in linear amplitude, dB or phase, with orange peak markers and a mouse cursor", "interactive": true, "updateTriggers": ["sourceSelect", "freqSlider", "sizeSelect", "windowSelect", "scaleSelect", "runButton"]},
+        {"type": "image", "description": "Scrolling spectrogram with a viridis colour scale from -80 dB to 0 dB", "interactive": false, "updateTriggers": ["spectrogramCheckbox", "runButton"]},
+        {"type": "text-display", "description": "Banner with N, fs, bin spacing and frame length (or the microphone status), and a readout of the strongest peak or the bin under the cursor", "interactive": false, "updateTriggers": ["sourceSelect", "sizeSelect", "windowSelect"]}
+      ]
+    },
+    "simulation": {
+      "model": {
+        "type": "algorithmic",
+        "description": "Each frame of N samples is multiplied by a window and transformed with an in-place radix-2 decimation-in-time FFT. The amplitude is scaled so that a bin-centred sine reads its own amplitude; peak frequencies are refined by a parabola through the dB values of three bins.",
+        "equations": [
+          "X[k] = sum_{n=0}^{N-1} x[n] w[n] e^{-j 2 pi k n / N}",
+          "Delta f = fs / N, frame length = N / fs",
+          "bin-centred sine of amplitude A: |X[k]| = A N / 2 (rectangular window)",
+          "displayed amplitude = 2 |X[k]| / (N mean(w))",
+          "Hanning: w[n] = 0.5 - 0.5 cos(2 pi n / N); Hamming: w[n] = 0.54 - 0.46 cos(2 pi n / N)",
+          "Blackman: w[n] = 0.42 - 0.5 cos(2 pi n / N) + 0.08 cos(4 pi n / N); Kaiser: beta = 8.6"
+        ],
+        "algorithms": ["Radix-2 decimation-in-time FFT", "Parabolic peak interpolation on dB values", "Band-limited square and sawtooth synthesis"],
+        "assumptions": [
+          "Generated signals are sampled at 8000 Hz; square and sawtooth waves are built from their harmonics below 4000 Hz",
+          "The microphone is read through p5.sound 0.4.1 (p5.AudioIn) at the sound card's sampling rate, with echo cancellation and noise suppression off, and is not played back",
+          "The Kaiser window uses beta = 8.6"
+        ],
+        "limitations": [
+          "Peak frequencies from the parabolic fit are approximate",
+          "The microphone frame lags the live sound by up to about 0.2 s"
+        ]
+      }
+    },
+    "usage": {
+      "recommendedUsage": ["demonstration", "exploration", "guided-practice"],
+      "instructionalStrategies": [
+        "Measure known test signals first, then apply the same analyzer to live audio",
+        "Predict the bin, the raw |X[k]| and the amplitude before reading them",
+        "Compare windows at a tone placed half-way between two bins"
+      ],
+      "extensions": ["Add zero padding to show that it interpolates the spectrum without improving resolution", "Add an audio-file source"]
     }
   },
-  "userInterface": {
-    "controls": [
-      { "type": "select", "label": "Source", "options": ["Sine", "Two tones (f and f + 100 Hz)", "Square wave", "Sawtooth wave", "Sine + white noise", "Chirp (100 to 3900 Hz sweep)", "Microphone"], "default": "Sine" },
-      { "type": "button", "label": "Run / Pause", "description": "Lets time advance; starts paused" },
-      { "type": "slider", "label": "Signal frequency f (Hz)", "min": 50, "max": 3900, "step": 1, "default": 1000 },
-      { "type": "select", "label": "FFT size N", "options": ["128", "256", "512", "1024", "2048", "4096"], "default": "1024" },
-      { "type": "select", "label": "Window", "options": ["Rectangular", "Hamming", "Hanning (Hann)", "Blackman", "Kaiser (beta = 8.6)"], "default": "Rectangular" },
-      { "type": "select", "label": "Display", "options": ["Magnitude (linear)", "Magnitude (dB)", "Phase"], "default": "Magnitude (linear)" },
-      { "type": "checkbox", "label": "Spectrogram", "default": false },
-      { "type": "canvas", "label": "Move the mouse over the spectrum for a cursor readout of bin, frequency, magnitude and phase" }
-    ]
-  },
-  "simulation": {
-    "modelType": "mathematical",
-    "equations": [
-      "X[k] = sum over n of x[n] w[n] e^(-j 2 pi k n / N)",
-      "bin spacing = fs / N, frame length = N / fs",
-      "bin-centred sine of amplitude A: |X[k]| = A N / 2 (rectangular window)",
-      "displayed amplitude = 2 |X[k]| / (N mean(w))",
-      "Hanning: w[n] = 0.5 - 0.5 cos(2 pi n / N); Hamming: w[n] = 0.54 - 0.46 cos(2 pi n / N)",
-      "Blackman: w[n] = 0.42 - 0.5 cos(2 pi n / N) + 0.08 cos(4 pi n / N)"
-    ],
-    "assumptions": [
-      "Generated signals are sampled at 8000 Hz; square and sawtooth waves are built from their harmonics below 4000 Hz",
-      "Peak frequencies are refined by a parabola through the dB values of three bins and are approximate",
-      "The Kaiser window uses beta = 8.6",
-      "The microphone is read through a Web Audio AnalyserNode at the sound card's sampling rate"
-    ]
-  },
-  "pedagogical": {
-    "teachingStrategy": "Measure known test signals first, then apply the same analyzer to live audio",
-    "pattern": "exploration",
-    "bloomAlignment": [
-      "understand",
-      "apply",
-      "analyze"
-    ],
-    "bloomVerbs": [
-      "compute",
-      "use",
-      "compare",
-      "explain"
-    ],
-    "pacing": "self-paced",
-    "supportsPrediction": true,
-    "dataVisibility": "high",
-    "interactionStyle": "manipulate",
-    "keyQuestions": [
-      "What sets the spacing of the frequency bins?",
-      "Why does a tone between two bins read a lower amplitude and spread into other bins?",
-      "What do you give up when you make the FFT longer?"
-    ],
-    "commonMisconceptions": [
-      "The height of an FFT peak is the amplitude of the tone without any scaling",
-      "A longer FFT always gives a better picture of the signal",
-      "Leakage is an error in the FFT algorithm"
-    ],
-    "assessmentOpportunities": [
-      "Verify |X[k]| = N / 2 for a unit sine at every FFT size",
-      "Compare the amplitude read for a 1004 Hz tone with each window at N = 1024"
-    ]
-  },
-  "visualizationType": [
-    "graph",
-    "interactive-demo"
-  ],
-  "chapter": "06-fourier-analysis-fundamentals"
+  "canvasHeight": 605
 }

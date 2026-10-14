@@ -1,0 +1,232 @@
+{
+  "microsim": {
+    "dublinCore": {
+      "title": "DFT Explorer: Probing a Signal with Rotating Phasors",
+      "creator": ["Dan McCreary"],
+      "subject": ["Discrete Fourier transform", "Inverse DFT", "Phasors", "Orthogonality", "Frequency domain"],
+      "description": "Interactive MicroSim that builds each DFT value X[k] = sum x[n] e^(-j2 pi kn/N) visually: a unit circle shows the phasor for every sample, a complex plane adds the products x[n] e^(-j2 pi kn/N) head to tail so the running-sum arrow ends at X[k], and a bar chart mirrors |X[k]| with bin k highlighted. Animate and Step walk through n = 0..N-1, and an Inverse DFT mode rebuilds x[n] from bins the student clicks and shows the error and the energy kept.",
+      "publisher": "Dan McCreary",
+      "contributor": ["Claude (Anthropic)"],
+      "date": "2026-10-14",
+      "type": "Interactive Simulation",
+      "format": "text/html",
+      "identifier": "https://dmccreary.github.io/signal-processing/sims/dft-explorer/",
+      "language": "en",
+      "relation": ["Chapter 6: Fourier Analysis Fundamentals", "Complex Plane"],
+      "rights": "CC BY-NC-SA 4.0"
+    },
+    "search": {
+      "tags": ["DFT", "discrete Fourier transform", "inverse DFT", "phasor", "unit circle", "running sum", "orthogonality", "negative frequency", "Parseval"],
+      "searchKeywords": ["DFT as a sum of rotated samples", "x[n] e^(-j2 pi kn/N)", "why X[k] is zero", "DFT of a cosine N/2", "inverse DFT from selected bins", "DFT phasor animation"],
+      "visualizationType": ["chart", "animation", "interactive-demo", "simulation"],
+      "interactionLevel": "high",
+      "complexity": 5,
+      "relatedConcepts": ["Discrete Fourier Transform", "Inverse DFT", "Euler's Formula", "Phasors", "Frequency Domain", "Magnitude Spectrum"],
+      "applicationDomains": ["education", "demonstration", "exploration"]
+    },
+    "educational": {
+      "gradeLevel": ["Undergraduate"],
+      "subjectArea": ["Engineering", "Mathematics"],
+      "topic": ["Discrete Fourier transform", "Inverse DFT", "Orthogonality of complex exponentials", "Magnitude and phase spectrum"],
+      "learningObjectives": [
+        "Explain how X[k] is formed by multiplying each sample x[n] by a phasor that turns k/N of a revolution per sample and adding the products",
+        "Predict the non-zero DFT values of a sum of whole-bin sinusoids: AN/2 at bins m and N - m, or AN when m = 0 or m = N/2",
+        "Distinguish a matching bin, where the products line up and add, from a non-matching bin, where they close into a loop, and relate this to the orthogonality of the DFT phasors",
+        "Interpret the phase of X[k]: a cosine gives a real X[m] and a sine gives X[m] = -jAN/2",
+        "Analyze an inverse DFT built from a subset of bins by predicting its error and energy, and explain why bins k and N - k must be kept together for a real result"
+      ],
+      "bloomsTaxonomy": ["Understand", "Apply", "Analyze"],
+      "prerequisites": ["Complex numbers in polar form and Euler's formula", "Discrete-time sinusoids", "Summation notation"],
+      "duration": {"typical": 25, "range": {"min": 15, "max": 40}},
+      "difficulty": "Intermediate",
+      "scaffolding": {
+        "type": ["guided-discovery", "worked-examples", "feedback"],
+        "adaptability": "fixed",
+        "removal": "user-controlled"
+      },
+      "misconceptions": [
+        {
+          "misconception": "A cosine at bin m makes one spike at m",
+          "correction": "A real cosine is the sum of two counter-rotating phasors, so it appears at bins m and N - m, each AN/2 tall (or one bin of height AN when m = 0 or N/2)",
+          "evidence": "The default spectrum shows bars at 2, 5, 11 and 14; at k = N - m the unit circle turns counter-clockwise, and removing only one bin of a pair in Inverse DFT mode makes x_r[n] complex"
+        },
+        {
+          "misconception": "If k does not match a frequency in the signal, X[k] is small but not zero",
+          "correction": "For whole-bin sinusoids the DFT phasors are orthogonal and the sum is exactly zero; non-zero leakage needs a frequency between bins",
+          "evidence": "With the default signal and k = 3 the green chain closes into a loop and the read-out is X[3] = 0.00 + j0.00"
+        }
+      ]
+    },
+    "technical": {
+      "framework": "p5.js",
+      "version": "1.0.0",
+      "canvasDimensions": {"width": 900, "height": 742, "responsive": true},
+      "regions": {"drawHeight": 570, "controlHeight": 172},
+      "dependencies": ["p5.js 2.3.2"],
+      "browserCompatibility": ["Chrome 90+", "Firefox 88+", "Safari 14+", "Edge 90+"],
+      "performance": {"memoryUsage": "low", "computationalComplexity": "O(n²)", "loadTime": 500},
+      "deviceRequirements": {
+        "minScreenWidth": 375,
+        "touchSupport": true,
+        "keyboardRequired": false,
+        "mouseRequired": false,
+        "networkRequired": false
+      },
+      "accessibility": {
+        "screenReader": true,
+        "keyboardNavigation": true,
+        "colorContrast": true,
+        "altText": true,
+        "screenReaderScript": "DFT explorer. A stem plot shows an N-point signal x[n] built from up to three sinusoids. A unit circle shows the phasor e^(-j2 pi k n/N) for every n, a second plot shows its real and imaginary parts, and a complex plane adds the products x[n] times the phasor head to tail, so the running-sum arrow ends at X[k]. A bar chart shows |X[k]| for every bin with bin k highlighted. Controls: bin k slider, frequency and amplitude of each sinusoid, N, Animate and Step buttons, and an Inverse DFT checkbox that rebuilds x[n] from the bars you click."
+      }
+    },
+    "userInterface": {
+      "layoutType": "multi-panel",
+      "layoutPattern": "drawing-region-above-controls",
+      "colorScheme": {
+        "drawingArea": "aliceblue",
+        "controlArea": "white",
+        "signal": "blue",
+        "phasorParts": "purple (real) and orange (imaginary)",
+        "products": "green",
+        "runningSumAndSpectrum": "maroon",
+        "error": "red",
+        "highlight": "gold",
+        "text": "black"
+      },
+      "controls": [
+        {
+          "id": "kSlider",
+          "type": "slider",
+          "label": "Bin k",
+          "description": "Chooses the DFT bin k, i.e. the probing phasor e^(-j2 pi kn/N); clicking a spectrum bar also sets it",
+          "group": "analysis",
+          "properties": {"min": 0, "max": 15, "default": 2, "step": 1, "showValue": true}
+        },
+        {
+          "id": "comp1Select",
+          "type": "dropdown",
+          "label": "x1 frequency",
+          "description": "Waveform and bin of component 1: cos at m = 0..N/2 or sin at m = 1..N/2-1",
+          "group": "signal",
+          "properties": {
+            "options": [
+              {"value": "c0", "label": "cos, m = 0"}, {"value": "c1", "label": "cos, m = 1"}, {"value": "c2", "label": "cos, m = 2"},
+              {"value": "c8", "label": "cos, m = 8"}, {"value": "s1", "label": "sin, m = 1"}, {"value": "s7", "label": "sin, m = 7"}
+            ],
+            "default": "c2"
+          }
+        },
+        {
+          "id": "comp2Select",
+          "type": "dropdown",
+          "label": "x2 frequency",
+          "description": "Waveform and bin of component 2 (same options as component 1)",
+          "group": "signal",
+          "properties": {
+            "options": [{"value": "c5", "label": "cos, m = 5"}, {"value": "s3", "label": "sin, m = 3"}],
+            "default": "c5"
+          }
+        },
+        {
+          "id": "comp3Select",
+          "type": "dropdown",
+          "label": "x3 frequency",
+          "description": "Waveform and bin of component 3 (same options as component 1)",
+          "group": "signal",
+          "properties": {
+            "options": [{"value": "s3", "label": "sin, m = 3"}, {"value": "c3", "label": "cos, m = 3"}],
+            "default": "s3"
+          }
+        },
+        {
+          "id": "amp1Slider",
+          "type": "slider",
+          "label": "A1",
+          "description": "Amplitude of component 1 (0 turns it off)",
+          "group": "signal",
+          "properties": {"min": 0, "max": 2, "default": 1, "step": 0.05, "showValue": true}
+        },
+        {
+          "id": "amp2Slider",
+          "type": "slider",
+          "label": "A2",
+          "description": "Amplitude of component 2 (0 turns it off)",
+          "group": "signal",
+          "properties": {"min": 0, "max": 2, "default": 0.5, "step": 0.05, "showValue": true}
+        },
+        {
+          "id": "amp3Slider",
+          "type": "slider",
+          "label": "A3",
+          "description": "Amplitude of component 3 (0 turns it off)",
+          "group": "signal",
+          "properties": {"min": 0, "max": 2, "default": 0, "step": 0.05, "showValue": true}
+        },
+        {
+          "id": "nSelect",
+          "type": "dropdown",
+          "label": "N",
+          "description": "DFT length; changing it clamps the component bins to the new range and restarts the inverse-DFT selection",
+          "group": "analysis",
+          "properties": {
+            "options": [{"value": "8", "label": "8"}, {"value": "16", "label": "16"}, {"value": "32", "label": "32"}],
+            "default": "16"
+          }
+        },
+        {
+          "id": "animateButton",
+          "type": "toggle-button",
+          "label": "Animate / Pause / Resume",
+          "description": "Adds the products x[n] e^(-j2 pi kn/N) one sample at a time (0.7 s, 0.45 s or 0.26 s per sample for N = 8, 16, 32)",
+          "group": "animation",
+          "properties": {"text": "Animate", "action": "toggleAnimation", "toggleable": true, "style": "primary"}
+        },
+        {
+          "id": "stepButton",
+          "type": "button",
+          "label": "Step",
+          "description": "Adds one product per click; after a finished sum it starts again at n = 0",
+          "group": "animation",
+          "properties": {"text": "Step", "action": "stepAnimation", "style": "secondary"}
+        },
+        {
+          "id": "inverseCheckbox",
+          "type": "checkbox",
+          "label": "Inverse DFT",
+          "description": "Rebuilds x[n] from the bins that are kept (click bars to toggle), shows the error e[n] = x[n] - Re x_r[n], the energy kept, and warns when x_r[n] is complex",
+          "group": "mode",
+          "properties": {"checked": false}
+        }
+      ],
+      "visualElements": [
+        {"type": "chart", "description": "Stem plot of x[n] (blue); in inverse mode the real part of the reconstruction x_r[n] is drawn as maroon rings", "interactive": false, "updateTriggers": ["comp1Select", "comp2Select", "comp3Select", "amp1Slider", "amp2Slider", "amp3Slider", "nSelect", "inverseCheckbox"]},
+        {"type": "chart", "description": "Real (purple) and imaginary (orange) parts of the phasor e^(-j2 pi kn/N), or the red error e[n] in inverse mode (screens at least 600 px wide)", "interactive": false, "updateTriggers": ["kSlider", "nSelect", "inverseCheckbox"]},
+        {"type": "diagram", "description": "Unit circle with one point per sample at e^(-j2 pi kn/N), labelled with n, and a gold radius for the sample being added", "interactive": false, "updateTriggers": ["kSlider", "nSelect", "animateButton", "stepButton"]},
+        {"type": "diagram", "description": "Complex plane with the products added head to tail (green) and the running-sum arrow (maroon) ending at X[k]", "interactive": false, "updateTriggers": ["kSlider", "animateButton", "stepButton", "amp1Slider", "amp2Slider", "amp3Slider"]},
+        {"type": "chart", "description": "Bar chart of |X[k]| for k = 0..N-1 with bin k highlighted in gold and a dashed divider at N/2; bars are clickable", "interactive": true, "updateTriggers": ["kSlider", "inverseCheckbox", "nSelect"]}
+      ]
+    },
+    "simulation": {
+      "model": {
+        "type": "mathematical",
+        "description": "Builds x[n] from up to three whole-bin sinusoids, evaluates the DFT directly from its definition, draws the running sums S_k(n) = sum_{i<=n} x[i] e^(-j2 pi k i/N), and rebuilds x_r[n] from a selected set of bins with the inverse DFT",
+        "equations": [
+          "x[n] = sum_i A_i cos(2 pi m_i n/N) or A_i sin(2 pi m_i n/N)",
+          "X[k] = sum_{n=0}^{N-1} x[n] e^(-j 2 pi k n/N)",
+          "x_r[n] = (1/N) sum_{k kept} X[k] e^(+j 2 pi k n/N)",
+          "cos(2 pi m n/N) -> X[m] = X[N-m] = N/2 (X[m] = N when m = 0 or N/2)",
+          "sum_n e^(j 2 pi (k-m) n/N) = N if k = m (mod N), else 0",
+          "energy kept = sum_{k kept} |X[k]|^2 / sum_k |X[k]|^2"
+        ],
+        "algorithms": ["Direct O(N^2) DFT and inverse DFT"]
+      }
+    },
+    "usage": {
+      "recommendedUsage": ["demonstration", "exploration", "guided-practice"],
+      "instructionalStrategies": ["Predict X[k] before moving the bin slider", "Step through the sum one sample at a time", "Contrast a matching and a non-matching bin side by side", "Remove bins to see the error and the energy kept"],
+      "extensions": ["Allow non-integer frequencies to show spectral leakage", "Add a window function and compare the chains"]
+    }
+  },
+  "canvasHeight": 742
+}

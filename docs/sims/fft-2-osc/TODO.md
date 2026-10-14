@@ -1,3 +1,16 @@
+> **STATUS UPDATE 2026-10-14 (added after the plan was written; the plan below is otherwise unchanged).**
+> Several things in this plan have been superseded:
+>
+> - **Upstream merge at 09:00** added 14 chapter-spec'd sims (Ch. 2-8) under spec-derived ids, so `docs/sims/` is
+>   now 49 directories and ~13 of the "new" builds in section 4 already existed. Genuinely new builds: 28.
+> - **Decisions made:** D1 keep the MP3 in history for now and replace it with a CC0 track (installed in
+>   `fft-sound-file`); D2 upgrade everything to **p5.js 2.3.2 + p5.sound 0.4.1** (not 1.11.10); D3 migrate **all**
+>   `metadata.json` to the **nested** schema; D7 build all new MicroSims (Opus agents, in parallel).
+> - **Lesson learned:** p5.sound 0.4.1 is a different API (see the p5.sound recipe sheet in the agent brief);
+>   microphones are routed to the speakers by default and must be `disconnect()`ed.
+> - This file was briefly deleted by an upgrade agent that treated it as a stray `TODO` file; it has been restored.
+>   It is still published by MkDocs at this location; move it out of `docs/` (task 0.3) when convenient.
+
 # MicroSim Coverage & Quality Plan
 
 > **Status: DRAFT for your review. Nothing has been changed.** This analysis was read-only: I ran the
@@ -23,7 +36,7 @@ use the *Recommendation* column. Anything marked **BLOCKER** I will not touch wi
 
 | # | Decision | Recommendation (default) | Why it needs you |
 |---|----------|--------------------------|------------------|
-| **D1** | **BLOCKER.** `fft-sound-file/maroon-5-sugar.mp3` (3.8 MB commercial recording) is committed and served from GitHub Pages. | Delete it from the working tree now; load the CC-licensed *Damscray – Dancing Tiger* clip (already used by `reverb`) and add a "load your own file" input. Confirm that clip's attribution/licence before relying on it. | Removing it from the tree does **not** remove it from git history or from the `gh-pages` branch. Purging history means a rewrite + force-push; that is your call, not mine. |
+| **D1** | **BLOCKER.** `fft-sound-file/maroon-5-sugar.mp3` (3.8 MB commercial recording) is committed and served from GitHub Pages. | Delete it from the working tree now; load the CC-licensed *Damscray – Dancing Tiger* clip (already used by `reverb`) and add a "load your own file" input. Confirm that clip's attribution/license before relying on it. | Removing it from the tree does **not** remove it from git history or from the `gh-pages` branch. Purging history means a rewrite + force-push; that is your call, not mine. |
 | **D2** | p5.js version policy. Today: **7 different versions** across 27 sims (1.4.0, 1.9.0, 1.10.0, 1.11.1, 1.11.5, 1.11.7, 1.11.10), and p5.sound pinned separately at 1.11.3. | Pin everything to **p5 1.11.10** (+ matching p5.sound). Defer 2.x: 15 sims load p5.sound and I have not verified p5.sound under 2.x; root `TODO.md` already tracks the 3 `preload()` sims. | Version choice affects every sim and your editor.p5js.org sketches. |
 | **D3** | `metadata.json` shape. All 25 existing files are a **flat** Dublin Core + extras layout; the skill's `microsim-schema.json` and `metadata-template.json` are **nested** (`microsim.dublinCore…`). They cannot both be "the standard". | Keep **flat** (25 files already conform; the scorer accepts both). Define the canonical flat field list in §6. Fix the shared schema/template in `ibook-skills` as a separate change (it triggers that repo's auto-commit marker rule). | Choosing the wrong direction means rewriting 25 files or maintaining two formats. |
 | **D4** | Fate of legacy/duplicate directories. | **Retire** `fft-2-osc` (subset of `fft-3-osc`; carry its editor link); **archive** `graph-viewer-v1` (remove from nav); **delete** `templates/` (outdated copy of `template/`); **move** `openai-gpts/` to `docs/prompts/` (it's a transcript, not a sim). Leave a 3-line meta-refresh stub at any renamed `*.html` for one release. | Deletions/renames can break external links you have shared. |
@@ -85,7 +98,7 @@ approval before any commit/push/deploy (your "publish" command).
 
 **What I did not do (so you can weigh the findings):**
 
-- I analysed **source, not rendered pages**. I have not opened any sim in a browser, so layout clipping,
+- I analyzed **source, not rendered pages**. I have not opened any sim in a browser, so layout clipping,
   broken audio permissions, and visual errors are *unverified* until Phase 7.
 - I did not run `mkdocs build --strict`, the iframe tester, or the layout reviewer.
 - The learning graph's **CIS (concept impact score) is too flat to rank by**: 112 of 200 concepts

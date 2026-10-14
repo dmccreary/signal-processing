@@ -1,71 +1,118 @@
 {
-  "title": "Sound Reverb Effect",
-  "description": "Interactive demonstration of audio reverb effect showing how reverberation affects sound signals.",
-  "creator": "Dan McCreary",
-  "date": "2024-01-01",
-  "subject": [
-    "Signal Processing",
-    "Audio Effects",
-    "Reverb",
-    "Acoustics"
-  ],
-  "type": "Interactive Simulation",
-  "format": "text/html",
-  "language": "en",
-  "rights": "CC BY-NC-SA 4.0",
-  "identifier": "https://dmccreary.github.io/signal-processing/sims/reverb/",
-  "publisher": "Dan McCreary",
-  "educationalLevel": "Undergraduate",
-  "learningResourceType": "simulation",
-  "audience": "Students, Educators",
-  "version": "1.0.0",
-  "bloomLevel": [
-    "Understand",
-    "Apply"
-  ],
-  "concepts": [
-    "Reverb",
-    "Echo",
-    "Room acoustics",
-    "Audio effects"
-  ],
-  "prerequisites": [
-    "Basic audio concepts"
-  ],
-  "library": "p5.js",
-  "visualizationType": [
-    "interactive-demo",
-    "map"
-  ],
-  "learningObjectives": [
-    "Explain how a reverb node processes a source sound to simulate the reflections of a physical room",
-    "Predict how sweeping the dry/wet control from 0% to 100% shifts the balance between direct and reverberated signal",
-    "Identify reverb time and decay rate as the two parameters that shape the length of the reverberant tail",
-    "Explain why the source file is disconnected from the main output so that only the processed signal is heard"
-  ],
-  "bloomsTaxonomy": [
-    "Remember",
-    "Apply",
-    "Create"
-  ],
-  "pedagogical": {
-    "pattern": "demonstration",
-    "bloomAlignment": [
-      "remember",
-      "apply",
-      "evaluate"
-    ],
-    "bloomVerbs": [
-      "demonstrate",
-      "assess",
-      "evaluate"
-    ],
-    "pacing": "self-paced",
-    "supportsPrediction": false,
-    "dataVisibility": "high",
-    "feedbackType": [
-      "none"
-    ],
-    "interactionStyle": "construct"
-  }
+  "microsim": {
+    "dublinCore": {
+      "title": "Sound Reverb Effect",
+      "creator": ["Dan McCreary"],
+      "subject": ["Signal processing", "Audio effects", "Reverb", "Acoustics", "Convolution"],
+      "description": "Play a music clip through a convolution reverb, set the decay time and the dry/wet mix, and watch the reverb tail fade after the source stops on a scrolling decibel plot.",
+      "publisher": "Dan McCreary",
+      "contributor": ["Claude (Anthropic)"],
+      "date": "2025-09-19",
+      "type": "Interactive Simulation",
+      "format": "text/html",
+      "identifier": "https://dmccreary.github.io/signal-processing/sims/reverb/",
+      "language": "en",
+      "relation": ["Chapter 4: Convolution and Correlation"],
+      "rights": "CC BY-NC-SA 4.0"
+    },
+    "search": {
+      "tags": ["reverb", "reverberation", "RT60", "impulse response", "convolution", "dry/wet mix", "audio effects"],
+      "searchKeywords": ["reverb simulation", "convolution reverb demo", "reverberation time RT60", "dry wet mix"],
+      "visualizationType": ["chart", "interactive-demo"],
+      "interactionLevel": "moderate",
+      "complexity": 4,
+      "relatedConcepts": ["Convolution", "Impulse Response", "Reverberation", "Decibel", "Audio Signal Processing"],
+      "applicationDomains": ["education", "exploration"],
+      "showcase": false
+    },
+    "educational": {
+      "gradeLevel": ["Undergraduate"],
+      "subjectArea": ["Engineering", "Physics", "Music"],
+      "topic": ["Reverb", "Room acoustics", "Impulse response", "Convolution", "Reverberation time"],
+      "learningObjectives": [
+        "Explain why the reverb output continues after the source stops, using the convolution y = x * h",
+        "Predict how moving the Wet mix from 0 % to 100 % changes the dry and wet gains and the sound after Stop",
+        "Estimate the reverberation time RT60 from the slope of the decaying tail on the decibel plot",
+        "Calculate RT60 from the decay time d and compare it with the value shown in the panel",
+        "Distinguish between reverb (a dense, smoothly decaying tail) and a discrete echo"
+      ],
+      "bloomsTaxonomy": ["Understand", "Apply", "Analyze"],
+      "prerequisites": ["Decibels and logarithms", "Impulse response of an LTI system", "Convolution"],
+      "duration": {"typical": 20, "range": {"min": 15, "max": 25}},
+      "difficulty": "Intermediate",
+      "misconceptions": [
+        {
+          "misconception": "Reverb is just an echo",
+          "correction": "An echo is a single delayed copy; reverb is a dense mass of reflections whose level decays smoothly",
+          "evidence": "After Stop with Wet mix at 100 % the maroon tail falls along a roughly straight, unbroken line on the decibel plot, with no separate repeats"
+        },
+        {
+          "misconception": "The decay time is the reverberation time",
+          "correction": "The library's decay time is the length of the impulse response; the level falls 60 dB well before its end",
+          "evidence": "A 3 s decay time gives an RT60 of 1.81 s in the read-out panel"
+        }
+      ]
+    },
+    "technical": {
+      "framework": "p5.js",
+      "version": "2.0.0",
+      "canvasDimensions": {"width": 800, "height": 420, "responsive": true},
+      "regions": {"drawHeight": 310, "controlHeight": 110},
+      "dependencies": ["p5.js 2.3.2", "p5.sound 0.4.1"],
+      "browserCompatibility": ["Chrome 90+", "Firefox 88+", "Safari 14+", "Edge 90+"],
+      "performance": {"memoryUsage": "low", "loadTime": 1000},
+      "deviceRequirements": {
+        "minScreenWidth": 320,
+        "touchSupport": true,
+        "keyboardRequired": false,
+        "mouseRequired": false,
+        "networkRequired": false
+      },
+      "accessibility": {
+        "screenReader": true,
+        "keyboardNavigation": true,
+        "colorContrast": true,
+        "altText": true,
+        "screenReaderScript": "A reverb demo. Play loops a short music clip through a reverb and Stop silences the clip. The Decay time slider sets how long the reverb rings and the Wet mix slider sets the dry/wet balance. A scrolling plot shows the level of the dry clip in blue and of the output you hear in maroon; after Stop the maroon reverb tail keeps sounding and fades away."
+      }
+    },
+    "userInterface": {
+      "layoutType": "responsive-width",
+      "layoutPattern": "drawing-region-above-controls",
+      "colorScheme": {
+        "drawingArea": "aliceblue",
+        "controlArea": "white",
+        "accent": "maroon",
+        "text": "black"
+      },
+      "controls": [
+        {"id": "playButton", "type": "toggle-button", "label": "Play / Stop", "description": "Play starts the looping clip from the beginning; Stop fades the clip to silence so only the reverb tail is left", "group": "playback", "properties": {"text": "Play", "toggleable": true}},
+        {"id": "decaySlider", "type": "slider", "label": "Decay time", "description": "Length of the reverb impulse response in seconds; applied when the slider is released", "group": "reverb", "properties": {"min": 1, "max": 10, "default": 3, "step": 0.1, "showValue": true, "unit": "s"}},
+        {"id": "wetSlider", "type": "slider", "label": "Wet mix", "description": "Equal-power dry/wet crossfade, 0 % = dry clip only, 100 % = reverb only", "group": "reverb", "properties": {"min": 0, "max": 100, "default": 50, "step": 1, "showValue": true, "unit": "%"}}
+      ],
+      "visualElements": [
+        {"type": "chart", "description": "Scrolling plot of the last 8 seconds: level in dBFS of the dry clip (blue) and of the output you hear (maroon), with a gold dashed line where the clip fell silent", "interactive": false, "updateTriggers": ["playButton", "decaySlider", "wetSlider"]},
+        {"type": "text-display", "description": "Read-out panel: dry and wet gain bars, decay time, estimated RT60, and the current dry and output levels", "interactive": false, "updateTriggers": ["decaySlider", "wetSlider"]}
+      ]
+    },
+    "simulation": {
+      "model": {
+        "type": "algorithmic",
+        "description": "The clip is convolved with a synthetic room impulse response (white noise times an exponential envelope) and mixed with the dry clip by an equal-power crossfade",
+        "equations": [
+          "y(t) = (x * h)(t)",
+          "h(t) = n(t) exp(-t / tau), tau = ln(d + 1) / ln(200), cut to zero at t = d",
+          "RT60 = tau ln(1000) = 1.30 ln(d + 1)",
+          "dry gain = cos(w pi / 2), wet gain = sin(w pi / 2)"
+        ],
+        "algorithms": ["Convolution reverb", "Equal-power crossfade", "RMS level metering"]
+      }
+    },
+    "usage": {
+      "recommendedUsage": ["demonstration", "exploration", "individual-study"],
+      "instructionalStrategies": ["Predict the tail before pressing Stop, then check", "Measure RT60 from the slope of the decibel plot"],
+      "extensions": ["Add a pre-delay control", "Load a measured room impulse response", "Show the impulse response itself"]
+    }
+  },
+  "canvasHeight": 420
 }

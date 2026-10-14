@@ -1,85 +1,125 @@
 {
-  "title": "Complex Plane",
-  "description": "Interactive visualization of complex numbers in the complex plane showing both rectangular (a + bi) and polar (r angle theta) forms with geometric representations including magnitude, phase, and projections.",
-  "creator": "Dan McCreary",
-  "date": "2025-01-25",
-  "subject": [
-    "Mathematics",
-    "Signal Processing",
-    "Complex Analysis",
-    "Phasors"
-  ],
-  "type": "Interactive Simulation",
-  "format": "text/html",
-  "language": "en",
-  "rights": "CC BY-NC-SA 4.0",
-  "identifier": "https://dmccreary.github.io/signal-processing/sims/complex-plane/",
-  "publisher": "Dan McCreary",
-  "educationalLevel": "Undergraduate",
-  "learningResourceType": "simulation",
-  "audience": "Students, Educators",
-  "version": "1.0.0",
-  "bloomLevel": [
-    "Understand",
-    "Apply",
-    "Analyze"
-  ],
-  "concepts": [
-    "Complex numbers",
-    "Rectangular form",
-    "Polar form",
-    "Magnitude",
-    "Phase angle",
-    "Phasors"
-  ],
-  "prerequisites": [
-    "Cartesian coordinate system",
-    "Basic trigonometry",
-    "Pythagorean theorem"
-  ],
-  "library": "p5.js",
-  "visualizationType": [
-    "diagram",
-    "graph",
-    "interactive-demo",
-    "map",
-    "network",
-    "simulation"
-  ],
-  "learningObjectives": [
-    "Identify the real part a on the blue horizontal axis and the imaginary part b on the red vertical axis for a plotted complex number z",
-    "Calculate the magnitude |z| as the square root of a squared plus b squared, using the right triangle drawn beneath the green vector",
-    "Calculate the phase angle theta as the arctangent of b over a, and locate it as the green arc from the positive real axis",
-    "Convert between the rectangular form a + bi and the polar form r at angle theta shown in the two information panels",
-    "Predict how changing only the real part moves the vector's tip, its magnitude, and its phase angle"
-  ],
-  "bloomsTaxonomy": [
-    "Understand",
-    "Apply",
-    "Analyze"
-  ],
-  "pedagogical": {
-    "pattern": "demonstration",
-    "bloomAlignment": [
-      "understand",
-      "apply",
-      "analyze"
-    ],
-    "bloomVerbs": [
-      "describe",
-      "explain",
-      "interpret",
-      "calculate",
-      "demonstrate"
-    ],
-    "pacing": "self-paced",
-    "supportsPrediction": false,
-    "dataVisibility": "high",
-    "feedbackType": [
-      "immediate",
-      "corrective",
-      "explanatory"
-    ],
-    "interactionStyle": "manipulate"
-  }
+  "microsim": {
+    "dublinCore": {
+      "title": "Complex Plane",
+      "creator": ["Dan McCreary"],
+      "subject": ["Complex numbers", "Signal processing", "Phasors", "Polar form", "Rectangular form"],
+      "description": "Interactive visualization of complex numbers in the complex plane showing both rectangular (a + bi) and polar (r angle theta) forms with geometric representations including magnitude, phase, and projections.",
+      "publisher": "Dan McCreary",
+      "contributor": [],
+      "date": "2025-01-25",
+      "type": "Interactive Simulation",
+      "format": "text/html",
+      "identifier": "https://dmccreary.github.io/signal-processing/sims/complex-plane/",
+      "language": "en",
+      "relation": ["Chapter 1: Mathematical Foundations", "Euler's Formula Explorer"],
+      "rights": "CC BY-NC-SA 4.0"
+    },
+    "search": {
+      "tags": ["complex numbers", "argand diagram", "polar form", "rectangular form", "phasor", "magnitude", "phase"],
+      "searchKeywords": ["complex plane", "complex number visualization", "polar to rectangular", "magnitude and phase"],
+      "visualizationType": ["diagram", "interactive-demo", "simulation"],
+      "interactionLevel": "moderate",
+      "complexity": 3,
+      "relatedConcepts": ["Complex Numbers", "Imaginary Unit", "Euler's Formula", "Phasors"],
+      "applicationDomains": ["education", "exploration"],
+      "showcase": false
+    },
+    "educational": {
+      "gradeLevel": ["Undergraduate"],
+      "subjectArea": ["Mathematics", "Engineering"],
+      "topic": ["Complex numbers", "Rectangular and polar form", "Magnitude and phase", "Phasors"],
+      "learningObjectives": [
+        "Identify the real part a on the blue horizontal axis and the imaginary part b on the red vertical axis for a plotted complex number z",
+        "Calculate the magnitude |z| as the square root of a squared plus b squared, using the right triangle drawn beneath the green vector",
+        "Calculate the phase angle theta as the arctangent of b over a, and locate it as the green arc from the positive real axis",
+        "Convert between the rectangular form a + bi and the polar form r at angle theta shown in the two information panels",
+        "Predict how changing only the real part moves the vector's tip, its magnitude, and its phase angle"
+      ],
+      "bloomsTaxonomy": ["Understand", "Apply", "Analyze"],
+      "prerequisites": ["Cartesian coordinate system", "Basic trigonometry", "Pythagorean theorem"],
+      "duration": {"typical": 15, "range": {"min": 10, "max": 30}},
+      "difficulty": "Beginner",
+      "scaffolding": {
+        "type": ["guided-discovery", "feedback"],
+        "adaptability": "fixed",
+        "removal": "user-controlled"
+      },
+      "misconceptions": [
+        {
+          "misconception": "The phase angle is always arctan(b/a) with no quadrant adjustment",
+          "correction": "arctan alone cannot distinguish opposite quadrants; the angle must be placed in the quadrant where the point lies",
+          "evidence": "Move the point into quadrant II or III and watch the green arc sweep past 90 degrees even though b/a changes sign only once"
+        }
+      ]
+    },
+    "technical": {
+      "framework": "p5.js",
+      "version": "2.0.0",
+      "canvasDimensions": {"width": 550, "height": 530, "responsive": true},
+      "regions": {"drawHeight": 450, "controlHeight": 80},
+      "dependencies": ["p5.js 2.3.2"],
+      "browserCompatibility": ["Chrome 90+", "Firefox 88+", "Safari 14+", "Edge 90+"],
+      "performance": {"memoryUsage": "low", "loadTime": 500},
+      "deviceRequirements": {
+        "minScreenWidth": 320,
+        "touchSupport": true,
+        "keyboardRequired": false,
+        "mouseRequired": false,
+        "networkRequired": false
+      },
+      "accessibility": {
+        "screenReader": true,
+        "keyboardNavigation": true,
+        "colorContrast": true,
+        "altText": true,
+        "screenReaderScript": "Interactive complex plane. Two sliders set the real and imaginary parts of z. The display shows the vector from the origin to z, its magnitude, its phase angle, and both rectangular and polar forms."
+      }
+    },
+    "userInterface": {
+      "layoutType": "responsive-width",
+      "layoutPattern": "drawing-region-above-controls",
+      "colorScheme": {
+        "drawingArea": "aliceblue",
+        "controlArea": "white",
+        "accent": "green",
+        "text": "black"
+      },
+      "controls": [
+        {
+          "id": "realSlider",
+          "type": "slider",
+          "label": "Real Part (a)",
+          "description": "Sets Re(z), the horizontal coordinate of the complex number",
+          "group": "complex-number",
+          "properties": {"min": -5, "max": 5, "default": 3, "step": 0.1, "showValue": true}
+        },
+        {
+          "id": "imagSlider",
+          "type": "slider",
+          "label": "Imaginary Part (b)",
+          "description": "Sets Im(z), the vertical coordinate of the complex number",
+          "group": "complex-number",
+          "properties": {"min": -5, "max": 5, "default": 4, "step": 0.1, "showValue": true}
+        }
+      ],
+      "visualElements": [
+        {"type": "diagram", "description": "Argand diagram with real axis (blue), imaginary axis (red) and the complex number vector (green)", "interactive": true, "updateTriggers": ["realSlider", "imagSlider"]},
+        {"type": "text-display", "description": "Left panel with Re(z), Im(z), |z| and theta; right panel with rectangular and polar forms", "interactive": false, "updateTriggers": ["realSlider", "imagSlider"]}
+      ]
+    },
+    "simulation": {
+      "model": {
+        "type": "mathematical",
+        "description": "Maps (a, b) to magnitude r = sqrt(a^2 + b^2) and phase theta = atan2(b, a)",
+        "equations": ["z = a + bi", "r = sqrt(a^2 + b^2)", "theta = atan2(b, a)", "z = r e^{i theta}"]
+      }
+    },
+    "usage": {
+      "recommendedUsage": ["demonstration", "exploration", "guided-practice"],
+      "instructionalStrategies": ["Predict-then-verify with the sliders", "Special-case exploration (axes, unit circle, 3-4-5 triangle)"],
+      "extensions": ["Add a second complex number and show the sum and product geometrically"]
+    }
+  },
+  "canvasHeight": 530
 }

@@ -1,83 +1,164 @@
 {
-  "title": "FFT Size MicroSim",
-  "description": "Interactive demonstration showing how FFT size affects frequency resolution with radio buttons to control FFT parameters.",
-  "creator": "Dan McCreary",
-  "date": "2024-01-01",
-  "subject": [
-    "Signal Processing",
-    "FFT",
-    "Frequency Resolution",
-    "Signal Analysis"
-  ],
-  "type": "Interactive Simulation",
-  "format": "text/html",
-  "language": "en",
-  "rights": "CC BY-NC-SA 4.0",
-  "identifier": "https://dmccreary.github.io/signal-processing/sims/fft-size/",
-  "publisher": "Dan McCreary",
-  "educationalLevel": "College Freshman",
-  "learningResourceType": "simulation",
-  "audience": "Students, Educators",
-  "version": "1.0.0",
-  "bloomLevel": [
-    "Understand",
-    "Apply",
-    "Analyze"
-  ],
-  "concepts": [
-    "FFT size",
-    "Frequency resolution",
-    "Time-frequency tradeoff",
-    "Spectral analysis"
-  ],
-  "prerequisites": [
-    "Basic trigonometry",
-    "Introduction to FFT"
-  ],
-  "library": "p5.js",
-  "visualizationType": [
-    "animation",
-    "graph",
-    "interactive-demo",
-    "map",
-    "network",
-    "simulation"
-  ],
-  "learningObjectives": [
-    "Predict how selecting a larger FFT size with the radio buttons narrows the width of the spectral peak and improves frequency resolution",
-    "Explain the time-frequency tradeoff, in which a larger FFT size buys sharper frequency resolution at the cost of a longer analysis window",
-    "Identify the peak in the purple frequency-domain display at the same frequency set by the frequency slider, such as the 440 Hz default",
-    "Predict how a rapid change of the amplitude slider produces a transient wave packet in the green time-domain trace and spectral spreading in the frequency domain",
-    "Compare the width of the spectral peak at FFT sizes of 256, 1024, and 4096 to quantify the resolution gained at each doubling"
-  ],
-  "bloomsTaxonomy": [
-    "Understand",
-    "Apply",
-    "Analyze"
-  ],
-  "pedagogical": {
-    "pattern": "demonstration",
-    "bloomAlignment": [
-      "understand",
-      "apply",
-      "analyze"
-    ],
-    "bloomVerbs": [
-      "classify",
-      "describe",
-      "explain",
-      "interpret",
-      "demonstrate"
-    ],
-    "pacing": "self-paced",
-    "supportsPrediction": true,
-    "dataVisibility": "medium",
-    "feedbackType": [
-      "immediate",
-      "delayed",
-      "corrective",
-      "explanatory"
-    ],
-    "interactionStyle": "construct"
-  }
+  "microsim": {
+    "dublinCore": {
+      "title": "FFT Size MicroSim",
+      "creator": ["Dan McCreary"],
+      "subject": ["Signal Processing", "FFT", "Frequency Resolution", "Signal Analysis"],
+      "description": "A sine-wave generator analysed with a selectable FFT size (512 to 8192 bins). The time-domain plot spans one window length and the spectrum draws one bar per bin, with read-outs of the bin width fs/N and the measured peak width at half height, so students see that a larger FFT gives narrower bins and peaks at the cost of a longer analysis window.",
+      "publisher": "Dan McCreary",
+      "contributor": ["Claude (Anthropic)"],
+      "date": "2025-05-29",
+      "type": "Interactive Simulation",
+      "format": "text/html",
+      "identifier": "https://dmccreary.github.io/signal-processing/sims/fft-size/",
+      "language": "en",
+      "relation": ["Chapter 7: DFT, FFT and Frequency Domain Analysis"],
+      "rights": "CC BY-NC-SA 4.0"
+    },
+    "search": {
+      "tags": ["FFT", "FFT size", "frequency resolution", "bin width", "spectral peak", "time-frequency trade-off", "window length", "audio"],
+      "searchKeywords": ["FFT size", "frequency resolution", "bin width fs/N", "peak width", "time-frequency trade-off", "analysis window length"],
+      "visualizationType": ["graph", "interactive-demo", "simulation"],
+      "interactionLevel": "moderate",
+      "complexity": 4,
+      "relatedConcepts": ["Fast Fourier Transform", "Discrete Fourier Transform", "Frequency Resolution", "FFT Size", "Frequency Bin", "Spectral Leakage", "Window Functions", "Time-Frequency Trade-off", "Magnitude Spectrum"],
+      "applicationDomains": ["education", "demonstration", "exploration"],
+      "showcase": false
+    },
+    "educational": {
+      "gradeLevel": ["Undergraduate"],
+      "subjectArea": ["Engineering", "Mathematics"],
+      "topic": ["FFT size", "Frequency resolution", "Time-frequency trade-off", "Spectral analysis"],
+      "learningObjectives": [
+        "Calculate the bin width (fs/N) and the window length (N/fs) for a given FFT size and sample rate",
+        "Predict how doubling the FFT size changes the bin width, the width of the spectral peak and the length of the analysis window",
+        "Explain the time-frequency trade-off: a larger FFT resolves frequency more finely only by analysing a longer stretch of signal, because the bin width times the window length equals 1",
+        "Explain why the strongest bin can differ from the true tone frequency by up to half a bin width",
+        "Determine which FFT sizes can separate two tones a given distance apart, using the measured peak width"
+      ],
+      "bloomsTaxonomy": ["Understand", "Apply", "Analyze", "Evaluate"],
+      "prerequisites": ["Sine waves: frequency, period and amplitude", "Sampling and the sample rate", "What an FFT spectrum shows"],
+      "duration": {"typical": 30, "range": {"min": 20, "max": 50}},
+      "difficulty": "Intermediate",
+      "scaffolding": {
+        "type": ["guided-discovery", "feedback"],
+        "adaptability": "fixed",
+        "removal": "user-controlled"
+      },
+      "misconceptions": [
+        {
+          "misconception": "A bigger FFT is always better",
+          "correction": "A larger FFT gives narrower peaks only by analysing a longer stretch of signal, so it blurs changes in time and costs more computation",
+          "evidence": "At 8192 bins each spectrum depends on 341 ms of signal; a quick amplitude dip appears as a gap travelling across the whole time window"
+        },
+        {
+          "misconception": "The FFT reports the exact frequency of the tone",
+          "correction": "The FFT measures only at the bin frequencies k fs/N, so the strongest bin can be off by up to half a bin",
+          "evidence": "At 512 bins and 48 kHz a 440 Hz tone appears at 421.9 Hz"
+        },
+        {
+          "misconception": "The peak of a pure tone should be a single thin line",
+          "correction": "A finite window spreads a pure tone over several bins (about 2.4 bins at half height for the Blackman window); the peak narrows in hertz as N grows",
+          "evidence": "The measured half-height width falls from 113.8 Hz at 512 bins to 6.9 Hz at 8192 bins (48 kHz), always about 2.4 bins"
+        }
+      ]
+    },
+    "technical": {
+      "framework": "p5.js",
+      "version": "2.0.0",
+      "canvasDimensions": {"width": 800, "height": 580, "responsive": true},
+      "regions": {"drawHeight": 470, "controlHeight": 110},
+      "dependencies": ["p5.js 2.3.2", "p5.sound 0.4.1"],
+      "browserCompatibility": ["Chrome 90+", "Firefox 88+", "Safari 14+", "Edge 90+"],
+      "performance": {"memoryUsage": "low", "computationalComplexity": "O(n log n)"},
+      "deviceRequirements": {
+        "minScreenWidth": 360,
+        "touchSupport": true,
+        "keyboardRequired": false,
+        "mouseRequired": false,
+        "networkRequired": true
+      },
+      "accessibility": {
+        "screenReader": true,
+        "keyboardNavigation": true,
+        "colorContrast": true,
+        "altText": true,
+        "screenReaderScript": "A sine-wave generator analysed by an FFT whose size you choose with radio buttons from 512 to 8192 bins. The top plot shows a stretch of the waveform one analysis window long; the bottom plot shows the magnitude spectrum from 0 to 2100 Hz as one bar per frequency bin. Larger FFT sizes give narrower bins, a narrower peak and a longer analysis window.",
+        "sensoryAlternatives": {"visualToAudio": true, "audioToVisual": true, "hapticFeedback": false}
+      }
+    },
+    "userInterface": {
+      "layoutType": "responsive-width",
+      "layoutPattern": "drawing-region-above-controls",
+      "colorScheme": {
+        "drawingArea": "aliceblue",
+        "controlArea": "white",
+        "borders": "silver",
+        "accent": "gold",
+        "text": "black"
+      },
+      "controls": [
+        {
+          "id": "frequencySlider",
+          "type": "slider",
+          "label": "Frequency",
+          "description": "Sets the frequency of the sine wave",
+          "group": "signal",
+          "properties": {"min": 20, "max": 2000, "default": 440, "step": 1, "units": "Hz", "showValue": true}
+        },
+        {
+          "id": "amplitudeSlider",
+          "type": "slider",
+          "label": "Amplitude",
+          "description": "Sets the peak amplitude of the sine wave (the speaker plays it at half this level)",
+          "group": "signal",
+          "properties": {"min": 0, "max": 1, "default": 0.5, "step": 0.01, "showValue": true}
+        },
+        {
+          "id": "startButton",
+          "type": "toggle-button",
+          "label": "Start / Pause",
+          "description": "Starts audio on the first click, then toggles the tone and the live analysis on and off",
+          "group": "playback",
+          "properties": {"text": "Start", "action": "toggleSimulation", "toggleable": true, "style": "primary"}
+        },
+        {
+          "id": "resetButton",
+          "type": "button",
+          "label": "Reset",
+          "description": "Returns the sliders to 440 Hz and amplitude 0.5 (the FFT size is kept)",
+          "group": "playback",
+          "properties": {"text": "Reset", "action": "resetSimulation", "style": "secondary"}
+        },
+        {
+          "id": "fftSizeRadio",
+          "type": "radio",
+          "label": "FFT Size (bins)",
+          "description": "Chooses the number of frequency bins between 0 Hz and fs/2; each spectrum uses N = 2 x size samples, so the bin width is fs/N",
+          "group": "analysis",
+          "properties": {"options": ["512", "1024", "2048", "4096", "8192"], "default": "2048"}
+        }
+      ],
+      "visualElements": [
+        {"type": "graph", "description": "Time-domain plot (green): a stretch of the waveform one analysis window long (N samples), with a millisecond axis; short windows are triggered on a rising zero crossing", "interactive": false, "updateTriggers": ["frequencySlider", "amplitudeSlider", "fftSizeRadio", "startButton"]},
+        {"type": "chart", "description": "Frequency-domain plot (purple): one bar per FFT bin from 0 to 2100 Hz, with a gold marker on the strongest bin and a gold bracket across the peak at half height", "interactive": false, "updateTriggers": ["frequencySlider", "amplitudeSlider", "fftSizeRadio", "startButton"]},
+        {"type": "text-display", "description": "Status indicator (RUNNING / PAUSED), strongest-bin frequency and magnitude, frequency resolution fs/N and measured peak width at half height", "interactive": false, "updateTriggers": ["frequencySlider", "amplitudeSlider", "fftSizeRadio", "startButton"]}
+      ]
+    },
+    "simulation": {
+      "model": {
+        "type": "algorithmic",
+        "description": "An oscillator produces x(t) = A sin(2 pi f t). The browser's analyser (via p5.sound 0.4.1) applies a Blackman window to the most recent N = 2 x size samples and computes an N-point FFT; the sketch plots each bin's magnitude, normalised so that an amplitude-1 sine centred on a bin reaches 1, and measures the peak width at half height by linear interpolation between bins.",
+        "equations": ["x(t) = A sin(2 pi f t)", "N = 2 x size", "Delta f = f_s / N", "T = N / f_s", "Delta f x T = 1"],
+        "algorithms": ["Fast Fourier Transform (Web Audio AnalyserNode)", "Half-height peak width by linear interpolation", "Rising zero-crossing trigger for short time windows"],
+        "limitations": ["The strongest-bin read-out can differ from the slider frequency by up to half a bin", "The time plot shows a stretch of signal one window long that lags the spectrum slightly, because the waveform buffer is read from the older part of the analyser's history", "A tone between two bins reads up to about 12% low because of the Blackman window"]
+      }
+    },
+    "usage": {
+      "recommendedUsage": ["demonstration", "exploration", "guided-practice"],
+      "instructionalStrategies": ["Predict-then-verify the bin width and peak width before each size change", "Worksheet table of N, T, bin width and peak width for every FFT size", "Observing a quick amplitude dip with long and short windows to discuss the time-frequency trade-off"],
+      "extensions": ["Add a second oscillator to test which FFT sizes separate two close tones", "Compare with a short-time Fourier transform spectrogram and its window-length setting"]
+    }
+  },
+  "canvasHeight": 580
 }

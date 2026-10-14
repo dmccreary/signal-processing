@@ -60,7 +60,7 @@ function setup() {
 
   describe('Three rows of plots: a noisy received signal containing hidden copies of a template, ' +
     'the template beside its time-reversed matched filter, and the cross-correlation output with a ' +
-    'threshold line and detected peaks labelled with their lag and signal-to-noise ratio.', LABEL);
+    'threshold line and detected peaks labelled with their lag and signal-to-noise ratio.');
 }
 
 // ---------------------------------------------------------------------------

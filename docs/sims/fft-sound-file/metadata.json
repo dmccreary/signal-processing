@@ -1,76 +1,138 @@
 {
-  "title": "FFT of Sound File",
-  "description": "Frequency spectrum visualization of an mp3 sound file showing real-time FFT analysis during playback.",
-  "creator": "Dan McCreary",
-  "date": "2024-01-01",
-  "subject": [
-    "Signal Processing",
-    "FFT",
-    "Audio Analysis",
-    "File Processing"
-  ],
-  "type": "Interactive Simulation",
-  "format": "text/html",
-  "language": "en",
-  "rights": "CC BY-NC-SA 4.0",
-  "identifier": "https://dmccreary.github.io/signal-processing/sims/fft-sound-file/",
-  "publisher": "Dan McCreary",
-  "educationalLevel": "Undergraduate",
-  "learningResourceType": "simulation",
-  "audience": "Students, Educators",
-  "version": "1.0.0",
-  "bloomLevel": [
-    "Understand",
-    "Apply"
-  ],
-  "concepts": [
-    "FFT",
-    "Audio file analysis",
-    "Frequency spectrum",
-    "Sound processing"
-  ],
-  "prerequisites": [
-    "Basic understanding of audio",
-    "FFT fundamentals"
-  ],
-  "library": "p5.js",
-  "visualizationType": [
-    "interactive-demo",
-    "map",
-    "network"
-  ],
-  "learningObjectives": [
-    "Distinguish the red frequency-spectrum bars from the black time-domain waveform trace drawn from the same audio buffer",
-    "Explain how fft.analyze() returns 1024 bins of magnitude values between 0 and 255 across the audible spectrum",
-    "Trace how bass, midrange, and treble energy in a playing mp3 changes the height of individual spectrum bins over time",
-    "Predict which regions of the spectrum display peak during percussive passages versus sustained musical passages"
-  ],
-  "bloomsTaxonomy": [
-    "Remember",
-    "Apply",
-    "Analyze",
-    "Create"
-  ],
-  "pedagogical": {
-    "pattern": "assessment",
-    "bloomAlignment": [
-      "apply",
-      "analyze",
-      "evaluate"
-    ],
-    "bloomVerbs": [
-      "calculate",
-      "implement",
-      "use",
-      "analyze",
-      "assess"
-    ],
-    "pacing": "self-paced",
-    "supportsPrediction": false,
-    "dataVisibility": "medium",
-    "feedbackType": [
-      "none"
-    ],
-    "interactionStyle": "construct"
-  }
+  "microsim": {
+    "dublinCore": {
+      "title": "FFT of Sound File",
+      "creator": ["Dan McCreary"],
+      "subject": ["Signal processing", "FFT", "Audio analysis", "Frequency spectrum", "Music technology"],
+      "description": "A music player with a track list that shows the waveform and the FFT frequency spectrum of the song you are listening to, with an option to load your own audio file.",
+      "publisher": "Dan McCreary",
+      "contributor": ["Claude (Anthropic)"],
+      "date": "2025-09-19",
+      "type": "Interactive Simulation",
+      "format": "text/html",
+      "identifier": "https://dmccreary.github.io/signal-processing/sims/fft-sound-file/",
+      "language": "en",
+      "relation": ["Chapter 7: DFT, FFT and Frequency Domain Analysis", "FFT Mic", "FFT Live Audio"],
+      "rights": "CC BY-NC-SA 4.0"
+    },
+    "search": {
+      "tags": ["fft", "spectrum", "audio", "music player", "frequency domain", "sound file"],
+      "searchKeywords": ["fft music player", "audio spectrum analyzer", "frequency spectrum of a song"],
+      "visualizationType": ["chart", "interactive-demo"],
+      "interactionLevel": "moderate",
+      "complexity": 3,
+      "relatedConcepts": ["Fast Fourier Transform", "Spectrum", "Magnitude Spectrum", "Frequency Domain", "Audio Signal Processing"],
+      "applicationDomains": ["education", "exploration"],
+      "showcase": false
+    },
+    "educational": {
+      "gradeLevel": ["Undergraduate"],
+      "subjectArea": ["Engineering", "Music", "Computer Science"],
+      "topic": ["FFT", "Magnitude spectrum", "Audio analysis", "Harmonics"],
+      "learningObjectives": [
+        "Describe what the red spectrum bars and the black waveform line each represent",
+        "Identify the frequency range that contains most of a track's energy",
+        "Compute the frequency of an FFT bin from its index, the FFT size and the sample rate",
+        "Compare the spectra of different recordings and explain the differences",
+        "Predict what the spectrum of a recording will look like before playing it, then check the prediction"
+      ],
+      "bloomsTaxonomy": ["Understand", "Apply", "Analyze"],
+      "prerequisites": ["Sinusoids, frequency and amplitude", "Sampling and the Nyquist frequency", "What a spectrum is"],
+      "duration": {"typical": 15, "range": {"min": 10, "max": 20}},
+      "difficulty": "Beginner",
+      "misconceptions": [
+        {
+          "misconception": "A tall bar at one frequency means the music contains a single note at that frequency",
+          "correction": "A musical note produces a fundamental peak plus harmonics at whole-number multiples of it",
+          "evidence": "Look for evenly spaced groups of peaks when the range is set to 0-5 kHz"
+        }
+      ]
+    },
+    "technical": {
+      "framework": "p5.js",
+      "version": "2.0.0",
+      "canvasDimensions": {"width": 800, "height": 320, "responsive": true},
+      "regions": {"drawHeight": 220, "controlHeight": 100},
+      "dependencies": ["p5.js 2.3.2", "p5.sound 0.4.1"],
+      "browserCompatibility": ["Chrome 90+", "Firefox 88+", "Safari 14+", "Edge 90+"],
+      "performance": {"memoryUsage": "moderate", "loadTime": 1500},
+      "deviceRequirements": {
+        "minScreenWidth": 320,
+        "touchSupport": true,
+        "keyboardRequired": false,
+        "mouseRequired": false,
+        "networkRequired": false
+      },
+      "accessibility": {
+        "screenReader": true,
+        "keyboardNavigation": true,
+        "colorContrast": true,
+        "altText": true,
+        "screenReaderScript": "A music player. A drop-down chooses a track and Play starts it. Red bars show the frequency spectrum computed by an FFT and a black line shows the waveform."
+      }
+    },
+    "userInterface": {
+      "layoutType": "responsive-width",
+      "layoutPattern": "drawing-region-above-controls",
+      "colorScheme": {
+        "drawingArea": "aliceblue",
+        "controlArea": "white",
+        "accent": "darkred",
+        "text": "black"
+      },
+      "controls": [
+        {
+          "id": "trackSelect",
+          "type": "dropdown",
+          "label": "Track",
+          "description": "Chooses the song to analyze",
+          "group": "playback",
+          "properties": {
+            "options": [
+              {"value": "0", "label": "Classical Pop (Instrumental) - Pro Sensory, CC0"},
+              {"value": "1", "label": "Dancing Tiger - Damscray (p5.js example, licence not yet verified)"},
+              {"value": "2", "label": "Sugar - Maroon 5 (copyrighted placeholder, to be removed)"}
+            ],
+            "default": "0"
+          }
+        },
+        {"id": "playButton", "type": "toggle-button", "label": "Play / Pause", "description": "Starts or pauses the selected track", "group": "playback", "properties": {"text": "Play", "toggleable": true}},
+        {"id": "volumeSlider", "type": "slider", "label": "Volume", "description": "Sets the playback level", "group": "playback", "properties": {"min": 0, "max": 1, "default": 0.5, "step": 0.01, "showValue": false}},
+        {
+          "id": "rangeSelect",
+          "type": "dropdown",
+          "label": "Range",
+          "description": "Sets the highest frequency shown on the horizontal axis",
+          "group": "display",
+          "properties": {
+            "options": [
+              {"value": "5000", "label": "0 - 5 kHz"},
+              {"value": "10000", "label": "0 - 10 kHz"},
+              {"value": "0", "label": "Full range"}
+            ],
+            "default": "10000"
+          }
+        },
+        {"id": "fileInput", "type": "file-upload", "label": "Your file", "description": "Loads an audio file from your computer to analyze", "group": "playback"}
+      ],
+      "visualElements": [
+        {"type": "chart", "description": "Red bars: FFT magnitude spectrum in decibels versus frequency", "interactive": false, "updateTriggers": ["trackSelect", "rangeSelect", "fileInput"]},
+        {"type": "graph", "description": "Black line: waveform of the most recent 1024 samples", "interactive": false, "updateTriggers": ["trackSelect", "fileInput"]}
+      ]
+    },
+    "simulation": {
+      "model": {
+        "type": "algorithmic",
+        "description": "A 1024-bin FFT of the playing audio, displayed in decibels",
+        "equations": ["f_bin = i * fs / (2 * 1024)", "dB = 20 log10(|X[i]|)"],
+        "algorithms": ["Fast Fourier Transform", "Exponential smoothing of successive spectra"]
+      }
+    },
+    "usage": {
+      "recommendedUsage": ["demonstration", "exploration"],
+      "instructionalStrategies": ["Predict the spectrum, then check", "Compare recordings of different styles"],
+      "extensions": ["Add a log-frequency axis", "Show a scrolling spectrogram"]
+    }
+  },
+  "canvasHeight": 320
 }

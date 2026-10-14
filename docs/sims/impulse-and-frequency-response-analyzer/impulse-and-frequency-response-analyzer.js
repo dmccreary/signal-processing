@@ -66,7 +66,7 @@ function setup() {
 
   describe('Four plots for a selected linear time-invariant system: impulse response and step ' +
     'response against time, and magnitude in decibels and phase in degrees against frequency. ' +
-    'Sliders set the cutoff frequency, filter order and damping ratio.', LABEL);
+    'Sliders set the cutoff frequency, filter order and damping ratio.');
 }
 
 // ---------------------------------------------------------------------------

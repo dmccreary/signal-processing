@@ -1,80 +1,141 @@
 {
-  "title": "FFT Butterfly",
-  "description": "Visualization of the FFT butterfly algorithm showing how the Fast Fourier Transform breaks down signal computation into stages.",
-  "creator": "Dan McCreary",
-  "date": "2024-01-01",
-  "subject": [
-    "Signal Processing",
-    "FFT",
-    "Algorithms",
-    "Butterfly Diagram"
-  ],
-  "type": "Interactive Simulation",
-  "format": "text/html",
-  "language": "en",
-  "rights": "CC BY-NC-SA 4.0",
-  "identifier": "https://dmccreary.github.io/signal-processing/sims/fft-butterfly/",
-  "publisher": "Dan McCreary",
-  "educationalLevel": "Undergraduate",
-  "learningResourceType": "simulation",
-  "audience": "Students, Educators",
-  "version": "1.0.0",
-  "bloomLevel": [
-    "Understand",
-    "Analyze"
-  ],
-  "concepts": [
-    "FFT algorithm",
-    "Butterfly computation",
-    "Divide and conquer",
-    "Signal decomposition"
-  ],
-  "prerequisites": [
-    "Basic FFT understanding",
-    "Complex numbers"
-  ],
-  "library": "p5.js",
-  "visualizationType": [
-    "interactive-demo",
-    "map",
-    "network",
-    "simulation"
-  ],
-  "learningObjectives": [
-    "Trace how data indices are reordered from one butterfly stage to the next by stepping through the algorithm with the Start/Next Step button",
-    "Calculate the number of butterfly stages for a given FFT size as log base 2 of N, and verify it against the stage counter",
-    "Predict how doubling the FFT size with the radio buttons adds exactly one additional stage to the diagram",
-    "Explain how the divide-and-conquer structure of the butterfly reduces the transform cost from N squared to N log N operations",
-    "Identify the crossing pairs of connection lines at each stage as the butterfly combinations that give the diagram its name"
-  ],
-  "bloomsTaxonomy": [
-    "Remember",
-    "Understand",
-    "Apply",
-    "Create"
-  ],
-  "pedagogical": {
-    "pattern": "worked-example",
-    "bloomAlignment": [
-      "understand",
-      "apply",
-      "evaluate"
-    ],
-    "bloomVerbs": [
-      "classify",
-      "describe",
-      "calculate",
-      "demonstrate",
-      "illustrate"
-    ],
-    "pacing": "self-paced",
-    "supportsPrediction": false,
-    "dataVisibility": "high",
-    "feedbackType": [
-      "immediate",
-      "corrective",
-      "explanatory"
-    ],
-    "interactionStyle": "construct"
-  }
+  "microsim": {
+    "dublinCore": {
+      "title": "FFT Butterfly",
+      "creator": ["Dan McCreary"],
+      "subject": ["Signal Processing", "FFT", "Algorithms", "Butterfly Diagram", "Bit-Reversal Permutation"],
+      "description": "Step-by-step diagram of the input reordering of a radix-2 decimation-in-time FFT: each step splits every group of samples into its even-indexed and odd-indexed halves until the samples sit in bit-reversed order, ready for the butterfly stages. FFT sizes 4, 8, 16 and 32.",
+      "publisher": "Dan McCreary",
+      "contributor": ["Claude (Anthropic)"],
+      "date": "2025-05-30",
+      "type": "Interactive Simulation",
+      "format": "text/html",
+      "identifier": "https://dmccreary.github.io/signal-processing/sims/fft-butterfly/",
+      "language": "en",
+      "relation": ["Chapter 6: Fourier Analysis Fundamentals"],
+      "rights": "CC BY-NC-SA 4.0"
+    },
+    "search": {
+      "tags": ["FFT", "butterfly", "radix-2", "decimation in time", "bit reversal", "Cooley-Tukey", "divide and conquer"],
+      "searchKeywords": ["FFT butterfly diagram", "bit-reversed order", "decimation-in-time FFT", "even and odd samples", "FFT input reordering"],
+      "visualizationType": ["diagram", "interactive-demo", "animation"],
+      "interactionLevel": "moderate",
+      "complexity": 4,
+      "relatedConcepts": ["Fast Fourier Transform", "FFT Algorithms", "Radix-2 FFT", "Cooley-Tukey Algorithm", "Discrete Fourier Transform"],
+      "applicationDomains": ["education", "demonstration", "exploration"],
+      "showcase": false
+    },
+    "educational": {
+      "gradeLevel": ["Undergraduate"],
+      "subjectArea": ["Engineering", "Computer Science", "Mathematics"],
+      "topic": ["Radix-2 FFT", "Decimation in time", "Bit-reversal permutation", "Butterfly stages", "Computational complexity"],
+      "learningObjectives": [
+        "Describe one decimation-in-time step as splitting every group of samples into its even-indexed and odd-indexed halves",
+        "Calculate the number of columns (log2 N), the number of splits (log2 N - 1) and the group size after split s (N / 2^s) for a given FFT size",
+        "Predict the row that sample x[n] occupies in the final column by reversing the bits of n, and verify the prediction in the diagram",
+        "Explain why the final pairs x[m] and x[m + N/2] are the inputs of the first butterfly stage",
+        "Compare the (N/2) log2 N complex multiplications of the radix-2 FFT with the N^2 of the direct DFT"
+      ],
+      "bloomsTaxonomy": ["Understand", "Apply", "Analyze"],
+      "prerequisites": ["Definition of the DFT and its N^2 cost", "Binary representation of integers", "Even and odd indices of a sequence"],
+      "duration": {"typical": 20, "range": {"min": 15, "max": 30}},
+      "difficulty": "Intermediate",
+      "scaffolding": {
+        "type": ["progressive-disclosure", "guided-discovery"],
+        "adaptability": "fixed",
+        "removal": "user-controlled"
+      },
+      "misconceptions": [
+        {
+          "misconception": "Bit-reversed order means the list is reversed",
+          "correction": "The bits of each index are reversed, not the order of the list",
+          "evidence": "For N = 8, x[0] and x[7] stay at the top and bottom while x[4] moves up to row 1"
+        },
+        {
+          "misconception": "The right-hand column is the FFT output X[k]",
+          "correction": "Reordering only moves the input samples; the butterfly stages that follow do the arithmetic",
+          "evidence": "The green circles carry the same sample labels as the orange circles"
+        }
+      ]
+    },
+    "technical": {
+      "framework": "p5.js",
+      "version": "2.0.0",
+      "canvasDimensions": {"width": 800, "height": 580, "responsive": true},
+      "regions": {"drawHeight": 540, "controlHeight": 40},
+      "dependencies": ["p5.js 2.3.2"],
+      "browserCompatibility": ["Chrome 90+", "Firefox 88+", "Safari 14+", "Edge 90+"],
+      "performance": {"memoryUsage": "low", "computationalComplexity": "O(n log n)"},
+      "deviceRequirements": {
+        "minScreenWidth": 360,
+        "touchSupport": true,
+        "keyboardRequired": false,
+        "mouseRequired": false,
+        "networkRequired": true
+      },
+      "accessibility": {
+        "screenReader": true,
+        "keyboardNavigation": true,
+        "colorContrast": true,
+        "altText": true,
+        "screenReaderScript": "FFT butterfly reordering diagram. Columns of numbered circles show the input samples of a radix-2 FFT. Each press of Next Step splits every group into its even-indexed and odd-indexed samples and draws lines showing where each sample moves, ending in bit-reversed order. Radio buttons choose 4, 8, 16 or 32 points."
+      }
+    },
+    "userInterface": {
+      "layoutType": "responsive-width",
+      "layoutPattern": "drawing-region-above-controls",
+      "colorScheme": {
+        "drawingArea": "aliceblue",
+        "controlArea": "white",
+        "borders": "silver",
+        "accent": "navy",
+        "text": "black"
+      },
+      "controls": [
+        {
+          "id": "startOrNextButton",
+          "type": "button",
+          "label": "Start / Next Step",
+          "description": "Adds the next column: splits every group into its even-indexed and odd-indexed samples and draws where each sample moves",
+          "group": "stepping",
+          "properties": {"text": "Start", "action": "handleNextStep", "style": "primary"}
+        },
+        {
+          "id": "resetButton",
+          "type": "button",
+          "label": "Reset",
+          "description": "Returns the diagram to the natural order (step 1)",
+          "group": "stepping",
+          "properties": {"text": "Reset", "action": "resetSimulation", "style": "secondary"}
+        },
+        {
+          "id": "fftRadio",
+          "type": "radio",
+          "label": "FFT Size",
+          "description": "Chooses the number of samples N (4, 8, 16 or 32) and resets the diagram",
+          "group": "settings",
+          "properties": {"value": "8", "checked": true, "options": ["4", "8", "16", "32"]}
+        }
+      ],
+      "visualElements": [
+        {"type": "diagram", "description": "Columns of sample nodes (orange natural order, light blue intermediate splits, green bit-reversed order) joined by navy lines that show where each sample moves; gray bars mark group boundaries", "interactive": false, "updateTriggers": ["startOrNextButton", "resetButton", "fftRadio"]},
+        {"type": "text-display", "description": "Binary sample indices beside the first and last columns, a step counter in the title, and a caption giving the number and size of the groups", "interactive": false, "updateTriggers": ["startOrNextButton", "resetButton", "fftRadio"]}
+      ]
+    },
+    "simulation": {
+      "model": {
+        "type": "algorithmic",
+        "description": "Starting from the natural order 0..N-1, split s divides every group of N/2^(s-1) samples into its even-position and odd-position halves. After log2(N) - 1 splits the order is the bit-reversal permutation, the input order of an in-place radix-2 decimation-in-time FFT.",
+        "equations": ["X[k] = E[k] + W_N^k O[k]", "X[k + N/2] = E[k] - W_N^k O[k]", "W_N = e^{-j 2 pi / N}", "groups after split s: 2^s groups of N / 2^s", "complex multiplications: (N/2) log2 N versus N^2"],
+        "algorithms": ["Radix-2 decimation-in-time FFT input reordering", "Bit-reversal permutation"],
+        "limitations": ["Shows only the reordering of the inputs; the butterfly arithmetic and twiddle factors are not drawn", "FFT sizes are limited to 4, 8, 16 and 32"]
+      }
+    },
+    "usage": {
+      "recommendedUsage": ["demonstration", "exploration", "guided-practice"],
+      "instructionalStrategies": ["Predict-then-verify the final row of a sample by reversing its bits", "Count splits and group sizes for each FFT size", "Connect each split to the identity X[k] = E[k] + W_N^k O[k]"],
+      "extensions": ["Add the butterfly stages with twiddle factors after the reordering", "Show the decimation-in-frequency variant, where the outputs come out in bit-reversed order"]
+    }
+  },
+  "canvasHeight": 580
 }

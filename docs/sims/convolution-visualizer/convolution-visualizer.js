@@ -102,7 +102,7 @@ function setup() {
 
   describe('Flip-and-slide convolution. Top plots show the input x(t) and impulse response h(t). ' +
     'The middle plot shows x of tau, the flipped and shifted h of t minus tau, and their shaded product. ' +
-    'The bottom plot traces the output y(t), the area of the product, as time t advances.', LABEL);
+    'The bottom plot traces the output y(t), the area of the product, as time t advances.');
 }
 
 // ---------------------------------------------------------------------------
@@ -213,8 +213,8 @@ function draw() {
   const plotMid = { x: left, y: 190, w: canvasWidth - left - right, h: 138 };
   const plotOut = { x: left, y: 372, w: canvasWidth - left - right, h: 118 };
 
-  drawShapePlot(plotX, pair.x, ranges.x, 'blue', 'Input x(t)');
-  drawShapePlot(plotH, pair.h, ranges.h, 'red', 'Impulse response h(t)');
+  drawShapePlot(plotX, pair.x, ranges.x, 'blue', 'Input x(t)', 'x(t)');
+  drawShapePlot(plotH, pair.h, ranges.h, 'red', 'Impulse response h(t)', 'h(t)');
   drawSlidePlot(plotMid, t);
   drawOutputPlot(plotOut, t, yNow);
 
@@ -225,18 +225,35 @@ function draw() {
   textSize(22);
   text('Convolution Visualizer', canvasWidth / 2, 8);
 
-  // readout
-  const narrow = canvasWidth < 600;
-  textSize(narrow ? 12 : 15);
+  // readout: the font shrinks only when the line would not fit the canvas
+  const yText = (Math.abs(yNow) < 0.0005 ? 0 : yNow).toFixed(3);
+  const readout = 'At t = ' + t.toFixed(2) + ' s:  y(t) = ∫ x(τ)·h(t − τ) dτ = shaded area = ' + yText;
+  const avail = canvasWidth - 24;
+  textStyle(NORMAL);
   textAlign(LEFT, TOP);
   fill('black');
-  const yText = (Math.abs(yNow) < 0.0005 ? 0 : yNow).toFixed(3);
-  text('At t = ' + t.toFixed(2) + ' s:  y(t) = ∫ x(τ)·h(t − τ) dτ = shaded area = ' + yText, 12, 512);
+  textSize(fitSize(readout, avail, 16, 11));
+  text(readout, 12, 512);
   fill('dimgray');
-  textSize(narrow ? 11 : 13);
+  textSize(fitSize(pair.note, avail, 14, 11));
   text(pair.note, 12, 531);
 
   drawControlLabels(t);
+}
+
+// Largest font size in [minSize, maxSize] at which str is at most avail px wide
+// (measured with the text style that is currently set).
+function fitSize(str, avail, maxSize, minSize) {
+  textSize(maxSize);
+  const w = advanceWidth(str);
+  if (w <= avail) return maxSize;
+  return Math.max(minSize, Math.floor(maxSize * avail / w * 2) / 2);
+}
+
+// Advance width of a string including its spaces: in p5 2.x textWidth()
+// measures tight glyph bounds and ignores spaces, so use fontWidth().
+function advanceWidth(str) {
+  return typeof fontWidth === 'function' ? fontWidth(String(str)) : textWidth(String(str));
 }
 
 function makeScale(p, x0, x1, range) {
@@ -252,7 +269,7 @@ function drawFrame(p, x0, x1, range, tickEvery) {
   stroke('silver');
   strokeWeight(1);
   rect(p.x, p.y, p.w, p.h);
-  textSize(12);
+  textSize(13);
   // amplitude ticks: zero and the largest round level that fits inside the range
   const yTicks = [0];
   const top = Math.max(range.hi, -range.lo) / 1.15;
@@ -298,23 +315,29 @@ function traceFunction(p, s, fn, x0, x1, col, weight) {
   strokeWeight(1);
 }
 
-function caption(p, str, col) {
+// Bold plot caption above the frame. If the full text does not fit in avail px
+// even at the smallest size, the short form is used instead.
+function caption(p, str, col, avail, shortStr) {
   noStroke();
   fill(col);
-  textSize(canvasWidth < 600 ? 11 : 13);
   textStyle(BOLD);
   textAlign(LEFT, BOTTOM);
+  textSize(fitSize(str, avail, 14, 11));
+  if (shortStr && advanceWidth(str) > avail) {       // still too wide at the smallest size
+    str = shortStr;
+    textSize(fitSize(str, avail, 14, 11));
+  }
   text(str, p.x, p.y - 4);
   textStyle(NORMAL);
 }
 
-function drawShapePlot(p, fn, range, col, name) {
+function drawShapePlot(p, fn, range, col, name, shortName) {
   const s = drawFrame(p, SHAPE_START, SHAPE_END, range, 1);
   traceFunction(p, s, fn, SHAPE_START, SHAPE_END, col, 2.5);
-  caption(p, name, col);
+  caption(p, name, col, p.w - 42, shortName);   // leaves room for the "t (s)" axis label
   noStroke();
   fill('black');
-  textSize(12);
+  textSize(13);
   textAlign(RIGHT, BOTTOM);
   text('t (s)', p.x + p.w, p.y - 4);
 }
@@ -348,13 +371,13 @@ function drawSlidePlot(p, t) {
   drawingContext.setLineDash([]);
   noStroke();
   fill('black');
-  textSize(12);
+  textSize(13);
   textAlign(LEFT, TOP);
   text('τ = t', s.X(t) + 4, p.y + 3);
 
   // legend strip above the plot
   const narrow = canvasWidth < 600;
-  textSize(narrow ? 10 : 13);
+  textSize(narrow ? 11 : 13);
   let lx = p.x;
   const ly = p.y - 11;
   const items = [
@@ -369,9 +392,9 @@ function drawSlidePlot(p, t) {
     fill('black');
     textAlign(LEFT, CENTER);
     text(it[0], lx + 18, ly);
-    lx += 18 + textWidth(it[0]) + 14;
+    lx += 18 + advanceWidth(it[0]) + 14;
   }
-  textSize(12);
+  textSize(13);
   textAlign(RIGHT, CENTER);
   text('τ (s)', p.x + p.w, ly);
 }
@@ -398,10 +421,11 @@ function drawOutputPlot(p, t, yNow) {
   stroke('white');
   circle(s.X(t), s.Y(yNow), 10);
 
-  caption(p, 'Output y(t) = x(t) * h(t), traced up to the current time', 'purple');
+  caption(p, 'Output y(t) = x(t) * h(t), traced up to the current time', 'purple', p.w - 42,
+          'Output y(t) = x(t) * h(t)');
   noStroke();
   fill('black');
-  textSize(12);
+  textSize(13);
   textAlign(RIGHT, BOTTOM);
   text('t (s)', p.x + p.w, p.y - 4);
 }

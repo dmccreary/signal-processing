@@ -1,105 +1,117 @@
 // FFT with Multiple Frequency Components MicroSim
-// Demonstrates how multiple sine waves combine in time domain and appear as distinct peaks in frequency domain
+// CANVAS_HEIGHT: 580
+// Three sine-wave oscillators are added together. The top plot shows the combined waveform
+// (time domain); the bottom plot shows its FFT magnitude spectrum, with one labelled peak per
+// component. p5.js 2.3.2 + p5.sound 0.4.1.
+//
+// p5.sound 0.4.1 notes (it differs from the old 1.x addon):
+//   * new p5.FFT(size) takes ONE argument; analyze() returns LINEAR magnitudes and the bins are
+//     sampleRate / 2 / size Hz apart (the old code assumed 22050 Hz / 1024 bins and mislabelled
+//     every peak on 48 kHz devices).
+//   * there is no masterVolume(). Each oscillator plays at its own Amp slider value into one
+//     p5.Gain (the Master slider and Mute) that feeds the speakers. The FFT taps the oscillators
+//     BEFORE that gain, so the plots always show a1, a2, a3 and Master/Mute change only loudness.
+//     (Scaling each oscillator's amp() by Master instead would put Master into the FFT, and an
+//     amp() change reaches the analyser about 190 ms later, so the plots would jump.)
 
 // Canvas dimensions and layout
-let canvasWidth = 800;
-let drawHeight = 400;
+let canvasWidth = 800;            // overwritten from the container in updateCanvasSize()
+let drawHeight = 460;
 let controlHeight = 120;
 let canvasHeight = drawHeight + controlHeight;
-let margin = 30;
+let margin = 20;
 let defaultTextSize = 16;
 
-// Global variables for responsive design
-let containerWidth;
-let containerHeight = canvasHeight;
+// Plot geometry: y positions are fixed, x positions follow the canvas width
+const plotLeft = 58;
+const timePlot = { top: 66, bottom: 186 };
+const freqPlot = { top: 266, bottom: 410 };
 
-// Audio and FFT objects
-let oscillator1, oscillator2, oscillator3;
+// Audio and FFT settings
+const FFT_BINS = 4096;            // analyze() returns 4096 bins from 0 Hz to fs/2 (5.86 Hz apart at 48 kHz)
+// Steady-state analyze() value of an amplitude-1.0 sine centred on a bin (Blackman-window
+// coherent gain 0.42 x 1/2). Values are linear, so a peak's height is proportional to amplitude.
+const FULL_SCALE = 0.21;
+const WAVE_BUFFER = 4096;         // waveform samples fetched per frame, so a trigger point can be found
+const TIME_WINDOW_MS = 20;        // width of the time-domain window
+const FREQ_MAX_DISPLAY = 1600;    // right edge of the spectrum in Hz (the highest slider goes to 1500 Hz)
+const PEAK_THRESHOLD = 0.05;      // smallest magnitude that gets a frequency label
+const MAX_PEAK_LABELS = 5;
+
+// Default slider values
+const DEFAULT_FREQS = [400, 800, 1200];
+const DEFAULT_AMP = 0.3;
+const DEFAULT_MASTER = 0.25;
+
+// Audio objects (built on the first Start click, because browsers block audio until a user gesture)
+let oscillators = [];
+let outputGain;                   // Master volume and Mute, between the oscillators and the speakers
 let fft;
+let audioReady = false;
 
 // Control elements
 let freq1Slider, amp1Slider;
 let freq2Slider, amp2Slider;
 let freq3Slider, amp3Slider;
 let masterVolumeSlider;
-let muteButton;
+let soundButton;
+let freqSliders = [];
+let ampSliders = [];
 
 // Simulation state
 let isMuted = false;
-let currentFreq1 = 400;
-let currentAmp1 = 0.3;
-let currentFreq2 = 800;
-let currentAmp2 = 0.3;
-let currentFreq3 = 1200;
-let currentAmp3 = 0.3;
-let masterVolume = 0.25;
+let currentFreqs = DEFAULT_FREQS.slice();
+let currentAmps = [DEFAULT_AMP, DEFAULT_AMP, DEFAULT_AMP];
+let masterVolume = DEFAULT_MASTER;
+let appliedFreqs = [null, null, null];
+let appliedAmps = [null, null, null];
+let appliedLevel = null;
+let peakFrequencies = [];         // [{freq, magnitude, bin}] for labelling
+let spectrumRange = 1;            // top of the magnitude axis (1, or 2 when two equal tones add up)
 
-// Peak detection for labeling
-let peakFrequencies = [];
+// Control layout (recomputed when the width changes)
+let ctl = { x0: 20, colWidth: 240, gap: 30, labelSize: 16, compact: false };
+let layoutWidth = -1;
 
 function setup() {
-  // Responsive canvas setup
   updateCanvasSize();
-  const canvas = createCanvas(containerWidth, containerHeight);
+  const canvas = createCanvas(canvasWidth, canvasHeight);
   canvas.parent(document.querySelector('main'));
-  
   textSize(defaultTextSize);
-  
-  // Initialize audio context (required for web audio)
-  userStartAudio();
-  
-  // Create three oscillators for multiple frequency components
-  oscillator1 = new p5.Oscillator('sine');
-  oscillator1.freq(currentFreq1);
-  oscillator1.amp(0);
-  oscillator1.start();
-  
-  oscillator2 = new p5.Oscillator('sine');
-  oscillator2.freq(currentFreq2);
-  oscillator2.amp(0);
-  oscillator2.start();
-  
-  oscillator3 = new p5.Oscillator('sine');
-  oscillator3.freq(currentFreq3);
-  oscillator3.amp(0);
-  oscillator3.start();
-  
-  // Create FFT with 0 smoothing and good resolution
-  fft = new p5.FFT(0, 1024);
-  
-  // Create control elements
+
   createControls();
-  
-  describe('Interactive FFT visualization showing how multiple sine waves combine in time domain and appear as distinct peaks in frequency domain', LABEL);
+  layoutControls(true);
+
+  describe('Three sine-wave oscillators are added together. The top plot shows the combined waveform over a 20 millisecond window; the bottom plot shows its FFT magnitude spectrum from 0 to 1600 Hz with a frequency label on each peak. Press Start, then move the frequency and amplitude sliders of each component.');
 }
 
 function draw() {
-  // Set up drawing regions
+  updateCanvasSize();
+
+  // Read the controls every frame so the labels update even before Start
+  readControls();
+  applyAudio();
+
+  let spectrum = null;
+  let wave = null;
+  if (audioReady) {
+    spectrum = fft.analyze();      // Float32Array(FFT_BINS), linear magnitude
+    wave = fft.waveform();         // Float32Array(WAVE_BUFFER): a1 sin + a2 sin + a3 sin
+  }
+
   drawRegions();
-  
-  // Draw title
   drawTitle();
-  
-  // Update oscillator parameters from sliders
-  updateOscillators();
-  
-  // Get FFT data
-  let spectrum = fft.analyze();
-  let waveform = fft.waveform();
-  
-  // Find peaks in spectrum for labeling
-  findPeaks(spectrum);
-  
-  // Draw time-domain waveform (top half)
-  drawTimeSignal(waveform);
-  
-  // Draw frequency spectrum (bottom half)
+  drawTimeSignal(wave);
   drawSpectrum(spectrum);
-  
-  // Draw axis labels and control labels
-  drawAxisLabels();
   drawControlLabels();
 }
+
+// Width of a string including its spaces (textWidth drops spaces in p5 2.3.2)
+function strWidth(s) {
+  return (typeof fontWidth === 'function') ? fontWidth(s) : textWidth(s);
+}
+
+// ---- drawing -----------------------------------------------------------------
 
 function drawRegions() {
   // Drawing area background (light blue)
@@ -107,315 +119,445 @@ function drawRegions() {
   stroke('silver');
   strokeWeight(1);
   rect(0, 0, canvasWidth, drawHeight);
-  
+
   // Controls area background (white)
   fill('white');
-  stroke('silver');
-  strokeWeight(1);
   rect(0, drawHeight, canvasWidth, controlHeight);
-  
-  // Separator line between time and frequency domains
+
+  // Separator line between the time and frequency domains
   stroke('black');
-  strokeWeight(1);
-  let midLine = drawHeight / 2;
-  line(margin, midLine, canvasWidth - margin, midLine);
+  line(margin, 230, canvasWidth - margin, 230);
 }
 
 function drawTitle() {
+  const title = 'FFT with Multiple Frequency Components';
   fill('black');
   noStroke();
-  textSize(24);
+  let s = 24;
+  textSize(s);
+  while (s > 14 && strWidth(title) > canvasWidth - 2 * margin) {
+    s -= 1;
+    textSize(s);
+  }
   textAlign(CENTER, TOP);
-  text('FFT with Multiple Frequency Components', canvasWidth / 2, 10);
+  text(title, canvasWidth / 2, 8);
   textSize(defaultTextSize);
-  textAlign(LEFT, CENTER);
 }
 
-function updateOscillators() {
-  // Get current slider values
-  currentFreq1 = freq1Slider.value();
-  currentAmp1 = amp1Slider.value();
-  currentFreq2 = freq2Slider.value();
-  currentAmp2 = amp2Slider.value();
-  currentFreq3 = freq3Slider.value();
-  currentAmp3 = amp3Slider.value();
-  masterVolume = masterVolumeSlider.value();
-  
-  // Update oscillator frequencies
-  oscillator1.freq(currentFreq1);
-  oscillator2.freq(currentFreq2);
-  oscillator3.freq(currentFreq3);
-  
-  // Update amplitudes (consider mute state and master volume)
-  let effectiveVolume = isMuted ? 0 : masterVolume;
-  oscillator1.amp(currentAmp1 * effectiveVolume);
-  oscillator2.amp(currentAmp2 * effectiveVolume);
-  oscillator3.amp(currentAmp3 * effectiveVolume);
-}
-
-function drawTimeSignal(waveformData) {
-  // Time-domain waveform (top half)
-  let topHeight = drawHeight / 2 - 10;
-  let yCenter = topHeight / 2;
-  
-  stroke('blue');
-  strokeWeight(2);
-  noFill();
-  
-  beginShape();
-  for (let i = 0; i < waveformData.length; i++) {
-    let x = map(i, 0, waveformData.length - 1, margin, canvasWidth - margin);
-    let y = map(waveformData[i], -1, 1, topHeight - 20, 20);
-    vertex(x, y);
-  }
-  endShape();
-  
-  // Draw center line for time domain
-  stroke('gray');
-  strokeWeight(1);
-  line(margin, yCenter, canvasWidth - margin, yCenter);
-  
-  // Draw component frequency indicators
+// Bold panel label at the left; returns its width
+function drawPanelLabel(label, y) {
   fill('black');
   noStroke();
-  textSize(12);
-  textAlign(LEFT, TOP);
-  text('Combined Signal: ' + currentFreq1 + 'Hz + ' + currentFreq2 + 'Hz + ' + currentFreq3 + 'Hz', margin + 5, 35);
+  textSize(16);
+  textStyle(BOLD);
+  textAlign(LEFT, CENTER);
+  text(label, margin, y);
+  const w = strWidth(label);
+  textStyle(NORMAL);
+  return w;
 }
 
-function drawSpectrum(spectrum) {
-  // Frequency spectrum (bottom half)
-  let bottomY = drawHeight / 2 + 10;
-  let spectrumHeight = drawHeight / 2 - 30;
-  
-  stroke('red');
-  strokeWeight(1);
-  fill('red');
-  
-  // Show frequency range up to 1500 Hz for better visibility
-  let maxFreqBin = Math.floor(1500 * spectrum.length / (22050)); // Nyquist is ~22kHz
-  
-  for (let i = 1; i < maxFreqBin; i++) {
-    let x = map(i, 0, maxFreqBin, margin, canvasWidth - margin);
-    let barWidth = (canvasWidth - 2 * margin) / maxFreqBin;
-    
-    // Map spectrum value to bar height with better scaling
-    let barHeight = map(spectrum[i], 0, 255, 0, spectrumHeight * 0.8);
-    
-    rect(x, drawHeight - 20 - barHeight, barWidth * 0.8, barHeight);
-  }
-  
-  // Draw baseline for frequency domain
-  stroke('gray');
-  strokeWeight(1);
-  line(margin, drawHeight - 20, canvasWidth - margin, drawHeight - 20);
-  
-  // Draw peak frequency labels
-  drawPeakLabels(spectrum, maxFreqBin, spectrumHeight);
-}
-
-function findPeaks(spectrum) {
-  peakFrequencies = [];
-  let threshold = 50; // Minimum height for peak detection
-  let maxFreqBin = Math.floor(1500 * spectrum.length / (22050));
-  
-  // Simple peak detection - find local maxima above threshold
-  for (let i = 2; i < maxFreqBin - 2; i++) {
-    if (spectrum[i] > threshold && 
-        spectrum[i] > spectrum[i-1] && 
-        spectrum[i] > spectrum[i+1] && 
-        spectrum[i] > spectrum[i-2] && 
-        spectrum[i] > spectrum[i+2]) {
-      
-      let frequency = Math.round(i * 22050 / spectrum.length);
-      peakFrequencies.push({
-        freq: frequency,
-        magnitude: spectrum[i],
-        bin: i
-      });
-    }
-  }
-  
-  // Sort by magnitude and keep top 5 peaks
-  peakFrequencies.sort((a, b) => b.magnitude - a.magnitude);
-  peakFrequencies = peakFrequencies.slice(0, 5);
-}
-
-function drawPeakLabels(spectrum, maxFreqBin, spectrumHeight) {
-  fill('darkred');
-  noStroke();
-  textSize(11);
-  textAlign(CENTER, BOTTOM);
-  
-  for (let peak of peakFrequencies) {
-    if (peak.bin < maxFreqBin) {
-      let x = map(peak.bin, 0, maxFreqBin, margin, canvasWidth - margin);
-      let barHeight = map(peak.magnitude, 0, 255, 0, spectrumHeight * 0.8);
-      let labelY = drawHeight - 20 - barHeight - 5;
-      
-      // Draw peak marker line
-      stroke('darkred');
-      strokeWeight(1);
-      line(x, drawHeight - 20, x, labelY + 3);
-      
-      // Draw frequency label
-      noStroke();
-      text(peak.freq + 'Hz', x, labelY);
-    }
-  }
-}
-
-function drawAxisLabels() {
+function drawRotatedLabel(label, yCenter) {
+  push();
+  translate(16, yCenter);
+  rotate(-HALF_PI);
   fill('black');
   noStroke();
   textSize(14);
-  
-  // Time domain labels
-  textAlign(LEFT, TOP);
-  text('Time Domain (Combined Signal)', margin, 55);
-  
-  // Time domain axis labels
-  textAlign(CENTER, BOTTOM);
-  text('Time →', canvasWidth - 60, drawHeight/4+20);
-  push();
-  translate(20, drawHeight/4);
-  rotate(-PI/2);
-  textAlign(CENTER, BOTTOM);
-  text('Amplitude', 0, 0);
+  textAlign(CENTER, CENTER);
+  text(label, 0, 0);
   pop();
-  
-  // Frequency domain labels
-  textAlign(LEFT, TOP);
-  text('Frequency Domain (FFT Spectrum)', margin, drawHeight / 2 + 25);
-  
-  // Frequency domain axis labels  
+}
+
+function drawStartMessage(x0, x1, y) {
+  noStroke();
+  fill(90);
+  textSize(16);
+  textAlign(CENTER, CENTER);
+  text('Press Start to hear and see the three tones', (x0 + x1) / 2, y);
+}
+
+function drawTimeSignal(wave) {
+  const x0 = plotLeft;
+  const x1 = canvasWidth - margin;
+  const yMid = (timePlot.top + timePlot.bottom) / 2;
+  const half = (timePlot.bottom - timePlot.top) / 2 - 3;
+
+  // The combined wave can never exceed a1 + a2 + a3, so the axis grows to +/-2 or +/-3 only when needed
+  const ampSum = currentAmps[0] + currentAmps[1] + currentAmps[2];
+  const range = ampSum <= 1 ? 1 : (ampSum <= 2 ? 2 : 3);
+  const yScale = half / range;
+
+  // Panel label and the signal being played
+  const labelW = drawPanelLabel(canvasWidth >= 560 ? 'Time Domain (Combined Signal)' : 'Time Domain', 48);
+  textSize(14);
+  const f = currentFreqs;
+  const a = currentAmps.map(v => v.toFixed(2));
+  const longForm = 'x(t) = ' + a[0] + ' sin(2π·' + f[0] + 't) + ' + a[1] + ' sin(2π·' + f[1] + 't) + ' + a[2] + ' sin(2π·' + f[2] + 't)';
+  const shortForm = f[0] + ' Hz + ' + f[1] + ' Hz + ' + f[2] + ' Hz';
+  const room = x1 - (margin + labelW + 16);
+  const formula = strWidth(longForm) <= room ? longForm : (strWidth(shortForm) <= room ? shortForm : '');
+  fill(40);
+  noStroke();
+  textAlign(RIGHT, CENTER);
+  text(formula, x1, 48);
+
+  // Grid lines at every integer amplitude, then the zero line and the left axis
+  strokeWeight(1);
+  stroke(215);
+  for (let v = 1; v <= range; v++) {
+    line(x0, yMid - v * yScale, x1, yMid - v * yScale);
+    line(x0, yMid + v * yScale, x1, yMid + v * yScale);
+  }
+  stroke('gray');
+  line(x0, yMid, x1, yMid);
+  line(x0, yMid - half, x0, yMid + half);
+
+  // Amplitude tick labels
+  noStroke();
+  fill(60);
+  textSize(14);
+  textAlign(RIGHT, CENTER);
+  for (const v of [range, 0, -range]) text(v, x0 - 6, yMid - v * yScale);
+
+  // Time tick labels (ms)
+  textAlign(CENTER, CENTER);
+  for (let t = 0; t <= TIME_WINDOW_MS; t += 5) {
+    const x = map(t, 0, TIME_WINDOW_MS, x0, x1);
+    stroke('gray');
+    line(x, timePlot.bottom - 4, x, timePlot.bottom);
+    noStroke();
+    fill(60);
+    text(t, x, timePlot.bottom + 11);
+  }
+  fill('black');
+  text('Time (ms)', (x0 + x1) / 2, timePlot.bottom + 29);
+  drawRotatedLabel('Amplitude', yMid);
+
+  if (!wave) {
+    stroke('blue');
+    strokeWeight(2);
+    line(x0, yMid, x1, yMid);
+    drawStartMessage(x0, x1, yMid - 26);
+    return;
+  }
+
+  // Show a fixed 20 ms window that starts at the steepest rising zero crossing in the buffer,
+  // like an oscilloscope trigger, so a periodic combination holds still from frame to frame.
+  const sampleRate = getAudioContext().sampleRate;
+  const n = Math.min(wave.length, Math.round(sampleRate * TIME_WINDOW_MS / 1000));
+  let start = 0;
+  let bestSlope = 0;
+  for (let i = 1; i <= wave.length - n; i++) {
+    if (wave[i - 1] < 0 && wave[i] >= 0) {
+      const slope = wave[i] - wave[i - 1];
+      if (slope > bestSlope * 1.0001) { bestSlope = slope; start = i; }
+    }
+  }
+
+  stroke('blue');
+  strokeWeight(2);
+  noFill();
+  beginShape();
+  for (let i = 0; i < n; i++) {
+    vertex(map(i, 0, n, x0, x1), yMid - constrain(wave[start + i], -range, range) * yScale);
+  }
+  endShape();
+}
+
+function drawSpectrum(spectrum) {
+  const x0 = plotLeft;
+  const x1 = canvasWidth - margin;
+  const base = freqPlot.bottom;
+  const sampleRate = getAudioContext().sampleRate;
+  const binHz = sampleRate / 2 / FFT_BINS;
+
+  // Normalised magnitudes: an amplitude-a sine centred on a bin reaches height a
+  let mags = null;
+  if (spectrum) {
+    const lastBin = Math.min(spectrum.length - 1, Math.floor(FREQ_MAX_DISPLAY / binHz));
+    mags = new Float32Array(lastBin + 1);
+    let maxMag = 0;
+    for (let i = 0; i <= lastBin; i++) {
+      mags[i] = spectrum[i] / FULL_SCALE;
+      if (mags[i] > maxMag) maxMag = mags[i];
+    }
+    // Two oscillators at the same frequency can add up to more than 1
+    if (maxMag > 1.02) spectrumRange = 2;
+    else if (maxMag < 0.9) spectrumRange = 1;
+  }
+  const top = freqPlot.top + 22;          // headroom for the peak labels
+  const yScale = (base - top) / spectrumRange;
+
+  // Panel label, plus the sample rate and bin width where there is room
+  const labelW = drawPanelLabel(canvasWidth >= 560 ? 'Frequency Domain (FFT Spectrum)' : 'Frequency Domain', 248);
+  textSize(14);
+  const info = 'fs = ' + (sampleRate / 1000).toFixed(1) + ' kHz, bin width ' + binHz.toFixed(2) + ' Hz';
+  if (strWidth(info) <= x1 - (margin + labelW + 16)) {
+    fill(90);
+    noStroke();
+    textAlign(RIGHT, CENTER);
+    text(info, x1, 248);
+  }
+
+  // Grid lines at half and full scale, and the baseline
+  strokeWeight(1);
+  stroke(215);
+  const step = spectrumRange / 2;
+  for (let m = step; m <= spectrumRange + 1e-9; m += step) line(x0, base - m * yScale, x1, base - m * yScale);
+  stroke('gray');
+  line(x0, base, x1, base);
+  line(x0, top - 8, x0, base);
+
+  // Magnitude tick labels
+  noStroke();
+  fill(60);
+  textSize(14);
+  textAlign(RIGHT, CENTER);
+  for (let m = 0; m <= spectrumRange + 1e-9; m += step) text(Number(m.toFixed(1)), x0 - 6, base - m * yScale);
+
+  // Frequency ticks: minor every 50 Hz, labelled every 250 Hz
+  textAlign(CENTER, CENTER);
+  for (let f = 0; f <= 1500; f += 50) {
+    const x = map(f, 0, FREQ_MAX_DISPLAY, x0, x1);
+    stroke('gray');
+    line(x, base, x, base + (f % 250 === 0 ? 6 : 3));
+    if (f % 250 === 0) {
+      noStroke();
+      fill(60);
+      text(f, x, base + 14);
+    }
+  }
+  fill('black');
+  noStroke();
+  text('Frequency (Hz)', (x0 + x1) / 2, base + 32);
+  drawRotatedLabel('Magnitude', (top + base) / 2);
+
+  if (!mags) {
+    peakFrequencies = [];
+    drawStartMessage(x0, x1, (top + base) / 2);
+    return;
+  }
+
+  // One red bar per FFT bin
+  const pxPerHz = (x1 - x0) / FREQ_MAX_DISPLAY;
+  const barW = Math.max(1, binHz * pxPerHz * 0.85);
+  noStroke();
+  fill('red');
+  for (let i = 1; i < mags.length; i++) {
+    const h = Math.min(mags[i], spectrumRange) * yScale;
+    if (h < 0.5) continue;
+    rect(x0 + i * binHz * pxPerHz - barW / 2, base - h, barW, h);
+  }
+
+  findPeaks(mags, binHz);
+  drawPeakLabels(x0, pxPerHz, binHz, base, yScale);
+}
+
+// Local maxima above the threshold, strongest first
+function findPeaks(mags, binHz) {
+  peakFrequencies = [];
+  for (let i = 2; i < mags.length - 2; i++) {
+    const m = mags[i];
+    if (m > PEAK_THRESHOLD && m > mags[i - 1] && m >= mags[i + 1] && m > mags[i - 2] && m >= mags[i + 2]) {
+      peakFrequencies.push({ freq: Math.round(i * binHz), magnitude: m, bin: i });
+    }
+  }
+  peakFrequencies.sort((p, q) => q.magnitude - p.magnitude);
+  peakFrequencies = peakFrequencies.slice(0, MAX_PEAK_LABELS);
+}
+
+function drawPeakLabels(x0, pxPerHz, binHz, base, yScale) {
+  const placed = [];                       // [left, right, y] of labels already drawn
+  const overlaps = (x, w, y) => placed.some(p => x + w / 2 + 4 > p[0] && x - w / 2 - 4 < p[1] && Math.abs(y - p[2]) < 16);
+  textSize(14);
   textAlign(CENTER, BOTTOM);
-  text('Frequency (Hz) →', canvasWidth - 100, drawHeight/2 + 40);
-  push();
-  translate(20, 3*drawHeight/4);
-  rotate(-PI/2);
-  textAlign(CENTER, BOTTOM);
-  text('Magnitude', 0, 0);
-  pop();
-  
-  // Frequency scale markers
-  textSize(10);
-  textAlign(CENTER, TOP);
-  for (let freq = 0; freq <= 1500; freq += 250) {
-    let x = map(freq, 0, 1500, margin, canvasWidth - margin);
-    text(freq, x, drawHeight - 15);
+  for (const peak of peakFrequencies) {
+    const x = x0 + peak.bin * binHz * pxPerHz;
+    const label = peak.freq + ' Hz';
+    const w = strWidth(label);
+    let y = base - Math.min(peak.magnitude, spectrumRange) * yScale - 5;
+    // Lift a label above one it would overlap; skip it if there is no room
+    for (const p of placed) {
+      if (x + w / 2 + 4 > p[0] && x - w / 2 - 4 < p[1] && Math.abs(y - p[2]) < 16) y = p[2] - 16;
+    }
+    if (y < freqPlot.top - 2 || overlaps(x, w, y)) continue;
+
+    // Peak marker line and frequency label
+    stroke('darkred');
+    strokeWeight(1);
+    line(x, base, x, y + 2);
+    noStroke();
+    fill('darkred');
+    text(label, x, y);
+    placed.push([x - w / 2, x + w / 2, y]);
   }
 }
 
 function drawControlLabels() {
+  const y0 = drawHeight;
   fill('black');
   noStroke();
-  textSize(12);
+  textSize(ctl.labelSize);
   textAlign(LEFT, CENTER);
-  let sliderWidth = canvasWidth*.23;
-  let col1X = margin;
-  let col2X = margin*2 + sliderWidth;
-  let col3X = margin*3 + sliderWidth*2;
-  let sliderYoffsetRow1 = 20;
-  let sliderYoffsetRow2 = 55;
-  let sliderYoffsetRow3 = 90;
-  
-  // Component 1 labels
-  text('Freq 1: ' + currentFreq1.toFixed(0) + ' Hz', col1X, drawHeight + sliderYoffsetRow1);
-  text('Amp 1: ' + currentAmp1.toFixed(2), col1X, drawHeight + sliderYoffsetRow2);
-  
-  // Component 2 labels
-  text('Freq 2: ' + currentFreq2.toFixed(0) + ' Hz', col2X, drawHeight + sliderYoffsetRow1);
-  text('Amp 2: ' + currentAmp2.toFixed(2), col2X, drawHeight + sliderYoffsetRow2);
-  
-  // Component 3 labels
-  text('Freq 3: ' + currentFreq3.toFixed(0) + ' Hz', col3X, drawHeight + sliderYoffsetRow1);
-  text('Amp 3: ' + currentAmp3.toFixed(2), col3X, drawHeight + sliderYoffsetRow2);
-  
-  // Master controls
-  text('Master: ' + masterVolume.toFixed(2), col1X, drawHeight + sliderYoffsetRow3);
-  
-  // Status indicator
-  textAlign(RIGHT, CENTER);
-  if (isMuted) {
-    fill('red');
-    text('🔇 MUTED', canvasWidth - 20, drawHeight + 25);
-  } else {
-    fill('green');
-    text('🔊 PLAYING', canvasWidth - 20, drawHeight + 25);
+  for (let k = 0; k < 3; k++) {
+    const x = colX(k);
+    const n = k + 1;
+    const fLabel = ctl.compact ? 'f' + n + ': ' : 'Freq ' + n + ': ';
+    const aLabel = ctl.compact ? 'A' + n + ': ' : 'Amp ' + n + ': ';
+    text(fLabel + currentFreqs[k].toFixed(0) + ' Hz', x, y0 + 14);
+    text(aLabel + currentAmps[k].toFixed(2), x, y0 + 50);
   }
+  text('Master: ' + masterVolume.toFixed(2), colX(0), y0 + 86);
+
+  // Status indicator
+  let status, color;
+  if (!audioReady) { status = '● STOPPED'; color = 'gray'; }
+  else if (isMuted) { status = '● MUTED'; color = 'red'; }
+  else { status = '● PLAYING'; color = 'green'; }
+  textStyle(BOLD);
+  fill(color);
+  text(status, colX(2), y0 + 100);
+  textStyle(NORMAL);
 }
+
+// ---- controls ------------------------------------------------------------------
 
 function createControls() {
-  let sliderLeftMargin = 90;
-  let sliderWidth = canvasWidth*.23;
-  let col1X = margin;
-  let col2X = margin*2 + sliderWidth;
-  let col3X = margin*3 + sliderWidth*2;
-  let sliderYoffsetRow1 = 25;
-  let sliderYoffsetRow2 = 60;
-  let sliderYoffsetRow3 = 90;
-  
+  // Start / Mute / Unmute button (created first, so it is the first button on the page)
+  soundButton = createButton('Start');
+  soundButton.mousePressed(toggleSound);
+
   // Component 1 controls
-  freq1Slider = createSlider(50, 1000, currentFreq1, 1);
-  freq1Slider.position(col1X, drawHeight + sliderYoffsetRow1);
-  freq1Slider.size(sliderWidth);
-  
-  amp1Slider = createSlider(0, 1, currentAmp1, 0.01);
-  amp1Slider.position(col1X, drawHeight + sliderYoffsetRow2);
-  amp1Slider.size(sliderWidth);
-  
+  freq1Slider = createSlider(50, 1000, DEFAULT_FREQS[0], 1);
+  amp1Slider = createSlider(0, 1, DEFAULT_AMP, 0.01);
+
   // Component 2 controls
-  freq2Slider = createSlider(50, 1000, currentFreq2, 1);
-  freq2Slider.position(col2X, drawHeight + sliderYoffsetRow1);
-  freq2Slider.size(sliderWidth);
-  
-  amp2Slider = createSlider(0, 1, currentAmp2, 0.01);
-  amp2Slider.position(col2X, drawHeight + sliderYoffsetRow2);
-  amp2Slider.size(sliderWidth);
-  
+  freq2Slider = createSlider(50, 1000, DEFAULT_FREQS[1], 1);
+  amp2Slider = createSlider(0, 1, DEFAULT_AMP, 0.01);
+
   // Component 3 controls
-  freq3Slider = createSlider(50, 1500, currentFreq3, 1);
-  freq3Slider.position(col3X, drawHeight + sliderYoffsetRow1);
-  freq3Slider.size(sliderWidth);
-  
-  amp3Slider = createSlider(0, 1, currentAmp3, 0.01);
-  amp3Slider.position(col3X, drawHeight + sliderYoffsetRow2);
-  amp3Slider.size(sliderWidth);
-  
-  // Master volume control
-  masterVolumeSlider = createSlider(0, .35, masterVolume, 0.01);
-  masterVolumeSlider.position(margin, drawHeight + sliderYoffsetRow3+7);
-  masterVolumeSlider.size(sliderWidth);
-  
-  // Mute button
-  muteButton = createButton('Mute');
-  muteButton.position(sliderLeftMargin + 140, drawHeight + sliderYoffsetRow3);
-  muteButton.mousePressed(toggleMute);
+  freq3Slider = createSlider(50, 1500, DEFAULT_FREQS[2], 1);
+  amp3Slider = createSlider(0, 1, DEFAULT_AMP, 0.01);
+
+  // Master volume control (loudness only)
+  masterVolumeSlider = createSlider(0, 0.35, DEFAULT_MASTER, 0.01);
+
+  freqSliders = [freq1Slider, freq2Slider, freq3Slider];
+  ampSliders = [amp1Slider, amp2Slider, amp3Slider];
 }
 
-function toggleMute() {
-  isMuted = !isMuted;
-  muteButton.html(isMuted ? 'Unmute' : 'Mute');
-  
-  if (!isMuted) {
-    // Ensure audio context is running when unmuting
-    userStartAudio();
+function colX(k) {
+  return ctl.x0 + k * (ctl.colWidth + ctl.gap);
+}
+
+// Three columns (one per component), label above slider. Master and the button share row 3.
+function layoutControls(force) {
+  if (typeof freq1Slider === 'undefined') return;
+  if (!force && canvasWidth === layoutWidth) return;
+  layoutWidth = canvasWidth;
+  const compact = canvasWidth < 560;
+  const x0 = compact ? 10 : 20;
+  const gap = compact ? 12 : 30;
+  ctl = {
+    x0: x0,
+    gap: gap,
+    colWidth: Math.max(60, (canvasWidth - 2 * x0 - 2 * gap) / 3),
+    labelSize: compact ? 14 : 16,
+    compact: compact
+  };
+  const y0 = drawHeight;
+  for (let k = 0; k < 3; k++) {
+    freqSliders[k].position(colX(k), y0 + 24);
+    freqSliders[k].size(ctl.colWidth);
+    ampSliders[k].position(colX(k), y0 + 60);
+    ampSliders[k].size(ctl.colWidth);
   }
+  masterVolumeSlider.position(colX(0), y0 + 96);
+  masterVolumeSlider.size(ctl.colWidth);
+  soundButton.position(colX(1), y0 + 88);
+  soundButton.style('min-width', '80px');
+}
+
+function readControls() {
+  for (let k = 0; k < 3; k++) {
+    currentFreqs[k] = Number(freqSliders[k].value());
+    currentAmps[k] = Number(ampSliders[k].value());
+  }
+  masterVolume = Number(masterVolumeSlider.value());
+}
+
+// ---- audio ---------------------------------------------------------------------
+
+// Build the audio graph:  oscillator k --> outputGain (Master, Mute) --> speakers
+//                         oscillator k --> FFT (sees a1, a2, a3 exactly)
+// Called from the Start click, because browsers only allow audio after a user gesture.
+function startAudio() {
+  userStartAudio();                     // p5.sound 0.4.1 returns undefined here (no promise)
+  const ctx = getAudioContext();
+  if (ctx.state !== 'running') {
+    try { ctx.resume(); } catch (e) { /* the oscillators still feed the FFT */ }
+  }
+
+  fft = new p5.FFT(FFT_BINS);           // p5.sound 0.4.1: one argument (size)
+  fft.analyzer.smoothing = 0;           // no averaging between frames (as in the original sketch)
+  try { fft.samples.size = WAVE_BUFFER; } catch (e) { /* fall back to 1024 samples */ }
+
+  outputGain = new p5.Gain();           // connected to the speakers by default
+  outputGain.getNode().gain.value = 0;
+
+  for (let k = 0; k < 3; k++) {
+    const osc = new p5.Oscillator('sine');
+    osc.freq(currentFreqs[k]);
+    osc.amp(0);
+    osc.disconnect();                   // leave the default speaker route ...
+    osc.connect(outputGain);            // ... and go through Master instead
+    osc.connect(fft);
+    osc.start();
+    oscillators.push(osc);
+  }
+  audioReady = true;
+}
+
+// Send changed slider values to the audio graph
+function applyAudio() {
+  if (!audioReady) return;
+  for (let k = 0; k < 3; k++) {
+    if (currentFreqs[k] !== appliedFreqs[k]) {
+      oscillators[k].freq(currentFreqs[k]);
+      appliedFreqs[k] = currentFreqs[k];
+    }
+    if (currentAmps[k] !== appliedAmps[k]) {
+      oscillators[k].amp(currentAmps[k], 0.03);
+      appliedAmps[k] = currentAmps[k];
+    }
+  }
+  const level = isMuted ? 0 : masterVolume;
+  if (level !== appliedLevel) {
+    outputGain.getNode().gain.value = level;
+    appliedLevel = level;
+  }
+}
+
+function toggleSound() {
+  if (!audioReady) {
+    startAudio();
+    isMuted = false;
+  } else {
+    isMuted = !isMuted;
+    if (!isMuted) userStartAudio();     // make sure the audio context is running when unmuting
+  }
+  soundButton.html(isMuted ? 'Unmute' : 'Mute');
+  applyAudio();
 }
 
 function windowResized() {
   updateCanvasSize();
-  resizeCanvas(containerWidth, containerHeight);
-  
-  // Update slider positions for responsive design if needed
-  // For this complex layout, we'll keep fixed positions for clarity
-  
-  redraw();
+  resizeCanvas(canvasWidth, canvasHeight);
 }
 
 function updateCanvasSize() {
-  const container = document.querySelector('main').getBoundingClientRect();
-  containerWidth = Math.floor(container.width);
-  canvasWidth = containerWidth;
+  const container = document.querySelector('main');
+  if (container) canvasWidth = container.offsetWidth;
+  layoutControls(false);
 }
