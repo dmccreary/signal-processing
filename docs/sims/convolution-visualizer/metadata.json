@@ -1,0 +1,113 @@
+{
+  "title": "Convolution Visualizer",
+  "creator": "Dan McCreary",
+  "subject": [
+    "Signal Processing",
+    "Signals and Systems",
+    "Convolution",
+    "Impulse Response",
+    "LTI Systems"
+  ],
+  "description": "Step-by-step flip-and-slide demonstration of the convolution integral. The impulse response is time-reversed, shifted by t, multiplied by the input, and the area under the product is plotted as the output y(t) for eight pairs of signals.",
+  "date": "2026-10-02",
+  "type": "Interactive Simulation",
+  "format": "text/html",
+  "language": "en",
+  "rights": "CC BY-NC-SA 4.0",
+  "identifier": "https://dmccreary.github.io/signal-processing/sims/convolution-visualizer/",
+  "library": "p5.js",
+  "educational": {
+    "gradeLevel": [
+      "Undergraduate"
+    ],
+    "subjectArea": "Signal Processing",
+    "topic": "The convolution integral",
+    "learningObjectives": [
+      "Explain each step of the convolution integral: flip, slide, multiply and integrate",
+      "Identify the range of t over which two finite-duration signals overlap",
+      "Predict the shape of the output for simple pairs of signals",
+      "Describe how the shape of an impulse response determines what a system does to its input"
+    ],
+    "bloomsTaxonomy": "Understand",
+    "duration": "20-25 minutes",
+    "prerequisites": [
+      "Time shifting and time reversal",
+      "Impulse response of an LTI system",
+      "Integration as signed area"
+    ],
+    "standards": []
+  },
+  "technical": {
+    "framework": "p5.js",
+    "version": "1.11.10",
+    "canvasDimensions": {
+      "width": "responsive",
+      "height": 630
+    },
+    "responsive": true,
+    "dependencies": [
+      "p5.js 1.11.10 (CDN)"
+    ],
+    "accessibility": {
+      "hasAltText": true,
+      "keyboardNavigable": true
+    }
+  },
+  "userInterface": {
+    "controls": [
+      { "type": "select", "label": "Signals", "options": ["Rectangle * Rectangle", "Wide rectangle * Narrow rectangle", "Rectangle * Exponential (RC filter)", "Exponential * Exponential", "Triangle * Rectangle", "Triangle * Triangle", "Sine burst * Rectangle (averager)", "Rectangle * Edge detector"], "default": "Rectangle * Exponential (RC filter)" },
+      { "type": "button", "label": "Play / Pause" },
+      { "type": "button", "label": "< Step" },
+      { "type": "button", "label": "Step >" },
+      { "type": "button", "label": "Reset" },
+      { "type": "slider", "label": "Time t (s)", "min": -2, "max": 7, "step": 0.05, "default": 1 },
+      { "type": "slider", "label": "Play speed", "min": 0.25, "max": 3, "step": 0.25, "default": 1 }
+    ]
+  },
+  "simulation": {
+    "modelType": "mathematical",
+    "equations": [
+      "y(t) = integral of x(tau) h(t - tau) d tau"
+    ],
+    "assumptions": [
+      "The integral is evaluated with the midpoint rule and a step of 0.005 s",
+      "All signals are zero for t < 0"
+    ]
+  },
+  "pedagogical": {
+    "teachingStrategy": "Step-through worked example with prediction",
+    "pattern": "step-through",
+    "bloomAlignment": [
+      "understand"
+    ],
+    "bloomVerbs": [
+      "explain",
+      "predict",
+      "describe"
+    ],
+    "pacing": "self-paced",
+    "supportsPrediction": true,
+    "dataVisibility": "high",
+    "interactionStyle": "step-through",
+    "keyQuestions": [
+      "Why is the impulse response reversed before it is shifted?",
+      "Over what range of t do two finite pulses overlap?",
+      "What does the area of the shaded region represent?"
+    ],
+    "commonMisconceptions": [
+      "Convolution multiplies the two signals point by point",
+      "The output has the same duration as the input",
+      "The impulse response slides without being reversed"
+    ],
+    "assessmentOpportunities": [
+      "Sketch the output of two rectangles before stepping through",
+      "Compute y(t) at one time from the overlap region"
+    ]
+  },
+  "visualizationType": [
+    "animation",
+    "graph",
+    "interactive-demo"
+  ],
+  "chapter": "04-convolution-and-correlation"
+}

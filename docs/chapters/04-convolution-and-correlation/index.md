@@ -148,6 +148,8 @@ Wiener filtering applications include speech enhancement (removing background no
 
 #### Diagram: Convolution Visualizer
 
+<iframe src="../../sims/convolution-visualizer/main.html" height="632px" width="100%" scrolling="no"></iframe>
+
 <details markdown="1">
 <summary>MicroSim: Convolution Visualizer</summary>
 
@@ -185,6 +187,8 @@ This interactive simulation provides a visual, step-by-step demonstration of the
 </details>
 
 #### Diagram: Correlation and Matched Filtering
+
+<iframe src="../../sims/correlation-and-matched-filtering/main.html" height="617px" width="100%" scrolling="no"></iframe>
 
 <details markdown="1">
 <summary>MicroSim: Correlation and Matched Filtering</summary>

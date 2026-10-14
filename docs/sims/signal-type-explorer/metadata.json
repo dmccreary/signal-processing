@@ -1,0 +1,119 @@
+{
+  "title": "Signal Type Explorer",
+  "creator": "Dan McCreary",
+  "subject": [
+    "Signal Processing",
+    "Signals and Systems",
+    "Continuous-Time Signals",
+    "Discrete-Time Signals",
+    "Signal Energy and Power"
+  ],
+  "description": "Compare continuous-time and discrete-time views of sinusoid, square wave, exponential and step signals while adjusting amplitude, frequency, phase, time shift and time scale, with closed-form energy, average power and RMS readouts.",
+  "date": "2026-10-02",
+  "type": "Interactive Simulation",
+  "format": "text/html",
+  "language": "en",
+  "rights": "CC BY-NC-SA 4.0",
+  "identifier": "https://dmccreary.github.io/signal-processing/sims/signal-type-explorer/",
+  "library": "p5.js",
+  "educational": {
+    "gradeLevel": [
+      "Undergraduate"
+    ],
+    "subjectArea": "Signal Processing",
+    "topic": "Signal classifications, parameters and operations",
+    "learningObjectives": [
+      "Distinguish continuous-time and discrete-time representations of the same signal",
+      "Predict how amplitude, frequency and phase change a sinusoid",
+      "Classify a signal as an energy signal or a power signal from its energy and average power",
+      "Analyze how time shifting, time scaling and time reversal change a waveform and its energy or power"
+    ],
+    "bloomsTaxonomy": "Analyze",
+    "duration": "15-20 minutes",
+    "prerequisites": [
+      "Sine and cosine functions",
+      "The exponential function",
+      "Integration as area"
+    ],
+    "standards": []
+  },
+  "technical": {
+    "framework": "p5.js",
+    "version": "1.11.10",
+    "canvasDimensions": {
+      "width": "responsive",
+      "height": 590
+    },
+    "responsive": true,
+    "dependencies": [
+      "p5.js 1.11.10 (CDN)"
+    ],
+    "accessibility": {
+      "hasAltText": true,
+      "keyboardNavigable": true
+    }
+  },
+  "userInterface": {
+    "controls": [
+      { "type": "select", "label": "Signal", "options": ["Sinusoid", "Square wave", "Exponential", "Step function"], "default": "Sinusoid" },
+      { "type": "select", "label": "View", "options": ["Continuous-time x(t)", "Discrete-time x[n]", "Both"], "default": "Both" },
+      { "type": "slider", "label": "Amplitude A", "min": 0, "max": 5, "step": 0.1, "default": 2 },
+      { "type": "slider", "label": "Frequency f (Hz) / decay rate alpha (1/s)", "min": 0.1, "max": 10, "step": 0.1, "default": 1 },
+      { "type": "slider", "label": "Phase (degrees)", "min": 0, "max": 360, "step": 5, "default": 0 },
+      { "type": "slider", "label": "Time shift t0 (s)", "min": -1.5, "max": 1.5, "step": 0.1, "default": 0 },
+      { "type": "slider", "label": "Time scale a", "min": 0.25, "max": 4, "step": 0.25, "default": 1 },
+      { "type": "checkbox", "label": "Reverse", "default": false },
+      { "type": "button", "label": "Pin" },
+      { "type": "button", "label": "Clear" }
+    ]
+  },
+  "simulation": {
+    "modelType": "mathematical",
+    "equations": [
+      "y(t) = x(a(t - t0))",
+      "x[n] = y(n Ts), Ts = 0.05 s",
+      "E = integral |y(t)|^2 dt",
+      "P = lim (1/2T) integral_{-T}^{T} |y(t)|^2 dt",
+      "RMS = sqrt(P)"
+    ],
+    "assumptions": [
+      "Energy, power and RMS are closed-form values for the ideal, infinitely long signal",
+      "The discrete-time view uses a fixed sampling period of 0.05 s"
+    ]
+  },
+  "pedagogical": {
+    "teachingStrategy": "Interactive exploration",
+    "pattern": "exploration",
+    "bloomAlignment": [
+      "understand",
+      "analyze"
+    ],
+    "bloomVerbs": [
+      "distinguish",
+      "compare",
+      "classify"
+    ],
+    "pacing": "self-paced",
+    "supportsPrediction": true,
+    "dataVisibility": "high",
+    "interactionStyle": "manipulate",
+    "keyQuestions": [
+      "How do power and RMS amplitude change when the amplitude doubles?",
+      "Which signal operations change the energy or power of a signal, and which do not?",
+      "Why is a decaying exponential an energy signal while a sinusoid is a power signal?"
+    ],
+    "commonMisconceptions": [
+      "A phase shift changes the power of a sinusoid",
+      "Compressing a signal in time leaves its energy unchanged",
+      "A discrete-time signal is defined between its samples"
+    ],
+    "assessmentOpportunities": [
+      "Compute the energy of 3e^(-2t)u(t) and the power of 3cos(2*pi*5t) by hand, then verify with the MicroSim"
+    ]
+  },
+  "visualizationType": [
+    "graph",
+    "interactive-demo"
+  ],
+  "chapter": "02-introduction-to-signals-and-systems"
+}

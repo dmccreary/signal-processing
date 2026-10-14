@@ -128,6 +128,8 @@ For continuous-time systems analyzed with Laplace transforms, stability requires
 
 #### Diagram: Interactive Pole-Zero Analysis Tool
 
+<iframe src="../../sims/interactive-pole-zero-analysis-tool/main.html" height="547px" width="100%" scrolling="no"></iframe>
+
 <details markdown="1">
 <summary>MicroSim: Interactive Pole-Zero Analysis Tool</summary>
 
@@ -241,6 +243,8 @@ The spectrogram displays the magnitude squared of the STFT, $|X(t,f)|^2$, as a t
 - **Formant structure**: Broad resonance peaks in speech signals
 
 #### Diagram: Interactive STFT Spectrogram Analyzer
+
+<iframe src="../../sims/interactive-stft-spectrogram-analyzer/main.html" height="612px" width="100%" scrolling="no"></iframe>
 
 <details markdown="1">
 <summary>MicroSim: Interactive STFT Spectrogram Analyzer</summary>

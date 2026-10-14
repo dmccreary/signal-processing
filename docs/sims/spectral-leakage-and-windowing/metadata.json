@@ -1,0 +1,122 @@
+{
+  "title": "Spectral Leakage and Windowing",
+  "creator": "Dan McCreary",
+  "subject": [
+    "Signal Processing",
+    "Spectral Leakage",
+    "Window Functions",
+    "Discrete Fourier Transform",
+    "Frequency Resolution"
+  ],
+  "description": "A sinusoid of N samples is multiplied by a rectangular, Hamming, Hanning, Blackman or Kaiser window and transformed. The spectrum shows the DFT bins on top of the underlying DTFT, with the main-lobe width, peak side-lobe level, scalloping loss and coherent gain measured from the window's own transform.",
+  "date": "2026-10-02",
+  "type": "Interactive Simulation",
+  "format": "text/html",
+  "language": "en",
+  "rights": "CC BY-NC-SA 4.0",
+  "identifier": "https://dmccreary.github.io/signal-processing/sims/spectral-leakage-and-windowing/",
+  "library": "p5.js",
+  "educational": {
+    "gradeLevel": [
+      "Undergraduate"
+    ],
+    "subjectArea": "Signal Processing",
+    "topic": "Spectral leakage and the resolution versus side-lobe trade-off of window functions",
+    "learningObjectives": [
+      "Explain spectral leakage as a consequence of observing a signal for a finite time",
+      "Predict whether a tone will leak from its frequency and the bin spacing",
+      "Compare windows by main-lobe width, peak side-lobe level and scalloping loss",
+      "Choose a window for resolving two close tones or for finding a weak tone near a strong one"
+    ],
+    "bloomsTaxonomy": "Analyze",
+    "duration": "25-30 minutes",
+    "prerequisites": [
+      "The DFT and frequency bins",
+      "Decibels",
+      "Multiplication in time as convolution in frequency"
+    ],
+    "standards": []
+  },
+  "technical": {
+    "framework": "p5.js",
+    "version": "1.11.10",
+    "canvasDimensions": {
+      "width": "responsive",
+      "height": 630
+    },
+    "responsive": true,
+    "dependencies": [
+      "p5.js 1.11.10 (CDN)"
+    ],
+    "accessibility": {
+      "hasAltText": true,
+      "keyboardNavigable": true
+    }
+  },
+  "userInterface": {
+    "controls": [
+      { "type": "select", "label": "Signal", "options": ["Single sinusoid", "Two close sinusoids", "Strong + weak sinusoid"], "default": "Single sinusoid" },
+      { "type": "select", "label": "Window", "options": ["Rectangular", "Hamming", "Hanning (Hann)", "Blackman", "Kaiser"], "default": "Rectangular" },
+      { "type": "select", "label": "FFT size N", "options": ["256", "512", "1024", "2048"], "default": "256" },
+      { "type": "slider", "label": "Frequency f (Hz)", "min": 40, "max": 80, "step": 0.1, "default": 58.6 },
+      { "type": "button", "label": "Bin centre", "description": "Move the tone to the nearest bin centre" },
+      { "type": "button", "label": "Half-way", "description": "Move the tone half-way between two bins" },
+      { "type": "slider", "label": "Kaiser beta", "min": 0, "max": 14, "step": 0.1, "default": 8.6 },
+      { "type": "canvas", "label": "Move the mouse over the spectrum for a cursor readout of frequency and level" }
+    ]
+  },
+  "simulation": {
+    "modelType": "mathematical",
+    "equations": [
+      "X[k] = sum over n of x[n] w[n] e^(-j 2 pi k n / N), bin spacing = fs / N",
+      "level in dB = 20 log10( 2 |X| / (N mean(w)) )",
+      "Hanning: w[n] = 0.5 - 0.5 cos(2 pi n / N); Hamming: w[n] = 0.54 - 0.46 cos(2 pi n / N)",
+      "Blackman: w[n] = 0.42 - 0.5 cos(2 pi n / N) + 0.08 cos(4 pi n / N)",
+      "Kaiser: w[n] = I0(beta sqrt(1 - (2n/N - 1)^2)) / I0(beta)"
+    ],
+    "assumptions": [
+      "fs = 1024 Hz; the second close tone is 6 Hz above the first; the weak tone is 24 Hz above and 40 dB below the strong one",
+      "The DTFT curve is an 8x zero-padded FFT of the windowed signal",
+      "Window properties are measured on a 512-point window zero-padded 64 times",
+      "The signal is a real sinusoid, so leakage from its negative-frequency image is included"
+    ]
+  },
+  "pedagogical": {
+    "teachingStrategy": "Predict whether a tone will leak, test it, then compare windows on measured properties",
+    "pattern": "exploration",
+    "bloomAlignment": [
+      "understand",
+      "analyze",
+      "evaluate"
+    ],
+    "bloomVerbs": [
+      "explain",
+      "predict",
+      "compare",
+      "choose"
+    ],
+    "pacing": "self-paced",
+    "supportsPrediction": true,
+    "dataVisibility": "high",
+    "interactionStyle": "manipulate",
+    "keyQuestions": [
+      "Why does a tone that is not on a bin centre spread into every bin?",
+      "What do you gain and what do you lose by choosing a window with lower side lobes?",
+      "What does a longer FFT improve, and what does it leave unchanged?"
+    ],
+    "commonMisconceptions": [
+      "Leakage is a numerical error of the FFT",
+      "A tapered window always gives a better spectrum than the rectangular window",
+      "Zero-padding or a longer FFT lowers the side lobes of a window"
+    ],
+    "assessmentOpportunities": [
+      "Tabulate main-lobe width and peak side-lobe level for the four fixed windows",
+      "Decide which windows reveal a tone 40 dB below a strong neighbour"
+    ]
+  },
+  "visualizationType": [
+    "graph",
+    "interactive-demo"
+  ],
+  "chapter": "07-dft-fft-and-frequency-domain-analysis"
+}

@@ -82,12 +82,33 @@ Interactive Micro Simulations to help students learn signal processing fundament
 
     Interactive visualization demonstrating convolution as a measure of overlap between functions.
 
+- **[Convolution Visualizer](./convolution-visualizer/index.md)**
+
+
+    ![Convolution Visualizer](./convolution-visualizer/convolution-visualizer.png)
+
+    Step through the flip-and-slide picture of convolution: the impulse response is reversed, shifted and multiplied by the input, and the area of the product builds the output.
+
+- **[Correlation and Matched Filtering](./correlation-and-matched-filtering/index.md)**
+
+
+    ![Correlation and Matched Filtering](./correlation-and-matched-filtering/correlation-and-matched-filtering.png)
+
+    Find copies of a known template hidden in noise by cross-correlation, and compare the matched filter with a moving average.
+
 - **[Euler's Formula Explorer](./euler-formula-explorer/index.md)**
 
 
     ![Euler's Formula Explorer](./euler-formula-explorer/euler-formula-explorer.png)
 
     Interactive visualization demonstrating Euler's formula with synchronized unit circle rotation and wave traces.
+
+- **[Even and Odd Signal Decomposition](./even-and-odd-signal-decomposition/index.md)**
+
+
+    ![Even and Odd Signal Decomposition](./even-and-odd-signal-decomposition/even-and-odd-signal-decomposition.png)
+
+    Split a preset or hand-drawn signal into its even and odd parts and verify that they sum back to the original.
 
 - **[FFT 2 Oscillators](./fft-2-osc/index.md)**
 
@@ -152,6 +173,13 @@ Interactive Micro Simulations to help students learn signal processing fundament
 
     Interactive frequency detection demonstration for audio signals.
 
+- **[Impulse and Frequency Response Analyzer](./impulse-and-frequency-response-analyzer/index.md)**
+
+
+    ![Impulse and Frequency Response Analyzer](./impulse-and-frequency-response-analyzer/impulse-and-frequency-response-analyzer.png)
+
+    Impulse response, step response, magnitude and phase of five LTI systems shown side by side with linked cursors.
+
 - **[Learning Graph V1](./graph-viewer-v1/index.md)**
 
 
@@ -194,6 +222,20 @@ Interactive Micro Simulations to help students learn signal processing fundament
 
     Interactive demonstration of audio reverb effect showing how reverberation affects sound signals.
 
+- **[Sampling Theorem Explorer](./sampling-theorem-explorer/index.md)**
+
+
+    ![Sampling Theorem Explorer](./sampling-theorem-explorer/sampling-theorem-explorer.png)
+
+    Sample a sine wave, rebuild it from its samples, and see why a tone above the Nyquist frequency folds to an alias frequency.
+
+- **[Signal Type Explorer](./signal-type-explorer/index.md)**
+
+
+    ![Signal Type Explorer](./signal-type-explorer/signal-type-explorer.png)
+
+    Compare continuous-time and discrete-time views of basic signals with energy, power and RMS readouts.
+
 - **[Sine Wave](./sine-wave/index.md)**
 
 
@@ -207,6 +249,13 @@ Interactive Micro Simulations to help students learn signal processing fundament
     ![Synth Timeline](./synth-timeline/synth-timeline.png)
 
     Interactive timeline visualization of synthesizer history and evolution.
+
+- **[System Property Explorer](./system-property-explorer/index.md)**
+
+
+    ![System Property Explorer](./system-property-explorer/system-property-explorer.png)
+
+    Test eight example systems for linearity, time-invariance, causality and BIBO stability.
 
 - **[Timeline Viewer](./timeline-viewer/index.md)**
 

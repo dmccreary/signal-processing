@@ -1,0 +1,117 @@
+{
+  "title": "System Property Explorer",
+  "creator": "Dan McCreary",
+  "subject": [
+    "Signal Processing",
+    "Signals and Systems",
+    "Linear Systems",
+    "Time-Invariant Systems",
+    "Causality",
+    "BIBO Stability"
+  ],
+  "description": "Run linearity, time-invariance, causality and BIBO stability tests on eight example continuous-time systems. Each test overlays the two signals that the property says must be equal, reports whether they match, and explains the true classification of the system.",
+  "date": "2026-10-02",
+  "type": "Interactive Simulation",
+  "format": "text/html",
+  "language": "en",
+  "rights": "CC BY-NC-SA 4.0",
+  "identifier": "https://dmccreary.github.io/signal-processing/sims/system-property-explorer/",
+  "library": "p5.js",
+  "educational": {
+    "gradeLevel": [
+      "Undergraduate"
+    ],
+    "subjectArea": "Signal Processing",
+    "topic": "System properties: linearity, time-invariance, causality, stability and memory",
+    "learningObjectives": [
+      "Explain the superposition principle and test a system for linearity",
+      "Distinguish time-invariant systems from time-varying systems using a shifted input",
+      "Determine whether a system is causal by comparing outputs for inputs that agree up to a given time",
+      "Classify a system as BIBO stable or unstable from its response to a bounded input"
+    ],
+    "bloomsTaxonomy": "Analyze",
+    "duration": "20-25 minutes",
+    "prerequisites": [
+      "Signals as functions of time",
+      "Time shifting",
+      "The unit step function",
+      "Basic integration"
+    ],
+    "standards": []
+  },
+  "technical": {
+    "framework": "p5.js",
+    "version": "1.11.10",
+    "canvasDimensions": {
+      "width": "responsive",
+      "height": 615
+    },
+    "responsive": true,
+    "dependencies": [
+      "p5.js 1.11.10 (CDN)"
+    ],
+    "accessibility": {
+      "hasAltText": true,
+      "keyboardNavigable": true
+    }
+  },
+  "userInterface": {
+    "controls": [
+      { "type": "select", "label": "System", "options": ["Amplifier", "Linear filter (1 s running integral)", "Time-varying multiplier", "Squarer", "Compressor", "Predictor", "Integrator", "Offset"], "default": "Time-varying multiplier" },
+      { "type": "select", "label": "Test", "options": ["Linearity", "Time-invariance", "Causality", "BIBO stability"], "default": "Time-invariance" },
+      { "type": "slider", "label": "Amplitude A", "min": 0.5, "max": 3, "step": 0.1, "default": 2 },
+      { "type": "slider", "label": "Frequency f (Hz)", "min": 0.25, "max": 2, "step": 0.25, "default": 0.5 },
+      { "type": "slider", "label": "Time shift t0 (s)", "min": 0.5, "max": 4, "step": 0.1, "default": 2 }
+    ]
+  },
+  "simulation": {
+    "modelType": "mathematical",
+    "equations": [
+      "Linearity: T[a x1 + b x2] = a T[x1] + b T[x2]",
+      "Time-invariance: T[x(t - t0)] = y(t - t0)",
+      "Causality: y(t0) depends only on x(t) for t <= t0",
+      "BIBO stability: |x(t)| < Mx implies |y(t)| < My"
+    ],
+    "assumptions": [
+      "Continuous-time systems are simulated on a 0.01 s grid from -8 s to 14 s and plotted from -2 s to 10 s",
+      "Property badges show the analytically known classification; the plotted comparison is one numerical example"
+    ]
+  },
+  "pedagogical": {
+    "teachingStrategy": "Predict, test and explain",
+    "pattern": "comparison",
+    "bloomAlignment": [
+      "understand",
+      "analyze"
+    ],
+    "bloomVerbs": [
+      "test",
+      "distinguish",
+      "classify"
+    ],
+    "pacing": "self-paced",
+    "supportsPrediction": true,
+    "dataVisibility": "high",
+    "interactionStyle": "manipulate",
+    "keyQuestions": [
+      "Why is y(t) = t x(t) linear but not time-invariant?",
+      "Which part of linearity does y(t) = x(t) + 1 violate?",
+      "Can a matching pair of curves prove that a system has a property?"
+    ],
+    "commonMisconceptions": [
+      "A system whose equation contains t multiplied by x(t) is nonlinear",
+      "Adding a constant to the input keeps a system linear",
+      "One passing example proves that a property holds",
+      "A system with a bounded output for one bounded input is BIBO stable"
+    ],
+    "assessmentOpportunities": [
+      "Fill in a property table for four systems before running the tests",
+      "Explain the maximum difference reported by the time-invariance test for y(t) = t x(t)"
+    ]
+  },
+  "visualizationType": [
+    "graph",
+    "interactive-demo"
+  ],
+  "chapter": "03-system-properties-and-analysis"
+}

@@ -1,0 +1,123 @@
+{
+  "title": "Interactive STFT Spectrogram Analyzer",
+  "creator": "Dan McCreary",
+  "subject": [
+    "Signal Processing",
+    "Short-Time Fourier Transform",
+    "Spectrogram",
+    "Time-Frequency Resolution",
+    "Window Functions"
+  ],
+  "description": "A test signal built from two tones, two clicks, a chirp and noise is analyzed with the short-time Fourier transform twice, with a short and a long window. The two spectrograms share a time axis, each with the spectrum of the frame at the cursor, and cursors measure time and frequency separations.",
+  "date": "2026-10-02",
+  "type": "Interactive Simulation",
+  "format": "text/html",
+  "language": "en",
+  "rights": "CC BY-NC-SA 4.0",
+  "identifier": "https://dmccreary.github.io/signal-processing/sims/interactive-stft-spectrogram-analyzer/",
+  "library": "p5.js",
+  "educational": {
+    "gradeLevel": [
+      "Undergraduate"
+    ],
+    "subjectArea": "Signal Processing",
+    "topic": "Comparing short and long STFT windows on a multi-component signal",
+    "learningObjectives": [
+      "Compare spectrograms of one signal made with a short and a long window",
+      "Predict from the window length whether two tones or two clicks will be separated",
+      "Measure time and frequency separations on a spectrogram with cursors",
+      "Justify a choice of window length, window type and hop size for a given signal"
+    ],
+    "bloomsTaxonomy": "Analyze",
+    "duration": "25-30 minutes",
+    "prerequisites": [
+      "The DFT, bin spacing and window functions",
+      "Spectrograms",
+      "Sampling rate and sample period"
+    ],
+    "standards": []
+  },
+  "technical": {
+    "framework": "p5.js",
+    "version": "1.11.10",
+    "canvasDimensions": {
+      "width": "responsive",
+      "height": 610
+    },
+    "responsive": true,
+    "dependencies": [
+      "p5.js 1.11.10 (CDN)"
+    ],
+    "accessibility": {
+      "hasAltText": true,
+      "keyboardNavigable": true
+    }
+  },
+  "userInterface": {
+    "controls": [
+      { "type": "checkbox", "label": "Two tones", "default": true },
+      { "type": "checkbox", "label": "Two clicks", "default": true },
+      { "type": "checkbox", "label": "Chirp", "default": false },
+      { "type": "checkbox", "label": "Noise", "default": false },
+      { "type": "slider", "label": "Tone spacing (Hz)", "min": 10, "max": 400, "step": 10, "default": 100 },
+      { "type": "slider", "label": "Click spacing (ms)", "min": 2, "max": 100, "step": 2, "default": 20 },
+      { "type": "slider", "label": "Window A length N (samples)", "options": [32, 64, 128, 256, 512, 1024, 2048], "default": 64 },
+      { "type": "slider", "label": "Window B length N (samples)", "options": [32, 64, 128, 256, 512, 1024, 2048], "default": 1024 },
+      { "type": "select", "label": "Window type", "options": ["Hann", "Hamming", "Blackman", "Rectangular"], "default": "Hann" },
+      { "type": "select", "label": "Hop size H", "options": ["N/8 (87.5% overlap)", "N/4 (75% overlap)", "N/2 (50% overlap)", "N (no overlap)"], "default": "N/4 (75% overlap)" },
+      { "type": "canvas", "label": "Click a spectrogram to place the time and frequency cursor; point elsewhere to read the separation from the cursor" }
+    ]
+  },
+  "simulation": {
+    "modelType": "mathematical",
+    "equations": [
+      "X[m, k] = sum over n of x[n + m H] w[n] e^(-j 2 pi k n / N)",
+      "time span of the window = N / fs, bin spacing = fs / N, product = 1",
+      "two impulses tau seconds apart have a spectrum with ripples every 1 / tau hertz"
+    ],
+    "assumptions": [
+      "fs = 8000 Hz; the signal is 1 s long and 250 to 750 ms and 0 to 2000 Hz are displayed",
+      "Tones have amplitude 1, clicks are single samples of amplitude 8, the chirp rises from 1100 to 1900 Hz over the full second, and the noise has standard deviation 0.2",
+      "The FFT length equals the window length (no zero-padding)",
+      "Levels are scaled so that a steady bin-centred sinusoid of amplitude 1 reads 0 dB; the colour scale spans 60 dB"
+    ]
+  },
+  "pedagogical": {
+    "teachingStrategy": "Side-by-side comparison of two analyses of the same signal, with a test signal designed so that each window fails at one task",
+    "pattern": "comparison",
+    "bloomAlignment": [
+      "apply",
+      "analyze",
+      "evaluate"
+    ],
+    "bloomVerbs": [
+      "compare",
+      "predict",
+      "measure",
+      "justify"
+    ],
+    "pacing": "self-paced",
+    "supportsPrediction": true,
+    "dataVisibility": "high",
+    "interactionStyle": "manipulate",
+    "keyQuestions": [
+      "Which window separates the tones, which separates the clicks, and why not both?",
+      "How many bins apart must two tones be to appear as two lines?",
+      "What does the hop size change, and what does it leave unchanged?"
+    ],
+    "commonMisconceptions": [
+      "There is one best window length for every signal",
+      "A smaller hop size improves time resolution",
+      "Information that a spectrogram does not show has been destroyed"
+    ],
+    "assessmentOpportunities": [
+      "Tabulate, for each window length, whether the tones and the clicks are separated",
+      "Measure the ripple spacing in a frame that contains both clicks and relate it to the click spacing"
+    ]
+  },
+  "visualizationType": [
+    "graph",
+    "interactive-demo"
+  ],
+  "chapter": "08-advanced-transforms"
+}

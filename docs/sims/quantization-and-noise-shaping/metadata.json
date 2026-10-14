@@ -1,0 +1,119 @@
+{
+  "title": "Quantization and Noise Shaping",
+  "creator": "Dan McCreary",
+  "subject": [
+    "Signal Processing",
+    "Quantization",
+    "Quantization Noise",
+    "Oversampling",
+    "Noise Shaping"
+  ],
+  "description": "Quantize a full-scale sinusoid, triangle wave or three-harmonic waveform with 1 to 16 bits. Time plots show the quantized staircase and the error, and an FFT of the error shows how oversampling and first- or second-order noise shaping change the signal-to-quantization-noise ratio in the signal band.",
+  "date": "2026-10-02",
+  "type": "Interactive Simulation",
+  "format": "text/html",
+  "language": "en",
+  "rights": "CC BY-NC-SA 4.0",
+  "identifier": "https://dmccreary.github.io/signal-processing/sims/quantization-and-noise-shaping/",
+  "library": "p5.js",
+  "educational": {
+    "gradeLevel": [
+      "Undergraduate"
+    ],
+    "subjectArea": "Signal Processing",
+    "topic": "Uniform quantization, quantization noise, oversampling and noise shaping",
+    "learningObjectives": [
+      "Explain why quantization is irreversible and why the error is bounded by half a step",
+      "Predict the SQNR of a full-scale sinusoid from the bit depth",
+      "Describe the quantization error in time and in frequency, and say when the white-noise model fails",
+      "Explain how oversampling and noise shaping raise the in-band SQNR without lowering the total noise"
+    ],
+    "bloomsTaxonomy": "Understand",
+    "duration": "20-25 minutes",
+    "prerequisites": [
+      "Sampling and the Nyquist frequency",
+      "Decibels and signal power",
+      "Frequency spectrum"
+    ],
+    "standards": []
+  },
+  "technical": {
+    "framework": "p5.js",
+    "version": "1.11.10",
+    "canvasDimensions": {
+      "width": "responsive",
+      "height": 630
+    },
+    "responsive": true,
+    "dependencies": [
+      "p5.js 1.11.10 (CDN)"
+    ],
+    "accessibility": {
+      "hasAltText": true,
+      "keyboardNavigable": true
+    }
+  },
+  "userInterface": {
+    "controls": [
+      { "type": "select", "label": "Signal", "options": ["Sinusoid", "Triangle", "Complex waveform"], "default": "Sinusoid" },
+      { "type": "select", "label": "Oversampling", "options": ["1×", "2×", "4×", "8×", "16×"], "default": "1×" },
+      { "type": "slider", "label": "Bit depth b", "min": 1, "max": 16, "step": 1, "default": 4 },
+      { "type": "select", "label": "Noise shaping", "options": ["Off", "1st order", "2nd order"], "default": "Off" },
+      { "type": "checkbox", "label": "Show low-pass filtered output", "default": false }
+    ]
+  },
+  "simulation": {
+    "modelType": "mathematical",
+    "equations": [
+      "delta = V / 2^b, with V = 2",
+      "e[n] = xq[n] - x[n], |e[n]| <= delta / 2",
+      "white-noise model: noise power = delta^2 / 12, spread evenly from 0 to fs/2",
+      "SQNR = 6.02 b + 1.76 dB for a full-scale sinusoid",
+      "oversampling: in-band noise = delta^2 / (12 OSR)",
+      "noise transfer function: 1 - z^-1 (1st order), (1 - z^-1)^2 (2nd order)"
+    ],
+    "assumptions": [
+      "Mid-rise uniform quantizer with levels at the midpoints of the steps",
+      "The signal band is 0 to 20 kHz and the sampling rate is OSR times 40 kHz",
+      "The measured SQNR uses a 512 x OSR point FFT of the error over 7 whole cycles of the signal",
+      "The noise shaper is an error-feedback loop whose quantizer has extra headroom levels beyond full scale",
+      "The low-pass filter is ideal (FFT bins above 20 kHz are set to zero)"
+    ]
+  },
+  "pedagogical": {
+    "teachingStrategy": "Predict from the formula, then compare with a value measured from the samples",
+    "pattern": "exploration",
+    "bloomAlignment": [
+      "understand",
+      "apply"
+    ],
+    "bloomVerbs": [
+      "explain",
+      "predict",
+      "describe"
+    ],
+    "pacing": "self-paced",
+    "supportsPrediction": true,
+    "dataVisibility": "high",
+    "interactionStyle": "manipulate",
+    "keyQuestions": [
+      "How many decibels of SQNR does each extra bit add?",
+      "Why does oversampling a coarsely quantized sinusoid gain less than the white-noise model predicts?",
+      "Does noise shaping reduce the total quantization noise?"
+    ],
+    "commonMisconceptions": [
+      "Quantization error is always white noise that is unrelated to the signal",
+      "Noise shaping removes quantization noise",
+      "Oversampling adds resolution without any filtering"
+    ],
+    "assessmentOpportunities": [
+      "Predict the SQNR at 8 and 16 bits and compare with the measured values",
+      "Compare the in-band and total noise with noise shaping off, first order and second order at 16x oversampling"
+    ]
+  },
+  "visualizationType": [
+    "graph",
+    "interactive-demo"
+  ],
+  "chapter": "05-sampling-and-quantization"
+}

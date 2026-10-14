@@ -1,0 +1,121 @@
+{
+  "title": "Time-Frequency Analysis Explorer",
+  "creator": "Dan McCreary",
+  "subject": [
+    "Signal Processing",
+    "Time-Frequency Analysis",
+    "Short-Time Fourier Transform",
+    "Spectrogram",
+    "Window Functions"
+  ],
+  "description": "The short-time Fourier transform of a chirp, a frequency-shift-keyed signal or a note sequence is computed with a radix-2 FFT and drawn as a spectrogram, with a waveform, a time cursor and the spectrum of the frame at the cursor. Sliders for window length and overlap show the trade-off between time resolution and frequency resolution.",
+  "date": "2026-10-02",
+  "type": "Interactive Simulation",
+  "format": "text/html",
+  "language": "en",
+  "rights": "CC BY-NC-SA 4.0",
+  "identifier": "https://dmccreary.github.io/signal-processing/sims/time-frequency-analysis-explorer/",
+  "library": "p5.js",
+  "educational": {
+    "gradeLevel": [
+      "Undergraduate"
+    ],
+    "subjectArea": "Signal Processing",
+    "topic": "Spectrograms and the time-frequency resolution trade-off of the STFT",
+    "learningObjectives": [
+      "Explain why a spectrogram is needed for a signal whose frequency content changes with time",
+      "Compute the time span, bin spacing and hop size of an STFT from the window length, sampling rate and overlap",
+      "Analyze how the window length trades time resolution against frequency resolution",
+      "Choose STFT settings that suit a given signal"
+    ],
+    "bloomsTaxonomy": "Analyze",
+    "duration": "20-25 minutes",
+    "prerequisites": [
+      "The DFT, bin spacing and window functions",
+      "Spectral leakage",
+      "Sampling rate and sample period"
+    ],
+    "standards": []
+  },
+  "technical": {
+    "framework": "p5.js",
+    "version": "1.11.10",
+    "canvasDimensions": {
+      "width": "responsive",
+      "height": 605
+    },
+    "responsive": true,
+    "dependencies": [
+      "p5.js 1.11.10 (CDN)"
+    ],
+    "accessibility": {
+      "hasAltText": true,
+      "keyboardNavigable": true
+    }
+  },
+  "userInterface": {
+    "controls": [
+      { "type": "select", "label": "Signal", "options": ["Chirp (500 to 3500 Hz sweep)", "Frequency-shift keying (1 and 2 kHz)", "Note sequence (C5 E5 G5 C6 G5)"], "default": "Chirp (500 to 3500 Hz sweep)" },
+      { "type": "select", "label": "Window", "options": ["Hanning (Hann)", "Hamming", "Blackman", "Rectangular"], "default": "Hanning (Hann)" },
+      { "type": "slider", "label": "Window length N (samples)", "options": [32, 64, 128, 256, 512, 1024], "default": 256 },
+      { "type": "slider", "label": "Overlap (%)", "min": 0, "max": 90, "step": 5, "default": 50 },
+      { "type": "select", "label": "Colour map", "options": ["Viridis", "Hot", "Grayscale"], "default": "Viridis" },
+      { "type": "select", "label": "Scale", "options": ["Magnitude (dB)", "Magnitude (linear)", "Power (linear)"], "default": "Magnitude (dB)" },
+      { "type": "canvas", "label": "Click or drag in the waveform or spectrogram to move the time cursor; point at the spectrogram for a time, frequency and level readout" }
+    ]
+  },
+  "simulation": {
+    "modelType": "mathematical",
+    "equations": [
+      "X[m, k] = sum over n of x[n + m H] w[n] e^(-j 2 pi k n / N)",
+      "time span of the window = N / fs, bin spacing = fs / N, product = 1",
+      "hop H = N (1 - overlap), frames = floor((Ns - N) / H) + 1",
+      "chirp: instantaneous frequency 500 + 3000 t Hz"
+    ],
+    "assumptions": [
+      "fs = 8000 Hz and the signal is 8000 samples (1 s) long",
+      "The FFT length equals the window length (no zero-padding), so each bin is drawn as one cell",
+      "Each frame is plotted at the centre of its N samples; times where no complete window fits are left blank",
+      "Levels are scaled so that a steady bin-centred sinusoid of amplitude 1 reads 0 dB; the dB scale spans 80 dB",
+      "All three signals are synthesized; no recorded speech or music is used"
+    ]
+  },
+  "pedagogical": {
+    "teachingStrategy": "Change one STFT parameter at a time and relate the shape of the time-frequency cells to the computed resolutions",
+    "pattern": "exploration",
+    "bloomAlignment": [
+      "understand",
+      "apply",
+      "analyze"
+    ],
+    "bloomVerbs": [
+      "explain",
+      "compute",
+      "analyze",
+      "choose"
+    ],
+    "pacing": "self-paced",
+    "supportsPrediction": true,
+    "dataVisibility": "high",
+    "interactionStyle": "manipulate",
+    "keyQuestions": [
+      "Why can the window not be both short in time and narrow in frequency?",
+      "Does more overlap improve the resolution of a spectrogram?",
+      "Why is the longest window not the best one for a chirp?"
+    ],
+    "commonMisconceptions": [
+      "A longer window always gives a better spectrogram",
+      "Increasing the overlap improves time resolution",
+      "The spectrogram shows the exact frequency of a signal at each instant"
+    ],
+    "assessmentOpportunities": [
+      "Compute the time span and bin spacing for each window length and verify their product",
+      "Choose and justify a window length for reading FSK bits and another for separating musical notes"
+    ]
+  },
+  "visualizationType": [
+    "graph",
+    "interactive-demo"
+  ],
+  "chapter": "07-dft-fft-and-frequency-domain-analysis"
+}

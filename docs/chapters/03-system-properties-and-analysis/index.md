@@ -197,6 +197,8 @@ For parallel systems, the overall transfer function is the sum of individual tra
 
 #### Diagram: System Property Explorer
 
+<iframe src="../../sims/system-property-explorer/main.html" height="617px" width="100%" scrolling="no"></iframe>
+
 <details markdown="1">
 <summary>MicroSim: System Property Explorer</summary>
 
@@ -232,6 +234,8 @@ This interactive simulation allows students to explore fundamental system proper
 </details>
 
 #### Diagram: Impulse and Frequency Response Analyzer
+
+<iframe src="../../sims/impulse-and-frequency-response-analyzer/main.html" height="627px" width="100%" scrolling="no"></iframe>
 
 <details markdown="1">
 <summary>MicroSim: Impulse and Frequency Response Analyzer</summary>

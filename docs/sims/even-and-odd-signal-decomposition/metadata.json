@@ -1,0 +1,114 @@
+{
+  "title": "Even and Odd Signal Decomposition",
+  "creator": "Dan McCreary",
+  "subject": [
+    "Signal Processing",
+    "Signals and Systems",
+    "Even Signals",
+    "Odd Signals",
+    "Signal Symmetry"
+  ],
+  "description": "Decompose a preset or hand-drawn signal x(t) into its even part x_e(t) = [x(t) + x(-t)]/2 and odd part x_o(t) = [x(t) - x(-t)]/2, read the worked calculation at a probe time, and verify that the two parts sum back to x(t).",
+  "date": "2026-10-02",
+  "type": "Interactive Simulation",
+  "format": "text/html",
+  "language": "en",
+  "rights": "CC BY-NC-SA 4.0",
+  "identifier": "https://dmccreary.github.io/signal-processing/sims/even-and-odd-signal-decomposition/",
+  "library": "p5.js",
+  "educational": {
+    "gradeLevel": [
+      "Undergraduate"
+    ],
+    "subjectArea": "Signal Processing",
+    "topic": "Even and odd signal symmetry",
+    "learningObjectives": [
+      "Explain even and odd symmetry in terms of reflection about t = 0",
+      "Apply the decomposition formulas to compute the even and odd parts of a signal at a given time",
+      "Verify that the even and odd parts sum to the original signal",
+      "Recognize the even and odd parts of pulses, triangles, sawtooth waves and one-sided exponentials"
+    ],
+    "bloomsTaxonomy": "Apply",
+    "duration": "15-20 minutes",
+    "prerequisites": [
+      "Even and odd functions",
+      "Time reversal and time shifting of signals"
+    ],
+    "standards": []
+  },
+  "technical": {
+    "framework": "p5.js",
+    "version": "1.11.10",
+    "canvasDimensions": {
+      "width": "responsive",
+      "height": 560
+    },
+    "responsive": true,
+    "dependencies": [
+      "p5.js 1.11.10 (CDN)"
+    ],
+    "accessibility": {
+      "hasAltText": true,
+      "keyboardNavigable": true
+    }
+  },
+  "userInterface": {
+    "controls": [
+      { "type": "select", "label": "Signal", "options": ["Pulse", "Triangle", "Sawtooth", "Exponential", "Custom (draw)"], "default": "Pulse" },
+      { "type": "checkbox", "label": "Show sum", "default": true },
+      { "type": "button", "label": "Clear" },
+      { "type": "slider", "label": "Time shift t0 (s)", "min": -3, "max": 3, "step": 0.1, "default": 1 },
+      { "type": "slider", "label": "Probe time t (s)", "min": -5, "max": 5, "step": 0.1, "default": 1 },
+      { "type": "canvas-drag", "label": "Drag in the top plot to draw a custom signal" }
+    ]
+  },
+  "simulation": {
+    "modelType": "mathematical",
+    "equations": [
+      "x_e(t) = [x(t) + x(-t)] / 2",
+      "x_o(t) = [x(t) - x(-t)] / 2",
+      "x(t) = x_e(t) + x_o(t)",
+      "E = E_e + E_o"
+    ],
+    "assumptions": [
+      "Signals are sampled every 0.01 s on a grid that is symmetric about t = 0",
+      "A sample that falls on a jump takes the midpoint value"
+    ]
+  },
+  "pedagogical": {
+    "teachingStrategy": "Worked example with a movable probe point",
+    "pattern": "worked-example",
+    "bloomAlignment": [
+      "understand",
+      "apply"
+    ],
+    "bloomVerbs": [
+      "explain",
+      "apply",
+      "verify"
+    ],
+    "pacing": "self-paced",
+    "supportsPrediction": true,
+    "dataVisibility": "high",
+    "interactionStyle": "manipulate",
+    "keyQuestions": [
+      "What happens to the odd part when a symmetric pulse is centered on t = 0?",
+      "Why do the even and odd parts of a signal that is zero for t < 0 carry equal energy?",
+      "Can a signal have two different even and odd decompositions?"
+    ],
+    "commonMisconceptions": [
+      "Every signal is either even or odd",
+      "The even part of a signal is the portion of the signal for t > 0",
+      "Shifting a signal in time does not change its even and odd parts"
+    ],
+    "assessmentOpportunities": [
+      "Compute the even and odd parts at a probe time by hand and compare with the calculation panel",
+      "Sketch the even and odd parts of e^(-t)u(t) before revealing them"
+    ]
+  },
+  "visualizationType": [
+    "graph",
+    "interactive-demo"
+  ],
+  "chapter": "02-introduction-to-signals-and-systems"
+}

@@ -210,6 +210,8 @@ Time scaling affects both the duration and the frequency content of signals, wit
 
 #### Diagram: Signal Type Explorer
 
+<iframe src="../../sims/signal-type-explorer/main.html" height="592px" width="100%" scrolling="no"></iframe>
+
 <details markdown="1">
 <summary>MicroSim: Signal Type Explorer</summary>
 
@@ -244,6 +246,8 @@ This interactive simulation allows students to visualize and compare different s
 </details>
 
 #### Diagram: Even and Odd Signal Decomposition
+
+<iframe src="../../sims/even-and-odd-signal-decomposition/main.html" height="562px" width="100%" scrolling="no"></iframe>
 
 <details markdown="1">
 <summary>MicroSim: Even and Odd Signal Decomposition</summary>

@@ -161,6 +161,8 @@ These properties enable problem-solving strategies where difficult operations in
 
 #### Diagram: Fourier Series Explorer
 
+<iframe src="../../sims/fourier-series-explorer/main.html" height="627px" width="100%" scrolling="no"></iframe>
+
 <details markdown="1">
 <summary>MicroSim: Fourier Series Explorer</summary>
 
@@ -198,6 +200,8 @@ This interactive simulation demonstrates how periodic signals decompose into har
 </details>
 
 #### Diagram: FFT Spectrum Analyzer
+
+<iframe src="../../sims/fft-spectrum-analyzer/main.html" height="607px" width="100%" scrolling="no"></iframe>
 
 <details markdown="1">
 <summary>MicroSim: FFT Spectrum Analyzer</summary>
