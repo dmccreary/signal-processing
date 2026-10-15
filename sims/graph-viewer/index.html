@@ -6,7 +6,7 @@
       <meta charset="utf-8">
       <meta name="viewport" content="width=device-width,initial-scale=1">
       
-        <meta name="description" content="Explore the 200-concept learning graph of this course. Filter concepts by taxonomy category, search by name and read live node, edge and orphan counts.">
+        <meta name="description" content="Explore the 200-concept learning graph of this course. Filter concepts by taxonomy category, search by name, and read live node, edge and foundational counts.">
       
       
         <meta name="author" content="Dan McCreary">
@@ -67,7 +67,7 @@
       
         <meta  property="og:title"  content="Learning Graph Viewer - Signal Processing with AI" >
       
-        <meta  property="og:description"  content="Explore the 200-concept learning graph of this course. Filter concepts by taxonomy category, search by name and read live node, edge and orphan counts." >
+        <meta  property="og:description"  content="Explore the 200-concept learning graph of this course. Filter concepts by taxonomy category, search by name, and read live node, edge and foundational counts." >
       
         <meta property="og:image" content="https://dmccreary.github.io/signal-processing/sims/graph-viewer/graph-viewer.png">
       
@@ -83,7 +83,7 @@
       
         <meta  name="twitter:title"  content="Learning Graph Viewer - Signal Processing with AI" >
       
-        <meta  name="twitter:description"  content="Explore the 200-concept learning graph of this course. Filter concepts by taxonomy category, search by name and read live node, edge and orphan counts." >
+        <meta  name="twitter:description"  content="Explore the 200-concept learning graph of this course. Filter concepts by taxonomy category, search by name, and read live node, edge and foundational counts." >
       
         <meta name="twitter:image" content="https://dmccreary.github.io/signal-processing/sims/graph-viewer/graph-viewer.png">
       
@@ -3137,22 +3137,30 @@
 <p><a class="md-button md-button--primary" href="main.html">Run MicroSim in Fullscreen</a></p>
 <h2 id="description">Description</h2>
 <p>This viewer draws the learning graph of this course: a directed network of the 200 concepts taught in the book,
-joined by 262 arrows. Each node is a concept. An arrow runs from a prerequisite to a concept that depends on it,
-so the arrow from Real Numbers to Complex Numbers means that Real Numbers should be understood first. The color of a
-node shows its taxonomy category, and the layout comes from a force-directed physics solver, so the position of a
-node on the screen carries no meaning.</p>
+joined by 262 arrows. Each node is a concept. In this book's <code>learning-graph.json</code> an arrow runs from a prerequisite
+to a concept that depends on it, so the arrow from Real Numbers to Complex Numbers means that Real Numbers should be
+understood first. The color of a node shows its taxonomy category, and the layout comes from a force-directed physics
+solver, so the position of a node on the screen carries no meaning.</p>
 <ul>
-<li><strong>Legend checkboxes</strong> show or hide every concept in one category. <strong>Check All</strong> and <strong>Uncheck All</strong> set all 12 at once.</li>
-<li><strong>Search box</strong> lists the visible concepts whose names contain the text you type, with the category code in
-    parentheses. Click a result to zoom to that node and select it. Hidden categories are not searched.</li>
-<li><strong>Graph Statistics</strong> counts the visible nodes, the visible edges (both ends must be visible) and the orphans
-    (visible nodes that have no visible edge).</li>
-<li><strong>Menu button</strong> (the button at the top left) collapses the sidebar to give the graph the full width. On a narrow
-    screen the sidebar starts collapsed.</li>
-<li><strong>Mouse</strong>: drag a node to move it, scroll to zoom and drag the background to pan.</li>
+<li><strong>Search Concepts</strong> (top of the sidebar) lists up to 10 concepts whose names contain the text you type (two or more
+    characters), each with its category. Click a result to zoom to that node and select it; the concepts that are not
+    connected to it fade for about three seconds. The search covers all 200 concepts, including hidden categories.</li>
+<li><strong>Categories</strong> shows one checkbox per taxonomy category, with its color and concept count. <strong>Check All</strong> and
+    <strong>Uncheck All</strong> set all 12 at once.</li>
+<li><strong>Statistics</strong> shows the number of <strong>Visible Nodes</strong>, the number of <strong>Visible Edges</strong> (an edge is visible when both
+    of its ends are visible) and <strong>Foundational</strong>, the visible concepts that have no outgoing arrow. See the note
+    on this number under <em>Common Misconceptions</em>.</li>
+<li><strong>Menu button</strong> (the three bars at the top right of the sidebar header) collapses the sidebar to give the graph more
+    room.</li>
+<li><strong>Mouse</strong>: drag a node to move it, scroll to zoom and drag the background to pan. Concept names are drawn once you
+    zoom in far enough to read them; when the whole graph is in view the boxes are too small for text.</li>
+<li>A <strong>version badge</strong> (v1.04) sits at the top right of the graph. It is the version of the viewer template.</li>
 </ul>
-<p>The viewer reads <code>learning-graph.json</code> from the <a href="../../learning-graph/">learning-graph folder</a>, so it always
-shows the current graph of the book.</p>
+<p>The graph settles for about five seconds and then the physics solver stops. Dragging a node switches it back on
+until you release the node. The viewer reads <code>learning-graph.json</code> from the
+<a href="../../learning-graph/">learning-graph folder</a>, so it always shows the current graph of the book.</p>
+<p>The viewer sizes each box by the node's Concept Impact Score (<code>cis</code>) when the JSON file contains one. This book's
+<code>learning-graph.json</code> was generated before that field existed, so every box is drawn at the same size.</p>
 <h3 id="the-12-categories">The 12 Categories</h3>
 <table>
 <thead>
@@ -3242,8 +3250,8 @@ shows the current graph of the book.</p>
 <ul>
 <li><strong>Course planning</strong>: show only the categories of one unit to design a lesson sequence.</li>
 <li><strong>Concept exploration</strong>: search for a concept and see which concepts feed into it and which depend on it.</li>
-<li><strong>Gap analysis</strong>: a nonzero orphan count after you choose a set of categories means that the set is missing
-    prerequisites or dependents.</li>
+<li><strong>Gap analysis</strong>: select a concept with all categories visible and note the arrows into it, then show only your
+    chosen categories. The arrows that disappear started in categories you still need to add.</li>
 <li><strong>Progressive learning</strong>: start with the foundation categories and enable the advanced ones gradually.</li>
 </ul>
 <h2 id="lesson-plan">Lesson Plan</h2>
@@ -3251,12 +3259,13 @@ shows the current graph of the book.</p>
 <p>After using this MicroSim, students will be able to:</p>
 <ul>
 <li>Identify the prerequisites of a concept by tracing the arrows that point into its node.</li>
-<li>Use the legend checkboxes to isolate one category and predict the node, edge and orphan counts before reading
-    them from the statistics.</li>
-<li>Explain why the orphan count rises when a category is hidden, even though the full graph has no orphans.</li>
+<li>Use the category checkboxes to isolate one category and predict the node and edge counts before reading them from
+    the statistics.</li>
+<li>Explain why the edge count jumps when a second category is shown, even though the node count only adds the new
+    concepts.</li>
 <li>Locate a concept with the search box and state which category it belongs to.</li>
-<li>Evaluate a study sequence by deciding which categories must be shown together so that no visible concept is
-    missing a prerequisite.</li>
+<li>Evaluate a study sequence by deciding which categories must be shown together so that every visible concept has
+    all of its prerequisites on the screen.</li>
 </ul>
 <h3 id="target-audience">Target Audience</h3>
 <p>Undergraduate students and instructors in a first signal processing course who want to see how the concepts of the
@@ -3265,57 +3274,61 @@ book depend on each other, and course designers who plan the order of topics.</p
 <p>No signal processing background is needed. Students should know what a prerequisite is and should be able to read a
 directed graph (a node-and-arrow diagram).</p>
 <h3 id="activities">Activities</h3>
-<p><strong>Activity 1: Read the whole graph (5 min).</strong> Open the viewer with all 12 boxes checked. The statistics read Nodes 200,
-Edges 262 and Orphans 0. Click <strong>Uncheck All</strong>: all three counts fall to 0 and the canvas is empty. Check only
-<strong>Mathematical Foundations</strong>: the counts become Nodes 25, Edges 27 and Orphans 0.</p>
-<p><strong>Activity 2: Why orphans appear (10 min).</strong> Click <strong>Uncheck All</strong> and check only <strong>System Properties</strong>. The counts
-are Nodes 20, Edges 5 and Orphans 14. Predict what happens when you also check <strong>Signal Fundamentals</strong>, then try
-it: the counts become Nodes 45, Edges 46 and Orphans 0. Nineteen arrows run from Signal Fundamentals into
-System Properties, and they were hidden because one end of each was hidden.</p>
+<p><strong>Activity 1: Read the whole graph (5 min).</strong> Open the viewer with all 12 boxes checked. The statistics read Visible
+Nodes 200, Visible Edges 262 and Foundational 112. Click <strong>Uncheck All</strong>: all three counts fall to 0 and the canvas is
+empty. Check only <strong>Mathematical Foundations</strong>: the counts become 25 nodes, 27 edges and 9 foundational. Zoom in
+with the scroll wheel until the concept names appear.</p>
+<p><strong>Activity 2: Edges need both ends (10 min).</strong> Click <strong>Uncheck All</strong> and check only <strong>System Properties</strong>: 20 nodes
+and 5 edges. Uncheck it and check only <strong>Signal Fundamentals</strong>: 25 nodes and 22 edges. Predict the edge count when
+both are checked, then try it: 45 nodes and 46 edges, which is <span class="arithmatex">\(5 + 22 + 19\)</span>. The extra 19 arrows run from Signal
+Fundamentals into System Properties. They were hidden before because one end of each was hidden.</p>
 <p><strong>Activity 3: Find a concept (5 min).</strong> Click <strong>Check All</strong>, click the search box and type <code>convolution</code>. Five
-concepts are listed: Convolution, Discrete Convolution, Circular Convolution and Convolution Theorem (all CONV),
-and Convolutional Neural Networks (APPL). Click Convolution: the view zooms to the node and the edges that touch it
-are drawn thicker and grey. Now uncheck <strong>Convolution and Correlation</strong> and type <code>convolution</code> again: only
-Convolutional Neural Networks (APPL) is listed.</p>
-<p><strong>Activity 4: Plan a study path (10 min).</strong> Select Convolution with the search box and count the arrows that point
-into it: three, from Integral Calculus (MATH), Signals (SIG) and Systems (SIG). Click <strong>Uncheck All</strong> and check only
-<strong>Convolution and Correlation</strong> and <strong>Signal Fundamentals</strong>: Nodes 35, Edges 34 and Orphans 2. The two
-orphans are Unit Step Function and Unit Impulse Function, whose prerequisite Real Numbers is hidden. Check
-<strong>Mathematical Foundations</strong> as well: Nodes 60, Edges 70 and Orphans 0.</p>
+concepts are listed: Convolution, Discrete Convolution, Circular Convolution and Convolution Theorem (all in
+Convolution and Correlation), and Convolutional Neural Networks (Applications and AI). Click Convolution: the view
+zooms to the node and the concepts that are not connected to it fade for about three seconds. Count the arrows that
+point into it: three, from Integral Calculus, Signals and Systems.</p>
+<p><strong>Activity 4: Plan a study path (10 min).</strong> Click <strong>Uncheck All</strong> and check only <strong>Convolution and Correlation</strong>: 10
+nodes and 8 edges. Add <strong>Signal Fundamentals</strong>: 35 nodes and 34 edges. Add <strong>Mathematical Foundations</strong> as well: 60
+nodes and 70 edges. Every arrow that enters a Convolution and Correlation concept starts in one of these three
+categories, so these 60 concepts are a self-contained study unit.</p>
 <h3 id="assessment">Assessment</h3>
 <ol>
 <li>
 <p>With all 12 categories checked, what do the three statistics read?</p>
-<p><em>Nodes 200, Edges 262 and Orphans 0.</em></p>
+<p><em>Visible Nodes 200, Visible Edges 262 and Foundational 112.</em></p>
 </li>
 <li>
-<p>Only System Properties is checked and the viewer reports 14 orphans, although the full graph has none. Explain.</p>
-<p><em>An orphan is a visible node with no visible edge. Most arrows that touch System Properties concepts come from
-Signal Fundamentals (19 of them), which is hidden. Checking Signal Fundamentals restores the arrows and the
-orphan count falls to 0.</em></p>
+<p>Only System Properties is checked and the viewer reports 5 edges. Signal Fundamentals is then checked as well and
+    the edge count becomes 46. Explain the jump.</p>
+<p><em>Most arrows that touch System Properties concepts come from Signal Fundamentals (19 of them). An edge is counted
+only when both ends are visible. Checking Signal Fundamentals adds its own 22 edges and the 19 edges that
+connect the two categories: <span class="arithmatex">\(5 + 22 + 19 = 46\)</span>.</em></p>
 </li>
 <li>
 <p>Which three concepts are direct prerequisites of Convolution?</p>
 <p><em>Integral Calculus, Signals and Systems.</em></p>
 </li>
 <li>
-<p>With Convolution and Correlation unchecked, how many concepts match the search text <code>convolution</code>, and which?</p>
-<p><em>One: Convolutional Neural Networks (APPL). The search covers visible nodes only.</em></p>
+<p>How many concepts match the search text <code>convolution</code>, and which category does the last one belong to?</p>
+<p><em>Five. The last, Convolutional Neural Networks, is in Applications and AI. The search covers hidden categories too.</em></p>
 </li>
 <li>
-<p>A student wants to study Fourier Analysis. Which other categories must be shown so that no Fourier Analysis
-    concept is missing a prerequisite, and what do the statistics read?</p>
-<p><em>Mathematical Foundations and Signal Fundamentals. The statistics read Nodes 70, Edges 81 and Orphans 0.</em></p>
+<p>A student wants to study Fourier Analysis. Which other categories must be shown so that every Fourier Analysis
+    concept has all of its prerequisites on the screen, and what do the statistics read?</p>
+<p><em>Mathematical Foundations and Signal Fundamentals. Every arrow into a Fourier Analysis concept starts in one of
+those two categories or in Fourier Analysis itself. The statistics read 70 nodes and 81 edges.</em></p>
 </li>
 </ol>
 <h3 id="common-misconceptions">Common Misconceptions</h3>
-<p><strong>"An arrow points from a concept to the things it needs."</strong> The arrows point from a prerequisite to the concept
-that depends on it. Search for Real Numbers: it has no arrow pointing in, and 13 arrows leave it. It is the only
-concept in the graph with no prerequisite.</p>
-<p><strong>"Orphans are the concepts that nothing else depends on."</strong> In this viewer an orphan has no visible edge at all, in
-either direction, so the full graph has 0 orphans. The learning-graph quality report counts a different thing:
-112 concepts that no other concept depends on. Hide a category and the orphan count tells you which concepts have
-lost all of their neighbors.</p>
+<p><strong>"An arrow points from a concept to the things it needs."</strong> In this book's graph the arrows point from a
+prerequisite to the concept that depends on it. Search for Real Numbers: it has no arrow pointing in, and 13 arrows
+leave it. It is the only concept in the graph with no prerequisite.</p>
+<p><strong>"Foundational counts the concepts that have no prerequisites."</strong> The viewer's <strong>Foundational</strong> statistic counts
+visible concepts that have no <em>outgoing</em> arrow. The viewer template assumes that an arrow runs from a concept to its
+prerequisite, but this book's <code>learning-graph.json</code> stores the arrows the other way round. So for this book the
+statistic counts the concepts that nothing else depends on (112 of the 200, such as the end points of a study path),
+and not the concepts without prerequisites (only Real Numbers). Regenerating <code>learning-graph.json</code> with the current
+learning-graph generator would reverse the stored arrows and also add the Concept Impact Scores.</p>
 <h2 id="references">References</h2>
 <ol>
 <li><a href="https://en.wikipedia.org/wiki/Directed_acyclic_graph">Directed acyclic graph</a> - Wikipedia - the graph structure that a learning graph uses so that prerequisites never form a cycle</li>
@@ -3326,8 +3339,11 @@ lost all of their neighbors.</p>
 </ol>
 <h2 id="development-notes">Development Notes</h2>
 <ul>
-<li>The viewer loads <strong>vis-network 10.0.2</strong> (pinned; the page used to load whatever version unpkg served as "latest").</li>
-<li>Files: <code>main.html</code> (entry point), <code>script.js</code> (data loading, legend, search, statistics) and <code>local.css</code>.</li>
+<li>This is the <strong>v1.04</strong> viewer template from the <code>book-installer</code> skill (<code>references/assets/</code>): <code>main.html</code>,
+    <code>script.js</code> and <code>local.css</code> are installed unchanged, except that <code>main.html</code> carries the book title and pins
+    vis-network (see the next note). The page you are reading replaces the installer's generic <code>index.md</code>.</li>
+<li>The viewer loads <strong>vis-network 10.1.2</strong>. The template's unversioned <code>unpkg.com/vis-network</code> URL resolved to that
+    release when this was installed; it is pinned here so a later release cannot change the viewer silently.</li>
 <li>The data path is <code>../../learning-graph/learning-graph.json</code>, relative to <code>docs/sims/graph-viewer/</code>. The viewer
     uses <code>vis.DataSet</code> for nodes and edges and the node <code>hidden</code> property to filter by category.</li>
 <li>The group colors and category names come from the <code>groups</code> object of <code>learning-graph.json</code>.</li>

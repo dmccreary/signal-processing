@@ -12,7 +12,7 @@
         "Knowledge mapping",
         "Signal processing curriculum"
       ],
-      "description": "Interactive visualization of the course learning graph showing concept dependencies, with taxonomy filtering, type-ahead search and live node, edge and orphan statistics.",
+      "description": "Interactive visualization of the course learning graph showing concept dependencies, with taxonomy filtering, type-ahead search and live visible node, visible edge and foundational statistics. Installed from the book-installer viewer template v1.04.",
       "publisher": "Dan McCreary",
       "contributor": [
         "Claude (Anthropic)"
@@ -43,7 +43,7 @@
         "concept dependency graph",
         "prerequisite graph",
         "taxonomy filter",
-        "orphan nodes"
+        "foundational concepts"
       ],
       "visualizationType": [
         "graph",
@@ -82,10 +82,10 @@
       ],
       "learningObjectives": [
         "Identify the prerequisites of a concept by tracing the arrows that point into its node",
-        "Use the legend checkboxes to isolate one category and predict the node, edge and orphan counts before reading them from the statistics",
-        "Explain why the orphan count rises when a category is hidden, even though the full graph has no orphans",
+        "Use the category checkboxes to isolate one category and predict the node and edge counts before reading them from the statistics",
+        "Explain why the edge count jumps when a second category is shown, even though the node count only adds the new concepts",
         "Locate a concept with the search box and state which category it belongs to",
-        "Evaluate a study sequence by deciding which categories must be shown together so that no visible concept is missing a prerequisite"
+        "Evaluate a study sequence by deciding which categories must be shown together so that every visible concept has all of its prerequisites on the screen"
       ],
       "bloomsTaxonomy": [
         "Understand",
@@ -116,26 +116,27 @@
       "misconceptions": [
         {
           "misconception": "An arrow points from a concept to the things it needs",
-          "correction": "Arrows point from a prerequisite to the concept that depends on it",
+          "correction": "In this book's learning graph arrows point from a prerequisite to the concept that depends on it",
           "evidence": "Search for Real Numbers: it has no arrow pointing in and 13 arrows leaving it"
         },
         {
-          "misconception": "Orphans are the concepts that nothing else depends on",
-          "correction": "In this viewer an orphan is a visible node with no visible edge in either direction; the full graph has 0 orphans although 112 concepts have no dependents",
-          "evidence": "Check only System Properties: the statistics report 14 orphans; also check Signal Fundamentals and the count returns to 0"
+          "misconception": "Foundational counts the concepts that have no prerequisites",
+          "correction": "The statistic counts visible concepts with no outgoing arrow. This book's learning-graph.json stores arrows from prerequisite to dependent, so it counts concepts that nothing depends on (112 of 200); only Real Numbers has no prerequisite",
+          "evidence": "With all categories checked the statistics read Foundational 112, yet Real Numbers is the only node with no arrow pointing in"
         }
       ]
     },
     "technical": {
       "framework": "other",
-      "version": "2.0.0",
+      "version": "1.04",
       "canvasDimensions": {
         "width": 900,
         "height": 700,
         "responsive": true
       },
       "dependencies": [
-        "vis-network 10.0.2 (standalone UMD build from unpkg)"
+        "vis-network 10.1.2 (standalone UMD build from unpkg)",
+        "book-installer learning-graph viewer template v1.04"
       ],
       "browserCompatibility": [
         "Chrome 90+",
@@ -159,12 +160,12 @@
         "keyboardNavigation": true,
         "colorContrast": true,
         "altText": true,
-        "screenReaderScript": "Interactive network diagram of the course learning graph. Each node is a concept and each arrow points from a prerequisite to a concept that depends on it. Use the legend checkboxes to show or hide a category and the search box to find a concept by name."
+        "screenReaderScript": "Interactive network diagram of the course learning graph. Each node is a concept and each arrow points from a prerequisite to a concept that depends on it. Use the category checkboxes in the sidebar to show or hide a category and the search box to find a concept by name."
       }
     },
     "userInterface": {
       "layoutType": "two-column",
-      "layoutPattern": "collapsible-legend-sidebar-left-network-right",
+      "layoutPattern": "collapsible-sidebar-left-network-right",
       "colorScheme": {
         "drawingArea": "aliceblue",
         "controlArea": "white",
@@ -174,18 +175,28 @@
       "responsiveBreakpoints": [
         {
           "minWidth": 0,
-          "layout": "legend sidebar collapsed on load below 600 px"
+          "layout": "below 768 px the sidebar narrows to 250 px and can be collapsed with the menu button"
         }
       ],
       "controls": [
         {
-          "id": "toggle-button",
+          "id": "toggle-sidebar",
           "type": "button",
           "label": "Menu (hamburger) button",
-          "description": "Collapses or expands the legend sidebar; the sidebar starts collapsed on screens narrower than 600 px",
+          "description": "Collapses or expands the sidebar content",
           "group": "sidebar",
           "properties": {
             "style": "secondary"
+          }
+        },
+        {
+          "id": "search",
+          "type": "text-input",
+          "label": "Search Concepts",
+          "description": "Type-ahead search over all concepts (two or more characters, at most 10 results); clicking a result zooms to and selects the node",
+          "group": "search",
+          "properties": {
+            "placeholder": "Type to search..."
           }
         },
         {
@@ -195,7 +206,7 @@
           "description": "Shows every category",
           "group": "legend",
           "properties": {
-            "style": "success"
+            "style": "secondary"
           }
         },
         {
@@ -209,7 +220,7 @@
           }
         },
         {
-          "id": "groupMATH",
+          "id": "group-MATH",
           "type": "checkbox",
           "label": "Mathematical Foundations",
           "description": "Shows or hides every concept in the Mathematical Foundations category (MATH)",
@@ -219,7 +230,7 @@
           }
         },
         {
-          "id": "groupSIG",
+          "id": "group-SIG",
           "type": "checkbox",
           "label": "Signal Fundamentals",
           "description": "Shows or hides every concept in the Signal Fundamentals category (SIG)",
@@ -229,7 +240,7 @@
           }
         },
         {
-          "id": "groupSYS",
+          "id": "group-SYS",
           "type": "checkbox",
           "label": "System Properties",
           "description": "Shows or hides every concept in the System Properties category (SYS)",
@@ -239,7 +250,7 @@
           }
         },
         {
-          "id": "groupCONV",
+          "id": "group-CONV",
           "type": "checkbox",
           "label": "Convolution and Correlation",
           "description": "Shows or hides every concept in the Convolution and Correlation category (CONV)",
@@ -249,7 +260,7 @@
           }
         },
         {
-          "id": "groupSAMP",
+          "id": "group-SAMP",
           "type": "checkbox",
           "label": "Sampling and Quantization",
           "description": "Shows or hides every concept in the Sampling and Quantization category (SAMP)",
@@ -259,7 +270,7 @@
           }
         },
         {
-          "id": "groupFOUR",
+          "id": "group-FOUR",
           "type": "checkbox",
           "label": "Fourier Analysis",
           "description": "Shows or hides every concept in the Fourier Analysis category (FOUR)",
@@ -269,7 +280,7 @@
           }
         },
         {
-          "id": "groupXFRM",
+          "id": "group-XFRM",
           "type": "checkbox",
           "label": "Advanced Transforms",
           "description": "Shows or hides every concept in the Advanced Transforms category (XFRM)",
@@ -279,7 +290,7 @@
           }
         },
         {
-          "id": "groupFILT",
+          "id": "group-FILT",
           "type": "checkbox",
           "label": "Filter Design",
           "description": "Shows or hides every concept in the Filter Design category (FILT)",
@@ -289,7 +300,7 @@
           }
         },
         {
-          "id": "groupADAP",
+          "id": "group-ADAP",
           "type": "checkbox",
           "label": "Adaptive Processing",
           "description": "Shows or hides every concept in the Adaptive Processing category (ADAP)",
@@ -299,7 +310,7 @@
           }
         },
         {
-          "id": "groupRAND",
+          "id": "group-RAND",
           "type": "checkbox",
           "label": "Stochastic Processes",
           "description": "Shows or hides every concept in the Stochastic Processes category (RAND)",
@@ -309,7 +320,7 @@
           }
         },
         {
-          "id": "groupADVN",
+          "id": "group-ADVN",
           "type": "checkbox",
           "label": "Advanced Topics",
           "description": "Shows or hides every concept in the Advanced Topics category (ADVN)",
@@ -319,7 +330,7 @@
           }
         },
         {
-          "id": "groupAPPL",
+          "id": "group-APPL",
           "type": "checkbox",
           "label": "Applications and AI",
           "description": "Shows or hides every concept in the Applications and AI category (APPL)",
@@ -327,60 +338,50 @@
           "properties": {
             "default": true
           }
-        },
-        {
-          "id": "search-input",
-          "type": "text-input",
-          "label": "Search nodes by name",
-          "description": "Type-ahead search over the visible concepts; clicking a result zooms to and selects the node",
-          "group": "search",
-          "properties": {
-            "placeholder": "Search nodes by name..."
-          }
         }
       ],
       "visualElements": [
         {
           "type": "graph",
-          "description": "Force-directed network of the learning graph; node color is the taxonomy category and arrows point from prerequisite to dependent concept",
+          "description": "Force-directed network of the learning graph; node color is the taxonomy category, labels appear when zoomed in, and arrows point from prerequisite to dependent concept",
           "interactive": true,
           "updateTriggers": [
             "check-all",
             "uncheck-all",
-            "groupMATH",
-            "groupSIG",
-            "groupSYS",
-            "groupCONV",
-            "groupSAMP",
-            "groupFOUR",
-            "groupXFRM",
-            "groupFILT",
-            "groupADAP",
-            "groupRAND",
-            "groupADVN",
-            "groupAPPL",
-            "search-input"
+            "group-MATH",
+            "group-SIG",
+            "group-SYS",
+            "group-CONV",
+            "group-SAMP",
+            "group-FOUR",
+            "group-XFRM",
+            "group-FILT",
+            "group-ADAP",
+            "group-RAND",
+            "group-ADVN",
+            "group-APPL",
+            "search"
           ]
         },
         {
           "type": "text-display",
-          "description": "Graph Statistics list with the visible node, edge and orphan counts",
+          "description": "Statistics list with the Visible Nodes, Visible Edges and Foundational counts",
           "interactive": false,
           "updateTriggers": [
             "check-all",
             "uncheck-all",
-            "groupMATH",
-            "groupSIG",
-            "groupSYS",
-            "groupCONV",
-            "groupSAMP",
-            "groupFOUR",
-            "groupXFRM",
-            "groupFILT",
-            "groupADAP",
-            "groupRAND",
-            "groupADVN",
-            "groupAPPL"
+            "group-MATH",
+            "group-SIG",
+            "group-SYS",
+            "group-CONV",
+            "group-SAMP",
+            "group-FOUR",
+            "group-XFRM",
+            "group-FILT",
+            "group-ADAP",
+            "group-RAND",
+            "group-ADVN",
+            "group-APPL"
           ]
         }
       ]
@@ -388,11 +389,12 @@
     "simulation": {
       "model": {
         "type": "algorithmic",
-        "description": "Filters a directed graph by node attribute and recomputes the visible node count, the visible edge count (both endpoints visible) and the orphan count (visible nodes with no visible edge)",
+        "description": "Filters a directed graph by node attribute and recomputes the visible node count, the visible edge count (both endpoints visible) and the foundational count (visible nodes with no outgoing arrow)",
         "algorithms": [
           "forceAtlas2Based layout",
           "visibility filtering by group",
-          "substring search over visible node labels"
+          "substring search over all node labels",
+          "log-scaled node size from the Concept Impact Score (when present)"
         ]
       }
     },
@@ -403,9 +405,9 @@
         "individual-study"
       ],
       "instructionalStrategies": [
-        "Predict-then-verify with the legend filters",
+        "Predict-then-verify with the category filters",
         "Prerequisite tracing from a searched concept",
-        "Gap analysis with the orphan count"
+        "Gap analysis: compare a concept's incoming arrows with all categories and with a chosen subset"
       ],
       "extensions": [
         "Compare with the Learning Graph Viewer V1, which pins foundation and goal nodes",
