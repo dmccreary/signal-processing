@@ -1,0 +1,3488 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+        <meta name="description" content="Compare short- and long-window STFT spectrograms of one test signal and use cursors to see what each window can and cannot separate in time and frequency.">
+      
+      
+        <meta name="author" content="Dan McCreary">
+      
+      
+        <link rel="canonical" href="https://dmccreary.github.io/signal-processing/sims/interactive-stft-spectrogram-analyzer/">
+      
+      
+        <link rel="prev" href="../interactive-spectrogram-parameter-explorer/">
+      
+      
+        <link rel="next" href="../graph-viewer-v1/">
+      
+      
+      <link rel="icon" href="../../img/favicon.ico">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.5.43">
+    
+    
+      
+        <title>Interactive STFT Spectrogram Analyzer - Signal Processing with AI</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../assets/stylesheets/main.0253249f.min.css">
+      
+        
+        <link rel="stylesheet" href="../../assets/stylesheets/palette.06af60db.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+      <link rel="stylesheet" href="../../css/extra.css">
+    
+      <link rel="stylesheet" href="../../css/mascot.css">
+    
+    <script>__md_scope=new URL("../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+      
+        <meta  property="og:type"  content="website" >
+      
+        <meta  property="og:title"  content="Interactive STFT Spectrogram Analyzer - Signal Processing with AI" >
+      
+        <meta  property="og:description"  content="Compare short- and long-window STFT spectrograms of one test signal and use cursors to see what each window can and cannot separate in time and frequency." >
+      
+        <meta property="og:image" content="https://dmccreary.github.io/signal-processing/sims/interactive-stft-spectrogram-analyzer/interactive-stft-spectrogram-analyzer.png">
+      
+        <meta  property="og:image:type"  content="image/png" >
+      
+        <meta  property="og:image:width"  content="1200" >
+      
+        <meta  property="og:image:height"  content="630" >
+      
+        <meta  property="og:url"  content="https://dmccreary.github.io/signal-processing/sims/interactive-stft-spectrogram-analyzer/" >
+      
+        <meta  name="twitter:card"  content="summary_large_image" >
+      
+        <meta  name="twitter:title"  content="Interactive STFT Spectrogram Analyzer - Signal Processing with AI" >
+      
+        <meta  name="twitter:description"  content="Compare short- and long-window STFT spectrograms of one test signal and use cursors to see what each window can and cannot separate in time and frequency." >
+      
+        <meta name="twitter:image" content="https://dmccreary.github.io/signal-processing/sims/interactive-stft-spectrogram-analyzer/interactive-stft-spectrogram-analyzer.png">
+      
+    
+    
+  </head>
+  
+  
+    
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="maroon" data-md-color-accent="gold">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#interactive-stft-spectrogram-analyzer" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+  
+
+<header class="md-header md-header--shadow" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href="../.." title="Signal Processing with AI" class="md-header__button md-logo" aria-label="Signal Processing with AI" data-md-component="logo">
+      
+  <img src="../../img/mascot/neutral.png" alt="logo">
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            Signal Processing with AI
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              Interactive STFT Spectrogram Analyzer
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+    
+    
+    
+    
+      <label class="md-header__button md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+      </label>
+      <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Search">
+        
+        <button type="reset" class="md-search__icon md-icon" title="Clear" aria-label="Clear" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+        </button>
+      </nav>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+    
+      <div class="md-header__source">
+        <a href="https://github.com/dmccreary/signal-processing" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 6.6.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2024 Fonticons, Inc.--><path d="M439.55 236.05 244 40.45a28.87 28.87 0 0 0-40.81 0l-40.66 40.63 51.52 51.52c27.06-9.14 52.68 16.77 43.39 43.68l49.66 49.66c34.23-11.8 61.18 31 35.47 56.69-26.49 26.49-70.21-2.87-56-37.34L240.22 199v121.85c25.3 12.54 22.26 41.85 9.08 55a34.34 34.34 0 0 1-48.55 0c-17.57-17.6-11.07-46.91 11.25-56v-123c-20.8-8.51-24.6-30.74-18.64-45L142.57 101 8.45 235.14a28.86 28.86 0 0 0 0 40.81l195.61 195.6a28.86 28.86 0 0 0 40.8 0l194.69-194.69a28.86 28.86 0 0 0 0-40.81"/></svg>
+  </div>
+  <div class="md-source__repository">
+    GitHub Repo
+  </div>
+</a>
+      </div>
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+
+<nav class="md-nav md-nav--primary" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../.." title="Signal Processing with AI" class="md-nav__button md-logo" aria-label="Signal Processing with AI" data-md-component="logo">
+      
+  <img src="../../img/mascot/neutral.png" alt="logo">
+
+    </a>
+    Signal Processing with AI
+  </label>
+  
+    <div class="md-nav__source">
+      <a href="https://github.com/dmccreary/signal-processing" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 6.6.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2024 Fonticons, Inc.--><path d="M439.55 236.05 244 40.45a28.87 28.87 0 0 0-40.81 0l-40.66 40.63 51.52 51.52c27.06-9.14 52.68 16.77 43.39 43.68l49.66 49.66c34.23-11.8 61.18 31 35.47 56.69-26.49 26.49-70.21-2.87-56-37.34L240.22 199v121.85c25.3 12.54 22.26 41.85 9.08 55a34.34 34.34 0 0 1-48.55 0c-17.57-17.6-11.07-46.91 11.25-56v-123c-20.8-8.51-24.6-30.74-18.64-45L142.57 101 8.45 235.14a28.86 28.86 0 0 0 0 40.81l195.61 195.6a28.86 28.86 0 0 0 40.8 0l194.69-194.69a28.86 28.86 0 0 0 0-40.81"/></svg>
+  </div>
+  <div class="md-source__repository">
+    GitHub Repo
+  </div>
+</a>
+    </div>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../.." class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Home
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../about/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    About
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../course-description/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Course Description
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+        
+        
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+    <a href="../../chapters/" class="md-nav__link">
+      
+  
+  <span class="md-ellipsis">
+    Chapters
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+    
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+    
+    
+    
+      
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_5" checked>
+        
+          
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../" class="md-nav__link ">
+              
+  
+  <span class="md-ellipsis">
+    MicroSims
+  </span>
+  
+
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_5" id="__nav_5_label" tabindex="0">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_5_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_5">
+            <span class="md-nav__icon md-icon"></span>
+            MicroSims
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../image-convolution/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    2-D Convolution and Image Filtering
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../conv-layer-as-filter/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    A Convolutional Layer Is a Learned FIR Filter
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../adaptive-algorithm-comparison-tool/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Adaptive Algorithm Comparison Tool
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../adaptive-noise-cancellation/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Adaptive Noise and Echo Cancellation
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../ai-pace-accelerating/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    AI Pace
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../analog-mod/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Analog Modulation
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../fft-basic/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Basic FFT
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../base-and-treble/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Bass and Treble
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../bilinear-transform/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Bilinear Transform and Frequency Warping
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../blooms-taxonomy/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Bloom's Taxonomy
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../book-gen-workflow/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Book Generation Workflow
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../book-levels/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Book Levels
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../citation-graph/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Citation Graph
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../complex-plane/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Complex Plane
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../compressed-sensing/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Compressed Sensing
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../convolution/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Convolution
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../convolution-theorem/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Convolution Theorem and Circular Convolution
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../convolution-visualizer/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Convolution Visualizer
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../correlation-and-matched-filtering/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Correlation and Matched Filtering
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../dct-basis-explorer/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    DCT Basis Explorer
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../dft-explorer/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    DFT Explorer
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../euler-formula-explorer/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Euler's Formula Explorer
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../even-and-odd-signal-decomposition/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Even and Odd Signal Decomposition
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../fft-2-osc/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    FFT 2 Oscillators
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../fft-3-osc/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    FFT 3 Oscillators
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../fft-butterfly/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    FFT Butterfly
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../fft-mic/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    FFT From Microphone
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../fft-live-audio/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    FFT Live Audio with Parameters
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../fft-size/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    FFT Size
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../fft-sound-file/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    FFT Sound File
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../fft-spectrum-analyzer/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    FFT Spectrum Analyzer
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../fft-waveform-types/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    FFT Waveform Types
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../filter-bank-explorer/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Filter Bank and Polyphase Explorer
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../fir-filter-design-comparison-tool/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    FIR Filter Design Comparison Tool
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../fir-vs-iir/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    FIR vs IIR Filters
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../fourier-series-explorer/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Fourier Series Explorer
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../fourier-transform-pairs/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Fourier Transform Pairs
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../frequency-detection/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Frequency Detection
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../huffman-coding/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Huffman Coding
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../iir-prototype-comparison/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    IIR Prototype Comparison
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../impulse-and-frequency-response-analyzer/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Impulse and Frequency Response Analyzer
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../interactive-filter-design-and-analysis-tool/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Interactive Filter Design and Analysis Tool
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../interactive-pole-zero-analysis-tool/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Interactive Pole-Zero Analysis Tool
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../interactive-spectrogram-parameter-explorer/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Interactive Spectrogram Parameter Explorer
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  <span class="md-ellipsis">
+    Interactive STFT Spectrogram Analyzer
+  </span>
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        
+  
+  <span class="md-ellipsis">
+    Interactive STFT Spectrogram Analyzer
+  </span>
+  
+
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#description" class="md-nav__link">
+    <span class="md-ellipsis">
+      Description
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Description">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#the-test-signal" class="md-nav__link">
+    <span class="md-ellipsis">
+      The test signal
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#reading-the-display" class="md-nav__link">
+    <span class="md-ellipsis">
+      Reading the display
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#how-to-use" class="md-nav__link">
+    <span class="md-ellipsis">
+      How to use
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#what-to-expect" class="md-nav__link">
+    <span class="md-ellipsis">
+      What to expect
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#lesson-plan" class="md-nav__link">
+    <span class="md-ellipsis">
+      Lesson Plan
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Lesson Plan">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#learning-objectives" class="md-nav__link">
+    <span class="md-ellipsis">
+      Learning Objectives
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#target-audience" class="md-nav__link">
+    <span class="md-ellipsis">
+      Target Audience
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#prerequisites" class="md-nav__link">
+    <span class="md-ellipsis">
+      Prerequisites
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#activities" class="md-nav__link">
+    <span class="md-ellipsis">
+      Activities
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#assessment" class="md-nav__link">
+    <span class="md-ellipsis">
+      Assessment
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#common-misconceptions" class="md-nav__link">
+    <span class="md-ellipsis">
+      Common Misconceptions
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#references" class="md-nav__link">
+    <span class="md-ellipsis">
+      References
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../graph-viewer-v1/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Learning Graph V1
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../graph-viewer/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Learning Graph Viewer
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../mobius-transform/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Mobius Transformation
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../multirate-sample-rate-converter/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Multirate Sample Rate Converter
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../noise-analysis-and-reduction-tool/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Noise Analysis and Reduction Tool
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../nyquist-shannon-sampling/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Nyquist-Shannon Sampling
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../phase-spectrum/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Phase Spectrum - What the Magnitude Hides
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../phasor-addition/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Phasor Addition
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../psd-wiener-khinchin/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Power Spectral Density and the Wiener-Khinchin Theorem
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../distribution-explorer/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Probability Distribution Explorer
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../quantization-and-noise-shaping/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Quantization and Noise Shaping
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../rc-lowpass-filter/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    RC Lowpass Filter
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../real-time-processing-simulator/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Real-Time Processing Simulator
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../reverb/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Reverb Effect
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../s-plane-explorer/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    s-Plane Explorer
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../sampling-theorem-explorer/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Sampling Theorem Explorer
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../signal-operations/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Signal Operations - Shift, Scale and Reverse
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../signal-type-explorer/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Signal Type Explorer
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../sine-wave/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Sine Wave
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../spectral-leakage-and-windowing/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Spectral Leakage and Windowing
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../synth-timeline/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Synth Timeline
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../system-interconnections/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    System Interconnections - Series, Parallel, Feedback
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../system-property-explorer/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    System Property Explorer
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../time-frequency-analysis-explorer/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Time-Frequency Analysis Explorer
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../timeline-viewer/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Timeline Viewer
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../tone-gen/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Tone Generator
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../wavelet-explorer/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Wavelet Explorer - CWT Scalogram and Haar DWT
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../wordcloud/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Word Cloud
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+    
+    
+    
+      
+        
+        
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+    <a href="../../stories/" class="md-nav__link">
+      
+  
+  <span class="md-ellipsis">
+    Stories
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+    
+    
+    
+      
+        
+        
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+    <a href="../../circuits/" class="md-nav__link">
+      
+  
+  <span class="md-ellipsis">
+    Circuits
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+        
+        
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+    <a href="../../learning-graph/" class="md-nav__link">
+      
+  
+  <span class="md-ellipsis">
+    Learning Graph
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+    
+    
+    
+      
+        
+        
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+    <a href="../../research/" class="md-nav__link">
+      
+  
+  <span class="md-ellipsis">
+    Research
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../report-card/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Report Card
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../checklist/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Checklist
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../faq/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    FAQs
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../glossary/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Glossary
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../how-we-built-this-site/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    How We Built This Site
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../instructors-guide/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Instructor's Guide
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../license/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    License
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../references/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    References
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../contact/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Contact
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+        
+        
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+    <a href="../../prompts/" class="md-nav__link">
+      
+  
+  <span class="md-ellipsis">
+    Prompts
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#description" class="md-nav__link">
+    <span class="md-ellipsis">
+      Description
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Description">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#the-test-signal" class="md-nav__link">
+    <span class="md-ellipsis">
+      The test signal
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#reading-the-display" class="md-nav__link">
+    <span class="md-ellipsis">
+      Reading the display
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#how-to-use" class="md-nav__link">
+    <span class="md-ellipsis">
+      How to use
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#what-to-expect" class="md-nav__link">
+    <span class="md-ellipsis">
+      What to expect
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#lesson-plan" class="md-nav__link">
+    <span class="md-ellipsis">
+      Lesson Plan
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Lesson Plan">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#learning-objectives" class="md-nav__link">
+    <span class="md-ellipsis">
+      Learning Objectives
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#target-audience" class="md-nav__link">
+    <span class="md-ellipsis">
+      Target Audience
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#prerequisites" class="md-nav__link">
+    <span class="md-ellipsis">
+      Prerequisites
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#activities" class="md-nav__link">
+    <span class="md-ellipsis">
+      Activities
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#assessment" class="md-nav__link">
+    <span class="md-ellipsis">
+      Assessment
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#common-misconceptions" class="md-nav__link">
+    <span class="md-ellipsis">
+      Common Misconceptions
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#references" class="md-nav__link">
+    <span class="md-ellipsis">
+      References
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+  
+    <a href="https://github.com/dmccreary/signal-processing/blob/main/docs/sims/interactive-stft-spectrogram-analyzer/index.md" title="Edit this page" class="md-content__button md-icon">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M10 20H6V4h7v5h5v3.1l2-2V8l-6-6H6c-1.1 0-2 .9-2 2v16c0 1.1.9 2 2 2h4zm10.2-7c.1 0 .3.1.4.2l1.3 1.3c.2.2.2.6 0 .8l-1 1-2.1-2.1 1-1c.1-.1.2-.2.4-.2m0 3.9L14.1 23H12v-2.1l6.1-6.1z"/></svg>
+    </a>
+  
+  
+
+
+<h1 id="interactive-stft-spectrogram-analyzer">Interactive STFT Spectrogram Analyzer</h1>
+<iframe src="main.html" width="100%" height="612px" scrolling="no"></iframe>
+
+<p>Copy this iframe to your website:</p>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="p">&lt;</span><span class="nt">iframe</span> <span class="na">src</span><span class="o">=</span><span class="s">"https://dmccreary.github.io/signal-processing/sims/interactive-stft-spectrogram-analyzer/main.html"</span> <span class="na">width</span><span class="o">=</span><span class="s">"100%"</span> <span class="na">height</span><span class="o">=</span><span class="s">"612px"</span> <span class="na">scrolling</span><span class="o">=</span><span class="s">"no"</span><span class="p">&gt;&lt;/</span><span class="nt">iframe</span><span class="p">&gt;</span>
+</code></pre></div></td></tr></table></div>
+<p><a class="md-button md-button--primary" href="main.html">Run MicroSim in Fullscreen</a></p>
+<p><a href="https://editor.p5js.org/">Edit in the p5.js Editor</a></p>
+<!-- TODO(user): the link above is the editor home page. Save the sketch in editor.p5js.org and paste its sketch URL here. -->
+
+<h2 id="description">Description</h2>
+<p>The short-time Fourier transform (STFT) cuts a signal into frames, multiplies each frame by a window <span class="arithmatex">\(w[n]\)</span> and takes
+the DFT of every frame:</p>
+<div class="arithmatex">\[X[m,k] = \sum_{n=0}^{N-1} x[n+mH]\,w[n]\,e^{-j2\pi kn/N}\]</div>
+<p>Here <span class="arithmatex">\(m\)</span> is the frame index, <span class="arithmatex">\(k\)</span> the frequency bin, <span class="arithmatex">\(N\)</span> the window length and <span class="arithmatex">\(H\)</span> the hop size. This MicroSim computes
+the STFT of one test signal <strong>twice</strong>, with window length A (teal) and window length B (purple), and stacks the two
+spectrograms on one time axis so they can be compared directly. Four checkboxes build the signal from two tones, two
+clicks, a chirp and noise. Two sliders set the tone spacing and the click spacing, and two more set the window lengths.
+Menus choose the window type and the hop size. Click a spectrogram to place a time and frequency cursor; the spectrum of
+the frame at the cursor is drawn beside each spectrogram. The display shows why a short window locates events in time,
+why a long window separates components in frequency, and why no window does both.</p>
+<p>This simulation is used in <a href="../../chapters/08-advanced-transforms/">Chapter 8: Advanced Transforms</a>.</p>
+<h3 id="the-test-signal">The test signal</h3>
+<p>The sampling rate is <span class="arithmatex">\(f_s = 8000\)</span> Hz. The signal lasts 1 s and the display shows 250 to 750 ms and 0 to 2000 Hz.</p>
+<table>
+<thead>
+<tr>
+<th>Component</th>
+<th>Description</th>
+<th>What it tests</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Two tones</td>
+<td>Steady sinusoids of amplitude 1 at 500 Hz and at 500 Hz plus the tone spacing</td>
+<td>Frequency resolution</td>
+</tr>
+<tr>
+<td>Two clicks</td>
+<td>Single-sample impulses at 500 ms and at 500 ms plus the click spacing</td>
+<td>Time resolution</td>
+</tr>
+<tr>
+<td>Chirp</td>
+<td>A tone that rises steadily at 800 Hz per second, from 1300 Hz at the left edge to 1700 Hz at the right edge</td>
+<td>Both at once</td>
+</tr>
+<tr>
+<td>Noise</td>
+<td>White Gaussian noise with standard deviation 0.2</td>
+<td>Robustness of what you see</td>
+</tr>
+</tbody>
+</table>
+<h3 id="reading-the-display">Reading the display</h3>
+<ul>
+<li>The <strong>waveform</strong> at the top shows a teal bar and a purple bar: the samples that window A and window B use at the time cursor.</li>
+<li>Each <strong>spectrogram</strong> caption gives the window's time span <span class="arithmatex">\(\Delta t = N/f_s\)</span> and bin spacing <span class="arithmatex">\(\Delta f = f_s/N\)</span>, followed by the two
+  spacings in the window's own units: the tone spacing in bins and the click spacing in window lengths.</li>
+<li>Beside each spectrogram is the <strong>spectrum of the frame at the cursor</strong>, drawn sideways on the same frequency axis.</li>
+<li>Colour runs from <span class="arithmatex">\(-60\)</span> dB (dark) to 0 dB (bright), where 0 dB is a steady, bin-centred sinusoid of amplitude 1.
+  Levels above 0 dB, such as two tones that merge and add, are drawn in the brightest colour.</li>
+<li>The red line is the time cursor and the dashed line is the frequency cursor. The box at the upper right reports the
+  cursor position and the distance from the cursor to the mouse pointer.</li>
+</ul>
+<h3 id="how-to-use">How to use</h3>
+<ol>
+<li><strong>Click</strong> in either spectrogram to place the cursor at a time and frequency. Click or drag in the waveform to move the time cursor only.</li>
+<li><strong>Point</strong> at another feature without clicking. The box at the upper right reports the distance from the cursor to the pointer in milliseconds and hertz.</li>
+<li>Move the <strong>Window A</strong> and <strong>Window B</strong> sliders (32 to 2048 samples) and watch the two pictures and their captions.</li>
+<li>Change the <strong>Tone spacing</strong> (10 to 400 Hz) and the <strong>Click spacing</strong> (2 to 100 ms) to make the test easier or harder.
+   Each slider is greyed out while its component is switched off.</li>
+<li>Tick <strong>Chirp</strong> or <strong>Noise</strong> to add components, and try the other <strong>Window types</strong> and <strong>Hop sizes</strong>.</li>
+</ol>
+<h3 id="what-to-expect">What to expect</h3>
+<p>Two tones show as two separate lines only if they are about two or more bins apart. Two clicks show as two separate
+vertical lines only if they are about one window length or more apart. Since <span class="arithmatex">\(\Delta t \times \Delta f = 1\)</span>, making one of
+these easier makes the other harder. With the default spacings (100 Hz and 20 ms) window A separates the clicks and merges
+the tones, and window B does the opposite.</p>
+<p>When both clicks fall inside one long window, the spectrum of that frame shows evenly spaced ripples. Two impulses <span class="arithmatex">\(\tau\)</span>
+seconds apart have a spectrum that rises and falls every <span class="arithmatex">\(1/\tau\)</span> hertz, so the spacing of the ripples still carries the
+time information that the picture has lost.</p>
+<h2 id="lesson-plan">Lesson Plan</h2>
+<h3 id="learning-objectives">Learning Objectives</h3>
+<p>By the end of this activity, students will be able to:</p>
+<ol>
+<li><strong>Compare</strong> spectrograms of one signal made with a short and a long window.</li>
+<li><strong>Predict</strong> from the window length whether two tones or two clicks will be separated.</li>
+<li><strong>Measure</strong> time and frequency separations on a spectrogram with cursors.</li>
+<li><strong>Justify</strong> a choice of window length, window type and hop size for a given signal.</li>
+<li><strong>Explain</strong> why the time span and the bin spacing of a window cannot both be made small.</li>
+</ol>
+<h3 id="target-audience">Target Audience</h3>
+<p>College undergraduates in a digital signal processing, or signals and systems, course.
+Plan 25 to 30 minutes.</p>
+<h3 id="prerequisites">Prerequisites</h3>
+<ul>
+<li>The DFT, bin spacing and window functions</li>
+<li>The idea of a spectrogram</li>
+<li>Sampling rate and sample period</li>
+</ul>
+<h3 id="activities">Activities</h3>
+<p><strong>Activity 1: Two windows, two failures (5 min).</strong> Keep the default settings: tones 100 Hz apart, clicks 20 ms apart,
+<span class="arithmatex">\(N = 64\)</span> in A, <span class="arithmatex">\(N = 1024\)</span> in B, Hann window, hop <span class="arithmatex">\(N/4\)</span>.</p>
+<ul>
+<li>Spectrogram A shows two thin vertical lines at 500 ms and 520 ms but one wide horizontal band around 500 to 600 Hz.
+  Its caption reads "tones 0.8 bins apart, clicks 2.5 windows apart".</li>
+<li>Spectrogram B shows two thin horizontal lines at 500 Hz and 600 Hz but one vertical band where the clicks are.
+  Its caption reads "tones 12.8 bins apart, clicks 0.16 windows apart".</li>
+<li>Click on a line in B and point at the other one. The box reports about 100 Hz. Click on a click line in A and point at the other: about 20 ms.</li>
+</ul>
+<p><strong>Activity 2: Find the window length that works (10 min).</strong> Step window A through <span class="arithmatex">\(N = 32, 64, 128, 256, 512\)</span> with the
+defaults. Use the captions to fill in the first four columns, and the picture to fill in the last two.</p>
+<table>
+<thead>
+<tr>
+<th><span class="arithmatex">\(N\)</span></th>
+<th><span class="arithmatex">\(\Delta t\)</span></th>
+<th><span class="arithmatex">\(\Delta f\)</span></th>
+<th>tones apart</th>
+<th>clicks apart</th>
+<th>tones separate?</th>
+<th>clicks separate?</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>32</td>
+<td>4 ms</td>
+<td>250 Hz</td>
+<td>0.4 bins</td>
+<td>5 windows</td>
+<td>no</td>
+<td>yes</td>
+</tr>
+<tr>
+<td>64</td>
+<td>8 ms</td>
+<td>125 Hz</td>
+<td>0.8 bins</td>
+<td>2.5 windows</td>
+<td>no</td>
+<td>yes</td>
+</tr>
+<tr>
+<td>128</td>
+<td>16 ms</td>
+<td>62.5 Hz</td>
+<td>1.6 bins</td>
+<td>1.25 windows</td>
+<td>no</td>
+<td>yes</td>
+</tr>
+<tr>
+<td>256</td>
+<td>32 ms</td>
+<td>31.3 Hz</td>
+<td>3.2 bins</td>
+<td>0.63 windows</td>
+<td>yes</td>
+<td>no, only a shallow dip</td>
+</tr>
+<tr>
+<td>512</td>
+<td>64 ms</td>
+<td>15.6 Hz</td>
+<td>6.4 bins</td>
+<td>0.31 windows</td>
+<td>yes</td>
+<td>no</td>
+</tr>
+</tbody>
+</table>
+<p>No length separates both pairs cleanly. Now set the tone spacing to 200 Hz and window A to <span class="arithmatex">\(N = 128\)</span>. The tones are 3.2 bins
+apart and the clicks 1.25 windows apart, so both pairs are separated. Explain this with <span class="arithmatex">\(\Delta t \times \Delta f = 1\)</span>.</p>
+<p><strong>Activity 3: What the long window still knows (5 min).</strong> Untick <strong>Two tones</strong>, set the click spacing to 4 ms and
+window B to <span class="arithmatex">\(N = 1024\)</span>. Put the cursor on the clicks in B.</p>
+<ul>
+<li>The two clicks are only 0.03 windows apart and appear as one vertical band, but across the band run horizontal
+  stripes. The frame spectrum beside B has eight ripples between 0 and 2000 Hz.</li>
+<li>Click on one stripe and point at the next: the box reports about 250 Hz, which is <span class="arithmatex">\(1/(4\ \text{ms})\)</span>.</li>
+<li>Set the click spacing to 10 ms: the ripples are 100 Hz apart, and there are 20 of them.</li>
+</ul>
+<p><strong>Activity 4: A moving tone (5 min).</strong> Untick <strong>Two tones</strong> and <strong>Two clicks</strong> and tick <strong>Chirp</strong>. Set window A to
+<span class="arithmatex">\(N = 256\)</span> and window B to <span class="arithmatex">\(N = 512\)</span>, then try <span class="arithmatex">\(N = 1024\)</span> and <span class="arithmatex">\(N = 2048\)</span> in B.</p>
+<ul>
+<li>The ridge is thinnest at <span class="arithmatex">\(N = 512\)</span>. In the frame spectrum at the cursor, the ridge is about 64 Hz wide at <span class="arithmatex">\(N = 256\)</span>,
+  38 Hz wide at <span class="arithmatex">\(N = 512\)</span> and 51 Hz wide at <span class="arithmatex">\(N = 1024\)</span>, measured where it has fallen to half its peak height (<span class="arithmatex">\(-6\)</span> dB).</li>
+<li>At <span class="arithmatex">\(N = 2048\)</span> the ridge is smeared to about 102 Hz and its peak has fallen to about <span class="arithmatex">\(-11\)</span> dB.</li>
+<li>The chirp rises 800 Hz every second, so it moves 51 Hz during the 64 ms window of <span class="arithmatex">\(N = 512\)</span>. Why does a longer window
+  smear it even though its bins are finer, and why is a shorter window coarse?</li>
+</ul>
+<p><strong>Activity 5: Window type and hop size (5 min).</strong></p>
+<ul>
+<li>Untick <strong>Two clicks</strong> and set window A to <span class="arithmatex">\(N = 256\)</span>. With Hann, the frame spectrum is above <span class="arithmatex">\(-60\)</span> dB (the left edge
+  of its plot) in only 11 of its 65 bins, a narrow skirt around the tones. With <strong>Rectangular</strong> it is above <span class="arithmatex">\(-60\)</span> dB in
+  all 65 and the curve runs across the whole plot. What happens to the area around the tones, and why?</li>
+<li>Restore Hann and the clicks, set window A to <span class="arithmatex">\(N = 64\)</span> and change the hop from <span class="arithmatex">\(N/4\)</span> to <span class="arithmatex">\(N\)</span> (no overlap). The click at
+  520 ms disappears from A. It falls on the first sample of a frame, where the Hann window is zero. Choose <span class="arithmatex">\(N/2\)</span> and it returns.</li>
+<li>Compare <span class="arithmatex">\(N/4\)</span> with <span class="arithmatex">\(N/8\)</span>. The picture is smoother but the lines are no thinner. Does a smaller hop improve the resolution?</li>
+</ul>
+<h3 id="assessment">Assessment</h3>
+<ol>
+<li>With the default settings, which window separates the tones and which separates the clicks?
+   <em>Answer: window B (<span class="arithmatex">\(N = 1024\)</span>) separates the tones, which are 12.8 bins apart, and merges the clicks, which are 0.16 windows apart. Window A (<span class="arithmatex">\(N = 64\)</span>) separates the clicks (2.5 windows apart) and merges the tones (0.8 bins apart).</em></li>
+<li>What is the product of a window's time span and its bin spacing, and what does it imply?
+   <em>Answer: <span class="arithmatex">\(\Delta t \times \Delta f = (N/f_s)(f_s/N) = 1\)</span> for every <span class="arithmatex">\(N\)</span>. Doubling the window length halves the bin spacing but doubles the time span, so improving one resolution worsens the other.</em></li>
+<li>What is the shortest window in the sliders that separates two tones 100 Hz apart with the Hann window, and why?
+   <em>Answer: <span class="arithmatex">\(N = 256\)</span>. The bin spacing is 31.25 Hz, so the tones are 3.2 bins apart and the frame spectrum shows two peaks with a valley about 9 dB deep. At <span class="arithmatex">\(N = 128\)</span> they are 1.6 bins apart and merge into one peak.</em></li>
+<li>The tones are 200 Hz apart and the clicks 20 ms apart. Which single window length separates both pairs?
+   <em>Answer: <span class="arithmatex">\(N = 128\)</span>. The tones are 3.2 bins apart and the clicks 1.25 windows apart. <span class="arithmatex">\(N = 64\)</span> puts the tones 1.6 bins apart, and <span class="arithmatex">\(N = 256\)</span> puts the clicks 0.63 windows apart.</em></li>
+<li>Two clicks fall inside one long window and the frame spectrum has ripples 125 Hz apart. How far apart are the clicks?
+   <em>Answer: 8 ms, because the ripple spacing is <span class="arithmatex">\(1/\tau\)</span> and <span class="arithmatex">\(1/(125\ \text{Hz}) = 8\)</span> ms.</em></li>
+</ol>
+<h3 id="common-misconceptions">Common Misconceptions</h3>
+<p><strong>"There is one best window length for every signal."</strong> The best window depends on what must be separated. Compare
+window A and window B in Activity 1: each one fails at the task the other one does well.</p>
+<p><strong>"A smaller hop size improves time resolution."</strong> The hop only sets how many frames are drawn. Change the hop from
+<span class="arithmatex">\(N/2\)</span> to <span class="arithmatex">\(N/8\)</span> and the click and tone lines keep the same width; only the window length and type change the width.</p>
+<p><strong>"What a spectrogram does not show has been destroyed."</strong> Two clicks inside one long window merge in the picture, but
+their spacing is still present in the frame spectrum as ripples <span class="arithmatex">\(1/\tau\)</span> hertz apart (Activity 3).</p>
+<h2 id="references">References</h2>
+<ol>
+<li><a href="https://en.wikipedia.org/wiki/Short-time_Fourier_transform">Short-time Fourier transform</a> - Wikipedia - definition of the STFT, window and hop size</li>
+<li><a href="https://en.wikipedia.org/wiki/Spectrogram">Spectrogram</a> - Wikipedia - the magnitude of the STFT displayed as an image</li>
+<li><a href="https://en.wikipedia.org/wiki/Window_function">Window function</a> - Wikipedia - Hann, Hamming, Blackman and rectangular windows and their main lobes</li>
+<li><a href="https://en.wikipedia.org/wiki/Chirp">Chirp</a> - Wikipedia - signals whose frequency changes with time</li>
+<li><a href="https://www.dspguide.com/">The Scientist and Engineer's Guide to Digital Signal Processing</a> - Steven W. Smith - free online textbook with chapters on the DFT, windows and spectral analysis</li>
+<li>Allen, J. B., &amp; Rabiner, L. R. (1977). A unified approach to short-time Fourier analysis and synthesis. <em>Proceedings of the IEEE</em>, 65(11), 1558-1564.</li>
+<li>Cohen, L. (1995). <em>Time-Frequency Analysis</em>. Prentice Hall.</li>
+<li><a href="../time-frequency-analysis-explorer/">Time-Frequency Analysis Explorer</a> - this textbook - a single spectrogram with adjustable overlap, colour map and scale</li>
+<li><a href="../../chapters/08-advanced-transforms/">Chapter 8: Advanced Transforms</a> - this textbook - the chapter that embeds this MicroSim</li>
+</ol>
+
+
+
+
+
+
+
+  
+  
+
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+          <button type="button" class="md-top md-icon" data-md-component="top" hidden>
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8z"/></svg>
+  Back to top
+</button>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+    
+      
+      <nav class="md-footer__inner md-grid" aria-label="Footer" >
+        
+          
+          <a href="../interactive-spectrogram-parameter-explorer/" class="md-footer__link md-footer__link--prev" aria-label="Previous: Interactive Spectrogram Parameter Explorer">
+            <div class="md-footer__button md-icon">
+              
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+            </div>
+            <div class="md-footer__title">
+              <span class="md-footer__direction">
+                Previous
+              </span>
+              <div class="md-ellipsis">
+                Interactive Spectrogram Parameter Explorer
+              </div>
+            </div>
+          </a>
+        
+        
+          
+          <a href="../graph-viewer-v1/" class="md-footer__link md-footer__link--next" aria-label="Next: Learning Graph V1">
+            <div class="md-footer__title">
+              <span class="md-footer__direction">
+                Next
+              </span>
+              <div class="md-ellipsis">
+                Learning Graph V1
+              </div>
+            </div>
+            <div class="md-footer__button md-icon">
+              
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M4 11v2h12l-5.5 5.5 1.42 1.42L19.84 12l-7.92-7.92L10.5 5.5 16 11z"/></svg>
+            </div>
+          </a>
+        
+      </nav>
+    
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+    <div class="md-copyright__highlight">
+      Copyright &copy; 2025 Dan McCreary. Licensed under <a href="license/">CC BY-NC-SA 4.0</a> for non-commercial use.
+    </div>
+  
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    <script id="__config" type="application/json">{"base": "../..", "features": ["content.code.copy", "navigation.expand", "navigation.path", "navigation.prune", "navigation.indexes", "toc.follow", "navigation.top", "navigation.footer", "content.action.edit"], "search": "../../assets/javascripts/workers/search.6ce7567c.min.js", "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}}</script>
+    
+    
+      <script src="../../assets/javascripts/bundle.83f73b43.min.js"></script>
+      
+        <script src="../../js/extra.js"></script>
+      
+        <script src="https://unpkg.com/mathjax@3/es5/tex-mml-chtml.js"></script>
+      
+    
+  </body>
+</html>

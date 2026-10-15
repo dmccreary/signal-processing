@@ -1,83 +1,242 @@
 {
-  "title": "Book Build Workflow",
-  "description": "Interactive infographic showing the workflow for building intelligent textbooks using AI-assisted content generation.",
-  "creator": "Dan McCreary",
-  "date": "2024-01-01",
-  "subject": [
-    "Education",
-    "Workflow",
-    "AI",
-    "Textbook Generation"
-  ],
-  "type": "Interactive Simulation",
-  "format": "text/html",
-  "language": "en",
-  "rights": "CC BY-NC-SA 4.0",
-  "identifier": "https://dmccreary.github.io/signal-processing/sims/book-gen-workflow/",
-  "publisher": "Dan McCreary",
-  "educationalLevel": "Undergraduate",
-  "learningResourceType": "simulation",
-  "audience": "Educators, Content Creators",
-  "version": "1.0.0",
-  "bloomLevel": [
-    "Understand",
-    "Apply"
-  ],
-  "concepts": [
-    "Workflow",
-    "Content generation",
-    "AI textbooks",
-    "MkDocs"
-  ],
-  "prerequisites": [
-    "Basic understanding of content management"
-  ],
-  "library": "p5.js",
-  "visualizationType": [
-    "animation",
-    "data-visualization",
-    "diagram",
-    "interactive-demo",
-    "network",
-    "simulation"
-  ],
-  "learningObjectives": [
-    "Understand the key concepts of book build workflow",
-    "Explore book build workflow through interactive visualization",
-    "Apply knowledge of book build workflow to solve problems",
-    "Test understanding of book build workflow through interactive exercises"
-  ],
-  "bloomsTaxonomy": [
-    "Remember",
-    "Understand",
-    "Apply",
-    "Analyze",
-    "Evaluate",
-    "Create"
-  ],
-  "pedagogical": {
-    "pattern": "assessment",
-    "bloomAlignment": [
-      "understand",
-      "apply",
-      "analyze"
-    ],
-    "bloomVerbs": [
-      "classify",
-      "describe",
-      "summarize",
-      "apply",
-      "calculate"
-    ],
-    "pacing": "self-paced",
-    "supportsPrediction": false,
-    "dataVisibility": "high",
-    "feedbackType": [
-      "immediate",
-      "delayed",
-      "corrective",
-      "explanatory"
-    ],
-    "interactionStyle": "construct"
-  }
+  "microsim": {
+    "dublinCore": {
+      "title": "Book Build Workflow",
+      "creator": [
+        "Dan McCreary"
+      ],
+      "subject": [
+        "Intelligent textbooks",
+        "Textbook generation workflow",
+        "Learning graph",
+        "Generative AI",
+        "Instructional design"
+      ],
+      "description": "Interactive infographic of the workflow for building an intelligent textbook: a course description leads through Bloom's taxonomy, concept enumeration and concept dependencies to a learning graph, which feeds book-level outputs and chapter-level content.",
+      "publisher": "Dan McCreary",
+      "contributor": [
+        "Claude (Anthropic)"
+      ],
+      "date": "2025-05-07",
+      "type": "Interactive Simulation",
+      "format": "text/html",
+      "identifier": "https://dmccreary.github.io/signal-processing/sims/book-gen-workflow/",
+      "language": "en",
+      "relation": [
+        "About the Signal Processing with AI Website"
+      ],
+      "rights": "CC BY-NC-SA 4.0"
+    },
+    "search": {
+      "tags": [
+        "workflow",
+        "learning graph",
+        "intelligent textbook",
+        "concept dependencies",
+        "Bloom's taxonomy",
+        "generative AI",
+        "infographic"
+      ],
+      "searchKeywords": [
+        "book generation workflow",
+        "textbook build pipeline",
+        "course description to learning graph",
+        "downstream dependencies"
+      ],
+      "visualizationType": [
+        "infographic",
+        "diagram",
+        "interactive-demo"
+      ],
+      "interactionLevel": "low",
+      "complexity": 2,
+      "relatedConcepts": [
+        "Course Description",
+        "Bloom's Taxonomy",
+        "Concept Enumeration",
+        "Concept Dependencies",
+        "Learning Graph",
+        "Intelligent Textbook"
+      ],
+      "applicationDomains": [
+        "education",
+        "exploration"
+      ],
+      "showcase": false
+    },
+    "educational": {
+      "gradeLevel": [
+        "Undergraduate"
+      ],
+      "subjectArea": [
+        "Other"
+      ],
+      "topic": [
+        "Intelligent textbook generation workflow",
+        "Learning graph",
+        "Concept dependencies",
+        "Book-level versus chapter-level content"
+      ],
+      "learningObjectives": [
+        "Trace the primary path in row one from the Course Description to the Learning Graph, naming the five boxes in order and the side branch through Concept Taxonomy",
+        "Explain why the Learning Graph is the central step: it is the only box with arrows into all five book-level outputs, and ten components lie downstream of it",
+        "Distinguish book-level outputs (row two, light blue) from chapter-level content (row three, light green) and name the box the chapter-level items depend on",
+        "Predict how many components are downstream of a chosen box, then verify the count with the hover highlight",
+        "Identify the boxes that have nothing downstream and say what they have in common"
+      ],
+      "bloomsTaxonomy": [
+        "Understand",
+        "Apply",
+        "Analyze"
+      ],
+      "prerequisites": [
+        "Reading a directed diagram",
+        "A general idea of a course description and learning objectives"
+      ],
+      "duration": {
+        "typical": 12,
+        "range": {
+          "min": 8,
+          "max": 20
+        }
+      },
+      "difficulty": "Beginner",
+      "scaffolding": {
+        "type": [
+          "guided-discovery",
+          "feedback"
+        ],
+        "adaptability": "fixed",
+        "removal": "user-controlled"
+      },
+      "misconceptions": [
+        {
+          "misconception": "The workflow is one straight line from the course description to the finished book",
+          "correction": "Only row one is a chain, and it branches at Concept Enumeration; the Learning Graph then fans out to five book-level outputs",
+          "evidence": "Hover over Concept Enumeration: 13 boxes are highlighted as downstream"
+        },
+        {
+          "misconception": "Every output is generated directly from the Learning Graph",
+          "correction": "The chapter-level items depend on Chapters & Sections, not directly on the Learning Graph",
+          "evidence": "The arrows into row three start at Chapters & Sections, and hovering Glossary of Terms highlights none of the row-three boxes"
+        }
+      ]
+    },
+    "technical": {
+      "framework": "p5.js",
+      "version": "2.0.0",
+      "canvasDimensions": {
+        "width": 800,
+        "height": 650,
+        "responsive": true
+      },
+      "regions": {
+        "drawHeight": 650,
+        "controlHeight": 0
+      },
+      "dependencies": [
+        "p5.js 2.3.2"
+      ],
+      "browserCompatibility": [
+        "Chrome 90+",
+        "Firefox 88+",
+        "Safari 14+",
+        "Edge 90+"
+      ],
+      "performance": {
+        "memoryUsage": "low",
+        "loadTime": 500
+      },
+      "deviceRequirements": {
+        "minScreenWidth": 320,
+        "touchSupport": true,
+        "keyboardRequired": false,
+        "mouseRequired": false,
+        "networkRequired": false
+      },
+      "accessibility": {
+        "screenReader": true,
+        "keyboardNavigation": false,
+        "colorContrast": true,
+        "altText": true,
+        "screenReaderScript": "Workflow diagram for generating an intelligent textbook. A Course Description leads through the 2001 Bloom Taxonomy, Concept Enumeration and Concept Dependencies to the Learning Graph, with Concept Taxonomy as a side branch. The Learning Graph feeds five book-level outputs; Chapters and Sections feeds five chapter-level items."
+      }
+    },
+    "userInterface": {
+      "layoutType": "responsive-width",
+      "layoutPattern": "drawing-region-only",
+      "colorScheme": {
+        "drawingArea": "aliceblue",
+        "controlArea": "none",
+        "borders": "silver",
+        "accent": "blue",
+        "text": "black"
+      },
+      "responsiveBreakpoints": [
+        {
+          "width": 600,
+          "description": "Below about 600 px the box labels shrink from 16 px toward 12 px and the first row uses taller boxes"
+        },
+        {
+          "width": 500,
+          "description": "Below about 500 px long words in the box labels are hyphenated"
+        },
+        {
+          "width": 375,
+          "description": "Phone width: 12 px box labels and a two-line footer in the description panel"
+        }
+      ],
+      "controls": [],
+      "visualElements": [
+        {
+          "type": "diagram",
+          "description": "Sixteen boxes in three rows joined by sixteen arrows: the path to the Learning Graph, five book-level outputs and five chapter-level items",
+          "interactive": true,
+          "updateTriggers": [
+            "hover",
+            "click",
+            "tap"
+          ]
+        },
+        {
+          "type": "text-display",
+          "description": "Panel with the hovered component's name, level, description and count of downstream components",
+          "interactive": false,
+          "updateTriggers": [
+            "hover"
+          ]
+        },
+        {
+          "type": "shape",
+          "description": "Legend of the stage, book-level and chapter-level colors",
+          "interactive": false,
+          "updateTriggers": []
+        }
+      ]
+    },
+    "simulation": {
+      "model": {
+        "type": "algorithmic",
+        "description": "A directed graph of 16 components. Hovering a component highlights every component reachable from it by following arrows (its downstream set) and reports the size of that set",
+        "algorithms": [
+          "Depth-first reachability over the arrow list"
+        ]
+      }
+    },
+    "usage": {
+      "recommendedUsage": [
+        "demonstration",
+        "exploration",
+        "individual-study"
+      ],
+      "instructionalStrategies": [
+        "Predict-then-verify with the downstream count",
+        "Follow the arrows from the Course Description to the outputs"
+      ],
+      "extensions": [
+        "Open each box's documentation page and compare its inputs with the arrows into that box"
+      ]
+    }
+  },
+  "canvasHeight": 650
 }

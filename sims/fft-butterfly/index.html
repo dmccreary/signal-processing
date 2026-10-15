@@ -6,7 +6,7 @@
       <meta charset="utf-8">
       <meta name="viewport" content="width=device-width,initial-scale=1">
       
-        <meta name="description" content="Visualization of the FFT butterfly algorithm showing how the Fast Fourier Transform breaks down signal computation.">
+        <meta name="description" content="Step through the input reordering of a radix-2 FFT, splitting every group into even and odd samples until they sit in bit-reversed order.">
       
       
         <meta name="author" content="Dan McCreary">
@@ -54,6 +54,8 @@
     
       <link rel="stylesheet" href="../../css/extra.css">
     
+      <link rel="stylesheet" href="../../css/mascot.css">
+    
     <script>__md_scope=new URL("../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
     
       
@@ -65,7 +67,7 @@
       
         <meta  property="og:title"  content="FFT Butterfly - Signal Processing with AI" >
       
-        <meta  property="og:description"  content="Visualization of the FFT butterfly algorithm showing how the Fast Fourier Transform breaks down signal computation." >
+        <meta  property="og:description"  content="Step through the input reordering of a radix-2 FFT, splitting every group into even and odd samples until they sit in bit-reversed order." >
       
         <meta property="og:image" content="https://dmccreary.github.io/signal-processing/sims/fft-butterfly/fft-butterfly.png">
       
@@ -81,7 +83,7 @@
       
         <meta  name="twitter:title"  content="FFT Butterfly - Signal Processing with AI" >
       
-        <meta  name="twitter:description"  content="Visualization of the FFT butterfly algorithm showing how the Fast Fourier Transform breaks down signal computation." >
+        <meta  name="twitter:description"  content="Step through the input reordering of a radix-2 FFT, splitting every group into even and odd samples until they sit in bit-reversed order." >
       
         <meta name="twitter:image" content="https://dmccreary.github.io/signal-processing/sims/fft-butterfly/fft-butterfly.png">
       
@@ -122,7 +124,7 @@
   <nav class="md-header__inner md-grid" aria-label="Header">
     <a href="../.." title="Signal Processing with AI" class="md-header__button md-logo" aria-label="Signal Processing with AI" data-md-component="logo">
       
-  <img src="../../img/logo-192.png" alt="logo">
+  <img src="../../img/mascot/neutral.png" alt="logo">
 
     </a>
     <label class="md-header__button md-icon" for="__drawer">
@@ -228,7 +230,7 @@
   <label class="md-nav__title" for="__drawer">
     <a href="../.." title="Signal Processing with AI" class="md-nav__button md-logo" aria-label="Signal Processing with AI" data-md-component="logo">
       
-  <img src="../../img/logo-192.png" alt="logo">
+  <img src="../../img/mascot/neutral.png" alt="logo">
 
     </a>
     Signal Processing with AI
@@ -275,31 +277,11 @@
   
   
     <li class="md-nav__item">
-      <a href="../../chapters/" class="md-nav__link">
-        
-  
-  <span class="md-ellipsis">
-    Table of Contents
-  </span>
-  
-
-      </a>
-    </li>
-  
-
-    
-      
-      
-  
-  
-  
-  
-    <li class="md-nav__item">
       <a href="../../about/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
-    About This Website
+    About
   </span>
   
 
@@ -542,6 +524,174 @@
           
         
       
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
     
     
     
@@ -551,7 +701,7 @@
       
         
         
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_6" checked>
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_5" checked>
         
           
           
@@ -567,19 +717,103 @@
             </a>
             
               
-              <label class="md-nav__link " for="__nav_6" id="__nav_6_label" tabindex="0">
+              <label class="md-nav__link " for="__nav_5" id="__nav_5_label" tabindex="0">
                 <span class="md-nav__icon md-icon"></span>
               </label>
             
           </div>
         
-        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_6_label" aria-expanded="true">
-          <label class="md-nav__title" for="__nav_6">
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_5_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_5">
             <span class="md-nav__icon md-icon"></span>
             MicroSims
           </label>
           <ul class="md-nav__list" data-md-scrollfix>
             
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../image-convolution/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    2-D Convolution and Image Filtering
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../conv-layer-as-filter/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    A Convolutional Layer Is a Learned FIR Filter
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../adaptive-algorithm-comparison-tool/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Adaptive Algorithm Comparison Tool
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../adaptive-noise-cancellation/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Adaptive Noise and Echo Cancellation
+  </span>
+  
+
+      </a>
+    </li>
+  
+
               
             
               
@@ -631,11 +865,11 @@
   
   
     <li class="md-nav__item">
-      <a href="../base-and-treble/" class="md-nav__link">
+      <a href="../fft-basic/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
-    Base and Treble
+    Basic FFT
   </span>
   
 
@@ -652,11 +886,32 @@
   
   
     <li class="md-nav__item">
-      <a href="../fft-basic/" class="md-nav__link">
+      <a href="../base-and-treble/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
-    Basic FFT
+    Bass and Treble
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../bilinear-transform/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Bilinear Transform and Frequency Warping
   </span>
   
 
@@ -778,6 +1033,27 @@
   
   
     <li class="md-nav__item">
+      <a href="../compressed-sensing/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Compressed Sensing
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
       <a href="../convolution/" class="md-nav__link">
         
   
@@ -799,11 +1075,137 @@
   
   
     <li class="md-nav__item">
+      <a href="../convolution-theorem/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Convolution Theorem and Circular Convolution
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../convolution-visualizer/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Convolution Visualizer
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../correlation-and-matched-filtering/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Correlation and Matched Filtering
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../dct-basis-explorer/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    DCT Basis Explorer
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../dft-explorer/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    DFT Explorer
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
       <a href="../euler-formula-explorer/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
     Euler's Formula Explorer
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../even-and-odd-signal-decomposition/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Even and Odd Signal Decomposition
   </span>
   
 
@@ -908,9 +1310,96 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#about-this-microsim" class="md-nav__link">
+  <a href="#description" class="md-nav__link">
     <span class="md-ellipsis">
-      About this MicroSim
+      Description
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#lesson-plan" class="md-nav__link">
+    <span class="md-ellipsis">
+      Lesson Plan
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Lesson Plan">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#learning-objectives" class="md-nav__link">
+    <span class="md-ellipsis">
+      Learning Objectives
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#target-audience" class="md-nav__link">
+    <span class="md-ellipsis">
+      Target Audience
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#prerequisites" class="md-nav__link">
+    <span class="md-ellipsis">
+      Prerequisites
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#activities" class="md-nav__link">
+    <span class="md-ellipsis">
+      Activities
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#assessment" class="md-nav__link">
+    <span class="md-ellipsis">
+      Assessment
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#common-misconceptions" class="md-nav__link">
+    <span class="md-ellipsis">
+      Common Misconceptions
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#references" class="md-nav__link">
+    <span class="md-ellipsis">
+      References
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#development-notes" class="md-nav__link">
+    <span class="md-ellipsis">
+      Development Notes
     </span>
   </a>
   
@@ -1016,6 +1505,27 @@
   
   
     <li class="md-nav__item">
+      <a href="../fft-spectrum-analyzer/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    FFT Spectrum Analyzer
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
       <a href="../fft-waveform-types/" class="md-nav__link">
         
   
@@ -1037,11 +1547,263 @@
   
   
     <li class="md-nav__item">
+      <a href="../filter-bank-explorer/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Filter Bank and Polyphase Explorer
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../fir-filter-design-comparison-tool/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    FIR Filter Design Comparison Tool
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../fir-vs-iir/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    FIR vs IIR Filters
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../fourier-series-explorer/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Fourier Series Explorer
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../fourier-transform-pairs/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Fourier Transform Pairs
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
       <a href="../frequency-detection/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
     Frequency Detection
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../huffman-coding/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Huffman Coding
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../iir-prototype-comparison/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    IIR Prototype Comparison
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../impulse-and-frequency-response-analyzer/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Impulse and Frequency Response Analyzer
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../interactive-filter-design-and-analysis-tool/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Interactive Filter Design and Analysis Tool
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../interactive-pole-zero-analysis-tool/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Interactive Pole-Zero Analysis Tool
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../interactive-spectrogram-parameter-explorer/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Interactive Spectrogram Parameter Explorer
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../interactive-stft-spectrogram-analyzer/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Interactive STFT Spectrogram Analyzer
   </span>
   
 
@@ -1121,11 +1883,158 @@
   
   
     <li class="md-nav__item">
+      <a href="../multirate-sample-rate-converter/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Multirate Sample Rate Converter
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../noise-analysis-and-reduction-tool/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Noise Analysis and Reduction Tool
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
       <a href="../nyquist-shannon-sampling/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
     Nyquist-Shannon Sampling
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../phase-spectrum/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Phase Spectrum - What the Magnitude Hides
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../phasor-addition/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Phasor Addition
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../psd-wiener-khinchin/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Power Spectral Density and the Wiener-Khinchin Theorem
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../distribution-explorer/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Probability Distribution Explorer
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../quantization-and-noise-shaping/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Quantization and Noise Shaping
   </span>
   
 
@@ -1163,11 +2072,116 @@
   
   
     <li class="md-nav__item">
+      <a href="../real-time-processing-simulator/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Real-Time Processing Simulator
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
       <a href="../reverb/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
     Reverb Effect
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../s-plane-explorer/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    s-Plane Explorer
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../sampling-theorem-explorer/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Sampling Theorem Explorer
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../signal-operations/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Signal Operations - Shift, Scale and Reverse
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../signal-type-explorer/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Signal Type Explorer
   </span>
   
 
@@ -1205,11 +2219,95 @@
   
   
     <li class="md-nav__item">
+      <a href="../spectral-leakage-and-windowing/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Spectral Leakage and Windowing
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
       <a href="../synth-timeline/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
     Synth Timeline
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../system-interconnections/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    System Interconnections - Series, Parallel, Feedback
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../system-property-explorer/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    System Property Explorer
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../time-frequency-analysis-explorer/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Time-Frequency Analysis Explorer
   </span>
   
 
@@ -1252,6 +2350,27 @@
   
   <span class="md-ellipsis">
     Tone Generator
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../wavelet-explorer/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Wavelet Explorer - CWT Scalogram and Haar DWT
   </span>
   
 
@@ -1428,6 +2547,12 @@
       
         
           
+        
+      
+        
+      
+        
+      
         
       
         
@@ -1642,6 +2767,26 @@
   
   
     <li class="md-nav__item">
+      <a href="../../instructors-guide/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Instructor's Guide
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
       <a href="../../license/" class="md-nav__link">
         
   
@@ -1687,26 +2832,6 @@
   
   <span class="md-ellipsis">
     Contact
-  </span>
-  
-
-      </a>
-    </li>
-  
-
-    
-      
-      
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../../ieee-paper-changes/" class="md-nav__link">
-        
-  
-  <span class="md-ellipsis">
-    Paper Changes
   </span>
   
 
@@ -1837,9 +2962,96 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#about-this-microsim" class="md-nav__link">
+  <a href="#description" class="md-nav__link">
     <span class="md-ellipsis">
-      About this MicroSim
+      Description
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#lesson-plan" class="md-nav__link">
+    <span class="md-ellipsis">
+      Lesson Plan
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Lesson Plan">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#learning-objectives" class="md-nav__link">
+    <span class="md-ellipsis">
+      Learning Objectives
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#target-audience" class="md-nav__link">
+    <span class="md-ellipsis">
+      Target Audience
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#prerequisites" class="md-nav__link">
+    <span class="md-ellipsis">
+      Prerequisites
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#activities" class="md-nav__link">
+    <span class="md-ellipsis">
+      Activities
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#assessment" class="md-nav__link">
+    <span class="md-ellipsis">
+      Assessment
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#common-misconceptions" class="md-nav__link">
+    <span class="md-ellipsis">
+      Common Misconceptions
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#references" class="md-nav__link">
+    <span class="md-ellipsis">
+      References
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#development-notes" class="md-nav__link">
+    <span class="md-ellipsis">
+      Development Notes
     </span>
   </a>
   
@@ -1860,7 +3072,7 @@
                   
 
   
-    <a href="https://github.com/dmccreary/signal-processing/blob/master/docs/sims/fft-butterfly/index.md" title="Edit this page" class="md-content__button md-icon">
+    <a href="https://github.com/dmccreary/signal-processing/blob/main/docs/sims/fft-butterfly/index.md" title="Edit this page" class="md-content__button md-icon">
       
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M10 20H6V4h7v5h5v3.1l2-2V8l-6-6H6c-1.1 0-2 .9-2 2v16c0 1.1.9 2 2 2h4zm10.2-7c.1 0 .3.1.4.2l1.3 1.3c.2.2.2.6 0 .8l-1 1-2.1-2.1 1-1c.1-.1.2-.2.4-.2m0 3.9L14.1 23H12v-2.1l6.1-6.1z"/></svg>
     </a>
@@ -1869,14 +3081,100 @@
 
 
 <h1 id="fft-butterfly">FFT Butterfly</h1>
-<iframe src="main.html" height="550" scrolling="no" style="overflow: hidden;"></iframe>
+<iframe src="main.html" width="100%" height="582px" scrolling="no"></iframe>
 
-<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="p">&lt;</span><span class="nt">iframe</span> <span class="na">src</span><span class="o">=</span><span class="s">&quot;https://dmccreary.github.io/signal-processing/sims/fft-butterfly/main.html&quot;</span> <span class="na">height</span><span class="o">=</span><span class="s">&quot;550&quot;</span> <span class="na">scrolling</span><span class="o">=</span><span class="s">&quot;no&quot;</span> <span class="na">style</span><span class="o">=</span><span class="s">&quot;overflow: hidden;&quot;</span><span class="p">&gt;&lt;/</span><span class="nt">iframe</span><span class="p">&gt;</span>
+<p>Copy this iframe to your website:</p>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="p">&lt;</span><span class="nt">iframe</span> <span class="na">src</span><span class="o">=</span><span class="s">"https://dmccreary.github.io/signal-processing/sims/fft-butterfly/main.html"</span> <span class="na">width</span><span class="o">=</span><span class="s">"100%"</span> <span class="na">height</span><span class="o">=</span><span class="s">"582px"</span> <span class="na">scrolling</span><span class="o">=</span><span class="s">"no"</span><span class="p">&gt;&lt;/</span><span class="nt">iframe</span><span class="p">&gt;</span>
 </code></pre></div></td></tr></table></div>
-<p><a class="md-button md-button--primary" href="main.html">Run the FFT Butterfly MicroSim</a>
-<a href="https://editor.p5js.org/dmccreary/sketches/K-BDjmSQF">Edit the FFT Butterfly MicroSim</a></p>
-<h2 id="about-this-microsim">About this MicroSim</h2>
-<p>This MicroSim teaches us </p>
+<p><a class="md-button md-button--primary" href="main.html">Run MicroSim in Fullscreen</a></p>
+<p><a href="https://editor.p5js.org/dmccreary/sketches/K-BDjmSQF">Edit in the p5.js Editor</a></p>
+<h2 id="description">Description</h2>
+<p>This MicroSim traces the first job of a radix-2 decimation-in-time FFT: putting the <span class="arithmatex">\(N\)</span> input samples into
+bit-reversed order before the butterfly stages combine them. Each circle is one sample <span class="arithmatex">\(x[n]\)</span> labelled with its
+index <span class="arithmatex">\(n\)</span> (at <span class="arithmatex">\(N = 32\)</span>, read the binary labels). The orange column
+is the natural order <span class="arithmatex">\(x[0], x[1], \dots, x[N-1]\)</span>.</p>
+<ul>
+<li><strong>Start / Next Step</strong> adds one column. Each step splits every group into its even-indexed samples (top half of
+    the group) and its odd-indexed samples (bottom half). Navy lines show where each sample moves, and gray bars
+    mark the boundaries of the new groups.</li>
+<li><strong>Reset</strong> returns to the natural order.</li>
+<li><strong>FFT Size</strong> (4, 8, 16 or 32) chooses <span class="arithmatex">\(N\)</span> and resets the diagram.</li>
+</ul>
+<p>The diagram has <span class="arithmatex">\(\log_2 N\)</span> columns: the natural order plus <span class="arithmatex">\(\log_2 N - 1\)</span> splits. The last split would only turn
+pairs into single samples, which does not change the order. The green column therefore holds <span class="arithmatex">\(N/2\)</span> pairs of samples
+that are <span class="arithmatex">\(N/2\)</span> apart, such as <span class="arithmatex">\(x[0], x[4]\)</span> for <span class="arithmatex">\(N = 8\)</span>; each pair feeds one butterfly of the first stage. The binary
+labels show why the result is called bit-reversed: read across a row and the bits on the right are the bits on the
+left in reverse order. For <span class="arithmatex">\(N = 8\)</span>, row 1 (<code>001</code>) receives <span class="arithmatex">\(x[4]\)</span> (<code>100</code>).</p>
+<p>Each split rests on the decimation-in-time identity, where <span class="arithmatex">\(E[k]\)</span> and <span class="arithmatex">\(O[k]\)</span> are the <span class="arithmatex">\(N/2\)</span>-point DFTs of the
+even and odd samples:</p>
+<div class="arithmatex">\[X[k] = E[k] + W_N^k\,O[k], \qquad X[k + N/2] = E[k] - W_N^k\,O[k], \qquad W_N = e^{-j2\pi/N}\]</div>
+<p>Repeating the split <span class="arithmatex">\(\log_2 N\)</span> times costs <span class="arithmatex">\((N/2)\log_2 N\)</span> complex multiplications instead of <span class="arithmatex">\(N^2\)</span>: 12 instead of
+64 for <span class="arithmatex">\(N = 8\)</span>, and 80 instead of 1024 for <span class="arithmatex">\(N = 32\)</span>.</p>
+<p>This MicroSim supports <a href="../../chapters/06-fourier-analysis-fundamentals/#radix-2-fft">Chapter 6: Fourier Analysis Fundamentals</a>.</p>
+<h2 id="lesson-plan">Lesson Plan</h2>
+<h3 id="learning-objectives">Learning Objectives</h3>
+<p>After using this MicroSim, students will be able to:</p>
+<ol>
+<li><strong>Describe</strong> one decimation-in-time step as splitting every group of samples into its even-indexed and odd-indexed halves</li>
+<li><strong>Calculate</strong> the number of columns (<span class="arithmatex">\(\log_2 N\)</span>), the number of splits (<span class="arithmatex">\(\log_2 N - 1\)</span>) and the group size after split <span class="arithmatex">\(s\)</span> (<span class="arithmatex">\(N/2^s\)</span>) for a given FFT size</li>
+<li><strong>Predict</strong> the row that sample <span class="arithmatex">\(x[n]\)</span> occupies in the final column by reversing the bits of <span class="arithmatex">\(n\)</span>, and verify the prediction in the diagram</li>
+<li><strong>Explain</strong> why the final pairs <span class="arithmatex">\(x[m]\)</span> and <span class="arithmatex">\(x[m + N/2]\)</span> are the inputs of the first butterfly stage</li>
+<li><strong>Compare</strong> the <span class="arithmatex">\((N/2)\log_2 N\)</span> complex multiplications of the radix-2 FFT with the <span class="arithmatex">\(N^2\)</span> of the direct DFT</li>
+</ol>
+<h3 id="target-audience">Target Audience</h3>
+<p>College undergraduates in an introductory digital signal processing course, during the lesson on the FFT.
+Plan 15-20 minutes.</p>
+<h3 id="prerequisites">Prerequisites</h3>
+<ul>
+<li>The definition of the DFT and its <span class="arithmatex">\(N^2\)</span> cost</li>
+<li>Binary representation of integers</li>
+<li>Even and odd indices of a sequence</li>
+</ul>
+<h3 id="activities">Activities</h3>
+<p><strong>Activity 1: One split at a time (5 min).</strong> Keep FFT Size at 8 and press <strong>Start</strong>. The middle column holds
+0, 2, 4, 6 above the gray bar and 1, 3, 5, 7 below it: the even and the odd samples. Press <strong>Next Step</strong>. Each group
+of 4 splits again and the green column reads 0, 4, 2, 6, 1, 5, 3, 7. Ask: which samples feed each 4-point DFT, and
+which feed each 2-point DFT?</p>
+<p><strong>Activity 2: Read the bits (5 min).</strong> At the last step for <span class="arithmatex">\(N = 8\)</span>, compare the binary labels across each row.
+Row 3 shows <code>011</code> on the left and <code>110</code> on the right, so it receives <span class="arithmatex">\(x[6]\)</span>. Find the samples that end in the row
+where they started: <span class="arithmatex">\(x[0]\)</span>, <span class="arithmatex">\(x[2]\)</span>, <span class="arithmatex">\(x[5]\)</span> and <span class="arithmatex">\(x[7]\)</span>, whose 3-bit patterns (<code>000</code>, <code>010</code>, <code>101</code>, <code>111</code>) read the same
+in both directions.</p>
+<p><strong>Activity 3: Count the steps (5 min).</strong> Select each FFT Size and press Next Step until nothing changes. The title
+stops at Step 2 of 2 for <span class="arithmatex">\(N = 4\)</span>, Step 3 of 3 for <span class="arithmatex">\(N = 8\)</span>, Step 4 of 4 for <span class="arithmatex">\(N = 16\)</span> and Step 5 of 5 for <span class="arithmatex">\(N = 32\)</span>.
+Record <span class="arithmatex">\(N\)</span>, the number of splits and the group size after each split. Each doubling of <span class="arithmatex">\(N\)</span> adds one split, and one
+butterfly stage.</p>
+<p><strong>Activity 4: Predict before you click (5 min).</strong> Select <span class="arithmatex">\(N = 16\)</span>. Before stepping, reverse four bits to predict
+the final rows: <span class="arithmatex">\(x[3]\)</span> (<code>0011</code>) goes to row 12 (<code>1100</code>), <span class="arithmatex">\(x[5]\)</span> (<code>0101</code>) to row 10 (<code>1010</code>) and <span class="arithmatex">\(x[11]\)</span> (<code>1011</code>)
+to row 13 (<code>1101</code>). Step to the end and check the green column. Which four samples end in their own row?
+(<span class="arithmatex">\(x[0]\)</span>, <span class="arithmatex">\(x[6]\)</span>, <span class="arithmatex">\(x[9]\)</span> and <span class="arithmatex">\(x[15]\)</span>.)</p>
+<h3 id="assessment">Assessment</h3>
+<ol>
+<li>For <span class="arithmatex">\(N = 32\)</span>, how many splits does the diagram show, and what are the groups after the second split? <em>(Answer: <span class="arithmatex">\(\log_2 32 - 1 = 4\)</span> splits; after the second split there are 4 groups of 8 samples.)</em></li>
+<li>For <span class="arithmatex">\(N = 16\)</span>, which sample sits in row 2 of the final column? <em>(Answer: row 2 is <code>0010</code>; reversed it is <code>0100</code> = 4, so <span class="arithmatex">\(x[4]\)</span>. The green column reads 0, 8, 4, 12, ...)</em></li>
+<li>After the first split for <span class="arithmatex">\(N = 8\)</span>, the top group is <span class="arithmatex">\(x[0], x[2], x[4], x[6]\)</span>. What is computed from these samples, and how is it combined with the bottom group? <em>(Answer: the 4-point DFT <span class="arithmatex">\(E[k]\)</span> of the even samples. It is combined with the odd-sample DFT <span class="arithmatex">\(O[k]\)</span> as <span class="arithmatex">\(X[k] = E[k] + W_8^k O[k]\)</span> and <span class="arithmatex">\(X[k+4] = E[k] - W_8^k O[k]\)</span>.)</em></li>
+<li>How many complex multiplications does a radix-2 FFT need for <span class="arithmatex">\(N = 32\)</span>, compared with the direct DFT? <em>(Answer: <span class="arithmatex">\((32/2) \times 5 = 80\)</span> versus <span class="arithmatex">\(32^2 = 1024\)</span>, about 13 times fewer.)</em></li>
+<li>Is the green column the FFT output <span class="arithmatex">\(X[k]\)</span>? <em>(Answer: no. It holds the same input samples in a new order; no arithmetic has been done yet. The butterfly stages that follow compute <span class="arithmatex">\(X[k]\)</span>, which comes out in natural order.)</em></li>
+</ol>
+<h3 id="common-misconceptions">Common Misconceptions</h3>
+<p><strong>"Bit-reversed order means the list is reversed."</strong> Reversing the list would put <span class="arithmatex">\(x[7]\)</span> first. In the diagram
+<span class="arithmatex">\(x[0]\)</span> and <span class="arithmatex">\(x[7]\)</span> stay at the top and bottom while <span class="arithmatex">\(x[4]\)</span> moves up to row 1: the bits of each index are reversed,
+not the list.</p>
+<p><strong>"The right-hand column is the FFT result."</strong> The green circles carry the same sample labels as the orange ones.
+Reordering only moves data; the multiplications and additions happen in the butterfly stages that follow.</p>
+<h2 id="references">References</h2>
+<ol>
+<li><a href="https://en.wikipedia.org/wiki/Fast_Fourier_transform">Fast Fourier transform</a> - Wikipedia - overview of FFT algorithms and their <span class="arithmatex">\(O(N \log N)\)</span> cost</li>
+<li><a href="https://en.wikipedia.org/wiki/Cooley%E2%80%93Tukey_FFT_algorithm">Cooley-Tukey FFT algorithm</a> - Wikipedia - the radix-2 decimation-in-time recursion into even and odd samples</li>
+<li><a href="https://en.wikipedia.org/wiki/Bit-reversal_permutation">Bit-reversal permutation</a> - Wikipedia - the input order shown in the green column and how it is computed</li>
+<li><a href="https://en.wikipedia.org/wiki/Butterfly_diagram">Butterfly diagram</a> - Wikipedia - the two-input butterfly that combines each pair after the reordering</li>
+<li><a href="https://www.dspguide.com/">The Scientist and Engineer's Guide to Digital Signal Processing</a> - Steven W. Smith - free online textbook; Chapter 12 explains the FFT's interlaced decomposition and bit-reversal sorting</li>
+</ol>
+<h2 id="development-notes">Development Notes</h2>
+<p>Version 2.0 (October 2026) ported the sketch to p5.js 2.3.2 and removed the unused p5.sound library. The
+intermediate columns now follow the textbook decimation-in-time split (whole sequence first, then each half);
+the earlier version built the same bit-reversed order from the smallest groups upward. The binary labels, the
+group bars and the caption under the diagram were added, and the column headings were renamed from
+"Inputs"/"Outputs" to "Natural order"/"Bit-reversed order", because the right-hand column is not the FFT output.</p>
 
 
 

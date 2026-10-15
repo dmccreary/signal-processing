@@ -1,80 +1,134 @@
 {
-  "title": "Bass and Treble Amplifier Controls",
-  "description": "Interactive simulation of classic amplifier frequency response with adjustable bass and treble controls.",
-  "creator": "Dan McCreary",
-  "date": "2024-01-01",
-  "subject": [
-    "Signal Processing",
-    "Audio",
-    "Equalization",
-    "Frequency Response"
-  ],
-  "type": "Interactive Simulation",
-  "format": "text/html",
-  "language": "en",
-  "rights": "CC BY-NC-SA 4.0",
-  "identifier": "https://dmccreary.github.io/signal-processing/sims/base-and-treble/",
-  "publisher": "Dan McCreary",
-  "educationalLevel": "Undergraduate",
-  "learningResourceType": "simulation",
-  "audience": "Students, Educators",
-  "version": "1.0.0",
-  "bloomLevel": [
-    "Understand",
-    "Apply"
-  ],
-  "concepts": [
-    "Frequency response",
-    "Bass boost",
-    "Treble boost",
-    "EQ",
-    "Amplifier"
-  ],
-  "prerequisites": [
-    "Basic understanding of frequency"
-  ],
-  "library": "p5.js",
-  "visualizationType": [
-    "graph",
-    "interactive-demo",
-    "map",
-    "network",
-    "simulation"
-  ],
-  "learningObjectives": [
-    "Understand the key concepts of bass and treble amplifier controls",
-    "Explore bass and treble amplifier controls through interactive visualization",
-    "Apply knowledge of bass and treble amplifier controls to solve problems",
-    "Experiment with parameters to observe their effects on bass and treble amplifier controls"
-  ],
-  "bloomsTaxonomy": [
-    "Remember",
-    "Understand",
-    "Apply",
-    "Create"
-  ],
-  "pedagogical": {
-    "pattern": "exploration",
-    "bloomAlignment": [
-      "understand",
-      "apply",
-      "evaluate"
-    ],
-    "bloomVerbs": [
-      "describe",
-      "explain",
-      "interpret",
-      "apply",
-      "calculate"
-    ],
-    "pacing": "self-paced",
-    "supportsPrediction": false,
-    "dataVisibility": "high",
-    "feedbackType": [
-      "immediate",
-      "corrective",
-      "explanatory"
-    ],
-    "interactionStyle": "manipulate"
-  }
+  "microsim": {
+    "dublinCore": {
+      "title": "Bass and Treble Amplifier Controls",
+      "creator": ["Dan McCreary"],
+      "subject": ["Signal Processing", "Audio", "Equalization", "Frequency Response", "Decibels"],
+      "description": "Frequency response of an amplifier's bass and treble controls, drawn as gain in dB against log frequency, with two sliders and a mouse probe that reads the gain.",
+      "publisher": "Dan McCreary",
+      "contributor": ["Claude (Anthropic)"],
+      "date": "2024-10-19",
+      "type": "Interactive Simulation",
+      "format": "text/html",
+      "identifier": "https://dmccreary.github.io/signal-processing/sims/base-and-treble/",
+      "language": "en",
+      "relation": ["Chapter 15: Signal Processing Applications and AI Integration", "Chapter 9: Filter Design Fundamentals"],
+      "rights": "CC BY-NC-SA 4.0"
+    },
+    "search": {
+      "tags": ["frequency response", "bass", "treble", "equalization", "shelving filter", "decibel", "logarithmic axis", "tone control"],
+      "searchKeywords": ["bass and treble", "tone control", "audio equalizer", "shelf filter", "gain in dB", "log frequency axis"],
+      "visualizationType": ["graph", "interactive-demo", "simulation"],
+      "interactionLevel": "moderate",
+      "complexity": 3,
+      "relatedConcepts": ["Frequency Response", "Decibel", "Equalization", "Shelving Filter", "Logarithmic Frequency Scale", "Octave"],
+      "applicationDomains": ["education", "exploration", "demonstration"],
+      "showcase": false
+    },
+    "educational": {
+      "gradeLevel": ["Undergraduate"],
+      "subjectArea": ["Engineering", "Physics"],
+      "topic": ["Frequency response", "Decibels", "Shelving equalization", "Logarithmic frequency axis"],
+      "learningObjectives": [
+        "Predict the boost or cut in dB at the low and high ends of the response from the Bass and Treble slider positions, using 12(slider-50)/50 dB",
+        "Interpret a logarithmic frequency axis by counting octaves between two frequencies on the plot",
+        "Convert a gain in dB read from the plot into an amplitude ratio, for example +12 dB to about 4 times and -12 dB to about 0.25 times",
+        "Explain why the gain at a shelf corner is half of the full shelf gain",
+        "Analyze how the two shelves overlap near 1 kHz, so that the bass control also changes the middle of the spectrum"
+      ],
+      "bloomsTaxonomy": ["Understand", "Apply", "Analyze"],
+      "prerequisites": ["Frequency in hertz and the idea of a spectrum", "Logarithms and powers of ten", "A first look at the decibel scale"],
+      "duration": {"typical": 15, "range": {"min": 10, "max": 25}},
+      "difficulty": "Beginner",
+      "scaffolding": {
+        "type": ["guided-discovery", "feedback"],
+        "adaptability": "fixed",
+        "removal": "user-controlled"
+      },
+      "misconceptions": [
+        {
+          "misconception": "+6 dB makes a sound twice as loud",
+          "correction": "+6 dB doubles the amplitude (and quadruples the power); about +10 dB is needed for a sound to seem twice as loud",
+          "evidence": "Bass = 75 reads +6 dB (amplitude times 2) and Bass = 100 reads +12 dB (amplitude times 4): each extra 6 dB doubles the amplitude again"
+        },
+        {
+          "misconception": "The bass control only changes the bass",
+          "correction": "The shelves are smooth and overlap, so each control also changes the middle of the spectrum slightly",
+          "evidence": "With both sliders at 100 the probe at 1 kHz reads +1.4 dB although 1 kHz is far from both corners"
+        }
+      ]
+    },
+    "technical": {
+      "framework": "p5.js",
+      "version": "2.0.0",
+      "canvasDimensions": {"width": 450, "height": 440, "responsive": true},
+      "regions": {"drawHeight": 360, "controlHeight": 80},
+      "dependencies": ["p5.js 2.3.2"],
+      "browserCompatibility": ["Chrome 90+", "Firefox 88+", "Safari 14+", "Edge 90+"],
+      "performance": {"memoryUsage": "low", "loadTime": 500},
+      "deviceRequirements": {
+        "minScreenWidth": 320,
+        "touchSupport": true,
+        "keyboardRequired": false,
+        "mouseRequired": false,
+        "networkRequired": false
+      },
+      "accessibility": {
+        "screenReader": true,
+        "keyboardNavigation": true,
+        "colorContrast": true,
+        "altText": true,
+        "screenReaderScript": "Frequency response plot of a bass and treble tone control. A blue curve shows gain in decibels from minus 15 to plus 15 against frequency from 20 hertz to 20 kilohertz on a logarithmic axis. The bass slider boosts or cuts frequencies below 500 hertz and the treble slider boosts or cuts frequencies above 2 kilohertz. Moving the mouse over the plot reads the gain at any frequency."
+      }
+    },
+    "userInterface": {
+      "layoutType": "responsive-width",
+      "layoutPattern": "drawing-region-above-controls",
+      "colorScheme": {
+        "drawingArea": "aliceblue",
+        "controlArea": "white",
+        "accent": "blue",
+        "text": "black"
+      },
+      "controls": [
+        {
+          "id": "bassSlider",
+          "type": "slider",
+          "label": "Bass",
+          "description": "Boosts or cuts frequencies below the 500 Hz corner by up to 12 dB; 50 is flat",
+          "group": "tone-controls",
+          "properties": {"min": 0, "max": 100, "default": 50, "step": 1, "showValue": true}
+        },
+        {
+          "id": "trebleSlider",
+          "type": "slider",
+          "label": "Treble",
+          "description": "Boosts or cuts frequencies above the 2 kHz corner by up to 12 dB; 50 is flat",
+          "group": "tone-controls",
+          "properties": {"min": 0, "max": 100, "default": 50, "step": 1, "showValue": true}
+        }
+      ],
+      "visualElements": [
+        {"type": "graph", "description": "Gain in dB versus frequency (20 Hz to 20 kHz, logarithmic axis) with a 0 dB reference line and dotted lines at the 500 Hz and 2 kHz corners", "interactive": true, "updateTriggers": ["bassSlider", "trebleSlider"]},
+        {"type": "shape", "description": "Gold probe marker that follows the mouse along the frequency axis and sits on the curve", "interactive": true, "updateTriggers": ["bassSlider", "trebleSlider"]},
+        {"type": "text-display", "description": "Probe read-out of frequency and gain, and the full shelf gain in dB beside each slider", "interactive": false, "updateTriggers": ["bassSlider", "trebleSlider"]}
+      ]
+    },
+    "simulation": {
+      "model": {
+        "type": "mathematical",
+        "description": "Gain in dB is the sum of a low shelf (corner 500 Hz) and a high shelf (corner 2 kHz), each scaled by up to 12 dB; magnitude only, no audio",
+        "equations": [
+          "G(f) = 12 (b - 50)/50 * 1/(1 + (f/500)^4) + 12 (t - 50)/50 * 1/(1 + (2000/f)^4)  [dB]",
+          "amplitude factor = 10^(G/20)"
+        ]
+      }
+    },
+    "usage": {
+      "recommendedUsage": ["demonstration", "exploration", "guided-practice"],
+      "instructionalStrategies": ["Predict-then-verify with the sliders and the probe", "Special-case exploration (flat, smile, tilt)"],
+      "extensions": ["Add a playable tone or noise source so the effect can be heard", "Compare with a peaking (mid-band) equalizer"]
+    }
+  },
+  "canvasHeight": 440
 }

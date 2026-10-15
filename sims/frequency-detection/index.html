@@ -6,7 +6,7 @@
       <meta charset="utf-8">
       <meta name="viewport" content="width=device-width,initial-scale=1">
       
-        <meta name="description" content="College Level Textbook on Signal Processing - License is Commons ShareAlike Attribution Noncommercial">
+        <meta name="description" content="A winding machine wraps a sine wave around a spinning circle; the center of mass of the wound curve reveals the signal frequency, as the Fourier transform does.">
       
       
         <meta name="author" content="Dan McCreary">
@@ -15,10 +15,10 @@
         <link rel="canonical" href="https://dmccreary.github.io/signal-processing/sims/frequency-detection/">
       
       
-        <link rel="prev" href="../fft-waveform-types/">
+        <link rel="prev" href="../fourier-transform-pairs/">
       
       
-        <link rel="next" href="../graph-viewer-v1/">
+        <link rel="next" href="../huffman-coding/">
       
       
       <link rel="icon" href="../../img/favicon.ico">
@@ -54,6 +54,8 @@
     
       <link rel="stylesheet" href="../../css/extra.css">
     
+      <link rel="stylesheet" href="../../css/mascot.css">
+    
     <script>__md_scope=new URL("../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
     
       
@@ -65,9 +67,9 @@
       
         <meta  property="og:title"  content="Frequency Detection - Signal Processing with AI" >
       
-        <meta  property="og:description"  content="College Level Textbook on Signal Processing - License is Commons ShareAlike Attribution Noncommercial" >
+        <meta  property="og:description"  content="A winding machine wraps a sine wave around a spinning circle; the center of mass of the wound curve reveals the signal frequency, as the Fourier transform does." >
       
-        <meta  property="og:image"  content="https://dmccreary.github.io/signal-processing/assets/images/social/sims/frequency-detection/index.png" >
+        <meta property="og:image" content="https://dmccreary.github.io/signal-processing/sims/frequency-detection/frequency-detection.png">
       
         <meta  property="og:image:type"  content="image/png" >
       
@@ -81,9 +83,9 @@
       
         <meta  name="twitter:title"  content="Frequency Detection - Signal Processing with AI" >
       
-        <meta  name="twitter:description"  content="College Level Textbook on Signal Processing - License is Commons ShareAlike Attribution Noncommercial" >
+        <meta  name="twitter:description"  content="A winding machine wraps a sine wave around a spinning circle; the center of mass of the wound curve reveals the signal frequency, as the Fourier transform does." >
       
-        <meta  name="twitter:image"  content="https://dmccreary.github.io/signal-processing/assets/images/social/sims/frequency-detection/index.png" >
+        <meta name="twitter:image" content="https://dmccreary.github.io/signal-processing/sims/frequency-detection/frequency-detection.png">
       
     
     
@@ -122,7 +124,7 @@
   <nav class="md-header__inner md-grid" aria-label="Header">
     <a href="../.." title="Signal Processing with AI" class="md-header__button md-logo" aria-label="Signal Processing with AI" data-md-component="logo">
       
-  <img src="../../img/logo-192.png" alt="logo">
+  <img src="../../img/mascot/neutral.png" alt="logo">
 
     </a>
     <label class="md-header__button md-icon" for="__drawer">
@@ -228,7 +230,7 @@
   <label class="md-nav__title" for="__drawer">
     <a href="../.." title="Signal Processing with AI" class="md-nav__button md-logo" aria-label="Signal Processing with AI" data-md-component="logo">
       
-  <img src="../../img/logo-192.png" alt="logo">
+  <img src="../../img/mascot/neutral.png" alt="logo">
 
     </a>
     Signal Processing with AI
@@ -275,31 +277,11 @@
   
   
     <li class="md-nav__item">
-      <a href="../../chapters/" class="md-nav__link">
-        
-  
-  <span class="md-ellipsis">
-    Table of Contents
-  </span>
-  
-
-      </a>
-    </li>
-  
-
-    
-      
-      
-  
-  
-  
-  
-    <li class="md-nav__item">
       <a href="../../about/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
-    About This Website
+    About
   </span>
   
 
@@ -542,6 +524,174 @@
           
         
       
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
     
     
     
@@ -551,7 +701,7 @@
       
         
         
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_6" checked>
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_5" checked>
         
           
           
@@ -567,19 +717,103 @@
             </a>
             
               
-              <label class="md-nav__link " for="__nav_6" id="__nav_6_label" tabindex="0">
+              <label class="md-nav__link " for="__nav_5" id="__nav_5_label" tabindex="0">
                 <span class="md-nav__icon md-icon"></span>
               </label>
             
           </div>
         
-        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_6_label" aria-expanded="true">
-          <label class="md-nav__title" for="__nav_6">
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_5_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_5">
             <span class="md-nav__icon md-icon"></span>
             MicroSims
           </label>
           <ul class="md-nav__list" data-md-scrollfix>
             
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../image-convolution/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    2-D Convolution and Image Filtering
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../conv-layer-as-filter/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    A Convolutional Layer Is a Learned FIR Filter
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../adaptive-algorithm-comparison-tool/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Adaptive Algorithm Comparison Tool
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../adaptive-noise-cancellation/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Adaptive Noise and Echo Cancellation
+  </span>
+  
+
+      </a>
+    </li>
+  
+
               
             
               
@@ -631,11 +865,11 @@
   
   
     <li class="md-nav__item">
-      <a href="../base-and-treble/" class="md-nav__link">
+      <a href="../fft-basic/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
-    Base and Treble
+    Basic FFT
   </span>
   
 
@@ -652,11 +886,32 @@
   
   
     <li class="md-nav__item">
-      <a href="../fft-basic/" class="md-nav__link">
+      <a href="../base-and-treble/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
-    Basic FFT
+    Bass and Treble
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../bilinear-transform/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Bilinear Transform and Frequency Warping
   </span>
   
 
@@ -778,6 +1033,27 @@
   
   
     <li class="md-nav__item">
+      <a href="../compressed-sensing/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Compressed Sensing
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
       <a href="../convolution/" class="md-nav__link">
         
   
@@ -799,11 +1075,137 @@
   
   
     <li class="md-nav__item">
+      <a href="../convolution-theorem/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Convolution Theorem and Circular Convolution
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../convolution-visualizer/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Convolution Visualizer
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../correlation-and-matched-filtering/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Correlation and Matched Filtering
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../dct-basis-explorer/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    DCT Basis Explorer
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../dft-explorer/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    DFT Explorer
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
       <a href="../euler-formula-explorer/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
     Euler's Formula Explorer
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../even-and-odd-signal-decomposition/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Even and Odd Signal Decomposition
   </span>
   
 
@@ -967,11 +1369,137 @@
   
   
     <li class="md-nav__item">
+      <a href="../fft-spectrum-analyzer/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    FFT Spectrum Analyzer
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
       <a href="../fft-waveform-types/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
     FFT Waveform Types
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../filter-bank-explorer/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Filter Bank and Polyphase Explorer
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../fir-filter-design-comparison-tool/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    FIR Filter Design Comparison Tool
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../fir-vs-iir/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    FIR vs IIR Filters
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../fourier-series-explorer/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Fourier Series Explorer
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../fourier-transform-pairs/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Fourier Transform Pairs
   </span>
   
 
@@ -997,6 +1525,17 @@
         
       
       
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  <span class="md-ellipsis">
+    Frequency Detection
+  </span>
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
       <a href="./" class="md-nav__link md-nav__link--active">
         
   
@@ -1007,6 +1546,259 @@
 
       </a>
       
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#description" class="md-nav__link">
+    <span class="md-ellipsis">
+      Description
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#lesson-plan" class="md-nav__link">
+    <span class="md-ellipsis">
+      Lesson Plan
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Lesson Plan">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#learning-objectives" class="md-nav__link">
+    <span class="md-ellipsis">
+      Learning Objectives
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#target-audience" class="md-nav__link">
+    <span class="md-ellipsis">
+      Target Audience
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#prerequisites" class="md-nav__link">
+    <span class="md-ellipsis">
+      Prerequisites
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#activities" class="md-nav__link">
+    <span class="md-ellipsis">
+      Activities
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#assessment" class="md-nav__link">
+    <span class="md-ellipsis">
+      Assessment
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#common-misconceptions" class="md-nav__link">
+    <span class="md-ellipsis">
+      Common Misconceptions
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#references" class="md-nav__link">
+    <span class="md-ellipsis">
+      References
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../huffman-coding/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Huffman Coding
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../iir-prototype-comparison/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    IIR Prototype Comparison
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../impulse-and-frequency-response-analyzer/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Impulse and Frequency Response Analyzer
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../interactive-filter-design-and-analysis-tool/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Interactive Filter Design and Analysis Tool
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../interactive-pole-zero-analysis-tool/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Interactive Pole-Zero Analysis Tool
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../interactive-spectrogram-parameter-explorer/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Interactive Spectrogram Parameter Explorer
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../interactive-stft-spectrogram-analyzer/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Interactive STFT Spectrogram Analyzer
+  </span>
+  
+
+      </a>
     </li>
   
 
@@ -1082,11 +1874,158 @@
   
   
     <li class="md-nav__item">
+      <a href="../multirate-sample-rate-converter/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Multirate Sample Rate Converter
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../noise-analysis-and-reduction-tool/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Noise Analysis and Reduction Tool
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
       <a href="../nyquist-shannon-sampling/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
     Nyquist-Shannon Sampling
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../phase-spectrum/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Phase Spectrum - What the Magnitude Hides
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../phasor-addition/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Phasor Addition
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../psd-wiener-khinchin/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Power Spectral Density and the Wiener-Khinchin Theorem
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../distribution-explorer/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Probability Distribution Explorer
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../quantization-and-noise-shaping/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Quantization and Noise Shaping
   </span>
   
 
@@ -1124,11 +2063,116 @@
   
   
     <li class="md-nav__item">
+      <a href="../real-time-processing-simulator/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Real-Time Processing Simulator
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
       <a href="../reverb/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
     Reverb Effect
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../s-plane-explorer/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    s-Plane Explorer
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../sampling-theorem-explorer/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Sampling Theorem Explorer
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../signal-operations/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Signal Operations - Shift, Scale and Reverse
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../signal-type-explorer/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Signal Type Explorer
   </span>
   
 
@@ -1166,11 +2210,95 @@
   
   
     <li class="md-nav__item">
+      <a href="../spectral-leakage-and-windowing/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Spectral Leakage and Windowing
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
       <a href="../synth-timeline/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
     Synth Timeline
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../system-interconnections/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    System Interconnections - Series, Parallel, Feedback
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../system-property-explorer/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    System Property Explorer
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../time-frequency-analysis-explorer/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Time-Frequency Analysis Explorer
   </span>
   
 
@@ -1213,6 +2341,27 @@
   
   <span class="md-ellipsis">
     Tone Generator
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../wavelet-explorer/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Wavelet Explorer - CWT Scalogram and Haar DWT
   </span>
   
 
@@ -1389,6 +2538,12 @@
       
         
           
+        
+      
+        
+      
+        
+      
         
       
         
@@ -1603,6 +2758,26 @@
   
   
     <li class="md-nav__item">
+      <a href="../../instructors-guide/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Instructor's Guide
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
       <a href="../../license/" class="md-nav__link">
         
   
@@ -1648,26 +2823,6 @@
   
   <span class="md-ellipsis">
     Contact
-  </span>
-  
-
-      </a>
-    </li>
-  
-
-    
-      
-      
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../../ieee-paper-changes/" class="md-nav__link">
-        
-  
-  <span class="md-ellipsis">
-    Paper Changes
   </span>
   
 
@@ -1791,6 +2946,101 @@
     
   
   
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#description" class="md-nav__link">
+    <span class="md-ellipsis">
+      Description
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#lesson-plan" class="md-nav__link">
+    <span class="md-ellipsis">
+      Lesson Plan
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Lesson Plan">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#learning-objectives" class="md-nav__link">
+    <span class="md-ellipsis">
+      Learning Objectives
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#target-audience" class="md-nav__link">
+    <span class="md-ellipsis">
+      Target Audience
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#prerequisites" class="md-nav__link">
+    <span class="md-ellipsis">
+      Prerequisites
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#activities" class="md-nav__link">
+    <span class="md-ellipsis">
+      Activities
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#assessment" class="md-nav__link">
+    <span class="md-ellipsis">
+      Assessment
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#common-misconceptions" class="md-nav__link">
+    <span class="md-ellipsis">
+      Common Misconceptions
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#references" class="md-nav__link">
+    <span class="md-ellipsis">
+      References
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
 </nav>
                   </div>
                 </div>
@@ -1804,7 +3054,7 @@
                   
 
   
-    <a href="https://github.com/dmccreary/signal-processing/blob/master/docs/sims/frequency-detection/index.md" title="Edit this page" class="md-content__button md-icon">
+    <a href="https://github.com/dmccreary/signal-processing/blob/main/docs/sims/frequency-detection/index.md" title="Edit this page" class="md-content__button md-icon">
       
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M10 20H6V4h7v5h5v3.1l2-2V8l-6-6H6c-1.1 0-2 .9-2 2v16c0 1.1.9 2 2 2h4zm10.2-7c.1 0 .3.1.4.2l1.3 1.3c.2.2.2.6 0 .8l-1 1-2.1-2.1 1-1c.1-.1.2-.2.4-.2m0 3.9L14.1 23H12v-2.1l6.1-6.1z"/></svg>
     </a>
@@ -1813,12 +3063,98 @@
 
 
 <h1 id="frequency-detection">Frequency Detection</h1>
-<figure>
-<p><img alt="" src="frequency-detection.png" width="400" />
-   </p>
-<figcaption>Frequency Detection MicroSim</figcaption>
-</figure>
-<p><a href="frequency-detection.html">Run the Frequency Detection MicroSim</a></p>
+<iframe src="main.html" width="100%" height="597px" scrolling="no"></iframe>
+
+<p>Copy this iframe to your website:</p>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="p">&lt;</span><span class="nt">iframe</span> <span class="na">src</span><span class="o">=</span><span class="s">"https://dmccreary.github.io/signal-processing/sims/frequency-detection/main.html"</span> <span class="na">width</span><span class="o">=</span><span class="s">"100%"</span> <span class="na">height</span><span class="o">=</span><span class="s">"597px"</span> <span class="na">scrolling</span><span class="o">=</span><span class="s">"no"</span><span class="p">&gt;&lt;/</span><span class="nt">iframe</span><span class="p">&gt;</span>
+</code></pre></div></td></tr></table></div>
+<p><a class="md-button md-button--primary" href="main.html">Run MicroSim in Fullscreen</a></p>
+<!-- TODO(user): add the p5.js editor link once the sketch is saved in editor.p5js.org:
+[Edit in the p5.js Editor](https://editor.p5js.org/<username>/sketches/frequency-detection) -->
+
+<h2 id="description">Description</h2>
+<p>This MicroSim builds the Fourier transform from one idea: wrap a signal around a spinning circle and see where
+its center of mass lands. A sine wave with period <span class="arithmatex">\(T_s\)</span> (the shaded curve in the <strong>Cartesian Coordinates</strong>
+graph; its left edge is "now") is sampled and wound onto the <strong>Polar</strong> plot. Each sample becomes a point whose
+distance from the center is the sample value and whose angle makes one full turn every circle period <span class="arithmatex">\(T_c\)</span>. The
+<strong>Center of Mass</strong> panel repeats the wound curve, marks the average of all its points with a yellow dot, and
+prints that dot's distance from the center as <span class="arithmatex">\(|\text{COM}|\)</span>.</p>
+<ul>
+<li><strong>Circle period</strong> (0.10–2.00 s) sets <span class="arithmatex">\(T_c\)</span>. The blue marker shows <span class="arithmatex">\(T_c\)</span> on both graphs, which span 0–2 s; the blue lines in the Cartesian graph mark each completed turn.</li>
+<li><strong>Signal period</strong> (0.1–1.0 s) sets <span class="arithmatex">\(T_s\)</span>. <strong>Resolution</strong> (10–300 points/s) is the sampling rate. <strong>Speed</strong> scales simulated time.</li>
+<li><strong>AutoPoll</strong> sweeps <span class="arithmatex">\(T_c\)</span> from 0.10 to 2.00 s in 0.05 s steps at 20× speed. It records each strength once it stops changing; press it again to stop. <strong>Show Spin</strong> rotates the drawing instead of the pen.</li>
+</ul>
+<p>The <strong>Frequency Strength</strong> graph plots <span class="arithmatex">\(|\text{COM}|\)</span> against <span class="arithmatex">\(T_c\)</span>, and its header names the strongest period
+and its frequency <span class="arithmatex">\(f_c = 1/T_c\)</span>. With <span class="arithmatex">\(t_n = n/R\)</span> for resolution <span class="arithmatex">\(R\)</span>, the simulation computes</p>
+<div class="arithmatex">\[|\text{COM}(T_c)| = \left|\frac{1}{M}\sum_{n=0}^{M-1} x(t_n)\,e^{-i2\pi f_c t_n}\right|,\]</div>
+<p>a sampled, averaged form of the Fourier transform <span class="arithmatex">\(X(f) = \int x(t)\,e^{-i2\pi f t}\,dt\)</span> at <span class="arithmatex">\(f = f_c\)</span>. For
+<span class="arithmatex">\(x(t) = \sin(2\pi t/T_s)\)</span> it settles at <span class="arithmatex">\(1/2\)</span> when <span class="arithmatex">\(T_c = T_s\)</span> and falls to zero otherwise.</p>
+<p>This MicroSim supports <a href="../../chapters/06-fourier-analysis-fundamentals/#fourier-transform">Chapter 6: Fourier Analysis Fundamentals</a>.</p>
+<h2 id="lesson-plan">Lesson Plan</h2>
+<h3 id="learning-objectives">Learning Objectives</h3>
+<p>By the end of this lesson, students will be able to:</p>
+<ol>
+<li><strong>Explain</strong> how winding a signal around a spinning circle turns it into a center of mass whose distance from the origin measures the strength of one frequency</li>
+<li><strong>Predict</strong> that the center of mass stays about 0.5 from the origin only when the circle period equals the signal period, and keeps returning to the origin otherwise</li>
+<li><strong>Interpret</strong> the AutoPoll frequency-strength graph to find the period and frequency of a sine wave</li>
+<li><strong>Relate</strong> the center-of-mass average to the Fourier transform integral <span class="arithmatex">\(X(f) = \int x(t)e^{-i2\pi f t}\,dt\)</span></li>
+<li><strong>Identify</strong> an alias peak caused by a low resolution (sampling rate) and compute where it appears</li>
+</ol>
+<h3 id="target-audience">Target Audience</h3>
+<p>College undergraduates in a first signals and systems course, after complex numbers and before the discrete
+Fourier transform. Plan 20–30 minutes.</p>
+<h3 id="prerequisites">Prerequisites</h3>
+<ul>
+<li>Complex numbers in polar form and Euler's formula <span class="arithmatex">\(e^{i\theta} = \cos\theta + i\sin\theta\)</span></li>
+<li>Period and frequency of a sinusoid, <span class="arithmatex">\(f = 1/T\)</span></li>
+<li>The center of mass (average position) of a set of points</li>
+</ul>
+<h3 id="activities">Activities</h3>
+<p><strong>Activity 1: A mismatched winding (5 min).</strong> Keep the defaults (<span class="arithmatex">\(T_s\)</span> = 0.50 s, <span class="arithmatex">\(T_c\)</span> = 0.30 s, Resolution
+300, Speed 1.00x) and press <strong>Play</strong>. The wound curve becomes a three-lobed rose that is balanced around the
+center. <span class="arithmatex">\(|\text{COM}|\)</span> is about 0.15 after 0.5 s and 0.08 after 1 s, then returns to 0.000 at 1.5 s, the first time
+that both 3 signal periods and 5 turns of the circle are complete. It returns to zero every 1.5 s after that.</p>
+<p><strong>Activity 2: A matched winding (5 min).</strong> Press <strong>Reset</strong>, set the circle period to <strong>0.50 s</strong> and press Play.
+The positive and the negative half of every cycle now land on the same side of the center (a negative
+radius flips a point to the opposite side), so the curve is a single circle that passes through the center. <span class="arithmatex">\(|\text{COM}|\)</span> settles at 0.50 (0.498 after 1 s). Now set <span class="arithmatex">\(T_c\)</span> = <strong>1.00 s</strong>.
+The curve becomes a four-petal rose, and <span class="arithmatex">\(|\text{COM}|\)</span> is back to 0.000 after every whole second. Check
+<strong>Show Spin</strong>: the red dot on the polar plot now moves straight up and down in step with the red dot at the left
+edge of the Cartesian graph.</p>
+<p><strong>Activity 3: Detect the frequency (8 min).</strong> Press <strong>Reset</strong>, then <strong>AutoPoll</strong>, and wait for the sweep to
+reach 2.00 s (about 13 s). One stem stands out at 0.50 s with a strength of about 0.51, and the header reads
+<em>0.50 s = 2.00 Hz</em>. Its neighbors at 0.45 s and 0.55 s reach only about 0.11, and the rest stay below about 0.1.
+Set the signal period to <strong>0.8 s</strong> and run AutoPoll again (about 22 s): the peak moves to 0.80 s, which is 1.25 Hz.</p>
+<p><strong>Activity 4: An alias (7 min).</strong> Set Resolution to <strong>10 pts/s</strong> and the signal period to <strong>0.3 s</strong>, so a
+3.33 Hz sine is sampled only 3 times per period (the Cartesian graph shows a jagged three-point wave). Run
+AutoPoll. Two stems of about 0.5 appear: at 0.30 s (3.33 Hz) and at 0.15 s (6.67 Hz). They are equally strong,
+so the header may name either one. The 0.15 s stem is an
+alias at <span class="arithmatex">\(f_s - f = 10 - 3.33 = 6.67\)</span> Hz. At 10 samples per second, winding at 6.67 Hz cannot be told apart
+from winding at <span class="arithmatex">\(-3.33\)</span> Hz.</p>
+<h3 id="assessment">Assessment</h3>
+<ol>
+<li>A sine wave is wound with <span class="arithmatex">\(T_c = T_s\)</span>. Where does its center of mass end up, and why? <em>(Answer: about 0.5 from the center. Each turn of the circle covers exactly one cycle, and the negative radius flips the other half-cycle onto the same side of the center, so nothing cancels. The wound curve is a single circle through the center whose center of mass is 0.5 away.)</em></li>
+<li>AutoPoll shows a single peak at <span class="arithmatex">\(T_c\)</span> = 0.25 s. What is the frequency of the signal? <em>(Answer: <span class="arithmatex">\(f = 1/0.25\ \text{s} = 4\)</span> Hz.)</em></li>
+<li>With <span class="arithmatex">\(T_s\)</span> = 0.5 s and <span class="arithmatex">\(T_c\)</span> = 0.3 s, why does <span class="arithmatex">\(|\text{COM}|\)</span> return to exactly zero every 1.5 s? <em>(Answer: 1.5 s is the least common multiple of the two periods. It holds 3 whole signal periods and 5 whole turns, and over such a span the sum of <span class="arithmatex">\(\sin(2\pi t/T_s)\,e^{-i2\pi t/T_c}\)</span> is zero whenever <span class="arithmatex">\(1/T_c \ne 1/T_s\)</span> (and no alias is involved). This is the orthogonality of sinusoids.)</em></li>
+<li>Explain why the AutoPoll stems at 0.45 s and 0.55 s are not zero when the signal period is 0.5 s. <em>(Answer: AutoPoll watches each <span class="arithmatex">\(T_c\)</span> for only a few signal periods. At <span class="arithmatex">\(T_c\)</span> = 0.55 s, <span class="arithmatex">\(|\text{COM}|\)</span> is still 0.49 after 1 s and 0.30 after 3 s, and reaches 0 only at 5.5 s, so nearby frequencies need a long observation to tell apart. This is spectral leakage, and frequency resolution is about <span class="arithmatex">\(1/T\)</span> for observation time <span class="arithmatex">\(T\)</span>.)</em></li>
+<li>At Resolution 10 pts/s, a 3.33 Hz signal produces a second peak at <span class="arithmatex">\(T_c\)</span> = 0.15 s. Explain it. <em>(Answer: sampling at <span class="arithmatex">\(f_s\)</span> = 10 Hz makes winding at 6.67 Hz identical to winding at <span class="arithmatex">\(6.67 - 10 = -3.33\)</span> Hz. A real sine has a component at <span class="arithmatex">\(-3.33\)</span> Hz, so the alias appears at <span class="arithmatex">\(1/6.67 = 0.15\)</span> s.)</em></li>
+</ol>
+<h3 id="common-misconceptions">Common Misconceptions</h3>
+<p><strong>"The horizontal axis of the strength graph is frequency."</strong> It is the circle period <span class="arithmatex">\(T_c\)</span>, so frequency
+<span class="arithmatex">\(f_c = 1/T_c\)</span> <em>decreases</em> to the right. The header converts the peak to hertz (0.50 s = 2.00 Hz). Compare
+the 0.80 s peak in Activity 3 with the 0.50 s peak: the slower signal appears farther right.</p>
+<p><strong>"Only the exact matching period gives a large center of mass."</strong> Close periods look matched for a while.
+Set <span class="arithmatex">\(T_s\)</span> = 0.5 s and <span class="arithmatex">\(T_c\)</span> = 0.55 s and press Play: <span class="arithmatex">\(|\text{COM}|\)</span> starts near 0.49 and decays only slowly
+(0.42 at 2 s, 0.17 at 4 s), reaching zero at 5.5 s. Telling close frequencies apart takes a long
+observation.</p>
+<h2 id="references">References</h2>
+<ol>
+<li><a href="https://en.wikipedia.org/wiki/Fourier_transform">Fourier transform</a> - Wikipedia - the integral <span class="arithmatex">\(X(f) = \int x(t)e^{-i2\pi ft}\,dt\)</span> that the winding average approximates</li>
+<li><a href="https://www.3blue1brown.com/lessons/fourier-transforms">But what is the Fourier Transform? A visual introduction</a> - 3Blue1Brown (Grant Sanderson) - the "winding machine" and center-of-mass picture this MicroSim animates</li>
+<li><a href="https://en.wikipedia.org/wiki/Center_of_mass">Center of mass</a> - Wikipedia - the average position shown by the yellow dot</li>
+<li><a href="https://en.wikipedia.org/wiki/Aliasing">Aliasing</a> - Wikipedia - why a low resolution produces the extra peak in Activity 4</li>
+<li><a href="https://en.wikipedia.org/wiki/Rose_%28mathematics%29">Rose (mathematics)</a> - Wikipedia - the petal curves <span class="arithmatex">\(r = \sin(k\theta)\)</span> traced when <span class="arithmatex">\(T_c/T_s = k\)</span></li>
+<li><a href="https://www.dspguide.com/">The Scientist and Engineer's Guide to Digital Signal Processing</a> - Steven W. Smith - free textbook with chapters on the DFT and spectral leakage</li>
+</ol>
 
 
 
@@ -1857,7 +3193,7 @@
       <nav class="md-footer__inner md-grid" aria-label="Footer" >
         
           
-          <a href="../fft-waveform-types/" class="md-footer__link md-footer__link--prev" aria-label="Previous: FFT Waveform Types">
+          <a href="../fourier-transform-pairs/" class="md-footer__link md-footer__link--prev" aria-label="Previous: Fourier Transform Pairs">
             <div class="md-footer__button md-icon">
               
               <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
@@ -1867,20 +3203,20 @@
                 Previous
               </span>
               <div class="md-ellipsis">
-                FFT Waveform Types
+                Fourier Transform Pairs
               </div>
             </div>
           </a>
         
         
           
-          <a href="../graph-viewer-v1/" class="md-footer__link md-footer__link--next" aria-label="Next: Learning Graph V1">
+          <a href="../huffman-coding/" class="md-footer__link md-footer__link--next" aria-label="Next: Huffman Coding">
             <div class="md-footer__title">
               <span class="md-footer__direction">
                 Next
               </span>
               <div class="md-ellipsis">
-                Learning Graph V1
+                Huffman Coding
               </div>
             </div>
             <div class="md-footer__button md-icon">

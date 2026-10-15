@@ -1,0 +1,168 @@
+{
+  "microsim": {
+    "dublinCore": {
+      "title": "Bilinear Transform and Frequency Warping",
+      "creator": ["Dan McCreary"],
+      "subject": ["Bilinear transform", "Impulse invariance", "Frequency warping", "Prewarping", "IIR filter design", "Butterworth filter", "Aliasing"],
+      "description": "Interactive MicroSim that converts an analog Butterworth low-pass filter to a digital filter with the bilinear transform s = (2/T)(z - 1)/(z + 1) and with impulse invariance z = e^(sT). A warping plot with a draggable analog-frequency marker compares omega = 2 arctan(Omega T/2) with the linear but aliasing omega = Omega T; an s-plane with a draggable test pole shows its images in the z-plane under both mappings; and overlaid magnitude responses with a gain table show the shifted cutoff without prewarping and the aliasing of impulse invariance near the Nyquist frequency.",
+      "publisher": "Dan McCreary",
+      "contributor": ["Claude (Anthropic)"],
+      "date": "2026-10-14",
+      "type": "Interactive Simulation",
+      "format": "text/html",
+      "identifier": "https://dmccreary.github.io/signal-processing/sims/bilinear-transform/",
+      "language": "en",
+      "relation": ["Chapter 10: Advanced Filter Design and Implementation", "Mobius Transform", "Interactive Pole-Zero Analysis Tool"],
+      "rights": "CC BY-NC-SA 4.0"
+    },
+    "search": {
+      "tags": ["bilinear transform", "impulse invariance", "frequency warping", "prewarping", "Butterworth", "IIR design", "s-plane to z-plane", "aliasing", "Nyquist frequency"],
+      "searchKeywords": ["s = 2/T (z-1)/(z+1)", "omega = 2 arctan(Omega T/2)", "prewarp cutoff frequency", "impulse invariant aliasing", "analog to digital filter conversion", "z = e^(sT) pole mapping"],
+      "visualizationType": ["chart", "diagram", "interactive-demo", "simulation"],
+      "interactionLevel": "high",
+      "complexity": 7,
+      "relatedConcepts": ["Bilinear Transform", "Impulse Invariance", "Butterworth Filter", "Frequency Warping", "Aliasing", "Pole-Zero Plot"],
+      "applicationDomains": ["education", "exploration", "demonstration", "analysis"]
+    },
+    "educational": {
+      "gradeLevel": ["Undergraduate"],
+      "subjectArea": ["Engineering", "Mathematics"],
+      "topic": ["Bilinear transform", "Impulse invariance", "Frequency warping and prewarping", "Analog-to-digital filter transformations", "s-plane to z-plane mapping"],
+      "learningObjectives": [
+        "Calculate the digital frequency omega = 2 arctan(Omega T/2) that the bilinear transform assigns to an analog frequency, and the prewarped analog cutoff Omega_c = (2/T) tan(omega_c/2) that places a digital cutoff exactly",
+        "Compare how the two methods map the j-Omega axis: a one-to-one compression onto the unit circle versus a linear map that wraps around the circle once every fs",
+        "Analyze the aliasing error of impulse invariance in the passband and at fs/2, and explain why the bilinear Butterworth response is exactly zero at fs/2",
+        "Predict where an s-plane pole lands in the z-plane under z = e^(sT) and z = (1 + sT/2)/(1 - sT/2), and verify that the left half-plane maps inside the unit circle",
+        "Evaluate when prewarping matters by measuring the bilinear -3 dB point at different ratios fc/fs"
+      ],
+      "bloomsTaxonomy": ["Apply", "Analyze", "Evaluate"],
+      "prerequisites": ["Poles in the s-plane and the z-plane", "Butterworth low-pass magnitude response", "Sampling and aliasing"],
+      "duration": {"typical": 25, "range": {"min": 15, "max": 40}},
+      "difficulty": "Advanced",
+      "scaffolding": {
+        "type": ["guided-discovery", "feedback"],
+        "adaptability": "fixed",
+        "removal": "user-controlled"
+      },
+      "misconceptions": [
+        {
+          "misconception": "Prewarping removes frequency warping",
+          "correction": "Prewarping matches one frequency (the cutoff); the rest of the response is still compressed toward fs/2",
+          "evidence": "With the defaults and prewarping on, the bilinear -3 dB point is exactly 2.00 kHz, but at 3.00 kHz the bilinear gain is -15.4 dB against -7.8 dB for the analog target"
+        },
+        {
+          "misconception": "Impulse invariance is distortion-free because omega = Omega T is linear",
+          "correction": "Each digital frequency also collects the analog response from fs - f, fs + f and so on, so the response is aliased",
+          "evidence": "With the defaults the impulse-invariant gain at fs/2 is -6.6 dB instead of -12.3 dB, and with N = 1 the DC gain is +5.9 dB"
+        }
+      ]
+    },
+    "technical": {
+      "framework": "p5.js",
+      "version": "1.0.0",
+      "canvasDimensions": {"width": 900, "height": 740, "responsive": true},
+      "regions": {"drawHeight": 604, "controlHeight": 136},
+      "dependencies": ["p5.js 2.3.2"],
+      "browserCompatibility": ["Chrome 90+", "Firefox 88+", "Safari 14+", "Edge 90+"],
+      "performance": {"memoryUsage": "low", "loadTime": 500},
+      "deviceRequirements": {
+        "minScreenWidth": 375,
+        "touchSupport": true,
+        "keyboardRequired": false,
+        "mouseRequired": false,
+        "networkRequired": false
+      },
+      "accessibility": {
+        "screenReader": true,
+        "keyboardNavigation": true,
+        "colorContrast": true,
+        "altText": true,
+        "screenReaderScript": "Four linked views of the bilinear transform and impulse invariance. A warping plot shows digital frequency omega against analog frequency: the bilinear curve omega = 2 arctan(Omega T / 2) and the straight line omega = Omega T of impulse invariance, which folds back above half the sampling rate. A gold marker on that plot can be dragged. An s-plane and a z-plane show a draggable test pole and its images under both mappings, and the poles of the filter. The bottom plot overlays the magnitude responses in dB of an analog Butterworth low-pass filter and its two digital versions, with a table of their gains. Sliders set the sampling rate, the cutoff and the filter order; checkboxes turn prewarping on and show the filter poles."
+      }
+    },
+    "userInterface": {
+      "layoutType": "responsive-width",
+      "layoutPattern": "drawing-region-above-controls",
+      "colorScheme": {
+        "drawingArea": "aliceblue",
+        "controlArea": "white",
+        "analogTarget": "gray (dashed)",
+        "bilinear": "blue",
+        "impulseInvariance": "purple",
+        "aliasing": "red",
+        "markerAndTestPole": "gold",
+        "stableRegion": "seagreen",
+        "text": "black"
+      },
+      "controls": [
+        {
+          "id": "fsSlider",
+          "type": "slider",
+          "label": "Sampling rate fs",
+          "description": "Sets the sampling rate fs = 1/T; it moves the Nyquist line, the impulse-invariance strips and every digital design",
+          "group": "sampling",
+          "properties": {"min": 2, "max": 16, "default": 8, "step": 0.5, "units": "kHz", "showValue": true}
+        },
+        {
+          "id": "fcSlider",
+          "type": "slider",
+          "label": "Cutoff fc",
+          "description": "Sets the desired cutoff of the Butterworth low-pass filter; its maximum follows 0.45 fs",
+          "group": "filter",
+          "properties": {"min": 0.1, "max": 3.6, "default": 2, "step": 0.05, "units": "kHz", "showValue": true}
+        },
+        {
+          "id": "orderSlider",
+          "type": "slider",
+          "label": "Butterworth order N",
+          "description": "Sets the order of the analog Butterworth prototype (1 to 4)",
+          "group": "filter",
+          "properties": {"min": 1, "max": 4, "default": 2, "step": 1, "showValue": true}
+        },
+        {
+          "id": "prewarpCheckbox",
+          "type": "checkbox",
+          "label": "Prewarp the cutoff",
+          "description": "Designs the bilinear prototype at fc' = (fs/pi) tan(pi fc/fs) so that the digital -3 dB point lands exactly on fc",
+          "group": "filter",
+          "properties": {"checked": false}
+        },
+        {
+          "id": "polesCheckbox",
+          "type": "checkbox",
+          "label": "Show filter poles",
+          "description": "Shows the analog poles (gray, and blue when prewarped) in the s-plane and the bilinear (blue) and impulse-invariant (purple) poles and the bilinear zeros at z = -1 in the z-plane",
+          "group": "display",
+          "properties": {"checked": true}
+        }
+      ],
+      "visualElements": [
+        {"type": "chart", "description": "Warping plot: digital frequency omega (0 to pi, and in kHz) against analog frequency 0 to 8 kHz, with the bilinear curve, the impulse-invariance line folding above fs/2, the cutoff construction and a draggable gold marker", "interactive": true, "updateTriggers": ["fsSlider", "fcSlider", "prewarpCheckbox"]},
+        {"type": "diagram", "description": "s-plane (s/2 pi in kHz) with the stable left half-plane, the j-Omega axis, the impulse-invariance strip edges at +-fs/2, the Butterworth poles and a draggable gold test pole", "interactive": true, "updateTriggers": ["fsSlider", "fcSlider", "orderSlider", "prewarpCheckbox", "polesCheckbox"]},
+        {"type": "diagram", "description": "z-plane with the unit circle, the images of the test pole and of the j-Omega marker under both mappings, and the poles and zeros of both digital filters", "interactive": false, "updateTriggers": ["fsSlider", "fcSlider", "orderSlider", "prewarpCheckbox", "polesCheckbox"]},
+        {"type": "chart", "description": "Magnitude responses in dB of the analog target, the bilinear design and the impulse-invariant design from 0 to fs/2, with the aliasing gap shaded, -3 dB points and a hover read-out", "interactive": true, "updateTriggers": ["fsSlider", "fcSlider", "orderSlider", "prewarpCheckbox"]},
+        {"type": "text-display", "description": "Gain table (DC gain, -3 dB frequency, gain at fs/2) with plain-language notes on warping and aliasing; read-outs for the marker and the test pole", "interactive": false, "updateTriggers": ["fsSlider", "fcSlider", "orderSlider", "prewarpCheckbox"]}
+      ]
+    },
+    "simulation": {
+      "model": {
+        "type": "mathematical",
+        "description": "An analog Butterworth low-pass H_a(s) with poles wc e^{j pi (2k + N - 1)/(2N)} is converted to a digital filter by the bilinear transform (optionally with a prewarped prototype) and by impulse invariance via partial fractions; magnitude responses are evaluated on 361 frequencies from 0 to fs/2",
+        "equations": [
+          "s = (2/T)(z - 1)/(z + 1),  z = (1 + sT/2)/(1 - sT/2)",
+          "omega = 2 arctan(Omega T / 2),  Omega = (2/T) tan(omega / 2)",
+          "Omega_c' = (2/T) tan(omega_c / 2)  (prewarping)",
+          "h[n] = T h_a(nT),  H(z) = sum_k T r_k / (1 - e^{s_k T} z^-1)",
+          "H(e^{j omega}) = sum_k H_a(j(omega - 2 pi k)/T)  (aliased sum, N >= 2)"
+        ],
+        "algorithms": ["Butterworth pole placement", "Partial-fraction residues", "Bilinear pole mapping", "Bisection for the -3 dB frequency"]
+      }
+    },
+    "usage": {
+      "recommendedUsage": ["demonstration", "exploration", "guided-practice"],
+      "instructionalStrategies": ["Predict the bilinear image of an analog frequency before dragging the marker", "Compare the -3 dB point with and without prewarping", "Drag a pole across the fs/2 line to see impulse invariance alias it"],
+      "extensions": ["Add Chebyshev and elliptic prototypes", "Add high-pass designs to show that impulse invariance fails for them", "Plot the impulse responses of both digital filters against samples of h_a(t)"]
+    }
+  },
+  "canvasHeight": 740
+}

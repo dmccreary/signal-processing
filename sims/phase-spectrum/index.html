@@ -1,0 +1,3281 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+        <meta name="description" content="Same magnitude spectrum, different phases, different waveforms. Explore harmonic phases, the linear phase of a time shift, and the magnitude/phase swap experiment.">
+      
+      
+        <meta name="author" content="Dan McCreary">
+      
+      
+        <link rel="canonical" href="https://dmccreary.github.io/signal-processing/sims/phase-spectrum/">
+      
+      
+        <link rel="prev" href="../nyquist-shannon-sampling/">
+      
+      
+        <link rel="next" href="../phasor-addition/">
+      
+      
+      <link rel="icon" href="../../img/favicon.ico">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.5.43">
+    
+    
+      
+        <title>Phase Spectrum - What the Magnitude Hides - Signal Processing with AI</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../assets/stylesheets/main.0253249f.min.css">
+      
+        
+        <link rel="stylesheet" href="../../assets/stylesheets/palette.06af60db.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+      <link rel="stylesheet" href="../../css/extra.css">
+    
+      <link rel="stylesheet" href="../../css/mascot.css">
+    
+    <script>__md_scope=new URL("../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+      
+        <meta  property="og:type"  content="website" >
+      
+        <meta  property="og:title"  content="Phase Spectrum - What the Magnitude Hides - Signal Processing with AI" >
+      
+        <meta  property="og:description"  content="Same magnitude spectrum, different phases, different waveforms. Explore harmonic phases, the linear phase of a time shift, and the magnitude/phase swap experiment." >
+      
+        <meta property="og:image" content="https://dmccreary.github.io/signal-processing/sims/phase-spectrum/phase-spectrum.png">
+      
+        <meta  property="og:image:type"  content="image/png" >
+      
+        <meta  property="og:image:width"  content="1200" >
+      
+        <meta  property="og:image:height"  content="630" >
+      
+        <meta  property="og:url"  content="https://dmccreary.github.io/signal-processing/sims/phase-spectrum/" >
+      
+        <meta  name="twitter:card"  content="summary_large_image" >
+      
+        <meta  name="twitter:title"  content="Phase Spectrum - What the Magnitude Hides - Signal Processing with AI" >
+      
+        <meta  name="twitter:description"  content="Same magnitude spectrum, different phases, different waveforms. Explore harmonic phases, the linear phase of a time shift, and the magnitude/phase swap experiment." >
+      
+        <meta name="twitter:image" content="https://dmccreary.github.io/signal-processing/sims/phase-spectrum/phase-spectrum.png">
+      
+    
+    
+  </head>
+  
+  
+    
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="maroon" data-md-color-accent="gold">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#phase-spectrum-what-the-magnitude-hides" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+  
+
+<header class="md-header md-header--shadow" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href="../.." title="Signal Processing with AI" class="md-header__button md-logo" aria-label="Signal Processing with AI" data-md-component="logo">
+      
+  <img src="../../img/mascot/neutral.png" alt="logo">
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            Signal Processing with AI
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              Phase Spectrum - What the Magnitude Hides
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+    
+    
+    
+    
+      <label class="md-header__button md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+      </label>
+      <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Search">
+        
+        <button type="reset" class="md-search__icon md-icon" title="Clear" aria-label="Clear" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+        </button>
+      </nav>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+    
+      <div class="md-header__source">
+        <a href="https://github.com/dmccreary/signal-processing" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 6.6.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2024 Fonticons, Inc.--><path d="M439.55 236.05 244 40.45a28.87 28.87 0 0 0-40.81 0l-40.66 40.63 51.52 51.52c27.06-9.14 52.68 16.77 43.39 43.68l49.66 49.66c34.23-11.8 61.18 31 35.47 56.69-26.49 26.49-70.21-2.87-56-37.34L240.22 199v121.85c25.3 12.54 22.26 41.85 9.08 55a34.34 34.34 0 0 1-48.55 0c-17.57-17.6-11.07-46.91 11.25-56v-123c-20.8-8.51-24.6-30.74-18.64-45L142.57 101 8.45 235.14a28.86 28.86 0 0 0 0 40.81l195.61 195.6a28.86 28.86 0 0 0 40.8 0l194.69-194.69a28.86 28.86 0 0 0 0-40.81"/></svg>
+  </div>
+  <div class="md-source__repository">
+    GitHub Repo
+  </div>
+</a>
+      </div>
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+
+<nav class="md-nav md-nav--primary" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../.." title="Signal Processing with AI" class="md-nav__button md-logo" aria-label="Signal Processing with AI" data-md-component="logo">
+      
+  <img src="../../img/mascot/neutral.png" alt="logo">
+
+    </a>
+    Signal Processing with AI
+  </label>
+  
+    <div class="md-nav__source">
+      <a href="https://github.com/dmccreary/signal-processing" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 6.6.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2024 Fonticons, Inc.--><path d="M439.55 236.05 244 40.45a28.87 28.87 0 0 0-40.81 0l-40.66 40.63 51.52 51.52c27.06-9.14 52.68 16.77 43.39 43.68l49.66 49.66c34.23-11.8 61.18 31 35.47 56.69-26.49 26.49-70.21-2.87-56-37.34L240.22 199v121.85c25.3 12.54 22.26 41.85 9.08 55a34.34 34.34 0 0 1-48.55 0c-17.57-17.6-11.07-46.91 11.25-56v-123c-20.8-8.51-24.6-30.74-18.64-45L142.57 101 8.45 235.14a28.86 28.86 0 0 0 0 40.81l195.61 195.6a28.86 28.86 0 0 0 40.8 0l194.69-194.69a28.86 28.86 0 0 0 0-40.81"/></svg>
+  </div>
+  <div class="md-source__repository">
+    GitHub Repo
+  </div>
+</a>
+    </div>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../.." class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Home
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../about/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    About
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../course-description/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Course Description
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+        
+        
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+    <a href="../../chapters/" class="md-nav__link">
+      
+  
+  <span class="md-ellipsis">
+    Chapters
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+    
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+    
+    
+    
+      
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_5" checked>
+        
+          
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../" class="md-nav__link ">
+              
+  
+  <span class="md-ellipsis">
+    MicroSims
+  </span>
+  
+
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_5" id="__nav_5_label" tabindex="0">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_5_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_5">
+            <span class="md-nav__icon md-icon"></span>
+            MicroSims
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../image-convolution/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    2-D Convolution and Image Filtering
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../conv-layer-as-filter/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    A Convolutional Layer Is a Learned FIR Filter
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../adaptive-algorithm-comparison-tool/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Adaptive Algorithm Comparison Tool
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../adaptive-noise-cancellation/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Adaptive Noise and Echo Cancellation
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../ai-pace-accelerating/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    AI Pace
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../analog-mod/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Analog Modulation
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../fft-basic/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Basic FFT
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../base-and-treble/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Bass and Treble
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../bilinear-transform/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Bilinear Transform and Frequency Warping
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../blooms-taxonomy/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Bloom's Taxonomy
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../book-gen-workflow/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Book Generation Workflow
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../book-levels/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Book Levels
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../citation-graph/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Citation Graph
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../complex-plane/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Complex Plane
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../compressed-sensing/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Compressed Sensing
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../convolution/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Convolution
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../convolution-theorem/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Convolution Theorem and Circular Convolution
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../convolution-visualizer/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Convolution Visualizer
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../correlation-and-matched-filtering/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Correlation and Matched Filtering
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../dct-basis-explorer/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    DCT Basis Explorer
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../dft-explorer/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    DFT Explorer
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../euler-formula-explorer/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Euler's Formula Explorer
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../even-and-odd-signal-decomposition/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Even and Odd Signal Decomposition
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../fft-2-osc/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    FFT 2 Oscillators
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../fft-3-osc/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    FFT 3 Oscillators
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../fft-butterfly/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    FFT Butterfly
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../fft-mic/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    FFT From Microphone
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../fft-live-audio/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    FFT Live Audio with Parameters
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../fft-size/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    FFT Size
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../fft-sound-file/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    FFT Sound File
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../fft-spectrum-analyzer/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    FFT Spectrum Analyzer
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../fft-waveform-types/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    FFT Waveform Types
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../filter-bank-explorer/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Filter Bank and Polyphase Explorer
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../fir-filter-design-comparison-tool/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    FIR Filter Design Comparison Tool
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../fir-vs-iir/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    FIR vs IIR Filters
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../fourier-series-explorer/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Fourier Series Explorer
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../fourier-transform-pairs/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Fourier Transform Pairs
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../frequency-detection/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Frequency Detection
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../huffman-coding/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Huffman Coding
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../iir-prototype-comparison/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    IIR Prototype Comparison
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../impulse-and-frequency-response-analyzer/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Impulse and Frequency Response Analyzer
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../interactive-filter-design-and-analysis-tool/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Interactive Filter Design and Analysis Tool
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../interactive-pole-zero-analysis-tool/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Interactive Pole-Zero Analysis Tool
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../interactive-spectrogram-parameter-explorer/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Interactive Spectrogram Parameter Explorer
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../interactive-stft-spectrogram-analyzer/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Interactive STFT Spectrogram Analyzer
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../graph-viewer-v1/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Learning Graph V1
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../graph-viewer/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Learning Graph Viewer
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../mobius-transform/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Mobius Transformation
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../multirate-sample-rate-converter/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Multirate Sample Rate Converter
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../noise-analysis-and-reduction-tool/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Noise Analysis and Reduction Tool
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../nyquist-shannon-sampling/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Nyquist-Shannon Sampling
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  <span class="md-ellipsis">
+    Phase Spectrum - What the Magnitude Hides
+  </span>
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        
+  
+  <span class="md-ellipsis">
+    Phase Spectrum - What the Magnitude Hides
+  </span>
+  
+
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#description" class="md-nav__link">
+    <span class="md-ellipsis">
+      Description
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#lesson-plan" class="md-nav__link">
+    <span class="md-ellipsis">
+      Lesson Plan
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Lesson Plan">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#learning-objectives" class="md-nav__link">
+    <span class="md-ellipsis">
+      Learning Objectives
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#target-audience" class="md-nav__link">
+    <span class="md-ellipsis">
+      Target Audience
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#prerequisites" class="md-nav__link">
+    <span class="md-ellipsis">
+      Prerequisites
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#activities" class="md-nav__link">
+    <span class="md-ellipsis">
+      Activities
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#assessment" class="md-nav__link">
+    <span class="md-ellipsis">
+      Assessment
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#common-misconceptions" class="md-nav__link">
+    <span class="md-ellipsis">
+      Common Misconceptions
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#references" class="md-nav__link">
+    <span class="md-ellipsis">
+      References
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../phasor-addition/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Phasor Addition
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../psd-wiener-khinchin/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Power Spectral Density and the Wiener-Khinchin Theorem
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../distribution-explorer/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Probability Distribution Explorer
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../quantization-and-noise-shaping/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Quantization and Noise Shaping
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../rc-lowpass-filter/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    RC Lowpass Filter
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../real-time-processing-simulator/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Real-Time Processing Simulator
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../reverb/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Reverb Effect
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../s-plane-explorer/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    s-Plane Explorer
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../sampling-theorem-explorer/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Sampling Theorem Explorer
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../signal-operations/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Signal Operations - Shift, Scale and Reverse
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../signal-type-explorer/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Signal Type Explorer
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../sine-wave/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Sine Wave
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../spectral-leakage-and-windowing/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Spectral Leakage and Windowing
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../synth-timeline/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Synth Timeline
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../system-interconnections/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    System Interconnections - Series, Parallel, Feedback
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../system-property-explorer/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    System Property Explorer
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../time-frequency-analysis-explorer/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Time-Frequency Analysis Explorer
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../timeline-viewer/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Timeline Viewer
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../tone-gen/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Tone Generator
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../wavelet-explorer/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Wavelet Explorer - CWT Scalogram and Haar DWT
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../wordcloud/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Word Cloud
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+    
+    
+    
+      
+        
+        
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+    <a href="../../stories/" class="md-nav__link">
+      
+  
+  <span class="md-ellipsis">
+    Stories
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+    
+    
+    
+      
+        
+        
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+    <a href="../../circuits/" class="md-nav__link">
+      
+  
+  <span class="md-ellipsis">
+    Circuits
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+        
+        
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+    <a href="../../learning-graph/" class="md-nav__link">
+      
+  
+  <span class="md-ellipsis">
+    Learning Graph
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+    
+    
+    
+      
+        
+        
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+    <a href="../../research/" class="md-nav__link">
+      
+  
+  <span class="md-ellipsis">
+    Research
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../report-card/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Report Card
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../checklist/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Checklist
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../faq/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    FAQs
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../glossary/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Glossary
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../how-we-built-this-site/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    How We Built This Site
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../instructors-guide/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Instructor's Guide
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../license/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    License
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../references/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    References
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../contact/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Contact
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+        
+        
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+    <a href="../../prompts/" class="md-nav__link">
+      
+  
+  <span class="md-ellipsis">
+    Prompts
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#description" class="md-nav__link">
+    <span class="md-ellipsis">
+      Description
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#lesson-plan" class="md-nav__link">
+    <span class="md-ellipsis">
+      Lesson Plan
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Lesson Plan">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#learning-objectives" class="md-nav__link">
+    <span class="md-ellipsis">
+      Learning Objectives
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#target-audience" class="md-nav__link">
+    <span class="md-ellipsis">
+      Target Audience
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#prerequisites" class="md-nav__link">
+    <span class="md-ellipsis">
+      Prerequisites
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#activities" class="md-nav__link">
+    <span class="md-ellipsis">
+      Activities
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#assessment" class="md-nav__link">
+    <span class="md-ellipsis">
+      Assessment
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#common-misconceptions" class="md-nav__link">
+    <span class="md-ellipsis">
+      Common Misconceptions
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#references" class="md-nav__link">
+    <span class="md-ellipsis">
+      References
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+  
+    <a href="https://github.com/dmccreary/signal-processing/blob/main/docs/sims/phase-spectrum/index.md" title="Edit this page" class="md-content__button md-icon">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M10 20H6V4h7v5h5v3.1l2-2V8l-6-6H6c-1.1 0-2 .9-2 2v16c0 1.1.9 2 2 2h4zm10.2-7c.1 0 .3.1.4.2l1.3 1.3c.2.2.2.6 0 .8l-1 1-2.1-2.1 1-1c.1-.1.2-.2.4-.2m0 3.9L14.1 23H12v-2.1l6.1-6.1z"/></svg>
+    </a>
+  
+  
+
+
+<h1 id="phase-spectrum-what-the-magnitude-hides">Phase Spectrum: What the Magnitude Hides</h1>
+<iframe src="main.html" width="100%" height="638px" scrolling="no"></iframe>
+
+<p>Copy this iframe to your website:</p>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="p">&lt;</span><span class="nt">iframe</span> <span class="na">src</span><span class="o">=</span><span class="s">"https://dmccreary.github.io/signal-processing/sims/phase-spectrum/main.html"</span> <span class="na">width</span><span class="o">=</span><span class="s">"100%"</span> <span class="na">height</span><span class="o">=</span><span class="s">"638px"</span> <span class="na">scrolling</span><span class="o">=</span><span class="s">"no"</span><span class="p">&gt;&lt;/</span><span class="nt">iframe</span><span class="p">&gt;</span>
+</code></pre></div></td></tr></table></div>
+<p><a class="md-button md-button--primary" href="main.html">Run MicroSim in Fullscreen</a></p>
+<!-- TODO(user): add the p5.js editor link once the sketch is saved in editor.p5js.org:
+[Edit in the p5.js Editor](https://editor.p5js.org/<username>/sketches/phase-spectrum) -->
+
+<h2 id="description">Description</h2>
+<p>A magnitude spectrum <span class="arithmatex">\(|X(f)|\)</span> tells you which frequencies are present and how strong they are. The phase
+spectrum <span class="arithmatex">\(\angle X(f)\)</span> tells you how those components line up in time, and that is what gives a signal its
+shape. The <strong>View</strong> radio buttons switch between three experiments.</p>
+<p><strong>A: Harmonics.</strong> The signal is <span class="arithmatex">\(x(t) = \sum_{k=1}^{3} A_k \cos(2\pi k f_0 t + \phi_k)\)</span> with <span class="arithmatex">\(f_0 = 1\)</span> Hz and
+fixed amplitudes <span class="arithmatex">\(A_k = 1, \tfrac12, \tfrac13\)</span>. Three sliders set the phases <span class="arithmatex">\(\phi_1, \phi_2, \phi_3\)</span> (−180° to
+180°), and the preset buttons load all 0°, a sawtooth (all −90°), a delay (−60°, −120°, −180°) or random phases.
+The magnitude bars never move, the RMS stays 0.825, but the waveform and its peak change. The dashed gray curve
+is the same magnitudes with every phase set to 0.</p>
+<p><strong>B: Time shift.</strong> A Gaussian pulse, rectangular pulse or sawtooth (100 samples over 1 s, so the DFT bins are
+1 Hz apart) is delayed by <span class="arithmatex">\(\tau\)</span>. The shift theorem</p>
+<div class="arithmatex">\[x(t - \tau) \;\longleftrightarrow\; X(f)\,e^{-j2\pi f \tau}\]</div>
+<p>leaves <span class="arithmatex">\(|X(f)|\)</span> unchanged and adds a phase ramp of slope <span class="arithmatex">\(-2\pi\tau\)</span> rad/Hz. The phase is shown wrapped to
+<span class="arithmatex">\((-\pi, \pi]\)</span> or, with <strong>Unwrap phase</strong>, as a continuous line. A cursor reads <span class="arithmatex">\(|X|\)</span> and <span class="arithmatex">\(\angle X\)</span> at one
+frequency. Bins with <span class="arithmatex">\(|X|\)</span> below 0.1% of the maximum have no meaningful phase and are marked ×.</p>
+<p><strong>C: Swap.</strong> Two signals A and B go through a 256-point DFT and are rebuilt from the magnitude of one and the
+phase of the other, from the magnitude alone (zero phase), or from the phase alone (<span class="arithmatex">\(|X| = 1\)</span>). The read-outs give
+the correlation coefficient <span class="arithmatex">\(r\)</span> of each rebuilt signal with A and with B.</p>
+<p>This MicroSim supports
+<a href="../../chapters/07-dft-fft-and-frequency-domain-analysis/#phase-spectrum">Chapter 7: DFT, FFT and Frequency Domain Analysis</a>.</p>
+<h2 id="lesson-plan">Lesson Plan</h2>
+<h3 id="learning-objectives">Learning Objectives</h3>
+<p>After using this MicroSim, students will be able to:</p>
+<ol>
+<li><strong>Explain</strong> why signals with identical magnitude spectra can have very different waveforms and peak values</li>
+<li><strong>Identify</strong> phases that grow linearly with frequency, <span class="arithmatex">\(\phi_k = k\,\phi_1\)</span>, as a pure time delay <span class="arithmatex">\(\tau = -\phi_1 / (360^\circ f_0)\)</span></li>
+<li><strong>Calculate</strong> the phase <span class="arithmatex">\(-2\pi f \tau\)</span> added by a delay <span class="arithmatex">\(\tau\)</span> and the interval <span class="arithmatex">\(1/|\tau|\)</span> at which the wrapped phase repeats</li>
+<li><strong>Distinguish</strong> <span class="arithmatex">\(2\pi\)</span> wrapping jumps from <span class="arithmatex">\(\pi\)</span> jumps caused by sign changes of a real spectrum</li>
+<li><strong>Analyze</strong> the swap experiment to conclude that the timing of a signal's features is carried by its phase</li>
+</ol>
+<h3 id="target-audience">Target Audience</h3>
+<p>Undergraduate students in a first signals and systems or digital signal processing course who have met the DFT.
+Plan 25 minutes for the activities below.</p>
+<h3 id="prerequisites">Prerequisites</h3>
+<ul>
+<li>Complex numbers in polar form, magnitude and angle (see the <a href="../complex-plane/">Complex Plane</a> MicroSim)</li>
+<li>Sinusoids <span class="arithmatex">\(A\cos(2\pi f t + \phi)\)</span> and what the phase <span class="arithmatex">\(\phi\)</span> does to them</li>
+<li>The DFT and the magnitude spectrum (Chapter 7)</li>
+</ul>
+<h3 id="activities">Activities</h3>
+<p><strong>Activity 1: Same magnitudes, different shapes (6 min).</strong> In view A the default phases are all −90° (the
+Sawtooth preset): the read-out shows peak <span class="arithmatex">\(|x|\)</span> = 1.44 and RMS = 0.825. Press <strong>All 0°</strong>. The three cosines now
+peak together at <span class="arithmatex">\(t = 0\)</span> and the peak rises to 1.83, yet the magnitude bars and the RMS (0.825) do not change.
+Press <strong>Delay</strong> (−60°, −120°, −180°): the blue curve is the dashed all-0° curve moved right by 0.167 s, and the
+peak is again 1.83. Set the phases to −45°, −90° and −135°: the note reports a pure delay of 0.125 s. Now move only
+<span class="arithmatex">\(\phi_2\)</span> to −80°: the phases are no longer proportional to <span class="arithmatex">\(k\)</span>, and the shape changes.</p>
+<p><strong>Activity 2: A delay is a phase ramp (7 min).</strong> Choose view B with the Gaussian pulse and <span class="arithmatex">\(\tau\)</span> = 0.05 s. The
+header reports slope <span class="arithmatex">\(-2\pi\tau\)</span> = −0.314 rad/Hz (−18.0°/Hz) and a wrap every 20.0 Hz. With the cursor at 5 Hz the
+read-out shows <span class="arithmatex">\(\angle X\)</span> = −90.0°; at 15 Hz it shows +90.0°, because −270° wraps to +90°. Check <strong>Unwrap phase</strong>:
+the same bin now reads −4.712 rad (−270.0°), and the dots form one straight line down to −12.252 rad at 39 Hz
+(bins 40-50 are marked undefined). Set <span class="arithmatex">\(\tau\)</span> = 0.10 s: the slope doubles to −0.628 rad/Hz and the wrapped phase
+repeats every 10.0 Hz. Set <span class="arithmatex">\(\tau\)</span> = −0.05 s: the phase now rises by 18° per hertz (+90.0° at 5 Hz). Through all of
+this <span class="arithmatex">\(|X(5\ \text{Hz})|\)</span> stays at 0.895.</p>
+<p><strong>Activity 3: Not every jump is a wrap (6 min).</strong> Choose the sawtooth with <span class="arithmatex">\(\tau\)</span> = 0: every defined bin from 1 to
+48 Hz has phase +90°, a horizontal line. Choose the rectangular pulse, still at <span class="arithmatex">\(\tau\)</span> = 0: the phase is 0° up to
+9 Hz and 180° from 10 to 18 Hz, because the pulse's sinc-shaped spectrum is real and changes sign. Set
+<span class="arithmatex">\(\tau\)</span> = 0.05 s with the cursor at 9 and then 10 Hz: the phase goes from −162° to 0° instead of falling another 18°.
+Check <strong>Unwrap phase</strong>: the dots follow the dashed line until 9 Hz, then climb by <span class="arithmatex">\(\pi\)</span> at each sign change, while
+keeping the slope <span class="arithmatex">\(-2\pi\tau\)</span> between the jumps.</p>
+<p><strong>Activity 4: The swap experiment (6 min).</strong> Choose view C with A = rectangular pulse, B = damped chirp and
+<strong>Swap the phases</strong>. <span class="arithmatex">\(|A|\)</span> with <span class="arithmatex">\(\angle B\)</span> oscillates like the chirp (<span class="arithmatex">\(r_A\)</span> = −0.18, <span class="arithmatex">\(r_B\)</span> = 0.64), and <span class="arithmatex">\(|B|\)</span> with
+<span class="arithmatex">\(\angle A\)</span> is a pulse between 0.10 and 0.25 s (<span class="arithmatex">\(r_A\)</span> = 0.64, <span class="arithmatex">\(r_B\)</span> = −0.08). Change A to the sawtooth burst: again
+each result follows its phase source (<span class="arithmatex">\(r_B\)</span> = 0.74 and <span class="arithmatex">\(r_A\)</span> = 0.74). Switch to <strong>Zero phase (|X| only)</strong>: both
+rebuilt signals are symmetric about <span class="arithmatex">\(t = 0\)</span> with their peak at <span class="arithmatex">\(t\)</span> = 0.000 s, whatever the original timing. Switch
+to <strong>Phase only (|X| = 1)</strong>: the rebuilt pulse is reduced to spikes at its edges, 0.10 and 0.25 s, and still
+correlates with A (<span class="arithmatex">\(r_A\)</span> = 0.41).</p>
+<h3 id="assessment">Assessment</h3>
+<ol>
+<li>In view A, all-0° phases give a peak of 1.83 and all −90° phases give 1.44. Why is the RMS 0.825 in both cases?
+    <em>Answer: the power of a sum of sinusoids at different frequencies depends only on their amplitudes:
+    <span class="arithmatex">\(\sqrt{(1^2 + 0.5^2 + 0.333^2)/2} = 0.825\)</span>. Phase moves energy around in time but does not change it.</em></li>
+<li>What waveform do the phases −45°, −90° and −135° produce for the 1, 2 and 3 Hz harmonics?
+    <em>Answer: the phases are <span class="arithmatex">\(k \times (-45^\circ)\)</span>, a linear phase, so the result is the all-0° waveform delayed by
+    <span class="arithmatex">\(\tau = 45^\circ / (360^\circ \times 1\ \text{Hz}) = 0.125\)</span> s, with the same peak of 1.83.</em></li>
+<li>A wrapped phase spectrum falls by 36° per hertz and wraps every 10 Hz. What delay produced it?
+    <em>Answer: slope <span class="arithmatex">\(-2\pi\tau\)</span> = −36°/Hz gives <span class="arithmatex">\(\tau = 36/360 = 0.10\)</span> s; the wrap interval <span class="arithmatex">\(1/\tau\)</span> = 10 Hz agrees.</em></li>
+<li>A pulse is delayed by 0.02 s. What phase does the delay add at 50 Hz, and why can the wrapped phase at that one
+    frequency not reveal the delay?
+    <em>Answer: <span class="arithmatex">\(-2\pi \times 50 \times 0.02 = -2\pi\)</span> rad, which wraps to 0, exactly as for no delay. One wrapped
+    phase only fixes <span class="arithmatex">\(\tau\)</span> up to multiples of <span class="arithmatex">\(1/f\)</span>; the slope across many frequencies (unwrapped) is needed.</em></li>
+<li>A rebuilt signal uses the magnitude of a rectangular pulse and the phase of a damped chirp. Which original does
+    it resemble, and what does that say about phase?
+    <em>Answer: the chirp (<span class="arithmatex">\(r_B\)</span> = 0.64 against <span class="arithmatex">\(r_A\)</span> = −0.18). Where edges and oscillations occur in time is encoded
+    in the phase, so structure follows the phase.</em></li>
+</ol>
+<h3 id="common-misconceptions">Common Misconceptions</h3>
+<p><strong>"The magnitude spectrum describes the signal; the phase is a minor detail."</strong> View A keeps <span class="arithmatex">\(|X|\)</span> fixed while the
+peak moves between 1.44 and 1.83, and view C shows that a magnitude combined with someone else's phase looks like
+that someone else. With zero phase every signal collapses to a shape centred on <span class="arithmatex">\(t = 0\)</span>.</p>
+<p><strong>"Every jump in a phase plot is a <span class="arithmatex">\(2\pi\)</span> wrap."</strong> Wrapping jumps are <span class="arithmatex">\(2\pi\)</span> and disappear when you unwrap. The
+rectangular pulse in view B also has jumps of <span class="arithmatex">\(\pi\)</span> where its spectrum changes sign; unwrapping cannot remove them,
+and they are not part of the delay.</p>
+<h2 id="references">References</h2>
+<ol>
+<li><a href="https://en.wikipedia.org/wiki/Discrete_Fourier_transform">Discrete Fourier transform</a> - Wikipedia - the DFT used in views B and C, including its circular shift property</li>
+<li><a href="https://en.wikipedia.org/wiki/Linear_phase">Linear phase</a> - Wikipedia - why a phase proportional to frequency is a pure delay that preserves waveform shape</li>
+<li><a href="https://en.wikipedia.org/wiki/Group_delay_and_phase_delay">Group delay and phase delay</a> - Wikipedia - delay as minus the slope of the phase, the quantity read from view B</li>
+<li><a href="https://en.wikipedia.org/wiki/Phase_unwrapping">Phase unwrapping</a> - Wikipedia - removing <span class="arithmatex">\(2\pi\)</span> jumps and the ambiguities that remain</li>
+<li><a href="https://en.wikipedia.org/wiki/Crest_factor">Crest factor</a> - Wikipedia - peak-to-RMS ratio, which changes with phase in view A while the RMS does not</li>
+<li><a href="https://www.dspguide.com/">The Scientist and Engineer's Guide to Digital Signal Processing</a> - Steven W. Smith - free online textbook with chapters on the DFT, polar notation and phase</li>
+</ol>
+
+
+
+
+
+
+
+  
+  
+
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+          <button type="button" class="md-top md-icon" data-md-component="top" hidden>
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8z"/></svg>
+  Back to top
+</button>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+    
+      
+      <nav class="md-footer__inner md-grid" aria-label="Footer" >
+        
+          
+          <a href="../nyquist-shannon-sampling/" class="md-footer__link md-footer__link--prev" aria-label="Previous: Nyquist-Shannon Sampling">
+            <div class="md-footer__button md-icon">
+              
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+            </div>
+            <div class="md-footer__title">
+              <span class="md-footer__direction">
+                Previous
+              </span>
+              <div class="md-ellipsis">
+                Nyquist-Shannon Sampling
+              </div>
+            </div>
+          </a>
+        
+        
+          
+          <a href="../phasor-addition/" class="md-footer__link md-footer__link--next" aria-label="Next: Phasor Addition">
+            <div class="md-footer__title">
+              <span class="md-footer__direction">
+                Next
+              </span>
+              <div class="md-ellipsis">
+                Phasor Addition
+              </div>
+            </div>
+            <div class="md-footer__button md-icon">
+              
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M4 11v2h12l-5.5 5.5 1.42 1.42L19.84 12l-7.92-7.92L10.5 5.5 16 11z"/></svg>
+            </div>
+          </a>
+        
+      </nav>
+    
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+    <div class="md-copyright__highlight">
+      Copyright &copy; 2025 Dan McCreary. Licensed under <a href="license/">CC BY-NC-SA 4.0</a> for non-commercial use.
+    </div>
+  
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    <script id="__config" type="application/json">{"base": "../..", "features": ["content.code.copy", "navigation.expand", "navigation.path", "navigation.prune", "navigation.indexes", "toc.follow", "navigation.top", "navigation.footer", "content.action.edit"], "search": "../../assets/javascripts/workers/search.6ce7567c.min.js", "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}}</script>
+    
+    
+      <script src="../../assets/javascripts/bundle.83f73b43.min.js"></script>
+      
+        <script src="../../js/extra.js"></script>
+      
+        <script src="https://unpkg.com/mathjax@3/es5/tex-mml-chtml.js"></script>
+      
+    
+  </body>
+</html>

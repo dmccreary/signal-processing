@@ -1,0 +1,216 @@
+{
+  "microsim": {
+    "dublinCore": {
+      "title": "Wavelet Explorer: CWT Scalogram and Haar DWT",
+      "creator": ["Dan McCreary"],
+      "subject": ["Wavelet transform", "Continuous wavelet transform", "Discrete wavelet transform", "Haar wavelet", "Multiresolution analysis", "Wavelet denoising"],
+      "description": "Interactive MicroSim for multiresolution analysis of a 256-sample signal. CWT mode draws a color-mapped scalogram |W(a,b)| at 32 log-spaced scales for the Morlet, Mexican hat or Haar wavelet and overlays the dilated wavelet at a chosen scale and position. Haar DWT mode shows 1-5 levels of detail and approximation coefficients as time-aligned bar plots, applies a hard threshold to the details and reports the reconstructed signal's mean squared error.",
+      "publisher": "Dan McCreary",
+      "contributor": ["Claude (Anthropic)"],
+      "date": "2026-10-14",
+      "type": "Interactive Simulation",
+      "format": "text/html",
+      "identifier": "https://dmccreary.github.io/signal-processing/sims/wavelet-explorer/",
+      "language": "en",
+      "relation": ["Chapter 8: Advanced Transforms"],
+      "rights": "CC BY-NC-SA 4.0"
+    },
+    "search": {
+      "tags": ["wavelet", "scalogram", "continuous wavelet transform", "discrete wavelet transform", "Haar", "Morlet", "Mexican hat", "denoising", "thresholding", "multiresolution"],
+      "searchKeywords": ["CWT scalogram", "Haar DWT", "wavelet scale and frequency", "pseudo-frequency", "wavelet denoising hard threshold", "approximation and detail coefficients"],
+      "visualizationType": ["chart", "interactive-demo", "simulation"],
+      "interactionLevel": "high",
+      "complexity": 6,
+      "relatedConcepts": ["Wavelet Transform", "Discrete Wavelet Transform", "Continuous Wavelet Transform", "Time-Frequency Analysis", "Filter Banks", "Downsampling", "Noise Reduction"],
+      "applicationDomains": ["education", "exploration", "analysis"]
+    },
+    "educational": {
+      "gradeLevel": ["Undergraduate"],
+      "subjectArea": ["Engineering", "Mathematics"],
+      "topic": ["Continuous wavelet transform", "Scalograms", "Haar discrete wavelet transform", "Wavelet denoising"],
+      "learningObjectives": [
+        "Explain why scale is inversely related to frequency, and convert between scale and pseudo-frequency with f = fc fs / a",
+        "Interpret a scalogram to locate a chirp's changing frequency, a tone's band and a transient's time of occurrence",
+        "Compare the time and frequency resolution of the Morlet, Mexican hat and Haar wavelets",
+        "Calculate Haar approximation and detail coefficients, and the number of coefficients at each level",
+        "Analyze how the number of levels and the hard threshold trade noise removal against signal distortion"
+      ],
+      "bloomsTaxonomy": ["Understand", "Apply", "Analyze"],
+      "prerequisites": ["Sinusoids, frequency and sampling", "Convolution and correlation", "Fourier transform and spectrum"],
+      "duration": {"typical": 25, "range": {"min": 15, "max": 40}},
+      "difficulty": "Intermediate",
+      "scaffolding": {
+        "type": ["guided-discovery", "feedback"],
+        "adaptability": "fixed",
+        "removal": "user-controlled"
+      },
+      "misconceptions": [
+        {
+          "misconception": "Each bright stripe along a scalogram band is a separate event",
+          "correction": "With a real wavelet W(a,b) follows the signal's oscillation, so |W| rises and falls twice per cycle of a steady tone",
+          "evidence": "With two tones and the Morlet wavelet the 8 Hz band shows 16 bright patches per second, and W(a,b) changes sign 16 times as b moves across the 1 s signal"
+        },
+        {
+          "misconception": "A larger threshold always removes more noise and gives a cleaner signal",
+          "correction": "Hard thresholding also removes the coefficients that carry the signal, so the error has a minimum and then rises",
+          "evidence": "For the noisy sine at L = 5 the error against the clean sine falls from 0.0821 (T = 0) to 0.0462 (T = 0.65) and rises to 0.0965 at T = 2.00"
+        }
+      ]
+    },
+    "technical": {
+      "framework": "p5.js",
+      "version": "1.0.0",
+      "canvasDimensions": {"width": 800, "height": 592, "responsive": true},
+      "regions": {"drawHeight": 480, "controlHeight": 112},
+      "dependencies": ["p5.js 2.3.2"],
+      "browserCompatibility": ["Chrome 90+", "Firefox 88+", "Safari 14+", "Edge 90+"],
+      "performance": {"memoryUsage": "low", "loadTime": 500},
+      "deviceRequirements": {
+        "minScreenWidth": 375,
+        "touchSupport": true,
+        "keyboardRequired": false,
+        "mouseRequired": false,
+        "networkRequired": false
+      },
+      "accessibility": {
+        "screenReader": true,
+        "keyboardNavigation": true,
+        "colorContrast": true,
+        "altText": true,
+        "screenReaderScript": "Wavelet explorer. In CWT mode the top plot shows a 256-sample signal with the dilated wavelet at the selected scale and position overlaid in gold, and the lower plot is a color-mapped scalogram of |W(a,b)| with time on the x axis and 32 log-spaced scales (pseudo-frequency 3 to 96 Hz) on the y axis. In Haar DWT mode the top plot shows the input and the reconstructed signal, and bar plots show the detail coefficients of each level and the final approximation, with a hard threshold band and the mean squared error."
+      }
+    },
+    "userInterface": {
+      "layoutType": "responsive-width",
+      "layoutPattern": "drawing-region-above-controls",
+      "colorScheme": {
+        "drawingArea": "aliceblue",
+        "controlArea": "white",
+        "signal": "blue",
+        "waveletOverlay": "gold",
+        "scalogram": "viridis color map",
+        "reconstruction": "maroon",
+        "keptCoefficients": "green",
+        "zeroedCoefficients": "light gray",
+        "threshold": "red",
+        "text": "black"
+      },
+      "controls": [
+        {
+          "id": "modeSelect",
+          "type": "dropdown",
+          "label": "Mode",
+          "description": "Switches between the CWT scalogram and the Haar DWT views",
+          "group": "mode",
+          "properties": {
+            "options": [
+              {"value": "cwt", "label": "CWT scalogram"},
+              {"value": "dwt", "label": "Haar DWT"}
+            ],
+            "default": "cwt"
+          }
+        },
+        {
+          "id": "signalSelect",
+          "type": "dropdown",
+          "label": "Signal",
+          "description": "Chooses the 256-sample test signal (fs = 256 Hz)",
+          "group": "signal",
+          "properties": {
+            "options": [
+              {"value": "tones", "label": "two tones"},
+              {"value": "chirp", "label": "chirp"},
+              {"value": "spike", "label": "tone + spike"},
+              {"value": "step", "label": "step edge"},
+              {"value": "noisy", "label": "noisy sine"}
+            ],
+            "default": "chirp"
+          }
+        },
+        {
+          "id": "waveletSelect",
+          "type": "dropdown",
+          "label": "Mother wavelet",
+          "description": "Chooses the CWT mother wavelet (CWT mode only)",
+          "group": "cwt",
+          "properties": {
+            "options": [
+              {"value": "morlet", "label": "Morlet"},
+              {"value": "mexhat", "label": "Mexican hat"},
+              {"value": "haar", "label": "Haar"}
+            ],
+            "default": "morlet"
+          }
+        },
+        {
+          "id": "dbCheckbox",
+          "type": "checkbox",
+          "label": "dB color scale",
+          "description": "Maps the top 40 dB of |W| to the color map instead of linear |W| (CWT mode only)",
+          "group": "cwt",
+          "properties": {"checked": false}
+        },
+        {
+          "id": "scaleSlider",
+          "type": "slider",
+          "label": "Scale a",
+          "description": "Selects one of the 32 log-spaced scales (pseudo-frequency 96 Hz down to 3 Hz); the label shows a in samples",
+          "group": "cwt",
+          "properties": {"min": 0, "max": 31, "default": 10, "step": 1, "showValue": true}
+        },
+        {
+          "id": "positionSlider",
+          "type": "slider",
+          "label": "Position b",
+          "description": "Sets the translation b of the overlaid wavelet in samples; the label shows b in seconds",
+          "group": "cwt",
+          "properties": {"min": 0, "max": 255, "default": 128, "step": 1, "units": "samples", "showValue": true}
+        },
+        {
+          "id": "levelSlider",
+          "type": "slider",
+          "label": "Levels L",
+          "description": "Number of Haar decomposition levels (DWT mode only)",
+          "group": "dwt",
+          "properties": {"min": 1, "max": 5, "default": 3, "step": 1, "showValue": true}
+        },
+        {
+          "id": "thresholdSlider",
+          "type": "slider",
+          "label": "Threshold T",
+          "description": "Hard threshold: detail coefficients with |d| <= T are set to zero before reconstruction (DWT mode only)",
+          "group": "dwt",
+          "properties": {"min": 0, "max": 4, "default": 0.5, "step": 0.05, "showValue": true}
+        }
+      ],
+      "visualElements": [
+        {"type": "chart", "description": "Signal plot: x(t) in blue with the dilated wavelet psi((t - b)/a) in gold (CWT), or the input, the reconstruction in maroon and the clean sine (DWT)", "interactive": true, "updateTriggers": ["signalSelect", "waveletSelect", "scaleSlider", "positionSlider", "levelSlider", "thresholdSlider"]},
+        {"type": "chart", "description": "Scalogram |W(a,b)| with pseudo-frequency and scale axes, a color bar and a marker at the selected (b, a); click to select", "interactive": true, "updateTriggers": ["signalSelect", "waveletSelect", "dbCheckbox", "scaleSlider", "positionSlider"]},
+        {"type": "chart", "description": "Time-aligned bar plots of the detail coefficients d1..dL and the approximation aL, with the threshold band in red and zeroed coefficients in gray", "interactive": false, "updateTriggers": ["signalSelect", "levelSlider", "thresholdSlider"]},
+        {"type": "text-display", "description": "Read-outs: scale, pseudo-frequency, W(a,b) and the row maximum (CWT); coefficients kept and mean squared errors (DWT)", "interactive": false, "updateTriggers": ["signalSelect", "waveletSelect", "scaleSlider", "positionSlider", "levelSlider", "thresholdSlider"]}
+      ]
+    },
+    "simulation": {
+      "model": {
+        "type": "mathematical",
+        "description": "Direct-convolution CWT of a mirror-extended 256-sample signal at 32 log-spaced scales with 1/sqrt(a) normalization, and an orthonormal Haar DWT with hard thresholding of the detail coefficients and inverse transform",
+        "equations": [
+          "W(a,b) = (1/sqrt(a)) sum_n x[n] psi((n - b)/a)",
+          "Morlet: psi(t) = exp(-t^2/2) cos(5t); Mexican hat: psi(t) = (1 - t^2) exp(-t^2/2)",
+          "pseudo-frequency f = fc fs / a",
+          "a[k] = (x[2k] + x[2k+1]) / sqrt(2), d[k] = (x[2k] - x[2k+1]) / sqrt(2)",
+          "hard threshold: d' = d if |d| > T, else 0",
+          "MSE = (1/N) sum_n (xhat[n] - x[n])^2"
+        ],
+        "algorithms": ["Direct convolution CWT (recomputed only when the signal, wavelet or color scale changes)", "Multilevel Haar analysis and synthesis"],
+        "limitations": ["Pseudo-frequency is approximate; with 1/sqrt(a) normalization the Mexican hat places an 8 Hz tone near 7 Hz", "Coefficients near the ends at large scales are affected by the mirror extension"]
+      }
+    },
+    "usage": {
+      "recommendedUsage": ["demonstration", "exploration", "guided-practice"],
+      "instructionalStrategies": ["Predict where a chirp's ridge appears before reading the row maximum", "Compare the three mother wavelets on the same signal", "Find the threshold and level that minimize the denoising error"],
+      "extensions": ["Add a complex (analytic) Morlet wavelet so the scalogram shows a smooth envelope instead of stripes", "Add soft thresholding and a noise-estimated universal threshold"]
+    }
+  },
+  "canvasHeight": 592
+}

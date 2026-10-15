@@ -1,0 +1,249 @@
+{
+  "microsim": {
+    "dublinCore": {
+      "title": "Noise Analysis and Reduction Tool",
+      "creator": ["Dan McCreary"],
+      "subject": ["Random signals", "Noise", "Power spectral density", "Signal-to-noise ratio", "Noise reduction"],
+      "description": "Generates white Gaussian, white uniform, pink (1/f), brown (1/f^2), band-limited and impulsive noise; shows its time series, histogram with a Gaussian fit, autocorrelation and log-log Welch PSD with a fitted slope; and measures the SNR of a 5 Hz sinusoid before and after ensemble averaging and a moving-average or median filter.",
+      "publisher": "Dan McCreary",
+      "contributor": ["Claude (Anthropic)"],
+      "date": "2026-10-14",
+      "type": "Interactive Simulation",
+      "format": "text/html",
+      "identifier": "https://dmccreary.github.io/signal-processing/sims/noise-analysis-and-reduction-tool/",
+      "language": "en",
+      "relation": ["Chapter 12: Stochastic Processes and Random Signals"],
+      "rights": "CC BY-NC-SA 4.0"
+    },
+    "search": {
+      "tags": ["noise", "white noise", "pink noise", "brown noise", "Gaussian noise", "impulsive noise", "Welch PSD", "autocorrelation", "SNR", "ensemble averaging", "moving average", "median filter"],
+      "searchKeywords": ["colors of noise", "noise PSD slope", "Welch method", "signal averaging SNR gain", "10 log10 K", "median filter impulsive noise", "noise histogram kurtosis"],
+      "visualizationType": ["chart", "simulation", "interactive-demo", "data-visualization"],
+      "interactionLevel": "high",
+      "complexity": 6,
+      "relatedConcepts": ["Random Processes", "Stochastic Signals", "White Noise", "Colored Noise", "Gaussian Noise", "Signal-to-Noise Ratio", "Noise Reduction", "Statistical Signal Processing"],
+      "applicationDomains": ["education", "exploration", "analysis", "demonstration"],
+      "showcase": false
+    },
+    "educational": {
+      "gradeLevel": ["Undergraduate"],
+      "subjectArea": ["Engineering", "Statistics", "Mathematics"],
+      "topic": ["White and colored noise", "Gaussian, uniform and impulsive noise", "Autocorrelation", "Welch power spectral density", "Signal-to-noise ratio", "Ensemble averaging", "Moving-average and median filtering"],
+      "learningObjectives": [
+        "Classify a noise record as white, pink or brown from its measured PSD slope (0, -10 or -20 dB/decade) and its autocorrelation",
+        "Distinguish Gaussian, uniform and impulsive white noise using the histogram and the excess kurtosis, even though their spectra are identical",
+        "Explain the variance-resolution trade-off of Welch's method in terms of the number of segments S and the segment length M",
+        "Predict the SNR gain of averaging K independent realizations (10 log10 K) and of an L-point moving average on white noise (10 log10 L), and explain why a moving average gains little against pink or brown noise",
+        "Evaluate when a moving-average or median filter improves the output SNR, accounting for signal distortion at long L and for impulsive noise"
+      ],
+      "bloomsTaxonomy": ["Understand", "Analyze", "Evaluate"],
+      "prerequisites": ["Mean, variance and the Gaussian distribution", "Decibels and the definition of SNR", "Discrete Fourier transform and power spectral density", "Autocorrelation of a random process"],
+      "duration": {"typical": 55, "range": {"min": 30, "max": 60}},
+      "difficulty": "Intermediate",
+      "scaffolding": {
+        "type": ["guided-discovery", "feedback"],
+        "adaptability": "fixed",
+        "removal": "user-controlled"
+      },
+      "misconceptions": [
+        {
+          "misconception": "Averaging L samples always improves the SNR by 10 log10 L dB",
+          "correction": "The 10 log10 L gain needs uncorrelated noise samples; averaging independent realizations gives 10 log10 K for any noise colour",
+          "evidence": "A 16-point moving average gains 11.95 dB on white noise but only 1.83 dB on pink and 0.01 dB on brown noise, while averaging 16 realizations gains about 12 dB for every colour"
+        },
+        {
+          "misconception": "White noise means Gaussian noise",
+          "correction": "Whiteness describes the spectrum and autocorrelation; Gaussianity describes the amplitude distribution",
+          "evidence": "White uniform and impulsive noise have flat PSDs and rho[1] near 0, but excess kurtosis of -1.20 and +45.4 instead of 0"
+        }
+      ]
+    },
+    "technical": {
+      "framework": "p5.js",
+      "version": "1.0.0",
+      "canvasDimensions": {"width": 900, "height": 670, "responsive": true},
+      "regions": {"drawHeight": 520, "controlHeight": 150},
+      "dependencies": ["p5.js 2.3.2"],
+      "browserCompatibility": ["Chrome 90+", "Firefox 88+", "Safari 14+", "Edge 90+"],
+      "performance": {"memoryUsage": "moderate", "computationalComplexity": "O(n log n)"},
+      "deviceRequirements": {
+        "minScreenWidth": 360,
+        "touchSupport": true,
+        "keyboardRequired": false,
+        "mouseRequired": false,
+        "networkRequired": true
+      },
+      "accessibility": {
+        "screenReader": true,
+        "keyboardNavigation": true,
+        "colorContrast": true,
+        "altText": true,
+        "screenReaderScript": "Noise analysis tool with four plots: the noisy time series with the clean 5 Hz sinusoid and the averaged output, a histogram with a Gaussian fit, the autocorrelation, and a log-log Welch power spectral density with a fitted slope. A banner reports input SNR, the SNR gain of ensemble averaging and of a moving-average or median filter, and the output SNR."
+      }
+    },
+    "userInterface": {
+      "layoutType": "multi-panel",
+      "layoutPattern": "banner-and-four-plot-grid-above-controls",
+      "colorScheme": {
+        "drawingArea": "aliceblue",
+        "controlArea": "white",
+        "inputSignal": "blue",
+        "output": "orange",
+        "spectrum": "maroon",
+        "fit": "gold",
+        "text": "black"
+      },
+      "controls": [
+        {
+          "id": "noiseSelect",
+          "type": "dropdown",
+          "label": "Noise type",
+          "description": "Chooses the noise generator",
+          "group": "noise",
+          "properties": {
+            "options": [
+              {"value": "white", "label": "White Gaussian"},
+              {"value": "uniform", "label": "White uniform"},
+              {"value": "pink", "label": "Pink (1/f)"},
+              {"value": "brown", "label": "Brown (1/f²)"},
+              {"value": "band", "label": "Band-limited (0–50 Hz)"},
+              {"value": "impulse", "label": "Impulsive (5% spikes)"}
+            ],
+            "default": "white"
+          }
+        },
+        {
+          "id": "nSelect",
+          "type": "dropdown",
+          "label": "Samples N",
+          "description": "Record length in samples at fs = 1 kHz",
+          "group": "noise",
+          "properties": {
+            "options": [
+              {"value": "256", "label": "256"},
+              {"value": "512", "label": "512"},
+              {"value": "1024", "label": "1024"},
+              {"value": "2048", "label": "2048"},
+              {"value": "4096", "label": "4096"},
+              {"value": "8192", "label": "8192"}
+            ],
+            "default": "4096"
+          }
+        },
+        {
+          "id": "newButton",
+          "type": "button",
+          "label": "New noise",
+          "description": "Draws a new set of noise realizations (the random seed advances by one)",
+          "group": "noise",
+          "properties": {"text": "New noise", "action": "realizationSeed++", "style": "secondary"}
+        },
+        {
+          "id": "sigmaSlider",
+          "type": "slider",
+          "label": "Noise RMS σ",
+          "description": "Standard deviation of the noise; the sinusoid amplitude scales with it so the input SNR is unchanged",
+          "group": "noise",
+          "properties": {"min": 0.1, "max": 2, "default": 1, "step": 0.1, "showValue": true}
+        },
+        {
+          "id": "welchSlider",
+          "type": "slider",
+          "label": "Welch segments S",
+          "description": "Number of Hann-windowed segments averaged in the PSD estimate; the segment length M is the largest power of two with (S+1)M/2 <= N",
+          "group": "analysis",
+          "properties": {"min": 1, "max": 32, "default": 8, "step": 1, "showValue": true}
+        },
+        {
+          "id": "signalCheckbox",
+          "type": "checkbox",
+          "label": "Add 5 Hz sinusoid",
+          "description": "Adds the test sinusoid s[n] so that SNR can be measured",
+          "group": "signal",
+          "properties": {"checked": true}
+        },
+        {
+          "id": "snrSlider",
+          "type": "slider",
+          "label": "Input SNR",
+          "description": "Sets the sinusoid amplitude A = sigma * sqrt(2 * 10^(SNR/10))",
+          "group": "signal",
+          "properties": {"min": -20, "max": 30, "default": 0, "step": 1, "units": "dB", "showValue": true}
+        },
+        {
+          "id": "ensSlider",
+          "type": "slider",
+          "label": "Ensemble avg K",
+          "description": "Number of independent noisy copies averaged before filtering",
+          "group": "reduction",
+          "properties": {"min": 1, "max": 64, "default": 1, "step": 1, "showValue": true}
+        },
+        {
+          "id": "filterSelect",
+          "type": "dropdown",
+          "label": "Filter",
+          "description": "Chooses a centred moving-average or running-median filter",
+          "group": "reduction",
+          "properties": {
+            "options": [
+              {"value": "ma", "label": "Moving avg"},
+              {"value": "median", "label": "Median"}
+            ],
+            "default": "ma"
+          }
+        },
+        {
+          "id": "lenSlider",
+          "type": "slider",
+          "label": "Filter length L",
+          "description": "Window length of the moving-average or median filter (L = 1 means no filtering)",
+          "group": "reduction",
+          "properties": {"min": 1, "max": 64, "default": 8, "step": 1, "showValue": true}
+        }
+      ],
+      "visualElements": [
+        {"type": "text-display", "description": "Banner: input SNR (or noise power), ensemble-average gain with 10 log10 K, filter gain with the white-noise value 10 log10 L, output SNR and the correlation of output and clean signal", "interactive": false, "updateTriggers": ["noiseSelect", "nSelect", "newButton", "sigmaSlider", "signalCheckbox", "snrSlider", "ensSlider", "filterSelect", "lenSlider"]},
+        {"type": "graph", "description": "Time series of the first 1.02 s: input x = s + w (blue), clean sinusoid (dashed) and output y (orange)", "interactive": false, "updateTriggers": ["noiseSelect", "nSelect", "newButton", "sigmaSlider", "signalCheckbox", "snrSlider", "ensSlider", "filterSelect", "lenSlider"]},
+        {"type": "chart", "description": "Histogram of the input noise with a Gaussian of the same mean and variance, the output-noise histogram, and mean, variance and excess kurtosis read-outs", "interactive": false, "updateTriggers": ["noiseSelect", "nSelect", "newButton", "sigmaSlider", "ensSlider", "filterSelect", "lenSlider"]},
+        {"type": "graph", "description": "Autocorrelation of the input and output noise for lags 0-100 with the theoretical curve and the 95% band for white noise", "interactive": false, "updateTriggers": ["noiseSelect", "nSelect", "newButton", "ensSlider", "filterSelect", "lenSlider"]},
+        {"type": "graph", "description": "Log-log Welch PSD of input and output with the theoretical noise PSD and a fitted slope in dB/decade", "interactive": false, "updateTriggers": ["noiseSelect", "nSelect", "newButton", "sigmaSlider", "welchSlider", "signalCheckbox", "snrSlider", "ensSlider", "filterSelect", "lenSlider"]}
+      ]
+    },
+    "simulation": {
+      "model": {
+        "type": "statistical",
+        "description": "Seeded noise generators produce K independent realizations w_k[n] at fs = 1 kHz. The sketch adds s[n] = A sin(2 pi 5 n / fs), averages the K noisy copies, applies a centred moving-average or median filter of length L, and measures every stage against the clean sinusoid.",
+        "equations": [
+          "SNR_in = 10 log10(P_s / mean(w^2)),  P_s = A^2 / 2",
+          "A = sigma * sqrt(2 * 10^(SNR/10))",
+          "ensemble gain (white or not) = 10 log10 K",
+          "moving-average gain on white noise = 10 log10 L",
+          "SNR_out = 10 log10(P_s / mean((y - s)^2))",
+          "white PSD = 2 sigma^2 / fs (one-sided); pink ~ 1/f (-10 dB/decade); brown ~ 1/f^2 (-20 dB/decade)",
+          "band-limited autocorrelation = sinc with zeros at multiples of 1/(2B) = 10 ms"
+        ],
+        "algorithms": [
+          "Mulberry32 seeded uniform generator and Box-Muller Gaussian transform",
+          "Pink noise: Paul Kellet's parallel bank of six one-pole filters",
+          "Brown noise: leaky integrator with pole 0.999",
+          "Band-limited noise: ideal FFT low-pass at 50 Hz",
+          "Impulsive noise: Bernoulli-Gaussian, 5% spikes plus a weak Gaussian background",
+          "Welch PSD with Hann windows and a radix-2 FFT",
+          "Weighted least-squares fit of 10 log10 PSD against log10 f (bins weighted 1/k)",
+          "Running median with a sorted window"
+        ],
+        "limitations": [
+          "A single realization's PSD slope typically differs from theory by 1-2 dB/decade",
+          "Pink and brown realizations vary strongly in power, so their measured gains fluctuate around the theoretical values",
+          "The filters are centred (zero-phase) and their outputs exist only where the whole window fits"
+        ]
+      }
+    },
+    "usage": {
+      "recommendedUsage": ["exploration", "guided-practice", "demonstration", "group-activity"],
+      "instructionalStrategies": ["Fingerprint table: record slope, rho[1] and kurtosis for each noise type", "Predict-then-measure SNR gains for K and L", "Compare linear and nonlinear filters on Gaussian and impulsive noise"],
+      "extensions": ["Add a Wiener filter using the known signal and noise PSDs", "Add wavelet-threshold denoising", "Replace the sinusoid with a pulse or speech-like test signal"]
+    }
+  },
+  "canvasHeight": 670
+}

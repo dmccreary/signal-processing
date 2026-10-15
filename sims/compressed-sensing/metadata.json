@@ -1,0 +1,173 @@
+{
+  "microsim": {
+    "dublinCore": {
+      "title": "Compressed Sensing: Recovering a Sparse Spectrum",
+      "creator": ["Dan McCreary"],
+      "subject": ["Compressed sensing", "Sparse recovery", "Orthogonal matching pursuit", "Sampling theorem", "Aliasing"],
+      "description": "A real signal of N = 128 samples made of k tones is measured at only m sample times. Orthogonal matching pursuit (OMP) recovers its sparse spectrum from the m samples, while the minimum-energy (least-squares) solution spreads the energy over all frequencies. Sliders set k, m and the measurement noise; a menu compares random with evenly spaced sample times, which alias. Read-outs give both recovery errors, whether the support was recovered, the m >= C k ln(N/k) rule and the success rate over 100 fixed seeds.",
+      "publisher": "Dan McCreary",
+      "contributor": ["Claude (Anthropic)"],
+      "date": "2026-10-14",
+      "type": "Interactive Simulation",
+      "format": "text/html",
+      "identifier": "https://dmccreary.github.io/signal-processing/sims/compressed-sensing/",
+      "language": "en",
+      "relation": ["Chapter 14: Time-Frequency Analysis and Advanced Topics", "Sampling Theorem Explorer"],
+      "rights": "CC BY-NC-SA 4.0"
+    },
+    "search": {
+      "tags": ["compressed sensing", "compressive sampling", "sparse spectrum", "orthogonal matching pursuit", "OMP", "minimum-energy solution", "least squares", "sub-Nyquist sampling", "random sampling", "aliasing"],
+      "searchKeywords": ["compressed sensing simulation", "recover sparse spectrum from few samples", "orthogonal matching pursuit demo", "m >= C k log(N/k)", "random versus uniform sampling", "sub-Nyquist recovery"],
+      "visualizationType": ["chart", "interactive-demo", "simulation"],
+      "interactionLevel": "moderate",
+      "complexity": 7,
+      "relatedConcepts": ["Compressed Sensing", "Sparsity", "Discrete Fourier Transform", "Sampling Theorem", "Aliasing", "Least Squares"],
+      "applicationDomains": ["education", "exploration", "demonstration"]
+    },
+    "educational": {
+      "gradeLevel": ["Undergraduate"],
+      "subjectArea": ["Engineering", "Mathematics"],
+      "topic": ["Compressed sensing", "Sparse recovery with orthogonal matching pursuit", "Minimum-energy (least-squares) solution", "Random versus uniform sampling"],
+      "learningObjectives": [
+        "Explain why m random samples can recover a k-tone spectrum whose tones lie far above m/2 Hz, while m evenly spaced samples alias",
+        "Analyze one run of OMP (correlate, select, least squares, update the residual) and relate its first pick to the tallest bar of the minimum-energy spectrum",
+        "Compare the minimum-energy (least-squares) solution with the OMP solution using recovery error and sparsity",
+        "Evaluate the rule m >= C k ln(N/k) against the success rates measured over 100 seeds, and estimate C for OMP",
+        "Assess how measurement noise changes the recovery error and the support, and how extra measurements compensate"
+      ],
+      "bloomsTaxonomy": ["Understand", "Analyze", "Evaluate"],
+      "prerequisites": ["The DFT, its inverse and the conjugate symmetry of a real signal's spectrum", "The sampling theorem and aliasing", "Least squares for an overdetermined linear system"],
+      "duration": {"typical": 25, "range": {"min": 20, "max": 30}},
+      "difficulty": "Advanced",
+      "scaffolding": {
+        "type": ["guided-discovery", "feedback"],
+        "adaptability": "fixed",
+        "removal": "user-controlled"
+      },
+      "misconceptions": [
+        {
+          "misconception": "Compressed sensing beats the sampling theorem for any signal",
+          "correction": "Recovery from few samples needs a sparse spectrum; the number of samples must grow roughly like k ln(N/k)",
+          "evidence": "With k = 10 and m = 32 only 1 of 100 seeds is recovered; with m = 64 all 100 are"
+        },
+        {
+          "misconception": "Taking fewer samples is the same as sampling at a lower uniform rate",
+          "correction": "Evenly spaced samples alias: DFT columns f and f +/- m become identical, so OMP cannot tell a tone from its alias; random sample times keep every column distinct",
+          "evidence": "Seed 1, k = 3, m = 32: evenly spaced times make OMP return the aliases 10 and 8 Hz (2 of 100 seeds recovered) while random times recover 99 of 100 seeds"
+        }
+      ]
+    },
+    "technical": {
+      "framework": "p5.js",
+      "version": "1.0.0",
+      "canvasDimensions": {"width": 900, "height": 706, "responsive": true},
+      "regions": {"drawHeight": 556, "controlHeight": 150},
+      "dependencies": ["p5.js 2.3.2"],
+      "browserCompatibility": ["Chrome 90+", "Firefox 88+", "Safari 14+", "Edge 90+"],
+      "performance": {"memoryUsage": "low", "computationalComplexity": "O(n²)", "loadTime": 500},
+      "deviceRequirements": {
+        "minScreenWidth": 375,
+        "touchSupport": true,
+        "keyboardRequired": false,
+        "mouseRequired": false,
+        "networkRequired": false
+      },
+      "accessibility": {
+        "screenReader": true,
+        "keyboardNavigation": true,
+        "colorContrast": true,
+        "altText": true,
+        "screenReaderScript": "Compressed sensing demonstration. A signal made of k cosines is measured at only m of its 128 sample times. The top plot shows the signal, the measured samples and the orthogonal matching pursuit reconstruction. The middle plot shows the spectrum of the minimum-energy (least-squares) solution, spread over all frequencies, and the bottom plot shows the sparse spectrum recovered by OMP with the true tones as rings. Read-outs give the recovery errors, whether the support was recovered, the m >= C k ln(N/k) rule and the success rate over 100 seeds."
+      }
+    },
+    "userInterface": {
+      "layoutType": "multi-panel",
+      "layoutPattern": "drawing-region-above-controls",
+      "colorScheme": {
+        "drawingArea": "aliceblue",
+        "controlArea": "white",
+        "signal": "blue",
+        "samples": "chocolate",
+        "ompEstimate": "green",
+        "minimumEnergySpectrum": "maroon",
+        "wrongPicks": "red",
+        "text": "black"
+      },
+      "controls": [
+        {
+          "id": "kSlider",
+          "type": "slider",
+          "label": "Tones k",
+          "description": "Number of tones in the signal (the sparsity); OMP runs k iterations",
+          "group": "signal",
+          "properties": {"min": 1, "max": 10, "default": 3, "step": 1, "showValue": true}
+        },
+        {
+          "id": "mSlider",
+          "type": "slider",
+          "label": "Samples m",
+          "description": "Number of measured samples out of N = 128; the read-out also shows m/N in percent",
+          "group": "measurement",
+          "properties": {"min": 8, "max": 128, "default": 24, "step": 1, "showValue": true}
+        },
+        {
+          "id": "noiseSlider",
+          "type": "slider",
+          "label": "Noise sigma",
+          "description": "Standard deviation of the Gaussian noise added to each measured sample",
+          "group": "measurement",
+          "properties": {"min": 0, "max": 0.3, "default": 0, "step": 0.01, "showValue": true}
+        },
+        {
+          "id": "patternSelect",
+          "type": "dropdown",
+          "label": "Sample times",
+          "description": "Random sample times (the first m of a seeded random order) or evenly spaced times floor(i N / m)",
+          "group": "measurement",
+          "properties": {
+            "options": [
+              {"value": "random", "label": "Random sample times"},
+              {"value": "uniform", "label": "Evenly spaced times"}
+            ],
+            "default": "random"
+          }
+        },
+        {
+          "id": "newSignalButton",
+          "type": "button",
+          "label": "New signal",
+          "description": "Moves to the next seed: new tones, new random sample times and new noise",
+          "group": "signal",
+          "properties": {"text": "New signal", "action": "seed++", "style": "secondary"}
+        }
+      ],
+      "visualElements": [
+        {"type": "graph", "description": "Signal x(t) over 1 s (blue), the m measured samples (orange dots and ticks) and the OMP estimate (green)", "interactive": false, "updateTriggers": ["kSlider", "mSlider", "noiseSlider", "patternSelect", "newSignalButton"]},
+        {"type": "chart", "description": "Amplitude spectrum (0 to 64 Hz) of the minimum-energy (least-squares) solution as maroon bars, with blue markers at the true tone frequencies", "interactive": false, "updateTriggers": ["kSlider", "mSlider", "noiseSlider", "patternSelect", "newSignalButton"]},
+        {"type": "chart", "description": "OMP spectrum: green stems at correct frequencies, red stems at wrong ones, blue rings at the true tones, and a dashed line at m/2 Hz", "interactive": false, "updateTriggers": ["kSlider", "mSlider", "noiseSlider", "patternSelect", "newSignalButton"]},
+        {"type": "text-display", "description": "Banner and read-outs: OMP picks, support recovered, recovery errors, the m >= C k ln(N/k) rule and the success rate over seeds 1 to 100", "interactive": false, "updateTriggers": ["kSlider", "mSlider", "noiseSlider", "patternSelect", "newSignalButton"]}
+      ]
+    },
+    "simulation": {
+      "model": {
+        "type": "mathematical",
+        "description": "A real k-sparse spectrum (k conjugate pairs of DFT bins) is measured at m sample times, y = Phi x_f + noise, with Phi the m rows of the inverse DFT matrix. OMP (k iterations, conjugate pairs added together) and the minimum-energy solution are computed and compared with the truth.",
+        "equations": [
+          "x[n] = sum_{i=1}^{k} a_i cos(2 pi f_i n / N + phi_i), N = 128",
+          "y_i = x[t_i] + sigma g_i",
+          "c(f) = |sum_i r_i e^(-j 2 pi f t_i / N)|",
+          "minimum-energy solution: Phi^H (Phi Phi^H)^(-1) y = DFT of the zero-filled samples",
+          "recovery error = ||x_hat - x|| / ||x||",
+          "rule of thumb: m >= C k ln(N/k), C about 2 to 4"
+        ],
+        "algorithms": ["Orthogonal matching pursuit with least squares by incremental Gram-Schmidt QR", "Seeded mulberry32 random generator with Box-Muller Gaussian noise"]
+      }
+    },
+    "usage": {
+      "recommendedUsage": ["demonstration", "exploration", "guided-practice"],
+      "instructionalStrategies": ["Lower m until recovery fails and read the 100-seed success rate", "Switch between random and evenly spaced sample times at the same m", "Raise the noise and compensate with more samples"],
+      "extensions": ["Add l1 minimization (basis pursuit) and compare it with OMP", "Allow tones between DFT bins to show that leakage breaks exact sparsity"]
+    }
+  },
+  "canvasHeight": 706
+}

@@ -1,79 +1,119 @@
 {
-  "title": "FFT Live Audio from Microphone",
-  "description": "Real-time frequency spectrum visualization of audio input from computer microphone using FFT analysis.",
-  "creator": "Dan McCreary",
-  "date": "2024-01-01",
-  "subject": [
-    "Signal Processing",
-    "FFT",
-    "Audio Analysis",
-    "Real-time Processing"
-  ],
-  "type": "Interactive Simulation",
-  "format": "text/html",
-  "language": "en",
-  "rights": "CC BY-NC-SA 4.0",
-  "identifier": "https://dmccreary.github.io/signal-processing/sims/fft-live-audio/",
-  "publisher": "Dan McCreary",
-  "educationalLevel": "Undergraduate",
-  "learningResourceType": "simulation",
-  "audience": "Students, Educators",
-  "version": "1.0.0",
-  "bloomLevel": [
-    "Understand",
-    "Apply"
-  ],
-  "concepts": [
-    "FFT",
-    "Real-time audio",
-    "Frequency spectrum",
-    "Microphone input"
-  ],
-  "prerequisites": [
-    "Basic understanding of frequency",
-    "FFT fundamentals"
-  ],
-  "library": "p5.js",
-  "visualizationType": [
-    "graph",
-    "interactive-demo",
-    "map",
-    "simulation"
-  ],
-  "learningObjectives": [
-    "Understand the key concepts of fft live audio from microphone",
-    "Explore fft live audio from microphone through interactive visualization",
-    "Apply knowledge of fft live audio from microphone to solve problems",
-    "Experiment with parameters to observe their effects on fft live audio from microphone"
-  ],
-  "bloomsTaxonomy": [
-    "Remember",
-    "Understand",
-    "Apply",
-    "Analyze",
-    "Create"
-  ],
-  "pedagogical": {
-    "pattern": "exploration",
-    "bloomAlignment": [
-      "understand",
-      "apply",
-      "analyze"
-    ],
-    "bloomVerbs": [
-      "describe",
-      "calculate",
-      "illustrate",
-      "use",
-      "analyze"
-    ],
-    "pacing": "self-paced",
-    "supportsPrediction": false,
-    "dataVisibility": "medium",
-    "feedbackType": [
-      "immediate",
-      "corrective"
-    ],
-    "interactionStyle": "construct"
-  }
+  "microsim": {
+    "dublinCore": {
+      "title": "FFT Live Audio from Microphone",
+      "creator": ["Dan McCreary"],
+      "subject": ["Signal processing", "FFT", "Audio analysis", "Real-time processing", "Frequency spectrum"],
+      "description": "A live spectrum analyzer for the computer's microphone with adjustable smoothness and FFT size. It shows the FFT magnitude in decibels from 0 Hz to the Nyquist frequency, the bin width, the analysis window length and the strongest peak.",
+      "publisher": "Dan McCreary",
+      "contributor": ["Claude (Anthropic)"],
+      "date": "2025-06-05",
+      "type": "Interactive Simulation",
+      "format": "text/html",
+      "identifier": "https://dmccreary.github.io/signal-processing/sims/fft-live-audio/",
+      "language": "en",
+      "relation": ["Chapter 7: DFT, FFT and Frequency Domain Analysis", "FFT Mic", "FFT of Sound File", "Basic FFT Visualization"],
+      "rights": "CC BY-NC-SA 4.0"
+    },
+    "search": {
+      "tags": ["fft", "spectrum analyzer", "microphone", "live audio", "frequency resolution", "smoothing", "bin width"],
+      "searchKeywords": ["live microphone spectrum", "real-time fft", "fft size and frequency resolution", "audio spectrum analyzer"],
+      "visualizationType": ["chart", "interactive-demo", "simulation"],
+      "interactionLevel": "moderate",
+      "complexity": 4,
+      "relatedConcepts": ["Fast Fourier Transform", "Magnitude Spectrum", "Frequency Resolution", "Spectral Analysis", "Window Functions", "Nyquist Frequency", "Audio Signal Processing"],
+      "applicationDomains": ["education", "exploration", "analysis"],
+      "showcase": false
+    },
+    "educational": {
+      "gradeLevel": ["Undergraduate"],
+      "subjectArea": ["Engineering", "Computer Science", "Music"],
+      "topic": ["FFT", "Real-time audio", "Frequency spectrum", "Microphone input", "Time-frequency trade-off"],
+      "learningObjectives": [
+        "Identify the frequency of a sustained whistle as the strongest narrow peak in the live spectrum",
+        "Calculate the bin width fs/(2N) and window length 2N/fs for a given FFT size and sample rate",
+        "Predict how raising the Smoothness slider toward 0.95 steadies the spectrum but slows its response to sudden sounds",
+        "Explain the trade-off between frequency resolution and time resolution when the FFT size changes",
+        "Compare the spectra of a whistle, a sung vowel and a hissed sss to distinguish tonal sounds from broadband noise"
+      ],
+      "bloomsTaxonomy": ["Understand", "Apply", "Analyze"],
+      "prerequisites": ["Frequency, amplitude and sinusoids", "Sampling and the Nyquist frequency", "Magnitude spectrum and the decibel scale"],
+      "duration": {"typical": 20, "range": {"min": 15, "max": 30}},
+      "difficulty": "Intermediate",
+      "scaffolding": {
+        "type": ["guided-discovery", "feedback"],
+        "adaptability": "fixed",
+        "removal": "user-controlled"
+      },
+      "misconceptions": [
+        {
+          "misconception": "A bigger FFT size shows higher frequencies",
+          "correction": "The axis always runs from 0 Hz to the Nyquist frequency; the FFT size only changes the bin width and the window length",
+          "evidence": "Move the FFT Size slider: the frequency axis does not change, but the bin width and window read-outs do"
+        },
+        {
+          "misconception": "Smoothness filters the sound",
+          "correction": "Smoothness averages successive spectra over time for display; it does not change which frequencies are present",
+          "evidence": "A steady whistle peaks at the same frequency with Smoothness 0.00 and 0.95; only the rise and fade are slower"
+        }
+      ]
+    },
+    "technical": {
+      "framework": "p5.js",
+      "version": "2.0.0",
+      "canvasDimensions": {"width": 800, "height": 480, "responsive": true},
+      "regions": {"drawHeight": 400, "controlHeight": 80},
+      "dependencies": ["p5.js 2.3.2", "p5.sound 0.4.1"],
+      "browserCompatibility": ["Chrome 90+", "Firefox 88+", "Safari 14+", "Edge 90+"],
+      "performance": {"memoryUsage": "moderate", "loadTime": 1500},
+      "deviceRequirements": {
+        "minScreenWidth": 320,
+        "touchSupport": true,
+        "keyboardRequired": false,
+        "mouseRequired": false,
+        "networkRequired": false
+      },
+      "accessibility": {
+        "screenReader": true,
+        "keyboardNavigation": true,
+        "colorContrast": true,
+        "altText": true,
+        "screenReaderScript": "Live microphone spectrum analyzer. Press Start and allow microphone access; purple bars show the FFT magnitude in decibels from 0 Hz to the Nyquist frequency. The Smoothness slider averages successive spectra and the FFT Size slider sets the number of frequency bins."
+      }
+    },
+    "userInterface": {
+      "layoutType": "responsive-width",
+      "layoutPattern": "drawing-region-above-controls",
+      "colorScheme": {
+        "drawingArea": "aliceblue",
+        "controlArea": "white",
+        "accent": "purple",
+        "text": "black"
+      },
+      "controls": [
+        {"id": "startButton", "type": "toggle-button", "label": "Start / Stop", "description": "Opens or closes the microphone; the sound is analyzed locally and never played back", "group": "audio", "properties": {"text": "Start", "toggleable": true}},
+        {"id": "resetButton", "type": "button", "label": "Reset", "description": "Restores Smoothness 0.50 and FFT Size 1024 bins", "group": "audio", "properties": {"text": "Reset"}},
+        {"id": "smoothnessSlider", "type": "slider", "label": "Smoothness", "description": "Averaging constant applied to successive spectra (the analyser's smoothingTimeConstant)", "group": "analysis", "properties": {"min": 0, "max": 0.95, "default": 0.5, "step": 0.05, "showValue": true}},
+        {"id": "fftSizeSlider", "type": "slider", "label": "FFT Size (bins)", "description": "Index into 128, 256, 512, 1024, 2048, 4096, 8192, 16384 frequency bins; a new p5.FFT is built for each size", "group": "analysis", "properties": {"min": 0, "max": 7, "default": 3, "step": 1, "showValue": true}}
+      ],
+      "visualElements": [
+        {"type": "chart", "description": "Purple bars: FFT magnitude in dB (-100 to -30) versus frequency from 0 Hz to the Nyquist frequency, with a gold marker on the strongest peak", "interactive": true, "updateTriggers": ["startButton", "smoothnessSlider", "fftSizeSlider"]},
+        {"type": "text-display", "description": "Sample rate, bin width, window length, strongest peak, cursor frequency and microphone status", "interactive": false, "updateTriggers": ["startButton", "fftSizeSlider"]}
+      ]
+    },
+    "simulation": {
+      "model": {
+        "type": "algorithmic",
+        "description": "A Web Audio analyser (Blackman window, 2N-sample FFT, N bins) applied to the live microphone signal, smoothed over time and displayed in decibels",
+        "equations": ["delta_f = fs / (2N)", "T_window = 2N / fs", "X_smoothed[k] = tau * X_prev[k] + (1 - tau) * |X[k]|", "dB = 20 log10(X_smoothed[k])"],
+        "algorithms": ["Fast Fourier Transform", "Blackman window", "Exponential smoothing of successive spectra"]
+      }
+    },
+    "usage": {
+      "recommendedUsage": ["demonstration", "exploration", "guided-practice"],
+      "instructionalStrategies": ["Predict the effect of FFT size, then check with a steady whistle", "Compare tonal and broadband sounds"],
+      "extensions": ["Add a frequency-range zoom or a log-frequency axis", "Show a scrolling spectrogram"]
+    }
+  },
+  "canvasHeight": 480
 }

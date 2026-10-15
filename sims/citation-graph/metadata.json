@@ -1,85 +1,180 @@
 {
-  "title": "Citation Graph for FFT on Microcontrollers",
-  "description": "Interactive citation graph visualization showing relationships between academic papers on FFT implementations for microcontrollers.",
-  "creator": "Dan McCreary",
-  "date": "2024-01-01",
-  "subject": [
-    "Signal Processing",
-    "FFT",
-    "Academic Research",
-    "Citation Analysis"
-  ],
-  "type": "Interactive Simulation",
-  "format": "text/html",
-  "language": "en",
-  "rights": "CC BY-NC-SA 4.0",
-  "identifier": "https://dmccreary.github.io/signal-processing/sims/citation-graph/",
-  "publisher": "Dan McCreary",
-  "educationalLevel": "Graduate",
-  "learningResourceType": "simulation",
-  "audience": "Researchers, Students",
-  "version": "1.0.0",
-  "bloomLevel": [
-    "Analyze",
-    "Evaluate"
-  ],
-  "concepts": [
-    "Citation networks",
-    "FFT research",
-    "Academic papers",
-    "Graph visualization"
-  ],
-  "prerequisites": [
-    "Understanding of FFT",
-    "Basic research methods"
-  ],
-  "library": "vis-network",
-  "visualizationType": [
-    "animation",
-    "graph",
-    "interactive-demo",
-    "map",
-    "network",
-    "simulation",
-    "timeline"
-  ],
-  "learningObjectives": [
-    "Understand the key concepts of citation graph for fft on microcontrollers",
-    "Explore citation graph for fft on microcontrollers through interactive visualization",
-    "Apply knowledge of citation graph for fft on microcontrollers to solve problems",
-    "Experiment with parameters to observe their effects on citation graph for fft on microcontrollers"
-  ],
-  "bloomsTaxonomy": [
-    "Remember",
-    "Understand",
-    "Apply",
-    "Analyze",
-    "Evaluate",
-    "Create"
-  ],
-  "pedagogical": {
-    "pattern": "demonstration",
-    "bloomAlignment": [
-      "understand",
-      "apply",
-      "analyze"
-    ],
-    "bloomVerbs": [
-      "classify",
-      "compare",
-      "calculate",
-      "demonstrate",
-      "illustrate"
-    ],
-    "pacing": "self-paced",
-    "supportsPrediction": false,
-    "dataVisibility": "high",
-    "feedbackType": [
-      "immediate",
-      "delayed",
-      "corrective",
-      "explanatory"
-    ],
-    "interactionStyle": "manipulate"
-  }
+  "microsim": {
+    "dublinCore": {
+      "title": "Citation Graph for FFT on Microcontrollers",
+      "creator": ["Dan McCreary"],
+      "subject": ["Signal Processing", "FFT", "Embedded Systems", "Citation Analysis", "Academic Research"],
+      "description": "Interactive citation graph of 15 sample papers about running the FFT on microcontrollers and embedded hardware, with filters by research area and citation count and three layouts.",
+      "publisher": "Dan McCreary",
+      "contributor": ["Claude (Anthropic)"],
+      "date": "2025-06-05",
+      "type": "Interactive Simulation",
+      "format": "text/html",
+      "identifier": "https://dmccreary.github.io/signal-processing/sims/citation-graph/",
+      "language": "en",
+      "relation": ["Chapter 6: Fourier Analysis Fundamentals"],
+      "rights": "CC BY-NC-SA 4.0"
+    },
+    "search": {
+      "tags": ["citation graph", "citation network", "FFT", "fast Fourier transform", "microcontroller", "embedded systems", "literature review", "vis.js"],
+      "searchKeywords": ["FFT citation network", "citation graph visualization", "FFT on microcontrollers literature", "Cooley-Tukey citations"],
+      "visualizationType": ["graph", "network", "interactive-demo"],
+      "interactionLevel": "moderate",
+      "complexity": 4,
+      "relatedConcepts": ["Fast Fourier Transform", "FFT Algorithms", "Cooley-Tukey Algorithm"],
+      "applicationDomains": ["education", "research", "exploration", "analysis"],
+      "showcase": false
+    },
+    "educational": {
+      "gradeLevel": ["Undergraduate"],
+      "subjectArea": ["Engineering", "Computer Science"],
+      "topic": ["Citation networks", "FFT implementations on embedded hardware", "Literature review", "Graph visualization"],
+      "learningObjectives": [
+        "Explain how a citation network encodes papers as nodes and directed citation relationships as edges",
+        "Identify foundational FFT papers by their large node size, since node diameter is scaled to citation count",
+        "Distinguish the color-coded research domains in the graph, including foundational, manycore, and FPGA approaches to FFT implementation",
+        "Analyze how filtering by research area or minimum citation count changes which clusters remain visible",
+        "Evaluate the coverage limits of a 15-paper demonstration dataset relative to a systematic search using the Scopus, OpenAlex, or Semantic Scholar APIs"
+      ],
+      "bloomsTaxonomy": ["Understand", "Analyze", "Evaluate"],
+      "prerequisites": ["Fast Fourier Transform", "Directed graphs (nodes and arrows)", "Basic research methods"],
+      "duration": {"typical": 20, "range": {"min": 10, "max": 30}},
+      "difficulty": "Intermediate",
+      "scaffolding": {
+        "type": ["guided-discovery", "feedback"],
+        "adaptability": "fixed",
+        "removal": "user-controlled"
+      },
+      "misconceptions": [
+        {
+          "misconception": "A bigger node means a better paper",
+          "correction": "Node size reflects how often a paper is cited, not its correctness or quality; older papers have had longer to accumulate citations",
+          "evidence": "Compare the 2022 CORDIC paper (15 citations) with the 1965 Cooley-Tukey paper (5000 citations) in the information panel"
+        },
+        {
+          "misconception": "Papers drawn close together are more similar",
+          "correction": "Only arrows and colors carry information; positions in the physics layout are arbitrary for papers that are not linked",
+          "evidence": "Switch the layout to Circular and the same papers are spaced evenly with no change in meaning"
+        }
+      ]
+    },
+    "technical": {
+      "framework": "other",
+      "version": "2.0.0",
+      "canvasDimensions": {"width": 800, "height": 700, "responsive": true},
+      "dependencies": ["vis 4.21.0 (legacy monolithic build, cdnjs)"],
+      "browserCompatibility": ["Chrome 90+", "Firefox 88+", "Safari 14+", "Edge 90+"],
+      "performance": {"memoryUsage": "low", "loadTime": 1500},
+      "deviceRequirements": {
+        "minScreenWidth": 320,
+        "touchSupport": true,
+        "keyboardRequired": false,
+        "mouseRequired": false,
+        "networkRequired": true
+      },
+      "accessibility": {
+        "screenReader": true,
+        "keyboardNavigation": true,
+        "colorContrast": true,
+        "altText": true,
+        "screenReaderScript": "Interactive directed citation graph of 15 papers about FFT implementations on microcontrollers. Each node is a paper, sized by citation count and colored by research area. Each arrow points from the citing paper to the cited paper. Click a node to read its details. Controls filter by research area and minimum citation count and switch the layout."
+      }
+    },
+    "userInterface": {
+      "layoutType": "responsive-width",
+      "layoutPattern": "controls-above-network-with-legend-below",
+      "colorScheme": {
+        "drawingArea": "white",
+        "controlArea": "rgba(255,255,255,0.95)",
+        "borders": "#3498db",
+        "accent": "#3498db",
+        "text": "#333333"
+      },
+      "controls": [
+        {
+          "id": "groupFilter",
+          "type": "dropdown",
+          "label": "Filter by Group",
+          "description": "Shows only the papers of one research area; links to hidden papers are hidden too",
+          "group": "filters",
+          "properties": {
+            "default": "all",
+            "options": [
+              {"value": "all", "label": "All Groups"},
+              {"value": "foundational", "label": "Foundational"},
+              {"value": "manycore", "label": "Manycore"},
+              {"value": "algorithms", "label": "Algorithms"},
+              {"value": "stm32", "label": "STM32"},
+              {"value": "neural_networks", "label": "Neural Networks"},
+              {"value": "fpga", "label": "FPGA"},
+              {"value": "biomedical", "label": "Biomedical"},
+              {"value": "memory", "label": "Memory"},
+              {"value": "cordic", "label": "CORDIC"},
+              {"value": "simd", "label": "SIMD"},
+              {"value": "optimization", "label": "Optimization"}
+            ]
+          }
+        },
+        {
+          "id": "citationFilter",
+          "type": "slider",
+          "label": "Min Citations",
+          "description": "Hides papers whose citation count is below the slider value",
+          "group": "filters",
+          "properties": {"min": 0, "max": 100, "default": 0, "step": 1, "showValue": true}
+        },
+        {
+          "id": "layoutSelect",
+          "type": "dropdown",
+          "label": "Layout",
+          "description": "Chooses how the nodes are positioned: physics simulation, hierarchical levels or a circle",
+          "group": "layout",
+          "properties": {
+            "default": "physics",
+            "options": [
+              {"value": "physics", "label": "Physics"},
+              {"value": "hierarchical", "label": "Hierarchical"},
+              {"value": "circular", "label": "Circular"}
+            ]
+          }
+        },
+        {
+          "id": "resetButton",
+          "type": "button",
+          "label": "Reset View",
+          "description": "Restores All Groups, Min Citations 0 and the Physics layout, closes the information panel and fits the graph in view",
+          "group": "actions",
+          "properties": {"style": "secondary"}
+        },
+        {
+          "id": "exportButton",
+          "type": "button",
+          "label": "Export Data",
+          "description": "Downloads the visible papers and links as a JSON file",
+          "group": "actions",
+          "properties": {"style": "secondary"}
+        }
+      ],
+      "visualElements": [
+        {"type": "graph", "description": "Directed citation network: nodes are papers sized by citation count and colored by research area, arrows point from the citing paper to the cited paper", "interactive": true, "updateTriggers": ["groupFilter", "citationFilter", "layoutSelect", "resetButton"]},
+        {"type": "text-display", "description": "Information panel with authors, year, venue, citation count, abstract and citation connections of the clicked paper", "interactive": true, "updateTriggers": ["click on node"]},
+        {"type": "text-display", "description": "Legend of research-area colors and a statistics line with paper, link and research-area counts and the average citation count", "interactive": false, "updateTriggers": ["groupFilter", "citationFilter", "resetButton"]}
+      ]
+    },
+    "simulation": {
+      "model": {
+        "type": "other",
+        "description": "Directed graph of 15 papers and 25 citation links from an embedded sample data set; node positions come from a force-directed simulation, a hierarchical layout or a circle",
+        "algorithms": ["ForceAtlas2-based force-directed layout (vis physics, fixed random seed)", "Hierarchical layout with directed sort", "Circular layout by paper id"],
+        "assumptions": ["Each link is a citation from the first paper to the second paper"],
+        "limitations": ["Citation counts and links are illustrative and not verified against a citation database", "Only 15 papers; a systematic search would return many more"]
+      }
+    },
+    "usage": {
+      "recommendedUsage": ["demonstration", "exploration", "guided-practice"],
+      "instructionalStrategies": ["Find the hub paper, then predict what each filter will leave visible before applying it", "Compare the same graph in three layouts", "Plan a systematic literature search as a follow-up"],
+      "extensions": ["Replace the sample data with a graph built from OpenAlex or Semantic Scholar", "Add centrality metrics or publication-year coloring"]
+    }
+  },
+  "canvasHeight": 700
 }

@@ -50,6 +50,8 @@
     
       <link rel="stylesheet" href="../../css/extra.css">
     
+      <link rel="stylesheet" href="../../css/mascot.css">
+    
     <script>__md_scope=new URL("../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
     
       
@@ -118,7 +120,7 @@
   <nav class="md-header__inner md-grid" aria-label="Header">
     <a href="../.." title="Signal Processing with AI" class="md-header__button md-logo" aria-label="Signal Processing with AI" data-md-component="logo">
       
-  <img src="../../img/logo-192.png" alt="logo">
+  <img src="../../img/mascot/neutral.png" alt="logo">
 
     </a>
     <label class="md-header__button md-icon" for="__drawer">
@@ -224,7 +226,7 @@
   <label class="md-nav__title" for="__drawer">
     <a href="../.." title="Signal Processing with AI" class="md-nav__button md-logo" aria-label="Signal Processing with AI" data-md-component="logo">
       
-  <img src="../../img/logo-192.png" alt="logo">
+  <img src="../../img/mascot/neutral.png" alt="logo">
 
     </a>
     Signal Processing with AI
@@ -271,31 +273,11 @@
   
   
     <li class="md-nav__item">
-      <a href="../" class="md-nav__link">
-        
-  
-  <span class="md-ellipsis">
-    Table of Contents
-  </span>
-  
-
-      </a>
-    </li>
-  
-
-    
-      
-      
-  
-  
-  
-  
-    <li class="md-nav__item">
       <a href="../../about/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
-    About This Website
+    About
   </span>
   
 
@@ -407,6 +389,174 @@
   
     
     
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
       
         
           
@@ -735,6 +885,12 @@
       
         
       
+        
+      
+        
+      
+        
+      
     
     
     
@@ -921,6 +1077,26 @@
   
   
     <li class="md-nav__item">
+      <a href="../../instructors-guide/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Instructor's Guide
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
       <a href="../../license/" class="md-nav__link">
         
   
@@ -966,26 +1142,6 @@
   
   <span class="md-ellipsis">
     Contact
-  </span>
-  
-
-      </a>
-    </li>
-  
-
-    
-      
-      
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../../ieee-paper-changes/" class="md-nav__link">
-        
-  
-  <span class="md-ellipsis">
-    Paper Changes
   </span>
   
 
@@ -1194,7 +1350,7 @@
                   
 
   
-    <a href="https://github.com/dmccreary/signal-processing/blob/master/docs/chapters/rendering-circuit-diagrams-in-mkdocs.md" title="Edit this page" class="md-content__button md-icon">
+    <a href="https://github.com/dmccreary/signal-processing/blob/main/docs/chapters/rendering-circuit-diagrams-in-mkdocs.md" title="Edit this page" class="md-content__button md-icon">
       
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M10 20H6V4h7v5h5v3.1l2-2V8l-6-6H6c-1.1 0-2 .9-2 2v16c0 1.1.9 2 2 2h4zm10.2-7c.1 0 .3.1.4.2l1.3 1.3c.2.2.2.6 0 .8l-1 1-2.1-2.1 1-1c.1-.1.2-.2.4-.2m0 3.9L14.1 23H12v-2.1l6.1-6.1z"/></svg>
     </a>
@@ -1275,20 +1431,20 @@
 <span class="normal">30</span>
 <span class="normal">31</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="c1"># pip install tectonic</span>
 <span class="c1"># pip install mkdocs</span>
-<span class="kn">import</span> <span class="nn">hashlib</span><span class="o">,</span> <span class="nn">os</span><span class="o">,</span> <span class="nn">re</span><span class="o">,</span> <span class="nn">subprocess</span><span class="o">,</span> <span class="nn">tempfile</span><span class="o">,</span> <span class="nn">textwrap</span>
-<span class="kn">from</span> <span class="nn">mkdocs.plugins</span> <span class="kn">import</span> <span class="n">BasePlugin</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">hashlib</span><span class="o">,</span><span class="w"> </span><span class="nn">os</span><span class="o">,</span><span class="w"> </span><span class="nn">re</span><span class="o">,</span><span class="w"> </span><span class="nn">subprocess</span><span class="o">,</span><span class="w"> </span><span class="nn">tempfile</span><span class="o">,</span><span class="w"> </span><span class="nn">textwrap</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">mkdocs.plugins</span><span class="w"> </span><span class="kn">import</span> <span class="n">BasePlugin</span>
 
-<span class="k">class</span> <span class="nc">TikzFigPlugin</span><span class="p">(</span><span class="n">BasePlugin</span><span class="p">):</span>
-    <span class="n">BLOCK</span> <span class="o">=</span> <span class="n">re</span><span class="o">.</span><span class="n">compile</span><span class="p">(</span><span class="sa">r</span><span class="s1">&#39;```circuitikz(.*?)```&#39;</span><span class="p">,</span> <span class="n">re</span><span class="o">.</span><span class="n">S</span><span class="p">)</span>
+<span class="k">class</span><span class="w"> </span><span class="nc">TikzFigPlugin</span><span class="p">(</span><span class="n">BasePlugin</span><span class="p">):</span>
+    <span class="n">BLOCK</span> <span class="o">=</span> <span class="n">re</span><span class="o">.</span><span class="n">compile</span><span class="p">(</span><span class="sa">r</span><span class="s1">'```circuitikz(.*?)```'</span><span class="p">,</span> <span class="n">re</span><span class="o">.</span><span class="n">S</span><span class="p">)</span>
 
-    <span class="k">def</span> <span class="nf">on_page_markdown</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">md</span><span class="p">,</span> <span class="n">page</span><span class="p">,</span> <span class="n">cfg</span><span class="p">,</span> <span class="n">files</span><span class="p">):</span>
-        <span class="k">def</span> <span class="nf">_repl</span><span class="p">(</span><span class="n">m</span><span class="p">):</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">on_page_markdown</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">md</span><span class="p">,</span> <span class="n">page</span><span class="p">,</span> <span class="n">cfg</span><span class="p">,</span> <span class="n">files</span><span class="p">):</span>
+        <span class="k">def</span><span class="w"> </span><span class="nf">_repl</span><span class="p">(</span><span class="n">m</span><span class="p">):</span>
             <span class="n">body</span> <span class="o">=</span> <span class="n">m</span><span class="o">.</span><span class="n">group</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span><span class="o">.</span><span class="n">strip</span><span class="p">()</span>
             <span class="n">digest</span> <span class="o">=</span> <span class="n">hashlib</span><span class="o">.</span><span class="n">md5</span><span class="p">(</span><span class="n">body</span><span class="o">.</span><span class="n">encode</span><span class="p">())</span><span class="o">.</span><span class="n">hexdigest</span><span class="p">()</span>
-            <span class="n">rel_svg</span> <span class="o">=</span> <span class="sa">f</span><span class="s1">&#39;assets/tikz/</span><span class="si">{</span><span class="n">digest</span><span class="si">}</span><span class="s1">.svg&#39;</span>
-            <span class="n">abs_svg</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">cfg</span><span class="p">[</span><span class="s2">&quot;site_dir&quot;</span><span class="p">],</span> <span class="n">rel_svg</span><span class="p">)</span>
+            <span class="n">rel_svg</span> <span class="o">=</span> <span class="sa">f</span><span class="s1">'assets/tikz/</span><span class="si">{</span><span class="n">digest</span><span class="si">}</span><span class="s1">.svg'</span>
+            <span class="n">abs_svg</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">cfg</span><span class="p">[</span><span class="s2">"site_dir"</span><span class="p">],</span> <span class="n">rel_svg</span><span class="p">)</span>
             <span class="k">if</span> <span class="ow">not</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">exists</span><span class="p">(</span><span class="n">abs_svg</span><span class="p">):</span>
-                <span class="n">tex</span> <span class="o">=</span> <span class="n">textwrap</span><span class="o">.</span><span class="n">dedent</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;&quot;&quot;</span>
+                <span class="n">tex</span> <span class="o">=</span> <span class="n">textwrap</span><span class="o">.</span><span class="n">dedent</span><span class="p">(</span><span class="sa">f</span><span class="s2">"""</span>
 <span class="s2">                </span><span class="se">\\</span><span class="s2">documentclass[border=1pt]</span><span class="se">{{</span><span class="s2">standalone</span><span class="se">}}</span>
 <span class="s2">                </span><span class="se">\\</span><span class="s2">usepackage</span><span class="se">{{</span><span class="s2">circuitikz</span><span class="se">}}</span>
 <span class="s2">                </span><span class="se">\\</span><span class="s2">begin</span><span class="si">{</span><span class="n">document</span><span class="si">}</span>
@@ -1296,13 +1452,13 @@
 <span class="s2">                </span><span class="si">{</span><span class="n">body</span><span class="si">}</span>
 <span class="s2">                </span><span class="se">\\</span><span class="s2">end</span><span class="se">{{</span><span class="s2">circuitikz</span><span class="se">}}</span>
 <span class="s2">                </span><span class="se">\\</span><span class="s2">end</span><span class="si">{</span><span class="n">document</span><span class="si">}</span>
-<span class="s2">                &quot;&quot;&quot;</span><span class="p">)</span>
+<span class="s2">                """</span><span class="p">)</span>
                 <span class="k">with</span> <span class="n">tempfile</span><span class="o">.</span><span class="n">TemporaryDirectory</span><span class="p">()</span> <span class="k">as</span> <span class="n">d</span><span class="p">:</span>
-                    <span class="n">tex_file</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">d</span><span class="p">,</span> <span class="s2">&quot;fig.tex&quot;</span><span class="p">)</span>
-                    <span class="nb">open</span><span class="p">(</span><span class="n">tex_file</span><span class="p">,</span> <span class="s2">&quot;w&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="n">tex</span><span class="p">)</span>
-                    <span class="n">subprocess</span><span class="o">.</span><span class="n">run</span><span class="p">([</span><span class="s2">&quot;tectonic&quot;</span><span class="p">,</span> <span class="s2">&quot;-Z&quot;</span><span class="p">,</span> <span class="s2">&quot;shell-escape&quot;</span><span class="p">,</span> <span class="n">tex_file</span><span class="p">],</span> <span class="n">cwd</span><span class="o">=</span><span class="n">d</span><span class="p">,</span> <span class="n">check</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
-                    <span class="n">subprocess</span><span class="o">.</span><span class="n">run</span><span class="p">([</span><span class="s2">&quot;dvisvgm&quot;</span><span class="p">,</span> <span class="s2">&quot;--no-fonts&quot;</span><span class="p">,</span> <span class="s2">&quot;fig.dvi&quot;</span><span class="p">,</span> <span class="s2">&quot;-o&quot;</span><span class="p">,</span> <span class="n">abs_svg</span><span class="p">],</span> <span class="n">cwd</span><span class="o">=</span><span class="n">d</span><span class="p">,</span> <span class="n">check</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
-            <span class="k">return</span> <span class="sa">f</span><span class="s1">&#39;![](</span><span class="se">{{</span><span class="s1"> static </span><span class="se">}}</span><span class="si">{</span><span class="n">rel_svg</span><span class="si">}</span><span class="s1">)&#39;</span>
+                    <span class="n">tex_file</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">d</span><span class="p">,</span> <span class="s2">"fig.tex"</span><span class="p">)</span>
+                    <span class="nb">open</span><span class="p">(</span><span class="n">tex_file</span><span class="p">,</span> <span class="s2">"w"</span><span class="p">)</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="n">tex</span><span class="p">)</span>
+                    <span class="n">subprocess</span><span class="o">.</span><span class="n">run</span><span class="p">([</span><span class="s2">"tectonic"</span><span class="p">,</span> <span class="s2">"-Z"</span><span class="p">,</span> <span class="s2">"shell-escape"</span><span class="p">,</span> <span class="n">tex_file</span><span class="p">],</span> <span class="n">cwd</span><span class="o">=</span><span class="n">d</span><span class="p">,</span> <span class="n">check</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+                    <span class="n">subprocess</span><span class="o">.</span><span class="n">run</span><span class="p">([</span><span class="s2">"dvisvgm"</span><span class="p">,</span> <span class="s2">"--no-fonts"</span><span class="p">,</span> <span class="s2">"fig.dvi"</span><span class="p">,</span> <span class="s2">"-o"</span><span class="p">,</span> <span class="n">abs_svg</span><span class="p">],</span> <span class="n">cwd</span><span class="o">=</span><span class="n">d</span><span class="p">,</span> <span class="n">check</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+            <span class="k">return</span> <span class="sa">f</span><span class="s1">'![](</span><span class="se">{{</span><span class="s1"> static </span><span class="se">}}</span><span class="si">{</span><span class="n">rel_svg</span><span class="si">}</span><span class="s1">)'</span>
         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">BLOCK</span><span class="o">.</span><span class="n">sub</span><span class="p">(</span><span class="n">_repl</span><span class="p">,</span> <span class="n">md</span><span class="p">)</span>
 </code></pre></div></td></tr></table></div>
 

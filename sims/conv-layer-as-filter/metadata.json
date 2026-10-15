@@ -1,0 +1,252 @@
+{
+  "microsim": {
+    "dublinCore": {
+      "title": "A Convolutional Layer Is a Learned FIR Filter",
+      "creator": ["Dan McCreary"],
+      "subject": ["Convolutional neural networks", "FIR filters", "Frequency response", "Machine learning in DSP", "Gradient descent", "Signal classification"],
+      "description": "Trains a tiny 1-D convolutional network (F kernels of K taps, ReLU, global max-pool, logistic output) in the browser with hand-written gradient descent to tell a low tone (0.08 cycles/sample) from a high tone (0.30 cycles/sample) in noise. Stem plots of the learned kernels and their frequency responses show that the kernels become band-pass FIR filters tuned to the tones, alongside loss and accuracy curves and four test segments with predictions.",
+      "publisher": "Dan McCreary",
+      "contributor": ["Claude (Anthropic)"],
+      "date": "2026-10-14",
+      "type": "Interactive Simulation",
+      "format": "text/html",
+      "identifier": "https://dmccreary.github.io/signal-processing/sims/conv-layer-as-filter/",
+      "language": "en",
+      "relation": ["Chapter 15: Signal Processing Applications and AI Integration"],
+      "rights": "CC BY-NC-SA 4.0"
+    },
+    "search": {
+      "tags": [
+        "convolutional neural network",
+        "CNN",
+        "1-D convolution",
+        "learned filter",
+        "FIR filter",
+        "frequency response",
+        "band-pass filter",
+        "max pooling",
+        "ReLU",
+        "gradient descent",
+        "learning rate",
+        "tone classification"
+      ],
+      "searchKeywords": ["CNN kernel frequency response", "convolutional layer as FIR filter", "what does a CNN learn on signals", "1D CNN tone classification", "learning rate divergence", "kernel size frequency resolution"],
+      "visualizationType": ["chart", "simulation", "interactive-demo"],
+      "interactionLevel": "high",
+      "complexity": 7,
+      "relatedConcepts": [
+        "Machine Learning in DSP",
+        "Convolutional Neural Networks",
+        "Deep Learning for Signals",
+        "AI-Driven Signal Analysis"
+      ],
+      "applicationDomains": ["education", "exploration", "analysis"],
+      "showcase": false
+    },
+    "educational": {
+      "gradeLevel": ["Undergraduate"],
+      "subjectArea": ["Engineering", "Computer Science"],
+      "topic": ["Convolutional neural networks", "FIR filters and frequency response", "Gradient descent training", "Signal classification"],
+      "learningObjectives": [
+        "Explain how a convolutional layer computes z_f[n] as an FIR filter (written as a cross-correlation), followed by ReLU and global max-pooling",
+        "Analyze a trained kernel's frequency response to decide which tone it detects, using the peak of |H(f)|, the ratio |H(0.30)|/|H(0.08)| and the sign of its output weight v",
+        "Relate the kernel length K to frequency resolution and predict when a kernel can form a peak at the low tone",
+        "Evaluate how the learning rate and the noise level affect convergence, stability and test accuracy",
+        "Design a hand-made kernel that detects the high tone and compare its frequency response with the learned kernel's"
+      ],
+      "bloomsTaxonomy": ["Understand", "Analyze", "Evaluate", "Create"],
+      "prerequisites": [
+        "FIR filters, convolution and correlation",
+        "Frequency response of an FIR filter",
+        "Classifiers trained by gradient descent on a loss function"
+      ],
+      "duration": {
+        "typical": 40,
+        "range": {"min": 15, "max": 60}
+      },
+      "difficulty": "Advanced",
+      "scaffolding": {
+        "type": ["guided-discovery", "feedback"],
+        "adaptability": "fixed",
+        "removal": "user-controlled"
+      },
+      "misconceptions": [
+        {
+          "misconception": "The weights of a neural network cannot be interpreted",
+          "correction": "Each trained kernel is an FIR filter whose frequency response can be read like any other filter's",
+          "evidence": "After pressing Run with the default settings the kernels peak at 0.304 and 0.081 cycles/sample, within 0.004 of the tones they vote for, and the sign of the output weight tells which tone"
+        },
+        {
+          "misconception": "A CNN convolution is the same as the convolution of Chapter 4",
+          "correction": "A CNN layer computes a cross-correlation with no kernel flip; flipping changes only the phase of H(f), so |H(f)| and the band-pass interpretation are unchanged",
+          "evidence": "The sim computes z_f[n] = sum_k w_f[k] x[n + k] and plots |H(f)| = |sum_k w[k] e^{-j 2 pi f k}|"
+        },
+        {
+          "misconception": "A larger learning rate always trains faster",
+          "correction": "Too large a step can flip a kernel's role or make the weights diverge",
+          "evidence": "eta = 1 turns the low-tone kernel into a second high-tone kernel and ends at 88.3% test accuracy instead of 96.5%; eta = 3 diverges at step 11"
+        }
+      ]
+    },
+    "technical": {
+      "framework": "p5.js",
+      "version": "1.0.0",
+      "canvasDimensions": {"width": 900, "height": 700, "responsive": true},
+      "regions": {"drawHeight": 580, "controlHeight": 120},
+      "dependencies": ["p5.js 2.3.2"],
+      "browserCompatibility": ["Chrome 90+", "Firefox 88+", "Safari 14+", "Edge 90+"],
+      "performance": {"memoryUsage": "low", "computationalComplexity": "O(n²)"},
+      "deviceRequirements": {"minScreenWidth": 360, "touchSupport": true, "keyboardRequired": false, "mouseRequired": false, "networkRequired": true},
+      "accessibility": {
+        "screenReader": true,
+        "keyboardNavigation": true,
+        "colorContrast": true,
+        "altText": true,
+        "screenReaderScript": "A tiny one-dimensional convolutional network learns to tell a low tone at 0.08 cycles per sample from a high tone at 0.30 cycles per sample in noise. Stem plots show each learned kernel, a second plot shows each kernel frequency response with gold markers at the two tone frequencies, two plots show the loss and accuracy during training, and four test segments are drawn with the predicted class. Buttons run, step, reset and draw new data; sliders set the noise level, learning rate, kernel size and number of filters."
+      }
+    },
+    "userInterface": {
+      "layoutType": "multi-panel",
+      "layoutPattern": "drawing-region-above-controls",
+      "colorScheme": {
+        "drawingArea": "aliceblue",
+        "controlArea": "white",
+        "signal": "#1f5fbf",
+        "kernel1": "#8b1c3c",
+        "kernel2": "#2a8a3a",
+        "kernel3": "#6a3d9a",
+        "loss": "#c00000",
+        "toneMarkers": "darkgoldenrod",
+        "text": "black"
+      },
+      "controls": [
+        {
+          "id": "runButton",
+          "type": "toggle-button",
+          "label": "Run / Pause",
+          "description": "Starts or pauses training; a run stops at step 400, and Run then starts again from step 0",
+          "group": "training",
+          "properties": {"text": "Pause", "action": "toggleRun", "toggleable": true, "style": "primary"}
+        },
+        {
+          "id": "stepButton",
+          "type": "button",
+          "label": "Step",
+          "description": "Pauses and applies one gradient-descent step on a batch of 16 training segments",
+          "group": "training",
+          "properties": {"text": "Step", "action": "stepOnce", "style": "secondary"}
+        },
+        {
+          "id": "resetButton",
+          "type": "button",
+          "label": "Reset",
+          "description": "Restores the seeded starting weights, clears the curves and waits at step 0",
+          "group": "training",
+          "properties": {"text": "Reset", "action": "resetWeights", "style": "secondary"}
+        },
+        {
+          "id": "dataButton",
+          "type": "button",
+          "label": "New data",
+          "description": "Draws a new seeded training set and test set and restarts training",
+          "group": "data",
+          "properties": {"text": "New data", "action": "newData", "style": "secondary"}
+        },
+        {
+          "id": "noiseSlider",
+          "type": "slider",
+          "label": "Noise sigma",
+          "description": "Standard deviation of the white Gaussian noise added to every segment (the tones have amplitude 1)",
+          "group": "data",
+          "properties": {"min": 0, "max": 2, "default": 1, "step": 0.05, "showValue": true}
+        },
+        {
+          "id": "lrSlider",
+          "type": "slider",
+          "label": "Learning rate eta",
+          "description": "Selects the gradient-descent learning rate from 0.001, 0.003, 0.01, 0.03, 0.1, 0.3, 1 and 3",
+          "group": "training",
+          "properties": {"min": 0, "max": 7, "default": 4, "step": 1, "showValue": true}
+        },
+        {
+          "id": "kernelSlider",
+          "type": "slider",
+          "label": "Kernel size K",
+          "description": "Number of taps in each convolution kernel",
+          "group": "model",
+          "properties": {"min": 5, "max": 16, "default": 12, "step": 1, "showValue": true}
+        },
+        {
+          "id": "filterSlider",
+          "type": "slider",
+          "label": "Filters F",
+          "description": "Number of convolution kernels (filters) in the layer",
+          "group": "model",
+          "properties": {"min": 1, "max": 3, "default": 2, "step": 1, "showValue": true}
+        }
+      ],
+      "visualElements": [
+        {
+          "type": "chart",
+          "description": "Stem plots of the learned kernel taps w_f[k], one per filter",
+          "interactive": false,
+          "updateTriggers": ["runButton", "stepButton", "resetButton", "kernelSlider", "filterSlider"]
+        },
+        {
+          "type": "chart",
+          "description": "Frequency response |H(f)| of each kernel from 0 to 0.5 cycles/sample with gold markers at 0.08 and 0.30 and a dot at each peak",
+          "interactive": false,
+          "updateTriggers": ["runButton", "stepButton", "resetButton", "kernelSlider", "filterSlider"]
+        },
+        {
+          "type": "text-display",
+          "description": "Table of each kernel's peak frequency, gain ratio |H(0.30)|/|H(0.08)| in dB and output weight v",
+          "interactive": false,
+          "updateTriggers": ["runButton", "stepButton", "resetButton"]
+        },
+        {
+          "type": "chart",
+          "description": "Training and test cross-entropy loss and accuracy versus training step",
+          "interactive": false,
+          "updateTriggers": ["runButton", "stepButton", "resetButton", "noiseSlider", "lrSlider", "dataButton"]
+        },
+        {
+          "type": "chart",
+          "description": "Four test segments (blue) over their clean tone (gold) with p(high), the predicted class, and bars marking each kernel's max-pool winner",
+          "interactive": false,
+          "updateTriggers": ["runButton", "stepButton", "noiseSlider", "dataButton"]
+        }
+      ]
+    },
+    "simulation": {
+      "model": {
+        "type": "algorithmic",
+        "description": "Binary classification of 64-sample segments sin(2 pi f n + phase) + sigma w[n] with f = 0.08 (class 0) or 0.30 (class 1). A 1-D convolutional layer with F kernels of K taps, ReLU, global max-pooling and a logistic output is trained by plain mini-batch gradient descent (batch 16) on 256 training segments for up to 400 steps and evaluated on 256 test segments. All data and initial weights are seeded.",
+        "equations": [
+          "z_f[n] = sum_k w_f[k] x[n + k] + b_f, n = 0 .. 64 - K",
+          "a_f = max_n ReLU(z_f[n])",
+          "p(high) = 1 / (1 + exp(-(sum_f v_f a_f + c)))",
+          "L = -[y ln p + (1 - y) ln(1 - p)]",
+          "dL/dw_f[k] = (p - y) v_f x[n* + k] when a_f > 0",
+          "|H(f)| = |sum_k w[k] e^{-j 2 pi f k}|"
+        ],
+        "algorithms": ["Mini-batch gradient descent with hand-written backpropagation", "Global max-pooling", "Seeded mulberry32 random numbers with Box-Muller Gaussian noise"],
+        "limitations": [
+          "Plain gradient descent with no momentum, weight decay or learning-rate schedule",
+          "The output weights start at +0.5, -0.5, +0.5, which sets each kernel's initial role",
+          "Training stops at 400 steps"
+        ]
+      }
+    },
+    "usage": {
+      "recommendedUsage": ["exploration", "guided-practice", "demonstration"],
+      "instructionalStrategies": [
+        "Step through the first few gradient updates and watch the kernel's frequency response form",
+        "Predict-then-verify with the kernel size and learning-rate sliders",
+        "Compare a learned kernel with a hand-designed windowed sinusoid"
+      ],
+      "extensions": ["Add a third tone class and a softmax output", "Replace global max-pooling with average pooling and compare the learned kernels"]
+    }
+  },
+  "canvasHeight": 700
+}

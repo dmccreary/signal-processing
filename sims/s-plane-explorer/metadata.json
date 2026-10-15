@@ -1,0 +1,220 @@
+{
+  "microsim": {
+    "dublinCore": {
+      "title": "s-Plane Explorer",
+      "creator": ["Dan McCreary"],
+      "subject": ["Laplace transform", "s-plane", "Poles and zeros", "Stability", "Region of convergence", "Frequency response", "Step response"],
+      "description": "Interactive MicroSim for placing the poles and zeros of a continuous-time transfer function in the s-plane. It shows the magnitude and phase of H(jw) along the jw axis from the vectors to a moving marker, the unit-step response from a numerical simulation of the real-coefficient system, a left-half-plane stability banner, the shaded ROC of the causal system, and an optional inset that maps the poles and zeros to the z-plane with z = e^(sT).",
+      "publisher": "Dan McCreary",
+      "contributor": ["Claude (Anthropic)"],
+      "date": "2026-10-14",
+      "type": "Interactive Simulation",
+      "format": "text/html",
+      "identifier": "https://dmccreary.github.io/signal-processing/sims/s-plane-explorer/",
+      "language": "en",
+      "relation": ["Chapter 8: Advanced Transforms", "Interactive Pole-Zero Analysis Tool"],
+      "rights": "CC BY-NC-SA 4.0"
+    },
+    "search": {
+      "tags": ["s-plane", "laplace transform", "poles and zeros", "stability", "region of convergence", "damping ratio", "natural frequency", "step response", "bode plot", "z = e^(sT)"],
+      "searchKeywords": ["s-plane pole zero plot", "left half-plane stability", "second-order overshoot", "frequency response from pole zero vectors", "ROC of a causal system", "right-half-plane zero", "matched z-transform"],
+      "visualizationType": ["chart", "diagram", "interactive-demo", "simulation"],
+      "interactionLevel": "high",
+      "complexity": 6,
+      "relatedConcepts": ["Laplace Transform", "S-Plane", "Region of Convergence", "Poles and Zeros", "System Stability"],
+      "applicationDomains": ["education", "exploration", "demonstration"]
+    },
+    "educational": {
+      "gradeLevel": ["Undergraduate"],
+      "subjectArea": ["Engineering", "Mathematics"],
+      "topic": ["Laplace transform", "s-plane pole-zero analysis", "Stability of continuous-time systems", "Second-order system response", "s-plane to z-plane mapping"],
+      "learningObjectives": [
+        "Calculate the poles -zeta wn +/- j wn sqrt(1 - zeta^2) of a second-order system and predict its step overshoot exp(-pi zeta / sqrt(1 - zeta^2))",
+        "Determine whether a causal system is stable from its pole locations, and relate this to whether the ROC Re(s) > max Re(p_k) contains the jw axis",
+        "Explain |H(jw)| and the phase of H(jw) in terms of the lengths and angles of the vectors from the zeros and poles to the point jw",
+        "Distinguish a right-half-plane zero from a right-half-plane pole by its effect on stability, phase and step response",
+        "Apply z = e^(sT) to map s-plane poles to the z-plane and identify when a pole aliases (|w| T > pi)"
+      ],
+      "bloomsTaxonomy": ["Apply", "Analyze"],
+      "prerequisites": ["Complex numbers in rectangular and polar form", "Laplace transform and transfer functions", "Step responses of first-order and second-order systems"],
+      "duration": {"typical": 30, "range": {"min": 15, "max": 45}},
+      "difficulty": "Intermediate",
+      "scaffolding": {
+        "type": ["guided-discovery", "feedback"],
+        "adaptability": "fixed",
+        "removal": "user-controlled"
+      },
+      "misconceptions": [
+        {
+          "misconception": "A right-half-plane zero makes the system unstable",
+          "correction": "Stability depends only on the poles; a right-half-plane zero adds phase lag and makes the step response start in the wrong direction",
+          "evidence": "The Right-half-plane zero preset is reported STABLE, but its step response dips to -0.33 at t = 0.41 s; moving the zero from +1 to -1 keeps |H(j1.5)| = 0.800 but changes the phase from -149.5 to -36.9 degrees"
+        },
+        {
+          "misconception": "If the output does not blow up, the system is stable",
+          "correction": "Simple poles on the jw axis give a bounded impulse response but the system is not BIBO stable",
+          "evidence": "The Integrator preset turns a unit step into a ramp (y(10 s) = 10), and the Oscillator preset never stops oscillating; both are reported as marginally stable"
+        }
+      ]
+    },
+    "technical": {
+      "framework": "p5.js",
+      "version": "1.0.0",
+      "canvasDimensions": {"width": 900, "height": 696, "responsive": true},
+      "regions": {"drawHeight": 520, "controlHeight": 176},
+      "dependencies": ["p5.js 2.3.2"],
+      "browserCompatibility": ["Chrome 90+", "Firefox 88+", "Safari 14+", "Edge 90+"],
+      "performance": {"memoryUsage": "low", "loadTime": 500},
+      "deviceRequirements": {
+        "minScreenWidth": 375,
+        "touchSupport": true,
+        "keyboardRequired": false,
+        "mouseRequired": false,
+        "networkRequired": false
+      },
+      "accessibility": {
+        "screenReader": true,
+        "keyboardNavigation": true,
+        "colorContrast": true,
+        "altText": true,
+        "screenReaderScript": "An s-plane with sigma on the horizontal axis and j omega on the vertical axis. Poles are red crosses and zeros are blue circles that can be dragged; the region of convergence of the causal system is shaded to the right of the rightmost pole and a banner reports stability. Three plots show the magnitude and phase of H(j omega) for omega from 0 to 4 rad/s and the unit-step response. A gold marker on the j omega axis, set by a slider or by hovering over the frequency plots, shows the vectors from every pole and zero. An optional inset maps the poles and zeros to the z-plane with z = e^(sT)."
+      }
+    },
+    "userInterface": {
+      "layoutType": "responsive-width",
+      "layoutPattern": "drawing-region-above-controls",
+      "colorScheme": {
+        "drawingArea": "aliceblue",
+        "controlArea": "white",
+        "poles": "crimson",
+        "zeros": "royal blue",
+        "magnitude": "maroon",
+        "phase": "green",
+        "stepResponse": "blue",
+        "marker": "gold",
+        "rocShading": "green (stable), amber (marginal) or red (unstable)",
+        "text": "black"
+      },
+      "controls": [
+        {
+          "id": "presetSelect",
+          "type": "dropdown",
+          "label": "System",
+          "description": "Loads a preset set of poles and zeros",
+          "group": "system",
+          "properties": {
+            "options": [
+              {"value": "first", "label": "First-order low-pass"},
+              {"value": "second", "label": "Second-order (zeta, wn sliders)"},
+              {"value": "integrator", "label": "Integrator 1/s"},
+              {"value": "unstable", "label": "Unstable (poles in RHP)"},
+              {"value": "oscillator", "label": "Oscillator (poles on jw axis)"},
+              {"value": "notch", "label": "Notch (zeros on jw axis)"},
+              {"value": "nonmin", "label": "Right-half-plane zero"}
+            ],
+            "default": "second"
+          }
+        },
+        {
+          "id": "addPoleButton",
+          "type": "button",
+          "label": "Add pole",
+          "description": "Adds a pole pair (or one real pole when 'as conjugate pair' is unchecked), up to six poles",
+          "group": "editing",
+          "properties": {}
+        },
+        {
+          "id": "addZeroButton",
+          "type": "button",
+          "label": "Add zero",
+          "description": "Adds a zero pair (or one real zero); disabled when zeros would outnumber poles",
+          "group": "editing",
+          "properties": {}
+        },
+        {
+          "id": "removeButton",
+          "type": "button",
+          "label": "Remove",
+          "description": "Deletes the selected pole or zero item",
+          "group": "editing",
+          "properties": {}
+        },
+        {
+          "id": "pairCheckbox",
+          "type": "checkbox",
+          "label": "as conjugate pair",
+          "description": "When checked, Add pole and Add zero create a complex-conjugate pair; otherwise a single real root",
+          "group": "editing",
+          "properties": {"checked": true}
+        },
+        {
+          "id": "zetaSlider",
+          "type": "slider",
+          "label": "Damping zeta",
+          "description": "Sets the damping ratio of the selected pole pair, keeping its natural frequency",
+          "group": "second-order",
+          "properties": {"min": -0.5, "max": 2, "default": 0.3, "step": 0.01, "showValue": true}
+        },
+        {
+          "id": "wnSlider",
+          "type": "slider",
+          "label": "Natural freq. wn",
+          "description": "Sets the natural frequency (distance from the origin) of the selected pole pair, keeping its damping ratio",
+          "group": "second-order",
+          "properties": {"min": 0.1, "max": 4, "default": 2, "step": 0.01, "units": "rad/s", "showValue": true}
+        },
+        {
+          "id": "omegaSlider",
+          "type": "slider",
+          "label": "Marker s = jw",
+          "description": "Moves the marker along the jw axis; the frequency plots and read-outs give H at this frequency",
+          "group": "frequency",
+          "properties": {"min": 0, "max": 4, "default": 1.5, "step": 0.01, "units": "rad/s", "showValue": true}
+        },
+        {
+          "id": "mapCheckbox",
+          "type": "checkbox",
+          "label": "Map to z-plane",
+          "description": "Shows an inset with every pole and zero mapped by z = e^(sT) and shades the s-plane outside the strip |w| < pi/T",
+          "group": "z-map",
+          "properties": {"checked": false}
+        },
+        {
+          "id": "periodSlider",
+          "type": "slider",
+          "label": "T",
+          "description": "Sampling period T used by the z-plane map",
+          "group": "z-map",
+          "properties": {"min": 0.05, "max": 2, "default": 0.5, "step": 0.01, "units": "s", "showValue": true}
+        }
+      ],
+      "visualElements": [
+        {"type": "diagram", "description": "s-plane with draggable poles and zeros, the jw-axis marker with vectors from every root, and the shaded ROC of the causal system", "interactive": true, "updateTriggers": ["presetSelect", "zetaSlider", "wnSlider", "omegaSlider", "addPoleButton", "addZeroButton", "removeButton", "mapCheckbox", "periodSlider"]},
+        {"type": "chart", "description": "Magnitude |H(jw)| in dB and phase of H(jw) for w from 0 to 4 rad/s with a marker cursor", "interactive": true, "updateTriggers": ["presetSelect", "zetaSlider", "wnSlider", "omegaSlider", "addPoleButton", "addZeroButton", "removeButton"]},
+        {"type": "chart", "description": "Unit-step response with final value, peak marker, overshoot, settling time and second-order formula read-outs", "interactive": false, "updateTriggers": ["presetSelect", "zetaSlider", "wnSlider", "addPoleButton", "addZeroButton", "removeButton"]},
+        {"type": "text-display", "description": "Stability banner, transfer function H(s) with numeric coefficients, selected root read-out and z = e^(sT) inset", "interactive": false, "updateTriggers": ["presetSelect", "zetaSlider", "wnSlider", "mapCheckbox", "periodSlider"]}
+      ]
+    },
+    "simulation": {
+      "model": {
+        "type": "mathematical",
+        "description": "Builds H(s) = K B(s)/A(s) from the poles and zeros (conjugate pairs as real quadratic factors), with K = A(0)/B(0) so that H(0) = 1. H(jw) is evaluated from the vectors jw - z_k and jw - p_k; the unit-step response is integrated with fourth-order Runge-Kutta in controllable canonical form. A causal system is stable when every pole has a negative real part; the ROC is Re(s) > max Re(p_k).",
+        "equations": [
+          "H(s) = K prod(s - z_k) / prod(s - p_k)",
+          "|H(jw)| = |K| prod|jw - z_k| / prod|jw - p_k|",
+          "p = -zeta wn +/- j wn sqrt(1 - zeta^2)",
+          "overshoot = exp(-pi zeta / sqrt(1 - zeta^2))",
+          "t_p = pi / (wn sqrt(1 - zeta^2))",
+          "z = e^(sT), |z| = e^(sigma T), angle z = w T"
+        ],
+        "algorithms": ["Polynomial multiplication of root factors", "Fourth-order Runge-Kutta integration of the state-space model"]
+      }
+    },
+    "usage": {
+      "recommendedUsage": ["demonstration", "exploration", "guided-practice"],
+      "instructionalStrategies": ["Predict pole locations and overshoot before moving the sliders", "Read |H(jw)| from vector lengths and check it against the read-out", "Contrast stable, marginal and unstable systems through the ROC"],
+      "extensions": ["Compare the matched z-transform with the bilinear transform for the same analog prototype", "Add a feedback gain and trace the closed-loop poles (root locus)"]
+    }
+  },
+  "canvasHeight": 696
+}

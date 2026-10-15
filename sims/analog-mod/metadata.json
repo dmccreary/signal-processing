@@ -1,0 +1,163 @@
+{
+  "microsim": {
+    "dublinCore": {
+      "title": "Analog Modulation",
+      "creator": ["Dan McCreary"],
+      "subject": ["Analog modulation", "Amplitude modulation", "Frequency modulation", "Sidebands", "Bandwidth"],
+      "description": "Interactive comparison of amplitude modulation (AM) and frequency modulation (FM) of a sinusoidal carrier by a sinusoidal message. Sliders set the carrier amplitude Ac, message amplitude Am, carrier frequency fc and message frequency fm; the sim shows the modulated waveform with its envelope or message, read-outs of the modulation index, peak deviation and bandwidth, and the amplitude spectrum with the carrier and sideband lines.",
+      "publisher": "Dan McCreary",
+      "contributor": ["Claude (Anthropic)"],
+      "date": "2025-05-14",
+      "type": "Interactive Simulation",
+      "format": "text/html",
+      "identifier": "https://dmccreary.github.io/signal-processing/sims/analog-mod/",
+      "language": "en",
+      "relation": ["Chapter 2: Introduction to Signals and Systems", "Chapter 6: Fourier Analysis Fundamentals"],
+      "rights": "CC BY-NC-SA 4.0"
+    },
+    "search": {
+      "tags": ["AM", "FM", "analog modulation", "modulation index", "sidebands", "peak deviation", "Carson's rule", "Bessel functions", "carrier", "envelope"],
+      "searchKeywords": ["amplitude modulation simulation", "frequency modulation simulation", "AM vs FM", "AM sidebands fc plus minus fm", "FM modulation index beta", "Carson bandwidth rule", "over-modulation"],
+      "visualizationType": ["graph", "simulation", "interactive-demo"],
+      "interactionLevel": "moderate",
+      "complexity": 5,
+      "relatedConcepts": ["Sinusoidal Signals", "Signal Amplitude", "Signal Frequency", "Signal Phase", "Frequency Domain", "Spectrum", "Magnitude Spectrum", "Fourier Transform", "Time-Varying Systems"],
+      "applicationDomains": ["education", "exploration", "demonstration"],
+      "showcase": false
+    },
+    "educational": {
+      "gradeLevel": ["Undergraduate"],
+      "subjectArea": ["Engineering", "Physics"],
+      "topic": ["Analog modulation", "Amplitude modulation (AM)", "Frequency modulation (FM)", "Sidebands and bandwidth", "Modulation index"],
+      "learningObjectives": [
+        "Calculate the AM modulation index mu = Am/Ac and predict the envelope limits Ac +/- Am",
+        "Predict the frequencies and heights of the AM spectral lines (fc with height Ac, and fc +/- fm with height Am/2) and the AM bandwidth 2fm",
+        "Calculate the FM peak deviation delta f = kf Am, the modulation index beta = delta f / fm and Carson's bandwidth 2(delta f + fm)",
+        "Compare AM and FM in the time domain and the frequency domain: which property of the carrier carries the message, and how the bandwidth depends on Am and fm",
+        "Explain over-modulation (mu > 1) in AM and the vanishing FM carrier line at beta of about 2.405"
+      ],
+      "bloomsTaxonomy": ["Understand", "Apply", "Analyze"],
+      "prerequisites": ["Amplitude, frequency and phase of a sinusoid", "Product-to-sum trigonometric identities", "Reading a one-sided amplitude spectrum"],
+      "duration": {"typical": 30, "range": {"min": 15, "max": 45}},
+      "difficulty": "Intermediate",
+      "scaffolding": {
+        "type": ["guided-discovery", "feedback"],
+        "adaptability": "fixed",
+        "removal": "user-controlled"
+      },
+      "misconceptions": [
+        {
+          "misconception": "A louder message widens an AM signal",
+          "correction": "AM sidebands always sit at fc +/- fm, so the AM bandwidth is 2fm whatever Am is; in FM the bandwidth does grow with Am",
+          "evidence": "Raise Am from 50 to 150 at fm = 2 Hz: the AM lines stay at 18 and 22 Hz (B = 4.0 Hz), while Carson's FM bandwidth grows from 9.0 to 19.0 Hz"
+        },
+        {
+          "misconception": "The carrier is always the strongest spectral line",
+          "correction": "The FM carrier line is Ac |J0(beta)|, which is zero near beta = 2.405 even though the waveform keeps its full amplitude",
+          "evidence": "FM with fc = 20 Hz, fm = 2 Hz: at Am = 96 (beta = 2.40) the carrier line falls to about 0.3 while the time plot still peaks at 100"
+        }
+      ]
+    },
+    "technical": {
+      "framework": "p5.js",
+      "version": "2.0.0",
+      "canvasDimensions": {"width": 670, "height": 650, "responsive": true},
+      "regions": {"drawHeight": 470, "controlHeight": 180},
+      "dependencies": ["p5.js 2.3.2"],
+      "browserCompatibility": ["Chrome 90+", "Firefox 88+", "Safari 14+", "Edge 90+"],
+      "performance": {"memoryUsage": "low", "loadTime": 500},
+      "deviceRequirements": {
+        "minScreenWidth": 360,
+        "touchSupport": true,
+        "keyboardRequired": false,
+        "mouseRequired": false,
+        "networkRequired": false
+      },
+      "accessibility": {
+        "screenReader": true,
+        "keyboardNavigation": true,
+        "colorContrast": true,
+        "altText": true,
+        "screenReaderScript": "Analog modulation over a 1 second window. Radio buttons choose AM, FM, or both. Four sliders set the carrier amplitude, message amplitude, carrier frequency and message frequency. The plots show the modulated signal with its envelope or message and, in AM or FM mode, its amplitude spectrum with the bandwidth marked."
+      }
+    },
+    "userInterface": {
+      "layoutType": "responsive-width",
+      "layoutPattern": "drawing-region-above-controls",
+      "colorScheme": {
+        "drawingArea": "light grey (232)",
+        "controlArea": "white",
+        "accent": "red for AM, blue for FM, gold for bandwidth",
+        "text": "black"
+      },
+      "controls": [
+        {
+          "id": "modeRadio",
+          "type": "radio",
+          "label": "Modulation",
+          "description": "Shows AM (signal and spectrum), FM (signal and spectrum), or the AM and FM signals stacked on the same scale",
+          "group": "mode",
+          "properties": {"options": ["AM", "FM", "AM + FM"], "default": "AM + FM"}
+        },
+        {
+          "id": "acSlider",
+          "type": "slider",
+          "label": "Carrier amplitude Ac",
+          "description": "Amplitude of the carrier in arbitrary units; sets the AM carrier line and the constant FM amplitude",
+          "group": "carrier",
+          "properties": {"min": 0, "max": 200, "default": 100, "step": 1, "showValue": true}
+        },
+        {
+          "id": "amSlider",
+          "type": "slider",
+          "label": "Message amplitude Am",
+          "description": "Amplitude of the message; sets the AM index mu = Am/Ac and the FM peak deviation 0.05 Am Hz",
+          "group": "message",
+          "properties": {"min": 0, "max": 200, "default": 50, "step": 1, "showValue": true}
+        },
+        {
+          "id": "fcSlider",
+          "type": "slider",
+          "label": "Carrier frequency fc (Hz)",
+          "description": "Frequency of the carrier; with the 1 s window it equals the number of carrier cycles shown",
+          "group": "carrier",
+          "properties": {"min": 1, "max": 30, "default": 5, "step": 0.1, "unit": "Hz", "showValue": true}
+        },
+        {
+          "id": "fmSlider",
+          "type": "slider",
+          "label": "Message frequency fm (Hz)",
+          "description": "Frequency of the message; sets the spacing of the sideband lines",
+          "group": "message",
+          "properties": {"min": 1, "max": 30, "default": 2, "step": 0.1, "unit": "Hz", "showValue": true}
+        }
+      ],
+      "visualElements": [
+        {"type": "graph", "description": "AM signal (red) with its dashed envelope +/-(Ac + m(t)) and an over-modulation note", "interactive": false, "updateTriggers": ["modeRadio", "acSlider", "amSlider", "fcSlider", "fmSlider"]},
+        {"type": "graph", "description": "FM signal (blue) with the dashed message m(t)", "interactive": false, "updateTriggers": ["modeRadio", "acSlider", "amSlider", "fcSlider", "fmSlider"]},
+        {"type": "chart", "description": "One-sided amplitude spectrum with labeled carrier and sideband lines and a gold bar marking the bandwidth (2fm for AM, Carson's rule for FM)", "interactive": false, "updateTriggers": ["modeRadio", "acSlider", "amSlider", "fcSlider", "fmSlider"]},
+        {"type": "text-display", "description": "Read-outs of the equation, mu, sideband power, delta f, beta, instantaneous-frequency range and bandwidth", "interactive": false, "updateTriggers": ["modeRadio", "acSlider", "amSlider", "fcSlider", "fmSlider"]}
+      ]
+    },
+    "simulation": {
+      "model": {
+        "type": "mathematical",
+        "description": "Tone-modulated AM and FM over a 1 s window; the spectrum is a 4096-point FFT of a 10 s record (0.1 Hz bins)",
+        "equations": [
+          "m(t) = Am sin(2 pi fm t)",
+          "AM: s(t) = [Ac + m(t)] sin(2 pi fc t), mu = Am / Ac",
+          "FM: s(t) = Ac sin(2 pi fc t - beta cos(2 pi fm t)), beta = kf Am / fm, kf = 0.05 Hz per unit",
+          "fi(t) = fc + kf m(t)",
+          "B_AM = 2 fm, B_FM = 2 (kf Am + fm)"
+        ],
+        "algorithms": ["Radix-2 FFT"]
+      }
+    },
+    "usage": {
+      "recommendedUsage": ["demonstration", "exploration", "guided-practice"],
+      "instructionalStrategies": ["Predict the line frequencies and heights, then verify them on the spectrum", "Compare AM and FM for the same message in the AM + FM view", "Search for the FM carrier null"],
+      "extensions": ["Add an envelope detector to show the distortion caused by over-modulation", "Replace the tone message with a two-tone message to show intermodulation-free AM sidebands"]
+    }
+  },
+  "canvasHeight": 650
+}

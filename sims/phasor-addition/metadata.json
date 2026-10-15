@@ -1,0 +1,138 @@
+{
+  "microsim": {
+    "dublinCore": {
+      "title": "Phasor Addition",
+      "creator": ["Dan McCreary"],
+      "subject": ["Phasors", "Euler's formula", "Sinusoidal signals", "Complex numbers", "Beats"],
+      "description": "Interactive MicroSim that adds up to three sinusoids A_k cos(w t + phi_k) by adding their phasors A_k e^{j phi_k} head to tail. A rotating phasor diagram (blue real axis, red imaginary axis, green resultant) sits beside the individual waveforms and their sum with a cursor at the current time; read-outs give the resultant amplitude and phase. A second-frequency mode lets phasor 2 turn at f2, so the resultant length becomes the envelope of a beating signal at |f2 - f1|.",
+      "publisher": "Dan McCreary",
+      "contributor": ["Claude (Anthropic)"],
+      "date": "2026-10-14",
+      "type": "Interactive Simulation",
+      "format": "text/html",
+      "identifier": "https://dmccreary.github.io/signal-processing/sims/phasor-addition/",
+      "language": "en",
+      "relation": ["Chapter 1: Mathematical Foundations", "Euler's Formula Explorer", "Complex Plane"],
+      "rights": "CC BY-NC-SA 4.0"
+    },
+    "search": {
+      "tags": ["phasor", "phasor addition", "Euler's formula", "complex amplitude", "sinusoid", "phase", "beats", "envelope", "three-phase"],
+      "searchKeywords": ["adding sinusoids of the same frequency", "phasor diagram head to tail", "resultant amplitude and phase", "sum of cosines", "beat frequency |f1 - f2|", "rotating phasor"],
+      "visualizationType": ["animation", "diagram", "chart", "interactive-demo", "simulation"],
+      "interactionLevel": "high",
+      "complexity": 4,
+      "relatedConcepts": ["Euler's Formula", "Phasors", "Complex Numbers", "Sinusoidal Signals"],
+      "applicationDomains": ["education", "exploration", "demonstration"]
+    },
+    "educational": {
+      "gradeLevel": ["Undergraduate"],
+      "subjectArea": ["Engineering", "Mathematics"],
+      "topic": ["Phasors", "Addition of sinusoids", "Euler's formula", "Beats"],
+      "learningObjectives": [
+        "Calculate the resultant phasor R = sum of A_k e^{j phi_k} for up to three sinusoids of one frequency and write their sum as |R| cos(w t + angle R)",
+        "Predict from the phase difference whether two sinusoids reinforce, partly cancel or cancel completely, using |R| = 2A|cos(delta phi / 2)| for equal amplitudes",
+        "Demonstrate with the speed slider that the resultant amplitude and phase do not depend on the rotation rate w when every phasor shares that frequency",
+        "Relate the projection of the rotating resultant onto the real axis to the value of the summed waveform at the cursor",
+        "Analyze the sum of two sinusoids at different frequencies as a resultant whose length changes with time, and calculate the beat frequency |f2 - f1| and the envelope range"
+      ],
+      "bloomsTaxonomy": ["Apply", "Analyze"],
+      "prerequisites": ["Complex numbers in rectangular and polar form", "Euler's formula", "Amplitude, frequency and phase of a sinusoid"],
+      "duration": {"typical": 25, "range": {"min": 15, "max": 40}},
+      "difficulty": "Intermediate",
+      "scaffolding": {
+        "type": ["guided-discovery", "feedback"],
+        "adaptability": "fixed",
+        "removal": "user-controlled"
+      },
+      "misconceptions": [
+        {
+          "misconception": "The amplitudes of two sinusoids add",
+          "correction": "Only phasors that point the same way add their lengths; in general |R| is the length of the vector sum",
+          "evidence": "At the default settings 1.00 at 0 degrees plus 1.00 at 90 degrees gives R = 1.41, and the thick green sum peaks at 1.41, not 2"
+        },
+        {
+          "misconception": "The phase of the sum is the average of the individual phases",
+          "correction": "The phase is the angle of the vector sum; it equals the average only when the amplitudes are equal",
+          "evidence": "With A1 = 2.00 at 0 degrees and A2 = 1.00 at 90 degrees the read-out shows R = 2.24 at 26.6 degrees, not 45 degrees"
+        }
+      ]
+    },
+    "technical": {
+      "framework": "p5.js",
+      "version": "1.0.0",
+      "canvasDimensions": {"width": 730, "height": 610, "responsive": true},
+      "regions": {"drawHeight": 440, "controlHeight": 170},
+      "dependencies": ["p5.js 2.3.2"],
+      "browserCompatibility": ["Chrome 90+", "Firefox 88+", "Safari 14+", "Edge 90+"],
+      "performance": {"memoryUsage": "low", "loadTime": 500},
+      "deviceRequirements": {
+        "minScreenWidth": 375,
+        "touchSupport": true,
+        "keyboardRequired": false,
+        "mouseRequired": false,
+        "networkRequired": true
+      },
+      "accessibility": {
+        "screenReader": true,
+        "keyboardNavigation": true,
+        "colorContrast": true,
+        "altText": true,
+        "screenReaderScript": "Phasor addition. Left: up to three rotating phasors, drawn head to tail in orange, purple and brown, and their green resultant on a complex plane with a blue real axis and a red imaginary axis. Right: each phasor's cosine waveform as a thin line and their sum as a thick green line over an 8 second window, with a gold cursor at the current time. Sliders set each amplitude and phase, the rotation frequency f1 and a second frequency f2 for phasor 2; read-outs give the resultant amplitude and phase, or the beat frequency."
+      }
+    },
+    "userInterface": {
+      "layoutType": "responsive-width",
+      "layoutPattern": "drawing-region-above-controls",
+      "colorScheme": {
+        "drawingArea": "aliceblue",
+        "controlArea": "white",
+        "realAxis": "blue",
+        "imaginaryAxis": "red",
+        "resultantAndSum": "green",
+        "phasors": "orange (1), purple (2), brown (3)",
+        "cursor": "dark goldenrod",
+        "text": "black"
+      },
+      "controls": [
+        {"id": "enableBoxes[0]", "type": "checkbox", "label": "Phasor 1", "description": "Includes phasor 1 in the sum", "group": "phasor-1", "properties": {"checked": true}},
+        {"id": "ampSliders[0]", "type": "slider", "label": "A1", "description": "Amplitude of phasor 1", "group": "phasor-1", "properties": {"min": 0, "max": 2, "default": 1, "step": 0.05, "showValue": true}},
+        {"id": "phaseSliders[0]", "type": "slider", "label": "phi1", "description": "Phase of phasor 1 in degrees", "group": "phasor-1", "properties": {"min": -180, "max": 180, "default": 0, "step": 5, "units": "degrees", "showValue": true}},
+        {"id": "enableBoxes[1]", "type": "checkbox", "label": "Phasor 2", "description": "Includes phasor 2 in the sum", "group": "phasor-2", "properties": {"checked": true}},
+        {"id": "ampSliders[1]", "type": "slider", "label": "A2", "description": "Amplitude of phasor 2", "group": "phasor-2", "properties": {"min": 0, "max": 2, "default": 1, "step": 0.05, "showValue": true}},
+        {"id": "phaseSliders[1]", "type": "slider", "label": "phi2", "description": "Phase of phasor 2 in degrees", "group": "phasor-2", "properties": {"min": -180, "max": 180, "default": 90, "step": 5, "units": "degrees", "showValue": true}},
+        {"id": "enableBoxes[2]", "type": "checkbox", "label": "Phasor 3", "description": "Includes phasor 3 in the sum", "group": "phasor-3", "properties": {"checked": false}},
+        {"id": "ampSliders[2]", "type": "slider", "label": "A3", "description": "Amplitude of phasor 3", "group": "phasor-3", "properties": {"min": 0, "max": 2, "default": 0.5, "step": 0.05, "showValue": true}},
+        {"id": "phaseSliders[2]", "type": "slider", "label": "phi3", "description": "Phase of phasor 3 in degrees", "group": "phasor-3", "properties": {"min": -180, "max": 180, "default": -90, "step": 5, "units": "degrees", "showValue": true}},
+        {"id": "pauseButton", "type": "toggle-button", "label": "Play / Pause", "description": "Starts and stops the rotation and the time cursor (the sim opens paused)", "group": "time", "properties": {"text": "Play", "action": "togglePause", "toggleable": true, "style": "primary"}},
+        {"id": "resetButton", "type": "button", "label": "Reset", "description": "Returns to t = 0 and pauses, so every phasor sits at its phase angle", "group": "time", "properties": {"text": "Reset", "action": "resetTime", "style": "secondary"}},
+        {"id": "speedSlider", "type": "slider", "label": "Speed f1", "description": "Rotation frequency f1 of the phasors (w1 = 2 pi f1)", "group": "time", "properties": {"min": 0.1, "max": 2, "default": 0.5, "step": 0.05, "units": "Hz", "showValue": true}},
+        {"id": "beatCheckbox", "type": "checkbox", "label": "Phasor 2 at f2", "description": "Lets phasor 2 turn at the second frequency f2 so the sum beats", "group": "second-frequency", "properties": {"checked": false}},
+        {"id": "f2Slider", "type": "slider", "label": "f2", "description": "Second frequency used by phasor 2 when 'Phasor 2 at f2' is checked", "group": "second-frequency", "properties": {"min": 0.1, "max": 2, "default": 0.75, "step": 0.05, "units": "Hz", "showValue": true}}
+      ],
+      "visualElements": [
+        {"type": "animation", "description": "Rotating phasor diagram: phasors head to tail, green resultant, dashed circle traced by its tip, and a blue dot marking its projection on the real axis", "interactive": true, "updateTriggers": ["enableBoxes", "ampSliders", "phaseSliders", "speedSlider", "beatCheckbox", "f2Slider", "pauseButton", "resetButton"]},
+        {"type": "chart", "description": "Waveform plot over an 8 s window: thin individual waveforms, thick green sum, dashed envelope plus or minus |R(t)| and a gold time cursor", "interactive": true, "updateTriggers": ["enableBoxes", "ampSliders", "phaseSliders", "speedSlider", "beatCheckbox", "f2Slider"]},
+        {"type": "text-display", "description": "Read-out of R in polar and rectangular form, the sum as |R| cos(w1 t + angle R), the current time and value, w1; in beat mode the envelope range, beat frequency and beat period", "interactive": false, "updateTriggers": ["enableBoxes", "ampSliders", "phaseSliders", "speedSlider", "beatCheckbox", "f2Slider"]}
+      ]
+    },
+    "simulation": {
+      "model": {
+        "type": "mathematical",
+        "description": "Each phasor k turns as A_k e^{j(2 pi f_k t + phi_k)}; all share f1 except phasor 2 in second-frequency mode. The waveform is the real part. The resultant in the frame turning at f1, R(t) = sum A_k e^{j(phi_k + 2 pi (f_k - f1) t)}, is constant for one frequency and gives the envelope |R(t)| otherwise.",
+        "equations": [
+          "sum A_k cos(w t + phi_k) = Re{(sum A_k e^{j phi_k}) e^{j w t}} = |R| cos(w t + angle R)",
+          "|R| = 2A |cos((phi2 - phi1)/2)| for two phasors of equal amplitude A",
+          "A cos(2 pi f1 t) + A cos(2 pi f2 t) has envelope 2A |cos(pi (f1 - f2) t)|",
+          "|R(t)| ranges from ||S| - A2| to |S| + A2, where S is the sum of the phasors at f1",
+          "beat frequency = |f2 - f1|"
+        ]
+      }
+    },
+    "usage": {
+      "recommendedUsage": ["demonstration", "exploration", "guided-practice"],
+      "instructionalStrategies": ["Predict the resultant before reading it", "Compare the projection of the resultant with the summed waveform at the cursor", "Contrast one-frequency sums with beating sums"],
+      "extensions": ["Add a rotating-frame view in which same-frequency phasors stand still", "Connect the sum of phasors to the addition of voltages in an AC circuit"]
+    }
+  },
+  "canvasHeight": 610
+}

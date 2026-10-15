@@ -1,0 +1,230 @@
+{
+  "microsim": {
+    "dublinCore": {
+      "title": "Adaptive Noise and Echo Cancellation",
+      "creator": ["Dan McCreary"],
+      "subject": ["Adaptive filters", "NLMS algorithm", "Adaptive noise cancellation", "Acoustic echo cancellation", "Adaptive equalization", "System identification"],
+      "description": "Interactive MicroSim that applies one normalized LMS adaptive filter to three problems: noise cancellation with a reference input (with optional signal leakage), acoustic echo cancellation of a speech-like far-end signal with a near-end talker and an optional freeze during double-talk, and equalization of a +/-1 training sequence through a dispersive channel with before/after eye scatter plots and an optional decision-directed mode. It shows the learned taps against the true path, a convergence curve (noise reduction, ERLE or MSE with the Wiener minimum) and numeric read-outs.",
+      "publisher": "Dan McCreary",
+      "contributor": ["Claude (Anthropic)"],
+      "date": "2026-10-14",
+      "type": "Interactive Simulation",
+      "format": "text/html",
+      "identifier": "https://dmccreary.github.io/signal-processing/sims/adaptive-noise-cancellation/",
+      "language": "en",
+      "relation": ["Chapter 11: Adaptive Signal Processing", "Adaptive Algorithm Comparison Tool"],
+      "rights": "CC BY-NC-SA 4.0"
+    },
+    "search": {
+      "tags": ["adaptive filter", "NLMS", "noise cancellation", "echo cancellation", "ERLE", "double-talk", "channel equalization", "eye diagram", "intersymbol interference", "system identification"],
+      "searchKeywords": ["adaptive noise cancellation reference input", "acoustic echo canceller ERLE", "double-talk detector", "LMS equalizer training sequence", "decision-directed equalization", "NLMS step size misadjustment"],
+      "visualizationType": ["chart", "simulation", "interactive-demo"],
+      "interactionLevel": "high",
+      "complexity": 6,
+      "relatedConcepts": ["Adaptive Noise Cancellation", "Echo Cancellation", "Adaptive Equalization", "System Identification", "Normalized LMS", "Least Mean Squares", "Adaptive Filters"],
+      "applicationDomains": ["education", "exploration", "demonstration"]
+    },
+    "educational": {
+      "gradeLevel": ["Undergraduate"],
+      "subjectArea": ["Engineering", "Computer Science"],
+      "topic": ["Adaptive noise cancellation", "Acoustic echo cancellation", "Adaptive channel equalization", "NLMS convergence and misadjustment", "System identification"],
+      "learningObjectives": [
+        "Apply the NLMS update to noise cancellation, echo cancellation and equalization, identifying the input x, the desired signal d and the useful output in each configuration",
+        "Analyze how the step size mu trades convergence speed against steady-state noise reduction, using the misadjustment estimate mu/(2 - mu)",
+        "Explain why the filter length must cover the unknown path or channel, by comparing the learned taps with the true path",
+        "Evaluate when an adaptive canceller fails: a reference that contains the signal, double-talk during echo cancellation, and decision-directed training from a closed eye",
+        "Interpret ERLE, noise reduction, misalignment, mean-squared error, symbol error rate and eye opening as measures of performance"
+      ],
+      "bloomsTaxonomy": ["Apply", "Analyze", "Evaluate"],
+      "prerequisites": ["FIR filters and convolution", "Mean-squared error and the Wiener filter", "LMS and NLMS update equations", "Decibels as a power ratio"],
+      "duration": {"typical": 35, "range": {"min": 20, "max": 50}},
+      "difficulty": "Intermediate",
+      "scaffolding": {
+        "type": ["guided-discovery", "feedback"],
+        "adaptability": "fixed",
+        "removal": "user-controlled"
+      },
+      "misconceptions": [
+        {
+          "misconception": "A bigger step size is always better because the filter converges faster",
+          "correction": "NLMS misadjustment grows as mu/(2 - mu), so a large step size converges quickly to a poor steady state",
+          "evidence": "In noise cancellation mu = 0.5 settles near 9 dB within 200 samples, mu = 0.01 needs about 2,550 samples to reach 10 dB but ends near 27 dB, and mu = 1.5 gives about -2 dB"
+        },
+        {
+          "misconception": "Once an echo canceller has converged it stays converged when the near-end person talks",
+          "correction": "Near-end speech enters the error signal and drives the taps away from the echo path unless adaptation is frozen during double-talk",
+          "evidence": "Turning on the near-end talker after convergence drops ERLE from about 24 dB to about -9 dB; with Freeze during double-talk it stays near 22 dB"
+        },
+        {
+          "misconception": "An equalizer can learn from its own decisions from the very start",
+          "correction": "Decision-directed adaptation needs an open eye; with a closed eye many decisions are wrong and the filter learns the wrong target",
+          "evidence": "Decision-directed from Reset leaves the MSE near +3 dB with about half the decisions wrong; after 3,000 training symbols the same mode keeps 0.0% errors"
+        }
+      ]
+    },
+    "technical": {
+      "framework": "p5.js",
+      "version": "1.0.0",
+      "canvasDimensions": {"width": 900, "height": 680, "responsive": true},
+      "regions": {"drawHeight": 555, "controlHeight": 125},
+      "dependencies": ["p5.js 2.3.2"],
+      "browserCompatibility": ["Chrome 90+", "Firefox 88+", "Safari 14+", "Edge 90+"],
+      "performance": {"memoryUsage": "low", "computationalComplexity": "O(n)"},
+      "deviceRequirements": {
+        "minScreenWidth": 375,
+        "touchSupport": true,
+        "keyboardRequired": false,
+        "mouseRequired": false,
+        "networkRequired": true
+      },
+      "accessibility": {
+        "screenReader": true,
+        "keyboardNavigation": true,
+        "colorContrast": true,
+        "altText": true,
+        "screenReaderScript": "An NLMS adaptive filter applied to three problems, chosen from a drop-down list: noise cancellation with a reference input, acoustic echo cancellation with a near-end talker, and channel equalization of a plus or minus one training sequence. Scrolling traces or eye-diagram scatter plots show the signals before and after the filter, a stem plot compares the learned taps with the unknown path, and a convergence curve shows noise reduction, ERLE or mean-squared error over time. Sliders set the step size, the filter length, the noise or echo level and the speed."
+      }
+    },
+    "userInterface": {
+      "layoutType": "responsive-width",
+      "layoutPattern": "drawing-region-above-controls",
+      "colorScheme": {
+        "drawingArea": "aliceblue",
+        "controlArea": "white",
+        "primarySignal": "blue",
+        "referenceSignal": "gray",
+        "cancellerOutput": "green",
+        "adaptiveFilter": "maroon",
+        "truePath": "light gray",
+        "warning": "red",
+        "highlight": "gold",
+        "text": "black"
+      },
+      "controls": [
+        {
+          "id": "scenarioSelect",
+          "type": "dropdown",
+          "label": "Scenario",
+          "description": "Chooses the application; loads its default step size, length, level and speed and restarts the run",
+          "group": "scenario",
+          "properties": {
+            "options": [
+              {"value": "nc", "label": "Noise cancellation"},
+              {"value": "ec", "label": "Echo cancellation"},
+              {"value": "eq", "label": "Equalization"}
+            ],
+            "default": "nc"
+          }
+        },
+        {
+          "id": "runButton",
+          "type": "toggle-button",
+          "label": "Pause / Run",
+          "description": "Starts, pauses and resumes the adaptation; the sim opens paused",
+          "group": "playback",
+          "properties": {"text": "Run", "action": "toggleRun", "toggleable": true, "style": "primary"}
+        },
+        {
+          "id": "resetButton",
+          "type": "button",
+          "label": "Reset",
+          "description": "Restarts the run from n = 0 with the same random numbers and the current settings",
+          "group": "playback",
+          "properties": {"text": "Reset", "action": "resetRun", "style": "secondary"}
+        },
+        {
+          "id": "muSlider",
+          "type": "slider",
+          "label": "Step size mu",
+          "description": "NLMS step size; defaults 0.05 (noise), 0.50 (echo), 0.10 (equalization); stable for 0 < mu < 2",
+          "group": "algorithm",
+          "properties": {"min": 0.01, "max": 1.5, "default": 0.05, "step": 0.01, "showValue": true}
+        },
+        {
+          "id": "lengthSlider",
+          "type": "slider",
+          "label": "Filter length M",
+          "description": "Number of adaptive taps; changing it restarts the run. Defaults 16 (noise), 32 (echo), 11 (equalization)",
+          "group": "algorithm",
+          "properties": {"min": 1, "max": 32, "default": 16, "step": 1, "units": "taps", "showValue": true}
+        },
+        {
+          "id": "levelSlider",
+          "type": "slider",
+          "label": "Noise level / Echo level / Channel noise",
+          "description": "Noise cancellation: reference noise rms sigma (0.1 to 2, default 1). Echo cancellation: echo gain g (0.1 to 1, default 0.5). Equalization: channel noise rms sigma (0 to 0.3, default 0.05)",
+          "group": "signal",
+          "properties": {"min": 0.1, "max": 2, "default": 1, "step": 0.05, "showValue": true}
+        },
+        {
+          "id": "speedSlider",
+          "type": "slider",
+          "label": "Speed",
+          "description": "Samples (or symbols) processed per animation frame; defaults 8, 24 and 4",
+          "group": "playback",
+          "properties": {"min": 1, "max": 50, "default": 8, "step": 1, "units": "samples/frame", "showValue": true}
+        },
+        {
+          "id": "leakCheckbox",
+          "type": "checkbox",
+          "label": "Signal leaks into reference",
+          "description": "Noise cancellation only: adds 0.3 s[n] to the reference so the canceller removes part of the signal",
+          "group": "options",
+          "properties": {"checked": false}
+        },
+        {
+          "id": "nearEndCheckbox",
+          "type": "checkbox",
+          "label": "Near-end talker",
+          "description": "Echo cancellation only: adds a local speech-like voice to the microphone (double-talk)",
+          "group": "options",
+          "properties": {"checked": false}
+        },
+        {
+          "id": "freezeCheckbox",
+          "type": "checkbox",
+          "label": "Freeze during double-talk",
+          "description": "Echo cancellation only: stops adaptation while the near-end voice is active (an ideal double-talk detector)",
+          "group": "options",
+          "properties": {"checked": false}
+        },
+        {
+          "id": "ddCheckbox",
+          "type": "checkbox",
+          "label": "Decision-directed (no training)",
+          "description": "Equalization only: adapts toward the sign of the equalizer output instead of the training symbol",
+          "group": "options",
+          "properties": {"checked": false}
+        }
+      ],
+      "visualElements": [
+        {"type": "chart", "description": "Three scrolling traces (primary or microphone, reference or far-end, canceller output with the ideal output dashed), or two eye scatter plots before and after the equalizer with the eye opening shaded", "interactive": false, "updateTriggers": ["scenarioSelect", "muSlider", "lengthSlider", "levelSlider", "leakCheckbox", "nearEndCheckbox", "freezeCheckbox", "ddCheckbox"]},
+        {"type": "chart", "description": "Stem plot of the learned taps w against the true noise or echo path; for equalization the equalizer taps and the combined channel-equalizer response with the target delay highlighted", "interactive": false, "updateTriggers": ["muSlider", "lengthSlider", "levelSlider"]},
+        {"type": "chart", "description": "Convergence curve of noise reduction, ERLE or MSE in dB with shaded spans where leakage, double-talk or decision-directed mode was on, and the Wiener minimum for equalization", "interactive": false, "updateTriggers": ["muSlider", "lengthSlider", "levelSlider", "leakCheckbox", "nearEndCheckbox", "freezeCheckbox", "ddCheckbox"]},
+        {"type": "text-display", "description": "Read-outs: SNR in and out, noise reduction, signal kept, misalignment, ERLE, double-talk and adaptation status, MSE, decision delay, symbol error rates and eye openings", "interactive": false, "updateTriggers": ["scenarioSelect", "muSlider", "lengthSlider", "levelSlider"]}
+      ]
+    },
+    "simulation": {
+      "model": {
+        "type": "algorithmic",
+        "description": "A normalized LMS filter y = w^T x with error e = d - y. Noise cancellation: d = s + P*x with a 10-tap path P and white reference x. Echo cancellation: d = g H*x + v + near-end speech with a 24-tap echo path H (4-sample delay). Equalization: r = C*a + v with C = [0.31, 0.69, 0.54, -0.31, 0.23] and desired a[n - Delta], where Delta minimizes the Wiener MSE. Signals come from seeded random generators so a reset replays the same run.",
+        "equations": [
+          "w <- w + mu e x / (eps + ||x||^2), eps = 0.05",
+          "Noise reduction = 10 log10(E[n0^2] / E[(e - s)^2])",
+          "ERLE = 10 log10(E[d^2] / E[e^2]) on the echo part of d and e",
+          "Misalignment = ||h - w||^2 / ||h||^2",
+          "MSE = E[(a[n - Delta] - y)^2]; Wiener minimum J = 1 - p^T R^-1 p",
+          "Steady-state excess MSE approx. mu / (2 - mu) times the minimum MSE"
+        ],
+        "algorithms": ["Normalized LMS", "Wiener equalizer solution by Gauss-Jordan elimination (for the delay and the optimum)", "Ideal double-talk detector"],
+        "limitations": ["Read-outs are exponential averages over a few hundred samples, so they fluctuate by a few dB in steady state", "The double-talk detector is ideal: it knows exactly when the near-end voice is active"]
+      }
+    },
+    "usage": {
+      "recommendedUsage": ["demonstration", "exploration", "guided-practice"],
+      "instructionalStrategies": ["Predict the steady-state noise reduction from the misadjustment formula, then verify", "Break each canceller deliberately (leakage, double-talk, decision-directed start) and explain the failure", "Compare the learned taps with the true path to connect cancellation to system identification"],
+      "extensions": ["Add a practical double-talk detector (for example the Geigel detector) instead of the ideal one", "Make the echo path change suddenly to study tracking"]
+    }
+  },
+  "canvasHeight": 680
+}

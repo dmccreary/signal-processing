@@ -1,82 +1,121 @@
 {
-  "title": "The Accelerating Pace of AI",
-  "description": "Interactive visualization showing the exponential growth and acceleration of AI capabilities over time.",
-  "creator": "Dan McCreary",
-  "date": "2024-01-01",
-  "subject": [
-    "AI",
-    "Technology Trends",
-    "Exponential Growth",
-    "Data Visualization"
-  ],
-  "type": "Interactive Simulation",
-  "format": "text/html",
-  "language": "en",
-  "rights": "CC BY-NC-SA 4.0",
-  "identifier": "https://dmccreary.github.io/signal-processing/sims/ai-pace-accelerating/",
-  "publisher": "Dan McCreary",
-  "educationalLevel": "Undergraduate",
-  "learningResourceType": "simulation",
-  "audience": "Students, Educators",
-  "version": "1.0.0",
-  "bloomLevel": [
-    "Understand",
-    "Analyze"
-  ],
-  "concepts": [
-    "AI growth",
-    "Exponential trends",
-    "Technology advancement",
-    "Moore's Law"
-  ],
-  "prerequisites": [
-    "Basic understanding of AI concepts"
-  ],
-  "library": "p5.js",
-  "visualizationType": [
-    "animation",
-    "graph",
-    "interactive-demo",
-    "map",
-    "network",
-    "simulation",
-    "timeline"
-  ],
-  "learningObjectives": [
-    "Understand the key concepts of the accelerating pace of ai",
-    "Explore the accelerating pace of ai through interactive visualization",
-    "Apply knowledge of the accelerating pace of ai to solve problems",
-    "Experiment with parameters to observe their effects on the accelerating pace of ai"
-  ],
-  "bloomsTaxonomy": [
-    "Remember",
-    "Understand",
-    "Apply",
-    "Create"
-  ],
-  "pedagogical": {
-    "pattern": "exploration",
-    "bloomAlignment": [
-      "understand",
-      "apply",
-      "evaluate"
-    ],
-    "bloomVerbs": [
-      "describe",
-      "explain",
-      "apply",
-      "calculate",
-      "demonstrate"
-    ],
-    "pacing": "self-paced",
-    "supportsPrediction": false,
-    "dataVisibility": "medium",
-    "feedbackType": [
-      "immediate",
-      "delayed",
-      "corrective",
-      "explanatory"
-    ],
-    "interactionStyle": "construct"
-  }
+  "microsim": {
+    "dublinCore": {
+      "title": "The Accelerating Pace of AI",
+      "creator": ["Dan McCreary"],
+      "subject": ["Artificial intelligence", "History of AI", "Technology trends", "Timeline", "Data visualization"],
+      "description": "Interactive timeline of 23 AI milestones from 1956 to 2025. Stems are colored by era, hover shows each milestone, and a slider bends the time axis from linear to one that expands recent years.",
+      "publisher": "Dan McCreary",
+      "contributor": ["Claude (Anthropic)"],
+      "date": "2025-05-07",
+      "type": "Interactive Simulation",
+      "format": "text/html",
+      "identifier": "https://dmccreary.github.io/signal-processing/sims/ai-pace-accelerating/",
+      "language": "en",
+      "relation": ["Chapter 15: Signal Processing Applications and AI Integration"],
+      "rights": "CC BY-NC-SA 4.0"
+    },
+    "search": {
+      "tags": ["AI timeline", "history of AI", "AI milestones", "time axis", "power-law scale", "technology trends"],
+      "searchKeywords": ["accelerating pace of AI", "AI milestones timeline", "history of artificial intelligence", "deep learning timeline", "time-axis scale"],
+      "visualizationType": ["timeline", "interactive-demo", "data-visualization"],
+      "interactionLevel": "low",
+      "complexity": 2,
+      "relatedConcepts": ["Machine Learning in DSP", "Deep Learning for Signals", "AI-Driven Signal Analysis"],
+      "applicationDomains": ["education", "exploration"],
+      "showcase": false
+    },
+    "educational": {
+      "gradeLevel": ["Undergraduate"],
+      "subjectArea": ["Computer Science", "Engineering"],
+      "topic": ["History of AI", "AI milestones by era", "Reading a nonlinear time axis", "Evaluating evidence for acceleration"],
+      "learningObjectives": [
+        "Identify the era of a milestone from the color of its stem and the legend",
+        "Compare how many milestones the plotted list contains in each era",
+        "Predict how a larger exponent p moves each milestone along the time axis",
+        "Evaluate whether a hand-picked event list is enough evidence that AI progress is accelerating"
+      ],
+      "bloomsTaxonomy": ["Remember", "Understand", "Evaluate"],
+      "prerequisites": ["Reading a timeline", "Powers and exponents"],
+      "duration": {"typical": 12, "range": {"min": 8, "max": 20}},
+      "difficulty": "Beginner",
+      "scaffolding": {
+        "type": ["guided-discovery", "feedback"],
+        "adaptability": "fixed",
+        "removal": "user-controlled"
+      },
+      "misconceptions": [
+        {
+          "misconception": "A taller stem means a more important or more capable system",
+          "correction": "Stem height only grows with the year and is nudged up so neighboring names do not collide; the data are the year, the name and the description",
+          "evidence": "Move the slider: the stems keep their order and height pattern while only the horizontal positions change"
+        },
+        {
+          "misconception": "A count of listed events shows how fast AI improved",
+          "correction": "The list is one author's selection and many recent entries are product releases; a count of events is not a measure of capability",
+          "evidence": "Compare the slider at 0 and at 100: the visual clustering depends on the axis mapping"
+        }
+      ]
+    },
+    "technical": {
+      "framework": "p5.js",
+      "version": "2.0.0",
+      "canvasDimensions": {"width": 800, "height": 535, "responsive": true},
+      "regions": {"drawHeight": 440, "controlHeight": 95},
+      "dependencies": ["p5.js 2.3.2"],
+      "browserCompatibility": ["Chrome 90+", "Firefox 88+", "Safari 14+", "Edge 90+"],
+      "performance": {"memoryUsage": "low", "loadTime": 500},
+      "deviceRequirements": {
+        "minScreenWidth": 320,
+        "touchSupport": true,
+        "keyboardRequired": false,
+        "mouseRequired": false,
+        "networkRequired": false
+      },
+      "accessibility": {
+        "screenReader": true,
+        "keyboardNavigation": true,
+        "colorContrast": true,
+        "altText": true,
+        "screenReaderScript": "Timeline of 23 AI milestones from 1956 to 2025. Stems are colored by era: 5 before 2000, 5 from 2000 to 2014, 6 from 2015 to 2022 and 7 from 2023 on. A slider changes the time axis from linear to one that expands the recent years. Hovering over a milestone shows its description."
+      }
+    },
+    "userInterface": {
+      "layoutType": "responsive-width",
+      "layoutPattern": "drawing-region-above-controls",
+      "colorScheme": {
+        "drawingArea": "aliceblue",
+        "controlArea": "white",
+        "accent": "steelblue",
+        "text": "black"
+      },
+      "controls": [
+        {
+          "id": "timeScaleSlider",
+          "type": "slider",
+          "label": "Time-axis scale",
+          "description": "Sets the exponent p = 1 + 2.5 x value / 100 in the position ((year - 1956) / 69)^p; 0 is a linear axis and 100 expands the recent years the most",
+          "group": "time-axis",
+          "properties": {"min": 0, "max": 100, "default": 0, "step": 1, "showValue": true}
+        }
+      ],
+      "visualElements": [
+        {"type": "graph", "description": "Time axis from 1956 to 2025 with one stem and circle per milestone, a slanted name label and a legend that counts the events in each era", "interactive": true, "updateTriggers": ["timeScaleSlider"]},
+        {"type": "text-display", "description": "Information box with the name, year and description of the hovered milestone", "interactive": true, "updateTriggers": ["pointer"]}
+      ]
+    },
+    "simulation": {
+      "model": {
+        "type": "mathematical",
+        "description": "Maps each year to a horizontal position with a power law of the elapsed time and stacks the stem heights so neighboring labels do not overlap",
+        "equations": ["x = x_start + (x_end - x_start) ((year - 1956) / 69)^p", "p = 1 + 2.5 s / 100"]
+      }
+    },
+    "usage": {
+      "recommendedUsage": ["demonstration", "exploration", "individual-study"],
+      "instructionalStrategies": ["Predict-then-verify the movement of one event when the axis changes", "Compare event counts per era before drawing a conclusion"],
+      "extensions": ["Add a second, objectively measured series to the same axis", "Add the events of a subfield such as speech recognition"]
+    }
+  },
+  "canvasHeight": 535
 }

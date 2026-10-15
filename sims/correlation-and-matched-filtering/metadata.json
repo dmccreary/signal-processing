@@ -1,0 +1,218 @@
+{
+  "microsim": {
+    "dublinCore": {
+      "title": "Correlation and Matched Filtering",
+      "creator": ["Dan McCreary"],
+      "subject": ["Signal processing", "Correlation", "Cross-correlation", "Matched filter", "Signal detection"],
+      "description": "Copies of a known template are hidden in white Gaussian noise at unknown delays. Cross-correlating the received signal with the template produces a peak at each delay. The MicroSim shows the template, its time-reversed matched filter, the correlation output with threshold detection and per-peak SNR, and a moving-average filter for comparison.",
+      "publisher": "Dan McCreary",
+      "contributor": ["Claude (Anthropic)"],
+      "date": "2026-10-02",
+      "type": "Interactive Simulation",
+      "format": "text/html",
+      "identifier": "https://dmccreary.github.io/signal-processing/sims/correlation-and-matched-filtering/",
+      "language": "en",
+      "relation": ["Chapter 4: Convolution and Correlation"],
+      "rights": "CC BY-NC-SA 4.0"
+    },
+    "search": {
+      "tags": ["cross-correlation", "matched filter", "signal detection", "template matching", "signal-to-noise ratio", "threshold detection", "pulse compression", "Barker code", "chirp"],
+      "searchKeywords": ["matched filter demo", "cross-correlation in noise", "detect a signal in noise", "time-reversed template", "peak SNR gain 10 log L", "false alarms and missed detections"],
+      "visualizationType": ["graph", "simulation", "interactive-demo"],
+      "interactionLevel": "high",
+      "complexity": 6,
+      "relatedConcepts": ["Cross-Correlation", "Matched Filter", "Signal-to-Noise Ratio", "Discrete Convolution", "Signal Energy", "White Noise", "Detection Threshold"],
+      "applicationDomains": ["education", "exploration", "analysis"],
+      "showcase": false
+    },
+    "educational": {
+      "gradeLevel": ["Undergraduate"],
+      "subjectArea": ["Engineering", "Mathematics"],
+      "topic": ["Cross-correlation and matched filtering for detection in noise", "Peak SNR gain of the matched filter", "Detection threshold, false alarms and missed detections", "Template shape and timing accuracy"],
+      "learningObjectives": [
+        "Explain how cross-correlation locates a known pattern inside a longer signal",
+        "Relate the matched filter to the time-reversed template and to cross-correlation",
+        "Calculate the expected peak SNR from the input SNR and the template length",
+        "Analyze how input SNR, template length and threshold affect missed detections and false alarms",
+        "Compare templates by the sharpness of their correlation peaks and the resulting timing accuracy"
+      ],
+      "bloomsTaxonomy": ["Understand", "Apply", "Analyze"],
+      "prerequisites": ["Discrete convolution and correlation", "Signal energy and power, decibels", "Random noise and standard deviation"],
+      "duration": {"typical": 25, "range": {"min": 20, "max": 30}},
+      "difficulty": "Intermediate",
+      "scaffolding": {
+        "type": ["guided-discovery", "feedback"],
+        "adaptability": "fixed",
+        "removal": "user-controlled"
+      },
+      "misconceptions": [
+        {
+          "misconception": "Any smoothing filter detects a signal as well as a matched filter",
+          "correction": "A filter must be matched to the template shape; a moving average equals the matched filter only for a rectangular pulse",
+          "evidence": "Tick Moving average: the averager peak is 0.11 for the sine burst, 0.16 for the chirp and 0.38 for the Barker code, against 1.00 for the matched filter, and the two curves coincide only for the rectangular pulse"
+        },
+        {
+          "misconception": "A signal below the noise level cannot be detected",
+          "correction": "The matched filter concentrates the template energy into one sample, giving a peak SNR that is 10 log10(L) dB above the input SNR",
+          "evidence": "At an input SNR of -3 dB the received trace shows no obvious pattern, yet with the threshold at 0.70 about 93.5% of the signals are found with almost no false alarms"
+        },
+        {
+          "misconception": "The matched filter output looks like the template",
+          "correction": "The output is the correlation of the received signal with the template, which for a noise-free template is its autocorrelation, so a long chirp becomes a narrow spike",
+          "evidence": "Select the chirp: the template wiggles across 48 samples but the correlation is a single narrow peak"
+        }
+      ]
+    },
+    "technical": {
+      "framework": "p5.js",
+      "version": "2.0.0",
+      "canvasDimensions": {"width": 670, "height": 615, "responsive": true},
+      "regions": {"drawHeight": 500, "controlHeight": 115},
+      "dependencies": ["p5.js 2.3.2"],
+      "browserCompatibility": ["Chrome 90+", "Firefox 88+", "Safari 14+", "Edge 90+"],
+      "performance": {"memoryUsage": "low", "loadTime": 500, "optimizations": ["The signal model is rebuilt only when a control changes"]},
+      "deviceRequirements": {
+        "minScreenWidth": 320,
+        "touchSupport": true,
+        "keyboardRequired": false,
+        "mouseRequired": false,
+        "networkRequired": false
+      },
+      "accessibility": {
+        "screenReader": true,
+        "keyboardNavigation": true,
+        "colorContrast": true,
+        "altText": true,
+        "screenReaderScript": "Three rows of plots: a noisy received signal containing hidden copies of a template, the template beside its time-reversed matched filter, and the cross-correlation output with a threshold line and detected peaks labelled with their lag and signal-to-noise ratio. Controls choose the template, input SNR, number of signals and threshold, draw new noise, overlay a moving average and show or hide the true delays."
+      }
+    },
+    "userInterface": {
+      "layoutType": "responsive-width",
+      "layoutPattern": "drawing-region-above-controls",
+      "colorScheme": {
+        "drawingArea": "aliceblue",
+        "controlArea": "white",
+        "borders": "silver",
+        "accent": "purple",
+        "text": "black"
+      },
+      "responsiveBreakpoints": [
+        {"width": 600, "description": "Below 600 px wider captions are shortened, fonts shrink, option names are abbreviated and the two checkboxes stack"}
+      ],
+      "controls": [
+        {
+          "id": "templateSelect",
+          "type": "dropdown",
+          "label": "Template",
+          "description": "Chooses the known signal s[n] that is hidden in the noise and used as the correlation template",
+          "group": "signal",
+          "properties": {
+            "options": [
+              {"value": "pulse", "label": "Rectangular pulse"},
+              {"value": "sine", "label": "Sine burst"},
+              {"value": "chirp", "label": "Chirp (rising frequency)"},
+              {"value": "barker", "label": "Barker-13 code"}
+            ],
+            "default": "chirp"
+          }
+        },
+        {
+          "id": "noiseButton",
+          "type": "button",
+          "label": "New Noise",
+          "description": "Draws a new noise record and new random delays",
+          "group": "signal",
+          "properties": {"text": "New Noise", "action": "seed += 1", "style": "secondary"}
+        },
+        {
+          "id": "snrSlider",
+          "type": "slider",
+          "label": "Input SNR (dB)",
+          "description": "Sets the average template power divided by the noise variance, in decibels",
+          "group": "signal",
+          "properties": {"min": -10, "max": 20, "default": 0, "step": 1, "units": "dB", "showValue": true}
+        },
+        {
+          "id": "countSlider",
+          "type": "slider",
+          "label": "Number of signals",
+          "description": "Sets how many copies of the template are hidden in the record",
+          "group": "signal",
+          "properties": {"min": 1, "max": 5, "default": 3, "step": 1, "showValue": true}
+        },
+        {
+          "id": "thresholdSlider",
+          "type": "slider",
+          "label": "Threshold",
+          "description": "Sets the level the normalized correlation must exceed for a peak to be reported",
+          "group": "detector",
+          "properties": {"min": 0.2, "max": 1, "default": 0.5, "step": 0.05, "showValue": true}
+        },
+        {
+          "id": "averageCheckbox",
+          "type": "checkbox",
+          "label": "Moving average",
+          "description": "Overlays the output of an L-sample moving average scaled to the same output noise level",
+          "group": "detector",
+          "properties": {"checked": false}
+        },
+        {
+          "id": "truthCheckbox",
+          "type": "checkbox",
+          "label": "True delays",
+          "description": "Shows the real delays as green bands and dashed lines and scores the detections; unticked, it hides the answers",
+          "group": "detector",
+          "properties": {"checked": true}
+        }
+      ],
+      "visualElements": [
+        {"type": "graph", "description": "Received signal r[n] over 600 samples with optional green bands at the true delays", "interactive": false, "updateTriggers": ["templateSelect", "noiseButton", "snrSlider", "countSlider", "truthCheckbox"]},
+        {"type": "graph", "description": "Stem plots of the template s[n] (blue) and the matched filter h[n] = s[L-1-n] (red)", "interactive": false, "updateTriggers": ["templateSelect"]},
+        {"type": "graph", "description": "Normalized cross-correlation in purple with a dashed threshold line, detected peaks labelled with lag and measured SNR, an optional orange dashed moving average and a grey strip for lags without full overlap", "interactive": false, "updateTriggers": ["templateSelect", "noiseButton", "snrSlider", "countSlider", "thresholdSlider", "averageCheckbox", "truthCheckbox"]},
+        {"type": "text-display", "description": "Summary box with the expected peak SNR and the number of signals found, false alarms and largest timing error", "interactive": false, "updateTriggers": ["templateSelect", "noiseButton", "snrSlider", "countSlider", "thresholdSlider", "truthCheckbox"]}
+      ]
+    },
+    "simulation": {
+      "model": {
+        "type": "statistical",
+        "description": "Copies of a template are added at random delays to seeded white Gaussian noise. The normalized cross-correlation is thresholded and peaks within a quarter of the template length of a true delay count as detections.",
+        "equations": [
+          "r[n] = sum_i s[n - d_i] + w[n]",
+          "R_rs[m] = sum_k r[k] s[k - m]",
+          "h[n] = s[L - 1 - n]",
+          "(r * h)[m + L - 1] = R_rs[m]",
+          "peak SNR = E_s / sigma^2 = L x input SNR",
+          "sigma_c = sigma / sqrt(E_s)"
+        ],
+        "algorithms": [
+          "Seeded Mulberry32 pseudo-random generator and Box-Muller Gaussian noise",
+          "Direct O(N L) cross-correlation and convolution",
+          "Local-maximum peak detection with one peak per template length"
+        ],
+        "assumptions": [
+          "Noise is white and Gaussian, generated by a seeded pseudo-random generator",
+          "Input SNR is the average template power divided by the noise variance",
+          "Templates are real-valued, so no complex conjugate is needed in the matched filter",
+          "A detection within a quarter of the template length of a true delay counts as a hit"
+        ],
+        "limitations": [
+          "Only lags where the whole template lies inside the 600-sample record are computed",
+          "Copies of the template never overlap (at least 1.5 template lengths apart)"
+        ]
+      }
+    },
+    "usage": {
+      "recommendedUsage": ["exploration", "guided-practice", "demonstration"],
+      "instructionalStrategies": [
+        "Predict the peak SNR from the template length, then compare with the measured value on each peak",
+        "Tally missed signals and false alarms over ten noise records at several thresholds",
+        "Compare the matched filter with a moving average for each template"
+      ],
+      "extensions": [
+        "Add a second, different template and detect both from one record",
+        "Replace the white noise by coloured noise and discuss the whitening filter"
+      ]
+    }
+  },
+  "canvasHeight": 615
+}

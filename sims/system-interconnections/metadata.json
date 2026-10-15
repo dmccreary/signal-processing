@@ -1,0 +1,185 @@
+{
+  "microsim": {
+    "dublinCore": {
+      "title": "System Interconnections: Series, Parallel, Feedback",
+      "creator": ["Dan McCreary"],
+      "subject": ["System interconnections", "Feedback systems", "Feedforward systems", "Transfer functions", "Stability", "Block diagrams"],
+      "description": "Interactive MicroSim that connects two blocks (gain K, first-order low-pass with time constant tau, or a delay of D samples) in series, parallel, negative feedback or feedforward at fs = 100 Hz. It draws the block diagram, prints the overall H(z) and its difference equation, plots poles and zeros with a stability badge, and shows the step and impulse responses of the combined system, including growing oscillation when a delay sits in a feedback loop with gain above 1.",
+      "publisher": "Dan McCreary",
+      "contributor": ["Claude (Anthropic)"],
+      "date": "2026-10-14",
+      "type": "Interactive Simulation",
+      "format": "text/html",
+      "identifier": "https://dmccreary.github.io/signal-processing/sims/system-interconnections/",
+      "language": "en",
+      "relation": ["Chapter 3: System Properties and Analysis"],
+      "rights": "CC BY-NC-SA 4.0"
+    },
+    "search": {
+      "tags": ["system interconnections", "series connection", "cascade", "parallel connection", "negative feedback", "feedforward", "block diagram", "transfer function", "poles and zeros", "stability", "step response", "impulse response"],
+      "searchKeywords": ["H1 H2 cascade", "H1 + H2 parallel", "H1/(1 + H1 H2) closed loop", "delay in feedback loop instability", "feedforward comb filter", "pole-zero plot stability badge"],
+      "visualizationType": ["diagram", "chart", "simulation", "interactive-demo"],
+      "interactionLevel": "high",
+      "complexity": 5,
+      "relatedConcepts": ["Feedback Systems", "Feedforward Systems", "System Interconnections", "Transfer Function", "Impulse Response", "Step Response", "Stability"],
+      "applicationDomains": ["education", "exploration", "demonstration"]
+    },
+    "educational": {
+      "gradeLevel": ["Undergraduate"],
+      "subjectArea": ["Engineering", "Mathematics"],
+      "topic": ["System interconnections", "Feedback and feedforward systems", "Transfer functions of combined systems", "Pole locations and stability"],
+      "learningObjectives": [
+        "Calculate the overall transfer function of two blocks connected in series (H1 H2), in parallel (H1 + H2), in negative feedback (H1/(1 + H1 H2)) and as a feedforward structure (1 + H1 H2)",
+        "Derive the difference equation of the combined system from H(z) and use it to predict the step and impulse responses",
+        "Classify the combined system as stable, marginally stable or unstable from the largest pole magnitude",
+        "Analyze how a delay inside a feedback loop produces oscillation, and instability when the loop gain exceeds 1, while the same blocks connected without a loop stay stable",
+        "Explain the trade-off negative feedback makes between DC gain and speed of response"
+      ],
+      "bloomsTaxonomy": ["Apply", "Analyze"],
+      "prerequisites": ["Impulse response, step response and BIBO stability", "Difference equations and z^-1 as a one-sample delay", "Complex numbers in polar form"],
+      "duration": {"typical": 25, "range": {"min": 15, "max": 40}},
+      "difficulty": "Intermediate",
+      "scaffolding": {
+        "type": ["guided-discovery", "feedback"],
+        "adaptability": "fixed",
+        "removal": "user-controlled"
+      },
+      "misconceptions": [
+        {
+          "misconception": "Feedback always makes a system more stable",
+          "correction": "A delay in the loop makes the correction arrive late; with loop gain above 1 the oscillation grows",
+          "evidence": "Negative feedback with K1 = 1.20 and D2 = 10 gives poles on |z| = 1.018 and the UNSTABLE badge, while the same blocks in series, parallel or feedforward are stable"
+        },
+        {
+          "misconception": "Marginally stable means the output stays bounded",
+          "correction": "Poles on the unit circle make a system not BIBO stable; a bounded input can produce an unbounded output",
+          "evidence": "Negative feedback with K1 = -1.00 and D2 = 10 has a pole at z = 1; the step response falls by 1 every 0.10 s and reaches -20 at t = 1.99 s"
+        }
+      ]
+    },
+    "technical": {
+      "framework": "p5.js",
+      "version": "1.0.0",
+      "canvasDimensions": {"width": 900, "height": 660, "responsive": true},
+      "regions": {"drawHeight": 548, "controlHeight": 112},
+      "dependencies": ["p5.js 2.3.2"],
+      "browserCompatibility": ["Chrome 90+", "Firefox 88+", "Safari 14+", "Edge 90+"],
+      "performance": {"memoryUsage": "low", "loadTime": 500},
+      "deviceRequirements": {
+        "minScreenWidth": 375,
+        "touchSupport": true,
+        "keyboardRequired": false,
+        "mouseRequired": false,
+        "networkRequired": false
+      },
+      "accessibility": {
+        "screenReader": true,
+        "keyboardNavigation": true,
+        "colorContrast": true,
+        "altText": true,
+        "screenReaderScript": "Block diagram of two systems H1 and H2 connected in series, in parallel, in a negative-feedback loop or in a feedforward structure. Below it are the overall transfer function H(z), its difference equation at fs = 100 Hz, a pole-zero plot with a stability badge, and the step and impulse responses of the combined system. Selects choose the topology and the type of each block (gain, first-order low-pass, delay); sliders set each block parameter."
+      }
+    },
+    "userInterface": {
+      "layoutType": "responsive-width",
+      "layoutPattern": "drawing-region-above-controls",
+      "colorScheme": {
+        "drawingArea": "aliceblue",
+        "controlArea": "white",
+        "responses": "blue",
+        "input": "gray",
+        "finalValue": "gold",
+        "feedbackLoop": "gold (red when unstable)",
+        "clippedValues": "red",
+        "blocks": "purple (H1), teal (H2)",
+        "text": "black"
+      },
+      "controls": [
+        {
+          "id": "topologySelect",
+          "type": "dropdown",
+          "label": "Topology",
+          "description": "Chooses how H1 and H2 are connected",
+          "group": "topology",
+          "properties": {
+            "options": [
+              {"value": "series", "label": "Series (cascade): H = H1 H2"},
+              {"value": "parallel", "label": "Parallel: H = H1 + H2"},
+              {"value": "feedback", "label": "Negative feedback: H = H1/(1 + H1 H2)"},
+              {"value": "feedforward", "label": "Feedforward: H = 1 + H1 H2"}
+            ],
+            "default": "feedback"
+          }
+        },
+        {
+          "id": "typeSelect1",
+          "type": "dropdown",
+          "label": "H1 type",
+          "description": "Chooses block H1: gain K, first-order low-pass with time constant tau, or delay of D samples",
+          "group": "block-1",
+          "properties": {"options": [{"value": "gain", "label": "Gain K"}, {"value": "lp", "label": "Low-pass (tau)"}, {"value": "delay", "label": "Delay (D samples)"}], "default": "gain"}
+        },
+        {
+          "id": "paramSlider1",
+          "type": "slider",
+          "label": "H1 parameter (K1, tau1 or D1)",
+          "description": "Sets the parameter of H1; its range follows the block type: K from -2 to 2 (step 0.05), tau from 0.01 to 0.50 s (step 0.01), D from 1 to 50 samples (step 1)",
+          "group": "block-1",
+          "properties": {"min": -2, "max": 2, "default": 0.8, "step": 0.05, "showValue": true}
+        },
+        {
+          "id": "typeSelect2",
+          "type": "dropdown",
+          "label": "H2 type",
+          "description": "Chooses block H2 (the return path in feedback): gain K, first-order low-pass, or delay",
+          "group": "block-2",
+          "properties": {"options": [{"value": "gain", "label": "Gain K"}, {"value": "lp", "label": "Low-pass (tau)"}, {"value": "delay", "label": "Delay (D samples)"}], "default": "delay"}
+        },
+        {
+          "id": "paramSlider2",
+          "type": "slider",
+          "label": "H2 parameter (K2, tau2 or D2)",
+          "description": "Sets the parameter of H2; its range follows the block type, as for H1",
+          "group": "block-2",
+          "properties": {"min": 1, "max": 50, "default": 10, "step": 1, "units": "samples", "showValue": true}
+        },
+        {
+          "id": "resetButton",
+          "type": "button",
+          "label": "Reset",
+          "description": "Restores negative feedback with H1 = gain 0.80 and H2 = delay of 10 samples",
+          "group": "topology",
+          "properties": {}
+        }
+      ],
+      "visualElements": [
+        {"type": "diagram", "description": "Block diagram of the chosen topology with H1, H2, summing junctions and signal labels; the feedback loop is highlighted", "interactive": true, "updateTriggers": ["topologySelect", "typeSelect1", "typeSelect2", "paramSlider1", "paramSlider2"]},
+        {"type": "text-display", "description": "Topology formula, block transfer functions, overall H(z), difference equation and DC gain H(1)", "interactive": false, "updateTriggers": ["topologySelect", "typeSelect1", "typeSelect2", "paramSlider1", "paramSlider2"]},
+        {"type": "chart", "description": "Pole-zero plot in the z-plane with the unit circle, largest pole magnitude and a stability badge", "interactive": false, "updateTriggers": ["topologySelect", "typeSelect1", "typeSelect2", "paramSlider1", "paramSlider2"]},
+        {"type": "chart", "description": "Step response s[n] with the unit-step input and final value, and impulse response h[n] as stems, from 0 to 2 s", "interactive": false, "updateTriggers": ["topologySelect", "typeSelect1", "typeSelect2", "paramSlider1", "paramSlider2"]}
+      ]
+    },
+    "simulation": {
+      "model": {
+        "type": "mathematical",
+        "description": "Each block is a rational transfer function in z^-1 at fs = 100 Hz. The blocks are combined by polynomial arithmetic, the difference equation is run for 200 samples to obtain the step and impulse responses, and the poles are the roots of the denominator (found exactly for degree 1 and 2, by Durand-Kerner iteration otherwise)",
+        "equations": [
+          "gain: H(z) = K",
+          "low-pass: y[n] = a y[n-1] + (1 - a) x[n], a = exp(-T/tau), H(z) = (1 - a)/(1 - a z^-1)",
+          "delay: H(z) = z^-D",
+          "series: H = H1 H2",
+          "parallel: H = H1 + H2",
+          "negative feedback: H = H1/(1 + H1 H2) = B1 A2/(A1 A2 + B1 B2)",
+          "feedforward: H = 1 + H1 H2",
+          "stable if every pole satisfies |p| < 1"
+        ]
+      }
+    },
+    "usage": {
+      "recommendedUsage": ["demonstration", "exploration", "guided-practice"],
+      "instructionalStrategies": ["Predict H(z) and the step response before changing the topology", "Compare the same two blocks in all four connections", "Raise the loop gain with a delay in the loop until the badge changes"],
+      "extensions": ["Allow a gain inside the low-pass block so students can study a delayed loop whose gain and bandwidth are both adjustable"]
+    }
+  },
+  "canvasHeight": 660
+}

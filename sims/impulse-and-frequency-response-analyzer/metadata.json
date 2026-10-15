@@ -1,0 +1,403 @@
+{
+  "microsim": {
+    "dublinCore": {
+      "title": "Impulse and Frequency Response Analyzer",
+      "creator": [
+        "Dan McCreary"
+      ],
+      "subject": [
+        "Signal Processing",
+        "Signals and Systems",
+        "Impulse Response",
+        "Step Response",
+        "Frequency Response",
+        "LTI Systems"
+      ],
+      "description": "Shows the impulse response, step response, magnitude response and phase response of five LTI systems (Butterworth low-pass and high-pass filters, differentiator, integrator and second-order resonant system) side by side, with linked cursors and sliders for cutoff frequency, filter order and damping ratio.",
+      "publisher": "Dan McCreary",
+      "contributor": [
+        "Claude (Anthropic)"
+      ],
+      "date": "2026-10-02",
+      "type": "Interactive Simulation",
+      "format": "text/html",
+      "identifier": "https://dmccreary.github.io/signal-processing/sims/impulse-and-frequency-response-analyzer/",
+      "language": "en",
+      "relation": [
+        "Chapter 3: System Properties and Analysis"
+      ],
+      "rights": "CC BY-NC-SA 4.0"
+    },
+    "search": {
+      "tags": [
+        "impulse response",
+        "step response",
+        "frequency response",
+        "LTI system",
+        "Butterworth filter",
+        "low-pass",
+        "high-pass",
+        "resonance",
+        "damping ratio",
+        "Bode plot"
+      ],
+      "searchKeywords": [
+        "impulse response vs frequency response",
+        "step response and impulse response",
+        "Butterworth filter order",
+        "second order resonant system",
+        "magnitude and phase response",
+        "convolution with a pulse"
+      ],
+      "visualizationType": [
+        "graph",
+        "interactive-demo",
+        "simulation"
+      ],
+      "interactionLevel": "high",
+      "complexity": 6,
+      "relatedConcepts": [
+        "Impulse Response",
+        "Step Response",
+        "Frequency Response",
+        "Transfer Function",
+        "Linear Systems",
+        "Time-Invariant Systems",
+        "Convolution",
+        "Low-Pass Filters",
+        "High-Pass Filters",
+        "Butterworth Filter"
+      ],
+      "applicationDomains": [
+        "education",
+        "exploration",
+        "demonstration"
+      ],
+      "showcase": false
+    },
+    "educational": {
+      "gradeLevel": [
+        "Undergraduate"
+      ],
+      "subjectArea": [
+        "Engineering",
+        "Mathematics"
+      ],
+      "topic": [
+        "Impulse response",
+        "Step response",
+        "Frequency response of LTI systems",
+        "Butterworth filters",
+        "Second-order resonance and damping"
+      ],
+      "learningObjectives": [
+        "Explain why the impulse response completely characterizes an LTI system",
+        "Relate the step response to the impulse response through integration",
+        "Connect features of h(t) (decay rate, ringing) to features of H(f) (cutoff, resonant peak)",
+        "Compare how low-pass, high-pass, differentiating, integrating and resonant systems change a signal in time and in frequency",
+        "Predict the response to a pulse or a square wave by superposing shifted step responses"
+      ],
+      "bloomsTaxonomy": [
+        "Understand",
+        "Apply",
+        "Analyze"
+      ],
+      "prerequisites": [
+        "Unit impulse and unit step functions",
+        "Convolution and the meaning of an impulse response",
+        "Complex numbers, magnitude and phase, and decibels"
+      ],
+      "duration": {
+        "typical": 25,
+        "range": {
+          "min": 20,
+          "max": 30
+        }
+      },
+      "difficulty": "Intermediate",
+      "scaffolding": {
+        "type": [
+          "guided-discovery",
+          "feedback"
+        ],
+        "adaptability": "fixed",
+        "removal": "user-controlled"
+      },
+      "misconceptions": [
+        {
+          "misconception": "The impulse response and the frequency response describe different aspects of a system",
+          "correction": "They are the same system seen in two domains; each determines the other through the Fourier transform",
+          "evidence": "Move the cutoff slider and watch h(t) and |H(f)| change together"
+        },
+        {
+          "misconception": "A higher filter order only changes the frequency response",
+          "correction": "A sharper cutoff brings overshoot, ringing and more delay in the time domain",
+          "evidence": "Step the order from 1 to 4 and watch s(t) overshoot by 0%, 4%, 8% and 11%"
+        },
+        {
+          "misconception": "A system with a wide bandwidth responds slowly",
+          "correction": "Rise time is about 0.35/fc for a first-order filter, so wider bandwidth means a faster response",
+          "evidence": "Raise the cutoff from 1 Hz to 4 Hz and watch h(t) narrow and s(t) rise faster"
+        }
+      ]
+    },
+    "technical": {
+      "framework": "p5.js",
+      "version": "2.0.0",
+      "canvasDimensions": {
+        "width": 670,
+        "height": 625,
+        "responsive": true
+      },
+      "regions": {
+        "drawHeight": 510,
+        "controlHeight": 115
+      },
+      "dependencies": [
+        "p5.js 2.3.2"
+      ],
+      "browserCompatibility": [
+        "Chrome 90+",
+        "Firefox 88+",
+        "Safari 14+",
+        "Edge 90+"
+      ],
+      "performance": {
+        "memoryUsage": "low",
+        "loadTime": 500
+      },
+      "deviceRequirements": {
+        "minScreenWidth": 320,
+        "touchSupport": true,
+        "keyboardRequired": false,
+        "mouseRequired": false,
+        "networkRequired": false
+      },
+      "accessibility": {
+        "screenReader": true,
+        "keyboardNavigation": true,
+        "colorContrast": true,
+        "altText": true,
+        "screenReaderScript": "Four plots for a selected linear time-invariant system: impulse response and step response against time, and magnitude in decibels and phase in degrees against frequency. Menus choose the system and the input signal, and sliders set the cutoff frequency, filter order and damping ratio."
+      }
+    },
+    "userInterface": {
+      "layoutType": "responsive-width",
+      "layoutPattern": "drawing-region-above-controls",
+      "colorScheme": {
+        "drawingArea": "aliceblue",
+        "controlArea": "white",
+        "borders": "silver",
+        "accent": "blue",
+        "text": "black"
+      },
+      "responsiveBreakpoints": [
+        {
+          "width": 600,
+          "description": "Below 600 px the fonts shrink and long plot captions and axis labels switch to short forms"
+        }
+      ],
+      "controls": [
+        {
+          "id": "systemSelect",
+          "type": "dropdown",
+          "label": "System",
+          "description": "Chooses the LTI system: Butterworth low-pass, Butterworth high-pass, differentiator, integrator or second-order resonant system",
+          "group": "system",
+          "properties": {
+            "options": [
+              {
+                "value": "lowpass",
+                "label": "Low-pass filter"
+              },
+              {
+                "value": "highpass",
+                "label": "High-pass filter"
+              },
+              {
+                "value": "differentiator",
+                "label": "Differentiator"
+              },
+              {
+                "value": "integrator",
+                "label": "Integrator"
+              },
+              {
+                "value": "resonant",
+                "label": "Resonant system"
+              }
+            ],
+            "default": "lowpass"
+          }
+        },
+        {
+          "id": "inputSelect",
+          "type": "dropdown",
+          "label": "Input",
+          "description": "Chooses the input signal: unit step, 0.5 s rectangular pulse or 1 Hz square wave",
+          "group": "input",
+          "properties": {
+            "options": [
+              {
+                "value": "step",
+                "label": "Unit step u(t)"
+              },
+              {
+                "value": "pulse",
+                "label": "Rectangular pulse"
+              },
+              {
+                "value": "square",
+                "label": "Square wave"
+              }
+            ],
+            "default": "step"
+          }
+        },
+        {
+          "id": "cutoffSlider",
+          "type": "slider",
+          "label": "Cutoff fc / unity-gain f0 / natural fn",
+          "description": "Sets the cutoff frequency of a filter, the unity-gain frequency of the differentiator and integrator, or the natural frequency of the resonant system",
+          "group": "system",
+          "properties": {
+            "min": 0.5,
+            "max": 5,
+            "default": 1,
+            "step": 0.1,
+            "units": "Hz",
+            "showValue": true
+          }
+        },
+        {
+          "id": "orderSlider",
+          "type": "slider",
+          "label": "Filter order N",
+          "description": "Sets the order of the Butterworth filter; greyed out for the other systems",
+          "group": "system",
+          "properties": {
+            "min": 1,
+            "max": 4,
+            "default": 2,
+            "step": 1,
+            "showValue": true
+          }
+        },
+        {
+          "id": "dampingSlider",
+          "type": "slider",
+          "label": "Damping ratio",
+          "description": "Sets the damping ratio of the resonant system; greyed out for the other systems",
+          "group": "system",
+          "properties": {
+            "min": 0.05,
+            "max": 2,
+            "default": 0.2,
+            "step": 0.05,
+            "showValue": true
+          }
+        },
+        {
+          "id": "exportButton",
+          "type": "button",
+          "label": "Export h(t) as CSV",
+          "description": "Downloads the regular part of h(t) and s(t) sampled every 0.01 s from 0 to 2.5 s",
+          "group": "export",
+          "properties": {
+            "text": "Export h(t) as CSV",
+            "action": "exportImpulseResponse"
+          }
+        }
+      ],
+      "visualElements": [
+        {
+          "type": "chart",
+          "description": "Impulse response h(t) with arrows for impulses and doublets",
+          "interactive": true,
+          "updateTriggers": [
+            "systemSelect",
+            "cutoffSlider",
+            "orderSlider",
+            "dampingSlider"
+          ]
+        },
+        {
+          "type": "chart",
+          "description": "Step response s(t), or the output y(t) for a pulse or square-wave input, with the input drawn in grey",
+          "interactive": true,
+          "updateTriggers": [
+            "systemSelect",
+            "inputSelect",
+            "cutoffSlider",
+            "orderSlider",
+            "dampingSlider"
+          ]
+        },
+        {
+          "type": "chart",
+          "description": "Magnitude of H(f) in decibels on a logarithmic frequency axis, with the cutoff marker and a frequency cursor",
+          "interactive": true,
+          "updateTriggers": [
+            "systemSelect",
+            "cutoffSlider",
+            "orderSlider",
+            "dampingSlider"
+          ]
+        },
+        {
+          "type": "chart",
+          "description": "Phase of H(f) in degrees on a logarithmic frequency axis, with the cutoff marker and a frequency cursor",
+          "interactive": true,
+          "updateTriggers": [
+            "systemSelect",
+            "cutoffSlider",
+            "orderSlider",
+            "dampingSlider"
+          ]
+        }
+      ]
+    },
+    "simulation": {
+      "model": {
+        "type": "mathematical",
+        "description": "Closed-form impulse, step and frequency responses of five LTI systems; pulse and square-wave outputs are sums of shifted step responses",
+        "equations": [
+          "y(t) = x(t) * h(t)",
+          "s(t) = integral of h from -infinity to t",
+          "H(f) = integral of h(t) exp(-j 2 pi f t) dt",
+          "Butterworth low-pass: |H(f)| = 1 / sqrt(1 + (f/fc)^(2N))",
+          "Resonant: H(s) = wn^2 / (s^2 + 2 zeta wn s + wn^2)"
+        ],
+        "algorithms": [
+          "Butterworth poles with partial-fraction expansion",
+          "Superposition of shifted step responses"
+        ],
+        "assumptions": [
+          "All responses are closed-form; impulses and doublets are drawn as arrows",
+          "Pulse and square-wave outputs are built by superposing shifted step responses"
+        ],
+        "limitations": [
+          "Only continuous-time systems, one input at a time",
+          "Time axis is fixed at -0.25 s to 2.5 s and frequency axis at 0.1 Hz to 100 Hz"
+        ]
+      }
+    },
+    "usage": {
+      "recommendedUsage": [
+        "demonstration",
+        "exploration",
+        "guided-practice"
+      ],
+      "instructionalStrategies": [
+        "Predict-then-verify with the cursors",
+        "Linked multiple representations of one system",
+        "Compare systems by changing one slider at a time"
+      ],
+      "extensions": [
+        "Add a band-pass or notch system",
+        "Show the output spectrum for the square-wave input"
+      ]
+    }
+  },
+  "canvasHeight": 625
+}

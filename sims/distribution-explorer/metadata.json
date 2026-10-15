@@ -1,0 +1,212 @@
+{
+  "microsim": {
+    "dublinCore": {
+      "title": "Probability Distribution Explorer",
+      "creator": ["Dan McCreary"],
+      "subject": ["Probability theory", "Random variables", "Statistical distributions", "Mean and expected value", "Variance", "Standard deviation", "Central limit theorem"],
+      "description": "Interactive MicroSim that draws N seeded random samples from a uniform, Gaussian, exponential, binomial (Bernoulli) or Poisson distribution, or from the sum of n uniform variables, and overlays their histogram on the theoretical PDF/PMF (or the empirical CDF on the CDF). A band marks mu +/- k sigma with its probability, and a table compares the theoretical and sample mean, variance and standard deviation. The central-limit mode shows the sum of n uniforms approaching a Gaussian.",
+      "publisher": "Dan McCreary",
+      "contributor": ["Claude (Anthropic)"],
+      "date": "2026-10-14",
+      "type": "Interactive Simulation",
+      "format": "text/html",
+      "identifier": "https://dmccreary.github.io/signal-processing/sims/distribution-explorer/",
+      "language": "en",
+      "relation": ["Chapter 1: Mathematical Foundations"],
+      "rights": "CC BY-NC-SA 4.0"
+    },
+    "search": {
+      "tags": ["probability", "random variable", "PDF", "PMF", "CDF", "histogram", "uniform distribution", "Gaussian distribution", "exponential distribution", "binomial distribution", "Bernoulli distribution", "Poisson distribution", "mean", "variance", "standard deviation", "central limit theorem"],
+      "searchKeywords": ["68-95-99.7 rule", "sample mean versus expected value", "sample variance N-1", "standard error of the mean", "sum of uniform random variables", "Irwin-Hall distribution", "empirical CDF", "Box-Muller"],
+      "visualizationType": ["chart", "simulation", "interactive-demo", "data-visualization"],
+      "interactionLevel": "high",
+      "complexity": 4,
+      "relatedConcepts": ["Probability Theory", "Random Variables", "Statistical Distributions", "Mean and Expected Value", "Variance", "Standard Deviation"],
+      "applicationDomains": ["education", "exploration", "demonstration"],
+      "showcase": false
+    },
+    "educational": {
+      "gradeLevel": ["Undergraduate"],
+      "subjectArea": ["Mathematics", "Statistics", "Engineering"],
+      "topic": ["Probability density and mass functions", "Cumulative distribution functions", "Mean, variance and standard deviation", "Sample statistics and standard error", "Central limit theorem"],
+      "learningObjectives": [
+        "Explain the difference between a PDF or PMF and a CDF, and compute an interval probability as F(b) - F(a)",
+        "Calculate the mean, variance and standard deviation of the uniform, Gaussian, exponential, binomial and Poisson distributions from their parameters",
+        "Apply the 68-95-99.7 rule to Gaussian signals and compare it with the band probabilities of non-Gaussian distributions",
+        "Describe how the sample mean and variance approach the true values as N grows, using the standard error sigma/sqrt(N)",
+        "Explain the central limit theorem by observing that a sum of n uniform variables approaches a Gaussian with mean n/2 and variance n/12"
+      ],
+      "bloomsTaxonomy": ["Understand", "Apply"],
+      "prerequisites": ["Integrals and sums as areas", "Definitions of mean, variance and standard deviation", "Reading a histogram"],
+      "duration": {"typical": 35, "range": {"min": 20, "max": 45}},
+      "difficulty": "Beginner",
+      "scaffolding": {
+        "type": ["guided-discovery", "feedback"],
+        "adaptability": "fixed",
+        "removal": "user-controlled"
+      },
+      "misconceptions": [
+        {
+          "misconception": "68% of the values always lie within one standard deviation of the mean",
+          "correction": "The 68-95-99.7 rule is a property of the Gaussian; other distributions put different probabilities in mu +/- k sigma",
+          "evidence": "At k = 1 the band holds 0.683 for the Gaussian but 0.577 for the uniform, 0.865 for the exponential and 0.798 for Poisson with lambda = 4; the sum of n uniforms approaches 0.683 as n grows"
+        },
+        {
+          "misconception": "The sample mean and variance are the mean and variance of the distribution",
+          "correction": "Sample statistics are estimates that fluctuate from sample to sample; the error of the sample mean shrinks like sigma/sqrt(N)",
+          "evidence": "With N = 10 samples of N(0, 1) the sample mean is -0.285 and the sample variance 1.473; at N = 10000 they are 0.016 and 0.998"
+        }
+      ]
+    },
+    "technical": {
+      "framework": "p5.js",
+      "version": "1.0.0",
+      "canvasDimensions": {"width": 900, "height": 640, "responsive": true},
+      "regions": {"drawHeight": 522, "controlHeight": 118},
+      "dependencies": ["p5.js 2.3.2"],
+      "browserCompatibility": ["Chrome 90+", "Firefox 88+", "Safari 14+", "Edge 90+"],
+      "performance": {"memoryUsage": "low", "computationalComplexity": "O(n log n)"},
+      "deviceRequirements": {
+        "minScreenWidth": 360,
+        "touchSupport": true,
+        "keyboardRequired": false,
+        "mouseRequired": false,
+        "networkRequired": true
+      },
+      "accessibility": {
+        "screenReader": true,
+        "keyboardNavigation": true,
+        "colorContrast": true,
+        "altText": true,
+        "screenReaderScript": "Probability distribution explorer. A plot shows the theoretical PDF or PMF in maroon with a blue histogram of N random samples, or the theoretical and empirical CDFs, and a gold band marks the mean plus or minus k standard deviations with the probability it contains. A table compares the theoretical and sample mean, variance and standard deviation. Controls choose the distribution, its parameters, the number of samples, the band width k, a CDF view, a Gaussian overlay and new samples."
+      }
+    },
+    "userInterface": {
+      "layoutType": "responsive-width",
+      "layoutPattern": "plot-and-statistics-panel-above-controls",
+      "colorScheme": {
+        "drawingArea": "aliceblue",
+        "controlArea": "white",
+        "samples": "blue",
+        "theory": "maroon",
+        "band": "gold",
+        "gaussianOverlay": "green",
+        "text": "black"
+      },
+      "controls": [
+        {
+          "id": "distSelect",
+          "type": "dropdown",
+          "label": "Distribution",
+          "description": "Chooses the distribution that is sampled",
+          "group": "distribution",
+          "properties": {
+            "options": [
+              {"value": "uniform", "label": "Uniform U(a, b)"},
+              {"value": "gauss", "label": "Gaussian N(mu, sigma^2)"},
+              {"value": "expo", "label": "Exponential Exp(lambda)"},
+              {"value": "binom", "label": "Binomial B(n, p) / Bernoulli"},
+              {"value": "poisson", "label": "Poisson Pois(lambda)"},
+              {"value": "clt", "label": "CLT: sum of n uniforms"}
+            ],
+            "default": "gauss"
+          }
+        },
+        {
+          "id": "p1Slider",
+          "type": "slider",
+          "label": "First parameter (a, mu, lambda, n or terms n)",
+          "description": "Uniform lower limit a (-5 to 5), Gaussian mean mu (-3 to 3), exponential rate lambda (0.25 to 4), binomial trials n (1 to 50), Poisson mean lambda (0.5 to 20) or the number of uniform terms n (1 to 30); the range changes with the distribution",
+          "group": "distribution",
+          "properties": {"min": -3, "max": 3, "default": 0, "step": 0.1, "showValue": true}
+        },
+        {
+          "id": "p2Slider",
+          "type": "slider",
+          "label": "Second parameter (b, sigma or p)",
+          "description": "Uniform upper limit b (-5 to 5, kept at least 0.2 above a), Gaussian standard deviation sigma (0.25 to 2.5) or binomial success probability p (0.01 to 0.99); hidden for one-parameter distributions",
+          "group": "distribution",
+          "properties": {"min": 0.25, "max": 2.5, "default": 1, "step": 0.05, "showValue": true}
+        },
+        {
+          "id": "nSlider",
+          "type": "slider",
+          "label": "Samples N",
+          "description": "Number of samples used, stepping through 10, 20, 50, 100, 200, 500, 1000, 2000, 5000 and 10000; a larger N keeps the earlier samples",
+          "group": "sampling",
+          "properties": {"min": 0, "max": 9, "default": 6, "step": 1, "showValue": true}
+        },
+        {
+          "id": "kSlider",
+          "type": "slider",
+          "label": "Band k",
+          "description": "Half-width of the shaded band mu +/- k sigma, in standard deviations",
+          "group": "sampling",
+          "properties": {"min": 0.25, "max": 4, "default": 1, "step": 0.25, "showValue": true}
+        },
+        {
+          "id": "cdfCheckbox",
+          "type": "checkbox",
+          "label": "Show CDF",
+          "description": "Switches from the PDF/PMF and histogram to the theoretical CDF and the empirical CDF",
+          "group": "view",
+          "properties": {"checked": false}
+        },
+        {
+          "id": "gaussCheckbox",
+          "type": "checkbox",
+          "label": "Gaussian overlay",
+          "description": "Adds the Gaussian density (or CDF) with the same mean and variance as a dashed green curve",
+          "group": "view",
+          "properties": {"checked": false}
+        },
+        {
+          "id": "newButton",
+          "type": "button",
+          "label": "New samples",
+          "description": "Draws a new set of samples by advancing the random seed by one",
+          "group": "sampling",
+          "properties": {"text": "New samples", "action": "realizationSeed++", "style": "secondary"}
+        }
+      ],
+      "visualElements": [
+        {"type": "chart", "description": "Theoretical PDF or PMF (maroon) with the histogram or relative frequencies of the samples (blue), the mu +/- k sigma band with its probability (gold), the mean line and an optional Gaussian overlay (green); or the theoretical and empirical CDFs with the band edges and Delta F", "interactive": true, "updateTriggers": ["distSelect", "p1Slider", "p2Slider", "nSlider", "kSlider", "cdfCheckbox", "gaussCheckbox", "newButton"]},
+        {"type": "text-display", "description": "Table of theoretical and sample mean, variance, standard deviation and band probability, with the standard error of the mean, the band limits and, in CLT mode, the largest gap between the exact CDF and the Gaussian CDF", "interactive": false, "updateTriggers": ["distSelect", "p1Slider", "p2Slider", "nSlider", "kSlider", "newButton"]}
+      ]
+    },
+    "simulation": {
+      "model": {
+        "type": "statistical",
+        "description": "Each distribution draws one seeded stream of 10000 samples and the first N are used. Theoretical moments and band probabilities come from closed-form PDFs, PMFs and CDFs; the CLT mode uses the exact Irwin-Hall distribution of a sum of n U(0, 1) variables.",
+        "equations": [
+          "Uniform: E[X] = (a + b)/2, Var(X) = (b - a)^2/12",
+          "Gaussian: f(x) = exp(-(x - mu)^2/(2 sigma^2)) / (sigma sqrt(2 pi)), P(|X - mu| <= k sigma) = erf(k/sqrt 2)",
+          "Exponential: f(x) = lambda exp(-lambda x), E[X] = 1/lambda, Var(X) = 1/lambda^2",
+          "Binomial: P(X = j) = C(n, j) p^j (1 - p)^(n - j), E[X] = np, Var(X) = np(1 - p)",
+          "Poisson: P(X = j) = lambda^j e^(-lambda) / j!, E[X] = Var(X) = lambda",
+          "Sum of n uniforms: E[S] = n/2, Var(S) = n/12",
+          "P(mu - k sigma <= X <= mu + k sigma) = F(mu + k sigma) - F(mu - k sigma)",
+          "Sample variance s^2 = sum (x_i - xbar)^2 / (N - 1); standard error of the mean = sigma / sqrt(N)"
+        ],
+        "algorithms": [
+          "Mulberry32 seeded uniform generator with a MurmurHash3-finalized seed per distribution",
+          "Box-Muller transform for Gaussian samples",
+          "Inverse-CDF sampling for the exponential",
+          "Sum of n Bernoulli trials for the binomial; Knuth's multiplication method for the Poisson",
+          "Cox-de Boor recursion for the cardinal B-spline (Irwin-Hall) PDF and CDF",
+          "Histogram bin width by Scott's rule h = 3.49 sigma N^(-1/3)"
+        ],
+        "limitations": [
+          "Axes are fixed per distribution, so very wide settings (for example an exponential with lambda = 0.25) put some samples beyond the plot; the panel reports how many",
+          "Band probabilities use the closed interval, which matters for the discrete distributions"
+        ]
+      }
+    },
+    "usage": {
+      "recommendedUsage": ["demonstration", "exploration", "guided-practice"],
+      "instructionalStrategies": ["Predict the band probability before reading it", "Compare distributions with the same mean and variance", "Increase N to watch sample statistics converge", "Step n in CLT mode and record the Gaussian gap"],
+      "extensions": ["Add a Rayleigh distribution for fading envelopes", "Add sums of exponential or Bernoulli variables to the CLT mode", "Plot the sample mean against N on a log axis"]
+    }
+  },
+  "canvasHeight": 640
+}

@@ -1,86 +1,145 @@
 {
-  "title": "Euler's Formula Explorer",
-  "description": "Interactive visualization demonstrating Euler's formula e^(i\u03b8) = cos(\u03b8) + i\u00b7sin(\u03b8) with synchronized unit circle rotation and sine/cosine wave traces.",
-  "creator": "Dan McCreary",
-  "date": "2025-01-25",
-  "subject": [
-    "Mathematics",
-    "Signal Processing",
-    "Complex Analysis",
-    "Euler's Formula"
-  ],
-  "type": "Interactive Simulation",
-  "format": "text/html",
-  "language": "en",
-  "rights": "CC BY-NC-SA 4.0",
-  "identifier": "https://dmccreary.github.io/signal-processing/sims/euler-formula-explorer/",
-  "publisher": "Dan McCreary",
-  "educationalLevel": "Undergraduate",
-  "learningResourceType": "simulation",
-  "audience": "Students, Educators",
-  "version": "1.0.0",
-  "bloomLevel": [
-    "Understand",
-    "Apply",
-    "Analyze"
-  ],
-  "concepts": [
-    "Euler's formula",
-    "Complex exponentials",
-    "Unit circle",
-    "Sine and cosine",
-    "Phasors",
-    "Angular rotation"
-  ],
-  "prerequisites": [
-    "Complex numbers and complex plane",
-    "Basic trigonometry",
-    "Exponential functions"
-  ],
-  "library": "p5.js",
-  "visualizationType": [
-    "animation",
-    "graph",
-    "interactive-demo",
-    "map",
-    "network",
-    "simulation",
-    "timeline"
-  ],
-  "learningObjectives": [
-    "Understand the mathematical concept of euler's formula explorer",
-    "Apply euler's formula explorer to solve problems",
-    "Visualize and interpret euler's formula explorer relationships",
-    "Experiment with parameters to observe their effects on euler's formula explorer"
-  ],
-  "bloomsTaxonomy": [
-    "Remember",
-    "Understand",
-    "Apply",
-    "Evaluate",
-    "Create"
-  ],
-  "pedagogical": {
-    "pattern": "exploration",
-    "bloomAlignment": [
-      "understand",
-      "apply",
-      "analyze"
-    ],
-    "bloomVerbs": [
-      "describe",
-      "explain",
-      "apply",
-      "calculate",
-      "demonstrate"
-    ],
-    "pacing": "self-paced",
-    "supportsPrediction": false,
-    "dataVisibility": "high",
-    "feedbackType": [
-      "corrective",
-      "explanatory"
-    ],
-    "interactionStyle": "manipulate"
-  }
+  "microsim": {
+    "dublinCore": {
+      "title": "Euler's Formula Explorer",
+      "creator": ["Dan McCreary"],
+      "subject": ["Euler's formula", "Complex exponentials", "Unit circle", "Sine and cosine", "Phasors"],
+      "description": "Interactive visualization of Euler's formula e^(i theta) = cos(theta) + i sin(theta): a vector rotating on the unit circle in the complex plane, synchronized with the cosine and sine traces of its real and imaginary parts.",
+      "publisher": "Dan McCreary",
+      "contributor": ["Claude (Anthropic)"],
+      "date": "2025-11-25",
+      "type": "Interactive Simulation",
+      "format": "text/html",
+      "identifier": "https://dmccreary.github.io/signal-processing/sims/euler-formula-explorer/",
+      "language": "en",
+      "relation": ["Chapter 1: Mathematical Foundations", "Complex Plane"],
+      "rights": "CC BY-NC-SA 4.0"
+    },
+    "search": {
+      "tags": ["euler's formula", "complex exponential", "unit circle", "phasor", "sine", "cosine", "rotation", "euler's identity"],
+      "searchKeywords": ["e to the i theta", "euler formula visualization", "unit circle sine cosine", "rotating phasor", "complex exponential sinusoid"],
+      "visualizationType": ["animation", "graph", "interactive-demo", "simulation"],
+      "interactionLevel": "moderate",
+      "complexity": 3,
+      "relatedConcepts": ["Euler's Formula", "Complex Exponentials", "Unit Circle", "Sinusoidal Signals", "Phasors", "Complex Numbers"],
+      "applicationDomains": ["education", "exploration", "demonstration"],
+      "showcase": true
+    },
+    "educational": {
+      "gradeLevel": ["Undergraduate"],
+      "subjectArea": ["Mathematics", "Engineering"],
+      "topic": ["Euler's formula", "Complex exponentials", "Unit circle", "Sine and cosine as projections", "Phasors"],
+      "learningObjectives": [
+        "Explain how the rotating green vector on the unit circle represents e^(iθ), with its real-axis projection tracing cos(θ) and its imaginary-axis projection tracing sin(θ)",
+        "Predict the values of cos(θ) and sin(θ) at θ = 0, π/2, π and 3π/2, then confirm them with the angle slider and the read-out box",
+        "Explain why the sine and cosine traces are identical curves offset by a quarter turn, given that they are projections of the same rotating vector onto perpendicular axes",
+        "Trace how advancing θ through a full 2π rotation generates exactly one complete cycle of each wave",
+        "Evaluate Euler's identity by setting θ = π and confirming that e^(iπ) = −1"
+      ],
+      "bloomsTaxonomy": ["Understand", "Apply", "Analyze"],
+      "prerequisites": ["Complex numbers and the complex plane", "Basic trigonometry", "Exponential functions"],
+      "duration": {"typical": 20, "range": {"min": 15, "max": 45}},
+      "difficulty": "Beginner",
+      "scaffolding": {
+        "type": ["guided-discovery", "feedback"],
+        "adaptability": "fixed",
+        "removal": "user-controlled"
+      },
+      "misconceptions": [
+        {
+          "misconception": "Sine and cosine are two separate, unrelated waves",
+          "correction": "They are the imaginary and real projections of one rotating unit vector, so they are driven by the same angle and differ only by a quarter-turn offset",
+          "evidence": "Press Play and watch the red and blue dots move together; at θ = 0 cosine is at its maximum while sine is 0, and at θ = π/2 sine is at its maximum while cosine is 0"
+        },
+        {
+          "misconception": "The vector gets longer or shorter as it rotates",
+          "correction": "The length |e^(iθ)| is always 1 because cos²(θ) + sin²(θ) = 1; only the direction changes",
+          "evidence": "At 0.25π both projections read 0.7071 and at 0.00π they read 1 and 0, but the tip stays on the unit circle"
+        }
+      ]
+    },
+    "technical": {
+      "framework": "p5.js",
+      "version": "2.0.0",
+      "canvasDimensions": {"width": 700, "height": 600, "responsive": true},
+      "regions": {"drawHeight": 510, "controlHeight": 90},
+      "dependencies": ["p5.js 2.3.2"],
+      "browserCompatibility": ["Chrome 90+", "Firefox 88+", "Safari 14+", "Edge 90+"],
+      "performance": {"memoryUsage": "low", "loadTime": 500},
+      "deviceRequirements": {
+        "minScreenWidth": 320,
+        "touchSupport": true,
+        "keyboardRequired": false,
+        "mouseRequired": false,
+        "networkRequired": false
+      },
+      "accessibility": {
+        "screenReader": true,
+        "keyboardNavigation": true,
+        "colorContrast": true,
+        "altText": true,
+        "screenReaderScript": "Visualization of Euler's formula. A green unit vector rotates around the unit circle in the complex plane. Its real part traces a cosine wave and its imaginary part traces a sine wave. Play and Reset buttons, an angle slider from 0 to 2 pi and a speed slider from 0.1 to 5 control the rotation. A read-out box gives the angle in radians and degrees, the cosine, the sine and the complex number e to the i theta."
+      }
+    },
+    "userInterface": {
+      "layoutType": "responsive-width",
+      "layoutPattern": "drawing-region-above-controls",
+      "colorScheme": {
+        "drawingArea": "aliceblue",
+        "controlArea": "white",
+        "accent": "green",
+        "text": "black"
+      },
+      "controls": [
+        {
+          "id": "playButton",
+          "type": "button",
+          "label": "Play / Pause",
+          "description": "Starts or stops the automatic rotation of the vector; the label switches between Play and Pause",
+          "group": "animation"
+        },
+        {
+          "id": "resetButton",
+          "type": "button",
+          "label": "Reset",
+          "description": "Returns the angle to 0, clears the traces and pauses the animation",
+          "group": "animation"
+        },
+        {
+          "id": "angleSlider",
+          "type": "slider",
+          "label": "Angle (π)",
+          "description": "Sets the angle θ in units of π from 0 to 2 (0 to 2π radians); moving it while the animation runs pauses the animation",
+          "group": "rotation",
+          "properties": {"min": 0, "max": 2, "default": 0, "step": 0.01, "unit": "π rad", "showValue": true}
+        },
+        {
+          "id": "speedSlider",
+          "type": "slider",
+          "label": "Speed",
+          "description": "Sets the rotation speed as a multiple of 1.2 rad/s",
+          "group": "rotation",
+          "properties": {"min": 0.1, "max": 5, "default": 1, "step": 0.1, "unit": "x", "showValue": true}
+        }
+      ],
+      "visualElements": [
+        {"type": "diagram", "description": "Unit circle in the complex plane with the rotating green vector, blue real-axis projection, red imaginary-axis projection, dashed projection lines and an angle arc", "interactive": true, "updateTriggers": ["playButton", "angleSlider", "speedSlider", "resetButton"]},
+        {"type": "graph", "description": "Stacked cosine (blue) and sine (red) plots against θ from 0 to 2π with a faint full period, a bold swept trace, the current point and a dashed level line", "interactive": true, "updateTriggers": ["playButton", "angleSlider", "speedSlider", "resetButton"]},
+        {"type": "text-display", "description": "Read-out box with θ in radians and degrees, cos(θ), sin(θ) and e^(iθ) in rectangular form", "interactive": false, "updateTriggers": ["playButton", "angleSlider", "speedSlider", "resetButton"]}
+      ]
+    },
+    "simulation": {
+      "model": {
+        "type": "mathematical",
+        "description": "Advances θ at 1.2 rad/s times the speed setting and evaluates the tip e^(iθ) = (cos θ, sin θ) on the unit circle, plotting each coordinate against θ over one period",
+        "equations": ["e^(i theta) = cos(theta) + i sin(theta)", "|e^(i theta)| = 1", "e^(i pi) = -1"]
+      }
+    },
+    "usage": {
+      "recommendedUsage": ["demonstration", "exploration", "guided-practice"],
+      "instructionalStrategies": ["Predict the projections before moving the angle slider", "Special-angle exploration at multiples of π/4"],
+      "extensions": ["Add the negative-frequency vector e^(−iθ) and show that the two add to 2cos(θ)", "Show two phasors with different speeds and their sum"]
+    }
+  },
+  "canvasHeight": 600
 }

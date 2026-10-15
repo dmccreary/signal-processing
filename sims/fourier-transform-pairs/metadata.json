@@ -1,0 +1,172 @@
+{
+  "microsim": {
+    "dublinCore": {
+      "title": "Fourier Transform Pairs",
+      "creator": ["Dan McCreary"],
+      "subject": ["Fourier transform", "Inverse Fourier transform", "Transform pairs", "Time scaling property", "Time shift property", "Time-bandwidth product"],
+      "description": "Interactive MicroSim showing five classic continuous-time Fourier transform pairs (rectangle and sinc, Gaussian and Gaussian, one-sided exponential and Lorentzian magnitude, cosine and two impulses, impulse train and impulse train). The analytic transform is overlaid on a 16384-point FFT estimate of the sampled signal, a time-scale slider shows that compressing in time expands in frequency, and a time-shift slider shows the resulting linear phase ramp.",
+      "publisher": "Dan McCreary",
+      "contributor": ["Claude (Anthropic)"],
+      "date": "2026-10-14",
+      "type": "Interactive Simulation",
+      "format": "text/html",
+      "identifier": "https://dmccreary.github.io/signal-processing/sims/fourier-transform-pairs/",
+      "language": "en",
+      "relation": ["Chapter 6: Fourier Analysis Fundamentals"],
+      "rights": "CC BY-NC-SA 4.0"
+    },
+    "search": {
+      "tags": ["Fourier transform", "transform pairs", "sinc", "Gaussian", "Lorentzian", "impulse train", "time scaling", "time shift", "phase ramp", "time-bandwidth product", "FFT"],
+      "searchKeywords": ["rect sinc transform pair", "Gaussian Fourier transform", "exponential decay spectrum", "Dirac comb transform", "scaling property x(at)", "shift property linear phase", "uncertainty principle 1/(4 pi)"],
+      "visualizationType": ["chart", "interactive-demo", "simulation"],
+      "interactionLevel": "moderate",
+      "complexity": 5,
+      "relatedConcepts": ["Fourier Transform", "Inverse Fourier Transform"],
+      "applicationDomains": ["education", "exploration", "demonstration"]
+    },
+    "educational": {
+      "gradeLevel": ["Undergraduate"],
+      "subjectArea": ["Engineering", "Mathematics"],
+      "topic": ["Fourier transform pairs", "Time scaling property", "Time shift property", "Time-bandwidth product", "Inverse Fourier transform"],
+      "learningObjectives": [
+        "Identify the transform of a rectangular pulse, a Gaussian, a one-sided exponential, a cosine and an impulse train",
+        "Predict how the height and width of |X(f)| change when a signal is compressed or stretched in time, using x(t/T) <-> T X(fT)",
+        "Calculate the phase that a time shift adds at a given frequency, using x(t - t0) <-> e^(-j 2 pi f t0) X(f)",
+        "Explain why the Gaussian reaches the smallest time-bandwidth product, sigma_t sigma_f = 1/(4 pi)",
+        "Read a transform pair backwards, identifying x(t) from a given X(f) (the inverse Fourier transform)"
+      ],
+      "bloomsTaxonomy": ["Understand", "Apply", "Analyze"],
+      "prerequisites": ["Complex exponentials and Euler's formula", "Unit step and unit impulse", "Definition of the Fourier transform"],
+      "duration": {"typical": 25, "range": {"min": 15, "max": 40}},
+      "difficulty": "Intermediate",
+      "scaffolding": {
+        "type": ["guided-discovery", "feedback"],
+        "adaptability": "fixed",
+        "removal": "user-controlled"
+      },
+      "misconceptions": [
+        {
+          "misconception": "Delaying a signal changes its spectrum",
+          "correction": "A delay multiplies X(f) by e^(-j 2 pi f t0): the magnitude is unchanged and only the phase gains a linear ramp",
+          "evidence": "Drag the shift slider: the green magnitude dots do not move while the phase plot tilts into a ramp of -360 t0 degrees per hertz"
+        },
+        {
+          "misconception": "A narrower pulse has a narrower spectrum",
+          "correction": "x(t/T) <-> T X(fT): compressing in time expands the spectrum and lowers its peak",
+          "evidence": "For the rectangle, lowering T from 1 s to 0.5 s moves the first zero from 1 Hz to 2 Hz and lowers X(0) from 1 to 0.5"
+        }
+      ]
+    },
+    "technical": {
+      "framework": "p5.js",
+      "version": "1.0.0",
+      "canvasDimensions": {"width": 900, "height": 670, "responsive": true},
+      "regions": {"drawHeight": 558, "controlHeight": 112},
+      "dependencies": ["p5.js 2.3.2"],
+      "browserCompatibility": ["Chrome 90+", "Firefox 88+", "Safari 14+", "Edge 90+"],
+      "performance": {"memoryUsage": "low", "computationalComplexity": "O(n log n)"},
+      "deviceRequirements": {
+        "minScreenWidth": 375,
+        "touchSupport": true,
+        "keyboardRequired": false,
+        "mouseRequired": false,
+        "networkRequired": true
+      },
+      "accessibility": {
+        "screenReader": true,
+        "keyboardNavigation": true,
+        "colorContrast": true,
+        "altText": true,
+        "screenReaderScript": "Three stacked plots for a chosen Fourier transform pair: the time signal x(t) in blue, the magnitude |X(f)| and the phase of X(f). Analytic curves are maroon and green dots are the FFT of the sampled signal. Gold bars mark the width in time and in frequency. A drop-down picks the pair, a slider sets the time scale T, a slider sets the time shift t0, and a checkbox shows or hides the phase plot."
+      }
+    },
+    "userInterface": {
+      "layoutType": "responsive-width",
+      "layoutPattern": "drawing-region-above-controls",
+      "colorScheme": {
+        "drawingArea": "aliceblue",
+        "controlArea": "white",
+        "timeSignal": "blue",
+        "analyticSpectrum": "maroon",
+        "fftEstimate": "green",
+        "widthMarkers": "gold",
+        "text": "black"
+      },
+      "controls": [
+        {
+          "id": "pairSelect",
+          "type": "dropdown",
+          "label": "Transform pair",
+          "description": "Chooses the Fourier transform pair shown in the three plots",
+          "group": "signal",
+          "properties": {
+            "options": [
+              {"value": "rect", "label": "Rectangle <-> sinc"},
+              {"value": "gauss", "label": "Gaussian <-> Gaussian"},
+              {"value": "exp", "label": "Exponential <-> Lorentzian"},
+              {"value": "cos", "label": "Cosine <-> two impulses"},
+              {"value": "train", "label": "Impulse train <-> impulse train"}
+            ],
+            "default": "rect"
+          }
+        },
+        {
+          "id": "phaseCheckbox",
+          "type": "checkbox",
+          "label": "Show phase",
+          "description": "Shows the phase plot; when it is hidden the magnitude plot uses the extra height",
+          "group": "display",
+          "properties": {"checked": true}
+        },
+        {
+          "id": "scaleSlider",
+          "type": "slider",
+          "label": "Time scale T",
+          "description": "Replaces x(t) with x(t/T), which transforms to T X(fT): pulse width, Gaussian width, exponential time constant 1/a, cosine period or impulse spacing",
+          "group": "transformation",
+          "properties": {"min": 0.25, "max": 2, "default": 1, "step": 0.05, "units": "s", "showValue": true}
+        },
+        {
+          "id": "shiftSlider",
+          "type": "slider",
+          "label": "Shift t0",
+          "description": "Delays the signal by t0 seconds, which multiplies X(f) by e^(-j 2 pi f t0); the impulse train's shift is rounded to its sample grid of T/256",
+          "group": "transformation",
+          "properties": {"min": -2, "max": 2, "default": 0, "step": 0.05, "units": "s", "showValue": true}
+        }
+      ],
+      "visualElements": [
+        {"type": "chart", "description": "Time plot: x(t) in blue (impulses as arrows of area 1) with a gold bar marking its width", "interactive": false, "updateTriggers": ["pairSelect", "scaleSlider", "shiftSlider"]},
+        {"type": "chart", "description": "Magnitude plot: analytic |X(f)| in maroon (impulse areas as arrows), FFT estimate as green dots, and a gold bar marking the spectral width", "interactive": false, "updateTriggers": ["pairSelect", "scaleSlider", "shiftSlider", "phaseCheckbox"]},
+        {"type": "chart", "description": "Phase plot: analytic phase of X(f) in maroon and FFT phase as green dots, drawn where |X| exceeds 2% of X(0)", "interactive": false, "updateTriggers": ["pairSelect", "scaleSlider", "shiftSlider", "phaseCheckbox"]},
+        {"type": "text-display", "description": "Read-outs: the transform pair formula, the widths in time and frequency with FFT-measured values, the phase added by the shift, and the largest FFT error", "interactive": false, "updateTriggers": ["pairSelect", "scaleSlider", "shiftSlider"]}
+      ]
+    },
+    "simulation": {
+      "model": {
+        "type": "mathematical",
+        "description": "Evaluates the analytic transform of x(t/T) delayed by t0 and compares it with a numerical estimate: x(t) is sampled (cell averages where it jumps) every 1/128 s over a 128 s window, or every T/256 s over 64 whole periods for the periodic pairs, transformed with a 16384-point radix-2 FFT and scaled by the sample spacing (and by the bin width for impulse areas)",
+        "equations": [
+          "X(f) = integral x(t) e^(-j 2 pi f t) dt",
+          "x(t) = integral X(f) e^(j 2 pi f t) df",
+          "rect(t/T) <-> T sinc(fT)",
+          "exp(-pi t^2 / T^2) <-> T exp(-pi f^2 T^2)",
+          "e^(-a t) u(t) <-> 1/(a + j 2 pi f), a = 1/T",
+          "cos(2 pi t / T) <-> (1/2)[delta(f - 1/T) + delta(f + 1/T)]",
+          "sum_n delta(t - nT) <-> (1/T) sum_k delta(f - k/T)",
+          "x(at) <-> (1/|a|) X(f/a)",
+          "x(t - t0) <-> e^(-j 2 pi f t0) X(f)",
+          "Gaussian: sigma_t sigma_f = 1/(4 pi)"
+        ],
+        "algorithms": ["Radix-2 FFT (16384 points)", "V-fit refinement of the first sinc zero", "Linear interpolation of the half-power frequency", "RMS widths of |x|^2 and |X|^2"],
+        "limitations": ["The FFT estimate covers |f| < 64 Hz (aperiodic pairs), so tiny aliasing and cell-averaging errors remain (largest about 0.06% of X(0))", "The impulse train's shift is rounded to the nearest multiple of T/256 (at most 0.004 s)"]
+      }
+    },
+    "usage": {
+      "recommendedUsage": ["demonstration", "exploration", "guided-practice"],
+      "instructionalStrategies": ["Predict the effect of halving T before moving the slider", "Compare the analytic curve with the FFT dots to trust both", "Read pairs backwards to practise the inverse transform"],
+      "extensions": ["Add the duality pair sinc <-> rectangle", "Add modulation (frequency shift) by multiplying x(t) by a cosine"]
+    }
+  },
+  "canvasHeight": 670
+}

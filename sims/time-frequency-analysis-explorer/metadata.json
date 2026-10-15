@@ -1,0 +1,208 @@
+{
+  "microsim": {
+    "dublinCore": {
+      "title": "Time-Frequency Analysis Explorer",
+      "creator": ["Dan McCreary"],
+      "subject": ["Signal Processing", "Time-Frequency Analysis", "Short-Time Fourier Transform", "Spectrogram", "Window Functions"],
+      "description": "The short-time Fourier transform of a chirp, a frequency-shift-keyed signal or a note sequence is computed with a radix-2 FFT and drawn as a spectrogram, with a waveform, a time cursor and the spectrum of the frame at the cursor. Sliders for window length and overlap show the trade-off between time resolution and frequency resolution.",
+      "publisher": "Dan McCreary",
+      "contributor": ["Claude (Anthropic)"],
+      "date": "2026-10-02",
+      "type": "Interactive Simulation",
+      "format": "text/html",
+      "identifier": "https://dmccreary.github.io/signal-processing/sims/time-frequency-analysis-explorer/",
+      "language": "en",
+      "relation": ["Chapter 7: DFT, FFT and Frequency Domain Analysis"],
+      "rights": "CC BY-NC-SA 4.0"
+    },
+    "search": {
+      "tags": ["spectrogram", "short-time Fourier transform", "STFT", "window length", "time-frequency resolution", "uncertainty principle", "chirp", "frequency-shift keying", "window functions", "overlap"],
+      "searchKeywords": ["spectrogram explorer", "STFT window length", "time resolution vs frequency resolution", "spectrogram of a chirp", "hop size and overlap", "Hanning window spectrogram"],
+      "visualizationType": ["graph", "interactive-demo", "simulation"],
+      "interactionLevel": "high",
+      "complexity": 6,
+      "relatedConcepts": ["Short-Time Fourier Transform", "Spectrogram", "Time-Frequency Analysis", "Window Functions", "Spectral Leakage", "Discrete Fourier Transform", "Fast Fourier Transform", "Sampling Rate"],
+      "applicationDomains": ["education", "exploration", "analysis"],
+      "showcase": false
+    },
+    "educational": {
+      "gradeLevel": ["Undergraduate"],
+      "subjectArea": ["Engineering", "Mathematics"],
+      "topic": ["Spectrograms", "Short-time Fourier transform", "Time-frequency resolution trade-off", "Window length, overlap and hop size"],
+      "learningObjectives": [
+        "Explain why a spectrogram is needed for a signal whose frequency content changes with time",
+        "Compute the time span, bin spacing and hop size of an STFT from the window length, sampling rate and overlap",
+        "Analyze how the window length trades time resolution against frequency resolution",
+        "Choose STFT settings that suit a given signal"
+      ],
+      "bloomsTaxonomy": ["Understand", "Apply", "Analyze"],
+      "prerequisites": ["The DFT, bin spacing and window functions", "Spectral leakage", "Sampling rate and sample period"],
+      "duration": {"typical": 30, "range": {"min": 20, "max": 35}},
+      "difficulty": "Intermediate",
+      "scaffolding": {
+        "type": ["guided-discovery", "feedback"],
+        "adaptability": "fixed",
+        "removal": "user-controlled"
+      },
+      "misconceptions": [
+        {
+          "misconception": "A longer window always gives a better spectrogram",
+          "correction": "A longer window narrows the bins but blurs changes in time; the product of time span and bin spacing is always 1",
+          "evidence": "With the chirp, the ridge is about twice as thick at N = 1024 as at N = 256, and the FSK bit edges are blurred over about 128 ms"
+        },
+        {
+          "misconception": "Increasing the overlap improves the resolution",
+          "correction": "Overlap only sets the hop size and the number of frames; resolution is fixed by the window length and the window type",
+          "evidence": "Change the Overlap slider from 0% to 90% at N = 256: the hop falls from 256 to 26 samples but the ridge keeps its thickness"
+        }
+      ]
+    },
+    "technical": {
+      "framework": "p5.js",
+      "version": "2.0.0",
+      "canvasDimensions": {"width": 670, "height": 605, "responsive": true},
+      "regions": {"drawHeight": 455, "controlHeight": 150},
+      "dependencies": ["p5.js 2.3.2"],
+      "browserCompatibility": ["Chrome 90+", "Firefox 88+", "Safari 14+", "Edge 90+"],
+      "performance": {"memoryUsage": "low", "loadTime": 500, "computationalComplexity": "O(n log n)"},
+      "deviceRequirements": {
+        "minScreenWidth": 320,
+        "touchSupport": true,
+        "keyboardRequired": false,
+        "mouseRequired": false,
+        "networkRequired": false
+      },
+      "accessibility": {
+        "screenReader": true,
+        "keyboardNavigation": true,
+        "colorContrast": true,
+        "altText": true,
+        "screenReaderScript": "A waveform with a movable time cursor, a spectrogram with time across and frequency upward, and beside it the spectrum of the frame at the cursor. Menus choose the signal, window, colour map and scale, and sliders set the window length and the overlap of the short-time Fourier transform."
+      }
+    },
+    "userInterface": {
+      "layoutType": "responsive-width",
+      "layoutPattern": "drawing-region-above-controls",
+      "colorScheme": {
+        "drawingArea": "aliceblue",
+        "controlArea": "white",
+        "accent": "crimson",
+        "text": "black"
+      },
+      "controls": [
+        {
+          "id": "signalSelect",
+          "type": "dropdown",
+          "label": "Signal",
+          "description": "Chooses the test signal: a linear chirp, a frequency-shift-keyed bit stream or a sequence of notes",
+          "group": "signal",
+          "properties": {
+            "options": [
+              {"value": "chirp", "label": "Chirp (500 to 3500 Hz sweep)"},
+              {"value": "fsk", "label": "Frequency-shift keying (1 and 2 kHz)"},
+              {"value": "notes", "label": "Note sequence (C5 E5 G5 C6 G5)"}
+            ],
+            "default": "chirp"
+          }
+        },
+        {
+          "id": "windowSelect",
+          "type": "dropdown",
+          "label": "Window",
+          "description": "Chooses the window function applied to each frame before the FFT",
+          "group": "stft",
+          "properties": {
+            "options": [
+              {"value": "hann", "label": "Hanning (Hann)"},
+              {"value": "hamming", "label": "Hamming"},
+              {"value": "blackman", "label": "Blackman"},
+              {"value": "rect", "label": "Rectangular"}
+            ],
+            "default": "hann"
+          }
+        },
+        {
+          "id": "lengthSlider",
+          "type": "slider",
+          "label": "Window length N",
+          "description": "Steps the window length through 32, 64, 128, 256, 512 and 1024 samples (the slider position 0 to 5 selects the entry); the banner shows the time span and bin spacing",
+          "group": "stft",
+          "properties": {"min": 0, "max": 5, "default": 3, "step": 1, "showValue": true}
+        },
+        {
+          "id": "overlapSlider",
+          "type": "slider",
+          "label": "Overlap (%)",
+          "description": "Sets the overlap between successive frames, which sets the hop size H = N(1 - overlap) and the number of frames",
+          "group": "stft",
+          "properties": {"min": 0, "max": 90, "default": 50, "step": 5, "showValue": true}
+        },
+        {
+          "id": "colorSelect",
+          "type": "dropdown",
+          "label": "Colour map",
+          "description": "Chooses the colour map used for the spectrogram and the colour bar",
+          "group": "display",
+          "properties": {
+            "options": [
+              {"value": "viridis", "label": "Viridis"},
+              {"value": "hot", "label": "Hot"},
+              {"value": "gray", "label": "Grayscale"}
+            ],
+            "default": "viridis"
+          }
+        },
+        {
+          "id": "scaleSelect",
+          "type": "dropdown",
+          "label": "Scale",
+          "description": "Chooses how the magnitude is mapped to colour: decibels over an 80 dB range, linear magnitude or linear power",
+          "group": "display",
+          "properties": {
+            "options": [
+              {"value": "db", "label": "Magnitude (dB)"},
+              {"value": "linear", "label": "Magnitude (linear)"},
+              {"value": "power", "label": "Power (linear)"}
+            ],
+            "default": "db"
+          }
+        }
+      ],
+      "visualElements": [
+        {"type": "graph", "description": "Waveform of the signal with the N samples of the selected frame shaded and a red time cursor", "interactive": true, "updateTriggers": ["signalSelect", "lengthSlider", "overlapSlider"]},
+        {"type": "graph", "description": "Spectrogram: time across, frequency upward, colour for level; each rectangle is one STFT value", "interactive": true, "updateTriggers": ["signalSelect", "windowSelect", "lengthSlider", "overlapSlider", "colorSelect", "scaleSelect"]},
+        {"type": "graph", "description": "Spectrum of the frame at the cursor, drawn sideways on the frequency axis of the spectrogram, with a dashed line at the true signal frequency and a colour bar", "interactive": false, "updateTriggers": ["signalSelect", "windowSelect", "lengthSlider", "overlapSlider", "colorSelect", "scaleSelect"]},
+        {"type": "text-display", "description": "Banner with the time span, bin spacing and their product, and a box with the cursor time, frame number and hop size", "interactive": false, "updateTriggers": ["lengthSlider", "overlapSlider"]}
+      ]
+    },
+    "simulation": {
+      "model": {
+        "type": "mathematical",
+        "description": "Radix-2 FFT of windowed frames of a synthesized one-second signal sampled at 8000 Hz",
+        "equations": [
+          "X[m, k] = sum over n of x[n + m H] w[n] e^(-j 2 pi k n / N)",
+          "time span of the window = N / fs, bin spacing = fs / N, product = 1",
+          "hop H = N (1 - overlap), frames = floor((Ns - N) / H) + 1",
+          "chirp: instantaneous frequency 500 + 3000 t Hz"
+        ],
+        "algorithms": ["Radix-2 decimation-in-time FFT", "Hann, Hamming, Blackman and rectangular windows in DFT-periodic form"],
+        "assumptions": [
+          "fs = 8000 Hz and the signal is 8000 samples (1 s) long",
+          "The FFT length equals the window length (no zero-padding), so each bin is drawn as one cell",
+          "Each frame is plotted at the centre of its N samples; times where no complete window fits are left blank",
+          "Levels are scaled so that a steady bin-centred sinusoid of amplitude 1 reads 0 dB; the dB scale spans 80 dB",
+          "All three signals are synthesized; no recorded speech or music is used"
+        ]
+      }
+    },
+    "usage": {
+      "recommendedUsage": ["exploration", "guided-practice", "demonstration"],
+      "instructionalStrategies": [
+        "Change one STFT parameter at a time and relate the shape of the time-frequency cells to the computed resolutions",
+        "Predict-then-verify with the window length slider and the pointer readout"
+      ],
+      "extensions": ["Add a two-tone signal to measure the smallest resolvable frequency spacing", "Zero-pad each frame to interpolate the spectrum"]
+    }
+  },
+  "canvasHeight": 605
+}

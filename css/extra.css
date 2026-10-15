@@ -1,10 +1,21 @@
 .md-header__button.md-logo {
     margin: 0;
     padding: 0;
+    /* Echo's maroon fur is the same color as the maroon header, so give the
+       mascot a gold disc with a soft (feathered) edge to stand out against.
+       The gradient lives on the link, not the <img>, so it never clips Echo. */
+    background: radial-gradient(circle closest-side,
+                                #ffd54f 0%, #ffd54f 72%,
+                                rgba(255, 213, 79, 0) 100%);
 }
 .md-header__button.md-logo img, .md-header__button.md-logo svg {
     height: 60px;
     width: 60px;
+    /* the mascot logo is a tall, non-square PNG: letterbox it, don't stretch it,
+       and inset it so the whole figure sits inside the gold disc */
+    object-fit: contain;
+    padding: 7px;
+    box-sizing: border-box;
 }
 
 /* Make Maroon the Primary Color */

@@ -1,78 +1,131 @@
 {
-  "title": "Microphone Frequency Visualization with FFT",
-  "description": "Real-time frequency spectrum visualization of microphone input with color-coded frequency bars and peak frequency detection.",
-  "creator": "Dan McCreary",
-  "date": "2024-01-01",
-  "subject": [
-    "Signal Processing",
-    "FFT",
-    "Audio Analysis",
-    "Data Visualization"
-  ],
-  "type": "Interactive Simulation",
-  "format": "text/html",
-  "language": "en",
-  "rights": "CC BY-NC-SA 4.0",
-  "identifier": "https://dmccreary.github.io/signal-processing/sims/fft-mic/",
-  "publisher": "Dan McCreary",
-  "educationalLevel": "Undergraduate",
-  "learningResourceType": "simulation",
-  "audience": "Students, Educators",
-  "version": "1.0.0",
-  "bloomLevel": [
-    "Understand",
-    "Apply"
-  ],
-  "concepts": [
-    "FFT",
-    "Microphone input",
-    "Frequency visualization",
-    "Harmonic content"
-  ],
-  "prerequisites": [
-    "Basic understanding of frequency",
-    "Sound and audio concepts"
-  ],
-  "library": "p5.js",
-  "visualizationType": [
-    "graph",
-    "interactive-demo",
-    "map"
-  ],
-  "learningObjectives": [
-    "Understand the key concepts of microphone frequency visualization with fft",
-    "Explore microphone frequency visualization with fft through interactive visualization",
-    "Apply knowledge of microphone frequency visualization with fft to solve problems",
-    "Experiment with parameters to observe their effects on microphone frequency visualization with fft"
-  ],
-  "bloomsTaxonomy": [
-    "Remember",
-    "Understand",
-    "Apply",
-    "Analyze",
-    "Create"
-  ],
-  "pedagogical": {
-    "pattern": "demonstration",
-    "bloomAlignment": [
-      "understand",
-      "apply",
-      "analyze"
-    ],
-    "bloomVerbs": [
-      "describe",
-      "calculate",
-      "illustrate",
-      "implement",
-      "use"
-    ],
-    "pacing": "self-paced",
-    "supportsPrediction": false,
-    "dataVisibility": "high",
-    "feedbackType": [
-      "immediate",
-      "explanatory"
-    ],
-    "interactionStyle": "construct"
-  }
+  "microsim": {
+    "dublinCore": {
+      "title": "Microphone Frequency Visualization with FFT",
+      "creator": ["Dan McCreary"],
+      "subject": ["Signal processing", "FFT", "Audio analysis", "Frequency spectrum", "Data visualization"],
+      "description": "A real-time spectrum analyzer for the microphone: a 512-bin FFT of live sound drawn as color-coded frequency bars on a decibel scale, with a peak-frequency read-out, a Start/Stop control that freezes the last spectrum, and a slider that sets the highest frequency shown.",
+      "publisher": "Dan McCreary",
+      "contributor": ["Claude (Anthropic)"],
+      "date": "2025-09-19",
+      "type": "Interactive Simulation",
+      "format": "text/html",
+      "identifier": "https://dmccreary.github.io/signal-processing/sims/fft-mic/",
+      "language": "en",
+      "relation": ["Chapter 7: DFT, FFT and Frequency Domain Analysis", "FFT of Sound File", "Basic FFT Visualization"],
+      "rights": "CC BY-NC-SA 4.0"
+    },
+    "search": {
+      "tags": ["fft", "microphone", "spectrum analyzer", "real-time audio", "frequency domain", "harmonics", "decibels"],
+      "searchKeywords": ["microphone spectrum analyzer", "live fft of voice", "frequency of a whistle", "audio spectrum in the browser"],
+      "visualizationType": ["chart", "interactive-demo"],
+      "interactionLevel": "moderate",
+      "complexity": 3,
+      "relatedConcepts": ["Fast Fourier Transform", "Spectrum", "Magnitude Spectrum", "Frequency Domain", "Spectral Analysis", "Nyquist Frequency", "Window Functions", "Audio Signal Processing"],
+      "applicationDomains": ["education", "exploration"],
+      "showcase": false
+    },
+    "educational": {
+      "gradeLevel": ["Undergraduate"],
+      "subjectArea": ["Engineering", "Physics", "Music"],
+      "topic": ["FFT", "Microphone input", "Frequency resolution", "Harmonic content", "Decibel scale"],
+      "learningObjectives": [
+        "Identify the dominant frequency of a whistled or hummed sound using the Peak read-out and the gold marker",
+        "Calculate the center frequency of an FFT bin from its index, the sample rate and the number of bins, and use it to explain why the read-out differs from the true frequency of a tone",
+        "Compare the spectra of a hummed note, a whistle and a hissed sss by the number, spacing and spread of their peaks",
+        "Predict how the Max Freq slider rescales the frequency axis, and explain why the axis cannot extend past the Nyquist frequency",
+        "Interpret the decibel scale of the vertical axis, including the 6 dB rise that comes from doubling a tone's amplitude"
+      ],
+      "bloomsTaxonomy": ["Understand", "Apply", "Analyze"],
+      "prerequisites": ["Sinusoids, frequency and amplitude", "Sampling and the Nyquist frequency", "What a spectrum is and what the DFT computes", "Decibels"],
+      "duration": {"typical": 20, "range": {"min": 10, "max": 30}},
+      "difficulty": "Beginner",
+      "scaffolding": {
+        "type": ["guided-discovery", "feedback"],
+        "adaptability": "fixed",
+        "removal": "user-controlled"
+      },
+      "misconceptions": [
+        {
+          "misconception": "The Peak read-out is the exact pitch of the sound",
+          "correction": "The FFT measures energy in bins fs/(2*512) wide (46.875 Hz at 48 kHz); the read-out reports the center of the strongest bin",
+          "evidence": "Play a 440 Hz tone: at a 48 kHz sample rate the read-out shows 422 Hz (bin 9)"
+        },
+        {
+          "misconception": "A voice is a single frequency",
+          "correction": "A hummed or sung note is a fundamental plus harmonics at whole-number multiples of it",
+          "evidence": "Hum a steady note with Max Freq at 2 kHz and press Stop: the frozen spectrum shows evenly spaced peaks"
+        }
+      ]
+    },
+    "technical": {
+      "framework": "p5.js",
+      "version": "2.0.0",
+      "canvasDimensions": {"width": 500, "height": 450, "responsive": true},
+      "regions": {"drawHeight": 400, "controlHeight": 50},
+      "dependencies": ["p5.js 2.3.2", "p5.sound 0.4.1"],
+      "browserCompatibility": ["Chrome 90+", "Firefox 88+", "Safari 14+", "Edge 90+"],
+      "performance": {"memoryUsage": "low", "loadTime": 1500},
+      "deviceRequirements": {
+        "minScreenWidth": 320,
+        "touchSupport": true,
+        "keyboardRequired": false,
+        "mouseRequired": false,
+        "networkRequired": false
+      },
+      "accessibility": {
+        "screenReader": true,
+        "keyboardNavigation": true,
+        "colorContrast": true,
+        "altText": true,
+        "screenReaderScript": "FFT Microphone Visualizer. Press Start and allow microphone access to see the live frequency spectrum of the sound around you as colored bars, from blue at low frequencies to red at high frequencies, with the strongest frequency shown in hertz. The slider sets the highest frequency displayed."
+      }
+    },
+    "userInterface": {
+      "layoutType": "responsive-width",
+      "layoutPattern": "drawing-region-above-controls",
+      "colorScheme": {
+        "drawingArea": "aliceblue",
+        "controlArea": "white",
+        "accent": "blue-to-red hue ramp",
+        "text": "black"
+      },
+      "controls": [
+        {
+          "id": "startStopButton",
+          "type": "toggle-button",
+          "label": "Start / Stop",
+          "description": "Start opens the microphone and begins the analysis; Stop releases the microphone and freezes the last spectrum",
+          "group": "audio",
+          "properties": {"text": "Start", "toggleable": true}
+        },
+        {
+          "id": "maxFreqSlider",
+          "type": "slider",
+          "label": "Max Freq",
+          "description": "Sets the highest frequency on the horizontal axis; values above the Nyquist frequency fs/2 are limited to fs/2",
+          "group": "display",
+          "properties": {"min": 2000, "max": 24000, "default": 8000, "step": 500, "showValue": true}
+        }
+      ],
+      "visualElements": [
+        {"type": "chart", "description": "Bar chart of the 512-bin FFT magnitude in decibels (-100 to -30 dB) versus frequency, colored blue to red across the displayed range", "interactive": false, "updateTriggers": ["startStopButton", "maxFreqSlider"]},
+        {"type": "text-display", "description": "Status line (Listening / Stopped) and the Peak read-out with a gold marker on the strongest bin", "interactive": false, "updateTriggers": ["startStopButton", "maxFreqSlider"]}
+      ]
+    },
+    "simulation": {
+      "model": {
+        "type": "algorithmic",
+        "description": "A 512-bin FFT of the live microphone signal (Web Audio AnalyserNode via p5.sound), displayed in decibels",
+        "equations": ["f_k = k * fs / (2 * 512)", "L_k = 20 log10(|X_k|)", "bar height = (L_k + 100) / 70, clipped to 0..1"],
+        "algorithms": ["Fast Fourier Transform", "Blackman window", "Exponential smoothing of successive spectra (0.8)", "Peak search that skips the DC bin and its leakage"]
+      }
+    },
+    "usage": {
+      "recommendedUsage": ["demonstration", "exploration"],
+      "instructionalStrategies": ["Predict the spectrum of a sound, then make the sound and check", "Freeze a spectrum with Stop and measure harmonic spacing"],
+      "extensions": ["Add a scrolling spectrogram", "Interpolate the peak between bins to estimate pitch more precisely"]
+    }
+  },
+  "canvasHeight": 450
 }

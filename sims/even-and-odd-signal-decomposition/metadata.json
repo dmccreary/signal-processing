@@ -1,0 +1,317 @@
+{
+  "microsim": {
+    "dublinCore": {
+      "title": "Even and Odd Signal Decomposition",
+      "creator": [
+        "Dan McCreary"
+      ],
+      "subject": [
+        "Signal processing",
+        "Signals and systems",
+        "Even signals",
+        "Odd signals",
+        "Signal symmetry"
+      ],
+      "description": "Decompose a preset or hand-drawn signal x(t) into its even part x_e(t) = [x(t) + x(-t)]/2 and odd part x_o(t) = [x(t) - x(-t)]/2, read the worked calculation at a probe time, and verify that the two parts sum back to x(t).",
+      "publisher": "Dan McCreary",
+      "contributor": [
+        "Claude (Anthropic)"
+      ],
+      "date": "2026-10-02",
+      "type": "Interactive Simulation",
+      "format": "text/html",
+      "identifier": "https://dmccreary.github.io/signal-processing/sims/even-and-odd-signal-decomposition/",
+      "language": "en",
+      "relation": [
+        "Chapter 2: Introduction to Signals and Systems"
+      ],
+      "rights": "CC BY-NC-SA 4.0"
+    },
+    "search": {
+      "tags": [
+        "even signal",
+        "odd signal",
+        "signal symmetry",
+        "even-odd decomposition",
+        "time reversal",
+        "signal energy"
+      ],
+      "searchKeywords": [
+        "even and odd parts of a signal",
+        "x(t) + x(-t)",
+        "even odd decomposition",
+        "signal symmetry about t = 0"
+      ],
+      "visualizationType": [
+        "graph",
+        "interactive-demo"
+      ],
+      "interactionLevel": "high",
+      "complexity": 3,
+      "relatedConcepts": [
+        "Even Signals",
+        "Odd Signals",
+        "Time Reversal",
+        "Signal Energy",
+        "Time Shifting"
+      ],
+      "applicationDomains": [
+        "education",
+        "exploration",
+        "demonstration"
+      ],
+      "showcase": false
+    },
+    "educational": {
+      "gradeLevel": [
+        "Undergraduate"
+      ],
+      "subjectArea": [
+        "Engineering",
+        "Mathematics"
+      ],
+      "topic": [
+        "Even and odd signal symmetry",
+        "Even-odd decomposition",
+        "Signal energy"
+      ],
+      "learningObjectives": [
+        "Explain even and odd symmetry in terms of reflection about t = 0",
+        "Apply the decomposition formulas to compute the even and odd parts of a signal at a given time",
+        "Verify that the even and odd parts sum to the original signal",
+        "Recognize the even and odd parts of pulses, triangles, sawtooth waves and one-sided exponentials"
+      ],
+      "bloomsTaxonomy": [
+        "Understand",
+        "Apply",
+        "Analyze"
+      ],
+      "prerequisites": [
+        "Even and odd functions",
+        "Time reversal and time shifting of signals"
+      ],
+      "duration": {
+        "typical": 15,
+        "range": {
+          "min": 10,
+          "max": 20
+        }
+      },
+      "difficulty": "Beginner",
+      "scaffolding": {
+        "type": [
+          "worked-examples",
+          "feedback"
+        ],
+        "adaptability": "fixed",
+        "removal": "user-controlled"
+      },
+      "misconceptions": [
+        {
+          "misconception": "Every signal is either even or odd",
+          "correction": "Most signals are neither; every signal is the sum of an even part and an odd part",
+          "evidence": "Select the pulse with a 1 s time shift: both parts are nonzero and the panel reports 50% even and 50% odd"
+        },
+        {
+          "misconception": "The even part of a signal is the portion of the signal for t > 0",
+          "correction": "Both parts are defined for all t and each combines x(t) with x(-t)",
+          "evidence": "With the pulse at a 1 s shift, x(-1) = 0 but x_e(-1) = 0.5 and x_o(-1) = -0.5"
+        },
+        {
+          "misconception": "Shifting a signal in time does not change its even and odd parts",
+          "correction": "Shifting moves the signal away from its mirror image and changes both parts and the energy split",
+          "evidence": "The pulse at shift 0 s is 100% even; at shift 1 s it is 50% even and 50% odd"
+        }
+      ]
+    },
+    "technical": {
+      "framework": "p5.js",
+      "version": "2.0.0",
+      "canvasDimensions": {
+        "width": 670,
+        "height": 560,
+        "responsive": true
+      },
+      "regions": {
+        "drawHeight": 480,
+        "controlHeight": 80
+      },
+      "dependencies": [
+        "p5.js 2.3.2"
+      ],
+      "browserCompatibility": [
+        "Chrome 90+",
+        "Firefox 88+",
+        "Safari 14+",
+        "Edge 90+"
+      ],
+      "performance": {
+        "memoryUsage": "low",
+        "loadTime": 500
+      },
+      "deviceRequirements": {
+        "minScreenWidth": 320,
+        "touchSupport": true,
+        "keyboardRequired": false,
+        "mouseRequired": false,
+        "networkRequired": false
+      },
+      "accessibility": {
+        "screenReader": true,
+        "keyboardNavigation": true,
+        "colorContrast": true,
+        "altText": true,
+        "screenReaderScript": "Three stacked plots from minus five to plus five seconds showing a signal, its even part and its odd part, with a probe time whose values are worked through the decomposition formulas. The signal is chosen from presets or drawn with the mouse."
+      }
+    },
+    "userInterface": {
+      "layoutType": "responsive-width",
+      "layoutPattern": "drawing-region-above-controls",
+      "colorScheme": {
+        "drawingArea": "aliceblue",
+        "controlArea": "white",
+        "accent": "blue",
+        "text": "black"
+      },
+      "controls": [
+        {
+          "id": "signalSelect",
+          "type": "dropdown",
+          "label": "Signal",
+          "description": "Chooses a preset waveform or a custom signal drawn with the mouse",
+          "group": "signal",
+          "properties": {
+            "options": [
+              {
+                "value": "pulse",
+                "label": "Pulse"
+              },
+              {
+                "value": "triangle",
+                "label": "Triangle"
+              },
+              {
+                "value": "sawtooth",
+                "label": "Sawtooth"
+              },
+              {
+                "value": "exponential",
+                "label": "Exponential"
+              },
+              {
+                "value": "custom",
+                "label": "Custom (draw)"
+              }
+            ],
+            "default": "pulse"
+          }
+        },
+        {
+          "id": "sumCheckbox",
+          "type": "checkbox",
+          "label": "Show sum",
+          "description": "Shows or hides the purple dashed curve x_e(t) + x_o(t) that lies on top of x(t)",
+          "group": "display",
+          "properties": {
+            "checked": true,
+            "value": "true"
+          }
+        },
+        {
+          "id": "clearButton",
+          "type": "button",
+          "label": "Clear",
+          "description": "Replaces the signal with zero and switches to the custom signal so a new one can be drawn",
+          "group": "signal",
+          "properties": {
+            "text": "Clear",
+            "action": "clearSignal"
+          }
+        },
+        {
+          "id": "shiftSlider",
+          "type": "slider",
+          "label": "Time shift t0",
+          "description": "Slides the preset waveform along the time axis; disabled for a custom signal",
+          "group": "signal",
+          "properties": {
+            "min": -3,
+            "max": 3,
+            "default": 1,
+            "step": 0.1,
+            "units": "s",
+            "showValue": true
+          }
+        },
+        {
+          "id": "probeSlider",
+          "type": "slider",
+          "label": "Probe time t",
+          "description": "Picks the instant t used in the worked calculation; the mirror point -t is marked with an open dot",
+          "group": "probe",
+          "properties": {
+            "min": -5,
+            "max": 5,
+            "default": 1,
+            "step": 0.1,
+            "units": "s",
+            "showValue": true
+          }
+        }
+      ],
+      "visualElements": [
+        {
+          "type": "graph",
+          "description": "Three stacked plots on a shared time axis: x(t) in blue with the dashed purple sum, the even part in green, the odd part in red; dragging inside the top plot draws a custom x(t)",
+          "interactive": true,
+          "updateTriggers": [
+            "signalSelect",
+            "shiftSlider",
+            "probeSlider",
+            "sumCheckbox",
+            "clearButton"
+          ]
+        },
+        {
+          "type": "text-display",
+          "description": "Calculation panel with x(t), x(-t), the even and odd parts, the check sum and the energy split",
+          "interactive": false,
+          "updateTriggers": [
+            "signalSelect",
+            "shiftSlider",
+            "probeSlider",
+            "clearButton"
+          ]
+        }
+      ]
+    },
+    "simulation": {
+      "model": {
+        "type": "mathematical",
+        "description": "Samples x(t) every 0.01 s on a grid symmetric about t = 0 and forms x_e and x_o from x(t) and x(-t); energies are sums of squares over the displayed -5 s to +5 s window",
+        "equations": [
+          "x_e(t) = [x(t) + x(-t)] / 2",
+          "x_o(t) = [x(t) - x(-t)] / 2",
+          "x(t) = x_e(t) + x_o(t)",
+          "E = E_e + E_o"
+        ]
+      }
+    },
+    "usage": {
+      "recommendedUsage": [
+        "demonstration",
+        "exploration",
+        "guided-practice"
+      ],
+      "instructionalStrategies": [
+        "Predict the even and odd parts by hand, then check against the calculation panel",
+        "Move the probe to t and -t to see the same two samples combine with opposite signs"
+      ],
+      "extensions": [
+        "Add a second preset family such as sinusoids with a phase offset",
+        "Show the cosine and sine series terms that correspond to the even and odd parts of a periodic signal"
+      ]
+    }
+  },
+  "canvasHeight": 560
+}

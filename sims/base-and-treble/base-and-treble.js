@@ -1,248 +1,299 @@
-// Enhanced Bass and Treble MicroSim with proper axis labeling
+// Bass and Treble Frequency Response MicroSim
+// CANVAS_HEIGHT: 440
+// Plots the gain (dB) of a two-knob tone control against frequency (log scale):
+// a low shelf (bass, corner 500 Hz) plus a high shelf (treble, corner 2 kHz).
+// This is a magnitude-only model; no audio is played.
+
 // Canvas dimensions
-let canvasWidth = 450;
-let drawHeight = 350;
-let controlHeight = 50;
+let canvasWidth = 450;          // overwritten from the container in updateCanvasSize()
+let drawHeight = 360;
+let controlHeight = 80;
 let canvasHeight = drawHeight + controlHeight;
 let margin = 20;
-let sliderLeftMargin = 50; // just wide enough for the value
+let sliderLeftMargin = 190;     // room for "Bass: 100 (+12.0 dB)"
 let defaultTextSize = 16;
-let axisMargin = 60; // Extra margin for axis labels
+let axisMargin = 60;            // room for the axis labels
 
-// Global variables for width and height
-let containerWidth; // calculated by container upon resize
-let containerHeight = canvasHeight; // fixed height on page
+// Tone-control model (same parameters as the original sketch)
+const FREQ_MIN = 20;            // Hz
+const FREQ_MAX = 20000;         // Hz
+const BASS_CORNER = 500;        // Hz, half-gain point of the low shelf
+const TREBLE_CORNER = 2000;     // Hz, half-gain point of the high shelf
+const SHELF_ORDER = 4;          // steepness of the shelf transition
+const MAX_SHELF_DB = 12;        // slider at 0 or 100 requests -12 dB or +12 dB
+const GAIN_MIN_DB = -15;        // bottom of the plot
+const GAIN_MAX_DB = 15;         // top of the plot
+const NUM_POINTS = 500;
+const FREQ_TICKS = [20, 50, 100, 200, 500, 1000, 2000, 5000, 10000, 20000];
 
+// Colors
+const GOLD = '#B8860B';
+const GOLD_TEXT = '#7A5800';
+const GUIDE_GRAY = '#555555';
+
+// UI controls
 let bassSlider, trebleSlider;
 
+// Plot geometry, recomputed every frame from canvasWidth
+let plotLeft, plotRight, plotTop, plotBottom;
+
+// Frequency probed by the mouse (stays where it was last placed)
+let probeFreq = 1000;
+
 function setup() {
-  // Create a canvas to match the parent container's size
   updateCanvasSize();
-  const canvas = createCanvas(containerWidth, containerHeight);
+  const canvas = createCanvas(canvasWidth, canvasHeight);
   canvas.parent(document.querySelector('main'));
+  textFont('Arial');
   textSize(defaultTextSize);
 
-  // Define slider width (half the canvas width minus margins)
-  let sliderWidth = (containerWidth - (8 * margin)) / 2;;
-
-  // Create bass slider on the left
+  // Bass slider: 0 = full cut, 50 = flat, 100 = full boost
   bassSlider = createSlider(0, 100, 50, 1);
-  bassSlider.position(sliderLeftMargin, drawHeight + 13);
-  bassSlider.size(sliderWidth);
+  bassSlider.position(sliderLeftMargin, drawHeight + 12);
+  bassSlider.attribute('aria-label', 'Bass control, 0 to 100, 50 is flat');
 
-  // Create treble slider on the right
+  // Treble slider: 0 = full cut, 50 = flat, 100 = full boost
   trebleSlider = createSlider(0, 100, 50, 1);
-  trebleSlider.position(sliderLeftMargin + sliderWidth + 4*margin, drawHeight + 13);
-  trebleSlider.size(sliderWidth);
-  
-  describe('A frequency response visualizer showing how bass and treble controls affect audio output with logarithmic frequency axis.', LABEL);
+  trebleSlider.position(sliderLeftMargin, drawHeight + 47);
+  trebleSlider.attribute('aria-label', 'Treble control, 0 to 100, 50 is flat');
+
+  sizeSliders();
+  describe('Frequency response of a bass and treble tone control. A blue curve plots gain in decibels, ' +
+           'from -15 to +15, against frequency from 20 Hz to 20 kHz on a logarithmic axis. ' +
+           'The bass slider boosts or cuts frequencies below a 500 Hz corner and the treble slider boosts or cuts ' +
+           'frequencies above a 2 kHz corner. Moving the mouse over the plot reads the gain at any frequency.');
 }
 
 function draw() {
-  // Draw area
-  fill('aliceblue');
-  stroke('silver');
-  strokeWeight(1);
-  rect(0, 0, containerWidth, drawHeight);
-  
-  // Controls area
+  updateCanvasSize();
+  if (width !== canvasWidth) resizeCanvas(canvasWidth, canvasHeight);
+
+  const bassVal = bassSlider.value();
+  const trebleVal = trebleSlider.value();
+  const bassAmount = (bassVal - 50) / 50;        // -1 .. +1
+  const trebleAmount = (trebleVal - 50) / 50;    // -1 .. +1
+
+  // Backgrounds
+  background('aliceblue');
+  noStroke();
   fill('white');
+  rect(0, drawHeight, canvasWidth, controlHeight);
   stroke('silver');
   strokeWeight(1);
-  rect(0, drawHeight, containerWidth, controlHeight);
+  line(0, drawHeight, canvasWidth, drawHeight);
 
-  // Get the updated slider values
-  let bassVal = bassSlider.value();
-  let trebleVal = trebleSlider.value();
+  // Plot geometry
+  plotLeft = axisMargin;
+  plotRight = canvasWidth - margin;
+  plotTop = 70;                                  // room for the title and the probe read-out
+  plotBottom = drawHeight - axisMargin;
 
-  // Normalize the slider values to range -1 to 1
-  let bassAmount = (bassVal - 50) / 50;
-  let trebleAmount = (trebleVal - 50) / 50;
+  updateProbe();
 
-  // Define frequency range and number of points
-  let numPoints = 500;
-  let freqMin = 20;
-  let freqMax = 20000;
+  drawAxes();
+  drawCornerGuides();
+  drawCurve(bassAmount, trebleAmount);
+  drawProbe(bassAmount, trebleAmount);
+  drawTitleAndReadout(bassAmount, trebleAmount);
+  drawSliderLabels(bassVal, trebleVal, bassAmount, trebleAmount);
+}
 
-  // Define EQ parameters
-  let f_bass_cutoff = 500;
-  let f_treble_cutoff = 2000;
-  let n = 4;
-  let maxGain = 12; // dB
-  let gainMin = -15; // dB
-  let gainMax = 15; // dB
+// ---------------------------------------------------------------- model
 
-  // Calculate plot area with axis margins
-  let plotLeft = axisMargin;
-  let plotRight = containerWidth - margin;
-  let plotTop = margin + 40; // Extra space for title
-  let plotBottom = drawHeight - axisMargin;
+// Gain in dB at frequency f. Each shelf is MAX_SHELF_DB * slider amount * 1/(1 + (f/fc)^4) (low)
+// or 1/(1 + (fc/f)^4) (high), so a shelf is at half its full gain at its corner frequency.
+function gainDb(f, bassAmount, trebleAmount) {
+  const lowShelf = 1 / (1 + Math.pow(f / BASS_CORNER, SHELF_ORDER));
+  const highShelf = 1 / (1 + Math.pow(TREBLE_CORNER / f, SHELF_ORDER));
+  return bassAmount * MAX_SHELF_DB * lowShelf + trebleAmount * MAX_SHELF_DB * highShelf;
+}
 
-  // Draw axes first
-  drawAxes(plotLeft, plotRight, plotTop, plotBottom, freqMin, freqMax, gainMin, gainMax);
+// ---------------------------------------------------------------- coordinates
 
-  // Begin shape for plotting the frequency response curve
+function xOfFreq(f) {
+  return map(Math.log10(f), Math.log10(FREQ_MIN), Math.log10(FREQ_MAX), plotLeft, plotRight);
+}
+
+function freqOfX(x) {
+  return Math.pow(10, map(x, plotLeft, plotRight, Math.log10(FREQ_MIN), Math.log10(FREQ_MAX)));
+}
+
+function yOfGain(g) {
+  return map(g, GAIN_MIN_DB, GAIN_MAX_DB, plotBottom, plotTop);
+}
+
+function updateProbe() {
+  if (mouseX >= plotLeft && mouseX <= plotRight && mouseY >= plotTop && mouseY <= plotBottom) {
+    probeFreq = constrain(freqOfX(mouseX), FREQ_MIN, FREQ_MAX);
+  }
+}
+
+// ---------------------------------------------------------------- formatting
+
+function fmtFreq(f) {
+  if (f >= 1000) return (f / 1000).toFixed(2) + ' kHz';
+  return (f >= 100 ? f.toFixed(0) : f.toFixed(1)) + ' Hz';
+}
+
+function fmtDb(g) {
+  const r = Math.round(g * 10) / 10;
+  return (r > 0 ? '+' : '') + r.toFixed(1) + ' dB';
+}
+
+function fmtTickDb(g) {
+  return (g > 0 ? '+' : '') + g;
+}
+
+// ---------------------------------------------------------------- drawing
+
+function drawAxes() {
+  // Light grid: one line per dB tick and per frequency tick
+  stroke('#d3dce6');
+  strokeWeight(1);
+  for (let g = GAIN_MIN_DB; g <= GAIN_MAX_DB; g += 5) {
+    line(plotLeft, yOfGain(g), plotRight, yOfGain(g));
+  }
+  for (const f of FREQ_TICKS) {
+    line(xOfFreq(f), plotTop, xOfFreq(f), plotBottom);
+  }
+
+  // 0 dB reference (unity gain)
+  stroke('gray');
+  strokeWeight(2);
+  line(plotLeft, yOfGain(0), plotRight, yOfGain(0));
+
+  // Axis lines
+  stroke('black');
+  strokeWeight(1);
+  line(plotLeft, plotTop, plotLeft, plotBottom);
+  line(plotLeft, plotBottom, plotRight, plotBottom);
+
+  // Gain tick marks and labels
+  textSize(14);
+  textAlign(RIGHT, CENTER);
+  for (let g = GAIN_MIN_DB; g <= GAIN_MAX_DB; g += 5) {
+    const y = yOfGain(g);
+    stroke('black');
+    line(plotLeft - 5, y, plotLeft, y);
+    noStroke();
+    fill('black');
+    text(fmtTickDb(g), plotLeft - 8, y);
+  }
+
+  // Frequency tick marks and labels
+  textAlign(CENTER, TOP);
+  for (const f of FREQ_TICKS) {
+    const x = xOfFreq(f);
+    stroke('black');
+    line(x, plotBottom, x, plotBottom + 5);
+    noStroke();
+    fill('black');
+    text(f >= 1000 ? (f / 1000) + 'k' : f, x, plotBottom + 8);
+  }
+
+  // Axis titles
+  noStroke();
+  fill('black');
+  textSize(14);
+  textAlign(CENTER, TOP);
+  text('Frequency (Hz) - Logarithmic Scale', (plotLeft + plotRight) / 2, plotBottom + 32);
+
+  push();
+  translate(16, (plotTop + plotBottom) / 2);
+  rotate(-HALF_PI);
+  textAlign(CENTER, CENTER);
+  text('Gain (dB)', 0, 0);
+  pop();
+}
+
+// Dotted lines at the two shelf corners (the half-gain frequencies)
+function drawCornerGuides() {
+  const xb = xOfFreq(BASS_CORNER);
+  const xt = xOfFreq(TREBLE_CORNER);
+  stroke(GUIDE_GRAY);
+  strokeWeight(1);
+  drawingContext.setLineDash([2, 4]);
+  line(xb, plotTop, xb, plotBottom);
+  line(xt, plotTop, xt, plotBottom);
+  drawingContext.setLineDash([]);
+
+  noStroke();
+  fill(GUIDE_GRAY);
+  textSize(14);
+  textAlign(RIGHT, BOTTOM);
+  text('bass corner', xb - 5, plotBottom - 5);
+  textAlign(LEFT, BOTTOM);
+  text('treble corner', xt + 5, plotBottom - 5);
+}
+
+function drawCurve(bassAmount, trebleAmount) {
   noFill();
   stroke('blue');
   strokeWeight(3);
   beginShape();
-
-  for (let i = 0; i < numPoints; i++) {
-    let fraction = i / (numPoints - 1);
-    let freq = freqMin * Math.pow(freqMax / freqMin, fraction);
-
-    // Compute lowShelf and highShelf
-    let lowShelf = 1 / (1 + Math.pow(freq / f_bass_cutoff, n));
-    let highShelf = 1 / (1 + Math.pow(f_treble_cutoff / freq, n));
-
-    // Compute gains
-    let bassGain_dB = bassAmount * maxGain * lowShelf;
-    let trebleGain_dB = trebleAmount * maxGain * highShelf;
-
-    let totalGain_dB = bassGain_dB + trebleGain_dB;
-
-    // Map frequency to x position (logarithmic scale)
-    let x = map(
-      Math.log10(freq),
-      Math.log10(freqMin),
-      Math.log10(freqMax),
-      plotLeft,
-      plotRight
-    );
-
-    // Map gain to y position
-    let y = map(totalGain_dB, gainMin, gainMax, plotBottom, plotTop);
-
-    // Plot the point
-    vertex(x, y);
+  for (let i = 0; i < NUM_POINTS; i++) {
+    const f = FREQ_MIN * Math.pow(FREQ_MAX / FREQ_MIN, i / (NUM_POINTS - 1));
+    vertex(xOfFreq(f), yOfGain(gainDb(f, bassAmount, trebleAmount)));
   }
-
   endShape();
+}
 
-  // Draw labels
+// Gold marker at the probed frequency
+function drawProbe(bassAmount, trebleAmount) {
+  const x = xOfFreq(probeFreq);
+  const g = gainDb(probeFreq, bassAmount, trebleAmount);
+  const y = yOfGain(g);
+
+  stroke(GOLD);
+  strokeWeight(2);
+  drawingContext.setLineDash([6, 4]);
+  line(x, plotTop, x, plotBottom);
+  drawingContext.setLineDash([]);
+
+  fill(GOLD);
+  stroke('black');
+  strokeWeight(1);
+  circle(x, y, 12);
+}
+
+function drawTitleAndReadout(bassAmount, trebleAmount) {
   noStroke();
   fill('black');
-  
-  // Title - responsive text size
-  let titleSize = constrain(containerWidth * 0.05, 18, 28);
-  textSize(titleSize);
+  textSize(constrain(canvasWidth * 0.05, 18, 28));
   textAlign(CENTER, TOP);
-  text("Frequency Response", containerWidth / 2, 5);
+  text('Frequency Response', canvasWidth / 2, 5);
 
-  // Draw labels for sliders
+  const g = gainDb(probeFreq, bassAmount, trebleAmount);
+  fill(GOLD_TEXT);
+  textSize(defaultTextSize);
+  textAlign(CENTER, CENTER);
+  text('f = ' + fmtFreq(probeFreq) + '     gain = ' + fmtDb(g), (plotLeft + plotRight) / 2, 52);
+}
+
+function drawSliderLabels(bassVal, trebleVal, bassAmount, trebleAmount) {
+  noStroke();
   fill('black');
   textSize(defaultTextSize);
   textAlign(LEFT, CENTER);
-  text("Bass", containerWidth * .25, drawHeight + 40);
-  
-  // Calculate position for "Treble:" label
-  text("Treble", containerWidth * .75, drawHeight + 40);
-  
-  // Add value labels
-  textAlign(RIGHT, CENTER);
-  text(bassVal, sliderLeftMargin - 20, drawHeight + 20);
-  text(trebleVal, trebleSlider.x - 15, drawHeight + 20);
+  text('Bass: ' + bassVal + ' (' + fmtDb(bassAmount * MAX_SHELF_DB) + ')', 10, drawHeight + 27);
+  text('Treble: ' + trebleVal + ' (' + fmtDb(trebleAmount * MAX_SHELF_DB) + ')', 10, drawHeight + 62);
 }
 
-function drawAxes(plotLeft, plotRight, plotTop, plotBottom, freqMin, freqMax, gainMin, gainMax) {
-  stroke('black');
-  strokeWeight(1);
-  
-  // Draw main axes
-  line(plotLeft, plotTop, plotLeft, plotBottom); // Y-axis
-  line(plotLeft, plotBottom, plotRight, plotBottom); // X-axis
-  
-  // Draw Y-axis (gain) tick marks and labels
-  textAlign(RIGHT, CENTER);
-  textSize(12);
-  
-  for (let gain = gainMin; gain <= gainMax; gain += 5) {
-    let y = map(gain, gainMin, gainMax, plotBottom, plotTop);
-    
-    // Tick mark
-    line(plotLeft - 5, y, plotLeft, y);
-    
-    // Label
-    fill('black');
-    noStroke();
-    text(gain + " dB", plotLeft - 8, y);
-    stroke('black');
-    
-    // Grid line for 0 dB
-    if (gain === 0) {
-      stroke('gray');
-      strokeWeight(2);
-      line(plotLeft, y, plotRight, y);
-      strokeWeight(1);
-      stroke('black');
-    }
-  }
-  
-  // Y-axis label (rotated)
-  push();
-  translate(15, (plotTop + plotBottom) / 2);
-  rotate(-PI/2);
-  textAlign(CENTER, CENTER);
-  textSize(14);
-  fill('black');
-  noStroke();
-  text("Gain (dB)", 0, 0);
-  pop();
-  
-  // Draw X-axis (frequency) tick marks and labels - logarithmic scale
-  textAlign(CENTER, TOP);
-  textSize(12);
-  
-  // Major frequency points for logarithmic scale
-  let freqPoints = [20, 50, 100, 200, 500, 1000, 2000, 5000, 10000, 20000];
-  
-  for (let freq of freqPoints) {
-    if (freq >= freqMin && freq <= freqMax) {
-      let x = map(Math.log10(freq), Math.log10(freqMin), Math.log10(freqMax), plotLeft, plotRight);
-      
-      // Tick mark
-      stroke('black');
-      line(x, plotBottom, x, plotBottom + 5);
-      
-      // Label
-      fill('black');
-      noStroke();
-      if (freq >= 1000) {
-        text((freq/1000) + "k", x, plotBottom + 8);
-      } else {
-        text(freq, x, plotBottom + 8);
-      }
-    }
-  }
-  
-  // X-axis label
-  textAlign(CENTER, TOP);
-  textSize(14);
-  fill('black');
-  noStroke();
-  text("Frequency (Hz) - Logarithmic Scale", (plotLeft + plotRight) / 2, plotBottom + 35);
-}
+// ---------------------------------------------------------------- layout
 
 function windowResized() {
-  // Update canvas size when the container resizes
   updateCanvasSize();
-  resizeCanvas(containerWidth, containerHeight);
-  
-  // Recalculate slider sizes based on new width
-  let sliderWidth = (containerWidth - 6 * margin) / 2;
-  
-  bassSlider.position(sliderLeftMargin, drawHeight + 13);
-  bassSlider.size(sliderWidth);
-  
-  trebleSlider.position(sliderLeftMargin + sliderWidth + 4*margin, drawHeight + 13);
-  trebleSlider.size(sliderWidth - margin*2);
-  
-  redraw();
+  resizeCanvas(canvasWidth, canvasHeight);
+}
+
+function sizeSliders() {
+  const w = Math.max(80, canvasWidth - sliderLeftMargin - margin);
+  if (bassSlider) bassSlider.size(w);
+  if (trebleSlider) trebleSlider.size(w);
 }
 
 function updateCanvasSize() {
-  // Get the exact dimensions of the container
-  const container = document.querySelector('main').getBoundingClientRect();
-  containerWidth = Math.floor(container.width);  // Avoid fractional pixels
-  canvasWidth = containerWidth;
+  const container = document.querySelector('main');
+  if (container) canvasWidth = Math.floor(container.getBoundingClientRect().width);
+  sizeSliders();
 }

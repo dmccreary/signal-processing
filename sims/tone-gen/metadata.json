@@ -1,76 +1,148 @@
 {
-  "title": "Tone Generator",
-  "description": "Interactive tone generator allowing users to create and hear audio tones at different frequencies.",
-  "creator": "Dan McCreary",
-  "date": "2024-01-01",
-  "subject": [
-    "Signal Processing",
-    "Audio",
-    "Tone Generation",
-    "Sound"
-  ],
-  "type": "Interactive Simulation",
-  "format": "text/html",
-  "language": "en",
-  "rights": "CC BY-NC-SA 4.0",
-  "identifier": "https://dmccreary.github.io/signal-processing/sims/tone-gen/",
-  "publisher": "Dan McCreary",
-  "educationalLevel": "High School",
-  "learningResourceType": "simulation",
-  "audience": "Students, Educators",
-  "version": "1.0.0",
-  "bloomLevel": [
-    "Understand",
-    "Apply"
-  ],
-  "concepts": [
-    "Frequency",
-    "Tone generation",
-    "Audio synthesis",
-    "Sound waves"
-  ],
-  "prerequisites": [
-    "Basic understanding of sound"
-  ],
-  "library": "p5.js",
-  "visualizationType": [
-    "interactive-demo",
-    "map"
-  ],
-  "learningObjectives": [
-    "Understand the key concepts of tone generator",
-    "Explore tone generator through interactive visualization",
-    "Apply knowledge of tone generator to solve problems",
-    "Experiment with parameters to observe their effects on tone generator"
-  ],
-  "bloomsTaxonomy": [
-    "Remember",
-    "Understand",
-    "Apply",
-    "Analyze",
-    "Create"
-  ],
-  "pedagogical": {
-    "pattern": "assessment",
-    "bloomAlignment": [
-      "understand",
-      "apply",
-      "analyze"
-    ],
-    "bloomVerbs": [
-      "calculate",
-      "illustrate",
-      "implement",
-      "analyze",
-      "experiment"
-    ],
-    "pacing": "self-paced",
-    "supportsPrediction": false,
-    "dataVisibility": "high",
-    "feedbackType": [
-      "immediate",
-      "explanatory"
-    ],
-    "interactionStyle": "construct"
-  }
+  "microsim": {
+    "dublinCore": {
+      "title": "Tone Generator",
+      "creator": ["Dan McCreary"],
+      "subject": ["Signal Processing", "Audio", "Tone Generation", "Sound", "FFT"],
+      "description": "A sine-wave tone generator with a live FFT spectrum from 0 to 10 kHz on a decibel scale. Start/Stop the tone, set its frequency (20 Hz to 10 kHz) and amplitude (0 to 0.5) with sliders or by dragging across the plot, and watch the single spectral peak follow the tone.",
+      "publisher": "Dan McCreary",
+      "contributor": ["Claude (Anthropic)"],
+      "date": "2025-05-29",
+      "type": "Interactive Simulation",
+      "format": "text/html",
+      "identifier": "https://dmccreary.github.io/signal-processing/sims/tone-gen/",
+      "language": "en",
+      "relation": ["Chapter 2: Introduction to Signals and Systems", "Chapter 7: DFT, FFT and Frequency Domain Analysis"],
+      "rights": "CC BY-NC-SA 4.0"
+    },
+    "search": {
+      "tags": ["tone generator", "oscillator", "sine wave", "pitch", "frequency", "FFT", "spectrum", "decibel", "audio"],
+      "searchKeywords": ["tone generator", "sine tone spectrum", "frequency and pitch", "amplitude in decibels", "FFT bin width"],
+      "visualizationType": ["chart", "interactive-demo", "simulation"],
+      "interactionLevel": "moderate",
+      "complexity": 3,
+      "relatedConcepts": ["Signal Frequency", "Signal Amplitude", "Sinusoidal Signals", "Fast Fourier Transform", "Magnitude Spectrum", "Frequency Domain", "Decibels", "Frequency Resolution"],
+      "applicationDomains": ["education", "demonstration", "exploration"],
+      "showcase": false
+    },
+    "educational": {
+      "gradeLevel": ["Undergraduate"],
+      "subjectArea": ["Engineering", "Physics", "Music"],
+      "topic": ["Frequency", "Tone generation", "Audio synthesis", "Sound waves", "FFT spectrum", "Decibels"],
+      "learningObjectives": [
+        "Identify the single spectral peak that a pure sine tone produces in the FFT display and read its frequency and level",
+        "Predict how the FFT peak moves along the frequency axis as the tone sweeps from low to high frequency, and relate its position to the pitch they hear",
+        "Explain how horizontal position on the plot maps linearly to a frequency between 20 Hz and 10 kHz",
+        "Calculate the peak level 20 log10(A) dB for an amplitude A and verify that halving A lowers the peak by about 6 dB",
+        "Explain why the read-out can differ from the set frequency by up to half a bin width (2.93 Hz at 48 kHz)"
+      ],
+      "bloomsTaxonomy": ["Remember", "Understand", "Apply", "Analyze"],
+      "prerequisites": ["Sine waves: amplitude, frequency and period", "Sound as a pressure wave; frequency and pitch", "Base-10 logarithms"],
+      "duration": {"typical": 20, "range": {"min": 10, "max": 30}},
+      "difficulty": "Beginner",
+      "scaffolding": {
+        "type": ["guided-discovery", "feedback"],
+        "adaptability": "fixed",
+        "removal": "user-controlled"
+      },
+      "misconceptions": [
+        {
+          "misconception": "A louder tone has a higher frequency",
+          "correction": "Amplitude and frequency are independent; amplitude changes the peak height, frequency moves it sideways",
+          "evidence": "At 440 Hz, raising the amplitude from 0.10 to 0.40 lifts the peak from -20.0 dB to -8.0 dB while it stays at 439.5 Hz"
+        },
+        {
+          "misconception": "Doubling the amplitude doubles the level in decibels",
+          "correction": "Decibels are logarithmic: doubling the amplitude adds 20 log10(2) = 6.0 dB",
+          "evidence": "At 1500 Hz the peak reads -20.0 dB at amplitude 0.10 and -14.0 dB at 0.20"
+        },
+        {
+          "misconception": "The FFT measures the exact frequency of the tone",
+          "correction": "The FFT measures at bins f_s/N apart, so the read-out is the nearest bin centre",
+          "evidence": "A 1000 Hz tone reads 1002.0 Hz at 48 kHz, the centre of bin 171"
+        }
+      ]
+    },
+    "technical": {
+      "framework": "p5.js",
+      "version": "2.0.0",
+      "canvasDimensions": {"width": 700, "height": 400, "responsive": true},
+      "regions": {"drawHeight": 320, "controlHeight": 80},
+      "dependencies": ["p5.js 2.3.2", "p5.sound 0.4.1"],
+      "browserCompatibility": ["Chrome 90+", "Firefox 88+", "Safari 14+", "Edge 90+"],
+      "performance": {"memoryUsage": "low", "computationalComplexity": "O(n log n)"},
+      "deviceRequirements": {
+        "minScreenWidth": 360,
+        "touchSupport": true,
+        "keyboardRequired": false,
+        "mouseRequired": false,
+        "networkRequired": true
+      },
+      "accessibility": {
+        "screenReader": true,
+        "keyboardNavigation": true,
+        "colorContrast": true,
+        "altText": true,
+        "screenReaderScript": "A sine-wave tone generator with its live FFT spectrum from 0 to 10 kHz. Press Start to hear the tone, then move the Frequency and Amplitude sliders, or drag across the plot, to move the single spectral peak and change its level in decibels.",
+        "sensoryAlternatives": {"visualToAudio": true, "audioToVisual": true, "hapticFeedback": false}
+      }
+    },
+    "userInterface": {
+      "layoutType": "responsive-width",
+      "layoutPattern": "drawing-region-above-controls",
+      "colorScheme": {
+        "drawingArea": "aliceblue",
+        "controlArea": "white",
+        "borders": "silver",
+        "accent": "gold",
+        "text": "black"
+      },
+      "controls": [
+        {
+          "id": "startButton",
+          "type": "toggle-button",
+          "label": "Start / Stop",
+          "description": "Starts audio on the first click, then fades the tone in and out; nothing plays until it is pressed",
+          "group": "playback",
+          "properties": {"text": "Start", "action": "toggleSound", "toggleable": true, "style": "primary"}
+        },
+        {
+          "id": "frequencySlider",
+          "type": "slider",
+          "label": "Frequency",
+          "description": "Sets the oscillator frequency; dragging horizontally across the plot sets it to the frequency under the pointer",
+          "group": "signal",
+          "properties": {"min": 20, "max": 10000, "default": 440, "step": 1, "units": "Hz", "showValue": true}
+        },
+        {
+          "id": "amplitudeSlider",
+          "type": "slider",
+          "label": "Amplitude",
+          "description": "Sets the peak amplitude of the sine tone; the peak level is 20 log10(A) dB",
+          "group": "signal",
+          "properties": {"min": 0, "max": 0.5, "default": 0.2, "step": 0.01, "showValue": true}
+        }
+      ],
+      "visualElements": [
+        {"type": "chart", "description": "Magnitude spectrum (blue bars) from 0 to 10 kHz on a level axis from -80 to 0 dB; press and drag on it to set the frequency", "interactive": true, "updateTriggers": ["frequencySlider", "amplitudeSlider", "startButton"]},
+        {"type": "shape", "description": "Dashed line at the set frequency and a gold triangle on the strongest FFT bin", "interactive": false, "updateTriggers": ["frequencySlider", "amplitudeSlider", "startButton"]},
+        {"type": "text-display", "description": "FFT peak frequency and level, PLAYING / STOPPED status, sample rate and bin width", "interactive": false, "updateTriggers": ["frequencySlider", "amplitudeSlider", "startButton"]}
+      ]
+    },
+    "simulation": {
+      "model": {
+        "type": "algorithmic",
+        "description": "A p5.sound oscillator produces x(t) = A sin(2 pi f t). The browser's analyser applies a Blackman window and an 8192-point FFT; the sketch plots each bin's level in dB relative to an amplitude-1 sine centred on a bin.",
+        "equations": ["x(t) = A sin(2 pi f t)", "L = 20 log10(A) dB", "Delta f = f_s / N, N = 8192", "f_k = k f_s / N"],
+        "algorithms": ["Fast Fourier Transform (Web Audio AnalyserNode)", "Strongest-bin peak search"],
+        "limitations": ["The read-out reports the centre of the strongest bin, so it can differ from the set frequency by up to half a bin (2.93 Hz at 48 kHz)", "A tone between two bins reads up to about 1 dB low because of the Blackman window", "Small speakers may not reproduce the lowest frequencies even though the FFT still shows the peak"]
+      }
+    },
+    "usage": {
+      "recommendedUsage": ["demonstration", "exploration", "guided-practice"],
+      "instructionalStrategies": ["Predict-then-verify with the sliders", "Worksheet table relating amplitude to level in decibels", "Connecting pitch and octaves to peak position"],
+      "extensions": ["Add a waveform selector (square, sawtooth, triangle) to reveal harmonics", "Add a logarithmic frequency axis and compare it with musical pitch"]
+    }
+  },
+  "canvasHeight": 400
 }

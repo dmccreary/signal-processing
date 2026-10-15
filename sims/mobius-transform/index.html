@@ -6,7 +6,7 @@
       <meta charset="utf-8">
       <meta name="viewport" content="width=device-width,initial-scale=1">
       
-        <meta name="description" content="College Level Textbook on Signal Processing - License is Commons ShareAlike Attribution Noncommercial">
+        <meta name="description" content="Drag the coefficients of w = (Az + B)/(Cz + D), draw in the z-plane and watch lines and circles map, including the bilinear transform used for IIR filters.">
       
       
         <meta name="author" content="Dan McCreary">
@@ -18,7 +18,7 @@
         <link rel="prev" href="../graph-viewer/">
       
       
-        <link rel="next" href="../nyquist-shannon-sampling/">
+        <link rel="next" href="../multirate-sample-rate-converter/">
       
       
       <link rel="icon" href="../../img/favicon.ico">
@@ -26,7 +26,7 @@
     
     
       
-        <title>Mobius Transformation - Signal Processing with AI</title>
+        <title>Möbius Transform - Signal Processing with AI</title>
       
     
     
@@ -54,6 +54,8 @@
     
       <link rel="stylesheet" href="../../css/extra.css">
     
+      <link rel="stylesheet" href="../../css/mascot.css">
+    
     <script>__md_scope=new URL("../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
     
       
@@ -63,11 +65,11 @@
       
         <meta  property="og:type"  content="website" >
       
-        <meta  property="og:title"  content="Mobius Transformation - Signal Processing with AI" >
+        <meta  property="og:title"  content="Möbius Transform - Signal Processing with AI" >
       
-        <meta  property="og:description"  content="College Level Textbook on Signal Processing - License is Commons ShareAlike Attribution Noncommercial" >
+        <meta  property="og:description"  content="Drag the coefficients of w = (Az + B)/(Cz + D), draw in the z-plane and watch lines and circles map, including the bilinear transform used for IIR filters." >
       
-        <meta  property="og:image"  content="https://dmccreary.github.io/signal-processing/assets/images/social/sims/mobius-transform/index.png" >
+        <meta property="og:image" content="https://dmccreary.github.io/signal-processing/sims/mobius-transform/mobius-transform.png">
       
         <meta  property="og:image:type"  content="image/png" >
       
@@ -79,11 +81,11 @@
       
         <meta  name="twitter:card"  content="summary_large_image" >
       
-        <meta  name="twitter:title"  content="Mobius Transformation - Signal Processing with AI" >
+        <meta  name="twitter:title"  content="Möbius Transform - Signal Processing with AI" >
       
-        <meta  name="twitter:description"  content="College Level Textbook on Signal Processing - License is Commons ShareAlike Attribution Noncommercial" >
+        <meta  name="twitter:description"  content="Drag the coefficients of w = (Az + B)/(Cz + D), draw in the z-plane and watch lines and circles map, including the bilinear transform used for IIR filters." >
       
-        <meta  name="twitter:image"  content="https://dmccreary.github.io/signal-processing/assets/images/social/sims/mobius-transform/index.png" >
+        <meta name="twitter:image" content="https://dmccreary.github.io/signal-processing/sims/mobius-transform/mobius-transform.png">
       
     
     
@@ -122,7 +124,7 @@
   <nav class="md-header__inner md-grid" aria-label="Header">
     <a href="../.." title="Signal Processing with AI" class="md-header__button md-logo" aria-label="Signal Processing with AI" data-md-component="logo">
       
-  <img src="../../img/logo-192.png" alt="logo">
+  <img src="../../img/mascot/neutral.png" alt="logo">
 
     </a>
     <label class="md-header__button md-icon" for="__drawer">
@@ -139,7 +141,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              Mobius Transformation
+              Möbius Transform
             
           </span>
         </div>
@@ -228,7 +230,7 @@
   <label class="md-nav__title" for="__drawer">
     <a href="../.." title="Signal Processing with AI" class="md-nav__button md-logo" aria-label="Signal Processing with AI" data-md-component="logo">
       
-  <img src="../../img/logo-192.png" alt="logo">
+  <img src="../../img/mascot/neutral.png" alt="logo">
 
     </a>
     Signal Processing with AI
@@ -275,31 +277,11 @@
   
   
     <li class="md-nav__item">
-      <a href="../../chapters/" class="md-nav__link">
-        
-  
-  <span class="md-ellipsis">
-    Table of Contents
-  </span>
-  
-
-      </a>
-    </li>
-  
-
-    
-      
-      
-  
-  
-  
-  
-    <li class="md-nav__item">
       <a href="../../about/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
-    About This Website
+    About
   </span>
   
 
@@ -542,6 +524,174 @@
           
         
       
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
     
     
     
@@ -551,7 +701,7 @@
       
         
         
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_6" checked>
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_5" checked>
         
           
           
@@ -567,19 +717,103 @@
             </a>
             
               
-              <label class="md-nav__link " for="__nav_6" id="__nav_6_label" tabindex="0">
+              <label class="md-nav__link " for="__nav_5" id="__nav_5_label" tabindex="0">
                 <span class="md-nav__icon md-icon"></span>
               </label>
             
           </div>
         
-        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_6_label" aria-expanded="true">
-          <label class="md-nav__title" for="__nav_6">
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_5_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_5">
             <span class="md-nav__icon md-icon"></span>
             MicroSims
           </label>
           <ul class="md-nav__list" data-md-scrollfix>
             
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../image-convolution/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    2-D Convolution and Image Filtering
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../conv-layer-as-filter/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    A Convolutional Layer Is a Learned FIR Filter
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../adaptive-algorithm-comparison-tool/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Adaptive Algorithm Comparison Tool
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../adaptive-noise-cancellation/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Adaptive Noise and Echo Cancellation
+  </span>
+  
+
+      </a>
+    </li>
+  
+
               
             
               
@@ -631,11 +865,11 @@
   
   
     <li class="md-nav__item">
-      <a href="../base-and-treble/" class="md-nav__link">
+      <a href="../fft-basic/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
-    Base and Treble
+    Basic FFT
   </span>
   
 
@@ -652,11 +886,32 @@
   
   
     <li class="md-nav__item">
-      <a href="../fft-basic/" class="md-nav__link">
+      <a href="../base-and-treble/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
-    Basic FFT
+    Bass and Treble
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../bilinear-transform/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Bilinear Transform and Frequency Warping
   </span>
   
 
@@ -778,6 +1033,27 @@
   
   
     <li class="md-nav__item">
+      <a href="../compressed-sensing/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Compressed Sensing
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
       <a href="../convolution/" class="md-nav__link">
         
   
@@ -799,11 +1075,137 @@
   
   
     <li class="md-nav__item">
+      <a href="../convolution-theorem/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Convolution Theorem and Circular Convolution
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../convolution-visualizer/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Convolution Visualizer
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../correlation-and-matched-filtering/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Correlation and Matched Filtering
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../dct-basis-explorer/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    DCT Basis Explorer
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../dft-explorer/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    DFT Explorer
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
       <a href="../euler-formula-explorer/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
     Euler's Formula Explorer
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../even-and-odd-signal-decomposition/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Even and Odd Signal Decomposition
   </span>
   
 
@@ -967,6 +1369,27 @@
   
   
     <li class="md-nav__item">
+      <a href="../fft-spectrum-analyzer/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    FFT Spectrum Analyzer
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
       <a href="../fft-waveform-types/" class="md-nav__link">
         
   
@@ -988,11 +1411,263 @@
   
   
     <li class="md-nav__item">
+      <a href="../filter-bank-explorer/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Filter Bank and Polyphase Explorer
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../fir-filter-design-comparison-tool/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    FIR Filter Design Comparison Tool
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../fir-vs-iir/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    FIR vs IIR Filters
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../fourier-series-explorer/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Fourier Series Explorer
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../fourier-transform-pairs/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Fourier Transform Pairs
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
       <a href="../frequency-detection/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
     Frequency Detection
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../huffman-coding/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Huffman Coding
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../iir-prototype-comparison/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    IIR Prototype Comparison
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../impulse-and-frequency-response-analyzer/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Impulse and Frequency Response Analyzer
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../interactive-filter-design-and-analysis-tool/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Interactive Filter Design and Analysis Tool
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../interactive-pole-zero-analysis-tool/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Interactive Pole-Zero Analysis Tool
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../interactive-spectrogram-parameter-explorer/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Interactive Spectrogram Parameter Explorer
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../interactive-stft-spectrogram-analyzer/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Interactive STFT Spectrogram Analyzer
   </span>
   
 
@@ -1097,6 +1772,84 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
+  <a href="#description" class="md-nav__link">
+    <span class="md-ellipsis">
+      Description
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#lesson-plan" class="md-nav__link">
+    <span class="md-ellipsis">
+      Lesson Plan
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Lesson Plan">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#learning-objectives" class="md-nav__link">
+    <span class="md-ellipsis">
+      Learning Objectives
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#target-audience" class="md-nav__link">
+    <span class="md-ellipsis">
+      Target Audience
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#prerequisites" class="md-nav__link">
+    <span class="md-ellipsis">
+      Prerequisites
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#activities" class="md-nav__link">
+    <span class="md-ellipsis">
+      Activities
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#assessment" class="md-nav__link">
+    <span class="md-ellipsis">
+      Assessment
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#common-misconceptions" class="md-nav__link">
+    <span class="md-ellipsis">
+      Common Misconceptions
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#references" class="md-nav__link">
     <span class="md-ellipsis">
       References
@@ -1106,9 +1859,9 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#prompt" class="md-nav__link">
+  <a href="#development-notes" class="md-nav__link">
     <span class="md-ellipsis">
-      Prompt
+      Development Notes
     </span>
   </a>
   
@@ -1130,11 +1883,158 @@
   
   
     <li class="md-nav__item">
+      <a href="../multirate-sample-rate-converter/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Multirate Sample Rate Converter
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../noise-analysis-and-reduction-tool/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Noise Analysis and Reduction Tool
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
       <a href="../nyquist-shannon-sampling/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
     Nyquist-Shannon Sampling
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../phase-spectrum/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Phase Spectrum - What the Magnitude Hides
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../phasor-addition/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Phasor Addition
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../psd-wiener-khinchin/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Power Spectral Density and the Wiener-Khinchin Theorem
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../distribution-explorer/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Probability Distribution Explorer
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../quantization-and-noise-shaping/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Quantization and Noise Shaping
   </span>
   
 
@@ -1172,11 +2072,116 @@
   
   
     <li class="md-nav__item">
+      <a href="../real-time-processing-simulator/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Real-Time Processing Simulator
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
       <a href="../reverb/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
     Reverb Effect
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../s-plane-explorer/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    s-Plane Explorer
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../sampling-theorem-explorer/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Sampling Theorem Explorer
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../signal-operations/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Signal Operations - Shift, Scale and Reverse
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../signal-type-explorer/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Signal Type Explorer
   </span>
   
 
@@ -1214,11 +2219,95 @@
   
   
     <li class="md-nav__item">
+      <a href="../spectral-leakage-and-windowing/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Spectral Leakage and Windowing
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
       <a href="../synth-timeline/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
     Synth Timeline
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../system-interconnections/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    System Interconnections - Series, Parallel, Feedback
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../system-property-explorer/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    System Property Explorer
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../time-frequency-analysis-explorer/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Time-Frequency Analysis Explorer
   </span>
   
 
@@ -1261,6 +2350,27 @@
   
   <span class="md-ellipsis">
     Tone Generator
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../wavelet-explorer/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Wavelet Explorer - CWT Scalogram and Haar DWT
   </span>
   
 
@@ -1437,6 +2547,12 @@
       
         
           
+        
+      
+        
+      
+        
+      
         
       
         
@@ -1651,6 +2767,26 @@
   
   
     <li class="md-nav__item">
+      <a href="../../instructors-guide/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Instructor's Guide
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
       <a href="../../license/" class="md-nav__link">
         
   
@@ -1696,26 +2832,6 @@
   
   <span class="md-ellipsis">
     Contact
-  </span>
-  
-
-      </a>
-    </li>
-  
-
-    
-      
-      
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../../ieee-paper-changes/" class="md-nav__link">
-        
-  
-  <span class="md-ellipsis">
-    Paper Changes
   </span>
   
 
@@ -1846,6 +2962,84 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
+  <a href="#description" class="md-nav__link">
+    <span class="md-ellipsis">
+      Description
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#lesson-plan" class="md-nav__link">
+    <span class="md-ellipsis">
+      Lesson Plan
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Lesson Plan">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#learning-objectives" class="md-nav__link">
+    <span class="md-ellipsis">
+      Learning Objectives
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#target-audience" class="md-nav__link">
+    <span class="md-ellipsis">
+      Target Audience
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#prerequisites" class="md-nav__link">
+    <span class="md-ellipsis">
+      Prerequisites
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#activities" class="md-nav__link">
+    <span class="md-ellipsis">
+      Activities
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#assessment" class="md-nav__link">
+    <span class="md-ellipsis">
+      Assessment
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#common-misconceptions" class="md-nav__link">
+    <span class="md-ellipsis">
+      Common Misconceptions
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#references" class="md-nav__link">
     <span class="md-ellipsis">
       References
@@ -1855,9 +3049,9 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#prompt" class="md-nav__link">
+  <a href="#development-notes" class="md-nav__link">
     <span class="md-ellipsis">
-      Prompt
+      Development Notes
     </span>
   </a>
   
@@ -1878,7 +3072,7 @@
                   
 
   
-    <a href="https://github.com/dmccreary/signal-processing/blob/master/docs/sims/mobius-transform/index.md" title="Edit this page" class="md-content__button md-icon">
+    <a href="https://github.com/dmccreary/signal-processing/blob/main/docs/sims/mobius-transform/index.md" title="Edit this page" class="md-content__button md-icon">
       
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M10 20H6V4h7v5h5v3.1l2-2V8l-6-6H6c-1.1 0-2 .9-2 2v16c0 1.1.9 2 2 2h4zm10.2-7c.1 0 .3.1.4.2l1.3 1.3c.2.2.2.6 0 .8l-1 1-2.1-2.1 1-1c.1-.1.2-.2.4-.2m0 3.9L14.1 23H12v-2.1l6.1-6.1z"/></svg>
     </a>
@@ -1886,28 +3080,143 @@
   
 
 
-<h1 id="mobius-transform">Mobius Transform</h1>
-<figure>
-<p><img alt="" src="mobius-transform.png" width="400" /></p>
-</figure>
-<form action="mobius-transform.html" style="text-align:center;">
-<button style="align-content: center;" class="md-button md-button--primary">
-Run the Mobius Transform MicroSim
-</button>
-</form>
+<h1 id="mobius-transform">Möbius Transform</h1>
+<iframe src="main.html" width="100%" height="632px" scrolling="no"></iframe>
 
-<h2 id="references">References</h2>
+<p>Copy this iframe to your website:</p>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="p">&lt;</span><span class="nt">iframe</span> <span class="na">src</span><span class="o">=</span><span class="s">"https://dmccreary.github.io/signal-processing/sims/mobius-transform/main.html"</span> <span class="na">width</span><span class="o">=</span><span class="s">"100%"</span> <span class="na">height</span><span class="o">=</span><span class="s">"632px"</span> <span class="na">scrolling</span><span class="o">=</span><span class="s">"no"</span><span class="p">&gt;&lt;/</span><span class="nt">iframe</span><span class="p">&gt;</span>
+</code></pre></div></td></tr></table></div>
+<p><a class="md-button md-button--primary" href="main.html">Run MicroSim in Fullscreen</a></p>
+<!-- TODO(user): add the p5.js editor link once the sketch is saved in editor.p5js.org:
+[Edit in the p5.js Editor](https://editor.p5js.org/<username>/sketches/mobius-transform) -->
+
+<h2 id="description">Description</h2>
+<p>A Möbius (linear fractional) transformation maps each complex number <span class="arithmatex">\(z\)</span> to</p>
+<div class="arithmatex">\[w = f(z) = \frac{Az + B}{Cz + D}, \qquad AD - BC \neq 0.\]</div>
+<p>The left plot is the input <span class="arithmatex">\(z\)</span>-plane and the right plot is the output <span class="arithmatex">\(w\)</span>-plane, at the same scale.
+White dots on the left form a grid of <span class="arithmatex">\(z\)</span> values; the white dots on the right are their images. The dashed
+circle is the unit circle.</p>
 <ul>
-<li><a href="https://en.wikipedia.org/wiki/M%C3%B6bius_transformation">Mobius Transform Wikipedia</a></li>
-<li><a href="https://cds.cern.ch/record/1417989/files/p95.pdf">Smith Chart and the Mobius Transform</a></li>
-<li><a href="https://www.desmos.com/calculator/61h3sc0err">Desmos Implementation</a></li>
+<li><strong>Coefficients box:</strong> drag the colored dots to set <span class="arithmatex">\(A\)</span>, <span class="arithmatex">\(B\)</span>, <span class="arithmatex">\(C\)</span> and <span class="arithmatex">\(D\)</span> (parts from −1 to 1).</li>
+<li><strong>Preset:</strong> exact coefficients for the identity, a rotation with scaling, the inversion <span class="arithmatex">\(1/z\)</span>,
+    the bilinear map and the Cayley map.</li>
+<li><strong>Draw</strong> in the input plane; its purple image appears on the right.</li>
+<li><strong>Scale</strong> sets the half-width of both plots (±1 to ±20); <strong>Density</strong> sets the dots per row (10 to 50).</li>
+<li><strong>Hover</strong> over the input plane to read <span class="arithmatex">\(z\)</span> and <span class="arithmatex">\(f(z)\)</span>.</li>
 </ul>
-<h2 id="prompt">Prompt</h2>
-<p><div class="highlight"><pre><span></span><code>Create p5.js interactive script that allows the user to view and alter a mobius transform. 
+<p>The read-outs show <span class="arithmatex">\(AD - BC\)</span>, the pole <span class="arithmatex">\(-D/C\)</span> (red ×) and <span class="arithmatex">\(f(\infty) = A/C\)</span> (black ○), where far-away
+inputs crowd. A Möbius map sends lines and circles to lines and circles and preserves angles (it is conformal).</p>
+<p><strong>Connection to IIR filter design.</strong> The bilinear transform in
+<a href="../../chapters/10-advanced-filter-design-and-implementation/#bilinear-transform">Chapter 10: Advanced Filter Design and Implementation</a>,
+<span class="arithmatex">\(z = \frac{1 + sT/2}{1 - sT/2}\)</span>, is a Möbius map with <span class="arithmatex">\(A = T/2\)</span>, <span class="arithmatex">\(B = 1\)</span>, <span class="arithmatex">\(C = -T/2\)</span>, <span class="arithmatex">\(D = 1\)</span>. With <span class="arithmatex">\(T = 2\)</span> it
+is the <strong>Bilinear</strong> preset: read the input as the analog <span class="arithmatex">\(s\)</span>-plane and the output as the digital <span class="arithmatex">\(z\)</span>-plane.
+The axis <span class="arithmatex">\(s = j\Omega\)</span> lands on the unit circle at angle <span class="arithmatex">\(\omega = 2\arctan(\Omega T/2)\)</span>, the stable left
+half-plane lands inside the circle, and <span class="arithmatex">\(s = \infty\)</span> lands at <span class="arithmatex">\(z = -1\)</span>: no aliasing, but warped frequency.</p>
+<h2 id="lesson-plan">Lesson Plan</h2>
+<h3 id="learning-objectives">Learning Objectives</h3>
+<p>After using this MicroSim, students will be able to:</p>
+<ol>
+<li><strong>Calculate</strong> the pole <span class="arithmatex">\(-D/C\)</span>, the image of infinity <span class="arithmatex">\(A/C\)</span> and the determinant <span class="arithmatex">\(AD - BC\)</span> of a Möbius transformation from its coefficients</li>
+<li><strong>Predict</strong> whether a line or circle in the <span class="arithmatex">\(z\)</span>-plane maps to a line or a circle, from its position relative to the pole</li>
+<li><strong>Explain</strong> how <span class="arithmatex">\(B\)</span> translates the plane, <span class="arithmatex">\(A\)</span> rotates and scales it, and a nonzero <span class="arithmatex">\(C\)</span> bends lines into circles</li>
+<li><strong>Demonstrate</strong> that the bilinear map <span class="arithmatex">\((1+s)/(1-s)\)</span> sends the imaginary axis onto the unit circle and the left half-plane inside it</li>
+<li><strong>Calculate</strong> the warped digital frequency <span class="arithmatex">\(\omega = 2\arctan\Omega\)</span> of a point <span class="arithmatex">\(s = j\Omega\)</span> under the bilinear map with <span class="arithmatex">\(T = 2\)</span></li>
+</ol>
+<h3 id="target-audience">Target Audience</h3>
+<p>Undergraduate engineering, physics or mathematics students in a signals and systems or digital signal
+processing course, ideally just before the bilinear-transform method of IIR filter design.
+Plan 25 to 30 minutes for the activities below.</p>
+<h3 id="prerequisites">Prerequisites</h3>
+<ul>
+<li>Complex arithmetic in rectangular and polar form (see the <a href="../complex-plane/">Complex Plane</a> MicroSim)</li>
+<li>Poles of a rational function</li>
+<li>Stability regions: the left half of the <span class="arithmatex">\(s\)</span>-plane and the inside of the unit circle in the <span class="arithmatex">\(z\)</span>-plane</li>
+</ul>
+<h3 id="activities">Activities</h3>
+<p><strong>Activity 1: The pole and the point at infinity (5 min).</strong> Choose <strong>Default example</strong>
+(<span class="arithmatex">\(A = 0.50 + 0.50i\)</span>, <span class="arithmatex">\(B = 0.30 + 0.20i\)</span>, <span class="arithmatex">\(C = -0.10 + 0.60i\)</span>, <span class="arithmatex">\(D = 0.20 - 0.50i\)</span>) with Scale ±3. The read-outs
+show <span class="arithmatex">\(AD - BC = 0.50 - 0.31i\)</span>, the pole at <span class="arithmatex">\(z = 0.86 + 0.19i\)</span> (red ×) and <span class="arithmatex">\(f(\infty) = 0.68 - 0.95i\)</span> (black ○).
+The grid dots crowd around the ○, because the grid points farthest from the pole map closest to <span class="arithmatex">\(A/C\)</span>,
+while the dots next to the × are thrown out of view. Hover toward the ×: the <span class="arithmatex">\(w\)</span> read-out grows without bound.</p>
+<p><strong>Activity 2: Lines become circles (7 min).</strong> Choose <strong>Inversion: w = 1/z</strong> and set Scale to ±2, so the
+grid lines sit at ±1. Trace the vertical grid line <span class="arithmatex">\(\mathrm{Re}\,z = 1\)</span> from top to bottom. Its image is an arc of
+the circle with center <span class="arithmatex">\(0.5\)</span> and radius <span class="arithmatex">\(0.5\)</span>; the missing piece near <span class="arithmatex">\(w = 0\)</span> belongs to the parts of the line
+beyond <span class="arithmatex">\(|\mathrm{Im}\,z| = 2\)</span>. Hover at <span class="arithmatex">\(z = 2\)</span> (the right edge of the input plane): <span class="arithmatex">\(w = 0.50\)</span>. Then trace the
+dashed unit circle: its image is the unit circle again, traversed in the opposite direction, because
+<span class="arithmatex">\(1/e^{i\theta} = e^{-i\theta}\)</span>.</p>
+<p><strong>Activity 3: The bilinear transform (8 min).</strong> Choose <strong>Bilinear: w = (1+z)/(1−z)</strong> with Scale ±3 and read
+the input plane as the <span class="arithmatex">\(s\)</span>-plane. Trace the vertical axis from top to bottom: the image is an arc of the dashed
+unit circle from 143° through 0° to −143°. Draw a short stroke anywhere left of the vertical axis: its image
+lies inside the unit circle. Hover near <span class="arithmatex">\(z = i\)</span>: <span class="arithmatex">\(w \approx i\)</span>, an angle of <span class="arithmatex">\(2\arctan 1 = 90°\)</span>. Hover near the top
+of the axis, <span class="arithmatex">\(z \approx 3i\)</span>: <span class="arithmatex">\(w \approx -0.80 + 0.60i\)</span>, an angle of <span class="arithmatex">\(2\arctan 3 \approx 143.1°\)</span>. The pole × sits at
+<span class="arithmatex">\(s = 1\)</span> and the ○ at <span class="arithmatex">\(w = -1\)</span>, where <span class="arithmatex">\(s = \infty\)</span> lands.</p>
+<p><strong>Activity 4: One coefficient at a time (7 min).</strong> Choose <strong>Identity: w = z</strong> (<span class="arithmatex">\(A = D = 1\)</span>, <span class="arithmatex">\(B = C = 0\)</span>); both
+plots look the same. Drag the green dot <span class="arithmatex">\(B\)</span>, on top at the origin, to about <span class="arithmatex">\(0.5\)</span> on the real axis: every dot
+moves 0.5 to the right (a translation). Drag the blue dot <span class="arithmatex">\(C\)</span>, now alone at the origin, up to about <span class="arithmatex">\(0.5i\)</span>: a
+pole appears near <span class="arithmatex">\(z = -1/(0.5i) = 2i\)</span>, the ○ moves to about <span class="arithmatex">\(-2i\)</span>, and the straight grid rows bend into arcs.
+The Preset menu now reads <strong>Custom (dragged)</strong>.</p>
+<h3 id="assessment">Assessment</h3>
+<ol>
+<li>For the Bilinear preset, <span class="arithmatex">\(f(z) = \frac{z + 1}{-z + 1}\)</span>, where is the pole and what is <span class="arithmatex">\(f(\infty)\)</span>?
+    <em>Answer: the pole is <span class="arithmatex">\(z = -D/C = 1\)</span> and <span class="arithmatex">\(f(\infty) = A/C = -1\)</span>.</em></li>
+<li>With the bilinear transform and <span class="arithmatex">\(T = 2\)</span>, where does the analog point <span class="arithmatex">\(s = j1\)</span> land, and what digital
+    frequency does it represent?
+    <em>Answer: <span class="arithmatex">\(z = (1 + j)/(1 - j) = j\)</span>, on the unit circle at <span class="arithmatex">\(\omega = 2\arctan 1 = \pi/2\)</span> rad (90°).</em></li>
+<li>A student sets <span class="arithmatex">\(A = 0.5\)</span>, <span class="arithmatex">\(B = 1\)</span>, <span class="arithmatex">\(C = 0.5\)</span>, <span class="arithmatex">\(D = 1\)</span>. What does the output plane show, and why?
+    <em>Answer: <span class="arithmatex">\(AD - BC = 0.5 - 0.5 = 0\)</span>, so <span class="arithmatex">\(f(z) = (0.5z + 1)/(0.5z + 1) = 1\)</span> for every <span class="arithmatex">\(z \neq -2\)</span>; all dots land
+    on <span class="arithmatex">\(w = 1\)</span> and the read-out warns that <span class="arithmatex">\(f\)</span> is constant.</em></li>
+<li>Why do <span class="arithmatex">\(A = 0.5\)</span>, <span class="arithmatex">\(B = 0.5\)</span>, <span class="arithmatex">\(C = -0.5\)</span>, <span class="arithmatex">\(D = 0.5\)</span> give exactly the same picture as the Bilinear preset?
+    <em>Answer: they are the preset's coefficients multiplied by 0.5; the common factor cancels between numerator
+    and denominator, so <span class="arithmatex">\(f\)</span> is unchanged (only <span class="arithmatex">\(AD - BC\)</span> changes, from 2 to 0.5).</em></li>
+<li>Under <span class="arithmatex">\(w = 1/z\)</span>, what is the image of the line <span class="arithmatex">\(\mathrm{Re}\,z = 1\)</span>, and why is it not a straight line?
+    <em>Answer: the circle <span class="arithmatex">\(|w - 0.5| = 0.5\)</span> (without the point <span class="arithmatex">\(w = 0\)</span>). A line maps to a line only when it passes
+    through the pole, here <span class="arithmatex">\(z = 0\)</span>, and <span class="arithmatex">\(\mathrm{Re}\,z = 1\)</span> does not.</em></li>
+</ol>
+<h3 id="common-misconceptions">Common Misconceptions</h3>
+<p><strong>"A Möbius transformation keeps straight lines straight."</strong> Activity 2 turns the line <span class="arithmatex">\(\mathrm{Re}\,z = 1\)</span> into a
+circle. Only lines through the pole stay straight: with the Inversion preset, trace the real axis (it passes
+through the × at 0) and its image is the real axis again.</p>
+<p><strong>"The bilinear transform maps analog frequency evenly onto the unit circle."</strong> In Activity 3, the stretch of
+the imaginary axis from <span class="arithmatex">\(\Omega = 0\)</span> to <span class="arithmatex">\(1\)</span> covers 90° of the circle, from <span class="arithmatex">\(1\)</span> to <span class="arithmatex">\(3\)</span> only about 53°, and every
+<span class="arithmatex">\(\Omega &gt; 3\)</span> is squeezed into the last 37° before <span class="arithmatex">\(w = -1\)</span>. The dots crowding near the ○ at <span class="arithmatex">\(-1\)</span> show the same
+compression. This is frequency warping, which pre-warping corrects at chosen frequencies.</p>
+<h2 id="references">References</h2>
+<ol>
+<li><a href="https://en.wikipedia.org/wiki/M%C3%B6bius_transformation">Möbius transformation</a> - Wikipedia - definition, the pole, the image of infinity and the circle-preserving property</li>
+<li><a href="https://en.wikipedia.org/wiki/Bilinear_transform">Bilinear transform</a> - Wikipedia - the <span class="arithmatex">\(s\)</span>-to-<span class="arithmatex">\(z\)</span> mapping used in IIR filter design, and its frequency warping</li>
+<li><a href="https://en.wikipedia.org/wiki/Conformal_map">Conformal map</a> - Wikipedia - why the right angles of the input grid survive the mapping</li>
+<li><a href="https://en.wikipedia.org/wiki/Riemann_sphere">Riemann sphere</a> - Wikipedia - the point at infinity that a Möbius map sends to <span class="arithmatex">\(A/C\)</span></li>
+<li><a href="https://en.wikipedia.org/wiki/Smith_chart">Smith chart</a> - Wikipedia - an engineering chart built on the Möbius map <span class="arithmatex">\(\Gamma = (z - 1)/(z + 1)\)</span></li>
+<li><a href="https://www.dspguide.com/ch33.htm">The Scientist and Engineer's Guide to DSP, Chapter 33: The z-Transform</a> - Steven W. Smith - free chapter on the <span class="arithmatex">\(z\)</span>-plane and recursive (IIR) filter design</li>
+</ol>
+<h2 id="development-notes">Development Notes</h2>
+<details>
+<summary>Prompt history</summary>
+<p><strong>Version 2.0.0 (2026-10-14).</strong> Ported from p5.js 1.9.0 to p5.js 2.3.2 and made responsive; the entry file
+<code>mobius-transform.html</code> was renamed to <code>main.html</code> (the old name redirects). Changes from version 1:</p>
+<ul>
+<li>The output plane was drawn upside down: it plotted the mirror image <span class="arithmatex">\(\overline{f(z)}\)</span>, with <span class="arithmatex">\(\mathrm{Im}\,w\)</span>
+    pointing down. It now uses the same orientation as the input plane.</li>
+<li>The input and output planes are drawn at the same size, so magnification can be read directly
+    (version 1 drew the same coordinate range at 150 px for the input and 300 px for the output).</li>
+<li>A drawing now joins every pair of consecutive mouse points (version 1 used <code>beginShape(LINES)</code>, which drew
+    every other segment), it is drawn in purple so it stays visible on the axes, and its image is a continuous curve.</li>
+<li>The grid dots sit at the centers of the grid cells, so the grid is symmetric about 0.</li>
+<li>Added the preset menu, the pole and <span class="arithmatex">\(f(\infty)\)</span> markers, the unit circle, the <span class="arithmatex">\(AD - BC\)</span> read-out with a
+    warning when it is zero, and the hover read-out.</li>
+</ul>
+<p><strong>Original prompt</strong></p>
+<div class="highlight"><pre><span></span><code>Create p5.js interactive script that allows the user to view and alter a mobius transform. 
 Graph the coeffiecients as draggable vectors, and display a point domain of configurable scale and density.
 Create a user drawable side canvas, map the drawn points back through the transform and displays it alongside the current point map visualization.
 </code></pre></div>
-* <a href="https://chat.openai.com/share/10214b86-450e-4dad-80b5-a5c318652146">ChatGPT conversation history</a></p>
+<p><a href="https://chat.openai.com/share/10214b86-450e-4dad-80b5-a5c318652146">ChatGPT conversation history</a></p>
+<p>Links from the version 1 page (not re-verified):</p>
+<ul>
+<li><a href="https://cds.cern.ch/record/1417989/files/p95.pdf">Smith Chart and the Möbius Transform (PDF)</a></li>
+<li><a href="https://www.desmos.com/calculator/61h3sc0err">Desmos implementation</a></li>
+</ul>
+</details>
 
 
 
@@ -1963,13 +3272,13 @@ Create a user drawable side canvas, map the drawn points back through the transf
         
         
           
-          <a href="../nyquist-shannon-sampling/" class="md-footer__link md-footer__link--next" aria-label="Next: Nyquist-Shannon Sampling">
+          <a href="../multirate-sample-rate-converter/" class="md-footer__link md-footer__link--next" aria-label="Next: Multirate Sample Rate Converter">
             <div class="md-footer__title">
               <span class="md-footer__direction">
                 Next
               </span>
               <div class="md-ellipsis">
-                Nyquist-Shannon Sampling
+                Multirate Sample Rate Converter
               </div>
             </div>
             <div class="md-footer__button md-icon">

@@ -1,0 +1,204 @@
+{
+  "microsim": {
+    "dublinCore": {
+      "title": "DCT Basis Explorer",
+      "creator": ["Dan McCreary"],
+      "subject": ["Discrete cosine transform", "DCT-II basis functions", "Energy compaction", "Transform coding", "JPEG", "Quantization"],
+      "description": "Interactive MicroSim with two views of the orthonormal DCT-II. The 1-D view shows the eight N = 8 basis functions, the coefficients of a preset or hand-drawn 8-sample signal, the reconstruction from the first K coefficients with its error, and the fraction of the energy captured by the first K DCT and DFT coefficients. The 2-D view shows the 64 basis images of the separable 8x8 DCT (C = D X D^T), a synthetic image block, uniform quantization with step Q that zeroes small coefficients, the reconstructed block, the pixel error and the PSNR.",
+      "publisher": "Dan McCreary",
+      "contributor": ["Claude (Anthropic)"],
+      "date": "2026-10-14",
+      "type": "Interactive Simulation",
+      "format": "text/html",
+      "identifier": "https://dmccreary.github.io/signal-processing/sims/dct-basis-explorer/",
+      "language": "en",
+      "relation": ["Chapter 8: Advanced Transforms"],
+      "rights": "CC BY-NC-SA 4.0"
+    },
+    "search": {
+      "tags": ["DCT", "discrete cosine transform", "DCT-II", "basis functions", "basis images", "energy compaction", "JPEG", "quantization", "PSNR", "transform coding"],
+      "searchKeywords": ["DCT basis functions N = 8", "8x8 DCT basis images", "DCT vs DFT energy compaction", "keep K coefficients reconstruction", "JPEG quantization PSNR", "separable 2-D DCT"],
+      "visualizationType": ["chart", "interactive-demo", "simulation"],
+      "interactionLevel": "high",
+      "complexity": 6,
+      "relatedConcepts": ["Discrete Cosine Transform", "Discrete Fourier Transform", "Transform Coding", "Lossy Compression", "Quantization", "Signal Energy", "Image Processing"],
+      "applicationDomains": ["education", "exploration", "demonstration", "analysis"]
+    },
+    "educational": {
+      "gradeLevel": ["Undergraduate"],
+      "subjectArea": ["Engineering", "Mathematics", "Computer Science"],
+      "topic": ["Discrete cosine transform", "Orthonormal basis functions", "Energy compaction", "Transform coding and JPEG", "Quantization and PSNR"],
+      "learningObjectives": [
+        "Describe the N = 8 DCT-II basis functions and relate the index k to the number of half-cycles of the cosine across the block",
+        "Calculate the fraction of the energy held by the first K DCT coefficients and use Parseval's relation to predict the energy of the reconstruction error",
+        "Compare the energy compaction of the DCT and the DFT for the same signal, and explain the difference with the mirror (even) extension versus the periodic extension",
+        "Apply uniform quantization with step Q to the 2-D DCT of an 8x8 block and relate the number of nonzero coefficients to the PSNR",
+        "Explain why JPEG transforms 8x8 blocks with the DCT before quantizing them"
+      ],
+      "bloomsTaxonomy": ["Understand", "Apply"],
+      "prerequisites": ["Definition of the DFT and Parseval's theorem", "Inner products and orthogonal bases", "Signal energy and uniform quantization"],
+      "duration": {"typical": 30, "range": {"min": 15, "max": 45}},
+      "difficulty": "Intermediate",
+      "scaffolding": {
+        "type": ["guided-discovery", "feedback"],
+        "adaptability": "fixed",
+        "removal": "user-controlled"
+      },
+      "misconceptions": [
+        {
+          "misconception": "The DCT always compacts energy better than the DFT",
+          "correction": "The DCT's advantage holds for smooth, correlated signals; a signal that is exactly periodic in the block, or an edge at some K, can favour the DFT",
+          "evidence": "Cosine, one period with K = 3: DFT 100.00% vs DCT 96.33%; step edge with K = 3: DFT 85.36% vs DCT 82.11%"
+        },
+        {
+          "misconception": "The highest-frequency DCT basis function is the alternating sequence (-1)^n",
+          "correction": "phi_7 alternates in sign under a slow cosine envelope, so an alternating sequence spreads over the odd DCT coefficients",
+          "evidence": "Alternating +-2: X[7] = 5.13 holds only 82.11% of the energy, with X[5] = 1.80, X[3] = 1.20 and X[1] = 1.02; the DFT puts all of it in bin 4"
+        }
+      ]
+    },
+    "technical": {
+      "framework": "p5.js",
+      "version": "1.0.0",
+      "canvasDimensions": {"width": 900, "height": 666, "responsive": true},
+      "regions": {"drawHeight": 560, "controlHeight": 106},
+      "dependencies": ["p5.js 2.3.2"],
+      "browserCompatibility": ["Chrome 90+", "Firefox 88+", "Safari 14+", "Edge 90+"],
+      "performance": {"memoryUsage": "low", "loadTime": 500, "computationalComplexity": "O(n²)"},
+      "deviceRequirements": {
+        "minScreenWidth": 375,
+        "touchSupport": true,
+        "keyboardRequired": false,
+        "mouseRequired": false,
+        "networkRequired": false
+      },
+      "accessibility": {
+        "screenReader": true,
+        "keyboardNavigation": true,
+        "colorContrast": true,
+        "altText": true,
+        "screenReaderScript": "DCT basis explorer with two views. 1-D view: eight small plots of the DCT-II basis functions for k = 0 to 7, a bar chart of the DCT coefficients of an 8-sample signal, the signal with its reconstruction from the first K coefficients, the reconstruction error, the DFT magnitudes of the same signal, and the fraction of the energy captured by the first K DCT and DFT coefficients. 2-D view: the 64 basis images of the 8 by 8 DCT, an 8 by 8 test block, its quantized coefficients, the reconstructed block, the error and the PSNR. Drop-down lists choose the view and the signal or block; sliders set K or the quantization step Q; click a basis function to highlight it and drag a sample to edit the 1-D signal."
+      }
+    },
+    "userInterface": {
+      "layoutType": "responsive-width",
+      "layoutPattern": "drawing-region-above-controls",
+      "colorScheme": {
+        "drawingArea": "aliceblue",
+        "controlArea": "white",
+        "signal": "blue",
+        "reconstruction": "purple",
+        "dctCoefficients": "maroon",
+        "dftMagnitudes": "green",
+        "error": "red",
+        "highlight": "gold",
+        "droppedCoefficients": "gray",
+        "text": "black"
+      },
+      "controls": [
+        {
+          "id": "viewSelect",
+          "type": "dropdown",
+          "label": "View",
+          "description": "Switches between the 1-D signal view (N = 8) and the 2-D 8x8 block view",
+          "group": "view",
+          "properties": {
+            "options": [
+              {"value": "1d", "label": "1-D signal (N = 8)"},
+              {"value": "2d", "label": "2-D 8x8 block"}
+            ],
+            "default": "1d"
+          }
+        },
+        {
+          "id": "signalSelect",
+          "type": "dropdown",
+          "label": "Signal",
+          "description": "Chooses the 8-sample signal x[n] in the 1-D view; dragging a sample switches it to custom",
+          "group": "1-D",
+          "properties": {
+            "options": [
+              {"value": "ramp", "label": "ramp"},
+              {"value": "bump", "label": "smooth bump"},
+              {"value": "step", "label": "step edge"},
+              {"value": "basis3", "label": "pure basis k = 3"},
+              {"value": "cos1", "label": "cosine, one period"},
+              {"value": "alt", "label": "alternating +-2"},
+              {"value": "noise", "label": "random noise"},
+              {"value": "custom", "label": "custom (drag samples)"}
+            ],
+            "default": "ramp"
+          }
+        },
+        {
+          "id": "kSlider",
+          "type": "slider",
+          "label": "Coefficients kept K",
+          "description": "Keeps the first K DCT coefficients (and the first K DFT bins in frequency order) in the 1-D view",
+          "group": "1-D",
+          "properties": {"min": 1, "max": 8, "default": 3, "step": 1, "showValue": true}
+        },
+        {
+          "id": "blockSelect",
+          "type": "dropdown",
+          "label": "Block",
+          "description": "Chooses the synthetic 8x8 image block in the 2-D view",
+          "group": "2-D",
+          "properties": {
+            "options": [
+              {"value": "blob", "label": "smooth blob"},
+              {"value": "grad", "label": "horizontal gradient"},
+              {"value": "diag", "label": "diagonal gradient"},
+              {"value": "vedge", "label": "vertical edge"},
+              {"value": "dedge", "label": "diagonal edge"},
+              {"value": "stripes", "label": "texture: stripes"},
+              {"value": "checker", "label": "texture: checkerboard"},
+              {"value": "noise", "label": "random noise"}
+            ],
+            "default": "blob"
+          }
+        },
+        {
+          "id": "qSlider",
+          "type": "slider",
+          "label": "Quantization step Q",
+          "description": "Uniform quantization step for the 2-D DCT coefficients: C becomes Q round(C/Q), so |C| < Q/2 becomes 0",
+          "group": "2-D",
+          "properties": {"min": 1, "max": 100, "default": 20, "step": 1, "showValue": true}
+        }
+      ],
+      "visualElements": [
+        {"type": "chart", "description": "Eight small plots of the DCT-II basis functions phi_k[n] for k = 0..7 with their underlying cosines; kept ones maroon, dropped ones gray; click to highlight", "interactive": true, "updateTriggers": ["kSlider"]},
+        {"type": "chart", "description": "Bar chart of the DCT coefficients X[k] with value labels; the first K are maroon, the rest gray, and the highlighted k has a gold outline", "interactive": true, "updateTriggers": ["signalSelect", "kSlider"]},
+        {"type": "chart", "description": "Signal x[n] (blue stems, draggable), reconstruction x_K[n] from the first K coefficients (purple curve and rings) and the contribution X[k] phi_k[n] of the highlighted basis function (gold dashed)", "interactive": true, "updateTriggers": ["signalSelect", "kSlider"]},
+        {"type": "chart", "description": "Error e[n] = x[n] - x_K[n] (red) with its energy, equal to the energy of the dropped coefficients", "interactive": false, "updateTriggers": ["signalSelect", "kSlider"]},
+        {"type": "chart", "description": "DFT magnitudes |X_DFT[k]|/sqrt(8) in frequency order 0, 1, -1, 2, -2, 3, -3, 4, with the first K in green", "interactive": false, "updateTriggers": ["signalSelect", "kSlider"]},
+        {"type": "chart", "description": "Fraction of the energy in the first K coefficients versus K for the DCT (maroon) and the DFT (green), with the current K marked in gold (wide screens)", "interactive": false, "updateTriggers": ["signalSelect", "kSlider"]},
+        {"type": "diagram", "description": "Grid of the 64 basis images of the 8x8 DCT; images whose quantized coefficient is 0 are faded; click to highlight one and read its coefficient", "interactive": true, "updateTriggers": ["blockSelect", "qSlider"]},
+        {"type": "chart", "description": "Original 8x8 block, quantized coefficient map (maroon, log scale), reconstructed block and |error| map (red), with hover read-outs of pixel and coefficient values", "interactive": true, "updateTriggers": ["blockSelect", "qSlider"]},
+        {"type": "text-display", "description": "Energy fractions of the first K DCT and DFT coefficients; number of nonzero quantized coefficients, PSNR, MSE, maximum error and the energy share of the nonzero coefficients", "interactive": false, "updateTriggers": ["signalSelect", "kSlider", "blockSelect", "qSlider"]}
+      ]
+    },
+    "simulation": {
+      "model": {
+        "type": "mathematical",
+        "description": "Orthonormal DCT-II of an 8-sample signal and of an 8x8 block (level-shifted by 128). The 1-D view keeps the first K coefficients and compares the captured energy with the first K DFT bins in frequency order; the 2-D view quantizes every coefficient with a uniform step Q, inverts the transform, rounds and clips the pixels to 0..255 and reports the PSNR.",
+        "equations": [
+          "X[k] = c_k sum_{n=0}^{N-1} x[n] cos(pi k (2n + 1) / 2N), c_0 = sqrt(1/N), c_k = sqrt(2/N)",
+          "x_K[n] = sum_{k<K} X[k] phi_k[n]",
+          "sum_n e[n]^2 = sum_{k>=K} X[k]^2 (Parseval)",
+          "C = D X D^T, X = block - 128",
+          "C_q = Q round(C / Q)",
+          "PSNR = 10 log10(255^2 / MSE)"
+        ],
+        "algorithms": ["Direct DCT-II by matrix multiplication", "Naive 8-point DFT", "Uniform scalar quantization"]
+      }
+    },
+    "usage": {
+      "recommendedUsage": ["demonstration", "exploration", "guided-practice"],
+      "instructionalStrategies": ["Predict which coefficients are zero from the symmetry of the signal", "Increase K one step at a time and compare the DCT and DFT energy read-outs", "Raise Q and watch the nonzero count and the PSNR fall for different blocks"],
+      "extensions": ["Replace the uniform step with the JPEG luminance quantization table", "Add zig-zag ordering and run-length coding of the quantized coefficients"]
+    }
+  },
+  "canvasHeight": 666
+}

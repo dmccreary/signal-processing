@@ -1,0 +1,182 @@
+{
+  "microsim": {
+    "dublinCore": {
+      "title": "FIR vs IIR Filters",
+      "creator": ["Dan McCreary"],
+      "subject": ["Digital filters", "FIR filters", "IIR filters", "Filter order", "Filter coefficients", "Filter stability", "Coefficient quantization"],
+      "description": "Interactive MicroSim that designs an FIR windowed-sinc low-pass filter (Hamming window, N taps) and an IIR Butterworth low-pass filter (bilinear transform with pre-warping) for the same cutoff and compares their magnitude in dB, unwrapped phase, group delay, first 64 impulse-response samples, multiplies per output sample and the IIR pole-zero plot. A stability experiment rounds the IIR coefficients to B bits in direct form or as cascaded biquads and reports whether any pole reaches or leaves the unit circle.",
+      "publisher": "Dan McCreary",
+      "contributor": ["Claude (Anthropic)"],
+      "date": "2026-10-14",
+      "type": "Interactive Simulation",
+      "format": "text/html",
+      "identifier": "https://dmccreary.github.io/signal-processing/sims/fir-vs-iir/",
+      "language": "en",
+      "relation": ["Chapter 9: Filter Design Fundamentals"],
+      "rights": "CC BY-NC-SA 4.0"
+    },
+    "search": {
+      "tags": ["FIR filter", "IIR filter", "windowed sinc", "Hamming window", "Butterworth filter", "bilinear transform", "group delay", "linear phase", "pole-zero plot", "coefficient quantization", "biquad", "filter stability"],
+      "searchKeywords": ["FIR vs IIR", "linear phase FIR", "Butterworth group delay", "direct form vs second-order sections", "coefficient quantization instability", "multiplies per sample filter cost"],
+      "visualizationType": ["chart", "diagram", "interactive-demo", "simulation"],
+      "interactionLevel": "high",
+      "complexity": 7,
+      "relatedConcepts": ["FIR Filters", "IIR Filters", "Filter Order", "Filter Coefficients", "Filter Stability"],
+      "applicationDomains": ["education", "exploration", "analysis", "demonstration"]
+    },
+    "educational": {
+      "gradeLevel": ["Undergraduate"],
+      "subjectArea": ["Engineering", "Computer Science"],
+      "topic": ["FIR versus IIR filters", "Linear phase and group delay", "Finite and infinite impulse responses", "Filter cost", "Coefficient quantization and stability"],
+      "learningObjectives": [
+        "Compare the magnitude, phase and group delay of an FIR and an IIR low-pass filter with the same cutoff, and explain why a symmetric FIR has a constant group delay of (N-1)/2 samples",
+        "Distinguish a finite impulse response from an infinite one, and relate the decay of h[n] to the largest pole radius",
+        "Calculate the multiplies per output sample of an FIR filter, a direct-form IIR filter and a cascade of biquads",
+        "Evaluate which filter type is cheaper for a given attenuation, and explain why the FIR's cost grows as the cutoff narrows",
+        "Analyze how rounding IIR coefficients to B bits moves the poles, and explain why cascaded biquads stay stable where a high-order direct form fails"
+      ],
+      "bloomsTaxonomy": ["Apply", "Analyze", "Evaluate"],
+      "prerequisites": ["z-transform, poles and zeros, unit-circle stability", "Difference equations and convolution", "Frequency response in decibels and normalized frequency"],
+      "duration": {"typical": 30, "range": {"min": 15, "max": 45}},
+      "difficulty": "Intermediate",
+      "scaffolding": {
+        "type": ["guided-discovery", "feedback"],
+        "adaptability": "fixed",
+        "removal": "user-controlled"
+      },
+      "misconceptions": [
+        {
+          "misconception": "A zero outside the unit circle makes a filter unstable",
+          "correction": "Stability depends only on the poles; zeros may lie anywhere",
+          "evidence": "Tick 'Quantize IIR to B bits' at the defaults (8 bits, direct form): two quantized zeros move to radius 1.375, outside the unit circle, while the largest pole radius is 0.7630 and the filter is stable"
+        },
+        {
+          "misconception": "Cutoff frequency means the same thing for every filter",
+          "correction": "The windowed-sinc FIR is about 6 dB down at f_c and the Butterworth exactly 3 dB; compare attenuation at the frequencies that matter",
+          "evidence": "At the defaults the table shows |H(f_c)| = -6.1 dB for the FIR and -3.0 dB for the IIR"
+        }
+      ]
+    },
+    "technical": {
+      "framework": "p5.js",
+      "version": "1.0.0",
+      "canvasDimensions": {"width": 900, "height": 700, "responsive": true},
+      "regions": {"drawHeight": 588, "controlHeight": 112},
+      "dependencies": ["p5.js 2.3.2"],
+      "browserCompatibility": ["Chrome 90+", "Firefox 88+", "Safari 14+", "Edge 90+"],
+      "performance": {"memoryUsage": "low", "loadTime": 500},
+      "deviceRequirements": {
+        "minScreenWidth": 375,
+        "touchSupport": true,
+        "keyboardRequired": false,
+        "mouseRequired": false,
+        "networkRequired": false
+      },
+      "accessibility": {
+        "screenReader": true,
+        "keyboardNavigation": true,
+        "colorContrast": true,
+        "altText": true,
+        "screenReaderScript": "Compares an FIR windowed-sinc low-pass filter (blue) with an IIR Butterworth low-pass filter (green) designed for the same cutoff. Panels show the magnitude response in dB, the phase, the group delay, the first 64 samples of each impulse response, the IIR pole-zero plot and a table of multiplies per sample, group delay at DC and attenuation. Sliders set the cutoff, the number of FIR taps and the IIR order; a checkbox, a bits slider and a structure menu round the IIR coefficients to B bits in direct form or cascaded biquads and report whether any pole leaves the unit circle."
+      }
+    },
+    "userInterface": {
+      "layoutType": "multi-panel",
+      "layoutPattern": "drawing-region-above-controls",
+      "colorScheme": {
+        "drawingArea": "aliceblue",
+        "controlArea": "white",
+        "firFilter": "blue",
+        "iirFilter": "green",
+        "quantizedIIR": "red (dashed)",
+        "cutoffMarker": "gold (dashed)",
+        "text": "black"
+      },
+      "controls": [
+        {
+          "id": "cutoffSlider",
+          "type": "slider",
+          "label": "Cutoff f_c",
+          "description": "Sets the cutoff frequency of both filters as a fraction of the sample rate",
+          "group": "design",
+          "properties": {"min": 0.02, "max": 0.45, "default": 0.1, "step": 0.005, "units": "fraction of fs", "showValue": true}
+        },
+        {
+          "id": "tapsSlider",
+          "type": "slider",
+          "label": "FIR taps N",
+          "description": "Sets the length of the windowed-sinc FIR filter (odd values only)",
+          "group": "design",
+          "properties": {"min": 5, "max": 101, "default": 31, "step": 2, "showValue": true}
+        },
+        {
+          "id": "orderSlider",
+          "type": "slider",
+          "label": "IIR order",
+          "description": "Sets the order of the Butterworth IIR filter",
+          "group": "design",
+          "properties": {"min": 1, "max": 8, "default": 4, "step": 1, "showValue": true}
+        },
+        {
+          "id": "formSelect",
+          "type": "dropdown",
+          "label": "IIR structure",
+          "description": "Chooses how the IIR filter is realized: one direct-form polynomial or cascaded second-order sections; changes the multiply count and the effect of quantization",
+          "group": "quantization",
+          "properties": {
+            "options": [
+              {"value": "direct", "label": "Direct form"},
+              {"value": "biquad", "label": "Cascaded biquads"}
+            ],
+            "default": "direct"
+          }
+        },
+        {
+          "id": "quantCheckbox",
+          "type": "checkbox",
+          "label": "Quantize IIR to B bits",
+          "description": "Rounds the IIR coefficients to B-bit fixed point and shows the resulting poles, zeros, response and stability",
+          "group": "quantization",
+          "properties": {"checked": false}
+        },
+        {
+          "id": "bitsSlider",
+          "type": "slider",
+          "label": "Coefficient bits B",
+          "description": "Sets the word length used to round the IIR coefficients",
+          "group": "quantization",
+          "properties": {"min": 4, "max": 16, "default": 8, "step": 1, "units": "bits", "showValue": true}
+        }
+      ],
+      "visualElements": [
+        {"type": "chart", "description": "Magnitude response in dB (+10 to -108 dB) of the FIR (blue), IIR (green) and quantized IIR (red dashed) with the cutoff marked in gold", "interactive": true, "updateTriggers": ["cutoffSlider", "tapsSlider", "orderSlider", "quantCheckbox", "bitsSlider", "formSelect"]},
+        {"type": "chart", "description": "Unwrapped phase in multiples of pi and group delay in samples for both filters", "interactive": true, "updateTriggers": ["cutoffSlider", "tapsSlider", "orderSlider"]},
+        {"type": "chart", "description": "Stem plot of the first 64 impulse-response samples of both filters, with the end of the FIR marked and the quantized IIR response as a red dashed line", "interactive": true, "updateTriggers": ["cutoffSlider", "tapsSlider", "orderSlider", "quantCheckbox", "bitsSlider", "formSelect"]},
+        {"type": "diagram", "description": "IIR pole-zero plot with the unit circle, ideal poles and zeros in green and quantized ones in red; poles on or outside the circle are ringed", "interactive": false, "updateTriggers": ["cutoffSlider", "orderSlider", "quantCheckbox", "bitsSlider", "formSelect"]},
+        {"type": "text-display", "description": "Table of multiplies per output sample, group delay at DC, |H| at f_c and 2f_c and the largest pole radius, plus the quantized stability verdict", "interactive": false, "updateTriggers": ["cutoffSlider", "tapsSlider", "orderSlider", "quantCheckbox", "bitsSlider", "formSelect"]}
+      ]
+    },
+    "simulation": {
+      "model": {
+        "type": "mathematical",
+        "description": "Designs an FIR windowed-sinc low-pass (Hamming window, taps scaled to unity DC gain) and a Butterworth IIR low-pass by the bilinear transform with pre-warping, both for cutoff f_c. Frequency responses and group delays are evaluated on 501 frequencies from 0 to fs/2; impulse responses come from the difference equations. Quantization rounds each coefficient list to B-bit signed fixed point with a shared binary point; direct-form poles are found with the Durand-Kerner iteration.",
+        "equations": [
+          "h[n] = 2 f_c sinc(2 f_c (n - M)) w[n], M = (N - 1)/2, w[n] = 0.54 - 0.46 cos(2 pi n/(N - 1))",
+          "Omega_c = 2 tan(pi f_c), p_k = Omega_c exp(j pi (2k + N + 1)/(2N))",
+          "z_k = (2 + p_k)/(2 - p_k), zeros at z = -1",
+          "tau(f) = -d phase/d omega; FIR: tau = (N - 1)/2",
+          "multiplies: FIR N; IIR direct form 2N + 1; cascade 5 per biquad + 3 per first-order section",
+          "quantization step q = 2^(e - (B - 1)), 2^e > max |coefficient|"
+        ],
+        "algorithms": ["Windowed-sinc FIR design", "Butterworth design by bilinear transform", "Durand-Kerner polynomial root finding", "Phase unwrapping", "Group delay as Re(sum k c_k e^{-j omega k} / C(omega))"],
+        "limitations": ["Only coefficient quantization is modelled; arithmetic round-off, overflow and limit cycles are not", "The FIR multiply count does not exploit tap symmetry, which would halve it"]
+      }
+    },
+    "usage": {
+      "recommendedUsage": ["demonstration", "exploration", "guided-practice"],
+      "instructionalStrategies": ["Predict-then-verify with the read-out table", "Cost comparison: find the FIR length that matches an IIR attenuation", "Stability experiment: lower the word length until a pole leaves the unit circle"],
+      "extensions": ["Add Chebyshev and elliptic IIR prototypes and a Kaiser or Parks-McClellan FIR to compare more efficient designs", "Quantize the FIR taps as well to show that rounding changes its response but never its stability"]
+    }
+  },
+  "canvasHeight": 700
+}

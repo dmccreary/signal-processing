@@ -1,0 +1,191 @@
+{
+  "microsim": {
+    "dublinCore": {
+      "title": "Interactive Pole-Zero Analysis Tool",
+      "creator": ["Dan McCreary"],
+      "subject": ["Signal Processing", "Z-Transform", "Poles and Zeros", "Stability", "Frequency Response", "Digital Filters"],
+      "description": "Poles and zeros of a discrete-time system are dragged on the z-plane or set with radius and angle sliders. The magnitude and phase response are computed from the vectors between each pole or zero and a point on the unit circle, the impulse and step responses from the matching difference equation, and a banner reports whether the causal system is stable.",
+      "publisher": "Dan McCreary",
+      "contributor": ["Claude (Anthropic)"],
+      "date": "2026-10-02",
+      "type": "Interactive Simulation",
+      "format": "text/html",
+      "identifier": "https://dmccreary.github.io/signal-processing/sims/interactive-pole-zero-analysis-tool/",
+      "language": "en",
+      "relation": ["Chapter 8: Advanced Transforms"],
+      "rights": "CC BY-NC-SA 4.0"
+    },
+    "search": {
+      "tags": ["pole-zero plot", "z-plane", "unit circle", "stability", "frequency response", "impulse response", "resonator", "notch filter", "all-pass", "FIR"],
+      "searchKeywords": ["pole zero analysis", "z-plane stability", "pole zero frequency response", "discrete-time system stability", "magnitude response from poles and zeros"],
+      "visualizationType": ["diagram", "graph", "interactive-demo"],
+      "interactionLevel": "high",
+      "complexity": 6,
+      "relatedConcepts": ["Z-Transform", "Poles and Zeros", "Transfer Function", "BIBO Stability", "Frequency Response", "Impulse Response", "Unit Circle"],
+      "applicationDomains": ["education", "exploration", "analysis"],
+      "showcase": false
+    },
+    "educational": {
+      "gradeLevel": ["Undergraduate"],
+      "subjectArea": ["Engineering", "Mathematics"],
+      "topic": ["Pole-zero analysis of discrete-time systems in the z-plane", "Stability of causal systems", "Frequency response from geometry"],
+      "learningObjectives": [
+        "Determine from a pole-zero plot whether a causal discrete-time system is stable",
+        "Explain the magnitude response as a ratio of distances from zeros and poles to a point on the unit circle",
+        "Relate the radius and angle of a pole pair to the decay rate and oscillation frequency of the impulse response",
+        "Design a simple resonator or notch by placing poles and zeros"
+      ],
+      "bloomsTaxonomy": ["Understand", "Analyze", "Create"],
+      "prerequisites": ["Complex numbers in polar form", "The z-transform and transfer functions", "Impulse response and frequency response"],
+      "duration": {"typical": 28, "range": {"min": 25, "max": 30}},
+      "difficulty": "Intermediate",
+      "scaffolding": {
+        "type": ["guided-discovery", "feedback"],
+        "adaptability": "fixed",
+        "removal": "user-controlled"
+      },
+      "misconceptions": [
+        {
+          "misconception": "A zero outside the unit circle makes the system unstable",
+          "correction": "Stability of a causal system depends only on the poles; zeros shape the response but do not decide stability",
+          "evidence": "Load the all-pass preset: the zeros sit at radius 1.25 and the banner stays green"
+        },
+        {
+          "misconception": "Stable means the poles are in the left half-plane",
+          "correction": "The left half-plane rule belongs to the s-plane; in the z-plane the stability boundary is the unit circle",
+          "evidence": "Load the high-pass preset: its pole at z = -0.8 is on the left side of the plane and the system is stable; drag it outward across the circle and the banner turns red"
+        }
+      ]
+    },
+    "technical": {
+      "framework": "p5.js",
+      "version": "2.0.0",
+      "canvasDimensions": {"width": 670, "height": 545, "responsive": true},
+      "regions": {"drawHeight": 430, "controlHeight": 115},
+      "dependencies": ["p5.js 2.3.2"],
+      "browserCompatibility": ["Chrome 90+", "Firefox 88+", "Safari 14+", "Edge 90+"],
+      "performance": {"memoryUsage": "low", "loadTime": 500},
+      "deviceRequirements": {
+        "minScreenWidth": 320,
+        "touchSupport": true,
+        "keyboardRequired": false,
+        "mouseRequired": false,
+        "networkRequired": false
+      },
+      "accessibility": {
+        "screenReader": true,
+        "keyboardNavigation": true,
+        "colorContrast": true,
+        "altText": true,
+        "screenReaderScript": "A z-plane with the unit circle, poles drawn as crosses and zeros as circles that can be dragged. Four plots show the magnitude response, phase response, impulse response and step response of the system, and a banner says whether the system is stable."
+      }
+    },
+    "userInterface": {
+      "layoutType": "responsive-width",
+      "layoutPattern": "drawing-region-above-controls",
+      "colorScheme": {
+        "drawingArea": "aliceblue",
+        "controlArea": "white",
+        "accent": "crimson",
+        "text": "black"
+      },
+      "controls": [
+        {
+          "id": "presetSelect",
+          "type": "dropdown",
+          "label": "System",
+          "description": "Loads a preset set of poles and zeros",
+          "group": "system",
+          "properties": {
+            "options": [
+              {"value": "resonator", "label": "Resonator (pole pair)"},
+              {"value": "notch", "label": "Notch filter"},
+              {"value": "lowpass", "label": "Low-pass (one real pole)"},
+              {"value": "highpass", "label": "High-pass (one real pole)"},
+              {"value": "fir", "label": "Moving average of 4 (FIR)"},
+              {"value": "allpass", "label": "All-pass (zeros at 1/r)"},
+              {"value": "oscillator", "label": "Oscillator (poles on the circle)"},
+              {"value": "unstable", "label": "Unstable (poles outside)"}
+            ],
+            "default": "resonator"
+          }
+        },
+        {
+          "id": "addPoleButton",
+          "type": "button",
+          "label": "Add pole",
+          "description": "Adds a pole (a conjugate pair off the real axis); up to six poles and zeros in all",
+          "group": "system",
+          "properties": {"text": "Add pole", "action": "addItem('pole')"}
+        },
+        {
+          "id": "addZeroButton",
+          "type": "button",
+          "label": "Add zero",
+          "description": "Adds a zero (a conjugate pair off the real axis); up to six poles and zeros in all",
+          "group": "system",
+          "properties": {"text": "Add zero", "action": "addItem('zero')"}
+        },
+        {
+          "id": "removeButton",
+          "type": "button",
+          "label": "Remove",
+          "description": "Deletes the selected pole or zero",
+          "group": "system",
+          "properties": {"text": "Remove", "action": "removeSelected()"}
+        },
+        {
+          "id": "radiusSlider",
+          "type": "slider",
+          "label": "Radius |z|",
+          "description": "Sets the distance of the selected pole or zero from the origin",
+          "group": "selected-root",
+          "properties": {"min": 0, "max": 1.5, "default": 0.9, "step": 0.01, "showValue": true}
+        },
+        {
+          "id": "angleSlider",
+          "type": "slider",
+          "label": "Angle of z (degrees)",
+          "description": "Sets the angle of the selected pole or zero; a pair appears at plus and minus this angle",
+          "group": "selected-root",
+          "properties": {"min": 0, "max": 180, "default": 45, "step": 1, "units": "degrees", "showValue": true}
+        }
+      ],
+      "visualElements": [
+        {"type": "diagram", "description": "z-plane with the unit circle, draggable poles (crosses) and zeros (circles), and vectors to the point e^jw at the frequency cursor", "interactive": true, "updateTriggers": ["presetSelect", "addPoleButton", "addZeroButton", "removeButton", "radiusSlider", "angleSlider"]},
+        {"type": "graph", "description": "Magnitude response in dB and phase response in degrees from 0 to pi rad/sample, with a frequency cursor that follows the mouse", "interactive": true, "updateTriggers": ["presetSelect", "radiusSlider", "angleSlider"]},
+        {"type": "graph", "description": "Impulse response h[n] and step response s[n] over 50 samples as stem plots", "interactive": false, "updateTriggers": ["presetSelect", "radiusSlider", "angleSlider"]},
+        {"type": "text-display", "description": "Stability banner and a readout of the selected root and of |H| and angle of H at the cursor frequency", "interactive": false, "updateTriggers": ["presetSelect", "radiusSlider", "angleSlider"]}
+      ]
+    },
+    "simulation": {
+      "model": {
+        "type": "mathematical",
+        "description": "Evaluates H(z) on the unit circle from the distances and angles of the vectors from each pole and zero, and runs the matching difference equation for the impulse and step responses",
+        "equations": [
+          "H(z) = G (z - z_1)...(z - z_M) / ((z - p_1)...(z - p_N)), G = 1",
+          "|H(e^jw)| = product of distances from zeros to e^jw / product of distances from poles to e^jw",
+          "y[n] = sum_k b[k] x[n-k] - sum_{k>=1} a[k] y[n-k]",
+          "stable (causal, discrete time) if and only if every pole satisfies |p| < 1"
+        ],
+        "algorithms": ["Product of root vectors at 257 frequencies from 0 to pi", "Direct-form difference equation for 50 samples of the impulse response, cumulative sum for the step response"],
+        "assumptions": [
+          "The system is causal and has real coefficients, so complex poles and zeros are kept in conjugate pairs",
+          "When the numbers of poles and zeros differ, zeros or poles at z = 0 make up the difference; they change the phase but not the magnitude",
+          "A simple pole on the unit circle is reported as marginally stable and a repeated one as unstable",
+          "The frequency axis runs from 0 to pi radians per sample; 50 samples of the impulse and step responses are shown"
+        ]
+      }
+    },
+    "usage": {
+      "recommendedUsage": ["exploration", "guided-practice", "demonstration"],
+      "instructionalStrategies": [
+        "Manipulate the pole-zero plot and link each move to the frequency response, the time response and the stability verdict",
+        "Classify each preset as stable, marginally stable or unstable before loading it",
+        "Verify the magnitude at the resonance from the two pole distances"
+      ],
+      "extensions": ["Add a gain control G", "Show the region of convergence and non-causal systems"]
+    }
+  },
+  "canvasHeight": 545
+}

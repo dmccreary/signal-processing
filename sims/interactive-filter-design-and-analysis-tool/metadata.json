@@ -1,0 +1,544 @@
+{
+  "microsim": {
+    "dublinCore": {
+      "title": "Interactive Filter Design and Analysis Tool",
+      "creator": [
+        "Dan McCreary"
+      ],
+      "subject": [
+        "Signal Processing",
+        "Digital Filters",
+        "Filter Design",
+        "IIR Filters",
+        "FIR Filters",
+        "Filter Stability"
+      ],
+      "description": "Designs low-pass, high-pass, band-pass, band-stop, notch, comb and all-pass filters at fs = 8000 Hz as an IIR biquad cascade, an IIR direct form or an FIR filter, and shows the magnitude response with the ideal brick-wall response, the phase, group delay, impulse and step responses, the pole-zero plot with a stability indicator, the effect of rounding the coefficients to B bits, and what the filter does to a test signal made of 200, 1000 and 3000 Hz tones.",
+      "publisher": "Dan McCreary",
+      "contributor": [
+        "Claude (Anthropic)"
+      ],
+      "date": "2026-10-14",
+      "type": "Interactive Simulation",
+      "format": "text/html",
+      "identifier": "https://dmccreary.github.io/signal-processing/sims/interactive-filter-design-and-analysis-tool/",
+      "language": "en",
+      "relation": [
+        "Chapter 9: Filter Design Fundamentals"
+      ],
+      "rights": "CC BY-NC-SA 4.0"
+    },
+    "search": {
+      "tags": [
+        "filter design",
+        "low-pass",
+        "high-pass",
+        "band-pass",
+        "band-stop",
+        "notch filter",
+        "comb filter",
+        "all-pass filter",
+        "biquad",
+        "Butterworth",
+        "FIR",
+        "IIR",
+        "pole-zero plot",
+        "stability",
+        "coefficient quantization",
+        "group delay"
+      ],
+      "searchKeywords": [
+        "interactive filter design",
+        "IIR vs FIR",
+        "biquad cascade vs direct form",
+        "coefficient quantization instability",
+        "comb filter peaks and dips",
+        "brick-wall filter comparison"
+      ],
+      "visualizationType": [
+        "chart",
+        "graph",
+        "interactive-demo",
+        "simulation"
+      ],
+      "interactionLevel": "high",
+      "complexity": 7,
+      "relatedConcepts": [
+        "Filters",
+        "Low-Pass Filters",
+        "High-Pass Filters",
+        "Band-Pass Filters",
+        "Band-Stop Filters",
+        "Notch Filters",
+        "Comb Filters",
+        "All-Pass Filters",
+        "FIR Filters",
+        "IIR Filters",
+        "Filter Order",
+        "Filter Coefficients",
+        "Filter Stability"
+      ],
+      "applicationDomains": [
+        "education",
+        "demonstration",
+        "exploration",
+        "analysis"
+      ],
+      "showcase": false
+    },
+    "educational": {
+      "gradeLevel": [
+        "Undergraduate"
+      ],
+      "subjectArea": [
+        "Engineering",
+        "Computer Science",
+        "Mathematics"
+      ],
+      "topic": [
+        "Filter types",
+        "Butterworth IIR design",
+        "Windowed-sinc FIR design",
+        "Comb and all-pass filters",
+        "Pole locations and stability",
+        "Coefficient quantization"
+      ],
+      "learningObjectives": [
+        "Classify low-pass, high-pass, band-pass, band-stop, notch, comb and all-pass filters by which of the 200, 1000 and 3000 Hz test tones each one passes or removes",
+        "Explain why raising the order of a Butterworth filter steepens the transition band without moving the -3 dB frequency",
+        "Compare FIR and IIR designs using their pole locations, group delay and impulse responses",
+        "Calculate the peak and dip frequencies of a comb filter from fs/D and choose D to remove given tones",
+        "Analyze how rounding the coefficients moves poles, and why a biquad cascade survives rounding that makes the same filter unstable in direct form"
+      ],
+      "bloomsTaxonomy": [
+        "Understand",
+        "Apply",
+        "Analyze"
+      ],
+      "prerequisites": [
+        "Difference equations and the z-transform",
+        "Poles, zeros and the unit circle",
+        "Frequency response in decibels and phase",
+        "Sinusoids and sampling"
+      ],
+      "duration": {
+        "typical": 45,
+        "range": {
+          "min": 20,
+          "max": 60
+        }
+      },
+      "difficulty": "Intermediate",
+      "scaffolding": {
+        "type": [
+          "guided-discovery",
+          "feedback"
+        ],
+        "adaptability": "fixed",
+        "removal": "user-controlled"
+      },
+      "misconceptions": [
+        {
+          "misconception": "A higher-order filter has a lower cutoff",
+          "correction": "For a Butterworth design the -3 dB frequency does not depend on the order; only the transition band narrows",
+          "evidence": "Low-pass at 500 Hz: the -3 dB read-out stays at 500 Hz for N = 1, 4 and 8 while the stopband edge moves from 3872 Hz to 866 Hz"
+        },
+        {
+          "misconception": "Coefficients rounded to 16 bits are practically exact, so the filter cannot change much",
+          "correction": "Sensitivity depends on the structure: high-order direct-form polynomials have very sensitive roots",
+          "evidence": "8th-order low-pass at 500 Hz with 16-bit coefficients: the biquad cascade keeps pole radius 0.9279, the direct form becomes unstable with radius 1.0497"
+        },
+        {
+          "misconception": "The cutoff of an FIR filter is its -3 dB frequency",
+          "correction": "For a windowed-sinc design the cutoff is the half-amplitude (-6 dB) point",
+          "evidence": "FIR low-pass with fc = 500 Hz and M = 32 reports -3 dB at 398 Hz"
+        }
+      ]
+    },
+    "technical": {
+      "framework": "p5.js",
+      "version": "1.0.0",
+      "canvasDimensions": {
+        "width": 900,
+        "height": 780,
+        "responsive": true
+      },
+      "regions": {
+        "drawHeight": 628,
+        "controlHeight": 152
+      },
+      "dependencies": [
+        "p5.js 2.3.2"
+      ],
+      "browserCompatibility": [
+        "Chrome 90+",
+        "Firefox 88+",
+        "Safari 14+",
+        "Edge 90+"
+      ],
+      "performance": {
+        "memoryUsage": "low",
+        "computationalComplexity": "O(n)"
+      },
+      "deviceRequirements": {
+        "minScreenWidth": 360,
+        "touchSupport": true,
+        "keyboardRequired": false,
+        "mouseRequired": false,
+        "networkRequired": true
+      },
+      "accessibility": {
+        "screenReader": true,
+        "keyboardNavigation": true,
+        "colorContrast": true,
+        "altText": true,
+        "screenReaderScript": "Filter design tool with fs = 8000 Hz. Choose a filter type and an IIR or FIR design, then set the frequency, order, Q, comb delay and gain, and coefficient bits. Plots show the magnitude response with the ideal brick-wall response, the phase, group delay, impulse or step response, the pole-zero plot with a stability indicator, and the input and output of a test signal made of 200, 1000 and 3000 Hz tones with a before and after bar chart."
+      }
+    },
+    "userInterface": {
+      "layoutType": "responsive-width",
+      "layoutPattern": "drawing-region-above-controls",
+      "colorScheme": {
+        "drawingArea": "aliceblue",
+        "controlArea": "white",
+        "magnitude": "maroon",
+        "phaseAndGroupDelay": "green",
+        "timeSignals": "blue",
+        "testTones": "gold",
+        "unstable": "red",
+        "text": "black"
+      },
+      "controls": [
+        {
+          "id": "typeSelect",
+          "type": "dropdown",
+          "label": "Filter type",
+          "description": "Chooses low-pass, high-pass, band-pass, band-stop, notch, comb or all-pass",
+          "group": "design",
+          "properties": {
+            "options": [
+              {
+                "value": "lp",
+                "label": "Low-pass"
+              },
+              {
+                "value": "hp",
+                "label": "High-pass"
+              },
+              {
+                "value": "bp",
+                "label": "Band-pass"
+              },
+              {
+                "value": "bs",
+                "label": "Band-stop"
+              },
+              {
+                "value": "notch",
+                "label": "Notch"
+              },
+              {
+                "value": "comb",
+                "label": "Comb"
+              },
+              {
+                "value": "ap",
+                "label": "All-pass"
+              }
+            ],
+            "default": "lp"
+          }
+        },
+        {
+          "id": "implSelect",
+          "type": "dropdown",
+          "label": "Design",
+          "description": "IIR as a cascade of biquads, the same IIR as one direct-form polynomial, or FIR (no feedback; not available for the all-pass)",
+          "group": "design",
+          "properties": {
+            "options": [
+              {
+                "value": "iir",
+                "label": "IIR: biquad cascade"
+              },
+              {
+                "value": "df",
+                "label": "IIR: direct form"
+              },
+              {
+                "value": "fir",
+                "label": "FIR: no feedback"
+              }
+            ],
+            "default": "iir"
+          }
+        },
+        {
+          "id": "viewSelect",
+          "type": "dropdown",
+          "label": "Show",
+          "description": "Selects the lower plot: phase, group delay, impulse response or step response",
+          "group": "display",
+          "properties": {
+            "options": [
+              {
+                "value": "phase",
+                "label": "Show: phase"
+              },
+              {
+                "value": "gd",
+                "label": "Show: group delay"
+              },
+              {
+                "value": "imp",
+                "label": "Show: impulse response"
+              },
+              {
+                "value": "step",
+                "label": "Show: step response"
+              }
+            ],
+            "default": "phase"
+          }
+        },
+        {
+          "id": "dbCheckbox",
+          "type": "checkbox",
+          "label": "dB scale",
+          "description": "Shows the magnitude in dB (-80 to +10 dB) or as a linear gain",
+          "group": "display",
+          "properties": {
+            "checked": true
+          }
+        },
+        {
+          "id": "freqSlider",
+          "type": "slider",
+          "label": "Cutoff fc / Centre f0",
+          "description": "Cutoff or centre frequency, mapped logarithmically from 20 to 3500 Hz (slider positions 0-1000)",
+          "group": "design",
+          "properties": {
+            "min": 0,
+            "max": 1000,
+            "default": 623,
+            "step": 1,
+            "units": "Hz (positions 0-1000 map to 20-3500 Hz; default 623 = 500 Hz)",
+            "showValue": true,
+            "logarithmic": true
+          }
+        },
+        {
+          "id": "orderSlider",
+          "type": "slider",
+          "label": "Order N",
+          "description": "IIR Butterworth order (band-pass and band-stop have order 2N); FIR order M = 8N",
+          "group": "design",
+          "properties": {
+            "min": 1,
+            "max": 8,
+            "default": 4,
+            "step": 1,
+            "showValue": true
+          }
+        },
+        {
+          "id": "qSlider",
+          "type": "slider",
+          "label": "Q",
+          "description": "Selectivity of the band-pass, band-stop, notch and all-pass sections",
+          "group": "design",
+          "properties": {
+            "min": 0.5,
+            "max": 20,
+            "default": 2,
+            "step": 0.1,
+            "showValue": true
+          }
+        },
+        {
+          "id": "delaySlider",
+          "type": "slider",
+          "label": "Comb delay D",
+          "description": "Delay of the comb filter in samples",
+          "group": "comb",
+          "properties": {
+            "min": 2,
+            "max": 64,
+            "default": 8,
+            "step": 1,
+            "units": "samples",
+            "showValue": true
+          }
+        },
+        {
+          "id": "gainSlider",
+          "type": "slider",
+          "label": "Comb gain g",
+          "description": "Gain of the delayed term of the comb filter",
+          "group": "comb",
+          "properties": {
+            "min": 0,
+            "max": 0.95,
+            "default": 0.9,
+            "step": 0.05,
+            "showValue": true
+          }
+        },
+        {
+          "id": "bitsSlider",
+          "type": "slider",
+          "label": "Coeff. bits",
+          "description": "Rounds every coefficient to 4-24 bits; the right end (25) means no rounding (64-bit floating point)",
+          "group": "precision",
+          "properties": {
+            "min": 4,
+            "max": 25,
+            "default": 25,
+            "step": 1,
+            "units": "bits",
+            "showValue": true
+          }
+        }
+      ],
+      "visualElements": [
+        {
+          "type": "chart",
+          "description": "Magnitude response |H(f)| in dB or linear (maroon), ideal brick-wall response (dashed gray), test-tone markers (gold) and the -3 dB line",
+          "interactive": false,
+          "updateTriggers": [
+            "typeSelect",
+            "implSelect",
+            "freqSlider",
+            "orderSlider",
+            "qSlider",
+            "delaySlider",
+            "gainSlider",
+            "bitsSlider",
+            "dbCheckbox"
+          ]
+        },
+        {
+          "type": "chart",
+          "description": "Lower plot: unwrapped phase, group delay, impulse response or step response",
+          "interactive": false,
+          "updateTriggers": [
+            "viewSelect",
+            "typeSelect",
+            "implSelect",
+            "freqSlider",
+            "orderSlider",
+            "qSlider",
+            "delaySlider",
+            "gainSlider",
+            "bitsSlider"
+          ]
+        },
+        {
+          "type": "diagram",
+          "description": "Pole-zero plot in the z-plane with the unit circle; poles drawn red when on or outside it",
+          "interactive": false,
+          "updateTriggers": [
+            "typeSelect",
+            "implSelect",
+            "freqSlider",
+            "orderSlider",
+            "qSlider",
+            "delaySlider",
+            "gainSlider",
+            "bitsSlider"
+          ]
+        },
+        {
+          "type": "text-display",
+          "description": "Stability status, largest pole radius, order, -3 dB frequencies, passband and stopband or comb and all-pass read-outs",
+          "interactive": false,
+          "updateTriggers": [
+            "typeSelect",
+            "implSelect",
+            "freqSlider",
+            "orderSlider",
+            "qSlider",
+            "delaySlider",
+            "gainSlider",
+            "bitsSlider"
+          ]
+        },
+        {
+          "type": "graph",
+          "description": "10 ms of the test signal input (gray) and filter output (blue)",
+          "interactive": false,
+          "updateTriggers": [
+            "typeSelect",
+            "implSelect",
+            "freqSlider",
+            "orderSlider",
+            "qSlider",
+            "delaySlider",
+            "gainSlider",
+            "bitsSlider"
+          ]
+        },
+        {
+          "type": "chart",
+          "description": "Bars with the amplitude of the 200, 1000 and 3000 Hz tones before (gray) and after (maroon) the filter",
+          "interactive": false,
+          "updateTriggers": [
+            "typeSelect",
+            "implSelect",
+            "freqSlider",
+            "orderSlider",
+            "qSlider",
+            "delaySlider",
+            "gainSlider",
+            "bitsSlider"
+          ]
+        }
+      ]
+    },
+    "simulation": {
+      "model": {
+        "type": "algorithmic",
+        "description": "Butterworth and RBJ-cookbook biquads from the bilinear transform with prewarping (or Hamming-windowed sinc FIR filters, or comb filters); frequency response, unwrapped phase and analytic group delay on a dense grid; poles and zeros from each section; the test signal is filtered sample by sample with the same, optionally rounded, coefficients.",
+        "equations": [
+          "y[n] = sum_k b_k x[n-k] - sum_{k>=1} a_k y[n-k]",
+          "Omega = tan(pi f / fs) (prewarped bilinear transform)",
+          "Q_k = 1 / (2 cos((2k-1) pi / (2N)))",
+          "LPF biquad: b = [(1-cos w0)/2, 1-cos w0, (1-cos w0)/2], a = [1+alpha, -2 cos w0, 1-alpha], alpha = sin(w0)/(2Q)",
+          "FIR comb: y[n] = x[n] + g x[n-D], |H| = sqrt(1 + g^2 + 2 g cos(w D))",
+          "Feedback comb: y[n] = (1-g) x[n] + g y[n-D]",
+          "Stable if and only if every pole satisfies |p| < 1"
+        ],
+        "algorithms": [
+          "Bilinear transform with prewarping",
+          "Low-pass to band-pass and band-stop transformation",
+          "Hamming-windowed sinc FIR design",
+          "Aberth-Ehrlich polynomial root finding",
+          "Single-bin DFT over whole cycles for the tone amplitudes"
+        ],
+        "limitations": [
+          "Only the coefficients are rounded; arithmetic is 64-bit floating point",
+          "The phase is undefined at exact zeros of the response and is left blank there",
+          "Q is applied to the prewarped analog prototype, so the measured digital bandwidth differs slightly from f0/Q"
+        ]
+      }
+    },
+    "usage": {
+      "recommendedUsage": [
+        "demonstration",
+        "exploration",
+        "guided-practice",
+        "group-activity"
+      ],
+      "instructionalStrategies": [
+        "Predict-then-verify with the tone bars",
+        "Compare the same filter as cascade, direct form and FIR",
+        "Table of tone amplitudes for each filter family"
+      ],
+      "extensions": [
+        "Add Chebyshev and elliptic prototypes",
+        "Add arithmetic (not only coefficient) quantization to show limit cycles"
+      ]
+    }
+  },
+  "canvasHeight": 780
+}

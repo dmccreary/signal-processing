@@ -1,73 +1,103 @@
 {
-  "title": "Synth Timeline",
-  "description": "Interactive timeline visualization showing the history and evolution of synthesizers.",
-  "creator": "Dan McCreary",
-  "date": "2024-01-01",
-  "subject": [
-    "Music Technology",
-    "Synthesizers",
-    "History",
-    "Timeline"
-  ],
-  "type": "Interactive Simulation",
-  "format": "text/html",
-  "language": "en",
-  "rights": "CC BY-NC-SA 4.0",
-  "identifier": "https://dmccreary.github.io/signal-processing/sims/synth-timeline/",
-  "publisher": "Dan McCreary",
-  "educationalLevel": "High School",
-  "learningResourceType": "simulation",
-  "audience": "Students, Educators",
-  "version": "1.0.0",
-  "bloomLevel": [
-    "Remember",
-    "Understand"
-  ],
-  "concepts": [
-    "Synthesizer history",
-    "Music technology",
-    "Timeline visualization"
-  ],
-  "prerequisites": [
-    "Basic music knowledge"
-  ],
-  "library": "vis-timeline",
-  "visualizationType": [
-    "interactive-demo",
-    "map",
-    "network",
-    "simulation",
-    "timeline"
-  ],
-  "learningObjectives": [
-    "Understand the key concepts of synth timeline",
-    "Explore synth timeline through interactive visualization",
-    "Apply knowledge of synth timeline to solve problems"
-  ],
-  "bloomsTaxonomy": [
-    "Remember",
-    "Create"
-  ],
-  "pedagogical": {
-    "pattern": "assessment",
-    "bloomAlignment": [
-      "remember",
-      "evaluate",
-      "create"
-    ],
-    "bloomVerbs": [
-      "assess",
-      "evaluate",
-      "construct",
-      "create",
-      "design"
-    ],
-    "pacing": "self-paced",
-    "supportsPrediction": false,
-    "dataVisibility": "medium",
-    "feedbackType": [
-      "immediate"
-    ],
-    "interactionStyle": "construct"
-  }
+  "microsim": {
+    "dublinCore": {
+      "title": "Synth Timeline",
+      "creator": ["Dan McCreary"],
+      "subject": ["Synthesizers", "Music technology", "History of electronic music", "Timeline"],
+      "description": "Read-only timeline of ten landmark synthesizers from the 1920 Theremin to the 1987 Roland D-50, color coded as Early Innovations, Analog Revolution and Digital Era.",
+      "publisher": "Dan McCreary",
+      "contributor": ["Claude (Anthropic)"],
+      "date": "2025-01-23",
+      "type": "Interactive Simulation",
+      "format": "text/html",
+      "identifier": "https://dmccreary.github.io/signal-processing/sims/synth-timeline/",
+      "language": "en",
+      "relation": ["Chapter 15: Signal Processing Applications and AI Integration", "Signal Processing in Electronic Music"],
+      "coverage": {"temporal": "1920-1987"},
+      "rights": "CC BY-NC-SA 4.0"
+    },
+    "search": {
+      "tags": ["synthesizer", "timeline", "electronic music", "history", "Moog", "FM synthesis", "sampling", "analog synthesis"],
+      "searchKeywords": ["synthesizer history", "synth timeline", "history of electronic instruments", "Theremin to DX7", "analog versus digital synthesizers"],
+      "visualizationType": ["timeline"],
+      "interactionLevel": "passive",
+      "complexity": 2,
+      "relatedConcepts": ["Audio Signal Processing", "Sampling"],
+      "applicationDomains": ["education", "demonstration"],
+      "showcase": false
+    },
+    "educational": {
+      "gradeLevel": ["Undergraduate"],
+      "subjectArea": ["Music", "Engineering"],
+      "topic": ["History of synthesizers", "Analog and digital sound synthesis", "Electronic music technology"],
+      "learningObjectives": [
+        "Sequence the ten milestones in chronological order, from the 1920 Theremin through the 1987 Roland D-50",
+        "Classify each instrument as Early Innovations, Analog Revolution or Digital Era and state the technology that defines each category",
+        "Explain why the Minimoog Model D (1970) is described as portable and integrated, in contrast with the modular systems of 1963 and 1964",
+        "Compare the Yamaha DX7 (FM synthesis), Kurzweil K250 (stored samples) and Roland D-50 (samples plus synthesized waveforms) as three different digital approaches",
+        "Identify the Prophet-5 as the first fully programmable polyphonic synthesizer with patch memory"
+      ],
+      "bloomsTaxonomy": ["Remember", "Understand", "Analyze"],
+      "prerequisites": ["Know that a synthesizer is an electronic instrument that generates audio signals", "Familiarity with the terms oscillator, filter and waveform"],
+      "duration": {"typical": 15, "range": {"min": 10, "max": 25}},
+      "difficulty": "Beginner",
+      "misconceptions": [
+        {
+          "misconception": "Each year on the timeline is the day the instrument was invented",
+          "correction": "A year marks a milestone, not a single invention date; design, demonstration and first sales can fall in different years",
+          "evidence": "The Buchla card says 1963, when Don Buchla began designing his first modules, but the assembled system was sold commercially from 1966; the Prophet-5 was designed in 1977 and shipped in 1978"
+        },
+        {
+          "misconception": "The K250 was the first sampling synthesizer, and all digital synthesizers work alike",
+          "correction": "The Fairlight CMI (1979) was an earlier instrument with an embedded sampler, and the DX7 computes sounds by FM synthesis instead of playing back recordings",
+          "evidence": "The three Digital Era cards describe three different methods: FM synthesis (DX7), stored samples (K250) and samples plus synthesized waveforms (D-50)"
+        }
+      ]
+    },
+    "technical": {
+      "framework": "other",
+      "version": "2.0.0",
+      "canvasDimensions": {"width": 700, "height": 1300, "responsive": true},
+      "regions": {"drawHeight": 1300, "controlHeight": 0},
+      "dependencies": ["React 18.2.0 (production build)", "ReactDOM 18.2.0 (production build)", "Tailwind CSS 2.2.19"],
+      "browserCompatibility": ["Chrome 90+", "Firefox 88+", "Safari 14+", "Edge 90+"],
+      "performance": {"memoryUsage": "low", "loadTime": 1000},
+      "deviceRequirements": {
+        "minScreenWidth": 320,
+        "touchSupport": true,
+        "keyboardRequired": false,
+        "mouseRequired": false,
+        "networkRequired": true
+      },
+      "accessibility": {
+        "screenReader": true,
+        "keyboardNavigation": true,
+        "colorContrast": true,
+        "altText": true,
+        "screenReaderScript": "A vertical timeline of ten synthesizer milestones from 1920 to 1987. Each card gives the year, the instrument name and a one-line description, and is color coded as Early Innovations (blue), Analog Revolution (purple) or Digital Era (pink). The timeline has no controls; scroll to read it."
+      }
+    },
+    "userInterface": {
+      "layoutType": "responsive-width",
+      "layoutPattern": "single-column-scrolling-list",
+      "colorScheme": {
+        "background": "white",
+        "earlyInnovations": "blue",
+        "analogRevolution": "purple",
+        "digitalEra": "pink",
+        "text": "black and gray"
+      },
+      "controls": [],
+      "visualElements": [
+        {"type": "shape", "description": "Legend: three colored squares naming the categories Early Innovations, Analog Revolution and Digital Era", "interactive": false},
+        {"type": "text-display", "description": "Ten cards in year order, each with the year on the left and a colored card showing the instrument name and a one-line description", "interactive": false}
+      ]
+    },
+    "usage": {
+      "recommendedUsage": ["demonstration", "individual-study"],
+      "instructionalStrategies": ["Chronological sequencing", "Category audit by color", "Compare three digital synthesis methods using the card text and references"],
+      "extensions": ["Add the Fairlight CMI (1979) to the timeline and decide which category it belongs to"]
+    }
+  },
+  "canvasHeight": 1300
 }

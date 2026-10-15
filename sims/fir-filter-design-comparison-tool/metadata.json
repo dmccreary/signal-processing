@@ -1,0 +1,641 @@
+{
+  "microsim": {
+    "dublinCore": {
+      "title": "FIR Filter Design Comparison Tool",
+      "creator": [
+        "Dan McCreary"
+      ],
+      "subject": [
+        "Signal Processing",
+        "FIR Filter Design",
+        "Window Method",
+        "Frequency Sampling Method",
+        "Parks-McClellan"
+      ],
+      "description": "Two linear-phase FIR filters designed for the same low-pass, high-pass or band-pass specification by the window method (rectangular, Hann, Hamming, Blackman or Kaiser), frequency sampling with a transition sample, or Parks-McClellan, overlaid with their impulse responses, zeros, phase or group delay and measured transition width, passband ripple and stop-band attenuation.",
+      "publisher": "Dan McCreary",
+      "contributor": [
+        "Claude (Anthropic)"
+      ],
+      "date": "2026-10-14",
+      "type": "Interactive Simulation",
+      "format": "text/html",
+      "identifier": "https://dmccreary.github.io/signal-processing/sims/fir-filter-design-comparison-tool/",
+      "language": "en",
+      "relation": [
+        "Chapter 10: Advanced Filter Design and Implementation"
+      ],
+      "rights": "CC BY-NC-SA 4.0"
+    },
+    "search": {
+      "tags": [
+        "FIR filter",
+        "window method",
+        "frequency sampling",
+        "Parks-McClellan",
+        "Kaiser window",
+        "Hamming window",
+        "Blackman window",
+        "linear phase",
+        "stop-band attenuation",
+        "transition width"
+      ],
+      "searchKeywords": [
+        "FIR filter design comparison",
+        "window method vs frequency sampling",
+        "Kaiser window formula",
+        "equiripple filter",
+        "transition sample",
+        "passband ripple and stopband attenuation"
+      ],
+      "visualizationType": [
+        "chart",
+        "interactive-demo",
+        "simulation"
+      ],
+      "interactionLevel": "high",
+      "complexity": 7,
+      "relatedConcepts": [
+        "Window Method",
+        "Frequency Sampling Method",
+        "FIR Filter",
+        "Kaiser Window",
+        "Hamming Window",
+        "Parks-McClellan Algorithm",
+        "Linear Phase",
+        "Group Delay",
+        "Passband Ripple",
+        "Stopband Attenuation",
+        "Transition Band"
+      ],
+      "applicationDomains": [
+        "education",
+        "exploration",
+        "analysis"
+      ],
+      "showcase": false
+    },
+    "educational": {
+      "gradeLevel": [
+        "Undergraduate"
+      ],
+      "subjectArea": [
+        "Engineering",
+        "Computer Science"
+      ],
+      "topic": [
+        "FIR filter design",
+        "Window method",
+        "Frequency sampling method",
+        "Parks-McClellan optimal design",
+        "Linear phase"
+      ],
+      "learningObjectives": [
+        "Apply the window method to design a low-pass, high-pass or band-pass FIR filter and read its transition width, passband ripple and stop-band attenuation",
+        "Compare how the rectangular, Hann, Hamming, Blackman and Kaiser windows trade transition width against stop-band attenuation at a fixed number of taps",
+        "Predict the stop-band attenuation and transition width of a Kaiser-window design from beta and N with Kaiser's formulas, and check the prediction against the measurement",
+        "Explain how the transition sample T1 changes the stop-band attenuation of a frequency-sampling design, and find the value that maximizes it",
+        "Evaluate which design method meets a given specification with the fewest taps, using Parks-McClellan as the optimal benchmark"
+      ],
+      "bloomsTaxonomy": [
+        "Apply",
+        "Analyze",
+        "Evaluate"
+      ],
+      "prerequisites": [
+        "z-transform and frequency response of an FIR filter",
+        "Ideal low-pass (sinc) impulse response and the DFT",
+        "Decibels and filter tolerances"
+      ],
+      "duration": {
+        "typical": 40,
+        "range": {
+          "min": 25,
+          "max": 60
+        }
+      },
+      "difficulty": "Advanced",
+      "scaffolding": {
+        "type": [
+          "guided-discovery",
+          "feedback"
+        ],
+        "adaptability": "fixed",
+        "removal": "user-controlled"
+      },
+      "misconceptions": [
+        {
+          "misconception": "More taps give more stop-band attenuation",
+          "correction": "With the window method the window shape sets the attenuation; the number of taps sets the transition width",
+          "evidence": "A Hamming design stays between 53.6 and 53.9 dB from N = 21 to N = 101 while the transition width shrinks from 0.333 pi to 0.067 pi"
+        },
+        {
+          "misconception": "A frequency-sampling filter equals the ideal response because it matches it at every sample",
+          "correction": "It matches only at w_k = 2 pi k / N; between the samples the response ripples",
+          "evidence": "With T1 = 0 the samples are exactly 1 and 0, yet the passband ripple is 2.29 dB and the stop band rises to -16.4 dB"
+        }
+      ]
+    },
+    "technical": {
+      "framework": "p5.js",
+      "version": "1.0.0",
+      "canvasDimensions": {
+        "width": 900,
+        "height": 665,
+        "responsive": true
+      },
+      "regions": {
+        "drawHeight": 490,
+        "controlHeight": 175
+      },
+      "dependencies": [
+        "p5.js 2.3.2"
+      ],
+      "browserCompatibility": [
+        "Chrome 90+",
+        "Firefox 88+",
+        "Safari 14+",
+        "Edge 90+"
+      ],
+      "performance": {
+        "memoryUsage": "low",
+        "computationalComplexity": "O(n²)"
+      },
+      "deviceRequirements": {
+        "minScreenWidth": 360,
+        "touchSupport": true,
+        "keyboardRequired": false,
+        "mouseRequired": false,
+        "networkRequired": true
+      },
+      "accessibility": {
+        "screenReader": true,
+        "keyboardNavigation": true,
+        "colorContrast": true,
+        "altText": true,
+        "screenReaderScript": "FIR filter design comparison. Two designs, A (solid blue) and B (dashed maroon), meet the same low-pass, high-pass or band-pass cutoff. Each uses the window method, frequency sampling or Parks-McClellan with its own number of taps. The left plot shows the impulse response (or the zeros, phase or group delay); the right plot shows the magnitude response with the ideal response in grey. A table reports each design's transition width, passband ripple and stop-band attenuation."
+      }
+    },
+    "userInterface": {
+      "layoutType": "responsive-width",
+      "layoutPattern": "drawing-region-above-controls",
+      "colorScheme": {
+        "drawingArea": "aliceblue",
+        "controlArea": "white",
+        "designA": "blue (solid)",
+        "designB": "maroon (dashed)",
+        "ideal": "grey",
+        "text": "black"
+      },
+      "controls": [
+        {
+          "id": "typeSelect",
+          "type": "dropdown",
+          "label": "Filter type",
+          "description": "Shared specification: low-pass, high-pass or band-pass",
+          "group": "specification",
+          "properties": {
+            "options": [
+              {
+                "value": "Low-pass",
+                "label": "Low-pass"
+              },
+              {
+                "value": "High-pass",
+                "label": "High-pass"
+              },
+              {
+                "value": "Band-pass",
+                "label": "Band-pass"
+              }
+            ],
+            "default": "Low-pass"
+          }
+        },
+        {
+          "id": "scaleSelect",
+          "type": "dropdown",
+          "label": "Magnitude",
+          "description": "Magnitude plot in dB, on a linear scale, or zoomed on the passband ripple",
+          "group": "display",
+          "properties": {
+            "options": [
+              {
+                "value": "dB scale",
+                "label": "dB scale"
+              },
+              {
+                "value": "Linear scale",
+                "label": "Linear scale"
+              },
+              {
+                "value": "Passband zoom",
+                "label": "Passband zoom"
+              }
+            ],
+            "default": "dB scale"
+          }
+        },
+        {
+          "id": "viewSelect",
+          "type": "dropdown",
+          "label": "Left plot",
+          "description": "Chooses the left plot: impulse response, zeros of H(z), phase or group delay",
+          "group": "display",
+          "properties": {
+            "options": [
+              {
+                "value": "Impulse h[n]",
+                "label": "Impulse h[n]"
+              },
+              {
+                "value": "Zeros",
+                "label": "Zeros"
+              },
+              {
+                "value": "Phase",
+                "label": "Phase"
+              },
+              {
+                "value": "Group delay",
+                "label": "Group delay"
+              }
+            ],
+            "default": "Impulse h[n]"
+          }
+        },
+        {
+          "id": "fc1Slider",
+          "type": "slider",
+          "label": "Cutoff wc (lower edge wc1 for band-pass)",
+          "description": "Cutoff frequency in units of pi rad/sample",
+          "group": "specification",
+          "properties": {
+            "min": 0.05,
+            "max": 0.95,
+            "default": 0.4,
+            "step": 0.01,
+            "showValue": true,
+            "units": "x pi rad/sample"
+          }
+        },
+        {
+          "id": "fc2Slider",
+          "type": "slider",
+          "label": "Upper edge wc2",
+          "description": "Upper band edge for band-pass filters (disabled otherwise); kept at least 0.10 pi above wc1",
+          "group": "specification",
+          "properties": {
+            "min": 0.05,
+            "max": 0.95,
+            "default": 0.6,
+            "step": 0.01,
+            "showValue": true,
+            "units": "x pi rad/sample"
+          }
+        },
+        {
+          "id": "methodSelA",
+          "type": "dropdown",
+          "label": "Design A method",
+          "description": "Window method, frequency sampling or Parks-McClellan",
+          "group": "design-A",
+          "properties": {
+            "options": [
+              {
+                "value": "Window",
+                "label": "Window"
+              },
+              {
+                "value": "Freq. sampling",
+                "label": "Freq. sampling"
+              },
+              {
+                "value": "Parks-McClellan",
+                "label": "Parks-McClellan"
+              }
+            ],
+            "default": "Window"
+          }
+        },
+        {
+          "id": "windowSelA",
+          "type": "dropdown",
+          "label": "Design A window",
+          "description": "Window for the window method (disabled for the other methods)",
+          "group": "design-A",
+          "properties": {
+            "options": [
+              {
+                "value": "Rectangular",
+                "label": "Rectangular"
+              },
+              {
+                "value": "Hann",
+                "label": "Hann"
+              },
+              {
+                "value": "Hamming",
+                "label": "Hamming"
+              },
+              {
+                "value": "Blackman",
+                "label": "Blackman"
+              },
+              {
+                "value": "Kaiser",
+                "label": "Kaiser"
+              }
+            ],
+            "default": "Hamming"
+          }
+        },
+        {
+          "id": "tapsSliderA",
+          "type": "slider",
+          "label": "Design A taps N",
+          "description": "Number of taps (odd), so the group delay is (N-1)/2 samples",
+          "group": "design-A",
+          "properties": {
+            "min": 11,
+            "max": 127,
+            "default": 51,
+            "step": 2,
+            "showValue": true,
+            "units": "taps"
+          }
+        },
+        {
+          "id": "betaSliderA",
+          "type": "slider",
+          "label": "Design A Kaiser beta",
+          "description": "Kaiser window shape parameter (shown only for the Kaiser window)",
+          "group": "design-A",
+          "properties": {
+            "min": 0,
+            "max": 12,
+            "default": 5,
+            "step": 0.1,
+            "showValue": true
+          }
+        },
+        {
+          "id": "transSliderA",
+          "type": "slider",
+          "label": "Design A transition sample T1",
+          "description": "Value of the first stop-band frequency sample next to each band edge (frequency sampling only)",
+          "group": "design-A",
+          "properties": {
+            "min": 0,
+            "max": 1,
+            "default": 0.4,
+            "step": 0.01,
+            "showValue": true
+          }
+        },
+        {
+          "id": "widthSliderA",
+          "type": "slider",
+          "label": "Design A PM transition width",
+          "description": "Parks-McClellan transition-band width centered on the cutoff (may be narrowed, see notes)",
+          "group": "design-A",
+          "properties": {
+            "min": 0.02,
+            "max": 0.4,
+            "default": 0.1,
+            "step": 0.01,
+            "showValue": true,
+            "units": "x pi rad/sample"
+          }
+        },
+        {
+          "id": "methodSelB",
+          "type": "dropdown",
+          "label": "Design B method",
+          "description": "Window method, frequency sampling or Parks-McClellan",
+          "group": "design-B",
+          "properties": {
+            "options": [
+              {
+                "value": "Window",
+                "label": "Window"
+              },
+              {
+                "value": "Freq. sampling",
+                "label": "Freq. sampling"
+              },
+              {
+                "value": "Parks-McClellan",
+                "label": "Parks-McClellan"
+              }
+            ],
+            "default": "Freq. sampling"
+          }
+        },
+        {
+          "id": "windowSelB",
+          "type": "dropdown",
+          "label": "Design B window",
+          "description": "Window for the window method (disabled for the other methods)",
+          "group": "design-B",
+          "properties": {
+            "options": [
+              {
+                "value": "Rectangular",
+                "label": "Rectangular"
+              },
+              {
+                "value": "Hann",
+                "label": "Hann"
+              },
+              {
+                "value": "Hamming",
+                "label": "Hamming"
+              },
+              {
+                "value": "Blackman",
+                "label": "Blackman"
+              },
+              {
+                "value": "Kaiser",
+                "label": "Kaiser"
+              }
+            ],
+            "default": "Hamming"
+          }
+        },
+        {
+          "id": "tapsSliderB",
+          "type": "slider",
+          "label": "Design B taps N",
+          "description": "Number of taps (odd), so the group delay is (N-1)/2 samples",
+          "group": "design-B",
+          "properties": {
+            "min": 11,
+            "max": 127,
+            "default": 51,
+            "step": 2,
+            "showValue": true,
+            "units": "taps"
+          }
+        },
+        {
+          "id": "betaSliderB",
+          "type": "slider",
+          "label": "Design B Kaiser beta",
+          "description": "Kaiser window shape parameter (shown only for the Kaiser window)",
+          "group": "design-B",
+          "properties": {
+            "min": 0,
+            "max": 12,
+            "default": 5,
+            "step": 0.1,
+            "showValue": true
+          }
+        },
+        {
+          "id": "transSliderB",
+          "type": "slider",
+          "label": "Design B transition sample T1",
+          "description": "Value of the first stop-band frequency sample next to each band edge (frequency sampling only)",
+          "group": "design-B",
+          "properties": {
+            "min": 0,
+            "max": 1,
+            "default": 0.4,
+            "step": 0.01,
+            "showValue": true
+          }
+        },
+        {
+          "id": "widthSliderB",
+          "type": "slider",
+          "label": "Design B PM transition width",
+          "description": "Parks-McClellan transition-band width centered on the cutoff (may be narrowed, see notes)",
+          "group": "design-B",
+          "properties": {
+            "min": 0.02,
+            "max": 0.4,
+            "default": 0.1,
+            "step": 0.01,
+            "showValue": true,
+            "units": "x pi rad/sample"
+          }
+        }
+      ],
+      "visualElements": [
+        {
+          "type": "chart",
+          "description": "Magnitude response of both designs (dB, linear or passband zoom) with the ideal response, measured stop-band levels or ripple limits, and transition-band bars",
+          "interactive": false,
+          "updateTriggers": [
+            "typeSelect",
+            "scaleSelect",
+            "fc1Slider",
+            "fc2Slider",
+            "methodSelA",
+            "windowSelA",
+            "tapsSliderA",
+            "betaSliderA",
+            "transSliderA",
+            "widthSliderA",
+            "methodSelB",
+            "windowSelB",
+            "tapsSliderB",
+            "betaSliderB",
+            "transSliderB",
+            "widthSliderB"
+          ]
+        },
+        {
+          "type": "chart",
+          "description": "Left plot: impulse response stems h[n] versus n - M, zeros of H(z) in the z-plane, phase, or group delay",
+          "interactive": false,
+          "updateTriggers": [
+            "typeSelect",
+            "viewSelect",
+            "fc1Slider",
+            "fc2Slider",
+            "methodSelA",
+            "windowSelA",
+            "tapsSliderA",
+            "betaSliderA",
+            "transSliderA",
+            "widthSliderA",
+            "methodSelB",
+            "windowSelB",
+            "tapsSliderB",
+            "betaSliderB",
+            "transSliderB",
+            "widthSliderB"
+          ]
+        },
+        {
+          "type": "text-display",
+          "description": "Table of transition width, passband ripple, stop-band attenuation and group delay for each design, with Kaiser-formula predictions and definitions",
+          "interactive": false,
+          "updateTriggers": [
+            "typeSelect",
+            "fc1Slider",
+            "fc2Slider",
+            "methodSelA",
+            "windowSelA",
+            "tapsSliderA",
+            "betaSliderA",
+            "transSliderA",
+            "widthSliderA",
+            "methodSelB",
+            "windowSelB",
+            "tapsSliderB",
+            "betaSliderB",
+            "transSliderB",
+            "widthSliderB"
+          ]
+        }
+      ]
+    },
+    "simulation": {
+      "model": {
+        "type": "algorithmic",
+        "description": "Designs odd-length symmetric FIR filters by the window method, frequency sampling (inverse DFT of amplitude samples with a transition sample) or the Parks-McClellan Remez exchange, evaluates |H| at 2049 frequencies and measures ripple, attenuation and transition width.",
+        "equations": [
+          "h_d[n] = sin(wc (n - M)) / (pi (n - M)), M = (N - 1)/2",
+          "h[n] = h_d[n] w[n]",
+          "h[n] = (1/N) [A_0 + 2 sum_{k=1}^{M} A_k cos(2 pi k (n - M) / N)]",
+          "H(e^{jw}) = A(w) e^{-j w M}",
+          "Ripple = 20 log10((1 + dp)/(1 - dp)), As = -20 log10(ds)",
+          "beta = 0.1102 (A - 8.7) for A > 50 dB; dw = (A - 7.95) / (2.285 (N - 1))"
+        ],
+        "algorithms": [
+          "Window method (rectangular, Hann, Hamming, Blackman, Kaiser)",
+          "Frequency sampling with one transition sample",
+          "Parks-McClellan / Remez exchange with barycentric interpolation",
+          "Aberth-Ehrlich polynomial root finding for the zeros"
+        ],
+        "limitations": [
+          "Parks-McClellan uses equal pass-band and stop-band weights",
+          "The Parks-McClellan transition width is narrowed when Kaiser's estimate exceeds 130 dB or when a band would lose more than half its width",
+          "Only odd N (type I linear phase) is supported"
+        ]
+      }
+    },
+    "usage": {
+      "recommendedUsage": [
+        "demonstration",
+        "exploration",
+        "guided-practice",
+        "homework"
+      ],
+      "instructionalStrategies": [
+        "Fill in a window comparison table at fixed N",
+        "Predict with Kaiser's formulas, then verify",
+        "Find the fewest taps that meet a specification with each method"
+      ],
+      "extensions": [
+        "Add unequal pass-band and stop-band weights to the Parks-McClellan design",
+        "Add even-length (type II) designs and compare their high-pass behavior"
+      ]
+    }
+  },
+  "canvasHeight": 665
+}

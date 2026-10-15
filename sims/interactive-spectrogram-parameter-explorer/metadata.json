@@ -1,0 +1,150 @@
+{
+  "microsim": {
+    "dublinCore": {
+      "title": "Interactive Spectrogram Parameter Explorer",
+      "creator": ["Dan McCreary"],
+      "subject": ["Spectrogram", "Short-time Fourier transform", "Time-frequency analysis", "Window functions", "Zero padding", "Signal processing"],
+      "description": "Two spectrograms of the same signal (a synthetic chirp, two close tones, a strong and a weak tone, tone bursts, a vibrato whistle, or the live microphone), each computed with its own window length, overlap, window type, zero-padding factor, dB floor and color map. Guided challenges load contrasting settings with a prediction prompt and a Reveal button; a linked cursor reports time, frequency and level in both panels, and a slice plot compares the two frame spectra under it.",
+      "publisher": "Dan McCreary",
+      "contributor": ["Claude (Anthropic)"],
+      "date": "2026-10-14",
+      "type": "Interactive Simulation",
+      "format": "text/html",
+      "identifier": "https://dmccreary.github.io/signal-processing/sims/interactive-spectrogram-parameter-explorer/",
+      "language": "en",
+      "relation": ["Chapter 14: Time-Frequency Analysis and Advanced Topics", "Time-Frequency Analysis Explorer", "Interactive STFT Spectrogram Analyzer"],
+      "rights": "CC BY-NC-SA 4.0"
+    },
+    "search": {
+      "tags": ["spectrogram", "stft", "window length", "overlap", "hop size", "zero padding", "spectral leakage", "chirp", "microphone", "time-frequency resolution"],
+      "searchKeywords": ["spectrogram parameters", "compare two spectrograms", "zero padding does not improve resolution", "spectrogram overlap", "wideband vs narrowband spectrogram", "live microphone spectrogram"],
+      "visualizationType": ["chart", "interactive-demo", "data-visualization"],
+      "interactionLevel": "high",
+      "complexity": 6,
+      "relatedConcepts": ["Time-Frequency Analysis", "Spectrogram", "Short-Time Fourier Transform", "Window Functions", "Spectral Leakage", "Zero Padding", "Frequency Resolution"],
+      "applicationDomains": ["education", "exploration", "demonstration"]
+    },
+    "educational": {
+      "gradeLevel": ["Undergraduate"],
+      "subjectArea": ["Engineering", "Computer Science"],
+      "topic": ["Spectrogram parameters", "Time-frequency resolution", "Zero padding", "Overlap and hop size", "Window functions", "Display dynamic range and color maps"],
+      "learningObjectives": [
+        "Calculate the time span N/fs, frequency resolution fs/N, hop size, frames per second and number of frames of an STFT from its window length, overlap and sampling rate",
+        "Analyze why neither a very short nor a very long window draws a chirp as a thin line, using the sweep during one window",
+        "Distinguish true frequency resolution (fs/N) from the FFT bin spacing produced by zero padding (fs/(PN))",
+        "Explain how overlap and window shape affect what a spectrogram shows (missed bursts, spectral leakage) without changing N/fs or fs/N",
+        "Evaluate a set of spectrogram parameters (window, length, overlap, dB floor, color map) for a given signal and justify the choice"
+      ],
+      "bloomsTaxonomy": ["Apply", "Analyze", "Evaluate"],
+      "prerequisites": ["DFT and FFT bin spacing", "Window functions and spectral leakage", "Short-time Fourier transform and spectrogram", "Decibels"],
+      "duration": {"typical": 35, "range": {"min": 20, "max": 50}},
+      "difficulty": "Intermediate",
+      "scaffolding": {
+        "type": ["guided-discovery", "feedback"],
+        "adaptability": "fixed",
+        "removal": "user-controlled"
+      },
+      "misconceptions": [
+        {
+          "misconception": "Zero padding improves frequency resolution",
+          "correction": "Zero padding samples the spectrum of the same window more densely; the main-lobe width, and so the resolution, is set by the window length N",
+          "evidence": "Challenge 3: A (N = 128, pad x8, 1024-point FFT) shows one peak about 130 Hz wide for tones 60 Hz apart, while B (N = 1024) separates them with a 56 dB dip"
+        },
+        {
+          "misconception": "More overlap gives a sharper spectrogram",
+          "correction": "Overlap only samples time more densely; N/fs and fs/N do not change",
+          "evidence": "Challenge 4: both captions show 32 ms and 31.25 Hz; with 0% overlap the bursts peak between -10.1 and -36.0 dB, with 75% between -10.1 and -11.3 dB"
+        },
+        {
+          "misconception": "A longer window always draws a sharper line",
+          "correction": "A frequency that changes during the window is smeared over the range it sweeps",
+          "evidence": "Challenge 1: at t = 1 s the chirp is about 60 Hz wide with N = 256 but about 230 Hz wide with N = 2048"
+        }
+      ]
+    },
+    "technical": {
+      "framework": "p5.js",
+      "version": "1.0.0",
+      "canvasDimensions": {"width": 900, "height": 740, "responsive": true},
+      "regions": {"drawHeight": 564, "controlHeight": 176},
+      "dependencies": ["p5.js 2.3.2", "p5.sound 0.4.1"],
+      "browserCompatibility": ["Chrome 90+", "Firefox 88+", "Safari 14+", "Edge 90+"],
+      "performance": {"memoryUsage": "moderate", "loadTime": 1500},
+      "deviceRequirements": {
+        "minScreenWidth": 375,
+        "touchSupport": true,
+        "keyboardRequired": false,
+        "mouseRequired": false,
+        "networkRequired": false
+      },
+      "accessibility": {
+        "screenReader": true,
+        "keyboardNavigation": true,
+        "colorContrast": true,
+        "altText": true,
+        "screenReaderScript": "Two spectrograms of the same signal, A above B, each computed with its own window length, overlap, window type, zero padding, dB floor and color map. A drop-down chooses a synthetic signal or the live microphone, guided challenges load contrasting settings with a prediction and a Reveal button, and pointing at a spectrogram shows the time, frequency and level in both panels and compares the two frame spectra in a slice plot."
+      }
+    },
+    "userInterface": {
+      "layoutType": "responsive-width",
+      "layoutPattern": "drawing-region-above-controls",
+      "colorScheme": {
+        "drawingArea": "aliceblue",
+        "controlArea": "white",
+        "panelA": "blue",
+        "panelB": "maroon",
+        "spectrogram": "viridis, inferno, gray or jet color map",
+        "text": "black"
+      },
+      "controls": [
+        {"id": "sourceSelect", "type": "dropdown", "label": "Signal", "description": "Chooses the analyzed signal: chirp, two close tones, strong + weak tone, tone bursts, vibrato whistle or the live microphone", "group": "signal",
+         "properties": {"options": [
+           {"value": "chirp", "label": "Signal: chirp"}, {"value": "two", "label": "Signal: two close tones"},
+           {"value": "weak", "label": "Signal: strong + weak tone"}, {"value": "bursts", "label": "Signal: tone bursts"},
+           {"value": "vibrato", "label": "Signal: vibrato whistle"}, {"value": "mic", "label": "Signal: microphone (live)"}], "default": "chirp"}},
+        {"id": "challengeSelect", "type": "dropdown", "label": "Challenge", "description": "Loads one of nine guided challenges (settings for A and B, signal, cursor and zoom) with a prediction prompt", "group": "challenge",
+         "properties": {"options": [
+           {"value": "none", "label": "Challenge: none (free exploration)"}, {"value": "chirp", "label": "1. Short vs long window on a chirp"},
+           {"value": "tones", "label": "2. Two close tones: who separates them?"}, {"value": "zeropad", "label": "3. Zero padding vs a longer window"},
+           {"value": "overlap", "label": "4. Overlap 0% vs 75% on bursts"}, {"value": "leak", "label": "5. Rectangular vs Hann: a weak tone"},
+           {"value": "floor", "label": "6. dB floor: what is hidden?"}, {"value": "vibrato", "label": "7. Vibrato: following a wiggle"},
+           {"value": "cmap", "label": "8. Color map: jet vs viridis"}, {"value": "voice", "label": "9. Your voice: wideband vs narrowband"}], "default": "chirp"}},
+        {"id": "revealButton", "type": "toggle-button", "label": "Reveal / Hide", "description": "Shows or hides the answer to the current challenge (disabled in free exploration)", "group": "challenge", "properties": {"text": "Reveal", "toggleable": true}},
+        {"id": "micButton", "type": "toggle-button", "label": "Start mic / Stop mic", "description": "Switches to the microphone and opens it (analyzed only, never played through the speakers); Stop releases it and freezes the spectrograms", "group": "signal", "properties": {"text": "Start mic", "toggleable": true}},
+        {"id": "zoomSelect", "type": "dropdown", "label": "Zoom", "description": "Magnifies the frequency axis of both spectrograms; clicking a spectrogram centers the zoom", "group": "display", "properties": {"options": [{"value": "1", "label": "zoom x1"}, {"value": "2", "label": "zoom x2"}, {"value": "4", "label": "zoom x4"}, {"value": "8", "label": "zoom x8"}], "default": "1"}},
+        {"id": "editRadio", "type": "radio", "label": "Edit: A / B", "description": "Narrow screens only: chooses which panel's controls are shown", "group": "display", "properties": {"options": [{"value": "A", "label": "A"}, {"value": "B", "label": "B"}], "default": "A"}},
+        {"id": "lenSliderA", "type": "slider", "label": "Window N (A)", "description": "Window length of panel A: 64, 128, 256, 512, 1024 or 2048 samples", "group": "panelA", "properties": {"min": 0, "max": 5, "default": 1, "step": 1, "values": [64, 128, 256, 512, 1024, 2048], "showValue": true}},
+        {"id": "overlapSliderA", "type": "slider", "label": "Overlap (A)", "description": "Overlap of successive frames of panel A: 0, 25, 50, 75, 87.5 or 93.75 percent (hop H = N, 3N/4, N/2, N/4, N/8, N/16)", "group": "panelA", "properties": {"min": 0, "max": 5, "default": 3, "step": 1, "values": [0, 25, 50, 75, 87.5, 93.75], "units": "%", "showValue": true}},
+        {"id": "floorSliderA", "type": "slider", "label": "dB floor (A)", "description": "Level drawn with the lowest color in panel A; display only", "group": "panelA", "properties": {"min": -120, "max": -20, "default": -80, "step": 10, "units": "dB", "showValue": true}},
+        {"id": "windowSelectA", "type": "dropdown", "label": "Window (A)", "description": "Window function of panel A", "group": "panelA", "properties": {"options": [{"value": "hann", "label": "Hann"}, {"value": "hamming", "label": "Hamming"}, {"value": "blackman", "label": "Blackman"}, {"value": "rect", "label": "Rectangular"}], "default": "hann"}},
+        {"id": "padSelectA", "type": "dropdown", "label": "Zero padding (A)", "description": "FFT length P x N for panel A", "group": "panelA", "properties": {"options": [{"value": "1", "label": "pad x1"}, {"value": "2", "label": "pad x2"}, {"value": "4", "label": "pad x4"}, {"value": "8", "label": "pad x8"}], "default": "1"}},
+        {"id": "cmapSelectA", "type": "dropdown", "label": "Color map (A)", "description": "Color map of panel A", "group": "panelA", "properties": {"options": [{"value": "viridis", "label": "viridis"}, {"value": "inferno", "label": "inferno"}, {"value": "gray", "label": "gray"}, {"value": "jet", "label": "jet"}], "default": "viridis"}},
+        {"id": "lenSliderB", "type": "slider", "label": "Window N (B)", "description": "Window length of panel B: 64, 128, 256, 512, 1024 or 2048 samples", "group": "panelB", "properties": {"min": 0, "max": 5, "default": 4, "step": 1, "values": [64, 128, 256, 512, 1024, 2048], "showValue": true}},
+        {"id": "overlapSliderB", "type": "slider", "label": "Overlap (B)", "description": "Overlap of successive frames of panel B: 0, 25, 50, 75, 87.5 or 93.75 percent", "group": "panelB", "properties": {"min": 0, "max": 5, "default": 3, "step": 1, "values": [0, 25, 50, 75, 87.5, 93.75], "units": "%", "showValue": true}},
+        {"id": "floorSliderB", "type": "slider", "label": "dB floor (B)", "description": "Level drawn with the lowest color in panel B; display only", "group": "panelB", "properties": {"min": -120, "max": -20, "default": -80, "step": 10, "units": "dB", "showValue": true}},
+        {"id": "windowSelectB", "type": "dropdown", "label": "Window (B)", "description": "Window function of panel B", "group": "panelB", "properties": {"options": [{"value": "hann", "label": "Hann"}, {"value": "hamming", "label": "Hamming"}, {"value": "blackman", "label": "Blackman"}, {"value": "rect", "label": "Rectangular"}], "default": "hann"}},
+        {"id": "padSelectB", "type": "dropdown", "label": "Zero padding (B)", "description": "FFT length P x N for panel B", "group": "panelB", "properties": {"options": [{"value": "1", "label": "pad x1"}, {"value": "2", "label": "pad x2"}, {"value": "4", "label": "pad x4"}, {"value": "8", "label": "pad x8"}], "default": "1"}},
+        {"id": "cmapSelectB", "type": "dropdown", "label": "Color map (B)", "description": "Color map of panel B", "group": "panelB", "properties": {"options": [{"value": "viridis", "label": "viridis"}, {"value": "inferno", "label": "inferno"}, {"value": "gray", "label": "gray"}, {"value": "jet", "label": "jet"}], "default": "viridis"}}
+      ],
+      "visualElements": [
+        {"type": "chart", "description": "Spectrogram A and spectrogram B (time across, frequency up, level as color), with a linked cursor, the analysis window of the frame under it, and a rug of frame centers", "interactive": true, "updateTriggers": ["sourceSelect", "challengeSelect", "micButton", "zoomSelect", "lenSliderA", "overlapSliderA", "floorSliderA", "windowSelectA", "padSelectA", "cmapSelectA", "lenSliderB", "overlapSliderB", "floorSliderB", "windowSelectB", "padSelectB", "cmapSelectB"]},
+        {"type": "chart", "description": "Slice plot: the A and B frame spectra under the cursor over a 1000 Hz span, with dots on bins fs/N apart", "interactive": false, "updateTriggers": ["sourceSelect", "challengeSelect", "lenSliderA", "lenSliderB", "padSelectA", "padSelectB", "windowSelectA", "windowSelectB"]},
+        {"type": "text-display", "description": "Per-panel read-outs N/fs, fs/N (and FFT bin spacing), frames per second and number of frames; cursor time, frequency and level in A and B; challenge prompt or answer", "interactive": false, "updateTriggers": ["challengeSelect", "revealButton", "lenSliderA", "overlapSliderA", "lenSliderB", "overlapSliderB"]}
+      ]
+    },
+    "simulation": {
+      "model": {
+        "type": "algorithmic",
+        "description": "Short-time Fourier transform of a 2 s signal at 8000 Hz (synthetic) or of the live microphone, low-pass filtered and decimated to about 8 kHz; two independent parameter sets; levels in dB relative to a sinusoid of amplitude 1",
+        "equations": ["X[m,k] = sum_{n=0}^{N-1} x[n + mH] w[n] e^{-j 2 pi k n / (P N)}", "H = N (1 - overlap)", "time span = N / fs", "frequency resolution = fs / N", "FFT bin spacing = fs / (P N)", "frames per second = fs / H", "number of frames = floor((L - N) / H) + 1", "level = 20 log10(|X| / (sum(w) / 2))"],
+        "algorithms": ["Radix-2 FFT", "Periodic Hann, Hamming, Blackman and rectangular windows", "Zero padding", "Sample stitching of overlapping p5.FFT.waveform() blocks", "Windowed-sinc low-pass filter and decimation", "Peak-preserving rendering (each pixel shows the strongest STFT cell it covers)"]
+      }
+    },
+    "usage": {
+      "recommendedUsage": ["demonstration", "exploration", "guided-practice"],
+      "instructionalStrategies": ["Predict, then reveal, for each guided challenge", "Contrast two parameter sets on the same signal", "Verify read-outs against hand calculations of N/fs, fs/N and frame counts"],
+      "extensions": ["Add a Gaussian or Kaiser window", "Add a logarithmic frequency axis", "Load a recorded speech or music file as a source"]
+    }
+  },
+  "canvasHeight": 740
+}

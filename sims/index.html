@@ -15,10 +15,10 @@
         <link rel="canonical" href="https://dmccreary.github.io/signal-processing/sims/">
       
       
-        <link rel="prev" href="../chapters/15-signal-processing-applications-and-ai-integration/quiz/">
+        <link rel="prev" href="../chapters/15-signal-processing-applications-and-ai-integration/references/">
       
       
-        <link rel="next" href="ai-pace-accelerating/">
+        <link rel="next" href="image-convolution/">
       
       
       <link rel="icon" href="../img/favicon.ico">
@@ -54,6 +54,8 @@
     
       <link rel="stylesheet" href="../css/extra.css">
     
+      <link rel="stylesheet" href="../css/mascot.css">
+    
     <script>__md_scope=new URL("..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
     
       
@@ -67,7 +69,7 @@
       
         <meta  property="og:description"  content="Interactive microsimulations to help students learn signal processing concepts" >
       
-        <meta property="og:image" content="https://dmccreary.github.io/signal-processing/sims/graph-viewer/graph-viewer.png">
+        <meta property="og:image" content="https://dmccreary.github.io/signal-processing/sims/fft-basic/fft-basic.png">
       
         <meta  property="og:image:type"  content="image/png" >
       
@@ -83,7 +85,7 @@
       
         <meta  name="twitter:description"  content="Interactive microsimulations to help students learn signal processing concepts" >
       
-        <meta name="twitter:image" content="https://dmccreary.github.io/signal-processing/sims/graph-viewer/graph-viewer.png">
+        <meta name="twitter:image" content="https://dmccreary.github.io/signal-processing/sims/fft-basic/fft-basic.png">
       
     
     
@@ -122,7 +124,7 @@
   <nav class="md-header__inner md-grid" aria-label="Header">
     <a href=".." title="Signal Processing with AI" class="md-header__button md-logo" aria-label="Signal Processing with AI" data-md-component="logo">
       
-  <img src="../img/logo-192.png" alt="logo">
+  <img src="../img/mascot/neutral.png" alt="logo">
 
     </a>
     <label class="md-header__button md-icon" for="__drawer">
@@ -230,7 +232,7 @@
   <label class="md-nav__title" for="__drawer">
     <a href=".." title="Signal Processing with AI" class="md-nav__button md-logo" aria-label="Signal Processing with AI" data-md-component="logo">
       
-  <img src="../img/logo-192.png" alt="logo">
+  <img src="../img/mascot/neutral.png" alt="logo">
 
     </a>
     Signal Processing with AI
@@ -277,31 +279,11 @@
   
   
     <li class="md-nav__item">
-      <a href="../chapters/" class="md-nav__link">
-        
-  
-  <span class="md-ellipsis">
-    Table of Contents
-  </span>
-  
-
-      </a>
-    </li>
-  
-
-    
-      
-      
-  
-  
-  
-  
-    <li class="md-nav__item">
       <a href="../about/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
-    About This Website
+    About
   </span>
   
 
@@ -544,6 +526,174 @@
           
         
       
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
     
     
     
@@ -553,7 +703,7 @@
       
         
         
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_6" checked>
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_5" checked>
         
           
           
@@ -569,19 +719,103 @@
             </a>
             
               
-              <label class="md-nav__link md-nav__link--active" for="__nav_6" id="__nav_6_label" tabindex="0">
+              <label class="md-nav__link md-nav__link--active" for="__nav_5" id="__nav_5_label" tabindex="0">
                 <span class="md-nav__icon md-icon"></span>
               </label>
             
           </div>
         
-        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_6_label" aria-expanded="true">
-          <label class="md-nav__title" for="__nav_6">
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_5_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_5">
             <span class="md-nav__icon md-icon"></span>
             MicroSims
           </label>
           <ul class="md-nav__list" data-md-scrollfix>
             
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="image-convolution/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    2-D Convolution and Image Filtering
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="conv-layer-as-filter/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    A Convolutional Layer Is a Learned FIR Filter
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="adaptive-algorithm-comparison-tool/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Adaptive Algorithm Comparison Tool
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="adaptive-noise-cancellation/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Adaptive Noise and Echo Cancellation
+  </span>
+  
+
+      </a>
+    </li>
+  
+
               
             
               
@@ -633,11 +867,11 @@
   
   
     <li class="md-nav__item">
-      <a href="base-and-treble/" class="md-nav__link">
+      <a href="fft-basic/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
-    Base and Treble
+    Basic FFT
   </span>
   
 
@@ -654,11 +888,32 @@
   
   
     <li class="md-nav__item">
-      <a href="fft-basic/" class="md-nav__link">
+      <a href="base-and-treble/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
-    Basic FFT
+    Bass and Treble
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="bilinear-transform/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Bilinear Transform and Frequency Warping
   </span>
   
 
@@ -780,6 +1035,27 @@
   
   
     <li class="md-nav__item">
+      <a href="compressed-sensing/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Compressed Sensing
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
       <a href="convolution/" class="md-nav__link">
         
   
@@ -801,11 +1077,137 @@
   
   
     <li class="md-nav__item">
+      <a href="convolution-theorem/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Convolution Theorem and Circular Convolution
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="convolution-visualizer/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Convolution Visualizer
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="correlation-and-matched-filtering/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Correlation and Matched Filtering
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="dct-basis-explorer/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    DCT Basis Explorer
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="dft-explorer/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    DFT Explorer
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
       <a href="euler-formula-explorer/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
     Euler's Formula Explorer
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="even-and-odd-signal-decomposition/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Even and Odd Signal Decomposition
   </span>
   
 
@@ -969,6 +1371,27 @@
   
   
     <li class="md-nav__item">
+      <a href="fft-spectrum-analyzer/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    FFT Spectrum Analyzer
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
       <a href="fft-waveform-types/" class="md-nav__link">
         
   
@@ -990,11 +1413,263 @@
   
   
     <li class="md-nav__item">
+      <a href="filter-bank-explorer/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Filter Bank and Polyphase Explorer
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="fir-filter-design-comparison-tool/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    FIR Filter Design Comparison Tool
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="fir-vs-iir/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    FIR vs IIR Filters
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="fourier-series-explorer/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Fourier Series Explorer
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="fourier-transform-pairs/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Fourier Transform Pairs
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
       <a href="frequency-detection/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
     Frequency Detection
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="huffman-coding/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Huffman Coding
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="iir-prototype-comparison/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    IIR Prototype Comparison
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="impulse-and-frequency-response-analyzer/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Impulse and Frequency Response Analyzer
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="interactive-filter-design-and-analysis-tool/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Interactive Filter Design and Analysis Tool
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="interactive-pole-zero-analysis-tool/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Interactive Pole-Zero Analysis Tool
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="interactive-spectrogram-parameter-explorer/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Interactive Spectrogram Parameter Explorer
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="interactive-stft-spectrogram-analyzer/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Interactive STFT Spectrogram Analyzer
   </span>
   
 
@@ -1074,11 +1749,158 @@
   
   
     <li class="md-nav__item">
+      <a href="multirate-sample-rate-converter/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Multirate Sample Rate Converter
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="noise-analysis-and-reduction-tool/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Noise Analysis and Reduction Tool
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
       <a href="nyquist-shannon-sampling/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
     Nyquist-Shannon Sampling
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="phase-spectrum/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Phase Spectrum - What the Magnitude Hides
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="phasor-addition/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Phasor Addition
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="psd-wiener-khinchin/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Power Spectral Density and the Wiener-Khinchin Theorem
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="distribution-explorer/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Probability Distribution Explorer
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="quantization-and-noise-shaping/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Quantization and Noise Shaping
   </span>
   
 
@@ -1116,11 +1938,116 @@
   
   
     <li class="md-nav__item">
+      <a href="real-time-processing-simulator/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Real-Time Processing Simulator
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
       <a href="reverb/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
     Reverb Effect
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="s-plane-explorer/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    s-Plane Explorer
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="sampling-theorem-explorer/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Sampling Theorem Explorer
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="signal-operations/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Signal Operations - Shift, Scale and Reverse
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="signal-type-explorer/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Signal Type Explorer
   </span>
   
 
@@ -1158,11 +2085,95 @@
   
   
     <li class="md-nav__item">
+      <a href="spectral-leakage-and-windowing/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Spectral Leakage and Windowing
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
       <a href="synth-timeline/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
     Synth Timeline
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="system-interconnections/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    System Interconnections - Series, Parallel, Feedback
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="system-property-explorer/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    System Property Explorer
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="time-frequency-analysis-explorer/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Time-Frequency Analysis Explorer
   </span>
   
 
@@ -1205,6 +2216,27 @@
   
   <span class="md-ellipsis">
     Tone Generator
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="wavelet-explorer/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Wavelet Explorer - CWT Scalogram and Haar DWT
   </span>
   
 
@@ -1381,6 +2413,12 @@
       
         
           
+        
+      
+        
+      
+        
+      
         
       
         
@@ -1595,6 +2633,26 @@
   
   
     <li class="md-nav__item">
+      <a href="../instructors-guide/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Instructor's Guide
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
       <a href="../license/" class="md-nav__link">
         
   
@@ -1640,26 +2698,6 @@
   
   <span class="md-ellipsis">
     Contact
-  </span>
-  
-
-      </a>
-    </li>
-  
-
-    
-      
-      
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../ieee-paper-changes/" class="md-nav__link">
-        
-  
-  <span class="md-ellipsis">
-    Paper Changes
   </span>
   
 
@@ -1785,6 +2823,32 @@
     
   
   
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#signal-processing-microsims_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      Signal Processing MicroSims
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#about-this-book" class="md-nav__link">
+    <span class="md-ellipsis">
+      About This Book
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
 </nav>
                   </div>
                 </div>
@@ -1798,7 +2862,7 @@
                   
 
   
-    <a href="https://github.com/dmccreary/signal-processing/blob/master/docs/sims/index.md" title="Edit this page" class="md-content__button md-icon">
+    <a href="https://github.com/dmccreary/signal-processing/blob/main/docs/sims/index.md" title="Edit this page" class="md-content__button md-icon">
       
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M10 20H6V4h7v5h5v3.1l2-2V8l-6-6H6c-1.1 0-2 .9-2 2v16c0 1.1.9 2 2 2h4zm10.2-7c.1 0 .3.1.4.2l1.3 1.3c.2.2.2.6 0 .8l-1 1-2.1-2.1 1-1c.1-.1.2-.2.4-.2m0 3.9L14.1 23H12v-2.1l6.1-6.1z"/></svg>
     </a>
@@ -1807,163 +2871,381 @@
 
 
 <h1 id="signal-processing-microsims">Signal Processing MicroSims</h1>
-<p>Interactive Micro Simulations to help students learn signal processing fundamentals.</p>
+<p>Interactive Micro Simulations to help students learn signal processing fundamentals.
+Every MicroSim runs in your browser, uses p5.js 2.x, and has a lesson plan with activities and assessment questions.</p>
+<h2 id="signal-processing-microsims_1">Signal Processing MicroSims</h2>
 <div class="grid cards">
 <ul>
 <li>
-<p><strong><a href="ai-pace-accelerating/">AI Pace</a></strong></p>
-<p><img alt="AI Pace" src="ai-pace-accelerating/ai-pace-accelerating.png" /></p>
-<p>Interactive visualization showing the exponential growth and acceleration of AI capabilities over time.</p>
+<p><strong><a href="image-convolution/">2-D Convolution and Image Filtering</a></strong></p>
+<p><img alt="2-D Convolution and Image Filtering" src="image-convolution/image-convolution.png" /></p>
+<p>Slide a 3×3 or 5×5 kernel over a small grayscale image and see every multiply-add: blur, sharpen, Sobel and Laplacian kernels, padding, flipping and noise.</p>
+</li>
+<li>
+<p><strong><a href="conv-layer-as-filter/">A Convolutional Layer Is a Learned FIR Filter</a></strong></p>
+<p><img alt="A Convolutional Layer Is a Learned FIR Filter" src="conv-layer-as-filter/conv-layer-as-filter.png" /></p>
+<p>Train a tiny 1-D convolutional network in the browser and watch its kernels become band-pass FIR filters tuned to the tones it must tell apart.</p>
+</li>
+<li>
+<p><strong><a href="adaptive-algorithm-comparison-tool/">Adaptive Algorithm Comparison Tool</a></strong></p>
+<p><img alt="Adaptive Algorithm Comparison Tool" src="adaptive-algorithm-comparison-tool/adaptive-algorithm-comparison-tool.png" /></p>
+<p>LMS, NLMS and RLS identify the same unknown FIR plant from the same noisy data. Compare convergence speed, steady-state error, stability and tracking.</p>
+</li>
+<li>
+<p><strong><a href="adaptive-noise-cancellation/">Adaptive Noise and Echo Cancellation</a></strong></p>
+<p><img alt="Adaptive Noise and Echo Cancellation" src="adaptive-noise-cancellation/adaptive-noise-cancellation.png" /></p>
+<p>One NLMS adaptive filter, three jobs - noise cancellation with a reference input, acoustic echo cancellation with double-talk, and channel equalization.</p>
 </li>
 <li>
 <p><strong><a href="analog-mod/">Analog Modulation</a></strong></p>
 <p><img alt="Analog Modulation" src="analog-mod/analog-mod.png" /></p>
-<p>Interactive demonstration of analog modulation techniques used in signal transmission.</p>
+<p>Compare amplitude modulation (AM) and frequency modulation (FM) of a sine carrier by a sine message, in time and as a line spectrum with its bandwidth.</p>
 </li>
 <li>
-<p><strong><a href="base-and-treble/">Bass and Treble</a></strong></p>
-<p><img alt="Bass and Treble" src="base-and-treble/base-and-treble.png" /></p>
-<p>Interactive simulation of classic amplifier frequency response with adjustable bass and treble controls.</p>
+<p><strong><a href="fft-basic/">Basic FFT MicroSim</a></strong></p>
+<p><img alt="Basic FFT MicroSim" src="fft-basic/fft-basic.png" /></p>
+<p>A sine-wave generator with its live FFT - the waveform in the time domain on top and its magnitude spectrum below, with frequency and amplitude sliders.</p>
 </li>
 <li>
-<p><strong><a href="fft-basic/">Basic FFT</a></strong></p>
-<p><img alt="Basic FFT" src="fft-basic/fft-basic.png" /></p>
-<p>A basic demonstration of FFT with time domain on top and frequency domain on bottom.</p>
+<p><strong><a href="base-and-treble/">Bass and Treble Amplifier Controls</a></strong></p>
+<p><img alt="Bass and Treble Amplifier Controls" src="base-and-treble/base-and-treble.png" /></p>
+<p>Frequency response of an amplifier's bass and treble controls, drawn as gain in dB against log frequency, with two sliders and a mouse probe that reads the gain.</p>
 </li>
 <li>
-<p><strong><a href="blooms-taxonomy/">Bloom's Taxonomy</a></strong></p>
-<p><img alt="Bloom's Taxonomy" src="blooms-taxonomy/blooms-taxonomy.png" /></p>
-<p>Interactive visualization of Bloom's Taxonomy cognitive levels for educational design.</p>
+<p><strong><a href="bilinear-transform/">Bilinear Transform and Frequency Warping</a></strong></p>
+<p><img alt="Bilinear Transform and Frequency Warping" src="bilinear-transform/bilinear-transform.png" /></p>
+<p>Compare the bilinear transform and impulse invariance - frequency warping, prewarping, aliasing near Nyquist and how s-plane poles map into the z-plane.</p>
 </li>
 <li>
-<p><strong><a href="book-gen-workflow/">Book Generation Workflow</a></strong></p>
-<p><img alt="Book Generation Workflow" src="book-gen-workflow/book-gen-workflow.png" /></p>
-<p>Interactive infographic showing the workflow for building intelligent textbooks.</p>
-</li>
-<li>
-<p><strong><a href="book-levels/">Book Levels</a></strong></p>
-<p><img alt="Book Levels" src="book-levels/book-levels.png" /></p>
-<p>Interactive visualization showing the five levels of intelligent textbooks from static to autonomous AI.</p>
-</li>
-<li>
-<p><strong><a href="citation-graph/">Citation Graph</a></strong></p>
-<p><img alt="Citation Graph" src="citation-graph/citation-graph.png" /></p>
-<p>A citation graph for FFT Microcontrollers running under vis.js.</p>
+<p><strong><a href="citation-graph/">Citation Graph for FFT on Microcontrollers</a></strong></p>
+<p><img alt="Citation Graph for FFT on Microcontrollers" src="citation-graph/citation-graph.png" /></p>
+<p>Explore a 15-paper citation graph of FFT research on microcontrollers. Filter by research area and citation count, then compare three layouts.</p>
 </li>
 <li>
 <p><strong><a href="complex-plane/">Complex Plane</a></strong></p>
 <p><img alt="Complex Plane" src="complex-plane/complex-plane.png" /></p>
-<p>Interactive visualization of complex numbers showing rectangular and polar forms with geometric representations.</p>
+<p>Interactive visualization of complex numbers in the complex plane, showing both rectangular (a + bi) and polar (r angle theta) forms with geometric representations.</p>
+</li>
+<li>
+<p><strong><a href="compressed-sensing/">Compressed Sensing</a></strong></p>
+<p><img alt="Compressed Sensing" src="compressed-sensing/compressed-sensing.png" /></p>
+<p>Recover a sparse spectrum of k tones from m random time samples with orthogonal matching pursuit, and compare it with the minimum-energy solution and uniform sampling.</p>
 </li>
 <li>
 <p><strong><a href="convolution/">Convolution</a></strong></p>
 <p><img alt="Convolution" src="convolution/convolution.png" /></p>
-<p>Interactive visualization demonstrating convolution as a measure of overlap between functions.</p>
+<p>A blue square slides across a red triangle while a purple gauge shows the area of overlap, the introductory picture of convolution.</p>
+</li>
+<li>
+<p><strong><a href="convolution-theorem/">Convolution Theorem and Circular Convolution</a></strong></p>
+<p><img alt="Convolution Theorem and Circular Convolution" src="convolution-theorem/convolution-theorem.png" /></p>
+<p>Compare linear convolution with L-point circular convolution computed as IDFT(DFT(x)·DFT(h)), and watch the tail wrap around when L &lt; N + M − 1.</p>
+</li>
+<li>
+<p><strong><a href="convolution-visualizer/">Convolution Visualizer</a></strong></p>
+<p><img alt="Convolution Visualizer" src="convolution-visualizer/convolution-visualizer.png" /></p>
+<p>Step through the flip-and-slide picture of convolution. The impulse response is time-reversed, shifted, multiplied by the input, and the area under the product builds the output y(t).</p>
+</li>
+<li>
+<p><strong><a href="correlation-and-matched-filtering/">Correlation and Matched Filtering</a></strong></p>
+<p><img alt="Correlation and Matched Filtering" src="correlation-and-matched-filtering/correlation-and-matched-filtering.png" /></p>
+<p>Find copies of a known template hidden in noise by cross-correlating the received signal with the template, and compare the matched filter with a simple moving average.</p>
+</li>
+<li>
+<p><strong><a href="dct-basis-explorer/">DCT Basis Explorer</a></strong></p>
+<p><img alt="DCT Basis Explorer" src="dct-basis-explorer/dct-basis-explorer.png" /></p>
+<p>Explore the 8-point DCT-II basis functions and the 64 basis images of the 8x8 DCT, and see why energy compaction makes the DCT the core of JPEG.</p>
+</li>
+<li>
+<p><strong><a href="dft-explorer/">DFT Explorer</a></strong></p>
+<p><img alt="DFT Explorer" src="dft-explorer/dft-explorer.png" /></p>
+<p>Build each DFT value X[k] by multiplying x[n] by a rotating phasor and adding the products head to tail, then rebuild x[n] from the bins you keep.</p>
 </li>
 <li>
 <p><strong><a href="euler-formula-explorer/">Euler's Formula Explorer</a></strong></p>
 <p><img alt="Euler's Formula Explorer" src="euler-formula-explorer/euler-formula-explorer.png" /></p>
-<p>Interactive visualization demonstrating Euler's formula with synchronized unit circle rotation and wave traces.</p>
+<p>Watch the point e^(iθ) travel around the unit circle while its real and imaginary parts trace the cosine and sine waves, with live numeric read-outs.</p>
 </li>
 <li>
-<p><strong><a href="fft-2-osc/">FFT 2 Oscillators</a></strong></p>
-<p><img alt="FFT 2 Oscillators" src="fft-2-osc/fft.png" /></p>
-<p>FFT demonstration with two oscillators showing superposition of sine waves in time and frequency domains.</p>
-</li>
-<li>
-<p><strong><a href="fft-3-osc/">FFT 3 Oscillators</a></strong></p>
-<p><img alt="FFT 3 Oscillators" src="fft-3-osc/fft-3-osc.png" /></p>
-<p>FFT demonstration with three oscillators showing superposition of sine waves in time and frequency domains.</p>
+<p><strong><a href="even-and-odd-signal-decomposition/">Even and Odd Signal Decomposition</a></strong></p>
+<p><img alt="Even and Odd Signal Decomposition" src="even-and-odd-signal-decomposition/even-and-odd-signal-decomposition.png" /></p>
+<p>Decompose a preset or hand-drawn signal x(t) into its even part and odd part, read the worked calculation at a probe time, and verify that the two parts sum back to x(t).</p>
 </li>
 <li>
 <p><strong><a href="fft-butterfly/">FFT Butterfly</a></strong></p>
 <p><img alt="FFT Butterfly" src="fft-butterfly/fft-butterfly.png" /></p>
-<p>Visualization of the FFT butterfly algorithm showing how the Fast Fourier Transform breaks down computation.</p>
+<p>Step through the input reordering of a radix-2 FFT, splitting every group into even and odd samples until they sit in bit-reversed order.</p>
 </li>
 <li>
-<p><strong><a href="fft-mic/">FFT From Microphone</a></strong></p>
-<p><img alt="FFT From Microphone" src="fft-mic/fft-mic.png" /></p>
-<p>Shows the frequency spectrum of sound from a microphone using the p5.js FFT library.</p>
+<p><strong><a href="fft-live-audio/">FFT Live Audio from Microphone</a></strong></p>
+<p><img alt="FFT Live Audio from Microphone" src="fft-live-audio/fft-live-audio.png" /></p>
+<p>A live spectrum analyzer for your microphone with adjustable smoothness and FFT size, showing bin width, window length and the strongest peak.</p>
 </li>
 <li>
-<p><strong><a href="fft-live-audio/">FFT Live Audio</a></strong></p>
-<p><img alt="FFT Live Audio" src="fft-live-audio/fft-live-audio.png" /></p>
-<p>Display the frequency spectrum from live audio with adjustable parameters.</p>
+<p><strong><a href="fft-sound-file/">FFT of Sound File</a></strong></p>
+<p><img alt="FFT of Sound File" src="fft-sound-file/fft-sound-file.png" /></p>
+<p>A music player with a track list that shows the waveform and the FFT frequency spectrum of the song you are listening to.</p>
 </li>
 <li>
-<p><strong><a href="fft-size/">FFT Size</a></strong></p>
-<p><img alt="FFT Size" src="fft-size/fft-size.png" /></p>
-<p>Demonstration of FFT on a single oscillator with controls to adjust the FFT size.</p>
+<p><strong><a href="fft-size/">FFT Size MicroSim</a></strong></p>
+<p><img alt="FFT Size MicroSim" src="fft-size/fft-size.png" /></p>
+<p>A sine wave analysed with FFT sizes from 512 to 8192 bins. Larger FFTs give narrower bins and peaks but need a longer analysis window.</p>
 </li>
 <li>
-<p><strong><a href="fft-sound-file/">FFT Sound File</a></strong></p>
-<p><img alt="FFT Sound File" src="fft-sound-file/fft-sound-file.png" /></p>
-<p>Shows the frequency spectrum of an MP3 sound file.</p>
+<p><strong><a href="fft-spectrum-analyzer/">FFT Spectrum Analyzer</a></strong></p>
+<p><img alt="FFT Spectrum Analyzer" src="fft-spectrum-analyzer/fft-spectrum-analyzer.png" /></p>
+<p>Analyze test signals or the microphone with a radix-2 FFT, choosing FFT size, window and a magnitude, dB or phase display, with peak markers and a spectrogram.</p>
 </li>
 <li>
 <p><strong><a href="fft-waveform-types/">FFT Waveform Types</a></strong></p>
 <p><img alt="FFT Waveform Types" src="fft-waveform-types/fft-waveform-types.png" /></p>
-<p>Shows how different waveform shapes (sine, square, triangle, sawtooth) appear in the frequency domain.</p>
+<p>Compare the harmonic spectra of sine, square, triangle and sawtooth waves - which harmonics each shape contains and how fast they decay.</p>
+</li>
+<li>
+<p><strong><a href="fft-3-osc/">FFT with Multiple Frequency Components</a></strong></p>
+<p><img alt="FFT with Multiple Frequency Components" src="fft-3-osc/fft-3-osc.png" /></p>
+<p>Three sine-wave oscillators are added together - the combined waveform in the time domain and its FFT spectrum with one labelled peak per component.</p>
+</li>
+<li>
+<p><strong><a href="fft-2-osc/">FFT with Two Oscillators</a></strong></p>
+<p><img alt="FFT with Two Oscillators" src="fft-2-osc/fft-2-osc.png" /></p>
+<p>A sine and a cosine oscillator are added and played; see their sum in the time domain and one FFT peak per oscillator in the magnitude spectrum.</p>
+</li>
+<li>
+<p><strong><a href="filter-bank-explorer/">Filter Bank and Polyphase Explorer</a></strong></p>
+<p><img alt="Filter Bank and Polyphase Explorer" src="filter-bank-explorer/filter-bank-explorer.png" /></p>
+<p>Split a signal into M subbands with a cosine-modulated filter bank, measure the reconstruction error, and see why polyphase decimation is M times cheaper.</p>
+</li>
+<li>
+<p><strong><a href="fir-filter-design-comparison-tool/">FIR Filter Design Comparison Tool</a></strong></p>
+<p><img alt="FIR Filter Design Comparison Tool" src="fir-filter-design-comparison-tool/fir-filter-design-comparison-tool.png" /></p>
+<p>Compare two linear-phase FIR designs (window method, frequency sampling or Parks-McClellan) for the same specification, with measured ripple, attenuation and transition width.</p>
+</li>
+<li>
+<p><strong><a href="fir-vs-iir/">FIR vs IIR Filters</a></strong></p>
+<p><img alt="FIR vs IIR Filters" src="fir-vs-iir/fir-vs-iir.png" /></p>
+<p>Compare an FIR windowed-sinc and an IIR Butterworth low-pass with the same cutoff - response, phase, delay, cost and stability under coefficient rounding.</p>
+</li>
+<li>
+<p><strong><a href="fourier-series-explorer/">Fourier Series Explorer</a></strong></p>
+<p><img alt="Fourier Series Explorer" src="fourier-series-explorer/fourier-series-explorer.png" /></p>
+<p>Build square, triangle, sawtooth, pulse and hand-drawn waveforms from their first N harmonics; read each harmonic's amplitude, phase and the Gibbs overshoot.</p>
+</li>
+<li>
+<p><strong><a href="fourier-transform-pairs/">Fourier Transform Pairs</a></strong></p>
+<p><img alt="Fourier Transform Pairs" src="fourier-transform-pairs/fourier-transform-pairs.png" /></p>
+<p>Explore five classic Fourier transform pairs and the time-scaling and time-shift properties, with each analytic X(f) checked against an FFT estimate.</p>
 </li>
 <li>
 <p><strong><a href="frequency-detection/">Frequency Detection</a></strong></p>
 <p><img alt="Frequency Detection" src="frequency-detection/frequency-detection.png" /></p>
-<p>Interactive frequency detection demonstration for audio signals.</p>
+<p>A winding machine wraps a sine wave around a spinning circle; the center of mass of the wound curve reveals the signal frequency, as the Fourier transform does.</p>
 </li>
 <li>
-<p><strong><a href="graph-viewer-v1/">Learning Graph V1</a></strong></p>
-<p><img alt="Learning Graph V1" src="graph-viewer-v1/view-graph.png" /></p>
-<p>First version of the learning graph viewer with pinned foundation and goal nodes.</p>
+<p><strong><a href="huffman-coding/">Huffman Coding</a></strong></p>
+<p><img alt="Huffman Coding" src="huffman-coding/huffman-coding.png" /></p>
+<p>Build a Huffman tree one merge at a time, read off the prefix-free code, and compare the average code length L with the entropy H and a fixed-length code.</p>
 </li>
 <li>
-<p><strong><a href="graph-viewer/">Learning Graph Viewer</a></strong></p>
-<p><img alt="Learning Graph Viewer" src="graph-viewer/graph-viewer.png" /></p>
-<p>Interactive visualization of learning graphs showing concept dependencies and taxonomy filtering.</p>
+<p><strong><a href="iir-prototype-comparison/">IIR Prototype Comparison</a></strong></p>
+<p><img alt="IIR Prototype Comparison" src="iir-prototype-comparison/iir-prototype-comparison.png" /></p>
+<p>Compare Butterworth, Chebyshev I and II, elliptic and Bessel low-pass prototypes at the same order - magnitude, phase, group delay, step response and poles.</p>
 </li>
 <li>
-<p><strong><a href="mobius-transform/">Mobius Transformation</a></strong></p>
-<p><img alt="Mobius Transformation" src="mobius-transform/mobius-transform.png" /></p>
-<p>Interactive visualization of Mobius transformations in the complex plane.</p>
+<p><strong><a href="impulse-and-frequency-response-analyzer/">Impulse and Frequency Response Analyzer</a></strong></p>
+<p><img alt="Impulse and Frequency Response Analyzer" src="impulse-and-frequency-response-analyzer/impulse-and-frequency-response-analyzer.png" /></p>
+<p>See the impulse response, step response, magnitude response and phase response of five LTI systems side by side, with linked cursors and sliders for cutoff frequency, filter order and damping ratio.</p>
+</li>
+<li>
+<p><strong><a href="interactive-filter-design-and-analysis-tool/">Interactive Filter Design and Analysis Tool</a></strong></p>
+<p><img alt="Interactive Filter Design and Analysis Tool" src="interactive-filter-design-and-analysis-tool/interactive-filter-design-and-analysis-tool.png" /></p>
+<p>Design low-pass, high-pass, band-pass, band-stop, notch, comb and all-pass filters as IIR or FIR and see their responses, poles, stability and effect on three tones.</p>
+</li>
+<li>
+<p><strong><a href="interactive-pole-zero-analysis-tool/">Interactive Pole-Zero Analysis Tool</a></strong></p>
+<p><img alt="Interactive Pole-Zero Analysis Tool" src="interactive-pole-zero-analysis-tool/interactive-pole-zero-analysis-tool.png" /></p>
+<p>Place poles and zeros on the z-plane and watch the magnitude response, phase response, impulse response, step response and stability verdict of the discrete-time system update.</p>
+</li>
+<li>
+<p><strong><a href="interactive-spectrogram-parameter-explorer/">Interactive Spectrogram Parameter Explorer</a></strong></p>
+<p><img alt="Interactive Spectrogram Parameter Explorer" src="interactive-spectrogram-parameter-explorer/interactive-spectrogram-parameter-explorer.png" /></p>
+<p>Compare two spectrograms of one signal or your microphone, each with its own window length, overlap, window, zero padding, dB floor and color map.</p>
+</li>
+<li>
+<p><strong><a href="interactive-stft-spectrogram-analyzer/">Interactive STFT Spectrogram Analyzer</a></strong></p>
+<p><img alt="Interactive STFT Spectrogram Analyzer" src="interactive-stft-spectrogram-analyzer/interactive-stft-spectrogram-analyzer.png" /></p>
+<p>Compare short- and long-window STFT spectrograms of one test signal and use cursors to see what each window can and cannot separate in time and frequency.</p>
+</li>
+<li>
+<p><strong><a href="fft-mic/">Microphone Frequency Visualization with FFT</a></strong></p>
+<p><img alt="Microphone Frequency Visualization with FFT" src="fft-mic/fft-mic.png" /></p>
+<p>A real-time spectrum analyzer for your microphone. An FFT turns live sound into colored frequency bars with a decibel scale and a peak-frequency read-out.</p>
+</li>
+<li>
+<p><strong><a href="multirate-sample-rate-converter/">Multirate Sample Rate Converter</a></strong></p>
+<p><img alt="Multirate Sample Rate Converter" src="multirate-sample-rate-converter/multirate-sample-rate-converter.png" /></p>
+<p>Change a signal's sample rate by L/M and watch zero insertion create images, downsampling fold aliases, and the low-pass filter remove both.</p>
+</li>
+<li>
+<p><strong><a href="mobius-transform/">Möbius Transform</a></strong></p>
+<p><img alt="Möbius Transform" src="mobius-transform/mobius-transform.png" /></p>
+<p>Drag the coefficients of w = (Az + B)/(Cz + D), draw in the z-plane and watch lines and circles map, including the bilinear transform used for IIR filters.</p>
+</li>
+<li>
+<p><strong><a href="noise-analysis-and-reduction-tool/">Noise Analysis and Reduction Tool</a></strong></p>
+<p><img alt="Noise Analysis and Reduction Tool" src="noise-analysis-and-reduction-tool/noise-analysis-and-reduction-tool.png" /></p>
+<p>Generate white, pink, brown, band-limited and impulsive noise, measure its histogram, autocorrelation and Welch PSD, and see SNR improve with averaging and filtering.</p>
 </li>
 <li>
 <p><strong><a href="nyquist-shannon-sampling/">Nyquist-Shannon Sampling</a></strong></p>
 <p><img alt="Nyquist-Shannon Sampling" src="nyquist-shannon-sampling/nyquist-shannon-sampling.png" /></p>
-<p>Demonstrates the Nyquist-Shannon sampling theorem and the concept of aliasing.</p>
+<p>Sample a 5 Hz sine wave at 1 to 50 Hz and compare ideal sinc and straight-line reconstructions to see the Nyquist rate and aliasing at work.</p>
 </li>
 <li>
-<p><strong><a href="rc-lowpass-filter/">RC Lowpass Filter</a></strong></p>
-<p><img alt="RC Lowpass Filter" src="rc-lowpass-filter/rc-lowpass-filter.png" /></p>
-<p>Creates a Bode Plot showing phase and magnitude for any RC filter combination.</p>
+<p><strong><a href="phase-spectrum/">Phase Spectrum - What the Magnitude Hides</a></strong></p>
+<p><img alt="Phase Spectrum - What the Magnitude Hides" src="phase-spectrum/phase-spectrum.png" /></p>
+<p>Same magnitude spectrum, different phases, different waveforms. Explore harmonic phases, the linear phase of a time shift, and the magnitude/phase swap experiment.</p>
 </li>
 <li>
-<p><strong><a href="reverb/">Reverb Effect</a></strong></p>
-<p><img alt="Reverb Effect" src="reverb/reverb.png" /></p>
-<p>Interactive demonstration of audio reverb effect showing how reverberation affects sound signals.</p>
+<p><strong><a href="phasor-addition/">Phasor Addition</a></strong></p>
+<p><img alt="Phasor Addition" src="phasor-addition/phasor-addition.png" /></p>
+<p>Add up to three sinusoids by adding their rotating phasors head to tail, read the resultant amplitude and phase, and see beats when one frequency differs.</p>
+</li>
+<li>
+<p><strong><a href="psd-wiener-khinchin/">Power Spectral Density and the Wiener-Khinchin Theorem</a></strong></p>
+<p><img alt="Power Spectral Density and the Wiener-Khinchin Theorem" src="psd-wiener-khinchin/psd-wiener-khinchin.png" /></p>
+<p>Estimate a PSD two ways, by averaged periodograms and by the Fourier transform of the sample autocorrelation, and compare both with the exact S(ω).</p>
+</li>
+<li>
+<p><strong><a href="distribution-explorer/">Probability Distribution Explorer</a></strong></p>
+<p><img alt="Probability Distribution Explorer" src="distribution-explorer/distribution-explorer.png" /></p>
+<p>Sample uniform, Gaussian, exponential, binomial and Poisson distributions, compare sample and true mean and variance, and watch the central limit theorem.</p>
+</li>
+<li>
+<p><strong><a href="quantization-and-noise-shaping/">Quantization and Noise Shaping</a></strong></p>
+<p><img alt="Quantization and Noise Shaping" src="quantization-and-noise-shaping/quantization-and-noise-shaping.png" /></p>
+<p>Quantize a full-scale waveform with 1 to 16 bits, see the quantization error and its spectrum, and measure how oversampling and noise shaping raise the SQNR in the signal band.</p>
+</li>
+<li>
+<p><strong><a href="rc-lowpass-filter/">RC Low-Pass Filter Bode Plot</a></strong></p>
+<p><img alt="RC Low-Pass Filter Bode Plot" src="rc-lowpass-filter/rc-lowpass-filter.png" /></p>
+<p>Set R and C of an RC low-pass filter and watch its Bode plot, with the corner frequency fc = 1/(2πRC), the -3 dB and -45° points, and the -20 dB/decade roll-off.</p>
+</li>
+<li>
+<p><strong><a href="real-time-processing-simulator/">Real-Time Processing Simulator</a></strong></p>
+<p><img alt="Real-Time Processing Simulator" src="real-time-processing-simulator/real-time-processing-simulator.png" /></p>
+<p>Explore block size, latency, processor load and deadlines in a double-buffered real-time FIR filter running on an MCU, Cortex-M4, DSP or FPGA.</p>
+</li>
+<li>
+<p><strong><a href="s-plane-explorer/">s-Plane Explorer</a></strong></p>
+<p><img alt="s-Plane Explorer" src="s-plane-explorer/s-plane-explorer.png" /></p>
+<p>Drag poles and zeros in the s-plane and watch the frequency response along the jω axis, the step response, the ROC, stability, and the z = e^(sT) map.</p>
+</li>
+<li>
+<p><strong><a href="sampling-theorem-explorer/">Sampling Theorem Explorer</a></strong></p>
+<p><img alt="Sampling Theorem Explorer" src="sampling-theorem-explorer/sampling-theorem-explorer.png" /></p>
+<p>Sample a sine wave at an adjustable rate, rebuild it from its samples, and see why a tone above the Nyquist frequency folds to a lower alias frequency.</p>
+</li>
+<li>
+<p><strong><a href="signal-operations/">Signal Operations - Shift, Scale and Reverse</a></strong></p>
+<p><img alt="Signal Operations - Shift, Scale and Reverse" src="signal-operations/signal-operations.png" /></p>
+<p>Transform elementary signals by time shifting, time scaling and time reversal, and track which points of x(t) map to which points of y(t).</p>
+</li>
+<li>
+<p><strong><a href="timeline-viewer/">Signal Processing Timeline</a></strong></p>
+<p><img alt="Signal Processing Timeline" src="timeline-viewer/timeline-viewer.png" /></p>
+<p>Pan and zoom a timeline of 50 milestones in the history of electronic signal processing, from the telegraph in 1837 to cloud-based processing in 2022.</p>
+</li>
+<li>
+<p><strong><a href="signal-type-explorer/">Signal Type Explorer</a></strong></p>
+<p><img alt="Signal Type Explorer" src="signal-type-explorer/signal-type-explorer.png" /></p>
+<p>Compare continuous-time and discrete-time views of four basic signals and see how amplitude, frequency, phase, shift and scale affect energy, power and RMS.</p>
 </li>
 <li>
 <p><strong><a href="sine-wave/">Sine Wave</a></strong></p>
 <p><img alt="Sine Wave" src="sine-wave/sine-wave.png" /></p>
-<p>Interactive demonstration of sine wave parameters including amplitude, period, and phase.</p>
+<p>Plot y(t) = A sin(2πt/T + φ) and use three sliders to see how amplitude, period and phase change a sine wave, with frequency and time-shift read-outs.</p>
+</li>
+<li>
+<p><strong><a href="reverb/">Sound Reverb Effect</a></strong></p>
+<p><img alt="Sound Reverb Effect" src="reverb/reverb.png" /></p>
+<p>Play a music clip through a convolution reverb, set the decay time and the dry/wet mix, and watch the reverb tail fade after the source stops.</p>
+</li>
+<li>
+<p><strong><a href="spectral-leakage-and-windowing/">Spectral Leakage and Windowing</a></strong></p>
+<p><img alt="Spectral Leakage and Windowing" src="spectral-leakage-and-windowing/spectral-leakage-and-windowing.png" /></p>
+<p>Move a tone between DFT bin centres to see spectral leakage, then compare how rectangular, Hamming, Hanning, Blackman and Kaiser windows trade main-lobe width against side-lobe level.</p>
 </li>
 <li>
 <p><strong><a href="synth-timeline/">Synth Timeline</a></strong></p>
 <p><img alt="Synth Timeline" src="synth-timeline/synth-timeline.png" /></p>
-<p>Interactive timeline visualization of synthesizer history and evolution.</p>
+<p>A scrollable timeline of ten landmark synthesizers, from the 1920 Theremin to the 1987 Roland D-50, in three color-coded categories.</p>
 </li>
 <li>
-<p><strong><a href="timeline-viewer/">Timeline Viewer</a></strong></p>
-<p><img alt="Timeline Viewer" src="timeline-viewer/timeline-viewer.png" /></p>
-<p>Interactive timeline of key milestones in signal processing history.</p>
+<p><strong><a href="system-interconnections/">System Interconnections - Series, Parallel, Feedback</a></strong></p>
+<p><img alt="System Interconnections - Series, Parallel, Feedback" src="system-interconnections/system-interconnections.png" /></p>
+<p>Connect gain, low-pass and delay blocks in series, parallel, negative feedback or feedforward and see the overall H(z), its poles, stability and responses.</p>
 </li>
 <li>
-<p><strong><a href="tone-gen/">Tone Generator</a></strong></p>
-<p><img alt="Tone Generator" src="tone-gen/tone-gen.png" /></p>
-<p>Interactive tone generator allowing users to create and hear audio tones at different frequencies.</p>
+<p><strong><a href="system-property-explorer/">System Property Explorer</a></strong></p>
+<p><img alt="System Property Explorer" src="system-property-explorer/system-property-explorer.png" /></p>
+<p>Run linearity, time-invariance, causality and BIBO stability tests on eight example systems and see which properties each system has, and why.</p>
 </li>
 <li>
-<p><strong><a href="wordcloud/">Word Cloud</a></strong></p>
-<p><img alt="Word Cloud" src="wordcloud/wordcloud.png" /></p>
-<p>Word cloud visualization of key signal processing terms and concepts.</p>
+<p><strong><a href="time-frequency-analysis-explorer/">Time-Frequency Analysis Explorer</a></strong></p>
+<p><img alt="Time-Frequency Analysis Explorer" src="time-frequency-analysis-explorer/time-frequency-analysis-explorer.png" /></p>
+<p>Compute spectrograms of a chirp, an FSK signal and a note sequence, and vary the STFT window length, overlap and type to see the time-frequency trade-off.</p>
+</li>
+<li>
+<p><strong><a href="tone-gen/">Tone Generator MicroSim</a></strong></p>
+<p><img alt="Tone Generator MicroSim" src="tone-gen/tone-gen.png" /></p>
+<p>A sine-wave tone generator with a live FFT spectrum - hear the tone, set its frequency and amplitude, and watch its single spectral peak move.</p>
+</li>
+<li>
+<p><strong><a href="wavelet-explorer/">Wavelet Explorer - CWT Scalogram and Haar DWT</a></strong></p>
+<p><img alt="Wavelet Explorer - CWT Scalogram and Haar DWT" src="wavelet-explorer/wavelet-explorer.png" /></p>
+<p>Compare a continuous wavelet transform scalogram (Morlet, Mexican hat, Haar) with a multilevel Haar DWT, and denoise a signal by hard thresholding.</p>
+</li>
+</ul>
+</div>
+<h2 id="about-this-book">About This Book</h2>
+<p>MicroSims that explain how this intelligent textbook is designed and built.</p>
+<div class="grid cards">
+<ul>
+<li>
+<p><strong><a href="blooms-taxonomy/">Bloom's Taxonomy</a></strong></p>
+<p><img alt="Bloom's Taxonomy" src="blooms-taxonomy/blooms-taxonomy.png" /></p>
+<p>Interactive stepped pyramid of the six levels of Bloom's taxonomy, Remember to Create. Hover over or tap a level to read its description.</p>
+</li>
+<li>
+<p><strong><a href="book-gen-workflow/">Book Build Workflow</a></strong></p>
+<p><img alt="Book Build Workflow" src="book-gen-workflow/book-gen-workflow.png" /></p>
+<p>Interactive workflow diagram showing how a course description becomes a learning graph that feeds book-level outputs and chapter-level content.</p>
+</li>
+<li>
+<p><strong><a href="book-levels/">Five Levels of Intelligent Textbooks</a></strong></p>
+<p><img alt="Five Levels of Intelligent Textbooks" src="book-levels/book-levels.png" /></p>
+<p>Hover over, tap or press 1 to 5 on a stair-step diagram to compare the five levels of intelligent textbooks, from static (Level 1) to autonomous AI (Level 5).</p>
+</li>
+<li>
+<p><strong><a href="graph-viewer/">Learning Graph Viewer</a></strong></p>
+<p><img alt="Learning Graph Viewer" src="graph-viewer/graph-viewer.png" /></p>
+<p>Explore the 200-concept learning graph of this course. Filter concepts by taxonomy category, search by name and read live node, edge and orphan counts.</p>
+</li>
+<li>
+<p><strong><a href="graph-viewer-v1/">Learning Graph Viewer V1</a></strong></p>
+<p><img alt="Learning Graph Viewer V1" src="graph-viewer-v1/graph-viewer-v1.png" /></p>
+<p>Superseded first version of the learning graph viewer, with Math Foundations nodes pinned left and Applications and AI nodes pinned right.</p>
+</li>
+<li>
+<p><strong><a href="wordcloud/">Signal Processing Word Cloud</a></strong></p>
+<p><img alt="Signal Processing Word Cloud" src="wordcloud/wordcloud.png" /></p>
+<p>A word cloud of 51 key signal processing terms, sized by relative weight, that previews the vocabulary students meet in this book.</p>
+</li>
+<li>
+<p><strong><a href="ai-pace-accelerating/">The Accelerating Pace of AI</a></strong></p>
+<p><img alt="The Accelerating Pace of AI" src="ai-pace-accelerating/ai-pace-accelerating.png" /></p>
+<p>A timeline of 23 AI milestones from 1956 to 2025 with a slider that bends the time axis so you can see how milestones cluster in recent years.</p>
 </li>
 </ul>
 </div>
@@ -2009,7 +3291,7 @@
       <nav class="md-footer__inner md-grid" aria-label="Footer" >
         
           
-          <a href="../chapters/15-signal-processing-applications-and-ai-integration/quiz/" class="md-footer__link md-footer__link--prev" aria-label="Previous: Quiz">
+          <a href="../chapters/15-signal-processing-applications-and-ai-integration/references/" class="md-footer__link md-footer__link--prev" aria-label="Previous: Annotated References">
             <div class="md-footer__button md-icon">
               
               <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
@@ -2019,20 +3301,20 @@
                 Previous
               </span>
               <div class="md-ellipsis">
-                Quiz
+                Annotated References
               </div>
             </div>
           </a>
         
         
           
-          <a href="ai-pace-accelerating/" class="md-footer__link md-footer__link--next" aria-label="Next: AI Pace">
+          <a href="image-convolution/" class="md-footer__link md-footer__link--next" aria-label="Next: 2-D Convolution and Image Filtering">
             <div class="md-footer__title">
               <span class="md-footer__direction">
                 Next
               </span>
               <div class="md-ellipsis">
-                AI Pace
+                2-D Convolution and Image Filtering
               </div>
             </div>
             <div class="md-footer__button md-icon">

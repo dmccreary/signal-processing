@@ -6,7 +6,7 @@
       <meta charset="utf-8">
       <meta name="viewport" content="width=device-width,initial-scale=1">
       
-        <meta name="description" content="Interactive simulation showing how different waveform shapes (sine, square, triangle, sawtooth) appear in frequency domain">
+        <meta name="description" content="Compare the harmonic spectra of sine, square, triangle and sawtooth waves - which harmonics each shape contains and how fast they decay.">
       
       
         <meta name="author" content="Dan McCreary">
@@ -15,10 +15,10 @@
         <link rel="canonical" href="https://dmccreary.github.io/signal-processing/sims/fft-waveform-types/">
       
       
-        <link rel="prev" href="../fft-sound-file/">
+        <link rel="prev" href="../fft-spectrum-analyzer/">
       
       
-        <link rel="next" href="../frequency-detection/">
+        <link rel="next" href="../filter-bank-explorer/">
       
       
       <link rel="icon" href="../../img/favicon.ico">
@@ -26,7 +26,7 @@
     
     
       
-        <title>FFT Waveform Types - Compare Harmonic Content - Signal Processing with AI</title>
+        <title>FFT Waveform Types - Signal Processing with AI</title>
       
     
     
@@ -54,6 +54,8 @@
     
       <link rel="stylesheet" href="../../css/extra.css">
     
+      <link rel="stylesheet" href="../../css/mascot.css">
+    
     <script>__md_scope=new URL("../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
     
       
@@ -63,9 +65,9 @@
       
         <meta  property="og:type"  content="website" >
       
-        <meta  property="og:title"  content="FFT Waveform Types - Compare Harmonic Content - Signal Processing with AI" >
+        <meta  property="og:title"  content="FFT Waveform Types - Signal Processing with AI" >
       
-        <meta  property="og:description"  content="Interactive simulation showing how different waveform shapes (sine, square, triangle, sawtooth) appear in frequency domain" >
+        <meta  property="og:description"  content="Compare the harmonic spectra of sine, square, triangle and sawtooth waves - which harmonics each shape contains and how fast they decay." >
       
         <meta property="og:image" content="https://dmccreary.github.io/signal-processing/sims/fft-waveform-types/fft-waveform-types.png">
       
@@ -79,9 +81,9 @@
       
         <meta  name="twitter:card"  content="summary_large_image" >
       
-        <meta  name="twitter:title"  content="FFT Waveform Types - Compare Harmonic Content - Signal Processing with AI" >
+        <meta  name="twitter:title"  content="FFT Waveform Types - Signal Processing with AI" >
       
-        <meta  name="twitter:description"  content="Interactive simulation showing how different waveform shapes (sine, square, triangle, sawtooth) appear in frequency domain" >
+        <meta  name="twitter:description"  content="Compare the harmonic spectra of sine, square, triangle and sawtooth waves - which harmonics each shape contains and how fast they decay." >
       
         <meta name="twitter:image" content="https://dmccreary.github.io/signal-processing/sims/fft-waveform-types/fft-waveform-types.png">
       
@@ -104,7 +106,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#fft-waveform-types-microsim" class="md-skip">
+        <a href="#fft-waveform-types" class="md-skip">
           Skip to content
         </a>
       
@@ -122,7 +124,7 @@
   <nav class="md-header__inner md-grid" aria-label="Header">
     <a href="../.." title="Signal Processing with AI" class="md-header__button md-logo" aria-label="Signal Processing with AI" data-md-component="logo">
       
-  <img src="../../img/logo-192.png" alt="logo">
+  <img src="../../img/mascot/neutral.png" alt="logo">
 
     </a>
     <label class="md-header__button md-icon" for="__drawer">
@@ -139,7 +141,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              FFT Waveform Types - Compare Harmonic Content
+              FFT Waveform Types
             
           </span>
         </div>
@@ -228,7 +230,7 @@
   <label class="md-nav__title" for="__drawer">
     <a href="../.." title="Signal Processing with AI" class="md-nav__button md-logo" aria-label="Signal Processing with AI" data-md-component="logo">
       
-  <img src="../../img/logo-192.png" alt="logo">
+  <img src="../../img/mascot/neutral.png" alt="logo">
 
     </a>
     Signal Processing with AI
@@ -275,31 +277,11 @@
   
   
     <li class="md-nav__item">
-      <a href="../../chapters/" class="md-nav__link">
-        
-  
-  <span class="md-ellipsis">
-    Table of Contents
-  </span>
-  
-
-      </a>
-    </li>
-  
-
-    
-      
-      
-  
-  
-  
-  
-    <li class="md-nav__item">
       <a href="../../about/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
-    About This Website
+    About
   </span>
   
 
@@ -542,6 +524,174 @@
           
         
       
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
     
     
     
@@ -551,7 +701,7 @@
       
         
         
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_6" checked>
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_5" checked>
         
           
           
@@ -567,19 +717,103 @@
             </a>
             
               
-              <label class="md-nav__link " for="__nav_6" id="__nav_6_label" tabindex="0">
+              <label class="md-nav__link " for="__nav_5" id="__nav_5_label" tabindex="0">
                 <span class="md-nav__icon md-icon"></span>
               </label>
             
           </div>
         
-        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_6_label" aria-expanded="true">
-          <label class="md-nav__title" for="__nav_6">
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_5_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_5">
             <span class="md-nav__icon md-icon"></span>
             MicroSims
           </label>
           <ul class="md-nav__list" data-md-scrollfix>
             
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../image-convolution/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    2-D Convolution and Image Filtering
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../conv-layer-as-filter/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    A Convolutional Layer Is a Learned FIR Filter
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../adaptive-algorithm-comparison-tool/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Adaptive Algorithm Comparison Tool
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../adaptive-noise-cancellation/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Adaptive Noise and Echo Cancellation
+  </span>
+  
+
+      </a>
+    </li>
+  
+
               
             
               
@@ -631,11 +865,11 @@
   
   
     <li class="md-nav__item">
-      <a href="../base-and-treble/" class="md-nav__link">
+      <a href="../fft-basic/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
-    Base and Treble
+    Basic FFT
   </span>
   
 
@@ -652,11 +886,32 @@
   
   
     <li class="md-nav__item">
-      <a href="../fft-basic/" class="md-nav__link">
+      <a href="../base-and-treble/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
-    Basic FFT
+    Bass and Treble
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../bilinear-transform/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Bilinear Transform and Frequency Warping
   </span>
   
 
@@ -778,6 +1033,27 @@
   
   
     <li class="md-nav__item">
+      <a href="../compressed-sensing/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Compressed Sensing
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
       <a href="../convolution/" class="md-nav__link">
         
   
@@ -799,11 +1075,137 @@
   
   
     <li class="md-nav__item">
+      <a href="../convolution-theorem/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Convolution Theorem and Circular Convolution
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../convolution-visualizer/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Convolution Visualizer
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../correlation-and-matched-filtering/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Correlation and Matched Filtering
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../dct-basis-explorer/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    DCT Basis Explorer
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../dft-explorer/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    DFT Explorer
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
       <a href="../euler-formula-explorer/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
     Euler's Formula Explorer
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../even-and-odd-signal-decomposition/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Even and Odd Signal Decomposition
   </span>
   
 
@@ -964,6 +1366,27 @@
                 
   
   
+  
+  
+    <li class="md-nav__item">
+      <a href="../fft-spectrum-analyzer/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    FFT Spectrum Analyzer
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
     
   
   
@@ -1013,37 +1436,19 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#about-this-microsim" class="md-nav__link">
+  <a href="#description" class="md-nav__link">
     <span class="md-ellipsis">
-      About this MicroSim
+      Description
     </span>
   </a>
   
-    <nav class="md-nav" aria-label="About this MicroSim">
+    <nav class="md-nav" aria-label="Description">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#supported-waveforms" class="md-nav__link">
+  <a href="#fourier-series-of-the-four-waveforms" class="md-nav__link">
     <span class="md-ellipsis">
-      Supported Waveforms
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#interactive-controls" class="md-nav__link">
-    <span class="md-ellipsis">
-      Interactive Controls
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#key-learning-objectives" class="md-nav__link">
-    <span class="md-ellipsis">
-      Key Learning Objectives
+      Fourier Series of the Four Waveforms
     </span>
   </a>
   
@@ -1055,28 +1460,73 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#educational-applications" class="md-nav__link">
+  <a href="#lesson-plan" class="md-nav__link">
     <span class="md-ellipsis">
-      Educational Applications
+      Lesson Plan
     </span>
   </a>
   
-    <nav class="md-nav" aria-label="Educational Applications">
+    <nav class="md-nav" aria-label="Lesson Plan">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#for-instructors" class="md-nav__link">
+  <a href="#learning-objectives" class="md-nav__link">
     <span class="md-ellipsis">
-      For Instructors
+      Learning Objectives
     </span>
   </a>
   
 </li>
         
           <li class="md-nav__item">
-  <a href="#for-students" class="md-nav__link">
+  <a href="#target-audience" class="md-nav__link">
     <span class="md-ellipsis">
-      For Students
+      Target Audience
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#prerequisites" class="md-nav__link">
+    <span class="md-ellipsis">
+      Prerequisites
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#activities" class="md-nav__link">
+    <span class="md-ellipsis">
+      Activities
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#assessment" class="md-nav__link">
+    <span class="md-ellipsis">
+      Assessment
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#common-misconceptions" class="md-nav__link">
+    <span class="md-ellipsis">
+      Common Misconceptions
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#extension-activities" class="md-nav__link">
+    <span class="md-ellipsis">
+      Extension Activities
     </span>
   </a>
   
@@ -1088,149 +1538,11 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#technical-implementation" class="md-nav__link">
+  <a href="#references" class="md-nav__link">
     <span class="md-ellipsis">
-      Technical Implementation
+      References
     </span>
   </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#sample-exercises" class="md-nav__link">
-    <span class="md-ellipsis">
-      Sample Exercises
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#extensions-and-variations" class="md-nav__link">
-    <span class="md-ellipsis">
-      Extensions and Variations
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#related-concepts" class="md-nav__link">
-    <span class="md-ellipsis">
-      Related Concepts
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#discussion" class="md-nav__link">
-    <span class="md-ellipsis">
-      Discussion
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="Discussion">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#why-waveform-shape-matters" class="md-nav__link">
-    <span class="md-ellipsis">
-      Why Waveform Shape Matters
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#the-four-waveforms-explained" class="md-nav__link">
-    <span class="md-ellipsis">
-      The Four Waveforms Explained
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="The Four Waveforms Explained">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#sine-wave-the-pure-tone" class="md-nav__link">
-    <span class="md-ellipsis">
-      Sine Wave: The Pure Tone
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#square-wave-odd-harmonics-with-1n-decay" class="md-nav__link">
-    <span class="md-ellipsis">
-      Square Wave: Odd Harmonics with 1/n Decay
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#triangle-wave-odd-harmonics-with-1n2-decay" class="md-nav__link">
-    <span class="md-ellipsis">
-      Triangle Wave: Odd Harmonics with 1/n² Decay
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#sawtooth-wave-all-harmonics-with-1n-decay" class="md-nav__link">
-    <span class="md-ellipsis">
-      Sawtooth Wave: All Harmonics with 1/n Decay
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#the-gibbs-phenomenon" class="md-nav__link">
-    <span class="md-ellipsis">
-      The Gibbs Phenomenon
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#why-this-matters-for-audio" class="md-nav__link">
-    <span class="md-ellipsis">
-      Why This Matters for Audio
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#exploration-activities" class="md-nav__link">
-    <span class="md-ellipsis">
-      Exploration Activities
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#connection-to-course-concepts" class="md-nav__link">
-    <span class="md-ellipsis">
-      Connection to Course Concepts
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
   
 </li>
       
@@ -1250,11 +1562,263 @@
   
   
     <li class="md-nav__item">
+      <a href="../filter-bank-explorer/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Filter Bank and Polyphase Explorer
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../fir-filter-design-comparison-tool/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    FIR Filter Design Comparison Tool
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../fir-vs-iir/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    FIR vs IIR Filters
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../fourier-series-explorer/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Fourier Series Explorer
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../fourier-transform-pairs/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Fourier Transform Pairs
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
       <a href="../frequency-detection/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
     Frequency Detection
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../huffman-coding/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Huffman Coding
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../iir-prototype-comparison/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    IIR Prototype Comparison
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../impulse-and-frequency-response-analyzer/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Impulse and Frequency Response Analyzer
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../interactive-filter-design-and-analysis-tool/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Interactive Filter Design and Analysis Tool
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../interactive-pole-zero-analysis-tool/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Interactive Pole-Zero Analysis Tool
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../interactive-spectrogram-parameter-explorer/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Interactive Spectrogram Parameter Explorer
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../interactive-stft-spectrogram-analyzer/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Interactive STFT Spectrogram Analyzer
   </span>
   
 
@@ -1334,11 +1898,158 @@
   
   
     <li class="md-nav__item">
+      <a href="../multirate-sample-rate-converter/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Multirate Sample Rate Converter
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../noise-analysis-and-reduction-tool/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Noise Analysis and Reduction Tool
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
       <a href="../nyquist-shannon-sampling/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
     Nyquist-Shannon Sampling
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../phase-spectrum/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Phase Spectrum - What the Magnitude Hides
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../phasor-addition/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Phasor Addition
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../psd-wiener-khinchin/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Power Spectral Density and the Wiener-Khinchin Theorem
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../distribution-explorer/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Probability Distribution Explorer
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../quantization-and-noise-shaping/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Quantization and Noise Shaping
   </span>
   
 
@@ -1376,11 +2087,116 @@
   
   
     <li class="md-nav__item">
+      <a href="../real-time-processing-simulator/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Real-Time Processing Simulator
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
       <a href="../reverb/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
     Reverb Effect
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../s-plane-explorer/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    s-Plane Explorer
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../sampling-theorem-explorer/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Sampling Theorem Explorer
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../signal-operations/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Signal Operations - Shift, Scale and Reverse
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../signal-type-explorer/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Signal Type Explorer
   </span>
   
 
@@ -1418,11 +2234,95 @@
   
   
     <li class="md-nav__item">
+      <a href="../spectral-leakage-and-windowing/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Spectral Leakage and Windowing
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
       <a href="../synth-timeline/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
     Synth Timeline
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../system-interconnections/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    System Interconnections - Series, Parallel, Feedback
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../system-property-explorer/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    System Property Explorer
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../time-frequency-analysis-explorer/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Time-Frequency Analysis Explorer
   </span>
   
 
@@ -1465,6 +2365,27 @@
   
   <span class="md-ellipsis">
     Tone Generator
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../wavelet-explorer/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Wavelet Explorer - CWT Scalogram and Haar DWT
   </span>
   
 
@@ -1641,6 +2562,12 @@
       
         
           
+        
+      
+        
+      
+        
+      
         
       
         
@@ -1855,6 +2782,26 @@
   
   
     <li class="md-nav__item">
+      <a href="../../instructors-guide/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Instructor's Guide
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
       <a href="../../license/" class="md-nav__link">
         
   
@@ -1900,26 +2847,6 @@
   
   <span class="md-ellipsis">
     Contact
-  </span>
-  
-
-      </a>
-    </li>
-  
-
-    
-      
-      
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../../ieee-paper-changes/" class="md-nav__link">
-        
-  
-  <span class="md-ellipsis">
-    Paper Changes
   </span>
   
 
@@ -2050,37 +2977,19 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#about-this-microsim" class="md-nav__link">
+  <a href="#description" class="md-nav__link">
     <span class="md-ellipsis">
-      About this MicroSim
+      Description
     </span>
   </a>
   
-    <nav class="md-nav" aria-label="About this MicroSim">
+    <nav class="md-nav" aria-label="Description">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#supported-waveforms" class="md-nav__link">
+  <a href="#fourier-series-of-the-four-waveforms" class="md-nav__link">
     <span class="md-ellipsis">
-      Supported Waveforms
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#interactive-controls" class="md-nav__link">
-    <span class="md-ellipsis">
-      Interactive Controls
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#key-learning-objectives" class="md-nav__link">
-    <span class="md-ellipsis">
-      Key Learning Objectives
+      Fourier Series of the Four Waveforms
     </span>
   </a>
   
@@ -2092,28 +3001,73 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#educational-applications" class="md-nav__link">
+  <a href="#lesson-plan" class="md-nav__link">
     <span class="md-ellipsis">
-      Educational Applications
+      Lesson Plan
     </span>
   </a>
   
-    <nav class="md-nav" aria-label="Educational Applications">
+    <nav class="md-nav" aria-label="Lesson Plan">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#for-instructors" class="md-nav__link">
+  <a href="#learning-objectives" class="md-nav__link">
     <span class="md-ellipsis">
-      For Instructors
+      Learning Objectives
     </span>
   </a>
   
 </li>
         
           <li class="md-nav__item">
-  <a href="#for-students" class="md-nav__link">
+  <a href="#target-audience" class="md-nav__link">
     <span class="md-ellipsis">
-      For Students
+      Target Audience
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#prerequisites" class="md-nav__link">
+    <span class="md-ellipsis">
+      Prerequisites
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#activities" class="md-nav__link">
+    <span class="md-ellipsis">
+      Activities
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#assessment" class="md-nav__link">
+    <span class="md-ellipsis">
+      Assessment
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#common-misconceptions" class="md-nav__link">
+    <span class="md-ellipsis">
+      Common Misconceptions
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#extension-activities" class="md-nav__link">
+    <span class="md-ellipsis">
+      Extension Activities
     </span>
   </a>
   
@@ -2125,149 +3079,11 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#technical-implementation" class="md-nav__link">
+  <a href="#references" class="md-nav__link">
     <span class="md-ellipsis">
-      Technical Implementation
+      References
     </span>
   </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#sample-exercises" class="md-nav__link">
-    <span class="md-ellipsis">
-      Sample Exercises
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#extensions-and-variations" class="md-nav__link">
-    <span class="md-ellipsis">
-      Extensions and Variations
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#related-concepts" class="md-nav__link">
-    <span class="md-ellipsis">
-      Related Concepts
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#discussion" class="md-nav__link">
-    <span class="md-ellipsis">
-      Discussion
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="Discussion">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#why-waveform-shape-matters" class="md-nav__link">
-    <span class="md-ellipsis">
-      Why Waveform Shape Matters
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#the-four-waveforms-explained" class="md-nav__link">
-    <span class="md-ellipsis">
-      The Four Waveforms Explained
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="The Four Waveforms Explained">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#sine-wave-the-pure-tone" class="md-nav__link">
-    <span class="md-ellipsis">
-      Sine Wave: The Pure Tone
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#square-wave-odd-harmonics-with-1n-decay" class="md-nav__link">
-    <span class="md-ellipsis">
-      Square Wave: Odd Harmonics with 1/n Decay
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#triangle-wave-odd-harmonics-with-1n2-decay" class="md-nav__link">
-    <span class="md-ellipsis">
-      Triangle Wave: Odd Harmonics with 1/n² Decay
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#sawtooth-wave-all-harmonics-with-1n-decay" class="md-nav__link">
-    <span class="md-ellipsis">
-      Sawtooth Wave: All Harmonics with 1/n Decay
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#the-gibbs-phenomenon" class="md-nav__link">
-    <span class="md-ellipsis">
-      The Gibbs Phenomenon
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#why-this-matters-for-audio" class="md-nav__link">
-    <span class="md-ellipsis">
-      Why This Matters for Audio
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#exploration-activities" class="md-nav__link">
-    <span class="md-ellipsis">
-      Exploration Activities
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#connection-to-course-concepts" class="md-nav__link">
-    <span class="md-ellipsis">
-      Connection to Course Concepts
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
   
 </li>
       
@@ -2286,7 +3102,7 @@
                   
 
   
-    <a href="https://github.com/dmccreary/signal-processing/blob/master/docs/sims/fft-waveform-types/index.md" title="Edit this page" class="md-content__button md-icon">
+    <a href="https://github.com/dmccreary/signal-processing/blob/main/docs/sims/fft-waveform-types/index.md" title="Edit this page" class="md-content__button md-icon">
       
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M10 20H6V4h7v5h5v3.1l2-2V8l-6-6H6c-1.1 0-2 .9-2 2v16c0 1.1.9 2 2 2h4zm10.2-7c.1 0 .3.1.4.2l1.3 1.3c.2.2.2.6 0 .8l-1 1-2.1-2.1 1-1c.1-.1.2-.2.4-.2m0 3.9L14.1 23H12v-2.1l6.1-6.1z"/></svg>
     </a>
@@ -2294,166 +3110,116 @@
   
 
 
-<h1 id="fft-waveform-types-microsim">FFT Waveform Types MicroSim</h1>
-<iframe src="main.html" height="500" scrolling="no" style="overflow: hidden;"></iframe>
+<h1 id="fft-waveform-types">FFT Waveform Types</h1>
+<iframe src="main.html" width="100%" height="532px" scrolling="no"></iframe>
 
-<p>You can include this MicroSim in your course by pasting the following HTML directly into your web page.</p>
-<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
-<span class="normal">2</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="p">&lt;</span><span class="nt">iframe</span> <span class="na">src</span><span class="o">=</span><span class="s">&quot;https://dmccreary.github.io/signal-processing/sims/fft-waveform-types/main.html&quot;</span> 
-  <span class="na">height</span><span class="o">=</span><span class="s">&quot;500px&quot;</span> <span class="na">scrolling</span><span class="o">=</span><span class="s">&quot;no&quot;</span> <span class="na">style</span><span class="o">=</span><span class="s">&quot;overflow: hidden;&quot;</span><span class="p">&gt;&lt;/</span><span class="nt">iframe</span><span class="p">&gt;</span>
+<p>Copy this iframe to your website:</p>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="p">&lt;</span><span class="nt">iframe</span> <span class="na">src</span><span class="o">=</span><span class="s">"https://dmccreary.github.io/signal-processing/sims/fft-waveform-types/main.html"</span> <span class="na">width</span><span class="o">=</span><span class="s">"100%"</span> <span class="na">height</span><span class="o">=</span><span class="s">"532px"</span> <span class="na">scrolling</span><span class="o">=</span><span class="s">"no"</span><span class="p">&gt;&lt;/</span><span class="nt">iframe</span><span class="p">&gt;</span>
 </code></pre></div></td></tr></table></div>
-<p><a class="md-button md-button--primary" href="main.html">Run the FFT Waveform Types MicroSim Fullscreen</a>
-<a class="md-button" href="https://editor.p5js.org/">Edit this MicroSim</a></p>
-<h2 id="about-this-microsim">About this MicroSim</h2>
-<p>This interactive simulation demonstrates how different waveform shapes appear in both time and frequency domains. It helps students understand the fundamental relationship between waveform shape and harmonic content by showing:</p>
+<p><a class="md-button md-button--primary" href="main.html">Run MicroSim in Fullscreen</a></p>
+<!-- TODO(user): add the p5.js editor link once the sketch is saved in editor.p5js.org:
+[Edit in the p5.js Editor](https://editor.p5js.org/<username>/sketches/fft-waveform-types) -->
+
+<h2 id="description">Description</h2>
+<p>This MicroSim shows how the <strong>shape</strong> of a periodic waveform determines its <strong>harmonic content</strong>. The top plot
+(green) is the time domain: 50 ms of a sine, square, triangle or sawtooth wave with peak amplitude 1, with a read-out
+of the period <span class="arithmatex">\(T = 1/f\)</span>. The bottom plot (purple) is the frequency domain: one vertical line for every harmonic
+<span class="arithmatex">\(f_n = n f\)</span> from 0 to 500 Hz, labelled with its harmonic number <span class="arithmatex">\(n\)</span> when there is room.</p>
 <ul>
-<li><strong>Time Domain</strong> (top): The actual waveform shape over time</li>
-<li><strong>Frequency Domain</strong> (bottom): The FFT spectrum showing which frequencies are present</li>
+<li><strong>Waveform</strong> radio buttons choose the shape. The caption above the spectrum summarizes the rule, for example <em>Odd harmonics, 1/n decay</em>.</li>
+<li><strong>Frequency</strong> slider (0-500 Hz, default 50 Hz) sets the fundamental <span class="arithmatex">\(f\)</span>. Every harmonic line moves with it, so fewer harmonics fit below 500 Hz as <span class="arithmatex">\(f\)</span> rises.</li>
+<li><strong>Hover</strong> over (or tap) a spectral line to highlight it in gold and read its frequency and exact relative magnitude, for example <em>n = 3: 300 Hz, magnitude 1/3 = 0.333</em>.</li>
 </ul>
-<h3 id="supported-waveforms">Supported Waveforms</h3>
+<p>Line heights are <strong>relative to the fundamental</strong> (the <span class="arithmatex">\(n = 1\)</span> line always reaches 1), so you can compare how fast the
+harmonics decay: <span class="arithmatex">\(1/n\)</span> for the square and sawtooth waves, <span class="arithmatex">\(1/n^2\)</span> for the triangle wave. A small dot on the baseline
+marks every harmonic that is present, even when its line is too short to see. The spectrum is computed from the
+Fourier series rather than by running an FFT on samples; it shows the peak heights an ideal FFT would report for a
+window that holds a whole number of periods, without leakage or aliasing.</p>
+<p>This MicroSim supports the Fourier series section of
+<a href="../../chapters/06-fourier-analysis-fundamentals/#fourier-series">Chapter 6: Fourier Analysis Fundamentals</a>.</p>
+<h3 id="fourier-series-of-the-four-waveforms">Fourier Series of the Four Waveforms</h3>
+<p>For a wave of peak amplitude 1 and angular frequency <span class="arithmatex">\(\omega = 2\pi f\)</span>:</p>
+<div class="arithmatex">\[\text{Square} = \frac{4}{\pi}\left[\sin(\omega t) + \frac{1}{3}\sin(3\omega t) + \frac{1}{5}\sin(5\omega t) + \frac{1}{7}\sin(7\omega t) + \cdots\right]\]</div>
+<div class="arithmatex">\[\text{Triangle} = \frac{8}{\pi^2}\left[\sin(\omega t) - \frac{1}{9}\sin(3\omega t) + \frac{1}{25}\sin(5\omega t) - \frac{1}{49}\sin(7\omega t) + \cdots\right]\]</div>
+<div class="arithmatex">\[\text{Sawtooth} = \frac{2}{\pi}\left[\sin(\omega t) - \frac{1}{2}\sin(2\omega t) + \frac{1}{3}\sin(3\omega t) - \frac{1}{4}\sin(4\omega t) + \cdots\right]\]</div>
+<p>The factor in front sets the absolute size of the fundamental (<span class="arithmatex">\(4/\pi \approx 1.27\)</span>, <span class="arithmatex">\(8/\pi^2 \approx 0.81\)</span>,
+<span class="arithmatex">\(2/\pi \approx 0.64\)</span>); the MicroSim divides it out so that only the decay pattern remains. The MicroSim draws the
+triangle and sawtooth starting from <span class="arithmatex">\(-1\)</span> at <span class="arithmatex">\(t = 0\)</span>. That is a time shift, which changes the phases of the harmonics
+but not their magnitudes.</p>
+<p><strong>Why only odd harmonics?</strong> Square and triangle waves have <em>half-wave symmetry</em>: shifting them by half a period flips
+their sign, <span class="arithmatex">\(x(t + T/2) = -x(t)\)</span>. Every even harmonic fails that test, so its coefficient is zero. The sawtooth has no
+such symmetry, so all harmonics appear.</p>
+<p><strong>Why does the triangle decay faster?</strong> The square and sawtooth waves <em>jump</em> (the signal itself is discontinuous),
+which gives coefficients that fall as <span class="arithmatex">\(1/n\)</span>. The triangle wave never jumps; only its slope changes abruptly at the
+corners, which gives <span class="arithmatex">\(1/n^2\)</span>. In general, the smoother a waveform is in time, the faster its spectrum falls off in
+frequency. When a jump is rebuilt from a finite number of harmonics, the partial sum overshoots by about 9% of the
+jump near the edge (the Gibbs phenomenon); this MicroSim shows the ideal waveforms, not partial sums.</p>
+<p><strong>Connection to sound.</strong> Instruments playing the same note share the fundamental but differ in harmonic content,
+which we hear as <em>timbre</em>. Sine tones sound pure, triangle waves soft, square waves hollow and buzzy, and sawtooth
+waves bright, which is why subtractive synthesizers start from a sawtooth and filter harmonics away.</p>
+<h2 id="lesson-plan">Lesson Plan</h2>
+<h3 id="learning-objectives">Learning Objectives</h3>
+<p>After using this MicroSim, students will be able to:</p>
 <ol>
-<li><strong>Sine Wave</strong> - Pure tone with only the fundamental frequency</li>
-<li><strong>Square Wave</strong> - Contains odd harmonics (1st, 3rd, 5th...) with 1/n amplitude decay</li>
-<li><strong>Triangle Wave</strong> - Contains odd harmonics with 1/n² amplitude decay (much smoother spectrum than square)</li>
-<li><strong>Sawtooth Wave</strong> - Contains all harmonics (1st, 2nd, 3rd...) with 1/n amplitude decay</li>
+<li><strong>Compare</strong> the harmonic spectra of sine, square, triangle and sawtooth waves at the same fundamental frequency</li>
+<li><strong>Explain</strong> why square and triangle waves contain only odd harmonics while sawtooth waves contain every integer harmonic</li>
+<li><strong>Distinguish</strong> the <span class="arithmatex">\(1/n\)</span> amplitude decay of a square wave from the <span class="arithmatex">\(1/n^2\)</span> decay of a triangle wave in the spectrum plot</li>
+<li><strong>Predict</strong> how raising the fundamental frequency slider rescales the position of every harmonic line</li>
+<li><strong>Relate</strong> jumps and corners of a waveform in the time domain to the amount of high-frequency energy in its spectrum</li>
 </ol>
-<h3 id="interactive-controls">Interactive Controls</h3>
+<h3 id="target-audience">Target Audience</h3>
+<p>College undergraduates in an introductory signal processing, electronics or music technology course.
+Plan 20 minutes of guided exploration.</p>
+<h3 id="prerequisites">Prerequisites</h3>
 <ul>
-<li><strong>Waveform Type</strong>: Radio buttons to select sine, square, triangle, or sawtooth</li>
-<li><strong>Frequency Slider</strong>: Adjusts fundamental frequency from 0-500 Hz</li>
-<li><strong>Real-time Updates</strong>: Changes are reflected immediately in both domains</li>
+<li>Basic trigonometry: sine waves, frequency and period</li>
+<li>The idea of a spectrum as a plot of magnitude against frequency (see the <a href="../fft-basic/">Basic FFT MicroSim</a>)</li>
 </ul>
-<h3 id="key-learning-objectives">Key Learning Objectives</h3>
-<ul>
-<li>Understand that waveform shape determines harmonic content</li>
-<li>Compare how different wave shapes produce different frequency spectra</li>
-<li>Observe that smoother waveforms (triangle) have fewer high-frequency harmonics than angular waveforms (square)</li>
-<li>Learn why triangle waves sound "softer" than square waves (faster harmonic decay)</li>
-</ul>
-<h2 id="educational-applications">Educational Applications</h2>
-<h3 id="for-instructors">For Instructors</h3>
-<p>This simulation is ideal for:</p>
-<ul>
-<li><strong>Signal Processing Courses</strong>: Demonstrating Fourier analysis principles</li>
-<li><strong>Music Technology</strong>: Explaining synthesizer waveform selection</li>
-<li><strong>Physics Classes</strong>: Showing wave superposition and harmonic series</li>
-<li><strong>Engineering</strong>: Understanding spectral content of different signals</li>
-</ul>
-<h3 id="for-students">For Students</h3>
-<p>Students can explore:</p>
-<ul>
-<li>How changing waveform shape affects the frequency spectrum</li>
-<li>Why different waveforms have characteristic sounds</li>
-<li>The mathematical relationship between time and frequency domains</li>
-<li>The concept of harmonic series and amplitude decay</li>
-</ul>
-<h2 id="technical-implementation">Technical Implementation</h2>
-<ul>
-<li><strong>FFT Size</strong>: 8192 samples for high frequency resolution</li>
-<li><strong>Sample Rate</strong>: 44.1 kHz (standard audio rate)</li>
-<li><strong>Frequency Range</strong>: Display limited to 0-500 Hz for clarity</li>
-<li><strong>Real-time Processing</strong>: Efficient spectrum calculation for smooth interaction</li>
-</ul>
-<h2 id="sample-exercises">Sample Exercises</h2>
+<h3 id="activities">Activities</h3>
+<p><strong>Activity 1: Square versus triangle (5 min).</strong> Set the frequency to <strong>100 Hz</strong> and select <strong>Square</strong>. Lines appear at
+100, 300 and 500 Hz with relative heights 1, 0.333 and 0.200. Switch to <strong>Triangle</strong>: the lines stay at the same
+frequencies but shrink to 1, 0.111 and 0.040. Hover over each line to read the exact values. Ask: "Which wave has
+more high-frequency energy, and which one has sharper features in the time plot?"</p>
+<p><strong>Activity 2: The missing even harmonics (5 min).</strong> At 100 Hz select <strong>Sawtooth</strong>: five lines appear at 100, 200, 300,
+400 and 500 Hz with heights 1, 0.5, 0.333, 0.25 and 0.2. Switch to <strong>Square</strong>: the 200 Hz and 400 Hz lines vanish.
+Ask students to sketch the square wave shifted by half a period and explain the symmetry that removes them.</p>
+<p><strong>Activity 3: Frequency scaling (5 min).</strong> Select <strong>Square</strong> at <strong>50 Hz</strong>: the period read-out shows 20.0 ms,
+the window holds 2.5 cycles, and five lines appear at 50, 150, 250, 350 and 450 Hz. Move to <strong>100 Hz</strong>: the period
+halves to 10.0 ms, the window holds 5 cycles, and only three lines remain (100, 300, 500 Hz). Every harmonic frequency
+doubled; none of the relative heights changed.</p>
+<p><strong>Activity 4: A crowded spectrum (5 min).</strong> Select <strong>Sawtooth</strong> at <strong>20 Hz</strong>. Exactly one ramp fills the 50 ms window
+(period 50.0 ms), and 25 lines fill the spectrum, the last at 500 Hz with height 0.040. Then select <strong>Sine</strong>: a
+single line at 20 Hz remains. Discuss why a pure sine is the only waveform with one line.</p>
+<h3 id="assessment">Assessment</h3>
 <ol>
-<li><strong>Compare Harmonic Content</strong>: Switch between waveforms and observe how the spectrum changes</li>
-<li><strong>Frequency Scaling</strong>: Adjust the frequency and see how all harmonics scale proportionally</li>
-<li><strong>Harmonic Decay</strong>: Compare the rate at which harmonics decrease for triangle vs. square waves</li>
-<li><strong>Audio Connection</strong>: If audio is enabled, listen to how different waveforms sound at the same frequency</li>
+<li>A square wave has a fundamental of 60 Hz. Which lines appear between 0 and 500 Hz, and what are their relative heights? <em>(Answer: 60, 180, 300 and 420 Hz, with heights 1, 0.333, 0.200 and 0.143; the next odd harmonic, 540 Hz, is off the plot.)</em></li>
+<li>What is the relative magnitude of the 5th harmonic of a triangle wave, and how does it compare with the 5th harmonic of a square wave? <em>(Answer: <span class="arithmatex">\(1/25 = 0.04\)</span> for the triangle and <span class="arithmatex">\(1/5 = 0.2\)</span> for the square, five times larger.)</em></li>
+<li>Why does a 100 Hz square wave have no line at 200 Hz? <em>(Answer: it has half-wave symmetry, <span class="arithmatex">\(x(t + T/2) = -x(t)\)</span>, which forces every even-harmonic coefficient to zero.)</em></li>
+<li>How many lines does a 125 Hz sawtooth produce between 0 and 500 Hz? <em>(Answer: four, at 125, 250, 375 and 500 Hz, with heights 1, 0.5, 0.333 and 0.25.)</em></li>
+<li>The time plot shows exactly 4 complete cycles in its 50 ms window. What are the fundamental frequency and the period? <em>(Answer: <span class="arithmatex">\(f = 4 / 0.050\ \text{s} = 80\)</span> Hz and <span class="arithmatex">\(T = 12.5\)</span> ms; the read-out confirms it.)</em></li>
 </ol>
-<h2 id="extensions-and-variations">Extensions and Variations</h2>
-<p>This simulation could be extended to include:</p>
+<h3 id="common-misconceptions">Common Misconceptions</h3>
+<p><strong>"Harmonics are extra tones the analyser adds to every signal."</strong> Harmonics are part of the waveform's shape. Select
+<strong>Sine</strong> at any frequency: only one line appears. The harmonics appear only when the shape departs from a sinusoid.</p>
+<p><strong>"Square and triangle waves have the same spectrum because both contain only odd harmonics."</strong> The lines sit at the
+same frequencies but decay at different rates. At 100 Hz, hover over the 300 Hz line: 0.333 for the square wave,
+0.111 for the triangle wave.</p>
+<h3 id="extension-activities">Extension Activities</h3>
 <ul>
-<li>Audio output for hearing the differences</li>
-<li>Custom waveform drawing capability</li>
-<li>Phase relationships between harmonics</li>
-<li>Noise addition to demonstrate real-world signals</li>
-<li>Time-varying waveforms (chirps, modulation)</li>
+<li>Predict the spectrum of a <em>half-amplitude</em> square wave. (The relative heights do not change; only the absolute scale does.)</li>
+<li>Add a dB magnitude scale (an extension to the code) so that the small triangle-wave harmonics become visible.</li>
+<li>Add audio output so that students can hear the timbre of each waveform at the same pitch.</li>
 </ul>
-<h2 id="related-concepts">Related Concepts</h2>
-<ul>
-<li><strong>Fourier Series</strong>: Mathematical foundation for harmonic decomposition</li>
-<li><strong>Spectral Analysis</strong>: Frequency domain representation of signals</li>
-<li><strong>Music Synthesis</strong>: How electronic instruments generate different timbres</li>
-<li><strong>Signal Processing</strong>: Fundamental tool for analyzing and processing signals</li>
-</ul>
-<h2 id="discussion">Discussion</h2>
-<p>This simulation reveals one of the most profound insights in signal processing: <strong>every periodic waveform can be decomposed into a sum of sine waves</strong>. This is the essence of Fourier analysis, and understanding it unlocks the door to audio synthesis, telecommunications, image processing, and countless other applications.</p>
-<h3 id="why-waveform-shape-matters">Why Waveform Shape Matters</h3>
-<p>When you pluck a guitar string and a synthesizer both play the same note (say, 440 Hz for A4), they sound completely different. Why? Both produce the same fundamental frequency, but the <strong>harmonic content</strong>—the additional frequencies present—gives each sound its unique character or <em>timbre</em>.</p>
-<p>The shape of a waveform in the time domain directly determines which harmonics appear in the frequency domain. This simulation lets you see this relationship visually.</p>
-<h3 id="the-four-waveforms-explained">The Four Waveforms Explained</h3>
-<h4 id="sine-wave-the-pure-tone">Sine Wave: The Pure Tone</h4>
-<p>The sine wave is the simplest possible periodic signal. It contains <strong>only the fundamental frequency</strong>—no harmonics at all. In the frequency domain, you see a single spike.</p>
-<p><strong>Why it matters:</strong></p>
-<ul>
-<li>Sine waves are the building blocks of all other waveforms</li>
-<li>A pure sine tone sounds "hollow" or "electronic" because there's no harmonic richness</li>
-<li>Tuning forks and properly designed electronic oscillators produce nearly pure sine waves</li>
-</ul>
-<h4 id="square-wave-odd-harmonics-with-1n-decay">Square Wave: Odd Harmonics with 1/n Decay</h4>
-<p>A square wave alternates abruptly between two values. This sharp transition creates a rich spectrum containing <strong>only odd harmonics</strong> (1st, 3rd, 5th, 7th...) with amplitudes that decrease as 1/n, where n is the harmonic number.</p>
-<p><strong>Mathematical series:</strong></p>
-<div class="arithmatex">\[
-\text{Square wave} = \frac{4}{\pi}\left[\sin(\omega t) + \frac{1}{3}\sin(3\omega t) + \frac{1}{5}\sin(5\omega t) + \frac{1}{7}\sin(7\omega t) + \cdots\right]
-\]</div>
-<p><strong>Why odd harmonics only?</strong> The square wave has perfect symmetry about its midpoint within each half-cycle. This symmetry mathematically cancels out all even harmonics.</p>
-<p><strong>Sound character:</strong> Square waves sound "buzzy" or "hollow"—think 8-bit video game sounds or certain wind instruments like clarinets.</p>
-<h4 id="triangle-wave-odd-harmonics-with-1n2-decay">Triangle Wave: Odd Harmonics with 1/n² Decay</h4>
-<p>The triangle wave rises and falls linearly, creating smoother transitions than the square wave. Like the square wave, it contains <strong>only odd harmonics</strong>, but they decay much faster—as 1/n².</p>
-<p><strong>Mathematical series:</strong></p>
-<div class="arithmatex">\[
-\text{Triangle wave} = \frac{8}{\pi^2}\left[\sin(\omega t) - \frac{1}{9}\sin(3\omega t) + \frac{1}{25}\sin(5\omega t) - \frac{1}{49}\sin(7\omega t) + \cdots\right]
-\]</div>
-<p><strong>Why faster decay?</strong> The triangle wave has no sharp corners—it's continuous and has a continuous first derivative. In signal processing, smoother time-domain shapes always produce spectra that fall off more rapidly.</p>
-<p><strong>Sound character:</strong> Triangle waves sound "softer" and "flute-like" compared to square waves. The rapid harmonic decay means less high-frequency energy.</p>
-<h4 id="sawtooth-wave-all-harmonics-with-1n-decay">Sawtooth Wave: All Harmonics with 1/n Decay</h4>
-<p>The sawtooth wave ramps up (or down) linearly, then drops sharply. Unlike square and triangle waves, it contains <strong>all harmonics</strong>—both odd and even—with 1/n amplitude decay.</p>
-<p><strong>Mathematical series:</strong></p>
-<div class="arithmatex">\[
-\text{Sawtooth wave} = \frac{2}{\pi}\left[\sin(\omega t) - \frac{1}{2}\sin(2\omega t) + \frac{1}{3}\sin(3\omega t) - \frac{1}{4}\sin(4\omega t) + \cdots\right]
-\]</div>
-<p><strong>Why all harmonics?</strong> The sawtooth lacks the half-wave symmetry of square and triangle waves. Without this symmetry, even harmonics are free to appear.</p>
-<p><strong>Sound character:</strong> Sawtooth waves sound "bright" and "brassy"—common in synthesizer lead sounds and string emulations. The presence of all harmonics gives it the richest spectrum.</p>
-<h3 id="the-gibbs-phenomenon">The Gibbs Phenomenon</h3>
-<p>If you look carefully at a square wave reconstructed from its Fourier series, you'll notice overshoot (ringing) near the sharp transitions. This is the <strong>Gibbs phenomenon</strong>—a fundamental limitation when approximating discontinuities with finite sums of smooth sine waves. The overshoot is approximately 9% of the step height and persists no matter how many harmonics you include.</p>
-<h3 id="why-this-matters-for-audio">Why This Matters for Audio</h3>
-<p>Understanding harmonic content explains many audio phenomena:</p>
+<h2 id="references">References</h2>
 <ol>
-<li><strong>Subtractive synthesis</strong>: Start with a harmonically rich waveform (sawtooth) and use filters to remove unwanted harmonics</li>
-<li><strong>Additive synthesis</strong>: Build complex sounds by combining sine waves at harmonic frequencies</li>
-<li><strong>Distortion effects</strong>: Guitar distortion adds harmonics, making the sound "fatter"</li>
-<li><strong>Audio compression</strong>: MP3 encoding prioritizes frequencies that humans perceive most</li>
-<li><strong>Speaker design</strong>: Speakers must reproduce harmonics accurately to sound natural</li>
+<li><a href="https://en.wikipedia.org/wiki/Fourier_series">Fourier series</a> - Wikipedia - the decomposition of a periodic signal into harmonics that this MicroSim plots</li>
+<li><a href="https://en.wikipedia.org/wiki/Square_wave">Square wave</a> - Wikipedia - odd-harmonic series with <span class="arithmatex">\(1/n\)</span> amplitudes</li>
+<li><a href="https://en.wikipedia.org/wiki/Triangle_wave">Triangle wave</a> - Wikipedia - odd-harmonic series with <span class="arithmatex">\(1/n^2\)</span> amplitudes and alternating signs</li>
+<li><a href="https://en.wikipedia.org/wiki/Sawtooth_wave">Sawtooth wave</a> - Wikipedia - series containing every integer harmonic</li>
+<li><a href="https://en.wikipedia.org/wiki/Gibbs_phenomenon">Gibbs phenomenon</a> - Wikipedia - the overshoot when a jump is rebuilt from a finite number of harmonics</li>
+<li><a href="https://en.wikipedia.org/wiki/Timbre">Timbre</a> - Wikipedia - how harmonic content shapes the character of a sound</li>
+<li><a href="https://www.dspguide.com/">The Scientist and Engineer's Guide to Digital Signal Processing</a> - Steven W. Smith - free online textbook with chapters on Fourier analysis and harmonics</li>
 </ol>
-<h3 id="exploration-activities">Exploration Activities</h3>
-<p>Try these experiments to deepen your understanding:</p>
-<ol>
-<li>
-<p><strong>Compare decay rates</strong>: Set the frequency to 100 Hz. Switch between square and triangle waves. Notice how the triangle wave's harmonics (at 300 Hz, 500 Hz, etc.) are much smaller than the square wave's.</p>
-</li>
-<li>
-<p><strong>Missing harmonics</strong>: With a sawtooth at 100 Hz, you'll see peaks at 100, 200, 300, 400, 500 Hz. Switch to square—the 200 Hz and 400 Hz peaks disappear (even harmonics gone).</p>
-</li>
-<li>
-<p><strong>Frequency scaling</strong>: Change the fundamental frequency. Notice how all harmonics scale proportionally—if the fundamental doubles, so do all harmonic frequencies.</p>
-</li>
-<li>
-<p><strong>The pure sine</strong>: Select sine wave and observe the single spectral peak. This is the "atom" of sound—all other waveforms are combinations of these atoms.</p>
-</li>
-<li>
-<p><strong>Approaching DC</strong>: Lower the frequency toward 0 Hz. Watch how the harmonics compress together and eventually all spectral content disappears at 0 Hz (DC has no harmonics).</p>
-</li>
-</ol>
-<h3 id="connection-to-course-concepts">Connection to Course Concepts</h3>
-<p>This simulation demonstrates several key signal processing principles:</p>
-<ul>
-<li><strong>Fourier Analysis</strong>: The mathematical framework for decomposing signals into frequency components</li>
-<li><strong>Harmonic Series</strong>: The integer multiples of a fundamental frequency that appear in periodic signals</li>
-<li><strong>Time-Frequency Duality</strong>: How signal shape in time determines its spectrum in frequency</li>
-<li><strong>Spectral Envelope</strong>: The overall shape of how harmonic amplitudes decay (1/n vs 1/n²)</li>
-<li><strong>Symmetry and Harmonics</strong>: How waveform symmetry determines which harmonics are present</li>
-</ul>
 
 
 
@@ -2492,7 +3258,7 @@
       <nav class="md-footer__inner md-grid" aria-label="Footer" >
         
           
-          <a href="../fft-sound-file/" class="md-footer__link md-footer__link--prev" aria-label="Previous: FFT Sound File">
+          <a href="../fft-spectrum-analyzer/" class="md-footer__link md-footer__link--prev" aria-label="Previous: FFT Spectrum Analyzer">
             <div class="md-footer__button md-icon">
               
               <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
@@ -2502,20 +3268,20 @@
                 Previous
               </span>
               <div class="md-ellipsis">
-                FFT Sound File
+                FFT Spectrum Analyzer
               </div>
             </div>
           </a>
         
         
           
-          <a href="../frequency-detection/" class="md-footer__link md-footer__link--next" aria-label="Next: Frequency Detection">
+          <a href="../filter-bank-explorer/" class="md-footer__link md-footer__link--next" aria-label="Next: Filter Bank and Polyphase Explorer">
             <div class="md-footer__title">
               <span class="md-footer__direction">
                 Next
               </span>
               <div class="md-ellipsis">
-                Frequency Detection
+                Filter Bank and Polyphase Explorer
               </div>
             </div>
             <div class="md-footer__button md-icon">

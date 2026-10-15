@@ -1,0 +1,192 @@
+{
+  "microsim": {
+    "dublinCore": {
+      "title": "Filter Bank and Polyphase Explorer",
+      "creator": ["Dan McCreary"],
+      "subject": ["Filter banks", "Multirate signal processing", "Polyphase filters", "Cosine-modulated filter banks", "Decimation", "Subband decomposition"],
+      "description": "An M-channel cosine-modulated (pseudo-QMF) filter bank built from one Hamming-windowed-sinc prototype. Shows the magnitude response of every channel, the subband energies of a multi-tone, chirp or single-tone test signal, the analysis-synthesis reconstruction error in dB, the overall response and worst alias term, and the polyphase split of the prototype with the multiplications per output sample for direct and polyphase decimation.",
+      "publisher": "Dan McCreary",
+      "contributor": ["Claude (Anthropic)"],
+      "date": "2026-10-14",
+      "type": "Interactive Simulation",
+      "format": "text/html",
+      "identifier": "https://dmccreary.github.io/signal-processing/sims/filter-bank-explorer/",
+      "language": "en",
+      "relation": ["Chapter 10: Advanced Filter Design and Implementation", "Multirate Sample Rate Converter"],
+      "rights": "CC BY-NC-SA 4.0"
+    },
+    "search": {
+      "tags": ["filter bank", "polyphase", "pseudo-QMF", "cosine modulation", "subband", "decimation", "perfect reconstruction", "aliasing", "multirate"],
+      "searchKeywords": ["cosine-modulated filter bank", "polyphase decomposition", "subband energy", "reconstruction error", "polyphase decimator cost", "power complementary prototype"],
+      "visualizationType": ["simulation", "chart", "interactive-demo"],
+      "interactionLevel": "high",
+      "complexity": 7,
+      "relatedConcepts": ["Filter Banks", "Multirate Filters", "Polyphase Filters", "Decimation", "Aliasing", "FIR Filters", "Window Method"],
+      "applicationDomains": ["education", "demonstration", "exploration", "analysis"],
+      "showcase": false
+    },
+    "educational": {
+      "gradeLevel": ["Undergraduate"],
+      "subjectArea": ["Engineering", "Computer Science"],
+      "topic": ["Uniform filter banks", "Cosine-modulated (pseudo-QMF) banks", "Subband decomposition and reconstruction", "Polyphase decomposition", "Computational cost of decimation"],
+      "learningObjectives": [
+        "Calculate the edges k fs/2M and centre (2k+1) fs/4M of every channel and predict which channel or channels a tone falls into",
+        "Explain why the subband energies add up to the input energy when neighbouring channels cross at -3 dB, and to less when they cross at -6 dB",
+        "Analyze how the prototype length N and the cutoff tuning change the overall response |T|, the worst alias term and the reconstruction error",
+        "Decompose a prototype filter into its M polyphase components E_m[q] = p[qM + m] and state their length N/M",
+        "Calculate the multiplications per output sample for direct and polyphase decimation and explain where the factor M comes from"
+      ],
+      "bloomsTaxonomy": ["Understand", "Apply", "Analyze"],
+      "prerequisites": ["FIR filters, windowed-sinc design and magnitude responses in dB", "Downsampling by M and aliasing", "Modulation by a cosine shifts a spectrum"],
+      "duration": {"typical": 40, "range": {"min": 20, "max": 50}},
+      "difficulty": "Intermediate",
+      "scaffolding": {
+        "type": ["guided-discovery", "feedback"],
+        "adaptability": "fixed",
+        "removal": "user-controlled"
+      },
+      "misconceptions": [
+        {
+          "misconception": "Splitting a signal into M decimated subbands throws information away",
+          "correction": "A critically sampled bank keeps M subbands at fs/M each, as many samples as the input, and the synthesis bank cancels the aliasing between neighbouring channels",
+          "evidence": "With M = 4, N = 64, the tuned cutoff and the multi-tone input, the output matches the input to -62.0 dB"
+        },
+        {
+          "misconception": "A polyphase filter is a different filter from the original",
+          "correction": "The polyphase components are the prototype's taps dealt out in turn; the polyphase decimator performs the same multiplications for every kept output and skips only the outputs that downsampling discards",
+          "evidence": "The coloured taps of p[n] reappear unchanged in E_0 ... E_M-1, and the cost read-out drops from N M to N multiplications per output sample"
+        }
+      ]
+    },
+    "technical": {
+      "framework": "p5.js",
+      "version": "1.0.0",
+      "canvasDimensions": {"width": 900, "height": 662, "responsive": true},
+      "regions": {"drawHeight": 550, "controlHeight": 112},
+      "dependencies": ["p5.js 2.3.2"],
+      "browserCompatibility": ["Chrome 90+", "Firefox 88+", "Safari 14+", "Edge 90+"],
+      "performance": {"memoryUsage": "low", "computationalComplexity": "O(n)"},
+      "deviceRequirements": {
+        "minScreenWidth": 360,
+        "touchSupport": true,
+        "keyboardRequired": false,
+        "mouseRequired": false,
+        "networkRequired": true
+      },
+      "accessibility": {
+        "screenReader": true,
+        "keyboardNavigation": true,
+        "colorContrast": true,
+        "altText": true,
+        "screenReaderScript": "An M-channel cosine-modulated filter bank. The upper left plot shows the magnitude response of every channel in its own colour above a strip with the overall analysis-synthesis response; the upper right bars show how much of the test signal energy lands in each subband. The lower left panel splits the prototype filter into M polyphase components drawn in different colours, and the lower right panel compares the input with the reconstructed signal and shows the error. Read-outs give the reconstruction error in dB and the multiplications per output sample for direct and polyphase decimation."
+      }
+    },
+    "userInterface": {
+      "layoutType": "responsive-width",
+      "layoutPattern": "drawing-region-above-controls",
+      "colorScheme": {
+        "drawingArea": "aliceblue",
+        "controlArea": "white",
+        "channels": "categorical palette, one colour per channel k",
+        "phases": "viridis ramp, one colour per polyphase component m",
+        "input": "blue",
+        "reconstruction": "gold",
+        "overallResponse": "maroon",
+        "error": "red",
+        "text": "black"
+      },
+      "controls": [
+        {
+          "id": "mSelect",
+          "type": "dropdown",
+          "label": "Channels M",
+          "description": "Number of channels of the filter bank, which is also the decimation factor of every subband",
+          "group": "bank",
+          "properties": {
+            "options": [
+              {"value": "2", "label": "2"},
+              {"value": "4", "label": "4"},
+              {"value": "8", "label": "8"}
+            ],
+            "default": "4"
+          }
+        },
+        {
+          "id": "nSlider",
+          "type": "slider",
+          "label": "Prototype length N",
+          "description": "Number of taps of the Hamming-windowed-sinc prototype p[n]; every channel filter has the same length",
+          "group": "bank",
+          "properties": {"min": 16, "max": 128, "default": 64, "step": 8, "units": "taps", "showValue": true}
+        },
+        {
+          "id": "signalSelect",
+          "type": "dropdown",
+          "label": "Test signal",
+          "description": "Chooses four tones (0.3, 1.0, 2.3, 3.4 kHz), a linear chirp from 0 to 4 kHz, or a single tone",
+          "group": "signal",
+          "properties": {
+            "options": [
+              {"value": "multi", "label": "multi-tone"},
+              {"value": "chirp", "label": "linear chirp"},
+              {"value": "tone", "label": "single tone"}
+            ],
+            "default": "multi"
+          }
+        },
+        {
+          "id": "toneSlider",
+          "type": "slider",
+          "label": "Tone",
+          "description": "Frequency of the single-tone test signal (enabled only when single tone is selected)",
+          "group": "signal",
+          "properties": {"min": 0.05, "max": 3.95, "default": 1.0, "step": 0.05, "units": "kHz", "showValue": true}
+        },
+        {
+          "id": "tuneCheckbox",
+          "type": "checkbox",
+          "label": "Tuned cutoff",
+          "description": "When checked the prototype cutoff is found by bisection so that |P| = -3 dB at pi/2M and neighbouring channels are power complementary; when unchecked the cutoff is pi/2M (-6 dB crossover)",
+          "group": "bank",
+          "properties": {"checked": true}
+        }
+      ],
+      "visualElements": [
+        {"type": "chart", "description": "Magnitude responses |H_k| in dB of all M analysis filters, with channel numbers, band edges and test-signal frequencies, above a strip with the overall analysis-synthesis response |T| in dB", "interactive": true, "updateTriggers": ["mSelect", "nSlider", "tuneCheckbox", "signalSelect", "toneSlider"]},
+        {"type": "chart", "description": "Bar chart of the test-signal energy in each subband in dB of the input energy, with their sum in percent", "interactive": false, "updateTriggers": ["mSelect", "nSlider", "tuneCheckbox", "signalSelect", "toneSlider"]},
+        {"type": "graph", "description": "Stem plot of the prototype p[n] coloured by phase n mod M, and M small stem plots of the polyphase components E_m[q] = p[qM + m]", "interactive": false, "updateTriggers": ["mSelect", "nSlider", "tuneCheckbox"]},
+        {"type": "graph", "description": "8 ms of the input and the delay-compensated reconstruction, with the reconstruction error on a magnified scale", "interactive": false, "updateTriggers": ["mSelect", "nSlider", "tuneCheckbox", "signalSelect", "toneSlider"]},
+        {"type": "text-display", "description": "Prototype cutoff and band-edge gain, reconstruction error in dB, range of |T|, worst alias term, and multiplications per output and per input sample for direct and polyphase decimation", "interactive": false, "updateTriggers": ["mSelect", "nSlider", "tuneCheckbox", "signalSelect", "toneSlider"]}
+      ]
+    },
+    "simulation": {
+      "model": {
+        "type": "algorithmic",
+        "description": "A 2048-sample record at 8 kHz (with 256 samples of padding on each side) is filtered by M cosine-modulated analysis filters, each output is kept at every M-th sample, and the subbands are upsampled, filtered by the matching synthesis filters and summed. The error compares the output, delayed by N - 1, with the input. Frequency responses, the overall response T and the alias terms A_l are computed with a 2048-point radix-2 FFT.",
+        "equations": [
+          "p[n] = Hamming-windowed sinc with cutoff w_c, sum p[n] = 1",
+          "h_k[n] = 2 p[n] cos(pi (2k+1)(n - (N-1)/2) / (2M) + phi_k), phi_k = (-1)^k pi/4",
+          "f_k[n] = 2M p[n] cos(pi (2k+1)(n - (N-1)/2) / (2M) - phi_k)",
+          "v_k[m] = (h_k * x)[mM]",
+          "x_hat[n] = sum_k sum_m v_k[m] f_k[n - mM]",
+          "T(z) = (1/M) sum_k F_k(z) H_k(z); A_l(z) = (1/M) sum_k F_k(z) H_k(z W^l), W = exp(-j 2 pi / M)",
+          "E = 10 log10( sum (x_hat[n + N - 1] - x[n])^2 / sum x[n]^2 )",
+          "E_m[q] = p[qM + m]",
+          "multiplications per output sample: direct N M, polyphase N"
+        ],
+        "algorithms": ["Windowed-sinc FIR design (Hamming)", "Bisection on the cutoff for a -3 dB band-edge gain", "Cosine modulation (pseudo-QMF)", "Direct convolution with decimation and expansion", "Radix-2 FFT"],
+        "limitations": [
+          "The tuned windowed-sinc prototype is only approximately power complementary, so |T| keeps a ripple of up to about 0.1 dB and the reconstruction error levels off near -45 to -65 dB",
+          "For M = 8 and N = 16 the prototype cannot reach -3 dB at pi/2M; the sketch then keeps the cutoff at pi/2M and says so",
+          "Subband energies are measured on the full-rate channel outputs, before decimation"
+        ]
+      }
+    },
+    "usage": {
+      "recommendedUsage": ["demonstration", "exploration", "guided-practice"],
+      "instructionalStrategies": ["Predict the subband energies from the tone powers, then check the bars", "Toggle the cutoff tuning with a tone on a band edge", "Tabulate error and worst alias term against prototype length"],
+      "extensions": ["Add a Kaiser window or an optimized prototype and compare the error floor", "Show the 2M-branch polyphase plus cosine-matrix structure that computes all M channels for about N/M + 2M multiplications per input sample"]
+    }
+  },
+  "canvasHeight": 662
+}

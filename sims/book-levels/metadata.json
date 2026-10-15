@@ -1,81 +1,108 @@
 {
-  "title": "Book Levels MicroSim",
-  "description": "Interactive stair-step visualization showing the five levels of intelligent textbooks from static to autonomous AI.",
-  "creator": "Dan McCreary",
-  "date": "2024-01-01",
-  "subject": [
-    "Education",
-    "AI",
-    "Intelligent Textbooks",
-    "EdTech"
-  ],
-  "type": "Interactive Simulation",
-  "format": "text/html",
-  "language": "en",
-  "rights": "CC BY-NC-SA 4.0",
-  "identifier": "https://dmccreary.github.io/signal-processing/sims/book-levels/",
-  "publisher": "Dan McCreary",
-  "educationalLevel": "Undergraduate",
-  "learningResourceType": "simulation",
-  "audience": "Educators, Administrators",
-  "version": "1.0.0",
-  "bloomLevel": [
-    "Understand",
-    "Analyze"
-  ],
-  "concepts": [
-    "Intelligent textbooks",
-    "Adaptive learning",
-    "AI in education",
-    "Educational technology"
-  ],
-  "prerequisites": [
-    "Basic understanding of educational technology"
-  ],
-  "library": "p5.js",
-  "visualizationType": [
-    "animation",
-    "data-visualization",
-    "diagram",
-    "interactive-demo",
-    "simulation"
-  ],
-  "learningObjectives": [
-    "Understand the key concepts of book levels",
-    "Explore book levels through interactive visualization",
-    "Apply knowledge of book levels to solve problems",
-    "Experiment with parameters to observe their effects on book levels"
-  ],
-  "bloomsTaxonomy": [
-    "Remember",
-    "Understand",
-    "Apply",
-    "Analyze",
-    "Evaluate",
-    "Create"
-  ],
-  "pedagogical": {
-    "pattern": "guided-discovery",
-    "bloomAlignment": [
-      "understand",
-      "apply",
-      "analyze"
-    ],
-    "bloomVerbs": [
-      "compare",
-      "explain",
-      "summarize",
-      "apply",
-      "calculate"
-    ],
-    "pacing": "self-paced",
-    "supportsPrediction": false,
-    "dataVisibility": "high",
-    "feedbackType": [
-      "immediate",
-      "corrective",
-      "explanatory"
-    ],
-    "interactionStyle": "construct"
-  }
+  "microsim": {
+    "dublinCore": {
+      "title": "Five Levels of Intelligent Textbooks",
+      "creator": ["Dan McCreary"],
+      "subject": ["Intelligent textbooks", "Educational technology", "Adaptive learning", "AI in education", "Student data privacy"],
+      "description": "Interactive stair-step diagram of the five levels of intelligent textbooks, from static (Level 1) to autonomous AI (Level 5). Hover over, tap or press 1 to 5 to read what each level includes; a dashed rectangle marks Levels 3 to 5 as highly regulated.",
+      "publisher": "Dan McCreary",
+      "contributor": ["Claude (Anthropic)"],
+      "date": "2025-05-07",
+      "type": "Interactive Simulation",
+      "format": "text/html",
+      "identifier": "https://dmccreary.github.io/signal-processing/sims/book-levels/",
+      "language": "en",
+      "relation": ["Instructor's Guide: The Five Levels of Intelligent Textbooks"],
+      "rights": "CC BY-NC-SA 4.0"
+    },
+    "search": {
+      "tags": ["intelligent textbooks", "textbook levels", "adaptive learning", "chatbot", "student privacy", "educational technology"],
+      "searchKeywords": ["five levels of intelligent textbooks", "static textbook", "interactive textbook", "adaptive textbook", "AI tutor textbook", "highly regulated textbooks"],
+      "visualizationType": ["infographic", "diagram", "interactive-demo"],
+      "interactionLevel": "low",
+      "complexity": 2,
+      "relatedConcepts": ["Intelligent Textbooks", "Adaptive Learning", "Concept Graph", "Educational Technology", "Student Data Privacy"],
+      "applicationDomains": ["education", "demonstration", "exploration"],
+      "showcase": false
+    },
+    "educational": {
+      "gradeLevel": ["Undergraduate"],
+      "subjectArea": ["Computer Science", "Other"],
+      "topic": ["Levels of intelligent textbooks", "Adaptive learning", "AI tutoring in education", "Student data privacy"],
+      "learningObjectives": [
+        "Identify the five levels of intelligent textbooks in order from the stair-step diagram: Static, Interactive Content, Adaptive, Chatbot Integration and Autonomous AI",
+        "Distinguish Level 2 interactive content such as search, hyperlinks and embedded MicroSims from Level 3 adaptivity, which adjusts content from learner input and performance",
+        "Explain why Level 3 adaptive textbooks require concept graph traversal and data management systems that Level 2 textbooks do not",
+        "Evaluate the student-privacy considerations that arise once a textbook records learner data, using the dashed Highly Regulated Textbooks rectangle around Levels 3 to 5",
+        "Classify a given textbook or course website into one of the five levels from its interactive and personalization features"
+      ],
+      "bloomsTaxonomy": ["Remember", "Understand", "Apply", "Analyze", "Evaluate"],
+      "prerequisites": ["Experience reading a digital textbook or course website", "Basic awareness of what a chatbot is"],
+      "duration": {"typical": 15, "range": {"min": 10, "max": 30}},
+      "difficulty": "Beginner",
+      "scaffolding": {
+        "type": ["guided-discovery", "progressive-disclosure"],
+        "adaptability": "fixed",
+        "removal": "user-controlled"
+      },
+      "misconceptions": [
+        {
+          "misconception": "A higher level is simply a better textbook for every purpose",
+          "correction": "Each level adds capability but also implementation requirements and privacy considerations; Level 1 remains suitable where interaction is not needed, and Level 5 is still aspirational",
+          "evidence": "Hover over Level 1 (suitable for simple content delivery), Level 3 (requires data management systems and raises privacy considerations) and Level 5 (remains aspirational)"
+        },
+        {
+          "misconception": "Adding videos, quizzes or MicroSims makes a textbook adaptive",
+          "correction": "Those features belong to Level 2; a textbook becomes adaptive (Level 3) only when it adjusts content to the individual learner's input and performance",
+          "evidence": "Compare the Level 2 description (search, hyperlinks, videos, quizzes) with the Level 3 description (personalized learning pathways, concept mastery)"
+        }
+      ]
+    },
+    "technical": {
+      "framework": "p5.js",
+      "version": "2.0.0",
+      "canvasDimensions": {"width": 600, "height": 500, "responsive": true},
+      "regions": {"drawHeight": 500, "controlHeight": 0},
+      "dependencies": ["p5.js 2.3.2"],
+      "browserCompatibility": ["Chrome 90+", "Firefox 88+", "Safari 14+", "Edge 90+"],
+      "performance": {"memoryUsage": "low", "loadTime": 500},
+      "deviceRequirements": {
+        "minScreenWidth": 320,
+        "touchSupport": true,
+        "keyboardRequired": false,
+        "mouseRequired": false,
+        "networkRequired": false
+      },
+      "accessibility": {
+        "screenReader": true,
+        "keyboardNavigation": true,
+        "colorContrast": true,
+        "altText": true,
+        "screenReaderScript": "Stair-step diagram of the five levels of intelligent textbooks: Level 1 static textbooks, Level 2 interactive content, Level 3 adaptive textbooks, Level 4 chatbot integration and Level 5 autonomous AI. Levels 3 to 5 are enclosed in a dashed rectangle labelled Highly Regulated Textbooks. Selecting a level, by hovering, tapping or pressing the keys 1 to 5, shows its description."
+      }
+    },
+    "userInterface": {
+      "layoutType": "responsive-width",
+      "layoutPattern": "full-canvas-diagram",
+      "colorScheme": {
+        "drawingArea": "aliceblue",
+        "accent": "blue",
+        "text": "black",
+        "levels": ["red", "#4682B4", "#20B2AA", "#9370DB", "gold"],
+        "warning": "red"
+      },
+      "controls": [],
+      "visualElements": [
+        {"type": "diagram", "description": "Five stacked rectangles forming a staircase, Level 1 (red) at the bottom to Level 5 (gold) at the top, each labelled with its level name; the selected level has a blue border", "interactive": true, "updateTriggers": ["mouse hover", "tap", "keys 1-5"]},
+        {"type": "shape", "description": "Dashed red rectangle around Levels 3, 4 and 5 with the label Highly Regulated Textbooks", "interactive": false},
+        {"type": "text-display", "description": "Description of the selected level below the staircase, or a prompt to hover, tap or press 1 to 5 when no level is selected", "interactive": true, "updateTriggers": ["mouse hover", "tap", "keys 1-5"]}
+      ]
+    },
+    "usage": {
+      "recommendedUsage": ["demonstration", "exploration", "group-activity"],
+      "instructionalStrategies": ["Compare adjacent levels by hovering over them in turn", "Classify familiar textbooks and course sites onto the staircase and justify each placement"],
+      "extensions": ["Place a textbook you use on the staircase and list the features that put it there", "Draft a short data-privacy policy for a Level 3 textbook"]
+    }
+  },
+  "canvasHeight": 500
 }

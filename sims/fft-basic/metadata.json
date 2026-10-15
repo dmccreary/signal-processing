@@ -1,86 +1,156 @@
 {
-  "title": "Basic FFT MicroSim",
-  "description": "A basic demonstration of FFT with time domain visualization on the top and frequency domain on the bottom, featuring adjustable frequency and amplitude controls.",
-  "creator": "Dan McCreary",
-  "date": "2024-07-23",
-  "subject": [
-    "Signal Processing",
-    "FFT",
-    "Fourier Transform",
-    "Frequency Analysis"
-  ],
-  "type": "Interactive Simulation",
-  "format": "text/html",
-  "language": "en",
-  "rights": "CC BY-NC-SA 4.0",
-  "identifier": "https://dmccreary.github.io/signal-processing/sims/fft-basic/",
-  "publisher": "Dan McCreary",
-  "educationalLevel": "College Freshman",
-  "learningResourceType": "simulation",
-  "audience": "Students, Educators",
-  "version": "1.0.0",
-  "bloomLevel": [
-    "Understand",
-    "Apply",
-    "Analyze"
-  ],
-  "concepts": [
-    "Fast Fourier Transform",
-    "Time domain",
-    "Frequency domain",
-    "Sine waves",
-    "Amplitude",
-    "Frequency"
-  ],
-  "prerequisites": [
-    "Basic trigonometry",
-    "Familiarity with sine waves"
-  ],
-  "library": "p5.js",
-  "visualizationType": [
-    "graph",
-    "interactive-demo",
-    "map",
-    "network",
-    "simulation"
-  ],
-  "learningObjectives": [
-    "Understand the key concepts of basic fft",
-    "Explore basic fft through interactive visualization",
-    "Apply knowledge of basic fft to solve problems",
-    "Experiment with parameters to observe their effects on basic fft"
-  ],
-  "bloomsTaxonomy": [
-    "Remember",
-    "Understand",
-    "Apply",
-    "Analyze",
-    "Evaluate",
-    "Create"
-  ],
-  "pedagogical": {
-    "pattern": "demonstration",
-    "bloomAlignment": [
-      "understand",
-      "apply",
-      "analyze"
-    ],
-    "bloomVerbs": [
-      "compare",
-      "describe",
-      "explain",
-      "interpret",
-      "calculate"
-    ],
-    "pacing": "self-paced",
-    "supportsPrediction": true,
-    "dataVisibility": "high",
-    "feedbackType": [
-      "immediate",
-      "delayed",
-      "corrective",
-      "explanatory"
-    ],
-    "interactionStyle": "manipulate"
-  }
+  "microsim": {
+    "dublinCore": {
+      "title": "Basic FFT MicroSim",
+      "creator": ["Dan McCreary"],
+      "subject": ["Signal Processing", "FFT", "Fourier Transform", "Frequency Analysis"],
+      "description": "A sine-wave generator with its live FFT: a triggered 20 ms window of the waveform in the time domain on top and its magnitude spectrum from 0 to 2100 Hz below, with frequency and amplitude sliders, Start/Pause and Reset.",
+      "publisher": "Dan McCreary",
+      "contributor": ["Claude (Anthropic)"],
+      "date": "2025-05-28",
+      "type": "Interactive Simulation",
+      "format": "text/html",
+      "identifier": "https://dmccreary.github.io/signal-processing/sims/fft-basic/",
+      "language": "en",
+      "relation": ["Chapter 7: DFT, FFT and Frequency Domain Analysis"],
+      "rights": "CC BY-NC-SA 4.0"
+    },
+    "search": {
+      "tags": ["FFT", "fast Fourier transform", "spectrum", "time domain", "frequency domain", "sine wave", "frequency bin", "audio"],
+      "searchKeywords": ["basic FFT", "sine wave spectrum", "time domain vs frequency domain", "spectral peak", "FFT bin width"],
+      "visualizationType": ["graph", "interactive-demo", "simulation"],
+      "interactionLevel": "moderate",
+      "complexity": 3,
+      "relatedConcepts": ["Fast Fourier Transform", "Discrete Fourier Transform", "Time Domain", "Frequency Domain", "Spectrum", "Magnitude Spectrum", "Sinusoidal Signals", "Signal Amplitude", "Signal Frequency"],
+      "applicationDomains": ["education", "demonstration", "exploration"],
+      "showcase": false
+    },
+    "educational": {
+      "gradeLevel": ["Undergraduate"],
+      "subjectArea": ["Engineering", "Mathematics"],
+      "topic": ["Fast Fourier Transform", "Time domain", "Frequency domain", "Sine waves", "Amplitude", "Frequency"],
+      "learningObjectives": [
+        "Explain that the FFT decomposes a time-domain waveform into the frequencies it contains",
+        "Predict that raising the frequency slider shortens the period in the time-domain plot and shifts the spectral peak to the right in the frequency-domain plot",
+        "Predict that increasing the amplitude slider raises both the waveform and the spectral peak in proportion while leaving the peak's frequency unchanged",
+        "Distinguish the time-domain display, which plots amplitude against time, from the frequency-domain display, which plots magnitude against frequency",
+        "Identify the frequency of a pure sine wave from the location of its single spectral peak and from the number of cycles in the 20 ms window"
+      ],
+      "bloomsTaxonomy": ["Understand", "Apply", "Analyze"],
+      "prerequisites": ["Basic trigonometry", "Familiarity with sine waves"],
+      "duration": {"typical": 20, "range": {"min": 15, "max": 45}},
+      "difficulty": "Beginner",
+      "scaffolding": {
+        "type": ["guided-discovery", "feedback"],
+        "adaptability": "fixed",
+        "removal": "user-controlled"
+      },
+      "misconceptions": [
+        {
+          "misconception": "A higher frequency makes a taller spike",
+          "correction": "Frequency moves the spike sideways; only the amplitude changes its height",
+          "evidence": "At amplitude 0.5, moving the frequency from 220 Hz to 880 Hz moves the spike to the right while its height stays near 0.5"
+        },
+        {
+          "misconception": "The time-domain wave and the frequency-domain spike should look alike",
+          "correction": "The two plots show different information: how the signal changes over time versus which frequencies it contains",
+          "evidence": "A smooth wave with 8.8 cycles in the window becomes one narrow spike at 440 Hz"
+        },
+        {
+          "misconception": "The FFT creates the frequencies it displays",
+          "correction": "The FFT only reveals frequencies that are already in the signal",
+          "evidence": "Press Pause: the signal goes silent and the spike decays to nothing"
+        }
+      ]
+    },
+    "technical": {
+      "framework": "p5.js",
+      "version": "2.0.0",
+      "canvasDimensions": {"width": 800, "height": 520, "responsive": true},
+      "regions": {"drawHeight": 440, "controlHeight": 80},
+      "dependencies": ["p5.js 2.3.2", "p5.sound 0.4.1"],
+      "browserCompatibility": ["Chrome 90+", "Firefox 88+", "Safari 14+", "Edge 90+"],
+      "performance": {"memoryUsage": "low", "computationalComplexity": "O(n log n)"},
+      "deviceRequirements": {
+        "minScreenWidth": 360,
+        "touchSupport": true,
+        "keyboardRequired": false,
+        "mouseRequired": false,
+        "networkRequired": true
+      },
+      "accessibility": {
+        "screenReader": true,
+        "keyboardNavigation": true,
+        "colorContrast": true,
+        "altText": true,
+        "screenReaderScript": "A sine-wave generator with its FFT. The top plot shows the waveform over a 20 millisecond window; the bottom plot shows its magnitude spectrum from 0 to 2100 Hz. Press Start, then move the Frequency and Amplitude sliders to see the spectral peak move and change height.",
+        "sensoryAlternatives": {"visualToAudio": true, "audioToVisual": true, "hapticFeedback": false}
+      }
+    },
+    "userInterface": {
+      "layoutType": "responsive-width",
+      "layoutPattern": "drawing-region-above-controls",
+      "colorScheme": {
+        "drawingArea": "aliceblue",
+        "controlArea": "white",
+        "borders": "silver",
+        "accent": "gold",
+        "text": "black"
+      },
+      "controls": [
+        {
+          "id": "frequencySlider",
+          "type": "slider",
+          "label": "Frequency",
+          "description": "Sets the frequency of the sine wave",
+          "group": "signal",
+          "properties": {"min": 20, "max": 2000, "default": 440, "step": 1, "units": "Hz", "showValue": true}
+        },
+        {
+          "id": "amplitudeSlider",
+          "type": "slider",
+          "label": "Amplitude",
+          "description": "Sets the peak amplitude of the sine wave (the speaker plays it at half this level)",
+          "group": "signal",
+          "properties": {"min": 0, "max": 1, "default": 0.5, "step": 0.01, "showValue": true}
+        },
+        {
+          "id": "startButton",
+          "type": "toggle-button",
+          "label": "Start / Pause",
+          "description": "Starts audio on the first click, then toggles the tone and the live analysis on and off",
+          "group": "playback",
+          "properties": {"text": "Start", "action": "toggleSimulation", "toggleable": true, "style": "primary"}
+        },
+        {
+          "id": "resetButton",
+          "type": "button",
+          "label": "Reset",
+          "description": "Returns the sliders to 440 Hz and amplitude 0.5",
+          "group": "playback",
+          "properties": {"text": "Reset", "action": "resetSimulation", "style": "secondary"}
+        }
+      ],
+      "visualElements": [
+        {"type": "graph", "description": "Time-domain plot (green): a 20 ms window of the waveform, triggered on a rising zero crossing, with amplitude gridlines at 0.5 and 1", "interactive": false, "updateTriggers": ["frequencySlider", "amplitudeSlider", "startButton"]},
+        {"type": "chart", "description": "Frequency-domain plot (purple): magnitude spectrum from 0 to 2100 Hz with a gold marker on the strongest bin", "interactive": false, "updateTriggers": ["frequencySlider", "amplitudeSlider", "startButton"]},
+        {"type": "text-display", "description": "Status indicator (RUNNING / PAUSED), strongest-bin frequency and magnitude, sample rate and bin width", "interactive": false, "updateTriggers": ["frequencySlider", "amplitudeSlider", "startButton"]}
+      ]
+    },
+    "simulation": {
+      "model": {
+        "type": "algorithmic",
+        "description": "An oscillator produces x(t) = A sin(2 pi f t). The browser's analyser (via p5.sound) applies a Blackman window and a 16384-point FFT; the sketch plots the magnitude normalised so that an amplitude-1 sine centred on a bin reaches 1.",
+        "equations": ["x(t) = A sin(2 pi f t)", "X[k] = (1/N) sum_{n=0}^{N-1} w[n] x[n] e^{-j 2 pi k n / N}", "Delta f = f_s / N, N = 16384", "cycles in window = f * 0.020 s"],
+        "algorithms": ["Fast Fourier Transform (Web Audio AnalyserNode)", "Rising zero-crossing trigger for the time-domain display"],
+        "limitations": ["The read-out reports the centre of the strongest bin, so it can differ from the slider frequency by up to half a bin (about 1.5 Hz at 48 kHz)", "A tone between two bins reads up to about 12% low because of the Blackman window"]
+      }
+    },
+    "usage": {
+      "recommendedUsage": ["demonstration", "exploration", "guided-practice"],
+      "instructionalStrategies": ["Predict-then-verify with the sliders", "Worksheet table relating amplitude to wave height and spike height", "Connecting musical pitch to spike position"],
+      "extensions": ["Add a second oscillator and observe two spikes", "Compare FFT sizes to see how bin width changes the peak width"]
+    }
+  },
+  "canvasHeight": 520
 }

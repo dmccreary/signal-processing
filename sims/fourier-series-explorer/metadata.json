@@ -1,0 +1,204 @@
+{
+  "microsim": {
+    "dublinCore": {
+      "title": "Fourier Series Explorer",
+      "creator": ["Dan McCreary"],
+      "subject": ["Signal Processing", "Fourier Series", "Fourier Coefficients", "Harmonics", "Gibbs Phenomenon"],
+      "description": "Build square, triangle, sawtooth, pulse-train and hand-drawn periodic waveforms from their first N harmonics. A time plot overlays the partial sum on the waveform, and bar charts show the amplitude and phase of each harmonic or the cosine and sine coefficients.",
+      "publisher": "Dan McCreary",
+      "contributor": ["Claude (Anthropic)"],
+      "date": "2026-10-02",
+      "type": "Interactive Simulation",
+      "format": "text/html",
+      "identifier": "https://dmccreary.github.io/signal-processing/sims/fourier-series-explorer/",
+      "language": "en",
+      "relation": ["Chapter 6: Fourier Analysis Fundamentals"],
+      "rights": "CC BY-NC-SA 4.0"
+    },
+    "search": {
+      "tags": ["fourier series", "harmonics", "fourier coefficients", "gibbs phenomenon", "square wave", "triangle wave", "sawtooth wave", "pulse train", "amplitude spectrum", "phase spectrum"],
+      "searchKeywords": ["fourier series explorer", "partial sum of harmonics", "gibbs overshoot", "an and bn coefficients", "harmonic synthesis"],
+      "visualizationType": ["graph", "chart", "interactive-demo"],
+      "interactionLevel": "high",
+      "complexity": 6,
+      "relatedConcepts": ["Fourier Series", "Harmonics", "Fourier Coefficients", "Gibbs Phenomenon", "Amplitude Spectrum", "Phase Spectrum", "Periodic Signals"],
+      "applicationDomains": ["education", "exploration", "demonstration"],
+      "showcase": false
+    },
+    "educational": {
+      "gradeLevel": ["Undergraduate"],
+      "subjectArea": ["Engineering", "Mathematics"],
+      "topic": ["Fourier series", "Fourier coefficients", "Convergence of partial sums", "Gibbs phenomenon"],
+      "learningObjectives": [
+        "Explain a Fourier series as a sum of harmonics of the fundamental frequency",
+        "Compare the harmonic content of square, triangle, sawtooth and pulse waveforms",
+        "Describe how the partial sum converges as harmonics are added, and what the Gibbs phenomenon is",
+        "Relate the coefficients a_n and b_n to the amplitude and phase of each harmonic",
+        "Predict from the symmetry of a waveform whether its series has cosine terms, sine terms or both"
+      ],
+      "bloomsTaxonomy": ["Understand", "Analyze"],
+      "prerequisites": ["Sinusoids: amplitude, frequency and phase", "Even and odd functions", "Complex numbers in polar form"],
+      "duration": {"typical": 22, "range": {"min": 20, "max": 25}},
+      "difficulty": "Intermediate",
+      "scaffolding": {
+        "type": ["guided-discovery", "feedback"],
+        "adaptability": "fixed",
+        "removal": "user-controlled"
+      },
+      "misconceptions": [
+        {
+          "misconception": "Adding enough harmonics removes the overshoot at a jump",
+          "correction": "The rms error goes to zero, but the peak of the ripple stays at about 9% of the jump height (the Gibbs phenomenon)",
+          "evidence": "Step the square wave from N = 9 to N = 50: the rms error in the banner falls from 0.201 to 0.090 while the overshoot stays at about 9%"
+        },
+        {
+          "misconception": "Every periodic waveform contains every harmonic",
+          "correction": "The harmonic content depends on the waveform and its symmetry; some harmonics have zero amplitude",
+          "evidence": "The square wave has zero amplitude at every even n, and the 25% duty-cycle pulse train has no bar at n = 4, 8, 12"
+        }
+      ]
+    },
+    "technical": {
+      "framework": "p5.js",
+      "version": "2.0.0",
+      "canvasDimensions": {"width": 670, "height": 625, "responsive": true},
+      "regions": {"drawHeight": 510, "controlHeight": 115},
+      "dependencies": ["p5.js 2.3.2"],
+      "browserCompatibility": ["Chrome 90+", "Firefox 88+", "Safari 14+", "Edge 90+"],
+      "performance": {"memoryUsage": "low", "loadTime": 500},
+      "deviceRequirements": {
+        "minScreenWidth": 320,
+        "touchSupport": true,
+        "keyboardRequired": false,
+        "mouseRequired": false,
+        "networkRequired": false
+      },
+      "accessibility": {
+        "screenReader": true,
+        "keyboardNavigation": true,
+        "colorContrast": true,
+        "altText": true,
+        "screenReaderScript": "A periodic waveform and the sum of its first N Fourier harmonics drawn over two periods, with bar charts of the amplitude and phase of each harmonic. Buttons step the number of harmonics up and down."
+      }
+    },
+    "userInterface": {
+      "layoutType": "responsive-width",
+      "layoutPattern": "drawing-region-above-controls",
+      "colorScheme": {
+        "drawingArea": "aliceblue",
+        "controlArea": "white",
+        "accent": "crimson",
+        "text": "black"
+      },
+      "controls": [
+        {
+          "id": "waveSelect",
+          "type": "dropdown",
+          "label": "Waveform",
+          "description": "Chooses the periodic waveform whose Fourier series is shown",
+          "group": "waveform",
+          "properties": {
+            "options": [
+              {"value": "square", "label": "Square wave"},
+              {"value": "triangle", "label": "Triangle wave"},
+              {"value": "sawtooth", "label": "Sawtooth wave"},
+              {"value": "pulse", "label": "Pulse train (25% duty)"},
+              {"value": "custom", "label": "Custom (draw your own)"}
+            ],
+            "default": "square"
+          }
+        },
+        {
+          "id": "playButton",
+          "type": "button",
+          "label": "Play / Pause",
+          "description": "Adds one harmonic every 0.55 s up to N = 50; starts paused",
+          "group": "harmonics",
+          "properties": {"text": "Play", "action": "toggle automatic stepping"}
+        },
+        {
+          "id": "backButton",
+          "type": "button",
+          "label": "< Step",
+          "description": "Removes the highest harmonic (N decreases by 1)",
+          "group": "harmonics",
+          "properties": {"text": "< Step", "action": "decrement N"}
+        },
+        {
+          "id": "forwardButton",
+          "type": "button",
+          "label": "Step >",
+          "description": "Adds the next harmonic (N increases by 1)",
+          "group": "harmonics",
+          "properties": {"text": "Step >", "action": "increment N"}
+        },
+        {
+          "id": "resetButton",
+          "type": "button",
+          "label": "Reset",
+          "description": "Returns to N = 5, switches every harmonic back on and restores the default custom waveform",
+          "group": "harmonics",
+          "properties": {"text": "Reset", "action": "reset"}
+        },
+        {
+          "id": "nSlider",
+          "type": "slider",
+          "label": "Number of harmonics N",
+          "description": "Number of harmonics included in the partial sum",
+          "group": "harmonics",
+          "properties": {"min": 1, "max": 50, "default": 5, "step": 1, "showValue": true}
+        },
+        {
+          "id": "harmonicsCheckbox",
+          "type": "checkbox",
+          "label": "Show individual harmonics",
+          "description": "Draws every sinusoid in the sum in the time plot",
+          "group": "display",
+          "properties": {"checked": false}
+        },
+        {
+          "id": "abCheckbox",
+          "type": "checkbox",
+          "label": "Show a_n and b_n",
+          "description": "Replaces the magnitude and phase plots with bar charts of the cosine and sine coefficients",
+          "group": "display",
+          "properties": {"checked": false}
+        }
+      ],
+      "visualElements": [
+        {"type": "graph", "description": "Time plot over two periods: waveform (grey), partial sum (red) and the selected harmonic (orange); drag in it to draw the custom waveform", "interactive": true, "updateTriggers": ["waveSelect", "nSlider", "harmonicsCheckbox"]},
+        {"type": "chart", "description": "Magnitude spectrum bars and phase spectrum stems, or a_n and b_n bar charts; hover selects a harmonic and a click switches it off", "interactive": true, "updateTriggers": ["waveSelect", "nSlider", "abCheckbox"]},
+        {"type": "text-display", "description": "Banner with the rms error and the Gibbs overshoot, and a readout of the selected harmonic's coefficients", "interactive": false, "updateTriggers": ["waveSelect", "nSlider"]}
+      ]
+    },
+    "simulation": {
+      "model": {
+        "type": "mathematical",
+        "description": "Partial sum of the first N terms of the Fourier series of a periodic waveform, with its rms error and Gibbs overshoot",
+        "equations": [
+          "x(t) = a0 + sum over n of [a_n cos(n w0 t) + b_n sin(n w0 t)], w0 = 2 pi / T",
+          "c_n = (a_n - j b_n) / 2, amplitude = sqrt(a_n^2 + b_n^2) = 2 |c_n|",
+          "square wave: b_n = 4 / (pi n) for odd n",
+          "triangle wave: b_n = 8 (-1)^((n-1)/2) / (pi^2 n^2) for odd n",
+          "sawtooth wave: b_n = 2 (-1)^(n+1) / (pi n)",
+          "pulse train with duty cycle d: a0 = d, a_n = 2 sin(pi n d) / (pi n)"
+        ]
+      },
+      "variables": [
+        {"name": "N", "type": "input", "dataType": "integer", "description": "Number of harmonics in the partial sum"},
+        {"name": "rmsError", "type": "output", "dataType": "number", "description": "rms difference between the waveform and the partial sum over one period"},
+        {"name": "overshoot", "type": "output", "dataType": "number", "description": "How far the highest peak or lowest trough of the partial sum lies beyond the waveform, as a fraction of the jump height"}
+      ]
+    },
+    "usage": {
+      "recommendedUsage": ["demonstration", "exploration", "guided-practice"],
+      "instructionalStrategies": [
+        "Step-through synthesis: add one harmonic at a time and compare the partial sum with the waveform",
+        "Predict-then-verify with the coefficient readout",
+        "Record overshoot and rms error for increasing N and explain the trend"
+      ],
+      "extensions": ["Draw a custom waveform with both even and odd symmetry and compare its a_n and b_n", "Compare the convergence rate of a waveform with a jump and one without"]
+    }
+  },
+  "canvasHeight": 625
+}

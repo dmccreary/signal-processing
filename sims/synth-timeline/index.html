@@ -6,7 +6,7 @@
       <meta charset="utf-8">
       <meta name="viewport" content="width=device-width,initial-scale=1">
       
-        <meta name="description" content="Interactive timeline visualization of synthesizer history and evolution.">
+        <meta name="description" content="A scrollable timeline of ten landmark synthesizers, from the 1920 Theremin to the 1987 Roland D-50, in three color-coded categories.">
       
       
         <meta name="author" content="Dan McCreary">
@@ -15,10 +15,10 @@
         <link rel="canonical" href="https://dmccreary.github.io/signal-processing/sims/synth-timeline/">
       
       
-        <link rel="prev" href="../sine-wave/">
+        <link rel="prev" href="../spectral-leakage-and-windowing/">
       
       
-        <link rel="next" href="../timeline-viewer/">
+        <link rel="next" href="../system-interconnections/">
       
       
       <link rel="icon" href="../../img/favicon.ico">
@@ -54,6 +54,8 @@
     
       <link rel="stylesheet" href="../../css/extra.css">
     
+      <link rel="stylesheet" href="../../css/mascot.css">
+    
     <script>__md_scope=new URL("../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
     
       
@@ -65,7 +67,7 @@
       
         <meta  property="og:title"  content="Synth Timeline - Signal Processing with AI" >
       
-        <meta  property="og:description"  content="Interactive timeline visualization of synthesizer history and evolution." >
+        <meta  property="og:description"  content="A scrollable timeline of ten landmark synthesizers, from the 1920 Theremin to the 1987 Roland D-50, in three color-coded categories." >
       
         <meta property="og:image" content="https://dmccreary.github.io/signal-processing/sims/synth-timeline/synth-timeline.png">
       
@@ -81,7 +83,7 @@
       
         <meta  name="twitter:title"  content="Synth Timeline - Signal Processing with AI" >
       
-        <meta  name="twitter:description"  content="Interactive timeline visualization of synthesizer history and evolution." >
+        <meta  name="twitter:description"  content="A scrollable timeline of ten landmark synthesizers, from the 1920 Theremin to the 1987 Roland D-50, in three color-coded categories." >
       
         <meta name="twitter:image" content="https://dmccreary.github.io/signal-processing/sims/synth-timeline/synth-timeline.png">
       
@@ -122,7 +124,7 @@
   <nav class="md-header__inner md-grid" aria-label="Header">
     <a href="../.." title="Signal Processing with AI" class="md-header__button md-logo" aria-label="Signal Processing with AI" data-md-component="logo">
       
-  <img src="../../img/logo-192.png" alt="logo">
+  <img src="../../img/mascot/neutral.png" alt="logo">
 
     </a>
     <label class="md-header__button md-icon" for="__drawer">
@@ -217,8 +219,6 @@
           
             
               
-                
-              
               <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
                 <div class="md-sidebar__scrollwrap">
                   <div class="md-sidebar__inner">
@@ -230,7 +230,7 @@
   <label class="md-nav__title" for="__drawer">
     <a href="../.." title="Signal Processing with AI" class="md-nav__button md-logo" aria-label="Signal Processing with AI" data-md-component="logo">
       
-  <img src="../../img/logo-192.png" alt="logo">
+  <img src="../../img/mascot/neutral.png" alt="logo">
 
     </a>
     Signal Processing with AI
@@ -277,31 +277,11 @@
   
   
     <li class="md-nav__item">
-      <a href="../../chapters/" class="md-nav__link">
-        
-  
-  <span class="md-ellipsis">
-    Table of Contents
-  </span>
-  
-
-      </a>
-    </li>
-  
-
-    
-      
-      
-  
-  
-  
-  
-    <li class="md-nav__item">
       <a href="../../about/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
-    About This Website
+    About
   </span>
   
 
@@ -544,6 +524,174 @@
           
         
       
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
     
     
     
@@ -553,7 +701,7 @@
       
         
         
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_6" checked>
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_5" checked>
         
           
           
@@ -569,19 +717,103 @@
             </a>
             
               
-              <label class="md-nav__link " for="__nav_6" id="__nav_6_label" tabindex="0">
+              <label class="md-nav__link " for="__nav_5" id="__nav_5_label" tabindex="0">
                 <span class="md-nav__icon md-icon"></span>
               </label>
             
           </div>
         
-        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_6_label" aria-expanded="true">
-          <label class="md-nav__title" for="__nav_6">
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_5_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_5">
             <span class="md-nav__icon md-icon"></span>
             MicroSims
           </label>
           <ul class="md-nav__list" data-md-scrollfix>
             
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../image-convolution/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    2-D Convolution and Image Filtering
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../conv-layer-as-filter/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    A Convolutional Layer Is a Learned FIR Filter
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../adaptive-algorithm-comparison-tool/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Adaptive Algorithm Comparison Tool
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../adaptive-noise-cancellation/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Adaptive Noise and Echo Cancellation
+  </span>
+  
+
+      </a>
+    </li>
+  
+
               
             
               
@@ -633,11 +865,11 @@
   
   
     <li class="md-nav__item">
-      <a href="../base-and-treble/" class="md-nav__link">
+      <a href="../fft-basic/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
-    Base and Treble
+    Basic FFT
   </span>
   
 
@@ -654,11 +886,32 @@
   
   
     <li class="md-nav__item">
-      <a href="../fft-basic/" class="md-nav__link">
+      <a href="../base-and-treble/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
-    Basic FFT
+    Bass and Treble
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../bilinear-transform/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Bilinear Transform and Frequency Warping
   </span>
   
 
@@ -780,6 +1033,27 @@
   
   
     <li class="md-nav__item">
+      <a href="../compressed-sensing/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Compressed Sensing
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
       <a href="../convolution/" class="md-nav__link">
         
   
@@ -801,11 +1075,137 @@
   
   
     <li class="md-nav__item">
+      <a href="../convolution-theorem/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Convolution Theorem and Circular Convolution
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../convolution-visualizer/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Convolution Visualizer
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../correlation-and-matched-filtering/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Correlation and Matched Filtering
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../dct-basis-explorer/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    DCT Basis Explorer
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../dft-explorer/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    DFT Explorer
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
       <a href="../euler-formula-explorer/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
     Euler's Formula Explorer
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../even-and-odd-signal-decomposition/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Even and Odd Signal Decomposition
   </span>
   
 
@@ -969,6 +1369,27 @@
   
   
     <li class="md-nav__item">
+      <a href="../fft-spectrum-analyzer/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    FFT Spectrum Analyzer
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
       <a href="../fft-waveform-types/" class="md-nav__link">
         
   
@@ -990,11 +1411,263 @@
   
   
     <li class="md-nav__item">
+      <a href="../filter-bank-explorer/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Filter Bank and Polyphase Explorer
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../fir-filter-design-comparison-tool/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    FIR Filter Design Comparison Tool
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../fir-vs-iir/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    FIR vs IIR Filters
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../fourier-series-explorer/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Fourier Series Explorer
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../fourier-transform-pairs/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Fourier Transform Pairs
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
       <a href="../frequency-detection/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
     Frequency Detection
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../huffman-coding/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Huffman Coding
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../iir-prototype-comparison/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    IIR Prototype Comparison
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../impulse-and-frequency-response-analyzer/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Impulse and Frequency Response Analyzer
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../interactive-filter-design-and-analysis-tool/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Interactive Filter Design and Analysis Tool
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../interactive-pole-zero-analysis-tool/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Interactive Pole-Zero Analysis Tool
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../interactive-spectrogram-parameter-explorer/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Interactive Spectrogram Parameter Explorer
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../interactive-stft-spectrogram-analyzer/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Interactive STFT Spectrogram Analyzer
   </span>
   
 
@@ -1074,11 +1747,158 @@
   
   
     <li class="md-nav__item">
+      <a href="../multirate-sample-rate-converter/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Multirate Sample Rate Converter
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../noise-analysis-and-reduction-tool/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Noise Analysis and Reduction Tool
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
       <a href="../nyquist-shannon-sampling/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
     Nyquist-Shannon Sampling
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../phase-spectrum/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Phase Spectrum - What the Magnitude Hides
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../phasor-addition/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Phasor Addition
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../psd-wiener-khinchin/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Power Spectral Density and the Wiener-Khinchin Theorem
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../distribution-explorer/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Probability Distribution Explorer
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../quantization-and-noise-shaping/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Quantization and Noise Shaping
   </span>
   
 
@@ -1116,11 +1936,116 @@
   
   
     <li class="md-nav__item">
+      <a href="../real-time-processing-simulator/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Real-Time Processing Simulator
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
       <a href="../reverb/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
     Reverb Effect
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../s-plane-explorer/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    s-Plane Explorer
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../sampling-theorem-explorer/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Sampling Theorem Explorer
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../signal-operations/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Signal Operations - Shift, Scale and Reverse
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../signal-type-explorer/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Signal Type Explorer
   </span>
   
 
@@ -1155,6 +2080,27 @@
                 
   
   
+  
+  
+    <li class="md-nav__item">
+      <a href="../spectral-leakage-and-windowing/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Spectral Leakage and Windowing
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
     
   
   
@@ -1167,6 +2113,17 @@
         
       
       
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  <span class="md-ellipsis">
+    Synth Timeline
+  </span>
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
       <a href="./" class="md-nav__link md-nav__link--active">
         
   
@@ -1177,6 +2134,184 @@
 
       </a>
       
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#description" class="md-nav__link">
+    <span class="md-ellipsis">
+      Description
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#lesson-plan" class="md-nav__link">
+    <span class="md-ellipsis">
+      Lesson Plan
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Lesson Plan">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#learning-objectives" class="md-nav__link">
+    <span class="md-ellipsis">
+      Learning Objectives
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#target-audience" class="md-nav__link">
+    <span class="md-ellipsis">
+      Target Audience
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#prerequisites" class="md-nav__link">
+    <span class="md-ellipsis">
+      Prerequisites
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#activities" class="md-nav__link">
+    <span class="md-ellipsis">
+      Activities
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#assessment" class="md-nav__link">
+    <span class="md-ellipsis">
+      Assessment
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#common-misconceptions" class="md-nav__link">
+    <span class="md-ellipsis">
+      Common Misconceptions
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#development-notes" class="md-nav__link">
+    <span class="md-ellipsis">
+      Development Notes
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#references" class="md-nav__link">
+    <span class="md-ellipsis">
+      References
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../system-interconnections/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    System Interconnections - Series, Parallel, Feedback
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../system-property-explorer/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    System Property Explorer
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../time-frequency-analysis-explorer/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Time-Frequency Analysis Explorer
+  </span>
+  
+
+      </a>
     </li>
   
 
@@ -1215,6 +2350,27 @@
   
   <span class="md-ellipsis">
     Tone Generator
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../wavelet-explorer/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Wavelet Explorer - CWT Scalogram and Haar DWT
   </span>
   
 
@@ -1391,6 +2547,12 @@
       
         
           
+        
+      
+        
+      
+        
+      
         
       
         
@@ -1605,6 +2767,26 @@
   
   
     <li class="md-nav__item">
+      <a href="../../instructors-guide/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Instructor's Guide
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
       <a href="../../license/" class="md-nav__link">
         
   
@@ -1650,26 +2832,6 @@
   
   <span class="md-ellipsis">
     Contact
-  </span>
-  
-
-      </a>
-    </li>
-  
-
-    
-      
-      
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../../ieee-paper-changes/" class="md-nav__link">
-        
-  
-  <span class="md-ellipsis">
-    Paper Changes
   </span>
   
 
@@ -1781,9 +2943,7 @@
             
             
               
-                
-              
-              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" hidden>
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
                 <div class="md-sidebar__scrollwrap">
                   <div class="md-sidebar__inner">
                     
@@ -1794,6 +2954,110 @@
   
     
   
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#description" class="md-nav__link">
+    <span class="md-ellipsis">
+      Description
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#lesson-plan" class="md-nav__link">
+    <span class="md-ellipsis">
+      Lesson Plan
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Lesson Plan">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#learning-objectives" class="md-nav__link">
+    <span class="md-ellipsis">
+      Learning Objectives
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#target-audience" class="md-nav__link">
+    <span class="md-ellipsis">
+      Target Audience
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#prerequisites" class="md-nav__link">
+    <span class="md-ellipsis">
+      Prerequisites
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#activities" class="md-nav__link">
+    <span class="md-ellipsis">
+      Activities
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#assessment" class="md-nav__link">
+    <span class="md-ellipsis">
+      Assessment
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#common-misconceptions" class="md-nav__link">
+    <span class="md-ellipsis">
+      Common Misconceptions
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#development-notes" class="md-nav__link">
+    <span class="md-ellipsis">
+      Development Notes
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#references" class="md-nav__link">
+    <span class="md-ellipsis">
+      References
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
   
 </nav>
                   </div>
@@ -1808,7 +3072,7 @@
                   
 
   
-    <a href="https://github.com/dmccreary/signal-processing/blob/master/docs/sims/synth-timeline/index.md" title="Edit this page" class="md-content__button md-icon">
+    <a href="https://github.com/dmccreary/signal-processing/blob/main/docs/sims/synth-timeline/index.md" title="Edit this page" class="md-content__button md-icon">
       
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M10 20H6V4h7v5h5v3.1l2-2V8l-6-6H6c-1.1 0-2 .9-2 2v16c0 1.1.9 2 2 2h4zm10.2-7c.1 0 .3.1.4.2l1.3 1.3c.2.2.2.6 0 .8l-1 1-2.1-2.1 1-1c.1-.1.2-.2.4-.2m0 3.9L14.1 23H12v-2.1l6.1-6.1z"/></svg>
     </a>
@@ -1817,8 +3081,95 @@
 
 
 <h1 id="synth-timeline">Synth Timeline</h1>
-<p><a href="main.html">Run the Synth Timeline</a></p>
-<iframe src="main.html" width="700px" height="1300px"></iframe>
+<iframe src="main.html" width="100%" height="1302px"></iframe>
+
+<p>Copy this iframe to your website:</p>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="p">&lt;</span><span class="nt">iframe</span> <span class="na">src</span><span class="o">=</span><span class="s">"https://dmccreary.github.io/signal-processing/sims/synth-timeline/main.html"</span> <span class="na">width</span><span class="o">=</span><span class="s">"100%"</span> <span class="na">height</span><span class="o">=</span><span class="s">"1302px"</span><span class="p">&gt;&lt;/</span><span class="nt">iframe</span><span class="p">&gt;</span>
+</code></pre></div></td></tr></table></div>
+<p><a class="md-button md-button--primary" href="main.html">Run MicroSim in Fullscreen</a></p>
+<h2 id="description">Description</h2>
+<p>This MicroSim is a read-only timeline of ten landmark electronic instruments, ordered by year from the 1920 Theremin to the 1987 Roland D-50. Each card shows a year, the instrument's name and a one-line description. The color of a card gives its category, and a legend above the cards lists the three colors:</p>
+<ul>
+<li><strong>Early Innovations</strong> (blue): the Theremin, RCA Mark II Sound Synthesizer, Buchla 100 Series Modular and Moog Modular Synthesizer, 1920 to 1964.</li>
+<li><strong>Analog Revolution</strong> (purple): the Minimoog Model D, ARP 2600 and Prophet-5, 1970 to 1978.</li>
+<li><strong>Digital Era</strong> (pink): the Yamaha DX7, Kurzweil K250 and Roland D-50, 1983 to 1987.</li>
+</ul>
+<p>There are no sliders or buttons; scroll the page to read it. Read down the cards and watch how the way a synthesizer makes sound changes. The early entries run from a hand-played instrument to room-sized programmable systems and the first modular synthesizers, whose oscillators and filters are connected by the user. The Analog Revolution entries put voltage-controlled circuits into portable or semi-modular instruments and add memory for recalling sounds. The Digital Era entries replace analog sound generation with computed waveforms (FM synthesis), stored samples, and a mixture of samples and synthesized waveforms.</p>
+<p>The timeline is background for the audio material in <a href="../../chapters/15-signal-processing-applications-and-ai-integration/">Chapter 15: Signal Processing Applications and AI Integration</a>. It is also embedded in the page <a href="../../prompts/11-electronic-music/">Signal Processing in Electronic Music</a>.</p>
+<h2 id="lesson-plan">Lesson Plan</h2>
+<h3 id="learning-objectives">Learning Objectives</h3>
+<p>After using this MicroSim, students will be able to:</p>
+<ol>
+<li><strong>Sequence</strong> the ten milestones in chronological order, from the 1920 Theremin through the 1987 Roland D-50.</li>
+<li><strong>Classify</strong> each instrument as Early Innovations, Analog Revolution or Digital Era and state the technology that defines each category.</li>
+<li><strong>Explain</strong> why the Minimoog Model D (1970) is described as portable and integrated, in contrast with the modular systems of 1963 and 1964.</li>
+<li><strong>Compare</strong> the Yamaha DX7 (FM synthesis), Kurzweil K250 (stored samples) and Roland D-50 (samples plus synthesized waveforms) as three different digital approaches.</li>
+<li><strong>Identify</strong> the Prophet-5 as the first fully programmable polyphonic synthesizer with patch memory.</li>
+</ol>
+<h3 id="target-audience">Target Audience</h3>
+<p>College undergraduates in an introductory signal processing course, and readers of the electronic-music page that embeds the timeline. No music-technology background is needed. Plan 15 to 20 minutes.</p>
+<h3 id="prerequisites">Prerequisites</h3>
+<ul>
+<li>Know that a synthesizer is an electronic instrument that generates audio signals.</li>
+<li>Be familiar with the terms oscillator, filter and waveform.</li>
+<li>No mathematics or programming is required.</li>
+</ul>
+<h3 id="activities">Activities</h3>
+<ol>
+<li><strong>Chronology and gaps (5 min).</strong> Read the year on each card and compute the gap to the next card. Expected result: the ten entries span 67 years (1920 to 1987), the largest gap is 37 years (1920 to 1957), and three neighboring pairs are only one year apart (1963 and 1964, 1970 and 1971, 1983 and 1984).</li>
+<li><strong>Category audit (5 min).</strong> Count the cards of each color. Expected result: 4 blue, 3 purple and 3 pink. Then explain why the Prophet-5 is in the Analog Revolution group although it contains microprocessors. Expected result: its sound is still produced by analog circuits; the microprocessors store and recall the settings.</li>
+<li><strong>From patch cords to presets (10 min).</strong> Compare the Moog Modular (1964), Minimoog Model D (1970), ARP 2600 (1971) and Prophet-5 (1978). For each, record whether its sound is built by patching separate modules together, by a mostly pre-wired layout, or by recalling stored settings. Expected result: the Moog Modular is patched module by module; the ARP 2600 is semi-modular, with internal connections that patch cords can alter; the Minimoog packages the modular design into a smaller portable instrument; the Prophet-5 adds patch memory.</li>
+<li><strong>Three ways to be digital (10 min).</strong> Using the card text and the references, write one sentence on how each of the DX7, K250 and D-50 produces its sound. Expected result: the DX7 computes sounds by frequency modulation; the K250 plays back sampled sounds stored in ROM; the D-50 starts a note with a sampled attack and continues it with synthesized waveforms (Linear Arithmetic Synthesis).</li>
+</ol>
+<h3 id="assessment">Assessment</h3>
+<ol>
+<li>
+<p>Which entries have the earliest and latest years, and how long is the span between them?</p>
+<p><em>The Theremin (1920) and the Roland D-50 (1987), a span of 67 years.</em></p>
+</li>
+<li>
+<p>What is the longest gap between neighboring entries, and which two cards bound it?</p>
+<p><em>37 years, between the Theremin (1920) and the RCA Mark II Sound Synthesizer (1957).</em></p>
+</li>
+<li>
+<p>The Prophet-5 card calls it the first fully programmable polyphonic synthesizer with patch memory. What does patch memory let a performer do?</p>
+<p><em>Store a sound and recall it instantly instead of resetting the controls by hand.</em></p>
+</li>
+<li>
+<p>Two Digital Era cards use stored recordings of real sounds. Name them and state how they differ.</p>
+<p><em>The Kurzweil K250 (1984) plays back sampled acoustic sounds stored in ROM. The Roland D-50 (1987) combines a sampled attack with synthesized waveforms for the rest of the note.</em></p>
+</li>
+<li>
+<p>Why is the Minimoog Model D placed in Analog Revolution rather than Early Innovations, although the Moog Modular (1964) already used voltage control?</p>
+<p><em>The Minimoog packaged voltage-controlled synthesis as a smaller, portable instrument that musicians could use on stage, which its card describes as revolutionizing live performance.</em></p>
+</li>
+</ol>
+<h3 id="common-misconceptions">Common Misconceptions</h3>
+<ul>
+<li><strong>"Each year is the day the instrument was invented."</strong> A year marks a milestone, not a single invention date. The Buchla 100 Series card says 1963, the year Don Buchla began designing his first modules; he assembled them into one system in 1965 and sold it commercially from 1966. The Prophet-5 was designed in 1977 and shipped in 1978. Compare the card year with the dates in the reference article for each instrument.</li>
+<li><strong>"The K250 was the first sampling synthesizer, and all digital synthesizers work alike."</strong> The Fairlight CMI (1979) was an earlier instrument with an embedded sampler, and the DX7 does not play back recordings at all: it computes sounds by FM synthesis. The Digital Era cards for the DX7, K250 and D-50 describe three different ways of making sound.</li>
+</ul>
+<h2 id="development-notes">Development Notes</h2>
+<ul>
+<li>The timeline is a React 18.2.0 page (no JSX or build step) styled with Tailwind CSS 2.2.19. It now loads the React production builds from cdnjs instead of the development builds; the rendered cards are unchanged.</li>
+<li>The iframe is tall: at about 700 px wide the page is 1348 px high and the last card ends at 1292 px. The iframe does not use <code>scrolling="no"</code> so that narrow screens can still scroll to the last cards.</li>
+<li>The Kurzweil K250 card previously called it the first sampling synthesizer. The Fairlight CMI (1979) is an earlier instrument with an embedded sampler, so the card now reads "Sampling synthesizer that realistically reproduced acoustic instruments".</li>
+</ul>
+<h2 id="references">References</h2>
+<ol>
+<li><a href="https://en.wikipedia.org/wiki/Synthesizer">Synthesizer</a> - Wikipedia - overview of synthesis methods such as subtractive, additive and frequency modulation synthesis</li>
+<li><a href="https://en.wikipedia.org/wiki/Theremin">Theremin</a> - Wikipedia - invention of the contactless instrument in 1920 and its 1928 patent</li>
+<li><a href="https://en.wikipedia.org/wiki/RCA_Mark_II_Sound_Synthesizer">RCA Mark II Sound Synthesizer</a> - Wikipedia - the first programmable electronic music synthesizer, installed in 1957 and controlled by punched paper</li>
+<li><a href="https://en.wikipedia.org/wiki/Don_Buchla">Don Buchla</a> - Wikipedia - Buchla's modules, the Series 100 system and its dates</li>
+<li><a href="https://en.wikipedia.org/wiki/Moog_synthesizer">Moog synthesizer</a> - Wikipedia - Robert Moog's 1964 modular synthesizer and voltage control</li>
+<li><a href="https://en.wikipedia.org/wiki/Minimoog">Minimoog</a> - Wikipedia - the 1970 portable version of the modular Moog</li>
+<li><a href="https://en.wikipedia.org/wiki/ARP_2600">ARP 2600</a> - Wikipedia - the 1971 semi-modular synthesizer with pre-wired connections</li>
+<li><a href="https://en.wikipedia.org/wiki/Prophet-5">Prophet-5</a> - Wikipedia - the first polyphonic synthesizer with fully programmable memory</li>
+<li><a href="https://en.wikipedia.org/wiki/Yamaha_DX7">Yamaha DX7</a> - Wikipedia - the 1983 FM synthesizer</li>
+<li><a href="https://en.wikipedia.org/wiki/Fairlight_CMI">Fairlight CMI</a> - Wikipedia - the 1979 digital synthesizer and sampler that predates the K250</li>
+<li><a href="https://en.wikipedia.org/wiki/Kurzweil_K250">Kurzweil K250</a> - Wikipedia - sampled sounds compressed in ROM, unveiled in 1984</li>
+<li><a href="https://en.wikipedia.org/wiki/Roland_D-50">Roland D-50</a> - Wikipedia - Linear Arithmetic Synthesis, released in 1987</li>
+</ol>
 
 
 
@@ -1831,8 +3182,6 @@
 
 
 
-
-  
 
 
 
@@ -1856,12 +3205,10 @@
   
     
       
-        
-      
       <nav class="md-footer__inner md-grid" aria-label="Footer" >
         
           
-          <a href="../sine-wave/" class="md-footer__link md-footer__link--prev" aria-label="Previous: Sine Wave">
+          <a href="../spectral-leakage-and-windowing/" class="md-footer__link md-footer__link--prev" aria-label="Previous: Spectral Leakage and Windowing">
             <div class="md-footer__button md-icon">
               
               <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
@@ -1871,20 +3218,20 @@
                 Previous
               </span>
               <div class="md-ellipsis">
-                Sine Wave
+                Spectral Leakage and Windowing
               </div>
             </div>
           </a>
         
         
           
-          <a href="../timeline-viewer/" class="md-footer__link md-footer__link--next" aria-label="Next: Timeline Viewer">
+          <a href="../system-interconnections/" class="md-footer__link md-footer__link--next" aria-label="Next: System Interconnections - Series, Parallel, Feedback">
             <div class="md-footer__title">
               <span class="md-footer__direction">
                 Next
               </span>
               <div class="md-ellipsis">
-                Timeline Viewer
+                System Interconnections - Series, Parallel, Feedback
               </div>
             </div>
             <div class="md-footer__button md-icon">

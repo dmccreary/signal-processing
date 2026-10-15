@@ -6,7 +6,7 @@
       <meta charset="utf-8">
       <meta name="viewport" content="width=device-width,initial-scale=1">
       
-        <meta name="description" content="Interactive simulation of classic amplifier frequency response with adjustable bass and treble controls.">
+        <meta name="description" content="Frequency response of an amplifier's bass and treble controls, drawn as gain in dB against log frequency, with two sliders and a mouse probe that reads the gain.">
       
       
         <meta name="author" content="Dan McCreary">
@@ -15,10 +15,10 @@
         <link rel="canonical" href="https://dmccreary.github.io/signal-processing/sims/base-and-treble/">
       
       
-        <link rel="prev" href="../analog-mod/">
+        <link rel="prev" href="../fft-basic/">
       
       
-        <link rel="next" href="../fft-basic/">
+        <link rel="next" href="../bilinear-transform/">
       
       
       <link rel="icon" href="../../img/favicon.ico">
@@ -54,6 +54,8 @@
     
       <link rel="stylesheet" href="../../css/extra.css">
     
+      <link rel="stylesheet" href="../../css/mascot.css">
+    
     <script>__md_scope=new URL("../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
     
       
@@ -65,7 +67,7 @@
       
         <meta  property="og:title"  content="Bass and Treble Amplifier Controls - Signal Processing with AI" >
       
-        <meta  property="og:description"  content="Interactive simulation of classic amplifier frequency response with adjustable bass and treble controls." >
+        <meta  property="og:description"  content="Frequency response of an amplifier's bass and treble controls, drawn as gain in dB against log frequency, with two sliders and a mouse probe that reads the gain." >
       
         <meta property="og:image" content="https://dmccreary.github.io/signal-processing/sims/base-and-treble/base-and-treble.png">
       
@@ -81,7 +83,7 @@
       
         <meta  name="twitter:title"  content="Bass and Treble Amplifier Controls - Signal Processing with AI" >
       
-        <meta  name="twitter:description"  content="Interactive simulation of classic amplifier frequency response with adjustable bass and treble controls." >
+        <meta  name="twitter:description"  content="Frequency response of an amplifier's bass and treble controls, drawn as gain in dB against log frequency, with two sliders and a mouse probe that reads the gain." >
       
         <meta name="twitter:image" content="https://dmccreary.github.io/signal-processing/sims/base-and-treble/base-and-treble.png">
       
@@ -122,7 +124,7 @@
   <nav class="md-header__inner md-grid" aria-label="Header">
     <a href="../.." title="Signal Processing with AI" class="md-header__button md-logo" aria-label="Signal Processing with AI" data-md-component="logo">
       
-  <img src="../../img/logo-192.png" alt="logo">
+  <img src="../../img/mascot/neutral.png" alt="logo">
 
     </a>
     <label class="md-header__button md-icon" for="__drawer">
@@ -217,8 +219,6 @@
           
             
               
-                
-              
               <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
                 <div class="md-sidebar__scrollwrap">
                   <div class="md-sidebar__inner">
@@ -230,7 +230,7 @@
   <label class="md-nav__title" for="__drawer">
     <a href="../.." title="Signal Processing with AI" class="md-nav__button md-logo" aria-label="Signal Processing with AI" data-md-component="logo">
       
-  <img src="../../img/logo-192.png" alt="logo">
+  <img src="../../img/mascot/neutral.png" alt="logo">
 
     </a>
     Signal Processing with AI
@@ -277,31 +277,11 @@
   
   
     <li class="md-nav__item">
-      <a href="../../chapters/" class="md-nav__link">
-        
-  
-  <span class="md-ellipsis">
-    Table of Contents
-  </span>
-  
-
-      </a>
-    </li>
-  
-
-    
-      
-      
-  
-  
-  
-  
-    <li class="md-nav__item">
       <a href="../../about/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
-    About This Website
+    About
   </span>
   
 
@@ -544,6 +524,174 @@
           
         
       
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
     
     
     
@@ -553,7 +701,7 @@
       
         
         
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_6" checked>
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_5" checked>
         
           
           
@@ -569,19 +717,103 @@
             </a>
             
               
-              <label class="md-nav__link " for="__nav_6" id="__nav_6_label" tabindex="0">
+              <label class="md-nav__link " for="__nav_5" id="__nav_5_label" tabindex="0">
                 <span class="md-nav__icon md-icon"></span>
               </label>
             
           </div>
         
-        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_6_label" aria-expanded="true">
-          <label class="md-nav__title" for="__nav_6">
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_5_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_5">
             <span class="md-nav__icon md-icon"></span>
             MicroSims
           </label>
           <ul class="md-nav__list" data-md-scrollfix>
             
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../image-convolution/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    2-D Convolution and Image Filtering
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../conv-layer-as-filter/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    A Convolutional Layer Is a Learned FIR Filter
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../adaptive-algorithm-comparison-tool/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Adaptive Algorithm Comparison Tool
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../adaptive-noise-cancellation/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Adaptive Noise and Echo Cancellation
+  </span>
+  
+
+      </a>
+    </li>
+  
+
               
             
               
@@ -630,6 +862,27 @@
                 
   
   
+  
+  
+    <li class="md-nav__item">
+      <a href="../fft-basic/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Basic FFT
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
     
   
   
@@ -646,7 +899,7 @@
           
   
   <span class="md-ellipsis">
-    Base and Treble
+    Bass and Treble
   </span>
   
 
@@ -657,7 +910,7 @@
         
   
   <span class="md-ellipsis">
-    Base and Treble
+    Bass and Treble
   </span>
   
 
@@ -679,13 +932,13 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#discussion" class="md-nav__link">
+  <a href="#description" class="md-nav__link">
     <span class="md-ellipsis">
-      Discussion
+      Description
     </span>
   </a>
   
-    <nav class="md-nav" aria-label="Discussion">
+    <nav class="md-nav" aria-label="Description">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
@@ -698,45 +951,96 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#understanding-the-frequency-response-curve" class="md-nav__link">
+  <a href="#mathematical-model" class="md-nav__link">
     <span class="md-ellipsis">
-      Understanding the Frequency Response Curve
+      Mathematical Model
     </span>
   </a>
   
 </li>
         
           <li class="md-nav__item">
-  <a href="#the-logarithmic-frequency-scale" class="md-nav__link">
+  <a href="#the-logarithmic-frequency-axis" class="md-nav__link">
     <span class="md-ellipsis">
-      The Logarithmic Frequency Scale
+      The Logarithmic Frequency Axis
     </span>
   </a>
   
 </li>
         
           <li class="md-nav__item">
-  <a href="#decibels-db-the-language-of-audio" class="md-nav__link">
+  <a href="#decibels" class="md-nav__link">
     <span class="md-ellipsis">
-      Decibels (dB): The Language of Audio
+      Decibels
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#lesson-plan" class="md-nav__link">
+    <span class="md-ellipsis">
+      Lesson Plan
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Lesson Plan">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#learning-objectives" class="md-nav__link">
+    <span class="md-ellipsis">
+      Learning Objectives
     </span>
   </a>
   
 </li>
         
           <li class="md-nav__item">
-  <a href="#shelving-filters-the-math-behind-the-knobs" class="md-nav__link">
+  <a href="#target-audience" class="md-nav__link">
     <span class="md-ellipsis">
-      Shelving Filters: The Math Behind the Knobs
+      Target Audience
     </span>
   </a>
   
 </li>
         
           <li class="md-nav__item">
-  <a href="#exploration-activities" class="md-nav__link">
+  <a href="#prerequisites" class="md-nav__link">
     <span class="md-ellipsis">
-      Exploration Activities
+      Prerequisites
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#activities" class="md-nav__link">
+    <span class="md-ellipsis">
+      Activities
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#assessment" class="md-nav__link">
+    <span class="md-ellipsis">
+      Assessment
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#common-misconceptions" class="md-nav__link">
+    <span class="md-ellipsis">
+      Common Misconceptions
     </span>
   </a>
   
@@ -751,24 +1055,24 @@
   
 </li>
         
-          <li class="md-nav__item">
-  <a href="#connection-to-course-concepts" class="md-nav__link">
-    <span class="md-ellipsis">
-      Connection to Course Concepts
-    </span>
-  </a>
-  
-</li>
-        
       </ul>
     </nav>
   
 </li>
       
         <li class="md-nav__item">
-  <a href="#sample-prompt" class="md-nav__link">
+  <a href="#references" class="md-nav__link">
     <span class="md-ellipsis">
-      Sample Prompt
+      References
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#development-notes" class="md-nav__link">
+    <span class="md-ellipsis">
+      Development Notes
     </span>
   </a>
   
@@ -790,11 +1094,11 @@
   
   
     <li class="md-nav__item">
-      <a href="../fft-basic/" class="md-nav__link">
+      <a href="../bilinear-transform/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
-    Basic FFT
+    Bilinear Transform and Frequency Warping
   </span>
   
 
@@ -916,6 +1220,27 @@
   
   
     <li class="md-nav__item">
+      <a href="../compressed-sensing/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Compressed Sensing
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
       <a href="../convolution/" class="md-nav__link">
         
   
@@ -937,11 +1262,137 @@
   
   
     <li class="md-nav__item">
+      <a href="../convolution-theorem/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Convolution Theorem and Circular Convolution
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../convolution-visualizer/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Convolution Visualizer
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../correlation-and-matched-filtering/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Correlation and Matched Filtering
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../dct-basis-explorer/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    DCT Basis Explorer
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../dft-explorer/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    DFT Explorer
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
       <a href="../euler-formula-explorer/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
     Euler's Formula Explorer
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../even-and-odd-signal-decomposition/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Even and Odd Signal Decomposition
   </span>
   
 
@@ -1105,6 +1556,27 @@
   
   
     <li class="md-nav__item">
+      <a href="../fft-spectrum-analyzer/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    FFT Spectrum Analyzer
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
       <a href="../fft-waveform-types/" class="md-nav__link">
         
   
@@ -1126,11 +1598,263 @@
   
   
     <li class="md-nav__item">
+      <a href="../filter-bank-explorer/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Filter Bank and Polyphase Explorer
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../fir-filter-design-comparison-tool/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    FIR Filter Design Comparison Tool
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../fir-vs-iir/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    FIR vs IIR Filters
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../fourier-series-explorer/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Fourier Series Explorer
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../fourier-transform-pairs/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Fourier Transform Pairs
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
       <a href="../frequency-detection/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
     Frequency Detection
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../huffman-coding/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Huffman Coding
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../iir-prototype-comparison/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    IIR Prototype Comparison
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../impulse-and-frequency-response-analyzer/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Impulse and Frequency Response Analyzer
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../interactive-filter-design-and-analysis-tool/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Interactive Filter Design and Analysis Tool
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../interactive-pole-zero-analysis-tool/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Interactive Pole-Zero Analysis Tool
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../interactive-spectrogram-parameter-explorer/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Interactive Spectrogram Parameter Explorer
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../interactive-stft-spectrogram-analyzer/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Interactive STFT Spectrogram Analyzer
   </span>
   
 
@@ -1210,11 +1934,158 @@
   
   
     <li class="md-nav__item">
+      <a href="../multirate-sample-rate-converter/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Multirate Sample Rate Converter
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../noise-analysis-and-reduction-tool/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Noise Analysis and Reduction Tool
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
       <a href="../nyquist-shannon-sampling/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
     Nyquist-Shannon Sampling
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../phase-spectrum/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Phase Spectrum - What the Magnitude Hides
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../phasor-addition/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Phasor Addition
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../psd-wiener-khinchin/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Power Spectral Density and the Wiener-Khinchin Theorem
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../distribution-explorer/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Probability Distribution Explorer
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../quantization-and-noise-shaping/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Quantization and Noise Shaping
   </span>
   
 
@@ -1252,11 +2123,116 @@
   
   
     <li class="md-nav__item">
+      <a href="../real-time-processing-simulator/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Real-Time Processing Simulator
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
       <a href="../reverb/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
     Reverb Effect
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../s-plane-explorer/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    s-Plane Explorer
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../sampling-theorem-explorer/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Sampling Theorem Explorer
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../signal-operations/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Signal Operations - Shift, Scale and Reverse
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../signal-type-explorer/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Signal Type Explorer
   </span>
   
 
@@ -1294,11 +2270,95 @@
   
   
     <li class="md-nav__item">
+      <a href="../spectral-leakage-and-windowing/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Spectral Leakage and Windowing
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
       <a href="../synth-timeline/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
     Synth Timeline
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../system-interconnections/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    System Interconnections - Series, Parallel, Feedback
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../system-property-explorer/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    System Property Explorer
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../time-frequency-analysis-explorer/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Time-Frequency Analysis Explorer
   </span>
   
 
@@ -1341,6 +2401,27 @@
   
   <span class="md-ellipsis">
     Tone Generator
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../wavelet-explorer/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Wavelet Explorer - CWT Scalogram and Haar DWT
   </span>
   
 
@@ -1517,6 +2598,12 @@
       
         
           
+        
+      
+        
+      
+        
+      
         
       
         
@@ -1731,6 +2818,26 @@
   
   
     <li class="md-nav__item">
+      <a href="../../instructors-guide/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Instructor's Guide
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
       <a href="../../license/" class="md-nav__link">
         
   
@@ -1776,26 +2883,6 @@
   
   <span class="md-ellipsis">
     Contact
-  </span>
-  
-
-      </a>
-    </li>
-  
-
-    
-      
-      
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../../ieee-paper-changes/" class="md-nav__link">
-        
-  
-  <span class="md-ellipsis">
-    Paper Changes
   </span>
   
 
@@ -1907,9 +2994,7 @@
             
             
               
-                
-              
-              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" hidden>
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
                 <div class="md-sidebar__scrollwrap">
                   <div class="md-sidebar__inner">
                     
@@ -1928,13 +3013,13 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#discussion" class="md-nav__link">
+  <a href="#description" class="md-nav__link">
     <span class="md-ellipsis">
-      Discussion
+      Description
     </span>
   </a>
   
-    <nav class="md-nav" aria-label="Discussion">
+    <nav class="md-nav" aria-label="Description">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
@@ -1947,45 +3032,96 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#understanding-the-frequency-response-curve" class="md-nav__link">
+  <a href="#mathematical-model" class="md-nav__link">
     <span class="md-ellipsis">
-      Understanding the Frequency Response Curve
+      Mathematical Model
     </span>
   </a>
   
 </li>
         
           <li class="md-nav__item">
-  <a href="#the-logarithmic-frequency-scale" class="md-nav__link">
+  <a href="#the-logarithmic-frequency-axis" class="md-nav__link">
     <span class="md-ellipsis">
-      The Logarithmic Frequency Scale
+      The Logarithmic Frequency Axis
     </span>
   </a>
   
 </li>
         
           <li class="md-nav__item">
-  <a href="#decibels-db-the-language-of-audio" class="md-nav__link">
+  <a href="#decibels" class="md-nav__link">
     <span class="md-ellipsis">
-      Decibels (dB): The Language of Audio
+      Decibels
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#lesson-plan" class="md-nav__link">
+    <span class="md-ellipsis">
+      Lesson Plan
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Lesson Plan">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#learning-objectives" class="md-nav__link">
+    <span class="md-ellipsis">
+      Learning Objectives
     </span>
   </a>
   
 </li>
         
           <li class="md-nav__item">
-  <a href="#shelving-filters-the-math-behind-the-knobs" class="md-nav__link">
+  <a href="#target-audience" class="md-nav__link">
     <span class="md-ellipsis">
-      Shelving Filters: The Math Behind the Knobs
+      Target Audience
     </span>
   </a>
   
 </li>
         
           <li class="md-nav__item">
-  <a href="#exploration-activities" class="md-nav__link">
+  <a href="#prerequisites" class="md-nav__link">
     <span class="md-ellipsis">
-      Exploration Activities
+      Prerequisites
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#activities" class="md-nav__link">
+    <span class="md-ellipsis">
+      Activities
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#assessment" class="md-nav__link">
+    <span class="md-ellipsis">
+      Assessment
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#common-misconceptions" class="md-nav__link">
+    <span class="md-ellipsis">
+      Common Misconceptions
     </span>
   </a>
   
@@ -2000,24 +3136,24 @@
   
 </li>
         
-          <li class="md-nav__item">
-  <a href="#connection-to-course-concepts" class="md-nav__link">
-    <span class="md-ellipsis">
-      Connection to Course Concepts
-    </span>
-  </a>
-  
-</li>
-        
       </ul>
     </nav>
   
 </li>
       
         <li class="md-nav__item">
-  <a href="#sample-prompt" class="md-nav__link">
+  <a href="#references" class="md-nav__link">
     <span class="md-ellipsis">
-      Sample Prompt
+      References
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#development-notes" class="md-nav__link">
+    <span class="md-ellipsis">
+      Development Notes
     </span>
   </a>
   
@@ -2038,7 +3174,7 @@
                   
 
   
-    <a href="https://github.com/dmccreary/signal-processing/blob/master/docs/sims/base-and-treble/index.md" title="Edit this page" class="md-content__button md-icon">
+    <a href="https://github.com/dmccreary/signal-processing/blob/main/docs/sims/base-and-treble/index.md" title="Edit this page" class="md-content__button md-icon">
       
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M10 20H6V4h7v5h5v3.1l2-2V8l-6-6H6c-1.1 0-2 .9-2 2v16c0 1.1.9 2 2 2h4zm10.2-7c.1 0 .3.1.4.2l1.3 1.3c.2.2.2.6 0 .8l-1 1-2.1-2.1 1-1c.1-.1.2-.2.4-.2m0 3.9L14.1 23H12v-2.1l6.1-6.1z"/></svg>
     </a>
@@ -2047,114 +3183,170 @@
 
 
 <h1 id="bass-and-treble-amplifier-controls">Bass and Treble Amplifier Controls</h1>
-<iframe src="main.html" height="420" scrolling="no"></iframe>
+<iframe src="main.html" width="100%" height="442px" scrolling="no"></iframe>
 
-<p>To use this MicroSim on your web page, just copy this code into your web page.</p>
-<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="p">&lt;</span><span class="nt">iframe</span> <span class="na">src</span><span class="o">=</span><span class="s">&quot;/signal-processing/sims/base-and-treble/base-and-treble.html&quot;</span> <span class="na">height</span><span class="o">=</span><span class="s">&quot;420&quot;</span> <span class="na">scrolling</span><span class="o">=</span><span class="s">&quot;no&quot;</span> <span class="na">style</span><span class="o">=</span><span class="s">&quot;overflow: hidden;&quot;</span><span class="p">&gt;&lt;/</span><span class="nt">iframe</span><span class="p">&gt;</span>
+<p>Copy this iframe to your website:</p>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="p">&lt;</span><span class="nt">iframe</span> <span class="na">src</span><span class="o">=</span><span class="s">"https://dmccreary.github.io/signal-processing/sims/base-and-treble/main.html"</span> <span class="na">width</span><span class="o">=</span><span class="s">"100%"</span> <span class="na">height</span><span class="o">=</span><span class="s">"442px"</span> <span class="na">scrolling</span><span class="o">=</span><span class="s">"no"</span><span class="p">&gt;&lt;/</span><span class="nt">iframe</span><span class="p">&gt;</span>
 </code></pre></div></td></tr></table></div>
-<p><a class="md-button md-button--primary" href="main.html">Run the Base and Treble MicroSim</a>
-<a href="https://editor.p5js.org/dmccreary/sketches/j1ND7Tl4a">Edit the Base and Treble MicroSim using the p5.js Editor</a></p>
-<h2 id="discussion">Discussion</h2>
-<p>This simulation visualizes one of the most fundamental concepts in audio signal processing: <strong>frequency response modification</strong> using bass and treble controls. Whether you're adjusting the EQ on your car stereo, tweaking settings on Spotify, or mixing music in a studio, you're manipulating the same underlying principles demonstrated here.</p>
+<p><a class="md-button md-button--primary" href="main.html">Run MicroSim in Fullscreen</a></p>
+<p><a href="https://editor.p5js.org/dmccreary/sketches/j1ND7Tl4a">Edit in the p5.js Editor</a></p>
+<h2 id="description">Description</h2>
+<p>This MicroSim draws the <strong>frequency response</strong> of a classic amplifier tone control: how much the amplifier boosts
+or cuts a sine wave at each frequency. The horizontal axis is frequency from 20 Hz to 20 kHz on a logarithmic scale,
+and the vertical axis is gain in decibels (dB) from -15 dB to +15 dB. It draws a curve only; no sound is played.</p>
+<p>The <strong>Bass</strong> slider sets how much the frequencies below a 500 Hz corner are boosted or cut, and the <strong>Treble</strong>
+slider does the same above a 2 kHz corner. Both sliders run from 0 to 100 and start at 50, which is flat (0 dB).
+The dB value printed next to each slider is the full boost or cut that slider requests, from -12 dB to +12 dB.
+Move the mouse over the plot to move the gold marker and read the gain at any frequency. The marker keeps its last
+position when the mouse leaves the plot. The dotted lines mark the two corner frequencies.</p>
+<p>The same idea appears in every graphic equalizer and every "bass" and "treble" knob. This simulation supports the
+equalization material in <a href="../../chapters/15-signal-processing-applications-and-ai-integration/">Chapter 15: Signal Processing Applications and AI Integration</a>
+and the decibel filter specifications in <a href="../../chapters/09-filter-design-fundamentals/">Chapter 9: Filter Design Fundamentals</a>.</p>
 <h3 id="what-are-bass-and-treble">What Are Bass and Treble?</h3>
-<p><strong>Bass</strong> refers to low-frequency sounds (roughly 20 Hz to 500 Hz)—the deep rumble of thunder, the thump of a kick drum, or the lowest notes on a bass guitar. <strong>Treble</strong> refers to high-frequency sounds (roughly 2,000 Hz to 20,000 Hz)—the shimmer of cymbals, the crispness of vocals, or the brightness of a flute.</p>
-<p>When you adjust bass or treble controls, you're telling the amplifier to boost or cut specific frequency ranges while leaving others relatively unchanged.</p>
-<h3 id="understanding-the-frequency-response-curve">Understanding the Frequency Response Curve</h3>
-<p>The blue curve in this simulation represents the <strong>frequency response</strong>—how much the amplifier boosts or attenuates (reduces) signals at each frequency. Key observations:</p>
-<ul>
-<li><strong>Flat response (both sliders at 50)</strong>: The curve is a horizontal line at 0 dB, meaning all frequencies pass through unchanged</li>
-<li><strong>Boosted bass</strong>: The left side of the curve rises above 0 dB, amplifying low frequencies</li>
-<li><strong>Cut treble</strong>: The right side of the curve drops below 0 dB, reducing high frequencies</li>
-</ul>
-<h3 id="the-logarithmic-frequency-scale">The Logarithmic Frequency Scale</h3>
-<p>Notice that the x-axis uses a <strong>logarithmic scale</strong> rather than a linear one. This is standard in audio engineering because:</p>
+<p><strong>Bass</strong> is the low-frequency part of a sound (here, roughly 20 Hz to 500 Hz): the thump of a kick drum or the
+lowest notes of a bass guitar. <strong>Treble</strong> is the high-frequency part (here, roughly 2 kHz to 20 kHz): the shimmer of
+cymbals or the crispness of a voice. Turning a knob tells the amplifier to boost or cut one end of the spectrum
+while leaving the middle nearly unchanged.</p>
+<h3 id="mathematical-model">Mathematical Model</h3>
+<p>Let <span class="arithmatex">\(b\)</span> and <span class="arithmatex">\(t\)</span> be the bass and treble slider values (0 to 100). The plotted gain is the sum of a low shelf and a
+high shelf:</p>
+<div class="arithmatex">\[G(f) = 12\,\frac{b-50}{50}\cdot\frac{1}{1+(f/500)^4} \;+\; 12\,\frac{t-50}{50}\cdot\frac{1}{1+(2000/f)^4}\ \text{dB}\]</div>
+<p>Each fraction goes smoothly from 1 on one side of its corner to 0 on the other side, and equals exactly <span class="arithmatex">\(1/2\)</span> at the
+corner. So a shelf reaches half of its full gain at 500 Hz (bass) or 2 kHz (treble). The shelf shape has the same form
+as the squared magnitude of a second-order Butterworth filter, but it is applied to the gain in dB. The model is a
+smooth, illustrative approximation of a tone-control circuit, not a circuit simulation, and it shows magnitude only
+(there is no phase plot).</p>
+<h3 id="the-logarithmic-frequency-axis">The Logarithmic Frequency Axis</h3>
+<p>Equal distances on the axis are equal frequency <strong>ratios</strong>. From 100 Hz to 200 Hz is one octave, the same width as
+1 kHz to 2 kHz. The corners at 500 Hz and 2 kHz are <span class="arithmatex">\(\log_2(2000/500) = 2\)</span> octaves apart, and the whole audible
+range, 20 Hz to 20 kHz, is a 1000:1 ratio of about 10 octaves. A linear axis would squeeze every bass note into
+the left-hand sliver of the plot.</p>
+<h3 id="decibels">Decibels</h3>
+<p>Gain in decibels is <span class="arithmatex">\(G_\text{dB} = 20\log_{10}(A_\text{out}/A_\text{in})\)</span> for amplitudes.</p>
+<table>
+<thead>
+<tr>
+<th>Gain</th>
+<th>Amplitude factor</th>
+<th>Power factor</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>+12 dB</td>
+<td>3.98 (about 4)</td>
+<td>15.8</td>
+</tr>
+<tr>
+<td>+6 dB</td>
+<td>2.00</td>
+<td>3.98</td>
+</tr>
+<tr>
+<td>0 dB</td>
+<td>1 (unchanged)</td>
+<td>1</td>
+</tr>
+<tr>
+<td>-6 dB</td>
+<td>0.50</td>
+<td>0.25</td>
+</tr>
+<tr>
+<td>-12 dB</td>
+<td>0.25</td>
+<td>0.063</td>
+</tr>
+</tbody>
+</table>
+<p>Because the scale is logarithmic, equal slider steps add equal dB, and equal dB steps multiply the amplitude by equal
+factors. As a rule of thumb the ear needs about +10 dB for a sound to seem twice as loud.</p>
+<h2 id="lesson-plan">Lesson Plan</h2>
+<h3 id="learning-objectives">Learning Objectives</h3>
+<p>After using this MicroSim, students will be able to:</p>
 <ol>
-<li><strong>Human hearing is logarithmic</strong>: We perceive pitch relationships as ratios. The jump from 100 Hz to 200 Hz sounds like the same "distance" as 1,000 Hz to 2,000 Hz (both are octaves)</li>
-<li><strong>Wide frequency range</strong>: The audible spectrum spans 20 Hz to 20,000 Hz—a 1000:1 ratio. A linear scale would compress the bass frequencies into an unreadable sliver</li>
+<li><strong>Predict</strong> the boost or cut in dB at the low and high ends of the response from the Bass and Treble slider positions, using <span class="arithmatex">\(12(\text{slider}-50)/50\)</span> dB.</li>
+<li><strong>Interpret</strong> a logarithmic frequency axis by counting octaves between two frequencies on the plot.</li>
+<li><strong>Convert</strong> a gain in dB read from the plot into an amplitude ratio, for example +12 dB to about 4 times and -12 dB to about 0.25 times.</li>
+<li><strong>Explain</strong> why the gain at a shelf corner is half of the full shelf gain.</li>
+<li><strong>Analyze</strong> how the two shelves overlap near 1 kHz, so that the bass control also changes the middle of the spectrum.</li>
 </ol>
-<h3 id="decibels-db-the-language-of-audio">Decibels (dB): The Language of Audio</h3>
-<p>The y-axis shows gain in <strong>decibels (dB)</strong>. This logarithmic unit is used because:</p>
+<h3 id="target-audience">Target Audience</h3>
+<p>Undergraduate students in an introductory signal processing or audio engineering course. Plan 15 to 20 minutes.</p>
+<h3 id="prerequisites">Prerequisites</h3>
 <ul>
-<li><strong>+6 dB</strong> approximately doubles the perceived loudness</li>
-<li><strong>-6 dB</strong> approximately halves it</li>
-<li><strong>0 dB</strong> means no change (unity gain)</li>
+<li>Frequency in hertz and the idea of a frequency spectrum</li>
+<li>Logarithms and powers of ten</li>
+<li>A first look at the decibel scale</li>
 </ul>
-<p>The simulation ranges from -15 dB to +15 dB, representing significant but realistic adjustments for consumer audio equipment.</p>
-<h3 id="shelving-filters-the-math-behind-the-knobs">Shelving Filters: The Math Behind the Knobs</h3>
-<p>This simulation models <strong>shelving filters</strong>, which are the actual circuits used in bass and treble controls:</p>
+<h3 id="activities">Activities</h3>
+<p><strong>Activity 1: Flat reference (3 min).</strong> Set Bass = 50 and Treble = 50. The curve lies on the 0 dB line.
+Move the mouse across the plot: the read-out shows 0.0 dB at every frequency, so every tone passes unchanged.</p>
+<p><strong>Activity 2: Find the shelf (5 min).</strong> Set Bass = 100 and Treble = 50. The slider label reads +12.0 dB.</p>
 <ul>
-<li><strong>Low-shelf filter</strong> (bass control): Affects all frequencies below a cutoff point (500 Hz in this simulation)</li>
-<li><strong>High-shelf filter</strong> (treble control): Affects all frequencies above a cutoff point (2,000 Hz in this simulation)</li>
+<li>Read the gain at 100 Hz: about +12.0 dB, the full shelf.</li>
+<li>Read the gain at the 500 Hz corner: about +6.0 dB, half of the full shelf.</li>
+<li>Read the gain at 1 kHz: about +0.7 dB, and at 2 kHz: about 0.0 dB.</li>
 </ul>
-<p>The mathematical formula used creates a smooth transition around these cutoff frequencies, which is why you see gradual curves rather than sharp steps.</p>
-<h3 id="exploration-activities">Exploration Activities</h3>
-<p>Try these experiments to deepen your understanding:</p>
+<p><strong>Activity 3: Smile and frown (5 min).</strong> Set Bass = 100 and Treble = 100. The curve is a "smile": +12 dB at both ends.
+Read the gain at 1 kHz: it is +1.4 dB, not 0 dB, because each shelf still adds a little there.
+Now set both sliders to 0. The curve is a "frown" with -12 dB at both ends and -1.4 dB at 1 kHz.</p>
+<p><strong>Activity 4: A tilt through 1 kHz (5 min).</strong> Set Bass = 75 and Treble = 25. The labels read +6.0 dB and -6.0 dB.
+The curve falls from +6 dB at low frequencies to -6 dB at high frequencies and crosses 0 dB at exactly 1 kHz.
+Try Bass = 60 and Treble = 40: the crossing stays at 1 kHz. Whenever the two slider values add up to 100 the crossing is
+at 1 kHz, because 1 kHz is one octave above 500 Hz and one octave below 2 kHz.</p>
+<h3 id="assessment">Assessment</h3>
 <ol>
-<li>
-<p><strong>Extreme settings</strong>: Move both sliders to their minimum (0) and maximum (100) positions. Notice how the curve creates a "smile" or "frown" shape—terms actually used by audio engineers!</p>
-</li>
-<li>
-<p><strong>Scooped mids</strong>: Set bass high, treble high, and imagine the midrange frequencies around 1 kHz. This "scooped" sound is popular in heavy metal guitar tones.</p>
-</li>
-<li>
-<p><strong>The flat response</strong>: Return both sliders to 50 and observe the perfectly flat line. This is what "neutral" or "reference" sound looks like.</p>
-</li>
-<li>
-<p><strong>Asymmetric adjustments</strong>: Try boosting bass while cutting treble (or vice versa). This mimics what you might do to compensate for poor speakers or room acoustics.</p>
-</li>
-<li>
-<p><strong>Find the cutoff frequencies</strong>: Slowly adjust one slider while watching where the curve begins to deviate from flat. Can you identify the 500 Hz bass cutoff and 2 kHz treble cutoff?</p>
-</li>
+<li>With Bass = 50 and Treble = 50, what is the gain at 3 kHz?
+   <em>(Answer: 0 dB. The response is flat, so every frequency passes unchanged.)</em></li>
+<li>With Bass = 100 and Treble = 50, by what factor is the amplitude of a 100 Hz tone multiplied?
+   <em>(Answer: the gain at 100 Hz is about +12.0 dB, and <span class="arithmatex">\(10^{12/20} \approx 4\)</span>, so the amplitude is about four times larger.)</em></li>
+<li>With Bass = 100 and Treble = 50, why is the gain at 500 Hz about +6 dB and not +12 dB?
+   <em>(Answer: 500 Hz is the shelf corner, where the shelf factor is <span class="arithmatex">\(1/(1+1) = 1/2\)</span>, so the gain is half of 12 dB.)</em></li>
+<li>With Bass = 50 and Treble = 0, what is the gain at 10 kHz, and what amplitude factor is that?
+   <em>(Answer: about -12 dB, which is a factor of about 0.25, so the tone is a quarter of its original amplitude.)</em></li>
+<li>With Bass = 75 and Treble = 25, at what frequency does the curve cross 0 dB, and why?
+   <em>(Answer: 1 kHz. There the bass boost and the treble cut are both 1/17 of their full values, so they are equal and opposite.)</em></li>
 </ol>
+<h3 id="common-misconceptions">Common Misconceptions</h3>
+<p><strong>"+6 dB makes the sound twice as loud."</strong> A change of 6 dB doubles the <em>amplitude</em> (a factor of 2.00), and it
+quadruples the power. Sound seems twice as loud after about +10 dB. Compare Bass = 75 (+6 dB, amplitude times 2)
+with Bass = 100 (+12 dB, amplitude times 4): each additional 6 dB doubles the amplitude again.</p>
+<p><strong>"The bass control only changes the bass."</strong> The shelves are smooth, so they overlap. Set Bass = 100 and Treble = 100
+and probe 1 kHz: the gain is +1.4 dB even though 1 kHz is far from both corners. Real tone controls interact in the
+same way, which is why equalizer settings are judged by the whole curve.</p>
 <h3 id="real-world-applications">Real-World Applications</h3>
-<p>Understanding frequency response is essential for:</p>
 <ul>
-<li><strong>Audio engineering</strong>: Mixing and mastering music requires precise EQ adjustments</li>
-<li><strong>Telecommunications</strong>: Phone systems intentionally limit frequency response to save bandwidth</li>
-<li><strong>Hearing aids</strong>: These devices boost specific frequencies to compensate for hearing loss</li>
-<li><strong>Room acoustics</strong>: Engineers use EQ to counteract resonances in concert halls and recording studios</li>
+<li><strong>Audio engineering:</strong> mixing and mastering use shelving equalization to shape the tonal balance of a recording.</li>
+<li><strong>Telecommunications:</strong> a telephone line passes roughly 300 Hz to 3.4 kHz and cuts the rest to save bandwidth.</li>
+<li><strong>Hearing aids:</strong> they boost the frequencies where the wearer's hearing is weakest.</li>
+<li><strong>Room acoustics:</strong> equalization compensates for room resonances and loudspeaker response.</li>
 </ul>
-<h3 id="connection-to-course-concepts">Connection to Course Concepts</h3>
-<p>This simulation demonstrates several key signal processing principles you'll encounter throughout this course:</p>
-<ul>
-<li><strong>Frequency domain analysis</strong>: Viewing signals by their frequency content rather than time</li>
-<li><strong>Transfer functions</strong>: The mathematical description of how a system modifies signals</li>
-<li><strong>Filter design</strong>: Creating systems that selectively modify frequency content</li>
-<li><strong>Logarithmic relationships</strong>: Why audio engineers think in octaves and decibels</li>
-</ul>
-<h2 id="sample-prompt">Sample Prompt</h2>
-<div class="admonition prompt">
-<p class="admonition-title">Prompt</p>
+<h2 id="references">References</h2>
+<ol>
+<li><a href="https://en.wikipedia.org/wiki/Equalization_%28audio%29">Equalization (audio)</a> - Wikipedia - shelving and peaking filters and how equalizers shape the spectrum</li>
+<li><a href="https://en.wikipedia.org/wiki/Tone_control_circuit">Tone control circuit</a> - Wikipedia - the bass and treble circuits that this curve approximates</li>
+<li><a href="https://en.wikipedia.org/wiki/Decibel">Decibel</a> - Wikipedia - definition of the dB for amplitude and power ratios</li>
+<li><a href="https://en.wikipedia.org/wiki/Frequency_response">Frequency response</a> - Wikipedia - gain versus frequency for a linear system</li>
+<li><a href="https://en.wikipedia.org/wiki/Octave_%28electronics%29">Octave (electronics)</a> - Wikipedia - frequency ratios and the logarithmic axis</li>
+<li><a href="https://www.dspguide.com/">The Scientist and Engineer's Guide to Digital Signal Processing</a> - Steven W. Smith - free online textbook with chapters on filters and frequency response</li>
+</ol>
+<h2 id="development-notes">Development Notes</h2>
+<p>The original sketch was generated from the prompt below. The directory name <code>base-and-treble</code> is a historical
+spelling and is kept so that existing links keep working.</p>
+<details>
+<summary>Prompt history</summary>
 <p>Use the microsim generator skill to create simulation of the frequency
 response of an old classic amplifier with base and treble knobs.</p>
 <ul>
 <li>The title is "Frequency Response"</li>
 <li>Instead of knobs, use two sliders at the bottom of the canvas,
-one for base and one for treble.</li>
+    one for base and one for treble.</li>
 <li>The sliders should start out in the middle (default).</li>
 <li>The vertical axis has a label of "Gain (dB)" (-15dB to +15dB).</li>
 <li>The horizontal axis has the label of "Frequency Hz - Logarithmic Scale" (20 to 20K)</li>
 </ul>
-</div>
-<p><strong>Explanation:</strong></p>
-<ul>
-<li>
-<p><strong>Sliders Creation:</strong> Two sliders, <code>bassSlider</code> and <code>trebleSlider</code>, are created in the <code>setup()</code> function. They are positioned one below the other in the control area at the bottom of the canvas.</p>
-</li>
-<li>
-<p><strong>Slider Values Normalization:</strong> The values from the sliders are normalized to a range of -1 to 1 to represent the adjustment from minimum to maximum gain.</p>
-</li>
-<li>
-<p><strong>Frequency Response Calculation:</strong> The frequency response is calculated using shelving filter approximations for bass and treble adjustments. The gains are computed based on the slider positions and applied to low and high-frequency ranges.</p>
-</li>
-<li>
-<p><strong>Plotting the Curve:</strong> The frequency response curve is plotted using <code>beginShape()</code> and <code>vertex()</code>. Frequencies are mapped logarithmically to the x-axis, and gains in decibels are mapped to the y-axis.</p>
-</li>
-<li>
-<p><strong>Axes and Labels:</strong> Axes are drawn to represent 0 dB gain, and labels are added for clarity. The labels for the sliders are positioned above them.</p>
-</li>
-</ul>
-<p><strong>Note:</strong> This code can be run in the p5.js editor environment with no changes. The canvas size and control regions are set according to the template provided. Adjustments can be made to the EQ parameters to simulate different amplifier characteristics.</p>
+</details>
 
 
 
@@ -2167,8 +3359,6 @@ one for base and one for treble.</li>
 
 
 
-
-  
 
 
 
@@ -2192,12 +3382,10 @@ one for base and one for treble.</li>
   
     
       
-        
-      
       <nav class="md-footer__inner md-grid" aria-label="Footer" >
         
           
-          <a href="../analog-mod/" class="md-footer__link md-footer__link--prev" aria-label="Previous: Analog Modulation">
+          <a href="../fft-basic/" class="md-footer__link md-footer__link--prev" aria-label="Previous: Basic FFT">
             <div class="md-footer__button md-icon">
               
               <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
@@ -2207,20 +3395,20 @@ one for base and one for treble.</li>
                 Previous
               </span>
               <div class="md-ellipsis">
-                Analog Modulation
+                Basic FFT
               </div>
             </div>
           </a>
         
         
           
-          <a href="../fft-basic/" class="md-footer__link md-footer__link--next" aria-label="Next: Basic FFT">
+          <a href="../bilinear-transform/" class="md-footer__link md-footer__link--next" aria-label="Next: Bilinear Transform and Frequency Warping">
             <div class="md-footer__title">
               <span class="md-footer__direction">
                 Next
               </span>
               <div class="md-ellipsis">
-                Basic FFT
+                Bilinear Transform and Frequency Warping
               </div>
             </div>
             <div class="md-footer__button md-icon">

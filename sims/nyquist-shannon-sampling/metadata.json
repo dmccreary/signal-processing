@@ -1,0 +1,129 @@
+{
+  "microsim": {
+    "dublinCore": {
+      "title": "Nyquist-Shannon Sampling",
+      "creator": ["Dan McCreary"],
+      "subject": ["Sampling", "Nyquist-Shannon sampling theorem", "Nyquist rate", "Aliasing", "Signal reconstruction"],
+      "description": "A 5 Hz sine wave is sampled at a rate set by one slider (1 to 50 Hz). The upper plot shows the original wave and its samples; the lower plot rebuilds the signal from the samples by ideal sinc interpolation and by straight lines, and a status line reports whether the rate is above the 10 Hz Nyquist rate and gives the alias frequency when it is not.",
+      "publisher": "Dan McCreary",
+      "contributor": ["Claude (Anthropic)"],
+      "date": "2024-10-19",
+      "type": "Interactive Simulation",
+      "format": "text/html",
+      "identifier": "https://dmccreary.github.io/signal-processing/sims/nyquist-shannon-sampling/",
+      "language": "en",
+      "relation": ["Chapter 5: Sampling and Quantization", "Sampling Theorem Explorer"],
+      "rights": "CC BY-NC-SA 4.0"
+    },
+    "search": {
+      "tags": ["sampling", "nyquist", "shannon", "sampling theorem", "aliasing", "nyquist rate", "nyquist frequency", "sinc interpolation", "reconstruction"],
+      "searchKeywords": ["nyquist-shannon sampling theorem", "sampling rate and aliasing", "alias frequency", "sinc reconstruction", "samples per period", "undersampling a sine wave"],
+      "visualizationType": ["graph", "interactive-demo"],
+      "interactionLevel": "low",
+      "complexity": 3,
+      "relatedConcepts": ["Sampling", "Sampling Rate", "Sampling Theorem", "Nyquist Rate", "Nyquist Frequency", "Aliasing", "Undersampling", "Signal Reconstruction"],
+      "applicationDomains": ["education", "demonstration", "exploration"],
+      "showcase": false
+    },
+    "educational": {
+      "gradeLevel": ["Undergraduate"],
+      "subjectArea": ["Engineering", "Mathematics"],
+      "topic": ["Sampling theorem", "Nyquist rate and Nyquist frequency", "Aliasing", "Signal reconstruction"],
+      "learningObjectives": [
+        "State the Nyquist criterion fs > 2f and calculate the Nyquist rate of a sinusoid of known frequency",
+        "Calculate the samples per period fs/f and the Nyquist frequency fs/2 for a given sampling rate",
+        "Predict the alias frequency fa = |f - k fs| when fs < 2f and verify it by counting the cycles of the reconstruction",
+        "Distinguish ideal (sinc) reconstruction from straight-line interpolation and explain why a jagged straight-line plot does not mean that information was lost",
+        "Explain why sampling at exactly fs = 2f can fail to capture a sine wave"
+      ],
+      "bloomsTaxonomy": ["Remember", "Understand", "Apply", "Analyze"],
+      "prerequisites": ["Frequency and period of a sine wave", "Sampling as x[n] = x(n Ts) with Ts = 1/fs", "Reading amplitude-versus-time plots"],
+      "duration": {"typical": 20, "range": {"min": 10, "max": 30}},
+      "difficulty": "Beginner",
+      "scaffolding": {
+        "type": ["guided-discovery", "feedback"],
+        "adaptability": "fixed",
+        "removal": "user-controlled"
+      },
+      "misconceptions": [
+        {
+          "misconception": "A sine wave needs many samples per period, such as ten, to be captured",
+          "correction": "Any rate above 2f determines the sine wave; ideal sinc reconstruction recovers it even when straight lines between the samples look badly distorted",
+          "evidence": "At fs = 12 Hz (2.4 samples per period) the gray straight-line curve zigzags while the blue sinc curve matches the 5 Hz original"
+        },
+        {
+          "misconception": "Sampling at exactly twice the signal frequency is enough",
+          "correction": "The criterion is the strict inequality fs > 2f; at exactly 2f the samples can all land on zero crossings",
+          "evidence": "At fs = 10.0 Hz every sample is zero and both reconstructions are flat lines"
+        },
+        {
+          "misconception": "Aliasing makes a signal look noisy or distorted",
+          "correction": "An aliased sinusoid reconstructs as a clean sinusoid at the wrong, lower frequency",
+          "evidence": "At fs = 8.0 Hz the blue curve is a smooth 3 Hz sine wave instead of the 5 Hz original"
+        }
+      ]
+    },
+    "technical": {
+      "framework": "p5.js",
+      "version": "2.0.0",
+      "canvasDimensions": {"width": 450, "height": 500, "responsive": true},
+      "regions": {"drawHeight": 450, "controlHeight": 50},
+      "dependencies": ["p5.js 2.3.2"],
+      "browserCompatibility": ["Chrome 90+", "Firefox 88+", "Safari 14+", "Edge 90+"],
+      "performance": {"memoryUsage": "low", "loadTime": 500},
+      "deviceRequirements": {
+        "minScreenWidth": 320,
+        "touchSupport": true,
+        "keyboardRequired": false,
+        "mouseRequired": false,
+        "networkRequired": false
+      },
+      "accessibility": {
+        "screenReader": true,
+        "keyboardNavigation": true,
+        "colorContrast": true,
+        "altText": true,
+        "screenReaderScript": "A 5 hertz sine wave is sampled at the rate set by one slider, from 1 to 50 samples per second. The upper plot shows the original wave with its samples. The lower plot shows the ideal sinc reconstruction and a straight-line reconstruction. A status line says whether the rate is above the 10 hertz Nyquist rate and gives the alias frequency when it is not."
+      }
+    },
+    "userInterface": {
+      "layoutType": "responsive-width",
+      "layoutPattern": "drawing-region-above-controls",
+      "colorScheme": {
+        "drawingArea": "aliceblue",
+        "controlArea": "white",
+        "accent": "blue",
+        "text": "black"
+      },
+      "controls": [
+        {
+          "id": "samplingRateSlider",
+          "type": "slider",
+          "label": "Sampling rate fs (Hz)",
+          "description": "Sets the sampling rate in samples per second; the read-out also gives fs/5, the number of samples per period of the 5 Hz signal",
+          "group": "sampling",
+          "properties": {"min": 1, "max": 50, "default": 22, "step": 0.1, "unit": "Hz", "showValue": true}
+        }
+      ],
+      "visualElements": [
+        {"type": "graph", "description": "Upper plot: the original 5 Hz sine wave in black with its samples as red dots over a one-second window", "interactive": true, "updateTriggers": ["samplingRateSlider"]},
+        {"type": "graph", "description": "Lower plot: the ideal sinc reconstruction in blue and the straight-line reconstruction in gray, both drawn through the red samples, with a legend and a time axis in seconds", "interactive": true, "updateTriggers": ["samplingRateSlider"]},
+        {"type": "text-display", "description": "Read-out of f, the Nyquist rate 2f, the Nyquist frequency fs/2 and samples per period, plus a colored Nyquist status line that gives the alias frequency when fs < 2f", "interactive": false, "updateTriggers": ["samplingRateSlider"]}
+      ]
+    },
+    "simulation": {
+      "model": {
+        "type": "mathematical",
+        "description": "Samples x(t) = sin(2 pi 5 t) at t = n / fs and rebuilds a continuous signal by Whittaker-Shannon (sinc) interpolation and by linear interpolation; the alias frequency is found by folding f into [0, fs/2]",
+        "equations": ["x[n] = sin(2 pi f n / fs)", "x_r(t) = sum_n x[n] sinc(fs t - n)", "sinc(u) = sin(pi u) / (pi u)", "fa = |f - k fs|, with integer k chosen so that fa <= fs / 2"],
+        "algorithms": ["Truncated sinc sum over the samples in the window plus 2000 samples beyond each edge, recomputed only when fs or the canvas width changes", "Linear interpolation between neighboring samples"]
+      }
+    },
+    "usage": {
+      "recommendedUsage": ["demonstration", "exploration", "guided-practice"],
+      "instructionalStrategies": ["Predict the alias frequency, then verify with the slider", "Locate the Nyquist rate by approaching 10 Hz from above and below"],
+      "extensions": ["Explore spectral replication and reconstruction filters in the Sampling Theorem Explorer", "Add a phase slider to show that sampling at exactly 2f gives samples whose size depends on the phase"]
+    }
+  },
+  "canvasHeight": 500
+}

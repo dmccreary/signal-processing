@@ -6,7 +6,7 @@
       <meta charset="utf-8">
       <meta name="viewport" content="width=device-width,initial-scale=1">
       
-        <meta name="description" content="A MicroSim that shows the frequency spectrum of sound coming in from a microphone using the p5.js fft library.">
+        <meta name="description" content="A real-time spectrum analyzer for your microphone. An FFT turns live sound into colored frequency bars with a decibel scale and a peak-frequency read-out.">
       
       
         <meta name="author" content="Dan McCreary">
@@ -54,6 +54,8 @@
     
       <link rel="stylesheet" href="../../css/extra.css">
     
+      <link rel="stylesheet" href="../../css/mascot.css">
+    
     <script>__md_scope=new URL("../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
     
       
@@ -65,7 +67,7 @@
       
         <meta  property="og:title"  content="Microphone Frequency Visualization with FFT - Signal Processing with AI" >
       
-        <meta  property="og:description"  content="A MicroSim that shows the frequency spectrum of sound coming in from a microphone using the p5.js fft library." >
+        <meta  property="og:description"  content="A real-time spectrum analyzer for your microphone. An FFT turns live sound into colored frequency bars with a decibel scale and a peak-frequency read-out." >
       
         <meta property="og:image" content="https://dmccreary.github.io/signal-processing/sims/fft-mic/fft-mic.png">
       
@@ -81,7 +83,7 @@
       
         <meta  name="twitter:title"  content="Microphone Frequency Visualization with FFT - Signal Processing with AI" >
       
-        <meta  name="twitter:description"  content="A MicroSim that shows the frequency spectrum of sound coming in from a microphone using the p5.js fft library." >
+        <meta  name="twitter:description"  content="A real-time spectrum analyzer for your microphone. An FFT turns live sound into colored frequency bars with a decibel scale and a peak-frequency read-out." >
       
         <meta name="twitter:image" content="https://dmccreary.github.io/signal-processing/sims/fft-mic/fft-mic.png">
       
@@ -122,7 +124,7 @@
   <nav class="md-header__inner md-grid" aria-label="Header">
     <a href="../.." title="Signal Processing with AI" class="md-header__button md-logo" aria-label="Signal Processing with AI" data-md-component="logo">
       
-  <img src="../../img/logo-192.png" alt="logo">
+  <img src="../../img/mascot/neutral.png" alt="logo">
 
     </a>
     <label class="md-header__button md-icon" for="__drawer">
@@ -217,8 +219,6 @@
           
             
               
-                
-              
               <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
                 <div class="md-sidebar__scrollwrap">
                   <div class="md-sidebar__inner">
@@ -230,7 +230,7 @@
   <label class="md-nav__title" for="__drawer">
     <a href="../.." title="Signal Processing with AI" class="md-nav__button md-logo" aria-label="Signal Processing with AI" data-md-component="logo">
       
-  <img src="../../img/logo-192.png" alt="logo">
+  <img src="../../img/mascot/neutral.png" alt="logo">
 
     </a>
     Signal Processing with AI
@@ -277,31 +277,11 @@
   
   
     <li class="md-nav__item">
-      <a href="../../chapters/" class="md-nav__link">
-        
-  
-  <span class="md-ellipsis">
-    Table of Contents
-  </span>
-  
-
-      </a>
-    </li>
-  
-
-    
-      
-      
-  
-  
-  
-  
-    <li class="md-nav__item">
       <a href="../../about/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
-    About This Website
+    About
   </span>
   
 
@@ -544,6 +524,174 @@
           
         
       
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
     
     
     
@@ -553,7 +701,7 @@
       
         
         
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_6" checked>
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_5" checked>
         
           
           
@@ -569,19 +717,103 @@
             </a>
             
               
-              <label class="md-nav__link " for="__nav_6" id="__nav_6_label" tabindex="0">
+              <label class="md-nav__link " for="__nav_5" id="__nav_5_label" tabindex="0">
                 <span class="md-nav__icon md-icon"></span>
               </label>
             
           </div>
         
-        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_6_label" aria-expanded="true">
-          <label class="md-nav__title" for="__nav_6">
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_5_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_5">
             <span class="md-nav__icon md-icon"></span>
             MicroSims
           </label>
           <ul class="md-nav__list" data-md-scrollfix>
             
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../image-convolution/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    2-D Convolution and Image Filtering
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../conv-layer-as-filter/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    A Convolutional Layer Is a Learned FIR Filter
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../adaptive-algorithm-comparison-tool/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Adaptive Algorithm Comparison Tool
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../adaptive-noise-cancellation/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Adaptive Noise and Echo Cancellation
+  </span>
+  
+
+      </a>
+    </li>
+  
+
               
             
               
@@ -633,11 +865,11 @@
   
   
     <li class="md-nav__item">
-      <a href="../base-and-treble/" class="md-nav__link">
+      <a href="../fft-basic/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
-    Base and Treble
+    Basic FFT
   </span>
   
 
@@ -654,11 +886,32 @@
   
   
     <li class="md-nav__item">
-      <a href="../fft-basic/" class="md-nav__link">
+      <a href="../base-and-treble/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
-    Basic FFT
+    Bass and Treble
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../bilinear-transform/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Bilinear Transform and Frequency Warping
   </span>
   
 
@@ -780,6 +1033,27 @@
   
   
     <li class="md-nav__item">
+      <a href="../compressed-sensing/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Compressed Sensing
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
       <a href="../convolution/" class="md-nav__link">
         
   
@@ -801,11 +1075,137 @@
   
   
     <li class="md-nav__item">
+      <a href="../convolution-theorem/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Convolution Theorem and Circular Convolution
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../convolution-visualizer/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Convolution Visualizer
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../correlation-and-matched-filtering/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Correlation and Matched Filtering
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../dct-basis-explorer/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    DCT Basis Explorer
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../dft-explorer/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    DFT Explorer
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
       <a href="../euler-formula-explorer/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
     Euler's Formula Explorer
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../even-and-odd-signal-decomposition/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Even and Odd Signal Decomposition
   </span>
   
 
@@ -931,27 +1331,87 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#sample-iframe" class="md-nav__link">
+  <a href="#description" class="md-nav__link">
     <span class="md-ellipsis">
-      Sample iframe
+      Description
     </span>
   </a>
   
 </li>
       
         <li class="md-nav__item">
-  <a href="#key-features" class="md-nav__link">
+  <a href="#lesson-plan" class="md-nav__link">
     <span class="md-ellipsis">
-      Key Features
+      Lesson Plan
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Lesson Plan">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#learning-objectives" class="md-nav__link">
+    <span class="md-ellipsis">
+      Learning Objectives
     </span>
   </a>
   
 </li>
+        
+          <li class="md-nav__item">
+  <a href="#target-audience" class="md-nav__link">
+    <span class="md-ellipsis">
+      Target Audience
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#prerequisites" class="md-nav__link">
+    <span class="md-ellipsis">
+      Prerequisites
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#activities" class="md-nav__link">
+    <span class="md-ellipsis">
+      Activities
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#assessment" class="md-nav__link">
+    <span class="md-ellipsis">
+      Assessment
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#common-misconceptions" class="md-nav__link">
+    <span class="md-ellipsis">
+      Common Misconceptions
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
       
         <li class="md-nav__item">
-  <a href="#usage-instructions" class="md-nav__link">
+  <a href="#references" class="md-nav__link">
     <span class="md-ellipsis">
-      Usage Instructions
+      References
     </span>
   </a>
   
@@ -1036,6 +1496,27 @@
   
   
     <li class="md-nav__item">
+      <a href="../fft-spectrum-analyzer/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    FFT Spectrum Analyzer
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
       <a href="../fft-waveform-types/" class="md-nav__link">
         
   
@@ -1057,11 +1538,263 @@
   
   
     <li class="md-nav__item">
+      <a href="../filter-bank-explorer/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Filter Bank and Polyphase Explorer
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../fir-filter-design-comparison-tool/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    FIR Filter Design Comparison Tool
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../fir-vs-iir/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    FIR vs IIR Filters
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../fourier-series-explorer/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Fourier Series Explorer
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../fourier-transform-pairs/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Fourier Transform Pairs
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
       <a href="../frequency-detection/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
     Frequency Detection
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../huffman-coding/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Huffman Coding
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../iir-prototype-comparison/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    IIR Prototype Comparison
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../impulse-and-frequency-response-analyzer/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Impulse and Frequency Response Analyzer
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../interactive-filter-design-and-analysis-tool/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Interactive Filter Design and Analysis Tool
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../interactive-pole-zero-analysis-tool/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Interactive Pole-Zero Analysis Tool
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../interactive-spectrogram-parameter-explorer/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Interactive Spectrogram Parameter Explorer
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../interactive-stft-spectrogram-analyzer/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Interactive STFT Spectrogram Analyzer
   </span>
   
 
@@ -1141,11 +1874,158 @@
   
   
     <li class="md-nav__item">
+      <a href="../multirate-sample-rate-converter/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Multirate Sample Rate Converter
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../noise-analysis-and-reduction-tool/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Noise Analysis and Reduction Tool
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
       <a href="../nyquist-shannon-sampling/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
     Nyquist-Shannon Sampling
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../phase-spectrum/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Phase Spectrum - What the Magnitude Hides
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../phasor-addition/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Phasor Addition
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../psd-wiener-khinchin/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Power Spectral Density and the Wiener-Khinchin Theorem
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../distribution-explorer/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Probability Distribution Explorer
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../quantization-and-noise-shaping/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Quantization and Noise Shaping
   </span>
   
 
@@ -1183,11 +2063,116 @@
   
   
     <li class="md-nav__item">
+      <a href="../real-time-processing-simulator/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Real-Time Processing Simulator
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
       <a href="../reverb/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
     Reverb Effect
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../s-plane-explorer/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    s-Plane Explorer
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../sampling-theorem-explorer/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Sampling Theorem Explorer
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../signal-operations/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Signal Operations - Shift, Scale and Reverse
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../signal-type-explorer/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Signal Type Explorer
   </span>
   
 
@@ -1225,11 +2210,95 @@
   
   
     <li class="md-nav__item">
+      <a href="../spectral-leakage-and-windowing/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Spectral Leakage and Windowing
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
       <a href="../synth-timeline/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
     Synth Timeline
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../system-interconnections/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    System Interconnections - Series, Parallel, Feedback
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../system-property-explorer/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    System Property Explorer
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../time-frequency-analysis-explorer/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Time-Frequency Analysis Explorer
   </span>
   
 
@@ -1272,6 +2341,27 @@
   
   <span class="md-ellipsis">
     Tone Generator
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../wavelet-explorer/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Wavelet Explorer - CWT Scalogram and Haar DWT
   </span>
   
 
@@ -1448,6 +2538,12 @@
       
         
           
+        
+      
+        
+      
+        
+      
         
       
         
@@ -1662,6 +2758,26 @@
   
   
     <li class="md-nav__item">
+      <a href="../../instructors-guide/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Instructor's Guide
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
       <a href="../../license/" class="md-nav__link">
         
   
@@ -1707,26 +2823,6 @@
   
   <span class="md-ellipsis">
     Contact
-  </span>
-  
-
-      </a>
-    </li>
-  
-
-    
-      
-      
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../../ieee-paper-changes/" class="md-nav__link">
-        
-  
-  <span class="md-ellipsis">
-    Paper Changes
   </span>
   
 
@@ -1838,9 +2934,7 @@
             
             
               
-                
-              
-              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" hidden>
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
                 <div class="md-sidebar__scrollwrap">
                   <div class="md-sidebar__inner">
                     
@@ -1859,27 +2953,87 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#sample-iframe" class="md-nav__link">
+  <a href="#description" class="md-nav__link">
     <span class="md-ellipsis">
-      Sample iframe
+      Description
     </span>
   </a>
   
 </li>
       
         <li class="md-nav__item">
-  <a href="#key-features" class="md-nav__link">
+  <a href="#lesson-plan" class="md-nav__link">
     <span class="md-ellipsis">
-      Key Features
+      Lesson Plan
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Lesson Plan">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#learning-objectives" class="md-nav__link">
+    <span class="md-ellipsis">
+      Learning Objectives
     </span>
   </a>
   
 </li>
+        
+          <li class="md-nav__item">
+  <a href="#target-audience" class="md-nav__link">
+    <span class="md-ellipsis">
+      Target Audience
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#prerequisites" class="md-nav__link">
+    <span class="md-ellipsis">
+      Prerequisites
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#activities" class="md-nav__link">
+    <span class="md-ellipsis">
+      Activities
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#assessment" class="md-nav__link">
+    <span class="md-ellipsis">
+      Assessment
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#common-misconceptions" class="md-nav__link">
+    <span class="md-ellipsis">
+      Common Misconceptions
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
       
         <li class="md-nav__item">
-  <a href="#usage-instructions" class="md-nav__link">
+  <a href="#references" class="md-nav__link">
     <span class="md-ellipsis">
-      Usage Instructions
+      References
     </span>
   </a>
   
@@ -1900,7 +3054,7 @@
                   
 
   
-    <a href="https://github.com/dmccreary/signal-processing/blob/master/docs/sims/fft-mic/index.md" title="Edit this page" class="md-content__button md-icon">
+    <a href="https://github.com/dmccreary/signal-processing/blob/main/docs/sims/fft-mic/index.md" title="Edit this page" class="md-content__button md-icon">
       
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M10 20H6V4h7v5h5v3.1l2-2V8l-6-6H6c-1.1 0-2 .9-2 2v16c0 1.1.9 2 2 2h4zm10.2-7c.1 0 .3.1.4.2l1.3 1.3c.2.2.2.6 0 .8l-1 1-2.1-2.1 1-1c.1-.1.2-.2.4-.2m0 3.9L14.1 23H12v-2.1l6.1-6.1z"/></svg>
     </a>
@@ -1909,45 +3063,116 @@
 
 
 <h1 id="microphone-frequency-visualization-with-fft">Microphone Frequency Visualization with FFT</h1>
-<iframe src="main.html" height="450px" scrolling="no"></iframe>
+<iframe src="main.html" width="100%" height="452px" scrolling="no"></iframe>
 
-<p><a class="md-button md-button--primary" href="main.html">Run the Microphone Frequency Visualization with FFT MicroSim Fullscreen</a>
-<a href="https://editor.p5js.org/dmccreary/sketches/89df6y1OK">Edit Microphone Frequency Visualization with FFT MicroSim with the p5.js Editor</a></p>
-<h2 id="sample-iframe">Sample iframe</h2>
-<p>You can add this MicroSim to your course website by adding the following HTML element:</p>
-<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="p">&lt;</span><span class="nt">iframe</span> <span class="na">src</span><span class="o">=</span><span class="s">&quot;https://dmccreary.github.io/microsims/sims/fft-mic/main.html&quot;</span> <span class="na">height</span><span class="o">=</span><span class="s">&quot;450px&quot;</span>  <span class="na">scrolling</span><span class="o">=</span><span class="s">&quot;no&quot;</span><span class="p">&gt;&lt;/</span><span class="nt">iframe</span><span class="p">&gt;</span>
+<p>Copy this iframe to your website:</p>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="p">&lt;</span><span class="nt">iframe</span> <span class="na">src</span><span class="o">=</span><span class="s">"https://dmccreary.github.io/signal-processing/sims/fft-mic/main.html"</span> <span class="na">allow</span><span class="o">=</span><span class="s">"microphone"</span> <span class="na">width</span><span class="o">=</span><span class="s">"100%"</span> <span class="na">height</span><span class="o">=</span><span class="s">"452px"</span> <span class="na">scrolling</span><span class="o">=</span><span class="s">"no"</span><span class="p">&gt;&lt;/</span><span class="nt">iframe</span><span class="p">&gt;</span>
 </code></pre></div></td></tr></table></div>
-<p>Here is a FFT Microphone Visualizer MicroSim that follows the standard responsive design template. Here are the key features:</p>
-<h2 id="key-features">Key Features</h2>
-<p><strong>Audio Analysis</strong>: Uses p5.js AudioIn and FFT objects to capture and analyze microphone input in real-time, displaying frequency spectrum data as colorful bars.</p>
-<p><strong>Start/Stop Control</strong>: </p>
+<p><a class="md-button md-button--primary" href="main.html">Run MicroSim in Fullscreen</a></p>
+<p><a href="https://editor.p5js.org/dmccreary/sketches/89df6y1OK">Edit in the p5.js Editor</a></p>
+<h2 id="description">Description</h2>
+<p>This MicroSim turns your computer's microphone into a real-time spectrum analyzer. Press <strong>Start</strong> and allow
+microphone access when the browser asks. Every frame the sketch computes a fast Fourier transform (FFT) of the
+most recent microphone samples and draws one bar per frequency bin. Bar height is the bin's level in decibels,
+from −100 dB (empty) to −30 dB (full height). Bar color runs from blue at the low end of the displayed range to
+red at the high end. A gold triangle marks the strongest bin, and the <strong>Peak</strong> read-out gives its frequency.</p>
+<table>
+<thead>
+<tr>
+<th>Control</th>
+<th>What it does</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Start / Stop</strong></td>
+<td>Opens the microphone and starts the analysis. Stop releases the microphone and freezes the last spectrum so you can study it.</td>
+</tr>
+<tr>
+<td><strong>Max Freq</strong> slider</td>
+<td>Sets the highest frequency on the horizontal axis, from 2 kHz to 24 kHz in 0.5 kHz steps (default 8 kHz). The axis never extends past the Nyquist frequency <span class="arithmatex">\(f_s/2\)</span>.</td>
+</tr>
+</tbody>
+</table>
+<p>The analyzer returns 512 bins evenly spaced from 0 Hz to the Nyquist frequency, so bin <span class="arithmatex">\(k\)</span> is centered on</p>
+<div class="arithmatex">\[f_k = k \cdot \frac{f_s}{2 \cdot 512}\]</div>
+<p>At the common sample rate <span class="arithmatex">\(f_s = 48\)</span> kHz the bin width is 46.875 Hz; at 44.1 kHz it is 43.07 Hz. The level is
+<span class="arithmatex">\(20\log_{10}|X_k|\)</span>. A full-scale sine wave reads about −14 dB, because half of its energy belongs to the
+negative frequency and the analyzer's Blackman window has a coherent gain of 0.42. Successive spectra are
+averaged with a smoothing constant of 0.8. The peak search skips the 0 Hz (DC) bin and the leakage around it.</p>
+<p>Sound is analyzed only inside your browser; nothing is recorded or uploaded. Browsers allow microphone access
+only on pages served over https or from localhost.</p>
+<p>This simulation is used in <a href="../../chapters/07-dft-fft-and-frequency-domain-analysis/">Chapter 7: DFT, FFT and Frequency Domain Analysis</a>.</p>
+<h2 id="lesson-plan">Lesson Plan</h2>
+<h3 id="learning-objectives">Learning Objectives</h3>
+<p>After using this MicroSim, students will be able to:</p>
 <ol>
-<li>A "Start" button in the control region that allows users to start/stop audio recording without clearing the display - when stopped, the last spectrum remains visible.</li>
-<li>Max Frequency Slider - allows you to set the highest frequency displayed</li>
+<li><strong>Identify</strong> the dominant frequency of a whistled or hummed sound using the Peak read-out and the gold marker.</li>
+<li><strong>Calculate</strong> the center frequency of an FFT bin from its index, the sample rate and the number of bins, and use it to explain why the read-out differs from the true frequency of a tone.</li>
+<li><strong>Compare</strong> the spectra of a hummed note, a whistle and a hissed "sss" by the number, spacing and spread of their peaks.</li>
+<li><strong>Predict</strong> how the Max Freq slider rescales the frequency axis, and explain why the axis cannot extend past the Nyquist frequency.</li>
+<li><strong>Interpret</strong> the decibel scale of the vertical axis, including the 6 dB rise that comes from doubling a tone's amplitude.</li>
 </ol>
-<p><strong>Responsive Design</strong>: Follows the standard MicroSim layout with separate drawing and control regions that adapt to different screen sizes.</p>
-<p><strong>Visual Feedback</strong>:</p>
+<h3 id="target-audience">Target Audience</h3>
+<p>College undergraduates in an introductory signal processing, audio engineering or music technology course.
+Plan 15-20 minutes. Each student (or pair) needs a computer or phone with a microphone.</p>
+<h3 id="prerequisites">Prerequisites</h3>
 <ul>
-<li>Color-coded frequency bars (blue for low frequencies, red for high frequencies)</li>
-<li>Real-time frequency and amplitude scaling</li>
-<li>Peak frequency detection and display</li>
-<li>Status indicators showing recording state</li>
+<li>Frequency, amplitude and the idea of a sinusoid</li>
+<li>Sampling and the Nyquist frequency (<a href="../../chapters/05-sampling-and-quantization/">Chapter 5</a>)</li>
+<li>What a spectrum is and what the DFT computes (<a href="../../chapters/06-fourier-analysis-fundamentals/">Chapter 6</a>)</li>
+<li>Decibels as a logarithmic measure of amplitude</li>
 </ul>
-<p><strong>Educational Value</strong>: Students can observe how different sounds (voice, music, noise) create different frequency patterns, helping them understand concepts like:</p>
-<ul>
-<li>Frequency analysis and Fourier transforms</li>
-<li>Audio signal processing</li>
-<li>Harmonic content in different sounds</li>
-<li>Real-time data visualization</li>
-</ul>
-<h2 id="usage-instructions">Usage Instructions</h2>
+<h3 id="activities">Activities</h3>
+<p><strong>Activity 1: Hiss versus hum (5 min).</strong> Leave Max Freq at 8 kHz and press Start. Stay quiet for a few seconds
+and note the background level. Then say a long "sss", and afterwards sing a steady "ooo". The "sss" raises a
+broad band of bars with no distinct peaks, typically strongest in the right half of the plot (above about
+4 kHz). The "ooo" produces a row of narrow, evenly spaced peaks, typically with most of the energy below 1 kHz.</p>
+<p><strong>Activity 2: Harmonics of a hummed note (5 min).</strong> Set Max Freq to 2 kHz. Hum a steady low note and press
+Stop while humming to freeze the spectrum. Read the positions of the first four peaks on the axis. The peaks
+are evenly spaced, and the spacing equals the frequency of the first peak (the fundamental). For example, a
+fundamental near 200 Hz gives further peaks near 400, 600 and 800 Hz.</p>
+<p><strong>Activity 3: Frequency resolution (5 min).</strong> Use a tone-generator app on a phone to play a steady 440 Hz sine
+wave near the microphone. At <span class="arithmatex">\(f_s = 48\)</span> kHz the Peak read-out shows 422 Hz, not 440 Hz: <span class="arithmatex">\(440 / 46.875 = 9.39\)</span>,
+so the strongest bin is bin 9, centered on <span class="arithmatex">\(9 \times 46.875 = 421.9\)</span> Hz. Change the tone to 1000 Hz and the
+read-out shows 984 Hz (bin 21). On a computer that runs audio at 44.1 kHz the same tones read 431 Hz and 991 Hz.
+On wide screens the note below the plot ("fs = ..., bin width ...") tells you which case applies.</p>
+<p><strong>Activity 4: The Nyquist limit (5 min).</strong> Drag Max Freq all the way to 24 kHz. At <span class="arithmatex">\(f_s = 48\)</span> kHz the right edge
+of the plot is exactly the Nyquist frequency, and on wide screens the plot is labeled "right edge = Nyquist (fs/2)".
+At <span class="arithmatex">\(f_s = 44.1\)</span> kHz the label stops at 22.05 kHz however far you drag the slider. Notice how little energy
+everyday sounds have in the upper half of this range.</p>
+<h3 id="assessment">Assessment</h3>
 <ol>
-<li>Click "Start" to begin microphone input (browser will request permission)</li>
-<li>Make sounds near the microphone to see the frequency spectrum</li>
-<li>Click "Stop" to pause recording (spectrum remains visible)</li>
-<li>Click "Start" again to resume recording</li>
+<li>With <span class="arithmatex">\(f_s = 48\)</span> kHz and 512 bins spanning 0 Hz to the Nyquist frequency, what is the bin width, and what
+   frequency is bin 100 centered on? <em>(Answer: <span class="arithmatex">\(48000 / 1024 = 46.875\)</span> Hz; <span class="arithmatex">\(100 \times 46.875 = 4687.5\)</span> Hz.)</em></li>
+<li>You whistle a steady 1000 Hz tone and the sample rate is 48 kHz. What does the Peak read-out show, and why?
+   <em>(Answer: 984 Hz. <span class="arithmatex">\(1000 / 46.875 = 21.3\)</span>, so the strongest bin is bin 21, centered on 984.4 Hz; the read-out
+   can only report bin center frequencies.)</em></li>
+<li>A hummed note shows peaks near 150, 300, 450 and 600 Hz. What is its fundamental frequency, and what are the
+   other peaks? <em>(Answer: 150 Hz; the other peaks are its 2nd, 3rd and 4th harmonics.)</em></li>
+<li>A tone's amplitude doubles. How far does its bar rise on the decibel axis? <em>(Answer: <span class="arithmatex">\(20\log_{10} 2 \approx 6\)</span> dB,
+   which is 6/70 of the plot height on this −100 to −30 dB scale.)</em></li>
+<li>Why can this display never show frequencies above 24 kHz when the sample rate is 48 kHz? <em>(Answer: the
+   Nyquist frequency <span class="arithmatex">\(f_s/2 = 24\)</span> kHz is the highest frequency a signal sampled at 48 kHz can represent.)</em></li>
 </ol>
-<p>The visualization shows frequency on the x-axis (0 to ~22kHz) and amplitude on the y-axis, with the peak frequency displayed in the control area. This provides an excellent hands-on way to explore audio signal processing concepts.</p>
+<h3 id="common-misconceptions">Common Misconceptions</h3>
+<p><strong>"The Peak read-out is the exact pitch."</strong> The FFT measures energy in bins 46.9 Hz wide (at 48 kHz), and the
+read-out reports the center of the strongest bin. Activity 3 exposes this: a 440 Hz tone reads 422 Hz.</p>
+<p><strong>"A voice is a single frequency."</strong> A hummed or sung note is a fundamental plus a family of harmonics at
+whole-number multiples of it. Activity 2 freezes the spectrum so students can see and measure the evenly spaced
+peaks.</p>
+<h2 id="references">References</h2>
+<ol>
+<li><a href="https://en.wikipedia.org/wiki/Fast_Fourier_transform">Fast Fourier transform</a> - Wikipedia - the algorithm that computes the spectrum shown here</li>
+<li><a href="https://en.wikipedia.org/wiki/Spectrum_analyzer">Spectrum analyzer</a> - Wikipedia - instruments and software that display a live spectrum like this one</li>
+<li><a href="https://en.wikipedia.org/wiki/Nyquist_frequency">Nyquist frequency</a> - Wikipedia - why the frequency axis stops at half the sample rate</li>
+<li><a href="https://en.wikipedia.org/wiki/Harmonic_series_%28music%29">Harmonic series (music)</a> - Wikipedia - why one sung note produces several evenly spaced peaks</li>
+<li><a href="https://en.wikipedia.org/wiki/Window_function">Window function</a> - Wikipedia - the Blackman window, its coherent gain and spectral leakage</li>
+<li><a href="https://en.wikipedia.org/wiki/Decibel">Decibel</a> - Wikipedia - the logarithmic scale used on the vertical axis</li>
+<li><a href="https://developer.mozilla.org/en-US/docs/Web/API/AnalyserNode">AnalyserNode</a> - MDN - the browser FFT analyzer (window, smoothing, decibel conversion) underneath p5.sound</li>
+<li><a href="https://developer.mozilla.org/en-US/docs/Web/API/MediaDevices/getUserMedia">MediaDevices: getUserMedia() method</a> - MDN - how a page asks for microphone access and why it needs a secure context</li>
+<li><a href="https://www.dspguide.com/">The Scientist and Engineer's Guide to Digital Signal Processing</a> - Steven W. Smith - free online textbook with chapters on the DFT and FFT</li>
+</ol>
 
 
 
@@ -1960,8 +3185,6 @@
 
 
 
-
-  
 
 
 
@@ -1984,8 +3207,6 @@
         <footer class="md-footer">
   
     
-      
-        
       
       <nav class="md-footer__inner md-grid" aria-label="Footer" >
         

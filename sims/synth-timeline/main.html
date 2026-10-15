@@ -1,13 +1,19 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-    <title>Synthesizer Timeline</title>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/react/18.2.0/umd/react.development.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/react-dom/18.2.0/umd/react-dom.development.js"></script>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Synth Timeline MicroSim using React 18.2.0</title>
+    <!-- React 18.2.0 production builds: about 143 KB uncompressed instead of 1.19 MB for the development builds -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/react/18.2.0/umd/react.production.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/react-dom/18.2.0/umd/react-dom.production.min.js"></script>
     <script src="synth-timeline.js" defer></script>
     <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
 </head>
 <body>
-    <div id="root"></div>
+    <main aria-label="Synthesizer innovation timeline">
+        <p class="sr-only">A vertical timeline of ten synthesizer milestones from 1920 to 1987. Each card gives the year, the instrument name and a one-line description, and is color coded as Early Innovations (blue), Analog Revolution (purple) or Digital Era (pink). The timeline has no controls; scroll to read it.</p>
+        <div id="root"></div>
+    </main>
 </body>
 </html>

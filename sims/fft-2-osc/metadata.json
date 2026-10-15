@@ -1,0 +1,167 @@
+{
+  "microsim": {
+    "dublinCore": {
+      "title": "FFT with Two Oscillators",
+      "creator": ["Dan McCreary"],
+      "subject": ["Signal Processing", "FFT", "Superposition", "Frequency Analysis"],
+      "description": "Two oscillators, a sine and a cosine, are added and played through the speakers. A triggered 20 ms window shows the sum in the time domain and a live FFT shows its magnitude spectrum from 0 to 2100 Hz, with one peak per oscillator. Sliders set each frequency and amplitude; Start/Pause and Mute control the sound.",
+      "publisher": "Dan McCreary",
+      "contributor": ["Claude (Anthropic)"],
+      "date": "2025-05-29",
+      "type": "Interactive Simulation",
+      "format": "text/html",
+      "identifier": "https://dmccreary.github.io/signal-processing/sims/fft-2-osc/",
+      "language": "en",
+      "relation": ["Chapter 7: DFT, FFT and Frequency Domain Analysis", "Basic FFT MicroSim", "FFT 3 Oscillators"],
+      "rights": "CC BY-NC-SA 4.0"
+    },
+    "search": {
+      "tags": ["FFT", "fast Fourier transform", "superposition", "sine", "cosine", "spectrum", "time domain", "frequency domain", "beats", "frequency resolution", "audio"],
+      "searchKeywords": ["sum of two sine waves", "two tone spectrum", "FFT two oscillators", "phase and magnitude spectrum", "beat frequency", "FFT frequency resolution"],
+      "visualizationType": ["graph", "interactive-demo", "simulation"],
+      "interactionLevel": "moderate",
+      "complexity": 4,
+      "relatedConcepts": ["Fast Fourier Transform", "Discrete Fourier Transform", "Time Domain", "Frequency Domain", "Spectrum", "Magnitude Spectrum", "Phase Spectrum", "Sinusoidal Signals", "Signal Amplitude", "Signal Frequency", "Signal Phase", "Periodic Signals", "Window Functions"],
+      "applicationDomains": ["education", "demonstration", "exploration"],
+      "showcase": false
+    },
+    "educational": {
+      "gradeLevel": ["Undergraduate"],
+      "subjectArea": ["Engineering", "Mathematics"],
+      "topic": ["Fast Fourier Transform", "Superposition of sinusoids", "Magnitude spectrum", "Phase", "Beats", "Frequency resolution"],
+      "learningObjectives": [
+        "Identify the frequency and amplitude of each oscillator from the position and height of its peak in the magnitude spectrum",
+        "Explain why the spectrum of a sum of two sinusoids contains one peak for each sinusoid (superposition)",
+        "Predict how changing one oscillator's frequency or amplitude changes both the time-domain sum and the spectrum",
+        "Demonstrate that the relative phase of the two components changes the shape of the sum but not its magnitude spectrum",
+        "Relate the smallest frequency separation at which two peaks can be told apart to the FFT bin width"
+      ],
+      "bloomsTaxonomy": ["Remember", "Understand", "Apply", "Analyze"],
+      "prerequisites": ["Sine and cosine functions", "Frequency, period and amplitude", "Basic idea of a spectrum"],
+      "duration": {"typical": 25, "range": {"min": 15, "max": 45}},
+      "difficulty": "Intermediate",
+      "scaffolding": {
+        "type": ["guided-discovery", "feedback"],
+        "adaptability": "fixed",
+        "removal": "user-controlled"
+      },
+      "misconceptions": [
+        {
+          "misconception": "Adding a second wave changes the first wave's spectrum",
+          "correction": "Each sinusoid keeps its own peak; the spectrum of a sum is the sum of the spectra",
+          "evidence": "With the defaults running, move Cosine Amp from 0 to 1: the 878.9 Hz peak grows while the 439.5 Hz peak stays at 0.49"
+        },
+        {
+          "misconception": "Two waveforms that look different must have different spectra",
+          "correction": "The shape of a sum depends on the relative phase of its components, but the magnitude spectrum does not",
+          "evidence": "Dragging Cosine Freq to 900 Hz and back to 880 Hz changes the waveform shape while both peak read-outs stay the same"
+        }
+      ]
+    },
+    "technical": {
+      "framework": "p5.js",
+      "version": "2.0.0",
+      "canvasDimensions": {"width": 800, "height": 520, "responsive": true},
+      "regions": {"drawHeight": 440, "controlHeight": 80},
+      "dependencies": ["p5.js 2.3.2", "p5.sound 0.4.1"],
+      "browserCompatibility": ["Chrome 90+", "Firefox 88+", "Safari 14+", "Edge 90+"],
+      "performance": {"memoryUsage": "low", "computationalComplexity": "O(n log n)"},
+      "deviceRequirements": {
+        "minScreenWidth": 360,
+        "touchSupport": true,
+        "keyboardRequired": false,
+        "mouseRequired": false,
+        "networkRequired": true
+      },
+      "accessibility": {
+        "screenReader": true,
+        "keyboardNavigation": true,
+        "colorContrast": true,
+        "altText": true,
+        "screenReaderScript": "Two oscillators, a sine and a cosine, are added together. The top plot shows the sum over a 20 millisecond window; the bottom plot shows its magnitude spectrum from 0 to 2100 Hz with one peak for each oscillator. Press Start, then move the four sliders to change each frequency and amplitude.",
+        "sensoryAlternatives": {"visualToAudio": true, "audioToVisual": true, "hapticFeedback": false}
+      }
+    },
+    "userInterface": {
+      "layoutType": "responsive-width",
+      "layoutPattern": "drawing-region-above-controls",
+      "colorScheme": {
+        "drawingArea": "aliceblue",
+        "controlArea": "white",
+        "borders": "silver",
+        "accent": "gold",
+        "text": "black"
+      },
+      "controls": [
+        {
+          "id": "freqSliderSine",
+          "type": "slider",
+          "label": "Sine Freq",
+          "description": "Sets the frequency f1 of the sine oscillator",
+          "group": "sine",
+          "properties": {"min": 20, "max": 2000, "default": 440, "step": 1, "units": "Hz", "showValue": true}
+        },
+        {
+          "id": "ampSliderSine",
+          "type": "slider",
+          "label": "Sine Amp",
+          "description": "Sets the amplitude A1 of the sine oscillator",
+          "group": "sine",
+          "properties": {"min": 0, "max": 1, "default": 0.5, "step": 0.01, "showValue": true}
+        },
+        {
+          "id": "freqSliderCos",
+          "type": "slider",
+          "label": "Cosine Freq",
+          "description": "Sets the frequency f2 of the cosine oscillator",
+          "group": "cosine",
+          "properties": {"min": 20, "max": 2000, "default": 880, "step": 1, "units": "Hz", "showValue": true}
+        },
+        {
+          "id": "ampSliderCos",
+          "type": "slider",
+          "label": "Cosine Amp",
+          "description": "Sets the amplitude A2 of the cosine oscillator",
+          "group": "cosine",
+          "properties": {"min": 0, "max": 1, "default": 0.3, "step": 0.01, "showValue": true}
+        },
+        {
+          "id": "pauseButton",
+          "type": "toggle-button",
+          "label": "Start / Pause",
+          "description": "Starts audio on the first click, then turns both tones on and off",
+          "group": "playback",
+          "properties": {"text": "Start", "action": "togglePause", "toggleable": true, "style": "primary"}
+        },
+        {
+          "id": "muteButton",
+          "type": "toggle-button",
+          "label": "Mute / Unmute",
+          "description": "Silences the speakers while the plots keep showing the signal",
+          "group": "playback",
+          "properties": {"text": "Mute", "action": "toggleMute", "toggleable": true, "style": "secondary"}
+        }
+      ],
+      "visualElements": [
+        {"type": "graph", "description": "Time-domain plot (green): a 20 ms window of the summed signal, triggered on a rising zero crossing, with a Max |x(t)| read-out", "interactive": false, "updateTriggers": ["freqSliderSine", "ampSliderSine", "freqSliderCos", "ampSliderCos", "pauseButton"]},
+        {"type": "chart", "description": "Frequency-domain plot (purple): magnitude spectrum from 0 to 2100 Hz with gold markers on the two strongest peaks", "interactive": false, "updateTriggers": ["freqSliderSine", "ampSliderSine", "freqSliderCos", "ampSliderCos", "pauseButton"]},
+        {"type": "text-display", "description": "Status indicator (RUNNING / MUTED / PAUSED), peak frequencies and heights, sample rate and bin width", "interactive": false, "updateTriggers": ["freqSliderSine", "ampSliderSine", "freqSliderCos", "ampSliderCos", "pauseButton", "muteButton"]}
+      ]
+    },
+    "simulation": {
+      "model": {
+        "type": "algorithmic",
+        "description": "Two oscillators started at the same instant produce x(t) = A1 sin(2 pi f1 t) + A2 cos(2 pi f2 t). The browser's analyser (via p5.sound) applies a Blackman window and a 16384-point FFT; the sketch plots the magnitude normalised so that an amplitude-1 sine centred on a bin reaches 1 and reports the two strongest local maxima.",
+        "equations": ["x(t) = A1 sin(2 pi f1 t) + A2 cos(2 pi f2 t)", "X[k] = (1/N) sum_{n=0}^{N-1} w[n] x[n] e^{-j 2 pi k n / N}", "Delta f = f_s / N, N = 16384", "beat frequency = |f2 - f1|"],
+        "algorithms": ["Fast Fourier Transform (Web Audio AnalyserNode)", "Rising zero-crossing trigger searched over one period of the sum", "Local-maximum peak picking"],
+        "limitations": ["The read-out reports the centre of the strongest bin, so it can differ from the slider frequency by up to half a bin (about 1.5 Hz at 48 kHz)", "A tone between two bins reads up to about 12% low because of the Blackman window", "Two equal tones closer than about 5-6 Hz merge into one peak"]
+      }
+    },
+    "usage": {
+      "recommendedUsage": ["demonstration", "exploration", "guided-practice"],
+      "instructionalStrategies": ["Predict-then-verify with the sliders", "Isolating one component by setting the other amplitude to zero", "Listening to beats while watching the spectrum"],
+      "extensions": ["Add a third oscillator (see the FFT 3 Oscillators MicroSim)", "Add a phase slider for the cosine and confirm the magnitude spectrum does not change"]
+    }
+  },
+  "canvasHeight": 520
+}

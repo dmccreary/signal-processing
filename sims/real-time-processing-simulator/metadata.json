@@ -1,0 +1,466 @@
+{
+  "microsim": {
+    "dublinCore": {
+      "title": "Real-Time Processing Simulator",
+      "creator": [
+        "Dan McCreary"
+      ],
+      "subject": [
+        "Real-time signal processing",
+        "Digital signal processors",
+        "FPGA implementation",
+        "Block processing",
+        "Latency",
+        "Processor load",
+        "Quantization noise"
+      ],
+      "description": "Interactive simulation of a double-buffered real-time FIR filter. An animated pipeline shows the input buffer filling, the processor filtering the previous block and the output buffer playing the block before that; a time line checks each block's busy time (overhead, filter work and random background bursts) against the deadline T = B/fs, and a load chart and meter show per-block and average processor load with underruns in red. Read-outs give latency 2B/fs, the MAC rate fs*L, processor capacity, expected and counted underruns, and the quantization noise floor of the word length. Processor figures are typical, illustrative values.",
+      "publisher": "Dan McCreary",
+      "contributor": [
+        "Claude (Anthropic)"
+      ],
+      "date": "2026-10-14",
+      "type": "Interactive Simulation",
+      "format": "text/html",
+      "identifier": "https://dmccreary.github.io/signal-processing/sims/real-time-processing-simulator/",
+      "language": "en",
+      "relation": [
+        "Chapter 15: Signal Processing Applications and AI Integration"
+      ],
+      "rights": "CC BY-NC-SA 4.0"
+    },
+    "search": {
+      "tags": [
+        "real-time processing",
+        "block size",
+        "latency",
+        "deadline",
+        "buffer underrun",
+        "double buffering",
+        "CPU load",
+        "MAC rate",
+        "DSP",
+        "FPGA",
+        "microcontroller",
+        "fixed point",
+        "floating point"
+      ],
+      "searchKeywords": [
+        "block period B/fs",
+        "audio buffer latency",
+        "processor load meter",
+        "multiply-accumulate per second",
+        "missed deadline simulation",
+        "fixed-point noise floor 6.02 dB per bit"
+      ],
+      "visualizationType": [
+        "simulation",
+        "animation",
+        "chart",
+        "interactive-demo"
+      ],
+      "interactionLevel": "high",
+      "complexity": 6,
+      "relatedConcepts": [
+        "Digital Signal Processors",
+        "FPGA Implementation",
+        "Real-Time Processing"
+      ],
+      "applicationDomains": [
+        "education",
+        "exploration",
+        "demonstration"
+      ]
+    },
+    "educational": {
+      "gradeLevel": [
+        "Undergraduate"
+      ],
+      "subjectArea": [
+        "Engineering",
+        "Computer Science"
+      ],
+      "topic": [
+        "Real-time constraints",
+        "Block processing and latency",
+        "Computational budgeting",
+        "DSP and FPGA hardware",
+        "Fixed-point and floating-point word length"
+      ],
+      "learningObjectives": [
+        "Calculate the block period T = B/fs and the buffering latency 2B/fs for a given sample rate and block size",
+        "Calculate the MAC rate fs*L of an FIR filter and the processor load it produces for a given clock rate and MACs per cycle",
+        "Explain why a processor with an average load below 100 % can still miss deadlines, and how the block size changes the miss rate",
+        "Compare fixed-point and floating-point word lengths by their noise floor (about -6.02 B dBFS) and their computational cost",
+        "Evaluate a combination of processor, word length and block size against latency, load-margin and noise-floor requirements"
+      ],
+      "bloomsTaxonomy": [
+        "Apply",
+        "Analyze",
+        "Evaluate"
+      ],
+      "prerequisites": [
+        "Sampling rate and sample period",
+        "FIR filters and the convolution sum",
+        "Basic quantization in bits and decibels"
+      ],
+      "duration": {
+        "typical": 25,
+        "range": {
+          "min": 15,
+          "max": 40
+        }
+      },
+      "difficulty": "Intermediate",
+      "scaffolding": {
+        "type": [
+          "guided-discovery",
+          "feedback"
+        ],
+        "adaptability": "fixed",
+        "removal": "user-controlled"
+      },
+      "misconceptions": [
+        {
+          "misconception": "If the average load is below 100 %, the system meets real-time deadlines",
+          "correction": "Deadlines are judged block by block; random background work makes some blocks exceed the block period even when the average is well below 100 %",
+          "evidence": "The default settings show an average load of 70.7 % with expected misses of 5.1 % and red bars in the load chart"
+        },
+        {
+          "misconception": "A bigger buffer always cures dropouts",
+          "correction": "Larger blocks smooth short-term variation and always add latency; when the average load exceeds 100 % they make misses more frequent",
+          "evidence": "With 256 taps on the MCU (average load 109.1 %) the expected misses rise from 76.2 % at B = 32 to 96.9 % at B = 512"
+        }
+      ]
+    },
+    "technical": {
+      "framework": "p5.js",
+      "version": "1.0.0",
+      "canvasDimensions": {
+        "width": 760,
+        "height": 660,
+        "responsive": true
+      },
+      "regions": {
+        "drawHeight": 485,
+        "controlHeight": 175
+      },
+      "dependencies": [
+        "p5.js 2.3.2"
+      ],
+      "browserCompatibility": [
+        "Chrome 90+",
+        "Firefox 88+",
+        "Safari 14+",
+        "Edge 90+"
+      ],
+      "performance": {
+        "memoryUsage": "low",
+        "loadTime": 500
+      },
+      "deviceRequirements": {
+        "minScreenWidth": 375,
+        "touchSupport": true,
+        "keyboardRequired": false,
+        "mouseRequired": false,
+        "networkRequired": false
+      },
+      "accessibility": {
+        "screenReader": true,
+        "keyboardNavigation": true,
+        "colorContrast": true,
+        "altText": true,
+        "screenReaderScript": "Real-time block processing simulator. A pipeline shows the input buffer filling, the processor filtering the previous block and the output buffer playing the block before that. A time line shows whether the filter, the per-block overhead and random background bursts finish before the deadline T = B/fs, and a bar chart shows the processor load of the last 60 blocks with missed deadlines in red. Selects set the sample rate, processor, word length and animation speed; sliders set the block size, filter taps and background load."
+      }
+    },
+    "userInterface": {
+      "layoutType": "responsive-width",
+      "layoutPattern": "drawing-region-above-controls",
+      "colorScheme": {
+        "drawingArea": "aliceblue",
+        "controlArea": "white",
+        "inputSamplesAndFilterWork": "blue",
+        "overhead": "gray",
+        "backgroundBursts": "orange",
+        "outputSamples": "green",
+        "deadlineAndUnderruns": "red",
+        "marginLine": "gold",
+        "text": "black"
+      },
+      "controls": [
+        {
+          "id": "rateSelect",
+          "type": "dropdown",
+          "label": "Sample rate",
+          "description": "Sets the sample rate fs",
+          "group": "workload",
+          "properties": {
+            "options": [
+              {
+                "value": "8000",
+                "label": "8 kHz"
+              },
+              {
+                "value": "16000",
+                "label": "16 kHz"
+              },
+              {
+                "value": "22050",
+                "label": "22.05 kHz"
+              },
+              {
+                "value": "44100",
+                "label": "44.1 kHz"
+              },
+              {
+                "value": "48000",
+                "label": "48 kHz"
+              },
+              {
+                "value": "96000",
+                "label": "96 kHz"
+              }
+            ],
+            "default": "48000"
+          }
+        },
+        {
+          "id": "procSelect",
+          "type": "dropdown",
+          "label": "Processor",
+          "description": "Chooses a processor preset (typical, illustrative clock rate, MACs per cycle and per-block overhead)",
+          "group": "hardware",
+          "properties": {
+            "options": [
+              {
+                "value": "mcu",
+                "label": "MCU 64 MHz"
+              },
+              {
+                "value": "m4",
+                "label": "Cortex-M4 168 MHz"
+              },
+              {
+                "value": "dsp",
+                "label": "DSP 600 MHz"
+              },
+              {
+                "value": "fpga",
+                "label": "FPGA 200 MHz parallel"
+              }
+            ],
+            "default": "mcu"
+          }
+        },
+        {
+          "id": "wordSelect",
+          "type": "dropdown",
+          "label": "Word length",
+          "description": "Chooses 16-bit fixed, 24-bit fixed or 32-bit float arithmetic; changes MACs per cycle and the noise floor",
+          "group": "hardware",
+          "properties": {
+            "options": [
+              {
+                "value": "fx16",
+                "label": "16-bit fixed"
+              },
+              {
+                "value": "fx24",
+                "label": "24-bit fixed"
+              },
+              {
+                "value": "fl32",
+                "label": "32-bit float"
+              }
+            ],
+            "default": "fx16"
+          }
+        },
+        {
+          "id": "speedSelect",
+          "type": "dropdown",
+          "label": "Speed",
+          "description": "Animation rate in blocks per second (the simulated timing is unaffected)",
+          "group": "animation",
+          "properties": {
+            "options": [
+              {
+                "value": "1",
+                "label": "1 block/s"
+              },
+              {
+                "value": "3",
+                "label": "3 blocks/s"
+              },
+              {
+                "value": "20",
+                "label": "20 blocks/s"
+              }
+            ],
+            "default": "3"
+          }
+        },
+        {
+          "id": "blockSlider",
+          "type": "slider",
+          "label": "Block size B",
+          "description": "Sets the block size as a power of two, B = 2^value samples (16 to 4096)",
+          "group": "workload",
+          "properties": {
+            "min": 4,
+            "max": 12,
+            "default": 5,
+            "step": 1,
+            "units": "log2 samples",
+            "showValue": true
+          }
+        },
+        {
+          "id": "tapsSlider",
+          "type": "slider",
+          "label": "Filter taps L",
+          "description": "Sets the number of FIR filter taps (multiply-accumulates per output sample)",
+          "group": "workload",
+          "properties": {
+            "min": 8,
+            "max": 512,
+            "default": 128,
+            "step": 8,
+            "showValue": true
+          }
+        },
+        {
+          "id": "bgSlider",
+          "type": "slider",
+          "label": "Background load",
+          "description": "Average share of the processor taken by other tasks, arriving as random 50 microsecond bursts (no effect on the FPGA)",
+          "group": "workload",
+          "properties": {
+            "min": 0,
+            "max": 50,
+            "default": 30,
+            "step": 1,
+            "units": "%",
+            "showValue": true
+          }
+        },
+        {
+          "id": "pauseButton",
+          "type": "toggle-button",
+          "label": "Run / Pause",
+          "description": "Starts, pauses and resumes the animation (it opens paused)",
+          "group": "animation",
+          "properties": {
+            "text": "Run",
+            "action": "togglePause",
+            "toggleable": true
+          }
+        },
+        {
+          "id": "resetButton",
+          "type": "button",
+          "label": "Reset",
+          "description": "Restores the default settings and restarts the simulation",
+          "group": "animation",
+          "properties": {
+            "text": "Reset",
+            "action": "resetAll"
+          }
+        }
+      ],
+      "visualElements": [
+        {
+          "type": "animation",
+          "description": "Pipeline of input buffer (block k+1 filling), processor (block k) and output buffer (block k-1 playing, red on underrun)",
+          "interactive": false,
+          "updateTriggers": [
+            "speedSelect",
+            "pauseButton",
+            "blockSlider"
+          ]
+        },
+        {
+          "type": "diagram",
+          "description": "Processor time line for one block: overhead, filter work and background bursts against the deadline T = B/fs",
+          "interactive": false,
+          "updateTriggers": [
+            "rateSelect",
+            "procSelect",
+            "wordSelect",
+            "blockSlider",
+            "tapsSlider",
+            "bgSlider"
+          ]
+        },
+        {
+          "type": "chart",
+          "description": "Bar chart of processor load per block for the last 60 blocks with the 100 % deadline, the 80 % margin line and missed blocks outlined in red, plus an average-load meter",
+          "interactive": false,
+          "updateTriggers": [
+            "rateSelect",
+            "procSelect",
+            "wordSelect",
+            "blockSlider",
+            "tapsSlider",
+            "bgSlider"
+          ]
+        },
+        {
+          "type": "text-display",
+          "description": "Read-outs of block period, latency, noise floor, MAC rate, capacity, filter and overhead load, average load, expected misses and counted underruns",
+          "interactive": false,
+          "updateTriggers": [
+            "rateSelect",
+            "procSelect",
+            "wordSelect",
+            "blockSlider",
+            "tapsSlider",
+            "bgSlider"
+          ]
+        }
+      ]
+    },
+    "simulation": {
+      "model": {
+        "type": "statistical",
+        "description": "Each block's busy time is the FIR work B*L/(clock*MACs per cycle) plus a fixed per-block overhead plus N background bursts of 50 microseconds, with N Poisson-distributed with mean b*T/50 us. A block misses its deadline (output underrun) when the busy time exceeds the block period T = B/fs. Processor parameters are typical, illustrative values.",
+        "equations": [
+          "T = B / fs",
+          "latency = 2 B / fs",
+          "MAC rate = fs * L",
+          "capacity = f_clk * MACs per cycle",
+          "filter load = fs * L / capacity",
+          "t_busy = B L / capacity + overhead / f_clk + N * 50 us, N ~ Poisson(b T / 50 us)",
+          "P(miss) = P(N > floor((T - t_work) / 50 us))",
+          "noise floor = -6.02 B_bits dBFS"
+        ],
+        "algorithms": [
+          "Inverse-CDF Poisson sampling with a seeded PRNG",
+          "Poisson tail probability summed in the log domain"
+        ],
+        "limitations": [
+          "Processor figures are illustrative, not data-sheet values",
+          "A late block is counted as one underrun and the next block starts on time (no cascading)",
+          "Only direct-form FIR filtering is modelled"
+        ]
+      }
+    },
+    "usage": {
+      "recommendedUsage": [
+        "demonstration",
+        "exploration",
+        "guided-practice"
+      ],
+      "instructionalStrategies": [
+        "Predict the block period, MAC rate and load before reading them",
+        "Table of expected misses and latency against block size",
+        "Compare processors and word lengths against a design requirement"
+      ],
+      "extensions": [
+        "Add FFT-based fast convolution as an alternative algorithm and compare its cost per block",
+        "Add a priority-scheduling option for background tasks"
+      ]
+    }
+  },
+  "canvasHeight": 660
+}

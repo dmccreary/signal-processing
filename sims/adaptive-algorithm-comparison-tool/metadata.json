@@ -1,0 +1,324 @@
+{
+  "microsim": {
+    "dublinCore": {
+      "title": "Adaptive Algorithm Comparison Tool",
+      "creator": ["Dan McCreary"],
+      "subject": ["Adaptive filters", "LMS", "NLMS", "RLS", "System identification", "Signal processing"],
+      "description": "LMS, NLMS and RLS identify the same unknown FIR plant from the same noisy data. Learning curves averaged over 1-20 runs, the weight-error norm, and the true versus estimated weights (or frequency response, or coefficient trajectories) let students compare convergence speed, steady-state misadjustment, stability and tracking after a plant change.",
+      "publisher": "Dan McCreary",
+      "contributor": ["Claude (Anthropic)"],
+      "date": "2026-10-14",
+      "type": "Interactive Simulation",
+      "format": "text/html",
+      "identifier": "https://dmccreary.github.io/signal-processing/sims/adaptive-algorithm-comparison-tool/",
+      "language": "en",
+      "relation": ["Chapter 11: Adaptive Signal Processing"],
+      "rights": "CC BY-NC-SA 4.0"
+    },
+    "search": {
+      "tags": [
+        "adaptive filter",
+        "LMS",
+        "NLMS",
+        "RLS",
+        "learning curve",
+        "misadjustment",
+        "forgetting factor",
+        "step size",
+        "system identification",
+        "tracking",
+        "eigenvalue spread"
+      ],
+      "searchKeywords": ["LMS vs RLS", "NLMS convergence", "adaptive filter learning curve", "LMS stability bound", "RLS forgetting factor tracking", "misadjustment"],
+      "visualizationType": ["graph", "chart", "simulation", "interactive-demo"],
+      "interactionLevel": "high",
+      "complexity": 7,
+      "relatedConcepts": [
+        "Adaptive Filters",
+        "Adaptive Algorithms",
+        "Least Mean Squares",
+        "Normalized LMS",
+        "Recursive Least Squares",
+        "Kalman Filter",
+        "System Identification"
+      ],
+      "applicationDomains": ["education", "exploration", "analysis"],
+      "showcase": false
+    },
+    "educational": {
+      "gradeLevel": ["Undergraduate"],
+      "subjectArea": ["Engineering", "Mathematics"],
+      "topic": ["Adaptive filtering", "LMS algorithm", "Normalized LMS", "Recursive least squares", "Convergence and misadjustment", "Tracking"],
+      "learningObjectives": [
+        "Compare the convergence speed and final MSE of LMS, NLMS and RLS on the same system-identification problem, using the learning curves and the read-out table",
+        "Analyze how input correlation, measured by the eigenvalue spread chi(R), slows LMS and NLMS but not RLS",
+        "Evaluate the LMS step-size trade-off by predicting the misadjustment mu M sigma_x^2 / 2 and the stability limit, then judging how well each approximation matches the measured values",
+        "Evaluate a choice of RLS forgetting factor lambda for tracking, explaining why lambda = 1 fails after the plant changes",
+        "Explain why a filter shorter than the plant settles at a floor above the noise power (J_min > sigma_v^2)"
+      ],
+      "bloomsTaxonomy": ["Understand", "Analyze", "Evaluate"],
+      "prerequisites": [
+        "FIR filters and convolution",
+        "Mean-squared error and the Wiener solution",
+        "Eigenvalues of the autocorrelation matrix",
+        "LMS, NLMS and RLS update equations"
+      ],
+      "duration": {
+        "typical": 45,
+        "range": {"min": 20, "max": 60}
+      },
+      "difficulty": "Advanced",
+      "scaffolding": {
+        "type": ["guided-discovery", "feedback"],
+        "adaptability": "fixed",
+        "removal": "user-controlled"
+      },
+      "misconceptions": [
+        {
+          "misconception": "Any LMS step size below 2/(M sigma_x^2) is safe",
+          "correction": "That bound guarantees convergence of the mean weights only; the MSE needs a smaller step, about 2/((M+2) sigma_x^2) for white Gaussian input, and bursts of large input samples can destabilize LMS with correlated input",
+          "evidence": "With white input and M = 8, 5 of 10 runs diverge at mu = 0.22 and all 10 at mu = 0.23, before the warning at 0.250; with AR(1) a = 0.9 input one run diverges at mu = 0.03"
+        },
+        {
+          "misconception": "RLS always tracks faster than LMS",
+          "correction": "After start-up RLS tracks at a rate set by lambda; at equal misadjustment it recovers no faster than LMS",
+          "evidence": "After the plant change at n = 500, LMS (mu = 0.01) recovers in 340 iterations and RLS (lambda = 0.99) in 405, both with about 4% misadjustment"
+        },
+        {
+          "misconception": "A flat learning curve means the weights are correct",
+          "correction": "Weight errors along small-eigenvalue directions barely change the output, so the MSE can look converged while the weights are not",
+          "evidence": "With AR(1) a = 0.9 input the LMS MSE is within 1.6 dB of J_min while its weight error is about -27 dB instead of -45 dB"
+        }
+      ]
+    },
+    "technical": {
+      "framework": "p5.js",
+      "version": "1.0.0",
+      "canvasDimensions": {"width": 900, "height": 680, "responsive": true},
+      "regions": {"drawHeight": 500, "controlHeight": 180},
+      "dependencies": ["p5.js 2.3.2"],
+      "browserCompatibility": ["Chrome 90+", "Firefox 88+", "Safari 14+", "Edge 90+"],
+      "performance": {"memoryUsage": "low", "computationalComplexity": "O(n²)"},
+      "deviceRequirements": {"minScreenWidth": 360, "touchSupport": true, "keyboardRequired": false, "mouseRequired": false, "networkRequired": true},
+      "accessibility": {
+        "screenReader": true,
+        "keyboardNavigation": true,
+        "colorContrast": true,
+        "altText": true,
+        "screenReaderScript": "System identification with three adaptive filters. LMS (blue), NLMS (green) and RLS (maroon) learn the same unknown FIR plant from the same noisy data. Plots show the learning curves in dB, the weight-error norm, and the true versus estimated weights. Sliders set the noise level, number of averaged runs, filter length, LMS step size, NLMS normalized step size and RLS forgetting factor."
+      }
+    },
+    "userInterface": {
+      "layoutType": "multi-panel",
+      "layoutPattern": "drawing-region-above-controls",
+      "colorScheme": {
+        "drawingArea": "aliceblue",
+        "controlArea": "white",
+        "lms": "#1f5fbf",
+        "nlms": "#2a8a3a",
+        "rls": "#8b1c3c",
+        "warning": "#c00000",
+        "plantChange": "darkgoldenrod",
+        "text": "black"
+      },
+      "controls": [
+        {
+          "id": "plantSelect",
+          "type": "dropdown",
+          "label": "Plant",
+          "description": "Chooses the unknown FIR plant: A (4 taps), B (8-tap lowpass) or C (12-tap echo), each scaled to unit energy",
+          "group": "experiment",
+          "properties": {
+            "options": [
+              {"value": "0", "label": "A: 4 taps"},
+              {"value": "1", "label": "B: 8-tap lowpass"},
+              {"value": "2", "label": "C: 12-tap echo"}
+            ],
+            "default": "1"
+          }
+        },
+        {
+          "id": "inputSelect",
+          "type": "dropdown",
+          "label": "Input",
+          "description": "Chooses a unit-power input: white noise or AR(1) colored noise with a = 0.5 or a = 0.9",
+          "group": "experiment",
+          "properties": {
+            "options": [
+              {"value": "0", "label": "White noise"},
+              {"value": "1", "label": "AR(1) a = 0.5"},
+              {"value": "2", "label": "AR(1) a = 0.9"}
+            ],
+            "default": "0"
+          }
+        },
+        {
+          "id": "deltaSelect",
+          "type": "dropdown",
+          "label": "RLS delta",
+          "description": "Sets the RLS initialisation P(0) = I / delta",
+          "group": "rls",
+          "properties": {
+            "options": [
+              {"value": "0", "label": "δ = 0.001"},
+              {"value": "1", "label": "δ = 0.01"},
+              {"value": "2", "label": "δ = 0.1"},
+              {"value": "3", "label": "δ = 1"},
+              {"value": "4", "label": "δ = 10"},
+              {"value": "5", "label": "δ = 100"}
+            ],
+            "default": "1"
+          }
+        },
+        {
+          "id": "noiseSlider",
+          "type": "slider",
+          "label": "Noise power",
+          "description": "Observation-noise power sigma_v^2 added to the plant output",
+          "group": "experiment",
+          "properties": {"min": -40, "max": -10, "default": -30, "step": 1, "units": "dB", "showValue": true}
+        },
+        {
+          "id": "runsSlider",
+          "type": "slider",
+          "label": "Runs averaged",
+          "description": "Number of independent runs averaged into the learning curves and read-outs",
+          "group": "experiment",
+          "properties": {"min": 1, "max": 20, "default": 10, "step": 1, "showValue": true}
+        },
+        {
+          "id": "lengthSlider",
+          "type": "slider",
+          "label": "Filter length M",
+          "description": "Number of taps of all three adaptive filters",
+          "group": "experiment",
+          "properties": {"min": 2, "max": 16, "default": 8, "step": 1, "showValue": true}
+        },
+        {
+          "id": "muSlider",
+          "type": "slider",
+          "label": "LMS step size mu",
+          "description": "LMS step size; the label turns red and a warning appears above 2/(M sigma_x^2)",
+          "group": "lms",
+          "properties": {"min": 0.001, "max": 0.3, "default": 0.01, "step": 0.001, "showValue": true}
+        },
+        {
+          "id": "muNSlider",
+          "type": "slider",
+          "label": "NLMS normalized step size",
+          "description": "NLMS normalized step size mu-tilde",
+          "group": "nlms",
+          "properties": {"min": 0.01, "max": 1, "default": 0.5, "step": 0.01, "showValue": true}
+        },
+        {
+          "id": "lambdaSlider",
+          "type": "slider",
+          "label": "RLS forgetting factor lambda",
+          "description": "RLS forgetting factor; memory is about 1/(1 - lambda) samples",
+          "group": "rls",
+          "properties": {"min": 0.9, "max": 1, "default": 0.99, "step": 0.001, "showValue": true}
+        },
+        {
+          "id": "runButton",
+          "type": "toggle-button",
+          "label": "Run / Pause",
+          "description": "Starts, pauses or resumes the experiment (it opens paused); after it finishes, replays it from n = 0",
+          "group": "playback",
+          "properties": {"text": "Run", "action": "toggleRun", "toggleable": true, "style": "primary"}
+        },
+        {
+          "id": "resetButton",
+          "type": "button",
+          "label": "Reset",
+          "description": "Restores all default settings and restarts the experiment",
+          "group": "playback",
+          "properties": {"text": "Reset", "action": "resetAll", "style": "secondary"}
+        },
+        {
+          "id": "changeButton",
+          "type": "toggle-button",
+          "label": "Change the plant at n = 500",
+          "description": "Toggles a sign flip of every plant tap at n = 500 to test tracking",
+          "group": "experiment",
+          "properties": {"text": "Change the plant at n = 500", "action": "toggleChange", "toggleable": true, "style": "secondary"}
+        },
+        {
+          "id": "viewSelect",
+          "type": "dropdown",
+          "label": "Panel",
+          "description": "Chooses the right-hand panel: true vs estimated weights, frequency response, or coefficient trajectories",
+          "group": "display",
+          "properties": {
+            "options": [
+              {"value": "0", "label": "Weights"},
+              {"value": "1", "label": "Freq. response"},
+              {"value": "2", "label": "Trajectories"}
+            ],
+            "default": "0"
+          }
+        }
+      ],
+      "visualElements": [
+        {
+          "type": "chart",
+          "description": "Learning curves: ensemble-averaged MSE in dB versus iteration for LMS, NLMS and RLS, with the Wiener floor J_min dashed",
+          "interactive": false,
+          "updateTriggers": ["plantSelect", "inputSelect", "noiseSlider", "runsSlider", "lengthSlider", "muSlider", "muNSlider", "lambdaSlider", "deltaSelect", "changeButton"]
+        },
+        {
+          "type": "chart",
+          "description": "Weight-error norm ||w_o - w[n]||^2 in dB versus iteration for the three algorithms",
+          "interactive": false,
+          "updateTriggers": ["plantSelect", "inputSelect", "noiseSlider", "runsSlider", "lengthSlider", "muSlider", "muNSlider", "lambdaSlider", "deltaSelect", "changeButton"]
+        },
+        {
+          "type": "chart",
+          "description": "Right panel: bar chart of true and estimated weights, or frequency responses, or trajectories of the two largest taps (run 1)",
+          "interactive": false,
+          "updateTriggers": ["viewSelect", "plantSelect", "lengthSlider"]
+        },
+        {
+          "type": "text-display",
+          "description": "Read-out table: final MSE, measured and approximate misadjustment, convergence or recovery iteration, J_min, eigenvalue spread and the LMS bound",
+          "interactive": false,
+          "updateTriggers": ["plantSelect", "inputSelect", "noiseSlider", "lengthSlider", "muSlider", "muNSlider", "lambdaSlider", "changeButton"]
+        }
+      ]
+    },
+    "simulation": {
+      "model": {
+        "type": "algorithmic",
+        "description": "System identification: d[n] = w_o^T x[n] + v[n] with a unit-energy FIR plant, unit-power white or AR(1) input and white Gaussian noise. LMS, NLMS and RLS run on identical seeded data for 1500 iterations; curves are averaged over runs and 5-iteration blocks.",
+        "equations": [
+          "LMS: w <- w + mu e[n] x[n]",
+          "NLMS: w <- w + mu~ e[n] x[n] / (eps + ||x[n]||^2)",
+          "RLS: k = P x / (lambda + x^T P x); w <- w + k e[n]; P <- (P - k x^T P) / lambda; P(0) = I / delta",
+          "LMS misadjustment ~ mu M sigma_x^2 / 2; NLMS ~ mu~ / (2 - mu~); RLS ~ (1 - lambda) M / (1 + lambda)",
+          "LMS mean-convergence bound: 0 < mu < 2 / (M sigma_x^2)",
+          "J_min = sigma_v^2 + sigma_y^2 - p^T R_M^{-1} p"
+        ],
+        "algorithms": [
+          "Least mean squares",
+          "Normalized least mean squares",
+          "Exponentially weighted recursive least squares",
+          "Cyclic Jacobi eigenvalue method for the eigenvalue spread"
+        ],
+        "limitations": [
+          "The misadjustment approximations assume small steps and long filters",
+          "Error powers above +40 dB are clipped in the averages",
+          "The plant change is a sign flip of all taps"
+        ]
+      }
+    },
+    "usage": {
+      "recommendedUsage": ["exploration", "guided-practice", "demonstration"],
+      "instructionalStrategies": [
+        "Predict-then-verify with the read-out table",
+        "Controlled comparison on identical random data",
+        "Comparing measured misadjustment with textbook approximations"
+      ],
+      "extensions": ["Add an adaptive noise-cancellation scenario", "Add an affine-projection algorithm between NLMS and RLS"]
+    }
+  },
+  "canvasHeight": 680
+}

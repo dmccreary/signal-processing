@@ -6,7 +6,7 @@
       <meta charset="utf-8">
       <meta name="viewport" content="width=device-width,initial-scale=1">
       
-        <meta name="description" content="A basic demonstration of FFT with time on the top and frequency on the bottom of the MicroSim">
+        <meta name="description" content="A sine-wave generator with its live FFT - the waveform in the time domain on top and its magnitude spectrum below, with frequency and amplitude sliders.">
       
       
         <meta name="author" content="Dan McCreary">
@@ -15,10 +15,10 @@
         <link rel="canonical" href="https://dmccreary.github.io/signal-processing/sims/fft-basic/">
       
       
-        <link rel="prev" href="../base-and-treble/">
+        <link rel="prev" href="../analog-mod/">
       
       
-        <link rel="next" href="../blooms-taxonomy/">
+        <link rel="next" href="../base-and-treble/">
       
       
       <link rel="icon" href="../../img/favicon.ico">
@@ -54,6 +54,8 @@
     
       <link rel="stylesheet" href="../../css/extra.css">
     
+      <link rel="stylesheet" href="../../css/mascot.css">
+    
     <script>__md_scope=new URL("../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
     
       
@@ -65,7 +67,7 @@
       
         <meta  property="og:title"  content="Basic FFT MicroSim - Signal Processing with AI" >
       
-        <meta  property="og:description"  content="A basic demonstration of FFT with time on the top and frequency on the bottom of the MicroSim" >
+        <meta  property="og:description"  content="A sine-wave generator with its live FFT - the waveform in the time domain on top and its magnitude spectrum below, with frequency and amplitude sliders." >
       
         <meta property="og:image" content="https://dmccreary.github.io/signal-processing/sims/fft-basic/fft-basic.png">
       
@@ -81,7 +83,7 @@
       
         <meta  name="twitter:title"  content="Basic FFT MicroSim - Signal Processing with AI" >
       
-        <meta  name="twitter:description"  content="A basic demonstration of FFT with time on the top and frequency on the bottom of the MicroSim" >
+        <meta  name="twitter:description"  content="A sine-wave generator with its live FFT - the waveform in the time domain on top and its magnitude spectrum below, with frequency and amplitude sliders." >
       
         <meta name="twitter:image" content="https://dmccreary.github.io/signal-processing/sims/fft-basic/fft-basic.png">
       
@@ -122,7 +124,7 @@
   <nav class="md-header__inner md-grid" aria-label="Header">
     <a href="../.." title="Signal Processing with AI" class="md-header__button md-logo" aria-label="Signal Processing with AI" data-md-component="logo">
       
-  <img src="../../img/logo-192.png" alt="logo">
+  <img src="../../img/mascot/neutral.png" alt="logo">
 
     </a>
     <label class="md-header__button md-icon" for="__drawer">
@@ -228,7 +230,7 @@
   <label class="md-nav__title" for="__drawer">
     <a href="../.." title="Signal Processing with AI" class="md-nav__button md-logo" aria-label="Signal Processing with AI" data-md-component="logo">
       
-  <img src="../../img/logo-192.png" alt="logo">
+  <img src="../../img/mascot/neutral.png" alt="logo">
 
     </a>
     Signal Processing with AI
@@ -275,31 +277,11 @@
   
   
     <li class="md-nav__item">
-      <a href="../../chapters/" class="md-nav__link">
-        
-  
-  <span class="md-ellipsis">
-    Table of Contents
-  </span>
-  
-
-      </a>
-    </li>
-  
-
-    
-      
-      
-  
-  
-  
-  
-    <li class="md-nav__item">
       <a href="../../about/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
-    About This Website
+    About
   </span>
   
 
@@ -542,6 +524,174 @@
           
         
       
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
     
     
     
@@ -551,7 +701,7 @@
       
         
         
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_6" checked>
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_5" checked>
         
           
           
@@ -567,19 +717,103 @@
             </a>
             
               
-              <label class="md-nav__link " for="__nav_6" id="__nav_6_label" tabindex="0">
+              <label class="md-nav__link " for="__nav_5" id="__nav_5_label" tabindex="0">
                 <span class="md-nav__icon md-icon"></span>
               </label>
             
           </div>
         
-        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_6_label" aria-expanded="true">
-          <label class="md-nav__title" for="__nav_6">
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_5_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_5">
             <span class="md-nav__icon md-icon"></span>
             MicroSims
           </label>
           <ul class="md-nav__list" data-md-scrollfix>
             
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../image-convolution/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    2-D Convolution and Image Filtering
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../conv-layer-as-filter/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    A Convolutional Layer Is a Learned FIR Filter
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../adaptive-algorithm-comparison-tool/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Adaptive Algorithm Comparison Tool
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../adaptive-noise-cancellation/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Adaptive Noise and Echo Cancellation
+  </span>
+  
+
+      </a>
+    </li>
+  
+
               
             
               
@@ -615,27 +849,6 @@
   
   <span class="md-ellipsis">
     Analog Modulation
-  </span>
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../base-and-treble/" class="md-nav__link">
-        
-  
-  <span class="md-ellipsis">
-    Base and Treble
   </span>
   
 
@@ -698,24 +911,25 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#basic-fft-visualization-lesson-plan" class="md-nav__link">
+  <a href="#description" class="md-nav__link">
     <span class="md-ellipsis">
-      Basic FFT Visualization - Lesson Plan
+      Description
     </span>
   </a>
   
 </li>
       
         <li class="md-nav__item">
-  <a href="#lab-information" class="md-nav__link">
+  <a href="#lesson-plan" class="md-nav__link">
     <span class="md-ellipsis">
-      Lab Information
+      Lesson Plan
     </span>
   </a>
   
-</li>
-      
-        <li class="md-nav__item">
+    <nav class="md-nav" aria-label="Lesson Plan">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
   <a href="#learning-objectives" class="md-nav__link">
     <span class="md-ellipsis">
       Learning Objectives
@@ -723,412 +937,117 @@
   </a>
   
 </li>
-      
-        <li class="md-nav__item">
-  <a href="#materials-needed" class="md-nav__link">
-    <span class="md-ellipsis">
-      Materials Needed
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#pre-lesson-preparation" class="md-nav__link">
-    <span class="md-ellipsis">
-      Pre-Lesson Preparation
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="Pre-Lesson Preparation">
-      <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#student-setup" class="md-nav__link">
+  <a href="#target-audience" class="md-nav__link">
     <span class="md-ellipsis">
-      Student Setup
+      Target Audience
     </span>
   </a>
   
 </li>
         
           <li class="md-nav__item">
-  <a href="#instructor-setup" class="md-nav__link">
+  <a href="#prerequisites" class="md-nav__link">
     <span class="md-ellipsis">
-      Instructor Setup
+      Prerequisites
     </span>
   </a>
   
 </li>
         
-      </ul>
-    </nav>
+          <li class="md-nav__item">
+  <a href="#materials-and-setup" class="md-nav__link">
+    <span class="md-ellipsis">
+      Materials and Setup
+    </span>
+  </a>
   
 </li>
-      
-        <li class="md-nav__item">
+        
+          <li class="md-nav__item">
   <a href="#lesson-introduction" class="md-nav__link">
     <span class="md-ellipsis">
       Lesson Introduction
     </span>
   </a>
   
-    <nav class="md-nav" aria-label="Lesson Introduction">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#hook-the-musical-connection" class="md-nav__link">
-    <span class="md-ellipsis">
-      Hook: The Musical Connection
-    </span>
-  </a>
-  
 </li>
         
           <li class="md-nav__item">
-  <a href="#core-concept-introduction" class="md-nav__link">
+  <a href="#activities" class="md-nav__link">
     <span class="md-ellipsis">
-      Core Concept Introduction
+      Activities
     </span>
   </a>
   
 </li>
         
           <li class="md-nav__item">
-  <a href="#key-terms-introduction" class="md-nav__link">
+  <a href="#class-discussion-and-wrap-up" class="md-nav__link">
     <span class="md-ellipsis">
-      Key Terms Introduction
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#guided-exploration" class="md-nav__link">
-    <span class="md-ellipsis">
-      Guided Exploration
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="Guided Exploration">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#phase-1-understanding-the-interface" class="md-nav__link">
-    <span class="md-ellipsis">
-      Phase 1: Understanding the Interface
+      Class Discussion and Wrap-up
     </span>
   </a>
   
 </li>
         
           <li class="md-nav__item">
-  <a href="#phase-2-first-observations-8-minutes" class="md-nav__link">
+  <a href="#assessment" class="md-nav__link">
     <span class="md-ellipsis">
-      Phase 2: First Observations (8 minutes)
+      Assessment
     </span>
   </a>
   
 </li>
         
           <li class="md-nav__item">
-  <a href="#phase-3-amplitude-exploration-7-minutes" class="md-nav__link">
+  <a href="#common-misconceptions" class="md-nav__link">
     <span class="md-ellipsis">
-      Phase 3: Amplitude Exploration (7 minutes)
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#independent-practice" class="md-nav__link">
-    <span class="md-ellipsis">
-      Independent Practice
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="Independent Practice">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#student-worksheet-activity" class="md-nav__link">
-    <span class="md-ellipsis">
-      Student Worksheet Activity
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="Student Worksheet Activity">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#exercise-1-frequency-prediction" class="md-nav__link">
-    <span class="md-ellipsis">
-      Exercise 1: Frequency Prediction
+      Common Misconceptions
     </span>
   </a>
   
 </li>
         
           <li class="md-nav__item">
-  <a href="#exercise-2-musical-notes" class="md-nav__link">
-    <span class="md-ellipsis">
-      Exercise 2: Musical Notes
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#exercise-3-amplitude-investigation" class="md-nav__link">
-    <span class="md-ellipsis">
-      Exercise 3: Amplitude Investigation
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#class-discussion-and-wrap-up-5-minutes" class="md-nav__link">
-    <span class="md-ellipsis">
-      Class Discussion and Wrap-up (5 minutes)
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="Class Discussion and Wrap-up (5 minutes)">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#key-findings-review" class="md-nav__link">
-    <span class="md-ellipsis">
-      Key Findings Review
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#connect-to-real-world" class="md-nav__link">
-    <span class="md-ellipsis">
-      Connect to Real World
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#preview-next-lesson" class="md-nav__link">
-    <span class="md-ellipsis">
-      Preview Next Lesson
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#assessment-rubric" class="md-nav__link">
-    <span class="md-ellipsis">
-      Assessment Rubric
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="Assessment Rubric">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#formative-assessment-during-lesson" class="md-nav__link">
-    <span class="md-ellipsis">
-      Formative Assessment (During Lesson)
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#worksheet-assessment" class="md-nav__link">
-    <span class="md-ellipsis">
-      Worksheet Assessment
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-      
-        <li class="md-nav__item">
   <a href="#extension-activities" class="md-nav__link">
     <span class="md-ellipsis">
       Extension Activities
     </span>
   </a>
   
-    <nav class="md-nav" aria-label="Extension Activities">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#for-advanced-students" class="md-nav__link">
-    <span class="md-ellipsis">
-      For Advanced Students
-    </span>
-  </a>
-  
 </li>
         
           <li class="md-nav__item">
-  <a href="#for-students-needing-support" class="md-nav__link">
+  <a href="#homework" class="md-nav__link">
     <span class="md-ellipsis">
-      For Students Needing Support
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#common-student-misconceptions" class="md-nav__link">
-    <span class="md-ellipsis">
-      Common Student Misconceptions
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="Common Student Misconceptions">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#misconception-1-higher-frequency-means-taller-spike" class="md-nav__link">
-    <span class="md-ellipsis">
-      Misconception 1: "Higher frequency means taller spike"
+      Homework
     </span>
   </a>
   
 </li>
         
           <li class="md-nav__item">
-  <a href="#misconception-2-the-time-domain-wave-and-frequency-spike-should-look-similar" class="md-nav__link">
-    <span class="md-ellipsis">
-      Misconception 2: "The time domain wave and frequency spike should look similar"
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#misconception-3-fft-creates-the-frequencies" class="md-nav__link">
-    <span class="md-ellipsis">
-      Misconception 3: "FFT creates the frequencies"
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#homework-assignment" class="md-nav__link">
-    <span class="md-ellipsis">
-      Homework Assignment
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="Homework Assignment">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#reflection-questions-due-next-class" class="md-nav__link">
-    <span class="md-ellipsis">
-      Reflection Questions (Due Next Class)
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-      
-        <li class="md-nav__item">
   <a href="#instructor-notes" class="md-nav__link">
     <span class="md-ellipsis">
       Instructor Notes
     </span>
   </a>
   
-    <nav class="md-nav" aria-label="Instructor Notes">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#common-technical-issues" class="md-nav__link">
-    <span class="md-ellipsis">
-      Common Technical Issues
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#timing-adjustments" class="md-nav__link">
-    <span class="md-ellipsis">
-      Timing Adjustments
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#differentiation-strategies" class="md-nav__link">
-    <span class="md-ellipsis">
-      Differentiation Strategies
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#assessment-modifications" class="md-nav__link">
-    <span class="md-ellipsis">
-      Assessment Modifications
-    </span>
-  </a>
-  
 </li>
         
       </ul>
     </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#references" class="md-nav__link">
+    <span class="md-ellipsis">
+      References
+    </span>
+  </a>
   
 </li>
       
@@ -1136,6 +1055,48 @@
   
 </nav>
       
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../base-and-treble/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Bass and Treble
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../bilinear-transform/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Bilinear Transform and Frequency Warping
+  </span>
+  
+
+      </a>
     </li>
   
 
@@ -1253,6 +1214,27 @@
   
   
     <li class="md-nav__item">
+      <a href="../compressed-sensing/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Compressed Sensing
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
       <a href="../convolution/" class="md-nav__link">
         
   
@@ -1274,11 +1256,137 @@
   
   
     <li class="md-nav__item">
+      <a href="../convolution-theorem/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Convolution Theorem and Circular Convolution
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../convolution-visualizer/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Convolution Visualizer
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../correlation-and-matched-filtering/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Correlation and Matched Filtering
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../dct-basis-explorer/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    DCT Basis Explorer
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../dft-explorer/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    DFT Explorer
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
       <a href="../euler-formula-explorer/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
     Euler's Formula Explorer
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../even-and-odd-signal-decomposition/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Even and Odd Signal Decomposition
   </span>
   
 
@@ -1442,6 +1550,27 @@
   
   
     <li class="md-nav__item">
+      <a href="../fft-spectrum-analyzer/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    FFT Spectrum Analyzer
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
       <a href="../fft-waveform-types/" class="md-nav__link">
         
   
@@ -1463,11 +1592,263 @@
   
   
     <li class="md-nav__item">
+      <a href="../filter-bank-explorer/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Filter Bank and Polyphase Explorer
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../fir-filter-design-comparison-tool/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    FIR Filter Design Comparison Tool
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../fir-vs-iir/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    FIR vs IIR Filters
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../fourier-series-explorer/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Fourier Series Explorer
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../fourier-transform-pairs/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Fourier Transform Pairs
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
       <a href="../frequency-detection/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
     Frequency Detection
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../huffman-coding/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Huffman Coding
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../iir-prototype-comparison/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    IIR Prototype Comparison
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../impulse-and-frequency-response-analyzer/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Impulse and Frequency Response Analyzer
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../interactive-filter-design-and-analysis-tool/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Interactive Filter Design and Analysis Tool
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../interactive-pole-zero-analysis-tool/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Interactive Pole-Zero Analysis Tool
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../interactive-spectrogram-parameter-explorer/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Interactive Spectrogram Parameter Explorer
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../interactive-stft-spectrogram-analyzer/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Interactive STFT Spectrogram Analyzer
   </span>
   
 
@@ -1547,11 +1928,158 @@
   
   
     <li class="md-nav__item">
+      <a href="../multirate-sample-rate-converter/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Multirate Sample Rate Converter
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../noise-analysis-and-reduction-tool/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Noise Analysis and Reduction Tool
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
       <a href="../nyquist-shannon-sampling/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
     Nyquist-Shannon Sampling
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../phase-spectrum/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Phase Spectrum - What the Magnitude Hides
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../phasor-addition/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Phasor Addition
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../psd-wiener-khinchin/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Power Spectral Density and the Wiener-Khinchin Theorem
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../distribution-explorer/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Probability Distribution Explorer
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../quantization-and-noise-shaping/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Quantization and Noise Shaping
   </span>
   
 
@@ -1589,11 +2117,116 @@
   
   
     <li class="md-nav__item">
+      <a href="../real-time-processing-simulator/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Real-Time Processing Simulator
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
       <a href="../reverb/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
     Reverb Effect
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../s-plane-explorer/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    s-Plane Explorer
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../sampling-theorem-explorer/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Sampling Theorem Explorer
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../signal-operations/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Signal Operations - Shift, Scale and Reverse
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../signal-type-explorer/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Signal Type Explorer
   </span>
   
 
@@ -1631,11 +2264,95 @@
   
   
     <li class="md-nav__item">
+      <a href="../spectral-leakage-and-windowing/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Spectral Leakage and Windowing
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
       <a href="../synth-timeline/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
     Synth Timeline
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../system-interconnections/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    System Interconnections - Series, Parallel, Feedback
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../system-property-explorer/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    System Property Explorer
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../time-frequency-analysis-explorer/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Time-Frequency Analysis Explorer
   </span>
   
 
@@ -1678,6 +2395,27 @@
   
   <span class="md-ellipsis">
     Tone Generator
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../wavelet-explorer/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Wavelet Explorer - CWT Scalogram and Haar DWT
   </span>
   
 
@@ -1854,6 +2592,12 @@
       
         
           
+        
+      
+        
+      
+        
+      
         
       
         
@@ -2068,6 +2812,26 @@
   
   
     <li class="md-nav__item">
+      <a href="../../instructors-guide/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Instructor's Guide
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
       <a href="../../license/" class="md-nav__link">
         
   
@@ -2113,26 +2877,6 @@
   
   <span class="md-ellipsis">
     Contact
-  </span>
-  
-
-      </a>
-    </li>
-  
-
-    
-      
-      
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../../ieee-paper-changes/" class="md-nav__link">
-        
-  
-  <span class="md-ellipsis">
-    Paper Changes
   </span>
   
 
@@ -2263,24 +3007,25 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#basic-fft-visualization-lesson-plan" class="md-nav__link">
+  <a href="#description" class="md-nav__link">
     <span class="md-ellipsis">
-      Basic FFT Visualization - Lesson Plan
+      Description
     </span>
   </a>
   
 </li>
       
         <li class="md-nav__item">
-  <a href="#lab-information" class="md-nav__link">
+  <a href="#lesson-plan" class="md-nav__link">
     <span class="md-ellipsis">
-      Lab Information
+      Lesson Plan
     </span>
   </a>
   
-</li>
-      
-        <li class="md-nav__item">
+    <nav class="md-nav" aria-label="Lesson Plan">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
   <a href="#learning-objectives" class="md-nav__link">
     <span class="md-ellipsis">
       Learning Objectives
@@ -2288,412 +3033,117 @@
   </a>
   
 </li>
-      
-        <li class="md-nav__item">
-  <a href="#materials-needed" class="md-nav__link">
-    <span class="md-ellipsis">
-      Materials Needed
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#pre-lesson-preparation" class="md-nav__link">
-    <span class="md-ellipsis">
-      Pre-Lesson Preparation
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="Pre-Lesson Preparation">
-      <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#student-setup" class="md-nav__link">
+  <a href="#target-audience" class="md-nav__link">
     <span class="md-ellipsis">
-      Student Setup
+      Target Audience
     </span>
   </a>
   
 </li>
         
           <li class="md-nav__item">
-  <a href="#instructor-setup" class="md-nav__link">
+  <a href="#prerequisites" class="md-nav__link">
     <span class="md-ellipsis">
-      Instructor Setup
+      Prerequisites
     </span>
   </a>
   
 </li>
         
-      </ul>
-    </nav>
+          <li class="md-nav__item">
+  <a href="#materials-and-setup" class="md-nav__link">
+    <span class="md-ellipsis">
+      Materials and Setup
+    </span>
+  </a>
   
 </li>
-      
-        <li class="md-nav__item">
+        
+          <li class="md-nav__item">
   <a href="#lesson-introduction" class="md-nav__link">
     <span class="md-ellipsis">
       Lesson Introduction
     </span>
   </a>
   
-    <nav class="md-nav" aria-label="Lesson Introduction">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#hook-the-musical-connection" class="md-nav__link">
-    <span class="md-ellipsis">
-      Hook: The Musical Connection
-    </span>
-  </a>
-  
 </li>
         
           <li class="md-nav__item">
-  <a href="#core-concept-introduction" class="md-nav__link">
+  <a href="#activities" class="md-nav__link">
     <span class="md-ellipsis">
-      Core Concept Introduction
+      Activities
     </span>
   </a>
   
 </li>
         
           <li class="md-nav__item">
-  <a href="#key-terms-introduction" class="md-nav__link">
+  <a href="#class-discussion-and-wrap-up" class="md-nav__link">
     <span class="md-ellipsis">
-      Key Terms Introduction
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#guided-exploration" class="md-nav__link">
-    <span class="md-ellipsis">
-      Guided Exploration
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="Guided Exploration">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#phase-1-understanding-the-interface" class="md-nav__link">
-    <span class="md-ellipsis">
-      Phase 1: Understanding the Interface
+      Class Discussion and Wrap-up
     </span>
   </a>
   
 </li>
         
           <li class="md-nav__item">
-  <a href="#phase-2-first-observations-8-minutes" class="md-nav__link">
+  <a href="#assessment" class="md-nav__link">
     <span class="md-ellipsis">
-      Phase 2: First Observations (8 minutes)
+      Assessment
     </span>
   </a>
   
 </li>
         
           <li class="md-nav__item">
-  <a href="#phase-3-amplitude-exploration-7-minutes" class="md-nav__link">
+  <a href="#common-misconceptions" class="md-nav__link">
     <span class="md-ellipsis">
-      Phase 3: Amplitude Exploration (7 minutes)
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#independent-practice" class="md-nav__link">
-    <span class="md-ellipsis">
-      Independent Practice
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="Independent Practice">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#student-worksheet-activity" class="md-nav__link">
-    <span class="md-ellipsis">
-      Student Worksheet Activity
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="Student Worksheet Activity">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#exercise-1-frequency-prediction" class="md-nav__link">
-    <span class="md-ellipsis">
-      Exercise 1: Frequency Prediction
+      Common Misconceptions
     </span>
   </a>
   
 </li>
         
           <li class="md-nav__item">
-  <a href="#exercise-2-musical-notes" class="md-nav__link">
-    <span class="md-ellipsis">
-      Exercise 2: Musical Notes
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#exercise-3-amplitude-investigation" class="md-nav__link">
-    <span class="md-ellipsis">
-      Exercise 3: Amplitude Investigation
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#class-discussion-and-wrap-up-5-minutes" class="md-nav__link">
-    <span class="md-ellipsis">
-      Class Discussion and Wrap-up (5 minutes)
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="Class Discussion and Wrap-up (5 minutes)">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#key-findings-review" class="md-nav__link">
-    <span class="md-ellipsis">
-      Key Findings Review
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#connect-to-real-world" class="md-nav__link">
-    <span class="md-ellipsis">
-      Connect to Real World
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#preview-next-lesson" class="md-nav__link">
-    <span class="md-ellipsis">
-      Preview Next Lesson
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#assessment-rubric" class="md-nav__link">
-    <span class="md-ellipsis">
-      Assessment Rubric
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="Assessment Rubric">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#formative-assessment-during-lesson" class="md-nav__link">
-    <span class="md-ellipsis">
-      Formative Assessment (During Lesson)
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#worksheet-assessment" class="md-nav__link">
-    <span class="md-ellipsis">
-      Worksheet Assessment
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-      
-        <li class="md-nav__item">
   <a href="#extension-activities" class="md-nav__link">
     <span class="md-ellipsis">
       Extension Activities
     </span>
   </a>
   
-    <nav class="md-nav" aria-label="Extension Activities">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#for-advanced-students" class="md-nav__link">
-    <span class="md-ellipsis">
-      For Advanced Students
-    </span>
-  </a>
-  
 </li>
         
           <li class="md-nav__item">
-  <a href="#for-students-needing-support" class="md-nav__link">
+  <a href="#homework" class="md-nav__link">
     <span class="md-ellipsis">
-      For Students Needing Support
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#common-student-misconceptions" class="md-nav__link">
-    <span class="md-ellipsis">
-      Common Student Misconceptions
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="Common Student Misconceptions">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#misconception-1-higher-frequency-means-taller-spike" class="md-nav__link">
-    <span class="md-ellipsis">
-      Misconception 1: "Higher frequency means taller spike"
+      Homework
     </span>
   </a>
   
 </li>
         
           <li class="md-nav__item">
-  <a href="#misconception-2-the-time-domain-wave-and-frequency-spike-should-look-similar" class="md-nav__link">
-    <span class="md-ellipsis">
-      Misconception 2: "The time domain wave and frequency spike should look similar"
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#misconception-3-fft-creates-the-frequencies" class="md-nav__link">
-    <span class="md-ellipsis">
-      Misconception 3: "FFT creates the frequencies"
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#homework-assignment" class="md-nav__link">
-    <span class="md-ellipsis">
-      Homework Assignment
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="Homework Assignment">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#reflection-questions-due-next-class" class="md-nav__link">
-    <span class="md-ellipsis">
-      Reflection Questions (Due Next Class)
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-      
-        <li class="md-nav__item">
   <a href="#instructor-notes" class="md-nav__link">
     <span class="md-ellipsis">
       Instructor Notes
     </span>
   </a>
   
-    <nav class="md-nav" aria-label="Instructor Notes">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#common-technical-issues" class="md-nav__link">
-    <span class="md-ellipsis">
-      Common Technical Issues
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#timing-adjustments" class="md-nav__link">
-    <span class="md-ellipsis">
-      Timing Adjustments
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#differentiation-strategies" class="md-nav__link">
-    <span class="md-ellipsis">
-      Differentiation Strategies
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#assessment-modifications" class="md-nav__link">
-    <span class="md-ellipsis">
-      Assessment Modifications
-    </span>
-  </a>
-  
 </li>
         
       </ul>
     </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#references" class="md-nav__link">
+    <span class="md-ellipsis">
+      References
+    </span>
+  </a>
   
 </li>
       
@@ -2712,7 +3162,7 @@
                   
 
   
-    <a href="https://github.com/dmccreary/signal-processing/blob/master/docs/sims/fft-basic/index.md" title="Edit this page" class="md-content__button md-icon">
+    <a href="https://github.com/dmccreary/signal-processing/blob/main/docs/sims/fft-basic/index.md" title="Edit this page" class="md-content__button md-icon">
       
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M10 20H6V4h7v5h5v3.1l2-2V8l-6-6H6c-1.1 0-2 .9-2 2v16c0 1.1.9 2 2 2h4zm10.2-7c.1 0 .3.1.4.2l1.3 1.3c.2.2.2.6 0 .8l-1 1-2.1-2.1 1-1c.1-.1.2-.2.4-.2m0 3.9L14.1 23H12v-2.1l6.1-6.1z"/></svg>
     </a>
@@ -2721,180 +3171,93 @@
 
 
 <h1 id="basic-fft-microsim">Basic FFT MicroSim</h1>
-<iframe src="./main.html" height="480px" scrolling="no"
-  style="overflow: hidden;"></iframe>
+<iframe src="main.html" width="100%" height="522px" scrolling="no"></iframe>
 
-<p>You can include this MicroSim in your course by pasting the following HTML directly into your web page.</p>
-<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
-<span class="normal">2</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="p">&lt;</span><span class="nt">iframe</span> <span class="na">src</span><span class="o">=</span><span class="s">&quot;https://dmccreary.github.io/signal-processing/sims/basic-fft/main.html&quot;</span> 
-  <span class="na">height</span><span class="o">=</span><span class="s">&quot;480px&quot;</span> <span class="na">scrolling</span><span class="o">=</span><span class="s">&quot;no&quot;</span> <span class="na">style</span><span class="o">=</span><span class="s">&quot;overflow: hidden;&quot;</span><span class="p">&gt;&lt;/</span><span class="nt">iframe</span><span class="p">&gt;</span>
+<p>Copy this iframe to your website:</p>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="p">&lt;</span><span class="nt">iframe</span> <span class="na">src</span><span class="o">=</span><span class="s">"https://dmccreary.github.io/signal-processing/sims/fft-basic/main.html"</span> <span class="na">width</span><span class="o">=</span><span class="s">"100%"</span> <span class="na">height</span><span class="o">=</span><span class="s">"522px"</span> <span class="na">scrolling</span><span class="o">=</span><span class="s">"no"</span><span class="p">&gt;&lt;/</span><span class="nt">iframe</span><span class="p">&gt;</span>
 </code></pre></div></td></tr></table></div>
-<p><a class="md-button md-button--primary" href="main.html">Run the Basic FFT MicroSim Fullscreen</a>
-<a href="https://editor.p5js.org/dmccreary/sketches/oDP6EoAQ6">Edit the Basic FFT MicroSim</a></p>
-<h2 id="basic-fft-visualization-lesson-plan">Basic FFT Visualization - Lesson Plan</h2>
-<h2 id="lab-information">Lab Information</h2>
-<p><strong>Course:</strong> Introduction to Signal Processing<br />
-<strong>Level:</strong> College Freshman<br />
-<strong>Duration:</strong> 20 minutes<br />
-<strong>Prerequisites:</strong> Basic trigonometry, familiarity with sine waves<br />
-<strong>Learning Objectives:</strong> Students will understand the fundamental concept of FFT and the relationship between time and frequency domains</p>
-<h2 id="learning-objectives">Learning Objectives</h2>
+<p><a class="md-button md-button--primary" href="main.html">Run MicroSim in Fullscreen</a></p>
+<p><a href="https://editor.p5js.org/dmccreary/sketches/oDP6EoAQ6">Edit in the p5.js Editor</a></p>
+<h2 id="description">Description</h2>
+<p>This MicroSim generates a pure sine wave <span class="arithmatex">\(x(t) = A\sin(2\pi f t)\)</span>, plays it through your speakers, and shows it two ways at once.
+The <strong>top plot</strong> (green) is the time domain: a 20 ms window of the waveform, triggered on a rising zero crossing so the
+wave holds still like an oscilloscope trace. The <strong>bottom plot</strong> (purple) is the frequency domain: the magnitude
+spectrum from 0 to 2100 Hz computed by a Fast Fourier Transform (FFT).</p>
+<ul>
+<li><strong>Frequency</strong> slider (20-2000 Hz, default 440 Hz) sets <span class="arithmatex">\(f\)</span>. The wave completes <span class="arithmatex">\(f \times 0.020\)</span> cycles in the window, and the spike moves to <span class="arithmatex">\(f\)</span>.</li>
+<li><strong>Amplitude</strong> slider (0-1, default 0.5) sets <span class="arithmatex">\(A\)</span>. The wave height and the spike height both scale with <span class="arithmatex">\(A\)</span>; the spike does not move.</li>
+<li><strong>Start/Pause</strong> turns the tone on and off. <strong>Reset</strong> returns the sliders to 440 Hz and 0.5.</li>
+</ul>
+<p>The read-out above the spectrum gives the centre frequency and height of the strongest FFT bin. The FFT uses
+<span class="arithmatex">\(N = 16384\)</span> points, so its bins are <span class="arithmatex">\(\Delta f = f_s / N\)</span> apart: 2.93 Hz when your audio device runs at <span class="arithmatex">\(f_s = 48\)</span> kHz
+(2.69 Hz at 44.1 kHz). The sample rate and bin width are printed under the spectrum on wide screens. A 440 Hz tone falls
+between two bins, so at 48 kHz the read-out shows 439.5 Hz. Heights are scaled so that a sine of amplitude 1 centred on a
+bin reaches 1.0; because the browser applies a Blackman window, a tone that falls between bins reads up to about 12% lower.
+The speakers play the tone at half the displayed amplitude to protect listeners; the FFT analyses the full signal.</p>
+<p>This MicroSim supports <a href="../../chapters/07-dft-fft-and-frequency-domain-analysis/#domain-representations">Chapter 7: DFT, FFT and Frequency Domain Analysis</a>.</p>
+<h2 id="lesson-plan">Lesson Plan</h2>
+<h3 id="learning-objectives">Learning Objectives</h3>
 <p>By the end of this lesson, students will be able to:</p>
 <ol>
-<li>Explain what the Fast Fourier Transform (FFT) does conceptually</li>
-<li>Identify the relationship between a sine wave in time domain and its frequency domain representation</li>
-<li>Predict how changes in frequency and amplitude affect both domain representations</li>
-<li>Distinguish between time domain and frequency domain visualizations</li>
-<li>Use interactive tools to explore signal analysis concepts</li>
+<li><strong>Explain</strong> that the FFT decomposes a time-domain waveform into the frequencies it contains</li>
+<li><strong>Predict</strong> that raising the frequency slider shortens the period in the time-domain plot and shifts the spectral peak to the right in the frequency-domain plot</li>
+<li><strong>Predict</strong> that increasing the amplitude slider raises both the waveform and the spectral peak in proportion while leaving the peak's frequency unchanged</li>
+<li><strong>Distinguish</strong> the time-domain display, which plots amplitude against time, from the frequency-domain display, which plots magnitude against frequency</li>
+<li><strong>Identify</strong> the frequency of a pure sine wave from the location of its single spectral peak and from the number of cycles in the 20 ms window</li>
 </ol>
-<h2 id="materials-needed">Materials Needed</h2>
+<h3 id="target-audience">Target Audience</h3>
+<p>College freshmen in an introductory signal processing course. The lab takes about 20 minutes.</p>
+<h3 id="prerequisites">Prerequisites</h3>
 <ul>
-<li>Computer with web browser and audio capability</li>
-<li>Basic FFT Visualization MicroSim</li>
+<li>Basic trigonometry</li>
+<li>Familiarity with sine waves (period, frequency, amplitude)</li>
+</ul>
+<h3 id="materials-and-setup">Materials and Setup</h3>
+<ul>
+<li>Computer with a web browser and audio output</li>
+<li>This MicroSim</li>
 <li>Headphones or speakers (optional but recommended)</li>
-<li>Student worksheet (provided below)</li>
-<li>Whiteboard/projector for demonstrations</li>
+<li>The student worksheet in the activities below</li>
+<li>Whiteboard or projector for demonstrations</li>
 </ul>
-<h2 id="pre-lesson-preparation">Pre-Lesson Preparation</h2>
-<h3 id="student-setup">Student Setup</h3>
-<ol>
-<li>Open the Basic FFT Visualization MicroSim in web browser</li>
-<li>Ensure audio is working (volume at comfortable level)</li>
-<li>Familiarize yourself with the interface:</li>
-<li>Two main display areas (top and bottom)</li>
-<li>Control sliders and buttons at bottom</li>
-<li>Note the "PAUSED" status indicator</li>
-</ol>
-<h3 id="instructor-setup">Instructor Setup</h3>
+<p><strong>Student setup.</strong> Open the MicroSim, set the computer volume to a comfortable level, and find the two plots (top and
+bottom), the two sliders, the Start and Reset buttons, and the red PAUSED status indicator.</p>
+<p><strong>Instructor setup.</strong> Project the MicroSim for a class demonstration, have the example frequencies 220 Hz, 440 Hz and
+880 Hz ready, and prepare simple sine-wave sketches on the whiteboard.</p>
+<h3 id="lesson-introduction">Lesson Introduction</h3>
+<p><strong>Hook: the musical connection.</strong> Ask: "When you hear a musical note, what makes it different from noise?" Students may
+mention pitch, tone or harmony. Lead toward the idea that a musical note has a specific frequency.</p>
+<p><strong>Core concept.</strong> "Today we will analyse a signal - music, voice, or an electronic signal - by breaking it into its
+frequency components."</p>
+<p><strong>Key terms.</strong> Write these on the board:</p>
 <ul>
-<li>Project MicroSim on screen for class demonstration</li>
-<li>Have example frequency values ready (220 Hz, 440 Hz, 880 Hz)</li>
-<li>Prepare simple sine wave drawings on whiteboard</li>
+<li><strong>Time domain:</strong> how a signal changes over time (what an oscilloscope shows)</li>
+<li><strong>Frequency domain:</strong> which frequencies are present in a signal and how strong each one is</li>
+<li><strong>FFT (Fast Fourier Transform):</strong> a fast algorithm that converts a sampled time-domain signal into the frequency domain</li>
 </ul>
-<h2 id="lesson-introduction">Lesson Introduction</h2>
-<h3 id="hook-the-musical-connection">Hook: The Musical Connection</h3>
-<p><strong>Ask students:</strong> "When you hear a musical note, what makes it different from noise?"</p>
-<p><strong>Brief Discussion:</strong> Students may mention pitch, tone, harmony. Lead toward the idea that musical notes have specific frequencies.</p>
-<h3 id="core-concept-introduction">Core Concept Introduction</h3>
-<p><strong>Explain:</strong> "Today we'll explore how we can analyze any signal - music, voice, or electronic signals - by breaking it down into its frequency components. This is like having X-ray vision for sound!"</p>
-<h3 id="key-terms-introduction">Key Terms Introduction</h3>
-<p>Write on board and define:</p>
-<ul>
-<li><strong>Time Domain:</strong> How a signal changes over time (what we usually see on an oscilloscope)</li>
-<li><strong>Frequency Domain:</strong> Which frequencies are present in a signal and how strong they are</li>
-<li><strong>FFT (Fast Fourier Transform):</strong> A mathematical tool that converts time domain signals to frequency domain</li>
-</ul>
-<h2 id="guided-exploration">Guided Exploration</h2>
-<h3 id="phase-1-understanding-the-interface">Phase 1: Understanding the Interface</h3>
-<p><strong>Instructor Demonstration:</strong>
-1. Point out the two main areas:</p>
-<ul>
-<li><strong>Top area (green line):</strong> "This shows how our signal changes over time"</li>
-<li>
-<p><strong>Bottom area (purple bars):</strong> "This shows which frequencies are in our signal"</p>
-</li>
-<li>
-<p>Show the controls:</p>
-</li>
-<li>
-<p><strong>Frequency slider:</strong> "Controls the pitch of our sine wave"</p>
-</li>
-<li><strong>Amplitude slider:</strong> "Controls how loud/strong our signal is"</li>
-<li><strong>Start/Pause button:</strong> "Turns our signal generator on and off"</li>
-</ul>
-<p><strong>Student Task:</strong> Have students identify these same elements on their screens.</p>
-<h3 id="phase-2-first-observations-8-minutes">Phase 2: First Observations (8 minutes)</h3>
-<p><strong>Guided Activity:</strong></p>
+<p>The read-outs quoted below were measured with a 48 kHz audio device. On a 44.1 kHz device the frequencies differ by up
+to about 3 Hz and the heights by a few hundredths, because the bins fall in different places.</p>
+<h3 id="activities">Activities</h3>
+<p><strong>Activity 1: Interface tour and first observations (8 min).</strong></p>
 <ol>
-<li><strong>Start with default settings</strong> (440 Hz, 0.5 amplitude, paused)</li>
-<li>
-<p><strong>Ask:</strong> "What do you see in both displays right now?" (Flat lines)</p>
-</li>
-<li>
-<p><strong>Press Start button</strong></p>
-</li>
-<li>
-<p><strong>Observe:</strong> Green sine wave appears in top, purple spike appears in bottom</p>
-</li>
-<li>
-<p><strong>Ask:</strong> "Where is the purple spike located? Why there?"</p>
-</li>
-<li>
-<p><strong>Change frequency to 220 Hz</strong></p>
-</li>
-<li>
-<p><strong>Observe:</strong> Wave in top gets "stretched out," spike in bottom moves left</p>
-</li>
-<li>
-<p><strong>Ask:</strong> "What happened to the wave? What happened to the spike?"</p>
-</li>
-<li>
-<p><strong>Change frequency to 880 Hz</strong></p>
-</li>
-<li>
-<p><strong>Observe:</strong> Wave in top gets "compressed," spike in bottom moves right</p>
-</li>
-<li><strong>Ask:</strong> "Can you predict the pattern here?"</li>
+<li>Before pressing Start (440 Hz, amplitude 0.5): the top plot is a flat line and the spectrum is empty. Ask: "What do you see in both displays right now?"</li>
+<li>Press <strong>Start</strong>. A green sine wave appears with 8.8 cycles in the 20 ms window (<span class="arithmatex">\(440 \times 0.020\)</span>), and a purple spike appears at 440 Hz. The read-out shows <em>Strongest bin: 439.5 Hz, magnitude 0.49</em>. Ask: "Where is the spike? Why there?"</li>
+<li>Set the frequency to <strong>220 Hz</strong>. The wave stretches out to 4.4 cycles and the spike moves left (read-out 219.7 Hz).</li>
+<li>Set the frequency to <strong>880 Hz</strong>. The wave compresses to 17.6 cycles and the spike moves right (read-out 878.9 Hz). Ask: "Can you predict the pattern?"</li>
 </ol>
-<p><strong>Key Learning Point:</strong> "One sine wave in time always creates exactly one spike in frequency!"</p>
-<h3 id="phase-3-amplitude-exploration-7-minutes">Phase 3: Amplitude Exploration (7 minutes)</h3>
-<p><strong>Guided Activity:</strong></p>
+<p>Key point: one sine wave in time always produces exactly one spike in frequency.</p>
+<p><strong>Activity 2: Amplitude exploration (7 min).</strong></p>
 <ol>
-<li>
-<p><strong>Set frequency to 440 Hz</strong></p>
-</li>
-<li>
-<p><strong>Change amplitude from 0.5 to 0.1</strong></p>
-</li>
-<li><strong>Observe:</strong> Time domain wave gets smaller, frequency spike gets shorter</li>
-<li>
-<p><strong>Ask:</strong> "What changed? What stayed the same?"</p>
-</li>
-<li>
-<p><strong>Change amplitude to 1.0</strong></p>
-</li>
-<li><strong>Observe:</strong> Both displays show maximum values</li>
-<li><strong>Ask:</strong> "How does amplitude affect each domain?"</li>
-</ol>
-<p><strong>Key Learning Point:</strong> "Amplitude changes the height in both domains, but not the frequency location!"</p>
-<h2 id="independent-practice">Independent Practice</h2>
-<h3 id="student-worksheet-activity">Student Worksheet Activity</h3>
-<p><strong>Instructions:</strong> Working individually or in pairs, complete the following exercises using the MicroSim:</p>
-<h4 id="exercise-1-frequency-prediction">Exercise 1: Frequency Prediction</h4>
-<ol>
-<li>Set the frequency slider to 100 Hz and press Start</li>
-<li>Observe where the spike appears in the frequency domain</li>
-<li><strong>Predict:</strong> If you change to 200 Hz, where will the spike move?</li>
-<li>Test your prediction</li>
-<li><strong>Record:</strong> Was your prediction correct? Why or why not?</li>
-</ol>
-<h4 id="exercise-2-musical-notes">Exercise 2: Musical Notes</h4>
-<p>The following frequencies correspond to musical notes:</p>
-<ul>
-<li>C4: 262 Hz</li>
-<li>E4: 330 Hz  </li>
-<li>G4: 392 Hz</li>
-<li>
-<p>C5: 523 Hz</p>
-</li>
-<li>
-<p>Set each frequency and observe the frequency domain</p>
-</li>
-<li><strong>Record:</strong> How does the spike position relate to the pitch you hear?</li>
-<li><strong>Challenge:</strong> Can you "tune" the slider to create these exact frequencies?</li>
-</ul>
-<h4 id="exercise-3-amplitude-investigation">Exercise 3: Amplitude Investigation</h4>
-<ol>
-<li>Set frequency to 500 Hz</li>
-<li>Try amplitude values: 0.1, 0.3, 0.7, 1.0</li>
-<li><strong>Record:</strong> Complete this table:</li>
+<li>Set the frequency to 440 Hz and change the amplitude from 0.5 to <strong>0.1</strong>. The wave shrinks to peaks of <span class="arithmatex">\(\pm 0.1\)</span> and the spike drops to a height of 0.10. Ask: "What changed? What stayed the same?"</li>
+<li>Set the amplitude to <strong>1.0</strong>. The wave reaches the <span class="arithmatex">\(\pm 1\)</span> gridlines and the spike reaches 0.98.</li>
+<li>Worksheet: set the frequency to 500 Hz and complete the table.</li>
 </ol>
 <table>
 <thead>
 <tr>
 <th>Amplitude</th>
-<th>Time Domain Wave Height</th>
-<th>Frequency Spike Height</th>
+<th>Time-domain wave height</th>
+<th>Frequency spike height</th>
 </tr>
 </thead>
 <tbody>
@@ -2920,107 +3283,102 @@
 </tr>
 </tbody>
 </table>
+<p>Expected spike heights: 0.09, 0.28, 0.66 and 0.95. Each is about 0.95 times the amplitude (500 Hz falls between two
+bins), so the spike height is proportional to the amplitude. Key point: amplitude changes the height in both domains but
+not the frequency location.</p>
+<p><strong>Activity 3: Frequency prediction (5 min).</strong></p>
 <ol>
-<li><strong>Conclusion:</strong> What is the relationship between amplitude and the heights in both domains?</li>
+<li>Set the frequency to <strong>100 Hz</strong> and press Start. The window holds exactly 2 cycles and the spike is at the far left (read-out 99.6 Hz).</li>
+<li>Predict where the spike and the wave will be at 200 Hz, then test it. The spike moves to 199.2 Hz and the window holds 4 cycles.</li>
+<li>Find the setting that puts the spike on the 1000 Hz tick. At 1000 Hz the read-out shows 999.0 Hz: discuss why the FFT reports the nearest bin rather than the exact frequency.</li>
 </ol>
-<h2 id="class-discussion-and-wrap-up-5-minutes">Class Discussion and Wrap-up (5 minutes)</h2>
-<h3 id="key-findings-review">Key Findings Review</h3>
-<p><strong>Ask students to share:</strong>
-- "What surprised you most about the relationship between time and frequency?"
-- "How would you explain FFT to a friend in simple terms?"</p>
-<h3 id="connect-to-real-world">Connect to Real World</h3>
-<p><strong>Discuss applications:</strong>
-- <strong>Music production:</strong> Equalizers show frequency content
-- <strong>Medical imaging:</strong> MRI uses similar frequency analysis
-- <strong>Communication:</strong> Cell phones analyze frequency to separate channels
-- <strong>Audio compression:</strong> MP3 files use frequency analysis to reduce file size</p>
-<h3 id="preview-next-lesson">Preview Next Lesson</h3>
-<p>"Next time, we'll explore what happens when we have multiple sine waves at the same time. Can you predict what the frequency domain might look like with two different frequencies playing together?"</p>
-<h2 id="assessment-rubric">Assessment Rubric</h2>
-<h3 id="formative-assessment-during-lesson">Formative Assessment (During Lesson)</h3>
-<p><strong>Excellent (4):</strong> Student correctly predicts frequency/amplitude effects and explains reasoning<br />
-<strong>Proficient (3):</strong> Student makes correct observations with minimal guidance<br />
-<strong>Developing (2):</strong> Student participates but needs significant guidance<br />
-<strong>Beginning (1):</strong> Student struggles to make basic observations</p>
-<h3 id="worksheet-assessment">Worksheet Assessment</h3>
-<p><strong>Understanding of FFT Concept:</strong></p>
+<p><strong>Activity 4: Musical notes (5 min).</strong> Set each note and listen while you watch the spike:</p>
 <ul>
-<li>Correctly identifies that sine waves create single frequency spikes</li>
-<li>Explains relationship between time and frequency domains</li>
-<li>Demonstrates understanding that amplitude affects height, not frequency position</li>
+<li>C4: 262 Hz (read-out 260.7 Hz)</li>
+<li>E4: 330 Hz (read-out 331.1 Hz)</li>
+<li>G4: 392 Hz (read-out 392.6 Hz)</li>
+<li>C5: 523 Hz (read-out 524.4 Hz)</li>
 </ul>
-<p><strong>Problem-Solving Skills:</strong></p>
+<p>Higher pitch puts the spike further to the right. C5 is one octave above C4, and its spike sits at almost exactly twice
+the frequency (<span class="arithmatex">\(523 / 262 \approx 2.0\)</span>).</p>
+<h3 id="class-discussion-and-wrap-up">Class Discussion and Wrap-up</h3>
+<p>Ask students to share:</p>
 <ul>
-<li>Makes accurate predictions about frequency changes</li>
-<li>Uses MicroSim effectively to test hypotheses</li>
-<li>Records observations accurately</li>
+<li>"What surprised you most about the relationship between time and frequency?"</li>
+<li>"How would you explain the FFT to a friend in simple terms?"</li>
 </ul>
-<h2 id="extension-activities">Extension Activities</h2>
-<h3 id="for-advanced-students">For Advanced Students</h3>
+<p>Connect to the real world:</p>
+<ul>
+<li><strong>Music production:</strong> equalizers and spectrum analysers show frequency content</li>
+<li><strong>Medical imaging:</strong> MRI reconstructs images with Fourier transforms</li>
+<li><strong>Communication:</strong> mobile networks place many signals in separate frequency channels</li>
+<li><strong>Audio compression:</strong> MP3 encoders use frequency analysis to discard sounds we cannot hear</li>
+</ul>
+<p>Preview of the next lesson: "What will the frequency domain look like when two sine waves play at the same time?"</p>
+<h3 id="assessment">Assessment</h3>
 <ol>
-<li>
-<p><strong>Research Challenge:</strong> Look up the mathematical definition of Fourier Transform. How does the visual representation relate to the equations?</p>
-</li>
-<li>
-<p><strong>Real-World Connection:</strong> Find examples of frequency analysis in your field of interest (engineering, music, medicine, etc.)</p>
-</li>
+<li>A student sets the frequency to 250 Hz. Where does the spike appear, and how many complete cycles fit in the 20 ms window? <em>(Answer: at 250 Hz (the read-out shows 249.0 Hz at 48 kHz); <span class="arithmatex">\(250 \times 0.020 = 5\)</span> cycles.)</em></li>
+<li>At a fixed frequency the amplitude is changed from 0.2 to 0.6. What happens to the height and the position of the spike? <em>(Answer: the height triples because the spectrum magnitude is proportional to amplitude; the position does not change.)</em></li>
+<li>You count 6 complete cycles in the 20 ms window. What frequency is the generator set to? <em>(Answer: <span class="arithmatex">\(6 / 0.020\ \text{s} = 300\)</span> Hz; the spike confirms it, with a read-out of 298.8 Hz at 48 kHz.)</em></li>
+<li>Why does the read-out show 439.5 Hz rather than 440 Hz for a 440 Hz tone at <span class="arithmatex">\(f_s = 48\)</span> kHz? <em>(Answer: the FFT measures only at bins spaced <span class="arithmatex">\(48000 / 16384 \approx 2.93\)</span> Hz apart. 440 Hz lies between bin 150 (439.45 Hz) and bin 151 (442.38 Hz), and the read-out reports the centre of the stronger bin.)</em></li>
+<li>Predict the spectrum of a signal that contains 300 Hz at amplitude 0.5 and 900 Hz at amplitude 0.25. <em>(Answer: two spikes, one at 300 Hz and one at 900 Hz, with the second about half as tall as the first.)</em></li>
 </ol>
-<h3 id="for-students-needing-support">For Students Needing Support</h3>
+<p><strong>Assessment rubric (formative, during the lesson).</strong></p>
+<ul>
+<li><strong>Excellent (4):</strong> correctly predicts the effects of frequency and amplitude and explains the reasoning</li>
+<li><strong>Proficient (3):</strong> makes correct observations with minimal guidance</li>
+<li><strong>Developing (2):</strong> participates but needs significant guidance</li>
+<li><strong>Beginning (1):</strong> struggles to make basic observations</li>
+</ul>
+<p><strong>Worksheet assessment.</strong></p>
+<ul>
+<li>Understanding of the FFT: identifies that a sine wave creates a single spike, explains the relationship between the two domains, and shows that amplitude affects height, not position</li>
+<li>Problem solving: makes accurate predictions about frequency changes, uses the MicroSim to test hypotheses, and records observations accurately</li>
+</ul>
+<h3 id="common-misconceptions">Common Misconceptions</h3>
+<p><strong>"Higher frequency means a taller spike."</strong> Frequency moves the spike sideways; only the amplitude changes its height.
+With the amplitude at 0.5, move the frequency from 220 Hz to 880 Hz: the spike moves right while its height stays near
+0.5 (0.50 and 0.47).</p>
+<p><strong>"The time-domain wave and the frequency spike should look similar."</strong> They show different information. A smooth wave
+with 8.8 cycles in the window becomes one narrow spike at 440 Hz.</p>
+<p><strong>"The FFT creates the frequencies."</strong> The FFT only reveals frequencies that are already in the signal, the way a prism
+reveals colours already present in white light. Press Pause: the signal goes silent and the spike decays to nothing.</p>
+<h3 id="extension-activities">Extension Activities</h3>
+<p>For advanced students:</p>
 <ol>
-<li>
-<p><strong>Visual Summary:</strong> Create a drawing showing a sine wave and its corresponding frequency spike with labels</p>
-</li>
-<li>
-<p><strong>Analogy Development:</strong> Think of an analogy that helps explain why we need both time and frequency representations</p>
-</li>
+<li><strong>Research challenge:</strong> look up the definition of the discrete Fourier transform. How does the bin spacing <span class="arithmatex">\(f_s/N\)</span> explain the read-out values in Activity 3?</li>
+<li><strong>Real-world connection:</strong> find an example of frequency analysis in your own field (engineering, music, medicine).</li>
 </ol>
-<h2 id="common-student-misconceptions">Common Student Misconceptions</h2>
-<h3 id="misconception-1-higher-frequency-means-taller-spike">Misconception 1: "Higher frequency means taller spike"</h3>
-<p><strong>Correction:</strong> Higher frequency moves the spike to the right, not up. Height is controlled by amplitude.</p>
-<h3 id="misconception-2-the-time-domain-wave-and-frequency-spike-should-look-similar">Misconception 2: "The time domain wave and frequency spike should look similar"</h3>
-<p><strong>Correction:</strong> They represent completely different information. Time domain shows change over time; frequency domain shows which frequencies are present.</p>
-<h3 id="misconception-3-fft-creates-the-frequencies">Misconception 3: "FFT creates the frequencies"</h3>
-<p><strong>Correction:</strong> FFT reveals frequencies that were already in the signal. It's like using a prism to see colors that were already in white light.</p>
-<h2 id="homework-assignment">Homework Assignment</h2>
-<h3 id="reflection-questions-due-next-class">Reflection Questions (Due Next Class)</h3>
+<p>For students needing support:</p>
 <ol>
-<li>
-<p>In your own words, explain what the Fast Fourier Transform does and why it's useful.</p>
-</li>
-<li>
-<p>Describe a situation where you might want to analyze a signal in the frequency domain rather than just looking at it in time domain.</p>
-</li>
-<li>
-<p>Using the MicroSim, find the frequency that creates a spike at exactly the 1000 Hz mark. Explain how you found this frequency and what you observed.</p>
-</li>
-<li>
-<p><strong>Creative Application:</strong> If you were designing a music app, how might you use frequency domain analysis? Describe at least two features that could benefit from FFT analysis.</p>
-</li>
+<li><strong>Visual summary:</strong> draw a sine wave and its frequency spike, with labelled axes.</li>
+<li><strong>Analogy:</strong> invent an analogy that explains why we need both the time and the frequency representation.</li>
 </ol>
-<h2 id="instructor-notes">Instructor Notes</h2>
-<h3 id="common-technical-issues">Common Technical Issues</h3>
+<h3 id="homework">Homework</h3>
+<ol>
+<li>In your own words, explain what the Fast Fourier Transform does and why it is useful.</li>
+<li>Describe a situation where you would analyse a signal in the frequency domain rather than the time domain.</li>
+<li>Using the MicroSim, put the spike on the 1000 Hz mark. Explain how you found the setting and why the read-out may not show exactly 1000 Hz.</li>
+<li><strong>Creative application:</strong> if you were designing a music app, how could you use frequency-domain analysis? Describe at least two features.</li>
+</ol>
+<h3 id="instructor-notes">Instructor Notes</h3>
 <ul>
-<li><strong>Audio not working:</strong> Ensure students click "Start" button and check browser audio permissions</li>
-<li><strong>Slider not responding:</strong> Refresh page and try again</li>
-<li><strong>Display too small:</strong> Use browser zoom if needed</li>
+<li><strong>Audio not working:</strong> students must click Start (browsers block sound until a click) and check that the tab is not muted. The speakers play the tone at half the displayed amplitude.</li>
+<li><strong>Display too small:</strong> use browser zoom, or open the MicroSim full screen.</li>
+<li><strong>Running behind:</strong> skip the worksheet table in Activity 2.</li>
+<li><strong>Ahead of schedule:</strong> discuss frequency resolution. This MicroSim uses a 16,384-point FFT, giving 2.93 Hz bins at 48 kHz; a 1,024-point FFT would give 46.9 Hz bins (<span class="arithmatex">\(48000 / 1024\)</span>), too coarse to separate 440 Hz from 460 Hz.</li>
+<li><strong>Differentiation:</strong> visual learners can sketch both plots; auditory learners can listen with headphones while sweeping the frequency; kinesthetic learners can explore freely with the sliders.</li>
+<li><strong>Accommodations:</strong> allow verbal worksheet answers, give English-language learners a vocabulary list of the key terms, and ask advanced students about sampling rate and frequency resolution.</li>
 </ul>
-<h3 id="timing-adjustments">Timing Adjustments</h3>
-<ul>
-<li><strong>Running behind:</strong> Skip Exercise 3 in Independent Practice</li>
-<li><strong>Ahead of schedule:</strong> Add discussion about why we need 1024 samples for good frequency resolution</li>
-</ul>
-<h3 id="differentiation-strategies">Differentiation Strategies</h3>
-<ul>
-<li><strong>Visual learners:</strong> Emphasize the graphical representations and encourage drawing</li>
-<li><strong>Auditory learners:</strong> Have students listen to frequency changes with headphones</li>
-<li><strong>Kinesthetic learners:</strong> Encourage hands-on exploration with sliders</li>
-</ul>
-<h3 id="assessment-modifications">Assessment Modifications</h3>
-<ul>
-<li><strong>For students with disabilities:</strong> Allow verbal responses instead of written for worksheet</li>
-<li><strong>For ESL students:</strong> Provide vocabulary list with key terms and definitions</li>
-<li><strong>For advanced students:</strong> Ask follow-up questions about sampling rates and frequency resolution</li>
-</ul>
+<h2 id="references">References</h2>
+<ol>
+<li><a href="https://en.wikipedia.org/wiki/Fast_Fourier_transform">Fast Fourier transform</a> - Wikipedia - the algorithm that computes the spectrum shown in the bottom plot</li>
+<li><a href="https://en.wikipedia.org/wiki/Discrete_Fourier_transform">Discrete Fourier transform</a> - Wikipedia - definition of the frequency bins and their spacing <span class="arithmatex">\(f_s/N\)</span></li>
+<li><a href="https://en.wikipedia.org/wiki/Frequency_domain">Frequency domain</a> - Wikipedia - time-domain and frequency-domain views of the same signal</li>
+<li><a href="https://en.wikipedia.org/wiki/Window_function">Window function</a> - Wikipedia - the Blackman window and why a tone between bins reads slightly low</li>
+<li><a href="https://developer.mozilla.org/en-US/docs/Web/API/AnalyserNode">AnalyserNode</a> - MDN Web Docs - the browser FFT that p5.sound uses for the spectrum and the waveform</li>
+<li><a href="https://www.dspguide.com/">The Scientist and Engineer's Guide to Digital Signal Processing</a> - Steven W. Smith - free online textbook with chapters on the DFT and the FFT</li>
+</ol>
 
 
 
@@ -3059,7 +3417,7 @@
       <nav class="md-footer__inner md-grid" aria-label="Footer" >
         
           
-          <a href="../base-and-treble/" class="md-footer__link md-footer__link--prev" aria-label="Previous: Base and Treble">
+          <a href="../analog-mod/" class="md-footer__link md-footer__link--prev" aria-label="Previous: Analog Modulation">
             <div class="md-footer__button md-icon">
               
               <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
@@ -3069,20 +3427,20 @@
                 Previous
               </span>
               <div class="md-ellipsis">
-                Base and Treble
+                Analog Modulation
               </div>
             </div>
           </a>
         
         
           
-          <a href="../blooms-taxonomy/" class="md-footer__link md-footer__link--next" aria-label="Next: Bloom&#39;s Taxonomy">
+          <a href="../base-and-treble/" class="md-footer__link md-footer__link--next" aria-label="Next: Bass and Treble">
             <div class="md-footer__title">
               <span class="md-footer__direction">
                 Next
               </span>
               <div class="md-ellipsis">
-                Bloom's Taxonomy
+                Bass and Treble
               </div>
             </div>
             <div class="md-footer__button md-icon">

@@ -1,0 +1,177 @@
+{
+  "microsim": {
+    "dublinCore": {
+      "title": "Multirate Sample Rate Converter",
+      "creator": ["Dan McCreary"],
+      "subject": ["Multirate signal processing", "Sample-rate conversion", "Upsampling", "Downsampling", "Interpolation", "Decimation", "Aliasing"],
+      "description": "A rational L/M sample-rate converter: upsample by L (zero insertion), low-pass FIR filter with cutoff pi/max(L,M) and gain L, downsample by M. Shows the sample rate at each node, the spectrum and a stem plot at four points of the chain with the Nyquist frequency marked, the error against an ideal converter, and the multiplications per output sample.",
+      "publisher": "Dan McCreary",
+      "contributor": ["Claude (Anthropic)"],
+      "date": "2026-10-14",
+      "type": "Interactive Simulation",
+      "format": "text/html",
+      "identifier": "https://dmccreary.github.io/signal-processing/sims/multirate-sample-rate-converter/",
+      "language": "en",
+      "relation": ["Chapter 13: Multirate Signal Processing and Compression"],
+      "rights": "CC BY-NC-SA 4.0"
+    },
+    "search": {
+      "tags": ["multirate", "sample rate conversion", "upsampling", "downsampling", "interpolation", "decimation", "spectral images", "aliasing", "polyphase", "FIR filter"],
+      "searchKeywords": ["L/M resampler", "rational sample rate converter", "zero insertion images", "anti-aliasing filter", "anti-imaging filter", "polyphase cost"],
+      "visualizationType": ["simulation", "chart", "diagram", "interactive-demo"],
+      "interactionLevel": "high",
+      "complexity": 7,
+      "relatedConcepts": ["Multirate Signal Processing", "Decimation", "Interpolation", "Upsampling", "Downsampling", "Aliasing", "Nyquist Frequency", "Anti-Aliasing Filter", "FIR Filters", "Multirate Filters"],
+      "applicationDomains": ["education", "demonstration", "exploration", "analysis"],
+      "showcase": false
+    },
+    "educational": {
+      "gradeLevel": ["Undergraduate"],
+      "subjectArea": ["Engineering", "Computer Science"],
+      "topic": ["Sample-rate conversion", "Upsampling and spectral images", "Downsampling and aliasing", "Interpolation and decimation filters", "Polyphase implementation cost"],
+      "learningObjectives": [
+        "Calculate the sample rate at every node of an L/M converter, including the output rate fs L/M",
+        "Predict the frequencies k fs +/- f of the spectral images created by inserting L-1 zeros, and identify them on the spectrum after upsampling",
+        "Predict where a component above the output Nyquist frequency lands after downsampling, and verify the alias frequency on the output spectrum",
+        "Explain why the converter's single low-pass filter needs cutoff pi/max(L, M) and passband gain L",
+        "Analyze how the filter length trades conversion error against multiplications per output sample, and compare direct and polyphase cost"
+      ],
+      "bloomsTaxonomy": ["Apply", "Analyze"],
+      "prerequisites": ["Sampling theorem, Nyquist frequency and aliasing", "Magnitude spectra in decibels", "FIR low-pass filters and windowed-sinc design"],
+      "duration": {"typical": 45, "range": {"min": 20, "max": 50}},
+      "difficulty": "Intermediate",
+      "scaffolding": {
+        "type": ["guided-discovery", "feedback"],
+        "adaptability": "fixed",
+        "removal": "user-controlled"
+      },
+      "misconceptions": [
+        {
+          "misconception": "Upsampling adds detail or new frequencies to the signal",
+          "correction": "Raising the rate adds no new frequencies; the extra samples are interpolated from the existing ones",
+          "evidence": "With L = 3, M = 1 and the filter on, the 24 kHz output still holds only 0.5, 1.2 and 3.1 kHz, and nothing above 4 kHz rises above -70 dB"
+        },
+        {
+          "misconception": "Downsampling only discards samples, so it cannot harm the signal",
+          "correction": "Components above the new Nyquist frequency fold into the baseband and cannot be removed afterwards, so the low-pass filter must come before the downsampler",
+          "evidence": "With L = 1, M = 2 and the filter off, the 3.1 kHz tone appears as a red 0.90 kHz alias in the output"
+        }
+      ]
+    },
+    "technical": {
+      "framework": "p5.js",
+      "version": "1.0.0",
+      "canvasDimensions": {"width": 900, "height": 570, "responsive": true},
+      "regions": {"drawHeight": 460, "controlHeight": 110},
+      "dependencies": ["p5.js 2.3.2"],
+      "browserCompatibility": ["Chrome 90+", "Firefox 88+", "Safari 14+", "Edge 90+"],
+      "performance": {"memoryUsage": "low", "computationalComplexity": "O(n log n)"},
+      "deviceRequirements": {
+        "minScreenWidth": 360,
+        "touchSupport": true,
+        "keyboardRequired": false,
+        "mouseRequired": false,
+        "networkRequired": true
+      },
+      "accessibility": {
+        "screenReader": true,
+        "keyboardNavigation": true,
+        "colorContrast": true,
+        "altText": true,
+        "screenReaderScript": "A rational sample rate converter: upsample by L, low-pass filter, downsample by M. A pipeline diagram shows the sample rate at each node. Four columns show the magnitude spectrum in decibels and a short stem plot of the samples at the input, after zero insertion, after the filter, and at the output, each with its Nyquist frequency marked. Sliders set L, M and the filter length; a checkbox bypasses the filter; a menu chooses a multi-tone, chirp or noise input."
+      }
+    },
+    "userInterface": {
+      "layoutType": "responsive-width",
+      "layoutPattern": "drawing-region-above-controls",
+      "colorScheme": {
+        "drawingArea": "aliceblue",
+        "controlArea": "white",
+        "samples": "blue",
+        "spectrum": "maroon",
+        "filter": "gold",
+        "errorAndOutputNyquist": "red",
+        "text": "black"
+      },
+      "controls": [
+        {
+          "id": "lSlider",
+          "type": "slider",
+          "label": "Upsample L",
+          "description": "Upsampling factor: inserts L-1 zeros between input samples and raises the rate to L times 8 kHz",
+          "group": "conversion-ratio",
+          "properties": {"min": 1, "max": 8, "default": 3, "step": 1, "showValue": true}
+        },
+        {
+          "id": "mSlider",
+          "type": "slider",
+          "label": "Downsample M",
+          "description": "Downsampling factor: keeps one of every M filtered samples, giving an output rate of 8L/M kHz",
+          "group": "conversion-ratio",
+          "properties": {"min": 1, "max": 8, "default": 2, "step": 1, "showValue": true}
+        },
+        {
+          "id": "tapsSlider",
+          "type": "slider",
+          "label": "Filter length N",
+          "description": "Number of taps of the Hamming-windowed sinc low-pass filter (cutoff pi/max(L,M), gain L)",
+          "group": "filter",
+          "properties": {"min": 8, "max": 128, "default": 48, "step": 1, "units": "taps", "showValue": true}
+        },
+        {
+          "id": "filterCheckbox",
+          "type": "checkbox",
+          "label": "Low-pass filter on",
+          "description": "When unchecked the filter is bypassed, so spectral images and aliases pass to the output",
+          "group": "filter",
+          "properties": {"checked": true}
+        },
+        {
+          "id": "signalSelect",
+          "type": "dropdown",
+          "label": "Input signal",
+          "description": "Chooses the input: three tones (0.5, 1.2, 3.1 kHz), a linear chirp, or colored noise",
+          "group": "signal",
+          "properties": {
+            "options": [
+              {"value": "multi", "label": "multi-tone"},
+              {"value": "chirp", "label": "linear chirp"},
+              {"value": "noise", "label": "colored noise"}
+            ],
+            "default": "multi"
+          }
+        }
+      ],
+      "visualElements": [
+        {"type": "diagram", "description": "Pipeline x[n] -> upsample by L -> LPF -> downsample by M -> y[m], with the sample rate under each node and a caption under each block", "interactive": false, "updateTriggers": ["lSlider", "mSlider", "filterCheckbox"]},
+        {"type": "chart", "description": "Four magnitude spectra in dB (input, after zero insertion, after the filter, output), each from 0 Hz to that stage's Nyquist frequency, with dashed input and output Nyquist lines, the filter response |H|/L and the error spectrum", "interactive": true, "updateTriggers": ["lSlider", "mSlider", "tapsSlider", "filterCheckbox", "signalSelect"]},
+        {"type": "graph", "description": "Four 2 ms stem plots of the samples at each stage over the ideal continuous signal, with inserted zeros drawn as open circles", "interactive": false, "updateTriggers": ["lSlider", "mSlider", "tapsSlider", "filterCheckbox", "signalSelect"]},
+        {"type": "text-display", "description": "Output rate fs L/M, filter summary, error against an ideal converter, multiplications per output sample (direct and polyphase), and measured output peaks with aliases and images in red", "interactive": false, "updateTriggers": ["lSlider", "mSlider", "tapsSlider", "filterCheckbox", "signalSelect"]}
+      ]
+    },
+    "simulation": {
+      "model": {
+        "type": "algorithmic",
+        "description": "A 64 ms segment of the input at 8 kHz (with 10 ms of padding on each side) is upsampled by zero insertion, filtered by a windowed-sinc FIR whose delay is removed, and downsampled. Spectra use a Blackman-Harris window and a radix-2 FFT. The error compares the output with the input band-limited to min(fs, fs')/2 and sampled at the output instants.",
+        "equations": [
+          "u[k] = x[k/L] if L divides k, else 0",
+          "U(e^{jw}) = X(e^{jwL})",
+          "h[j] = L-normalised Hamming-windowed sinc, cutoff w_c = pi / max(L, M)",
+          "v[k] = sum_j h[j] u[k - j]",
+          "y[m] = v[mM]",
+          "fs' = fs L / M",
+          "E = 10 log10( mean((y - y_ideal)^2) / mean(x^2) )",
+          "cost per output sample: direct N M, polyphase about N / L"
+        ],
+        "algorithms": ["Zero insertion", "Windowed-sinc FIR design (Hamming)", "Direct convolution skipping zero inputs", "Radix-2 FFT with Blackman-Harris window", "Spectral peak picking with parabolic interpolation"],
+        "limitations": ["The chirp's ideal reference switches the sweep off smoothly where it crosses the cutoff, so components near the cutoff are only approximately classified", "The filter cutoff sits exactly at pi/max(L, M), so the transition band straddles the Nyquist frequency"]
+      }
+    },
+    "usage": {
+      "recommendedUsage": ["demonstration", "exploration", "guided-practice"],
+      "instructionalStrategies": ["Predict the image and alias frequencies, then verify them with the peak list", "Toggle the filter to separate the effects of imaging and aliasing", "Tabulate error and cost against filter length"],
+      "extensions": ["Add a multistage option (for example 3/2 as 3/1 then 1/2) and compare the cost per output sample", "Add a Kaiser window with an adjustable stopband attenuation"]
+    }
+  },
+  "canvasHeight": 570
+}

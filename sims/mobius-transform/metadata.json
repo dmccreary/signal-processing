@@ -1,0 +1,162 @@
+{
+  "microsim": {
+    "dublinCore": {
+      "title": "Möbius Transform",
+      "creator": ["Dan McCreary"],
+      "subject": ["Möbius transformations", "Conformal mapping", "Complex functions", "Bilinear transform", "IIR filter design"],
+      "description": "Interactive explorer for the Möbius transformation w = (Az + B)/(Cz + D). A grid of points in the input z-plane and its image in the output w-plane are drawn at the same scale; draggable coefficient vectors, presets (identity, rotation, inversion, bilinear, Cayley), freehand drawing that is mapped through f, and read-outs of AD - BC, the pole -D/C and f(infinity) = A/C.",
+      "publisher": "Dan McCreary",
+      "contributor": ["ChatGPT (OpenAI)", "Claude (Anthropic)"],
+      "date": "2025-05-14",
+      "type": "Interactive Simulation",
+      "format": "text/html",
+      "identifier": "https://dmccreary.github.io/signal-processing/sims/mobius-transform/",
+      "language": "en",
+      "relation": ["Chapter 10: Advanced Filter Design and Implementation", "Complex Plane"],
+      "rights": "CC BY-NC-SA 4.0"
+    },
+    "search": {
+      "tags": ["mobius transformation", "möbius transform", "linear fractional transformation", "conformal map", "bilinear transform", "complex plane", "pole", "inversion", "cayley transform"],
+      "searchKeywords": ["mobius transform visualization", "(az + b)/(cz + d)", "lines map to circles", "bilinear transform s-plane to z-plane", "frequency warping", "point at infinity"],
+      "visualizationType": ["graph", "interactive-demo", "simulation"],
+      "interactionLevel": "high",
+      "complexity": 6,
+      "relatedConcepts": ["Complex Numbers", "Bilinear Transform", "Frequency Warping", "Poles and Zeros", "Unit Circle", "S-Plane", "Z-Plane", "Stability"],
+      "applicationDomains": ["education", "exploration", "demonstration"],
+      "showcase": false
+    },
+    "educational": {
+      "gradeLevel": ["Undergraduate"],
+      "subjectArea": ["Mathematics", "Engineering"],
+      "topic": ["Möbius transformations", "Conformal maps", "Poles and the point at infinity", "Bilinear transform", "Frequency warping"],
+      "learningObjectives": [
+        "Calculate the pole -D/C, the image of infinity A/C and the determinant AD - BC of a Möbius transformation from its coefficients",
+        "Predict whether a line or circle in the z-plane maps to a line or a circle, from its position relative to the pole",
+        "Explain how B translates the plane, A rotates and scales it, and a nonzero C bends lines into circles",
+        "Demonstrate that the bilinear map (1+s)/(1-s) sends the imaginary axis onto the unit circle and the left half-plane inside it",
+        "Calculate the warped digital frequency omega = 2 arctan(Omega) of a point s = j Omega under the bilinear map with T = 2"
+      ],
+      "bloomsTaxonomy": ["Understand", "Apply", "Analyze"],
+      "prerequisites": ["Complex arithmetic in rectangular and polar form", "Poles of a rational function", "Stability regions in the s-plane and z-plane"],
+      "duration": {"typical": 30, "range": {"min": 15, "max": 45}},
+      "difficulty": "Intermediate",
+      "scaffolding": {
+        "type": ["guided-discovery", "feedback"],
+        "adaptability": "fixed",
+        "removal": "user-controlled"
+      },
+      "misconceptions": [
+        {
+          "misconception": "A Möbius transformation keeps straight lines straight",
+          "correction": "Lines and circles map to lines and circles; a line stays a line only if it passes through the pole -D/C",
+          "evidence": "With the Inversion preset and Scale 2, trace the line Re z = 1: its image is the circle |w - 0.5| = 0.5; the real axis, which passes through the pole at 0, stays straight"
+        },
+        {
+          "misconception": "The bilinear transform maps analog frequency evenly onto the unit circle",
+          "correction": "omega = 2 arctan(Omega T / 2) compresses high analog frequencies toward z = -1 (frequency warping)",
+          "evidence": "With the Bilinear preset, Omega from 0 to 1 covers 90 degrees of the circle, 1 to 3 about 53 degrees, and everything above 3 the last 37 degrees; the grid dots crowd near w = -1"
+        }
+      ]
+    },
+    "technical": {
+      "framework": "p5.js",
+      "version": "2.0.0",
+      "canvasDimensions": {"width": 690, "height": 630, "responsive": true},
+      "regions": {"drawHeight": 545, "controlHeight": 85},
+      "dependencies": ["p5.js 2.3.2"],
+      "browserCompatibility": ["Chrome 90+", "Firefox 88+", "Safari 14+", "Edge 90+"],
+      "performance": {"memoryUsage": "low", "loadTime": 500},
+      "deviceRequirements": {
+        "minScreenWidth": 375,
+        "touchSupport": true,
+        "keyboardRequired": false,
+        "mouseRequired": true,
+        "networkRequired": false
+      },
+      "accessibility": {
+        "screenReader": true,
+        "keyboardNavigation": false,
+        "colorContrast": true,
+        "altText": true,
+        "screenReaderScript": "Möbius transform explorer. The input z-plane on the left shows a grid of white points and the output w-plane on the right shows their images under w = (Az + B)/(Cz + D). Drag the colored dots in the Coefficients box to change A, B, C and D, choose a preset, draw in the input plane, and use the Scale and Density sliders. Read-outs give AD - BC, the pole -D/C, f(infinity) = A/C and the value of f at the pointer."
+      }
+    },
+    "userInterface": {
+      "layoutType": "responsive-width",
+      "layoutPattern": "two-planes-above-coefficients-and-readouts-above-controls",
+      "colorScheme": {
+        "drawingArea": "white",
+        "controlArea": "white",
+        "frames": "light gray (200) with black axes and white grid points",
+        "coefficients": "A red, B green, C blue, D black",
+        "drawing": "purple",
+        "highlight": "gold pointer marker, red pole marker",
+        "text": "black"
+      },
+      "controls": [
+        {
+          "id": "scaleSlider",
+          "type": "slider",
+          "label": "Scale",
+          "description": "Sets the half-width R of both the input and output plots, which show -R to R on each axis",
+          "group": "view",
+          "properties": {"min": 1, "max": 20, "default": 3, "step": 1, "showValue": true}
+        },
+        {
+          "id": "densitySlider",
+          "type": "slider",
+          "label": "Density",
+          "description": "Sets the number of grid points per row and column in the input plane (density x density points)",
+          "group": "view",
+          "properties": {"min": 10, "max": 50, "default": 20, "step": 10, "showValue": true}
+        },
+        {
+          "id": "presetSelect",
+          "type": "dropdown",
+          "label": "Preset",
+          "description": "Loads exact coefficients A, B, C, D; switches to Custom when a coefficient dot is dragged",
+          "group": "coefficients",
+          "properties": {
+            "options": [
+              {"value": "example", "label": "Default example"},
+              {"value": "identity", "label": "Identity: w = z"},
+              {"value": "rotate", "label": "Rotate/scale: w = (0.5+0.5i)z"},
+              {"value": "inversion", "label": "Inversion: w = 1/z"},
+              {"value": "bilinear", "label": "Bilinear: w = (1+z)/(1-z)"},
+              {"value": "cayley", "label": "Cayley: w = (z-i)/(z+i)"},
+              {"value": "custom", "label": "Custom (dragged)"}
+            ],
+            "default": "example"
+          }
+        },
+        {
+          "id": "clearButton",
+          "type": "button",
+          "label": "Clear drawing",
+          "description": "Erases the freehand drawing in the input plane and its image in the output plane",
+          "group": "drawing",
+          "style": "secondary"
+        }
+      ],
+      "visualElements": [
+        {"type": "graph", "description": "Input z-plane: grid of white points, unit circle, red pole marker at -D/C, the user's purple drawing and a gold pointer marker; drag inside it to draw", "interactive": true, "updateTriggers": ["scaleSlider", "densitySlider", "presetSelect", "clearButton"]},
+        {"type": "graph", "description": "Output w-plane: images of the grid points and of the drawing, unit circle, black ring at f(infinity) = A/C and the image of the pointer", "interactive": false, "updateTriggers": ["scaleSlider", "densitySlider", "presetSelect", "clearButton"]},
+        {"type": "diagram", "description": "Coefficients box: A, B, C and D as draggable colored vectors in the square |Re|, |Im| <= 1, values rounded to 0.01", "interactive": true, "updateTriggers": ["presetSelect"]},
+        {"type": "text-display", "description": "The formula, the coefficient values, AD - BC (with a warning when it is zero), the pole, f(infinity), and z and f(z) at the pointer", "interactive": false, "updateTriggers": ["presetSelect", "scaleSlider"]}
+      ]
+    },
+    "simulation": {
+      "model": {
+        "type": "mathematical",
+        "description": "Evaluates the Möbius transformation w = (Az + B)/(Cz + D) with complex arithmetic on a grid of input points and on the user's drawing (subdivided so its image follows the true curved path)",
+        "equations": ["w = (Az + B)/(Cz + D)", "AD - BC != 0", "pole: z = -D/C", "f(infinity) = A/C", "bilinear (T = 2): z = (1 + s)/(1 - s)", "omega = 2 arctan(Omega T / 2)"]
+      }
+    },
+    "usage": {
+      "recommendedUsage": ["demonstration", "exploration", "guided-practice"],
+      "instructionalStrategies": ["Predict-then-verify with presets", "Trace lines and circles and identify their images", "Change one coefficient at a time"],
+      "extensions": ["Add a pre-warping control that shows where an analog cutoff frequency lands on the unit circle", "Color the grid points by half-plane to follow regions through the map"]
+    }
+  },
+  "canvasHeight": 630
+}

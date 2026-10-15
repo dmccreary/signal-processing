@@ -1,78 +1,105 @@
 {
-  "title": "Bloom's Taxonomy",
-  "description": "Interactive visualization of Bloom's Taxonomy cognitive levels for educational design and learning objectives.",
-  "creator": "Dan McCreary",
-  "date": "2024-01-01",
-  "subject": [
-    "Education",
-    "Learning Theory",
-    "Bloom's Taxonomy",
-    "Instructional Design"
-  ],
-  "type": "Interactive Simulation",
-  "format": "text/html",
-  "language": "en",
-  "rights": "CC BY-NC-SA 4.0",
-  "identifier": "https://dmccreary.github.io/signal-processing/sims/blooms-taxonomy/",
-  "publisher": "Dan McCreary",
-  "educationalLevel": "Undergraduate",
-  "learningResourceType": "simulation",
-  "audience": "Educators, Instructional Designers",
-  "version": "1.0.0",
-  "bloomLevel": [
-    "Understand",
-    "Analyze"
-  ],
-  "concepts": [
-    "Bloom's Taxonomy",
-    "Cognitive levels",
-    "Learning objectives",
-    "Educational design"
-  ],
-  "prerequisites": [
-    "Basic understanding of education"
-  ],
-  "library": "p5.js",
-  "visualizationType": [
-    "graph",
-    "interactive-demo",
-    "network"
-  ],
-  "learningObjectives": [
-    "Understand the key concepts of bloom's taxonomy",
-    "Explore bloom's taxonomy through interactive visualization",
-    "Apply knowledge of bloom's taxonomy to solve problems",
-    "Experiment with parameters to observe their effects on bloom's taxonomy"
-  ],
-  "bloomsTaxonomy": [
-    "Remember",
-    "Understand",
-    "Apply",
-    "Analyze",
-    "Evaluate",
-    "Create"
-  ],
-  "pedagogical": {
-    "pattern": "demonstration",
-    "bloomAlignment": [
-      "understand",
-      "apply",
-      "analyze"
-    ],
-    "bloomVerbs": [
-      "classify",
-      "compare",
-      "explain",
-      "interpret",
-      "summarize"
-    ],
-    "pacing": "self-paced",
-    "supportsPrediction": false,
-    "dataVisibility": "high",
-    "feedbackType": [
-      "immediate",
-      "explanatory"
-    ],
-    "interactionStyle": "construct"
-  }
+  "microsim": {
+    "dublinCore": {
+      "title": "Bloom's Taxonomy",
+      "creator": ["Dan McCreary"],
+      "subject": ["Bloom's taxonomy", "Cognitive levels", "Learning objectives", "Instructional design"],
+      "description": "Interactive stepped pyramid of the six levels of the revised Bloom's taxonomy, from Remember at the base to Create at the apex. Hovering over or tapping a level shows its description and color key.",
+      "publisher": "Dan McCreary",
+      "contributor": ["Claude (Anthropic)"],
+      "date": "2025-05-07",
+      "type": "Interactive Simulation",
+      "format": "text/html",
+      "identifier": "https://dmccreary.github.io/signal-processing/sims/blooms-taxonomy/",
+      "language": "en",
+      "relation": ["Instructor's Guide", "Course Description"],
+      "rights": "CC BY-NC-SA 4.0"
+    },
+    "search": {
+      "tags": ["bloom's taxonomy", "cognitive levels", "learning objectives", "instructional design", "RUAAEC"],
+      "searchKeywords": ["bloom's taxonomy pyramid", "remember understand apply analyze evaluate create", "writing learning objectives", "cognitive levels of learning"],
+      "visualizationType": ["diagram", "infographic", "interactive-demo"],
+      "interactionLevel": "low",
+      "complexity": 1,
+      "relatedConcepts": ["Bloom's Taxonomy", "Learning Objectives", "Cognitive Levels", "Instructional Design"],
+      "applicationDomains": ["education", "demonstration"],
+      "showcase": false
+    },
+    "educational": {
+      "gradeLevel": ["Undergraduate"],
+      "subjectArea": ["Other"],
+      "topic": ["Bloom's taxonomy", "Cognitive levels of learning", "Writing learning objectives"],
+      "learningObjectives": [
+        "Identify the six levels of the revised Bloom's taxonomy in order, from Remember at the base to Create at the apex",
+        "Explain how Understand, which constructs meaning by interpreting and summarizing, differs from Remember, which retrieves facts and terminology",
+        "Classify a learning objective into the level whose description fits its verb and task",
+        "Differentiate Analyze, which breaks material into parts, from Evaluate, which makes judgments against criteria and standards",
+        "Write a Create-level learning objective in which students build or modify their own MicroSim"
+      ],
+      "bloomsTaxonomy": ["Remember", "Understand", "Apply", "Analyze", "Create"],
+      "prerequisites": ["Having read at least one learning objective"],
+      "duration": {"typical": 15, "range": {"min": 10, "max": 25}},
+      "difficulty": "Beginner",
+      "scaffolding": {
+        "type": ["guided-discovery"],
+        "adaptability": "fixed",
+        "removal": "user-controlled"
+      },
+      "misconceptions": [
+        {
+          "misconception": "The verb in an objective decides its level",
+          "correction": "The same verb can serve different levels; the task and the criteria decide, so read the whole objective",
+          "evidence": "The Understand description lists comparing, yet objective 14 in the course description (Compare signal processing outcomes...) is grouped under Evaluating"
+        },
+        {
+          "misconception": "Only the upper levels of the pyramid matter",
+          "correction": "Higher levels build on lower ones rather than replace them",
+          "evidence": "The pyramid stacks every level on Remember, and the Apply description speaks of learned material, which must first be remembered and understood"
+        }
+      ]
+    },
+    "technical": {
+      "framework": "p5.js",
+      "version": "2.0.0",
+      "canvasDimensions": {"width": 600, "height": 640, "responsive": true},
+      "regions": {"drawHeight": 640, "controlHeight": 0},
+      "dependencies": ["p5.js 2.3.2"],
+      "browserCompatibility": ["Chrome 90+", "Firefox 88+", "Safari 14+", "Edge 90+"],
+      "performance": {"memoryUsage": "low", "loadTime": 500},
+      "deviceRequirements": {
+        "minScreenWidth": 320,
+        "touchSupport": true,
+        "keyboardRequired": false,
+        "mouseRequired": false,
+        "networkRequired": false
+      },
+      "accessibility": {
+        "screenReader": true,
+        "keyboardNavigation": false,
+        "colorContrast": true,
+        "altText": true,
+        "screenReaderScript": "Stepped pyramid of Bloom's taxonomy with six levels, from Remember at the base through Understand, Apply, Analyze and Evaluate to Create at the apex. Hover over or tap a level to read its description below the pyramid."
+      }
+    },
+    "userInterface": {
+      "layoutType": "responsive-width",
+      "layoutPattern": "single-drawing-region",
+      "colorScheme": {
+        "drawingArea": "aliceblue",
+        "levels": ["#4B0082", "#0000FF", "green", "gold", "orange", "red"],
+        "text": "black"
+      },
+      "controls": [],
+      "visualElements": [
+        {"type": "diagram", "description": "Stepped pyramid of six equal-height blocks, one per Bloom level, Remember at the base and Create at the apex", "interactive": true, "updateTriggers": ["pointer hover", "tap"]},
+        {"type": "text-display", "description": "Color key with swatch and level name plus the description of the hovered level, or the instruction line when no level is hovered", "interactive": false, "updateTriggers": ["pointer hover", "tap"]}
+      ]
+    },
+    "usage": {
+      "recommendedUsage": ["demonstration", "group-activity"],
+      "instructionalStrategies": ["Tour the levels from base to apex", "Classify course learning objectives by level", "Write and peer-check a Create-level objective"],
+      "extensions": ["Classify the objectives of a chapter quiz by level", "Rewrite a Remember-level objective as an Apply-level objective"]
+    }
+  },
+  "canvasHeight": 640
 }

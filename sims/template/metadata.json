@@ -1,67 +1,146 @@
 {
-  "title": "A title under 60 characters.",
-  "description": "A description under 110 characters.",
-  "subject": "Mathematics",
-  "topic": "A title under 60 characters.",
-  "gradeLevel": "6-12",
-  "bloomsTaxonomy": [
-    "Understand",
-    "Apply"
-  ],
-  "author": "Dan McCreary",
-  "dateCreated": "2026-01-23",
-  "dateModified": "2026-01-23",
-  "version": "1.0.0",
-  "license": "MIT",
-  "language": "en",
-  "format": "text/html",
-  "type": "Interactive Simulation",
-  "framework": "p5.js",
-  "url": "https://dmccreary.github.io/signal-processing/sims/template/",
-  "identifier": "https://dmccreary.github.io/signal-processing/sims/template/",
-  "_source": {
-    "repo": "signal-processing",
-    "sim": "template",
-    "github_url": "https://github.com/dmccreary/signal-processing/tree/main/docs/sims/template",
-    "auto_generated": true,
-    "generation_date": "2026-01-23"
+  "microsim": {
+    "dublinCore": {
+      "title": "TITLE",
+      "creator": ["Dan McCreary"],
+      "subject": ["Sinusoids", "Amplitude", "Period and frequency", "Phase", "Signal processing"],
+      "description": "Template MicroSim demo: plots the sinusoid x(t) = A sin(2 pi t / T + phi) over a 20 ms window next to its zero-phase reference, with sliders for amplitude, period and phase and an optional button that plays the same sinusoid as a tone at f = 1/T.",
+      "publisher": "Dan McCreary",
+      "contributor": ["Claude (Anthropic)"],
+      "date": "2025-05-14",
+      "type": "Interactive Simulation",
+      "format": "text/html",
+      "identifier": "https://dmccreary.github.io/signal-processing/sims/SIM_NAME/",
+      "language": "en",
+      "relation": ["Chapter 2: Introduction to Signals and Systems"],
+      "rights": "CC BY-NC-SA 4.0"
+    },
+    "search": {
+      "tags": ["template", "sinusoid", "sine wave", "amplitude", "period", "frequency", "phase", "tone"],
+      "searchKeywords": ["sine wave amplitude period phase", "period and frequency", "phase shift as time shift", "p5.js MicroSim template"],
+      "visualizationType": ["chart", "interactive-demo"],
+      "interactionLevel": "moderate",
+      "complexity": 2,
+      "relatedConcepts": ["Sinusoidal Signals", "Signal Amplitude", "Signal Frequency", "Signal Phase", "Periodic Signals"],
+      "applicationDomains": ["education", "exploration", "demonstration"],
+      "showcase": false
+    },
+    "educational": {
+      "gradeLevel": ["Undergraduate"],
+      "subjectArea": ["Engineering", "Mathematics"],
+      "topic": ["Sinusoidal signals", "Amplitude", "Period and frequency", "Phase"],
+      "learningObjectives": [
+        "Calculate the frequency f = 1/T of a sinusoid from its period, and the number of cycles in a given time window",
+        "Calculate the starting value x(0) = A sin(phi) for a given amplitude and phase",
+        "Explain a phase phi as a time shift of phi T / 2 pi and identify a positive phase as a lead",
+        "Distinguish the audible effects of amplitude (loudness) and frequency (pitch) from the inaudible constant phase of a steady tone"
+      ],
+      "bloomsTaxonomy": ["Understand", "Apply", "Analyze"],
+      "prerequisites": ["Sine and cosine in radians and degrees", "Time in milliseconds and frequency in hertz", "Reading a function plotted against time"],
+      "duration": {"typical": 15, "range": {"min": 10, "max": 25}},
+      "difficulty": "Beginner",
+      "scaffolding": {
+        "type": ["guided-discovery", "feedback"],
+        "adaptability": "fixed",
+        "removal": "user-controlled"
+      },
+      "misconceptions": [
+        {
+          "misconception": "A positive phase delays the signal",
+          "correction": "A sin(2 pi t / T + phi) = A sin(2 pi (t + phi T / 2 pi) / T), so a positive phase shifts the curve to the left: it is a lead",
+          "evidence": "With T = 5.0 ms and phi = 90 degrees the blue curve peaks at t = 0, 1.25 ms before the gray zero-phase reference"
+        },
+        {
+          "misconception": "A longer period means a higher pitch",
+          "correction": "Period and frequency are reciprocals, f = 1/T",
+          "evidence": "Increasing T from 2.5 ms to 10.0 ms lowers the readout from 400.0 Hz to 100.0 Hz and the tone drops two octaves"
+        }
+      ]
+    },
+    "technical": {
+      "framework": "p5.js",
+      "version": "2.0.0",
+      "canvasDimensions": {"width": 670, "height": 520, "responsive": true},
+      "regions": {"drawHeight": 370, "controlHeight": 150},
+      "dependencies": ["p5.js 2.3.2", "p5.sound 0.4.1"],
+      "browserCompatibility": ["Chrome 90+", "Firefox 88+", "Safari 14+", "Edge 90+"],
+      "performance": {"memoryUsage": "low", "loadTime": 800},
+      "deviceRequirements": {
+        "minScreenWidth": 320,
+        "touchSupport": true,
+        "keyboardRequired": false,
+        "mouseRequired": false,
+        "networkRequired": false
+      },
+      "accessibility": {
+        "screenReader": true,
+        "keyboardNavigation": true,
+        "colorContrast": true,
+        "altText": true,
+        "screenReaderScript": "A plot of the sinusoid x(t) = A sin(2 pi t / T + phi) in blue over a 20 millisecond window, with the zero-phase reference as a dashed gray line and a gold dot at x(0). Sliders set the amplitude A, the period T in milliseconds and the phase phi in degrees; a button plays the sinusoid as a tone at f = 1/T."
+      }
+    },
+    "userInterface": {
+      "layoutType": "responsive-width",
+      "layoutPattern": "drawing-region-above-controls",
+      "colorScheme": {
+        "drawingArea": "aliceblue",
+        "controlArea": "white",
+        "borders": "silver",
+        "accent": "blue",
+        "text": "black"
+      },
+      "controls": [
+        {
+          "id": "ampSlider",
+          "type": "slider",
+          "label": "Amplitude A",
+          "description": "Sets the peak value A of the sinusoid and the loudness of the tone",
+          "group": "signal",
+          "properties": {"min": 0, "max": 2, "default": 1, "step": 0.01, "showValue": true}
+        },
+        {
+          "id": "periodSlider",
+          "type": "slider",
+          "label": "Period T",
+          "description": "Sets the period T in milliseconds; the readout shows the frequency f = 1/T in hertz",
+          "group": "signal",
+          "properties": {"min": 1, "max": 10, "default": 5, "step": 0.1, "units": "ms", "showValue": true}
+        },
+        {
+          "id": "phaseSlider",
+          "type": "slider",
+          "label": "Phase φ",
+          "description": "Sets the phase phi in degrees; the readout shows phi in radians and x(0) = A sin(phi)",
+          "group": "signal",
+          "properties": {"min": -180, "max": 180, "default": 0, "step": 1, "units": "degrees", "showValue": true}
+        },
+        {
+          "id": "playButton",
+          "type": "toggle-button",
+          "label": "Play Tone / Stop Tone",
+          "description": "Optional audio: starts and stops a sine tone at f = 1/T with amplitude 0.15 A (at most 0.3)",
+          "group": "audio",
+          "properties": {"text": "Play Tone", "action": "toggleTone", "toggleable": true, "style": "primary"}
+        }
+      ],
+      "visualElements": [
+        {"type": "chart", "description": "Time plot of x(t) (blue) and the zero-phase reference (dashed gray) from 0 to 20 ms, with a gold dot at x(0) and a legend below the plot", "interactive": true, "updateTriggers": ["ampSlider", "periodSlider", "phaseSlider"]},
+        {"type": "text-display", "description": "Readout of f = 1/T in hertz, phi in radians and x(0), plus the tone status next to the button", "interactive": false, "updateTriggers": ["ampSlider", "periodSlider", "phaseSlider", "playButton"]}
+      ]
+    },
+    "simulation": {
+      "model": {
+        "type": "mathematical",
+        "description": "Evaluates x(t) = A sin(2 pi t / T + phi) once per pixel column over 0 to 20 ms; the optional tone is a p5.Oscillator sine at f = 1/T",
+        "equations": ["x(t) = A sin(2 pi t / T + phi)", "f = 1 / T", "x(0) = A sin(phi)", "time shift = phi T / (2 pi)"]
+      }
+    },
+    "usage": {
+      "recommendedUsage": ["demonstration", "exploration", "individual-study"],
+      "instructionalStrategies": ["Predict-then-check with the readouts", "Compare the curve with the zero-phase reference"],
+      "extensions": ["Add a second sinusoid and plot the sum to show constructive and destructive interference"]
+    }
   },
-  "subjects": [
-    "Mathematics",
-    "Physics",
-    "Chemistry",
-    "Engineering"
-  ],
-  "visualizationType": [
-    "interactive-demo"
-  ],
-  "learningObjectives": [
-    "Understand the mathematical concept of a title under 60 characters.",
-    "Apply a title under 60 characters. to solve problems",
-    "Visualize and interpret a title under 60 characters. relationships",
-    "Experiment with parameters to observe their effects on a title under 60 characters."
-  ],
-  "pedagogical": {
-    "pattern": "exploration",
-    "bloomAlignment": [
-      "remember",
-      "understand",
-      "apply"
-    ],
-    "bloomVerbs": [
-      "list",
-      "recognize",
-      "describe",
-      "apply",
-      "calculate"
-    ],
-    "pacing": "self-paced",
-    "supportsPrediction": false,
-    "dataVisibility": "medium",
-    "feedbackType": [
-      "immediate",
-      "corrective"
-    ],
-    "interactionStyle": "manipulate"
-  }
+  "canvasHeight": 520
 }

@@ -1,0 +1,110 @@
+{
+  "microsim": {
+    "dublinCore": {
+      "title": "Signal Processing Timeline",
+      "creator": ["Dan McCreary"],
+      "subject": ["History of signal processing", "Signal processing", "Timeline", "Electronic communication", "Digital signal processing"],
+      "description": "Interactive pan-and-zoom timeline of 50 milestones in the history of electronic signal processing, from the telegraph in 1837 to cloud-based processing in 2022, loaded from events.json.",
+      "publisher": "Dan McCreary",
+      "contributor": ["Claude (Anthropic)"],
+      "date": "2024-10-19",
+      "type": "Interactive Simulation",
+      "format": "text/html",
+      "identifier": "https://dmccreary.github.io/signal-processing/sims/timeline-viewer/",
+      "language": "en",
+      "relation": ["Chapter 2: Introduction to Signals and Systems"],
+      "rights": "CC BY-NC-SA 4.0"
+    },
+    "search": {
+      "tags": ["timeline", "history of signal processing", "milestones", "vis-timeline", "pan and zoom", "events"],
+      "searchKeywords": ["signal processing history", "signal processing timeline", "DSP milestones", "Nyquist-Shannon", "FFT history", "vis timeline"],
+      "visualizationType": ["timeline", "interactive-demo"],
+      "interactionLevel": "moderate",
+      "complexity": 2,
+      "relatedConcepts": ["Sampling Theorem", "Fast Fourier Transform", "Digital Signal Processor", "Wavelet Transform", "Adaptive Filter", "Kalman Filter", "Data Compression"],
+      "applicationDomains": ["education", "exploration"],
+      "showcase": false
+    },
+    "educational": {
+      "gradeLevel": ["Undergraduate"],
+      "subjectArea": ["Engineering"],
+      "topic": ["History of signal processing", "Milestones of electronic communication", "Evaluating dates and sources"],
+      "learningObjectives": [
+        "Locate a milestone on the timeline by panning and zooming, and read its year from the axis",
+        "Compare the number of milestones in each decade and describe the pattern",
+        "Relate at least five milestones to the chapter of this book that covers the underlying technique",
+        "Evaluate the reliability of a one-year-per-event timeline by checking entries against an independent source"
+      ],
+      "bloomsTaxonomy": ["Understand", "Analyze", "Evaluate"],
+      "prerequisites": ["Familiarity with the terms sampling, filter and transform"],
+      "duration": {"typical": 20, "range": {"min": 15, "max": 25}},
+      "difficulty": "Beginner",
+      "scaffolding": {
+        "type": ["guided-discovery"],
+        "adaptability": "fixed",
+        "removal": "user-controlled"
+      },
+      "misconceptions": [
+        {
+          "misconception": "The year shown on the timeline is when the technique was invented",
+          "correction": "Entries are worded as invention, introduction or first commercial use, so a year can mark different stages",
+          "evidence": "Compare Introduction of Pulse Code Modulation (1948) with First Commercial Use of PCM in Telephone Systems (1968), a 20 year gap"
+        },
+        {
+          "misconception": "A busy decade means most progress happened then and an empty decade means none did",
+          "correction": "The list is a 50-item sample generated from a prompt, so empty decades reflect the sample, not the field",
+          "evidence": "The 1990s hold 11 entries and the 1950s hold none"
+        }
+      ]
+    },
+    "technical": {
+      "framework": "other",
+      "version": "2.0.0",
+      "canvasDimensions": {"width": 900, "height": 750, "responsive": true},
+      "regions": {"drawHeight": 750, "controlHeight": 0},
+      "dependencies": ["vis-timeline 7.7.3"],
+      "browserCompatibility": ["Chrome 90+", "Firefox 88+", "Safari 14+", "Edge 90+"],
+      "performance": {"memoryUsage": "low", "loadTime": 800},
+      "deviceRequirements": {
+        "minScreenWidth": 320,
+        "touchSupport": true,
+        "keyboardRequired": false,
+        "mouseRequired": false,
+        "networkRequired": true
+      },
+      "accessibility": {
+        "screenReader": true,
+        "keyboardNavigation": false,
+        "colorContrast": true,
+        "altText": true,
+        "screenReaderScript": "Interactive timeline of 50 milestones in the history of electronic signal processing, from the telegraph in 1837 to cloud-based signal processing in 2022. The view opens on 1980 to 2000. Drag to pan and scroll or pinch to zoom between one year and forty years. The same events are listed as text in the events.json file."
+      }
+    },
+    "userInterface": {
+      "layoutType": "responsive-width",
+      "layoutPattern": "single-panel",
+      "colorScheme": {
+        "drawingArea": "white",
+        "accent": "vis-timeline default blue",
+        "text": "black"
+      },
+      "controls": [],
+      "visualElements": [
+        {"type": "diagram", "description": "Pannable and zoomable timeline: each milestone is a box joined by a vertical line to a dot on a yearly axis, with overlapping boxes stacked in rows", "interactive": true},
+        {"type": "text-display", "description": "Page title above the timeline and a link back to the documentation below it", "interactive": false}
+      ]
+    },
+    "simulation": {
+      "model": {
+        "type": "other",
+        "description": "Static data display: events.json items are placed on a time axis by year; no simulation state is computed"
+      }
+    },
+    "usage": {
+      "recommendedUsage": ["demonstration", "exploration", "individual-study"],
+      "instructionalStrategies": ["Count and tally events per decade", "Verify entries against an independent source"],
+      "extensions": ["Add a category field to events.json and color the boxes by field", "Add a source link to each event"]
+    }
+  },
+  "canvasHeight": 750
+}

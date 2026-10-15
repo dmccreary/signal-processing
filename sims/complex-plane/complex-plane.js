@@ -1,4 +1,5 @@
 // Complex Plane MicroSim
+// CANVAS_HEIGHT: 530
 // Illustrates the geometric representation of complex numbers
 // showing both rectangular and polar forms
 
@@ -36,7 +37,7 @@ function setup() {
   imagSlider.position(sliderLeftMargin, drawHeight + 50);
   imagSlider.size(canvasWidth - sliderLeftMargin - margin);
 
-  describe('Interactive visualization of complex numbers in the complex plane showing rectangular and polar forms', LABEL);
+  describe('Interactive visualization of complex numbers in the complex plane showing rectangular and polar forms');
 }
 
 function draw() {

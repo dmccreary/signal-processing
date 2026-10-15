@@ -1,0 +1,389 @@
+{
+  "microsim": {
+    "dublinCore": {
+      "title": "Spectral Leakage and Windowing",
+      "creator": [
+        "Dan McCreary"
+      ],
+      "subject": [
+        "Signal Processing",
+        "Spectral Leakage",
+        "Window Functions",
+        "Discrete Fourier Transform",
+        "Frequency Resolution"
+      ],
+      "description": "A sinusoid of N samples is multiplied by a rectangular, Hamming, Hanning, Blackman or Kaiser window and transformed. The spectrum shows the DFT bins on top of the underlying DTFT, with the main-lobe width, peak side-lobe level, scalloping loss and coherent gain measured from the window's own transform.",
+      "publisher": "Dan McCreary",
+      "contributor": [
+        "Claude (Anthropic)"
+      ],
+      "date": "2026-10-02",
+      "type": "Interactive Simulation",
+      "format": "text/html",
+      "identifier": "https://dmccreary.github.io/signal-processing/sims/spectral-leakage-and-windowing/",
+      "language": "en",
+      "relation": [
+        "Chapter 7: DFT, FFT and Frequency Domain Analysis"
+      ],
+      "rights": "CC BY-NC-SA 4.0"
+    },
+    "search": {
+      "tags": [
+        "spectral leakage",
+        "windowing",
+        "window functions",
+        "DFT",
+        "FFT",
+        "Hamming",
+        "Hanning",
+        "Blackman",
+        "Kaiser",
+        "main lobe",
+        "side lobe",
+        "scalloping loss"
+      ],
+      "searchKeywords": [
+        "spectral leakage",
+        "window function comparison",
+        "main lobe width",
+        "peak side lobe level",
+        "scalloping loss",
+        "Kaiser window beta",
+        "resolving close tones"
+      ],
+      "visualizationType": [
+        "chart",
+        "interactive-demo"
+      ],
+      "interactionLevel": "high",
+      "complexity": 6,
+      "relatedConcepts": [
+        "Spectral Leakage",
+        "Window Functions",
+        "Discrete Fourier Transform",
+        "Frequency Resolution",
+        "Main Lobe",
+        "Side Lobe",
+        "Scalloping Loss",
+        "Kaiser Window"
+      ],
+      "applicationDomains": [
+        "education",
+        "exploration",
+        "analysis"
+      ],
+      "showcase": false
+    },
+    "educational": {
+      "gradeLevel": [
+        "Undergraduate"
+      ],
+      "subjectArea": [
+        "Engineering",
+        "Computer Science"
+      ],
+      "topic": [
+        "Spectral leakage and the resolution versus side-lobe trade-off of window functions"
+      ],
+      "learningObjectives": [
+        "Explain spectral leakage as a consequence of observing a signal for a finite time",
+        "Predict whether a tone will leak from its frequency and the bin spacing",
+        "Compare windows by main-lobe width, peak side-lobe level and scalloping loss",
+        "Choose a window for resolving two close tones or for finding a weak tone near a strong one"
+      ],
+      "bloomsTaxonomy": [
+        "Understand",
+        "Analyze",
+        "Evaluate"
+      ],
+      "prerequisites": [
+        "The DFT and frequency bins",
+        "Decibels",
+        "Multiplication in time as convolution in frequency"
+      ],
+      "duration": {
+        "typical": 28,
+        "range": {
+          "min": 25,
+          "max": 30
+        }
+      },
+      "difficulty": "Intermediate",
+      "scaffolding": {
+        "type": [
+          "guided-discovery",
+          "feedback"
+        ],
+        "adaptability": "fixed",
+        "removal": "user-controlled"
+      },
+      "misconceptions": [
+        {
+          "misconception": "Leakage is a numerical error of the FFT",
+          "correction": "Leakage is exact mathematics: a finite record is the signal times a window, so its spectrum is the true spectrum convolved with the window's transform",
+          "evidence": "The grey DTFT curve shows the same spread that the FFT bins sample, and a bin-centred tone with the rectangular window shows no leakage at all"
+        },
+        {
+          "misconception": "A tapered window always gives a better spectrum than the rectangular window",
+          "correction": "Tapering lowers the side lobes but widens the main lobe, and a bin-centred tone is cleanest with no window at all",
+          "evidence": "With the tone on a bin centre the rectangular window shows one dot while Hanning shows three and Blackman five; with two tones 6 Hz apart at N = 256 only the rectangular window shows a clear dip"
+        },
+        {
+          "misconception": "Zero-padding or a longer FFT lowers the side lobes of a window",
+          "correction": "The peak side-lobe level depends only on the window shape; a longer record narrows the main lobe in hertz",
+          "evidence": "Change FFT size N and the peak side-lobe readout does not move"
+        }
+      ]
+    },
+    "technical": {
+      "framework": "p5.js",
+      "version": "2.0.0",
+      "canvasDimensions": {
+        "width": 670,
+        "height": 630,
+        "responsive": true
+      },
+      "regions": {
+        "drawHeight": 522,
+        "controlHeight": 108
+      },
+      "dependencies": [
+        "p5.js 2.3.2"
+      ],
+      "browserCompatibility": [
+        "Chrome 90+",
+        "Firefox 88+",
+        "Safari 14+",
+        "Edge 90+"
+      ],
+      "performance": {
+        "memoryUsage": "low",
+        "loadTime": 500
+      },
+      "deviceRequirements": {
+        "minScreenWidth": 320,
+        "touchSupport": true,
+        "keyboardRequired": false,
+        "mouseRequired": false,
+        "networkRequired": false
+      },
+      "accessibility": {
+        "screenReader": true,
+        "keyboardNavigation": true,
+        "colorContrast": true,
+        "altText": true,
+        "screenReaderScript": "Four plots: a sinusoid of N samples, the window function, the windowed signal and its magnitude spectrum in decibels. Dots mark the DFT bins on the continuous spectrum, with the main-lobe width and peak side-lobe level of the window marked. A banner says whether the tone lies on a bin centre."
+      }
+    },
+    "userInterface": {
+      "layoutType": "responsive-width",
+      "layoutPattern": "drawing-region-above-controls",
+      "colorScheme": {
+        "drawingArea": "aliceblue",
+        "controlArea": "white",
+        "accent": "crimson",
+        "text": "black"
+      },
+      "controls": [
+        {
+          "id": "signalSelect",
+          "type": "dropdown",
+          "label": "Signal",
+          "description": "Chooses a single sinusoid, two close sinusoids 6 Hz apart, or a strong sinusoid with a weak one 24 Hz above and 40 dB below",
+          "group": "signal",
+          "properties": {
+            "options": [
+              {
+                "value": "single",
+                "label": "Single sinusoid"
+              },
+              {
+                "value": "two",
+                "label": "Two close sinusoids"
+              },
+              {
+                "value": "weak",
+                "label": "Strong + weak sinusoid"
+              }
+            ],
+            "default": "single"
+          }
+        },
+        {
+          "id": "windowSelect",
+          "type": "dropdown",
+          "label": "Window",
+          "description": "Chooses the window applied to the N samples before the transform",
+          "group": "window",
+          "properties": {
+            "options": [
+              {
+                "value": "rect",
+                "label": "Rectangular"
+              },
+              {
+                "value": "hamming",
+                "label": "Hamming"
+              },
+              {
+                "value": "hann",
+                "label": "Hanning (Hann)"
+              },
+              {
+                "value": "blackman",
+                "label": "Blackman"
+              },
+              {
+                "value": "kaiser",
+                "label": "Kaiser"
+              }
+            ],
+            "default": "rect"
+          }
+        },
+        {
+          "id": "sizeSelect",
+          "type": "dropdown",
+          "label": "FFT size N",
+          "description": "Number of samples in the record; the bin spacing is fs/N",
+          "group": "signal",
+          "properties": {
+            "options": [
+              {
+                "value": "256",
+                "label": "256"
+              },
+              {
+                "value": "512",
+                "label": "512"
+              },
+              {
+                "value": "1024",
+                "label": "1024"
+              },
+              {
+                "value": "2048",
+                "label": "2048"
+              }
+            ],
+            "default": "256"
+          }
+        },
+        {
+          "id": "freqSlider",
+          "type": "slider",
+          "label": "Frequency f (Hz)",
+          "description": "Frequency of the (first) sinusoid, shown with its position in bins",
+          "group": "signal",
+          "properties": {
+            "min": 40,
+            "max": 80,
+            "default": 58.6,
+            "step": 0.1,
+            "showValue": true
+          }
+        },
+        {
+          "id": "centreButton",
+          "type": "button",
+          "label": "Bin centre",
+          "description": "Moves the tone to the nearest bin centre",
+          "group": "signal"
+        },
+        {
+          "id": "halfButton",
+          "type": "button",
+          "label": "Half-way",
+          "description": "Moves the tone to the nearest point half-way between two bins",
+          "group": "signal"
+        },
+        {
+          "id": "betaSlider",
+          "type": "slider",
+          "label": "Kaiser β",
+          "description": "Shape parameter of the Kaiser window; enabled only when the Kaiser window is selected",
+          "group": "window",
+          "properties": {
+            "min": 0,
+            "max": 14,
+            "default": 8.6,
+            "step": 0.1,
+            "showValue": true
+          }
+        }
+      ],
+      "visualElements": [
+        {
+          "type": "chart",
+          "description": "Time signal x[n], window w[n] and windowed signal x[n] w[n] as three stacked plots",
+          "interactive": false,
+          "updateTriggers": [
+            "signalSelect",
+            "windowSelect",
+            "sizeSelect",
+            "freqSlider",
+            "betaSlider"
+          ]
+        },
+        {
+          "type": "chart",
+          "description": "Magnitude spectrum in dB: DFT bins as dots on the DTFT curve, with the shaded main lobe, the dashed peak side-lobe level, the true tone frequencies and a mouse cursor readout",
+          "interactive": true,
+          "updateTriggers": [
+            "signalSelect",
+            "windowSelect",
+            "sizeSelect",
+            "freqSlider",
+            "betaSlider"
+          ]
+        },
+        {
+          "type": "text-display",
+          "description": "Banner telling whether the tone is on a bin centre, and a table of measured window properties",
+          "interactive": false,
+          "updateTriggers": [
+            "windowSelect",
+            "freqSlider",
+            "sizeSelect",
+            "betaSlider"
+          ]
+        }
+      ]
+    },
+    "simulation": {
+      "model": {
+        "type": "mathematical",
+        "description": "N samples of one or two sinusoids at fs = 1024 Hz are multiplied by a window and transformed with a radix-2 FFT; the DTFT curve is an 8x zero-padded FFT, and window properties are measured from a 512-point window zero-padded 64 times",
+        "equations": [
+          "X[k] = sum over n of x[n] w[n] e^(-j 2 pi k n / N), bin spacing = fs / N",
+          "level in dB = 20 log10( 2 |X| / (N mean(w)) )",
+          "Hanning: w[n] = 0.5 - 0.5 cos(2 pi n / N); Hamming: w[n] = 0.54 - 0.46 cos(2 pi n / N)",
+          "Blackman: w[n] = 0.42 - 0.5 cos(2 pi n / N) + 0.08 cos(4 pi n / N)",
+          "Kaiser: w[n] = I0(beta sqrt(1 - (2n/N - 1)^2)) / I0(beta)"
+        ],
+        "assumptions": [
+          "fs = 1024 Hz; the second close tone is 6 Hz above the first; the weak tone is 24 Hz above and 40 dB below the strong one",
+          "The DTFT curve is an 8x zero-padded FFT of the windowed signal",
+          "Window properties are measured on a 512-point window zero-padded 64 times",
+          "The signal is a real sinusoid, so leakage from its negative-frequency image is included"
+        ]
+      }
+    },
+    "usage": {
+      "recommendedUsage": [
+        "exploration",
+        "guided-practice",
+        "demonstration"
+      ],
+      "instructionalStrategies": [
+        "Predict whether a tone will leak, test it, then compare windows on measured properties",
+        "Tabulate main-lobe width and peak side-lobe level for the four fixed windows",
+        "Decide which windows reveal a tone 40 dB below a strong neighbour"
+      ],
+      "extensions": [
+        "Find the Kaiser beta that matches the side lobes of Hamming and Blackman and compare main-lobe widths"
+      ]
+    }
+  },
+  "canvasHeight": 630
+}

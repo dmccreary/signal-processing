@@ -1,0 +1,181 @@
+{
+  "microsim": {
+    "dublinCore": {
+      "title": "Huffman Coding",
+      "creator": ["Dan McCreary"],
+      "subject": ["Huffman coding", "Entropy coding", "Lossless compression", "Prefix codes", "Information theory", "Signal compression"],
+      "description": "Interactive MicroSim that builds a Huffman tree one merge at a time from a preset distribution or from the character counts of a typed message, shows how each merge adds one bit to every codeword below it, compares the average code length L with the entropy H, the efficiency H/L and a fixed-length code, and encodes and decodes the message with bit counts and the compression ratio.",
+      "publisher": "Dan McCreary",
+      "contributor": ["Claude (Anthropic)"],
+      "date": "2026-10-14",
+      "type": "Interactive Simulation",
+      "format": "text/html",
+      "identifier": "https://dmccreary.github.io/signal-processing/sims/huffman-coding/",
+      "language": "en",
+      "relation": ["Chapter 13: Multirate Signal Processing and Compression"],
+      "rights": "CC BY-NC-SA 4.0"
+    },
+    "search": {
+      "tags": ["Huffman coding", "entropy", "average code length", "prefix-free code", "lossless compression", "compression ratio", "binary tree", "source coding"],
+      "searchKeywords": ["build a Huffman tree step by step", "entropy vs average code length", "H <= L < H + 1", "Huffman efficiency", "fixed-length vs variable-length code", "English letter frequencies Huffman"],
+      "visualizationType": ["diagram", "chart", "interactive-demo", "simulation"],
+      "interactionLevel": "high",
+      "complexity": 5,
+      "relatedConcepts": ["Signal Compression", "Lossy Compression", "Lossless Compression", "Transform Coding", "Huffman Coding"],
+      "applicationDomains": ["education", "exploration", "demonstration", "analysis"]
+    },
+    "educational": {
+      "gradeLevel": ["Undergraduate"],
+      "subjectArea": ["Engineering", "Computer Science", "Mathematics"],
+      "topic": ["Huffman coding", "Entropy and average code length", "Prefix-free codes", "Lossless compression"],
+      "learningObjectives": [
+        "Construct a Huffman code by repeatedly merging the two least-probable nodes and reading the codewords from the root",
+        "Calculate the entropy H, the average code length L, the efficiency H/L and the compression ratio against a fixed-length code",
+        "Verify the bound H <= L < H + 1 and identify the distributions for which L = H exactly",
+        "Explain why a prefix-free code can be decoded without separators between codewords",
+        "Analyze why Huffman coding is inefficient for very skewed sources and how coding blocks of symbols improves it"
+      ],
+      "bloomsTaxonomy": ["Apply", "Analyze"],
+      "prerequisites": ["Probability of discrete events and the base-2 logarithm", "Binary numbers and binary trees", "The idea of lossless compression"],
+      "duration": {"typical": 25, "range": {"min": 15, "max": 40}},
+      "difficulty": "Intermediate",
+      "scaffolding": {
+        "type": ["guided-discovery", "feedback", "progressive-disclosure"],
+        "adaptability": "fixed",
+        "removal": "user-controlled"
+      },
+      "misconceptions": [
+        {
+          "misconception": "The Huffman code for a source is unique",
+          "correction": "Ties can be broken in different ways and give different codeword lengths, but every Huffman code has the same minimum average length",
+          "evidence": "For the skewed preset the sim's tie rule gives lengths 2, 2, 2, 3, 3; preferring merged nodes in the ties gives 1, 2, 3, 4, 4; both have L = 2.2 bits/symbol"
+        },
+        {
+          "misconception": "Huffman coding always reaches the entropy",
+          "correction": "L = H only when every probability is a power of 1/2; otherwise H <= L < H + 1, and every codeword needs at least one bit",
+          "evidence": "The two-symbol preset (0.9, 0.1) shows L = 1.000 against H = 0.469, an efficiency of 46.9 %"
+        }
+      ]
+    },
+    "technical": {
+      "framework": "p5.js",
+      "version": "1.0.0",
+      "canvasDimensions": {"width": 900, "height": 750, "responsive": true},
+      "regions": {"drawHeight": 640, "controlHeight": 110},
+      "dependencies": ["p5.js 2.3.2"],
+      "browserCompatibility": ["Chrome 90+", "Firefox 88+", "Safari 14+", "Edge 90+"],
+      "performance": {"memoryUsage": "low", "loadTime": 500, "computationalComplexity": "O(n²)"},
+      "deviceRequirements": {
+        "minScreenWidth": 375,
+        "touchSupport": true,
+        "keyboardRequired": false,
+        "mouseRequired": false,
+        "networkRequired": false
+      },
+      "accessibility": {
+        "screenReader": true,
+        "keyboardNavigation": true,
+        "colorContrast": true,
+        "altText": true,
+        "screenReaderScript": "A Huffman tree is built one merge at a time. Symbols sit in a row of circles with a table below listing each probability, the ideal length minus log2 p, the codeword and its length. Each press of Next merge joins the two least-probable nodes (ringed in gold) and adds one bit to the codeword of every symbol below them. A side panel compares the entropy H, the average code length L, the efficiency H/L and a fixed-length code, and the bottom panel encodes the message in the text box into a bit stream and decodes it again."
+      }
+    },
+    "userInterface": {
+      "layoutType": "responsive-width",
+      "layoutPattern": "drawing-region-above-controls",
+      "colorScheme": {
+        "drawingArea": "aliceblue",
+        "controlArea": "white",
+        "tree": "blue",
+        "codewordsAndAverageLength": "maroon",
+        "entropyAndIdealLength": "green",
+        "fixedLengthCode": "gray",
+        "nextAndNewestMerge": "gold",
+        "text": "black"
+      },
+      "responsiveBreakpoints": [
+        {"width": 680, "description": "Below 680 px the statistics panel moves under the tree and shows a compact three-line summary without the bar chart"}
+      ],
+      "controls": [
+        {
+          "id": "sourceSelect",
+          "type": "dropdown",
+          "label": "Source",
+          "description": "Chooses where the symbol probabilities come from: a preset table or the character counts of the message",
+          "group": "source",
+          "properties": {
+            "options": [
+              {"value": "skewed", "label": "Skewed: 5 symbols"},
+              {"value": "dyadic", "label": "Powers of 1/2: 5 symbols"},
+              {"value": "uniform", "label": "Uniform: 8 symbols"},
+              {"value": "binary", "label": "Two symbols: 0.9 and 0.1"},
+              {"value": "english", "label": "English letters A-Z"},
+              {"value": "text", "label": "Count the characters of my message"}
+            ],
+            "default": "skewed"
+          }
+        },
+        {
+          "id": "textInput",
+          "type": "text-input",
+          "label": "Message",
+          "description": "The message that is encoded and decoded; in 'Count the characters of my message' mode its character counts also set the probabilities. Presets load a sample message.",
+          "group": "source",
+          "properties": {"default": "ACABADABCE", "maxLength": 30, "placeholder": "up to 30 characters"}
+        },
+        {
+          "id": "nextButton",
+          "type": "button",
+          "label": "Next merge",
+          "description": "Merges the two least-probable nodes (ringed in gold) into one node",
+          "group": "build",
+          "properties": {"text": "Next merge", "action": "step = step + 1"}
+        },
+        {
+          "id": "buildButton",
+          "type": "button",
+          "label": "Build tree",
+          "description": "Performs all remaining merges",
+          "group": "build",
+          "properties": {"text": "Build tree", "action": "step = K - 1"}
+        },
+        {
+          "id": "undoButton",
+          "type": "button",
+          "label": "Undo",
+          "description": "Takes back the most recent merge",
+          "group": "build",
+          "properties": {"text": "Undo", "action": "step = step - 1"}
+        },
+        {
+          "id": "resetButton",
+          "type": "button",
+          "label": "Reset",
+          "description": "Returns to the separate symbols with no merges",
+          "group": "build",
+          "properties": {"text": "Reset", "action": "step = 0"}
+        }
+      ],
+      "visualElements": [
+        {"type": "diagram", "description": "Huffman tree drawn bottom-up with the leaves in one row, 0/1 labels on the branches, merged-node probabilities, gold rings on the next pair and gold edges on the newest merge; pointing at a leaf highlights its path", "interactive": true, "updateTriggers": ["sourceSelect", "textInput", "nextButton", "buildButton", "undoButton", "resetButton"]},
+        {"type": "text-display", "description": "Code table aligned under the leaves: probability or count, ideal length -log2 p, codeword (with the newest bit highlighted) and length", "interactive": false, "updateTriggers": ["sourceSelect", "textInput", "nextButton", "buildButton", "undoButton", "resetButton"]},
+        {"type": "chart", "description": "Read-outs of H, L (or L so far), H/L, the fixed-length code and the compression ratio, with bars for H, L and the fixed length and the shaded band H <= L < H + 1", "interactive": false, "updateTriggers": ["sourceSelect", "textInput", "nextButton", "buildButton", "undoButton", "resetButton"]},
+        {"type": "text-display", "description": "Encode/decode panel: the message, its bit stream with alternating colors per codeword, Huffman and fixed-length bit counts, compression ratio, and the decoded message", "interactive": true, "updateTriggers": ["textInput", "sourceSelect", "buildButton"]}
+      ]
+    },
+    "simulation": {
+      "model": {
+        "type": "mathematical",
+        "description": "Huffman's algorithm on integer weights: repeatedly take the two smallest weights (ties: single symbols before merged nodes, symbols in alphabetical order, merged nodes oldest first), make them the left (0) and right (1) children of a new node; codewords are the branch labels from the root to each leaf",
+        "equations": ["H = -sum_i p_i log2 p_i", "L = sum_i p_i l_i = (sum of merged-node weights) / total weight", "H <= L < H + 1", "efficiency = H / L", "fixed length F = ceil(log2 K)", "compression ratio = F / L = fixed-length bits / Huffman bits"],
+        "algorithms": ["Huffman tree construction with a sorted queue", "Prefix-free decoding by walking the tree from the root"]
+      }
+    },
+    "usage": {
+      "recommendedUsage": ["demonstration", "exploration", "guided-practice"],
+      "instructionalStrategies": ["Predict the next merge before pressing Next merge", "Compare each codeword length with -log2 p", "Contrast typical and atypical messages with the English code"],
+      "extensions": ["Add arithmetic coding of the same message for comparison", "Add a block mode that codes pairs of symbols to show L per symbol approaching H"]
+    }
+  },
+  "canvasHeight": 750
+}

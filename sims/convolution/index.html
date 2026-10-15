@@ -6,7 +6,7 @@
       <meta charset="utf-8">
       <meta name="viewport" content="width=device-width,initial-scale=1">
       
-        <meta name="description" content="Interactive visualization demonstrating convolution as a measure of overlap between functions using a square and triangle example.">
+        <meta name="description" content="A blue square slides across a red triangle while a purple gauge shows the area of overlap, the introductory picture of convolution.">
       
       
         <meta name="author" content="Dan McCreary">
@@ -15,10 +15,10 @@
         <link rel="canonical" href="https://dmccreary.github.io/signal-processing/sims/convolution/">
       
       
-        <link rel="prev" href="../complex-plane/">
+        <link rel="prev" href="../compressed-sensing/">
       
       
-        <link rel="next" href="../euler-formula-explorer/">
+        <link rel="next" href="../convolution-theorem/">
       
       
       <link rel="icon" href="../../img/favicon.ico">
@@ -54,6 +54,8 @@
     
       <link rel="stylesheet" href="../../css/extra.css">
     
+      <link rel="stylesheet" href="../../css/mascot.css">
+    
     <script>__md_scope=new URL("../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
     
       
@@ -65,7 +67,7 @@
       
         <meta  property="og:title"  content="Convolution - Signal Processing with AI" >
       
-        <meta  property="og:description"  content="Interactive visualization demonstrating convolution as a measure of overlap between functions using a square and triangle example." >
+        <meta  property="og:description"  content="A blue square slides across a red triangle while a purple gauge shows the area of overlap, the introductory picture of convolution." >
       
         <meta property="og:image" content="https://dmccreary.github.io/signal-processing/sims/convolution/convolution.png">
       
@@ -81,7 +83,7 @@
       
         <meta  name="twitter:title"  content="Convolution - Signal Processing with AI" >
       
-        <meta  name="twitter:description"  content="Interactive visualization demonstrating convolution as a measure of overlap between functions using a square and triangle example." >
+        <meta  name="twitter:description"  content="A blue square slides across a red triangle while a purple gauge shows the area of overlap, the introductory picture of convolution." >
       
         <meta name="twitter:image" content="https://dmccreary.github.io/signal-processing/sims/convolution/convolution.png">
       
@@ -104,7 +106,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#understanding-convolution-an-interactive-lesson" class="md-skip">
+        <a href="#convolution" class="md-skip">
           Skip to content
         </a>
       
@@ -122,7 +124,7 @@
   <nav class="md-header__inner md-grid" aria-label="Header">
     <a href="../.." title="Signal Processing with AI" class="md-header__button md-logo" aria-label="Signal Processing with AI" data-md-component="logo">
       
-  <img src="../../img/logo-192.png" alt="logo">
+  <img src="../../img/mascot/neutral.png" alt="logo">
 
     </a>
     <label class="md-header__button md-icon" for="__drawer">
@@ -217,8 +219,6 @@
           
             
               
-                
-              
               <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
                 <div class="md-sidebar__scrollwrap">
                   <div class="md-sidebar__inner">
@@ -230,7 +230,7 @@
   <label class="md-nav__title" for="__drawer">
     <a href="../.." title="Signal Processing with AI" class="md-nav__button md-logo" aria-label="Signal Processing with AI" data-md-component="logo">
       
-  <img src="../../img/logo-192.png" alt="logo">
+  <img src="../../img/mascot/neutral.png" alt="logo">
 
     </a>
     Signal Processing with AI
@@ -277,31 +277,11 @@
   
   
     <li class="md-nav__item">
-      <a href="../../chapters/" class="md-nav__link">
-        
-  
-  <span class="md-ellipsis">
-    Table of Contents
-  </span>
-  
-
-      </a>
-    </li>
-  
-
-    
-      
-      
-  
-  
-  
-  
-    <li class="md-nav__item">
       <a href="../../about/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
-    About This Website
+    About
   </span>
   
 
@@ -544,6 +524,174 @@
           
         
       
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
     
     
     
@@ -553,7 +701,7 @@
       
         
         
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_6" checked>
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_5" checked>
         
           
           
@@ -569,19 +717,103 @@
             </a>
             
               
-              <label class="md-nav__link " for="__nav_6" id="__nav_6_label" tabindex="0">
+              <label class="md-nav__link " for="__nav_5" id="__nav_5_label" tabindex="0">
                 <span class="md-nav__icon md-icon"></span>
               </label>
             
           </div>
         
-        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_6_label" aria-expanded="true">
-          <label class="md-nav__title" for="__nav_6">
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_5_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_5">
             <span class="md-nav__icon md-icon"></span>
             MicroSims
           </label>
           <ul class="md-nav__list" data-md-scrollfix>
             
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../image-convolution/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    2-D Convolution and Image Filtering
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../conv-layer-as-filter/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    A Convolutional Layer Is a Learned FIR Filter
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../adaptive-algorithm-comparison-tool/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Adaptive Algorithm Comparison Tool
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../adaptive-noise-cancellation/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Adaptive Noise and Echo Cancellation
+  </span>
+  
+
+      </a>
+    </li>
+  
+
               
             
               
@@ -633,11 +865,11 @@
   
   
     <li class="md-nav__item">
-      <a href="../base-and-treble/" class="md-nav__link">
+      <a href="../fft-basic/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
-    Base and Treble
+    Basic FFT
   </span>
   
 
@@ -654,11 +886,32 @@
   
   
     <li class="md-nav__item">
-      <a href="../fft-basic/" class="md-nav__link">
+      <a href="../base-and-treble/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
-    Basic FFT
+    Bass and Treble
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../bilinear-transform/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Bilinear Transform and Frequency Warping
   </span>
   
 
@@ -777,6 +1030,27 @@
                 
   
   
+  
+  
+    <li class="md-nav__item">
+      <a href="../compressed-sensing/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Compressed Sensing
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
     
   
   
@@ -826,20 +1100,35 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#learning-objectives" class="md-nav__link">
+  <a href="#description" class="md-nav__link">
     <span class="md-ellipsis">
-      Learning Objectives
+      Description
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Description">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#mathematical-connection" class="md-nav__link">
+    <span class="md-ellipsis">
+      Mathematical Connection
     </span>
   </a>
   
 </li>
-      
-        <li class="md-nav__item">
-  <a href="#prerequisites" class="md-nav__link">
+        
+          <li class="md-nav__item">
+  <a href="#where-convolution-appears" class="md-nav__link">
     <span class="md-ellipsis">
-      Prerequisites
+      Where Convolution Appears
     </span>
   </a>
+  
+</li>
+        
+      </ul>
+    </nav>
   
 </li>
       
@@ -854,28 +1143,54 @@
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#part-1-introduction" class="md-nav__link">
+  <a href="#learning-objectives" class="md-nav__link">
     <span class="md-ellipsis">
-      Part 1: Introduction
+      Learning Objectives
     </span>
   </a>
   
 </li>
         
           <li class="md-nav__item">
-  <a href="#part-2-geometric-understanding" class="md-nav__link">
+  <a href="#target-audience" class="md-nav__link">
     <span class="md-ellipsis">
-      Part 2: Geometric Understanding
+      Target Audience
     </span>
   </a>
   
-    <nav class="md-nav" aria-label="Part 2: Geometric Understanding">
-      <ul class="md-nav__list">
+</li>
         
           <li class="md-nav__item">
-  <a href="#interactive-simulation-exploration" class="md-nav__link">
+  <a href="#prerequisites" class="md-nav__link">
     <span class="md-ellipsis">
-      Interactive Simulation Exploration
+      Prerequisites
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#activities" class="md-nav__link">
+    <span class="md-ellipsis">
+      Activities
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#assessment" class="md-nav__link">
+    <span class="md-ellipsis">
+      Assessment
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#common-misconceptions" class="md-nav__link">
+    <span class="md-ellipsis">
+      Common Misconceptions
     </span>
   </a>
   
@@ -885,70 +1200,11 @@
     </nav>
   
 </li>
-        
-          <li class="md-nav__item">
-  <a href="#part-3-mathematical-connection" class="md-nav__link">
-    <span class="md-ellipsis">
-      Part 3: Mathematical Connection
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#part-4-practice-and-discussion-10-minutes" class="md-nav__link">
-    <span class="md-ellipsis">
-      Part 4: Practice and Discussion (10 minutes)
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
       
         <li class="md-nav__item">
-  <a href="#assessment-questions" class="md-nav__link">
+  <a href="#references" class="md-nav__link">
     <span class="md-ellipsis">
-      Assessment Questions
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#extended-learning" class="md-nav__link">
-    <span class="md-ellipsis">
-      Extended Learning
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#common-misconceptions-to-address" class="md-nav__link">
-    <span class="md-ellipsis">
-      Common Misconceptions to Address
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#homework-suggestions" class="md-nav__link">
-    <span class="md-ellipsis">
-      Homework Suggestions
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#additional-resources" class="md-nav__link">
-    <span class="md-ellipsis">
-      Additional Resources
+      References
     </span>
   </a>
   
@@ -970,11 +1226,137 @@
   
   
     <li class="md-nav__item">
+      <a href="../convolution-theorem/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Convolution Theorem and Circular Convolution
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../convolution-visualizer/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Convolution Visualizer
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../correlation-and-matched-filtering/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Correlation and Matched Filtering
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../dct-basis-explorer/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    DCT Basis Explorer
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../dft-explorer/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    DFT Explorer
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
       <a href="../euler-formula-explorer/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
     Euler's Formula Explorer
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../even-and-odd-signal-decomposition/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Even and Odd Signal Decomposition
   </span>
   
 
@@ -1138,6 +1520,27 @@
   
   
     <li class="md-nav__item">
+      <a href="../fft-spectrum-analyzer/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    FFT Spectrum Analyzer
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
       <a href="../fft-waveform-types/" class="md-nav__link">
         
   
@@ -1159,11 +1562,263 @@
   
   
     <li class="md-nav__item">
+      <a href="../filter-bank-explorer/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Filter Bank and Polyphase Explorer
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../fir-filter-design-comparison-tool/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    FIR Filter Design Comparison Tool
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../fir-vs-iir/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    FIR vs IIR Filters
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../fourier-series-explorer/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Fourier Series Explorer
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../fourier-transform-pairs/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Fourier Transform Pairs
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
       <a href="../frequency-detection/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
     Frequency Detection
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../huffman-coding/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Huffman Coding
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../iir-prototype-comparison/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    IIR Prototype Comparison
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../impulse-and-frequency-response-analyzer/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Impulse and Frequency Response Analyzer
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../interactive-filter-design-and-analysis-tool/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Interactive Filter Design and Analysis Tool
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../interactive-pole-zero-analysis-tool/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Interactive Pole-Zero Analysis Tool
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../interactive-spectrogram-parameter-explorer/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Interactive Spectrogram Parameter Explorer
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../interactive-stft-spectrogram-analyzer/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Interactive STFT Spectrogram Analyzer
   </span>
   
 
@@ -1243,11 +1898,158 @@
   
   
     <li class="md-nav__item">
+      <a href="../multirate-sample-rate-converter/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Multirate Sample Rate Converter
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../noise-analysis-and-reduction-tool/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Noise Analysis and Reduction Tool
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
       <a href="../nyquist-shannon-sampling/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
     Nyquist-Shannon Sampling
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../phase-spectrum/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Phase Spectrum - What the Magnitude Hides
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../phasor-addition/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Phasor Addition
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../psd-wiener-khinchin/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Power Spectral Density and the Wiener-Khinchin Theorem
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../distribution-explorer/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Probability Distribution Explorer
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../quantization-and-noise-shaping/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Quantization and Noise Shaping
   </span>
   
 
@@ -1285,11 +2087,116 @@
   
   
     <li class="md-nav__item">
+      <a href="../real-time-processing-simulator/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Real-Time Processing Simulator
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
       <a href="../reverb/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
     Reverb Effect
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../s-plane-explorer/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    s-Plane Explorer
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../sampling-theorem-explorer/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Sampling Theorem Explorer
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../signal-operations/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Signal Operations - Shift, Scale and Reverse
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../signal-type-explorer/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Signal Type Explorer
   </span>
   
 
@@ -1327,11 +2234,95 @@
   
   
     <li class="md-nav__item">
+      <a href="../spectral-leakage-and-windowing/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Spectral Leakage and Windowing
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
       <a href="../synth-timeline/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
     Synth Timeline
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../system-interconnections/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    System Interconnections - Series, Parallel, Feedback
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../system-property-explorer/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    System Property Explorer
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../time-frequency-analysis-explorer/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Time-Frequency Analysis Explorer
   </span>
   
 
@@ -1374,6 +2365,27 @@
   
   <span class="md-ellipsis">
     Tone Generator
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../wavelet-explorer/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Wavelet Explorer - CWT Scalogram and Haar DWT
   </span>
   
 
@@ -1550,6 +2562,12 @@
       
         
           
+        
+      
+        
+      
+        
+      
         
       
         
@@ -1764,6 +2782,26 @@
   
   
     <li class="md-nav__item">
+      <a href="../../instructors-guide/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Instructor's Guide
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
       <a href="../../license/" class="md-nav__link">
         
   
@@ -1809,26 +2847,6 @@
   
   <span class="md-ellipsis">
     Contact
-  </span>
-  
-
-      </a>
-    </li>
-  
-
-    
-      
-      
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../../ieee-paper-changes/" class="md-nav__link">
-        
-  
-  <span class="md-ellipsis">
-    Paper Changes
   </span>
   
 
@@ -1940,9 +2958,7 @@
             
             
               
-                
-              
-              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" hidden>
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
                 <div class="md-sidebar__scrollwrap">
                   <div class="md-sidebar__inner">
                     
@@ -1961,20 +2977,35 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#learning-objectives" class="md-nav__link">
+  <a href="#description" class="md-nav__link">
     <span class="md-ellipsis">
-      Learning Objectives
+      Description
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Description">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#mathematical-connection" class="md-nav__link">
+    <span class="md-ellipsis">
+      Mathematical Connection
     </span>
   </a>
   
 </li>
-      
-        <li class="md-nav__item">
-  <a href="#prerequisites" class="md-nav__link">
+        
+          <li class="md-nav__item">
+  <a href="#where-convolution-appears" class="md-nav__link">
     <span class="md-ellipsis">
-      Prerequisites
+      Where Convolution Appears
     </span>
   </a>
+  
+</li>
+        
+      </ul>
+    </nav>
   
 </li>
       
@@ -1989,28 +3020,54 @@
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#part-1-introduction" class="md-nav__link">
+  <a href="#learning-objectives" class="md-nav__link">
     <span class="md-ellipsis">
-      Part 1: Introduction
+      Learning Objectives
     </span>
   </a>
   
 </li>
         
           <li class="md-nav__item">
-  <a href="#part-2-geometric-understanding" class="md-nav__link">
+  <a href="#target-audience" class="md-nav__link">
     <span class="md-ellipsis">
-      Part 2: Geometric Understanding
+      Target Audience
     </span>
   </a>
   
-    <nav class="md-nav" aria-label="Part 2: Geometric Understanding">
-      <ul class="md-nav__list">
+</li>
         
           <li class="md-nav__item">
-  <a href="#interactive-simulation-exploration" class="md-nav__link">
+  <a href="#prerequisites" class="md-nav__link">
     <span class="md-ellipsis">
-      Interactive Simulation Exploration
+      Prerequisites
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#activities" class="md-nav__link">
+    <span class="md-ellipsis">
+      Activities
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#assessment" class="md-nav__link">
+    <span class="md-ellipsis">
+      Assessment
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#common-misconceptions" class="md-nav__link">
+    <span class="md-ellipsis">
+      Common Misconceptions
     </span>
   </a>
   
@@ -2020,70 +3077,11 @@
     </nav>
   
 </li>
-        
-          <li class="md-nav__item">
-  <a href="#part-3-mathematical-connection" class="md-nav__link">
-    <span class="md-ellipsis">
-      Part 3: Mathematical Connection
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#part-4-practice-and-discussion-10-minutes" class="md-nav__link">
-    <span class="md-ellipsis">
-      Part 4: Practice and Discussion (10 minutes)
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
       
         <li class="md-nav__item">
-  <a href="#assessment-questions" class="md-nav__link">
+  <a href="#references" class="md-nav__link">
     <span class="md-ellipsis">
-      Assessment Questions
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#extended-learning" class="md-nav__link">
-    <span class="md-ellipsis">
-      Extended Learning
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#common-misconceptions-to-address" class="md-nav__link">
-    <span class="md-ellipsis">
-      Common Misconceptions to Address
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#homework-suggestions" class="md-nav__link">
-    <span class="md-ellipsis">
-      Homework Suggestions
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#additional-resources" class="md-nav__link">
-    <span class="md-ellipsis">
-      Additional Resources
+      References
     </span>
   </a>
   
@@ -2104,7 +3102,7 @@
                   
 
   
-    <a href="https://github.com/dmccreary/signal-processing/blob/master/docs/sims/convolution/index.md" title="Edit this page" class="md-content__button md-icon">
+    <a href="https://github.com/dmccreary/signal-processing/blob/main/docs/sims/convolution/index.md" title="Edit this page" class="md-content__button md-icon">
       
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M10 20H6V4h7v5h5v3.1l2-2V8l-6-6H6c-1.1 0-2 .9-2 2v16c0 1.1.9 2 2 2h4zm10.2-7c.1 0 .3.1.4.2l1.3 1.3c.2.2.2.6 0 .8l-1 1-2.1-2.1 1-1c.1-.1.2-.2.4-.2m0 3.9L14.1 23H12v-2.1l6.1-6.1z"/></svg>
     </a>
@@ -2112,128 +3110,127 @@
   
 
 
-<h1 id="understanding-convolution-an-interactive-lesson">Understanding Convolution: An Interactive Lesson</h1>
-<iframe src="main.html" width="470" height="267" noscroll="true" style="overflow: hidden;"></iframe>
+<h1 id="convolution">Convolution</h1>
+<iframe src="main.html" width="100%" height="267px" scrolling="no"></iframe>
 
-<p><a href="https://editor.p5js.org/dmccreary/sketches/zmX1mgsv3">Edit this MicroSim</a></p>
-<h2 id="learning-objectives">Learning Objectives</h2>
-<p>By the end of this lesson, students will be able to:</p>
-<ol>
-<li>Understand convolution as a measure of overlap between two functions</li>
-<li>Visualize how the convolution operation works geometrically</li>
-<li>Connect the geometric interpretation to the mathematical definition</li>
-<li>Apply this understanding to basic signal processing concepts</li>
-</ol>
-<h2 id="prerequisites">Prerequisites</h2>
+<p>Copy this iframe to your website:</p>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="p">&lt;</span><span class="nt">iframe</span> <span class="na">src</span><span class="o">=</span><span class="s">"https://dmccreary.github.io/signal-processing/sims/convolution/main.html"</span> <span class="na">width</span><span class="o">=</span><span class="s">"100%"</span> <span class="na">height</span><span class="o">=</span><span class="s">"267px"</span> <span class="na">scrolling</span><span class="o">=</span><span class="s">"no"</span><span class="p">&gt;&lt;/</span><span class="nt">iframe</span><span class="p">&gt;</span>
+</code></pre></div></td></tr></table></div>
+<p><a class="md-button md-button--primary" href="main.html">Run MicroSim in Fullscreen</a></p>
+<p><a href="https://editor.p5js.org/dmccreary/sketches/zmX1mgsv3">Edit in the p5.js Editor</a></p>
+<h2 id="description">Description</h2>
+<p>Convolution measures how much two functions overlap as one slides across the other. This MicroSim uses the simplest
+pair that shows the idea: a blue square <span class="arithmatex">\(f(x)\)</span> that is 1 unit wide and 1 unit tall, and a red triangle <span class="arithmatex">\(g(x)\)</span> with a
+base of 1 unit and a peak of 1 unit.</p>
+<p>Drag the slider to move the square from left to right through the triangle. The purple triangle on the right is a
+gauge, not the final curve: its height is the area where the square and the triangle overlap, which is the value of
+<span class="arithmatex">\((f * g)(x)\)</span> at the current position. The dashed outline marks the largest it can be, an area of 0.50 (the whole
+triangle, <span class="arithmatex">\(\tfrac{1}{2} \cdot 1 \cdot 1\)</span>), and the read-out under it shows the current area.</p>
+<p>The slider runs from 0 to 270 in units chosen so that 60 units move the square by exactly its own width. The label
+under the slider also gives <span class="arithmatex">\(x\)</span>, the offset of the square's center from the triangle's center, in square widths.
+Overlap begins at slider 140 (<span class="arithmatex">\(x = -1\)</span>), peaks at 200 (<span class="arithmatex">\(x = 0\)</span>) and ends at 260 (<span class="arithmatex">\(x = 1\)</span>).</p>
+<p>This is the introductory picture. The <a href="../convolution-visualizer/">Convolution Visualizer</a> adds the flip
+step, more signal pairs and the full output curve. The idea is developed in
+<a href="../../chapters/04-convolution-and-correlation/">Chapter 4: Convolution and Correlation</a>.</p>
+<p><strong>The three panels</strong></p>
 <ul>
-<li>Basic understanding of functions</li>
-<li>Familiarity with coordinate systems</li>
-<li>Understanding of area calculations</li>
+<li><strong>Left, blue</strong>: the square <span class="arithmatex">\(f(x)\)</span>, which the slider moves</li>
+<li><strong>Middle, red</strong>: the triangle <span class="arithmatex">\(g(x)\)</span>, which stays where it is</li>
+<li><strong>Right, purple</strong>: the gauge whose height is the overlap area, <span class="arithmatex">\((f * g)(x)\)</span> at the current <span class="arithmatex">\(x\)</span></li>
 </ul>
-<h2 id="lesson-plan">Lesson Plan</h2>
-<h3 id="part-1-introduction">Part 1: Introduction</h3>
-<p>We define convolution informally as a way to measure how much two functions overlap as one slides over the other.</p>
-<p>There are many real-world applications of convolutions</p>
+<h3 id="mathematical-connection">Mathematical Connection</h3>
+<p>The convolution integral is</p>
+<div class="arithmatex">\[(f * g)(x) = \int_{-\infty}^{\infty} f(\tau)\,g(x-\tau)\,d\tau\]</div>
+<p>Convolution is commutative, <span class="arithmatex">\(f * g = g * f\)</span>, so the integral can be read with the roles swapped,
+<span class="arithmatex">\(\int g(\tau)\,f(x-\tau)\,d\tau\)</span>. That is the picture in the MicroSim:</p>
+<ol>
+<li><span class="arithmatex">\(g(\tau)\)</span> is the stationary triangle.</li>
+<li><span class="arithmatex">\(f(x-\tau)\)</span> is the square, flipped and shifted by <span class="arithmatex">\(x\)</span>. Flipping a symmetric square changes nothing, so only the shift is visible.</li>
+<li>The product <span class="arithmatex">\(g(\tau)\,f(x-\tau)\)</span> equals <span class="arithmatex">\(g(\tau)\)</span> where the square covers the triangle and <span class="arithmatex">\(0\)</span> elsewhere, because <span class="arithmatex">\(f\)</span> is 1 inside the square.</li>
+<li>The integral is the area under that product, which is the area of overlap.</li>
+<li>The slider sets <span class="arithmatex">\(x\)</span>, and the purple height at that position is <span class="arithmatex">\((f * g)(x)\)</span>.</li>
+</ol>
+<p>The area is found by adding up 200 thin slices of the square. It agrees with the exact value to within 0.0001.</p>
+<h3 id="where-convolution-appears">Where Convolution Appears</h3>
 <ul>
 <li>Image blurring in photo editing</li>
-<li>Audio echo effects</li>
+<li>Audio echo and reverberation effects</li>
 <li>Signal filtering in communications</li>
 <li>Data smoothing in statistics</li>
 </ul>
-<h3 id="part-2-geometric-understanding">Part 2: Geometric Understanding</h3>
-<h4 id="interactive-simulation-exploration">Interactive Simulation Exploration</h4>
+<h2 id="lesson-plan">Lesson Plan</h2>
+<h3 id="learning-objectives">Learning Objectives</h3>
+<p>After using this MicroSim, students will be able to:</p>
 <ol>
-<li>
-<p>Introduce the three regions of the simulation:</p>
-</li>
-<li>
-<p>Left: Square function f(x) (blue)</p>
-</li>
-<li>Middle: Triangle function g(x) (red)</li>
-<li>
-<p>Right: Convolution result (f * g)(x) (purple)</p>
-</li>
-<li>
-<p>Student Activities:</p>
-</li>
+<li><strong>Explain</strong> convolution as a measure of how much a sliding function overlaps a stationary one</li>
+<li><strong>Predict</strong> the slider positions at which the overlap begins, reaches its maximum and ends</li>
+<li><strong>Interpret</strong> the height of the purple gauge as the area of overlap, not the height of overlap</li>
+<li><strong>Calculate</strong> the overlap area at a given position from the geometry of the square and the triangle</li>
+<li><strong>Connect</strong> the sliding-and-overlapping picture to the convolution integral</li>
 </ol>
-<p>Move the slider slowly from left to right, observing:</p>
+<h3 id="target-audience">Target Audience</h3>
+<p>Undergraduate students meeting convolution for the first time, in a signals and systems, signal processing or
+applied mathematics course. Allow 10 to 15 minutes.</p>
+<h3 id="prerequisites">Prerequisites</h3>
 <ul>
-<li>When does overlap begin?</li>
-<li>When is overlap maximum?</li>
-<li>How does the overlap change throughout?</li>
+<li>Functions and their graphs</li>
+<li>Area under a curve as an integral</li>
+<li>Shifting a function, replacing <span class="arithmatex">\(x\)</span> by <span class="arithmatex">\(x - x_0\)</span></li>
 </ul>
-<p>Key Observations:</p>
+<h3 id="activities">Activities</h3>
+<p><strong>Activity 1: Find the three landmarks (3 min).</strong> Drag the slider from 0 to 270 and watch the gauge. It stays at 0
+until the right edge of the square meets the left corner of the triangle at slider 140 (<span class="arithmatex">\(x = -1.00\)</span>). It reaches its
+full height at 200 (<span class="arithmatex">\(x = 0.00\)</span>) and is back to 0 at 260 (<span class="arithmatex">\(x = 1.00\)</span>). The output is non-zero over 120 slider units,
+which is 2 square widths: the width of the square plus the width of the triangle.</p>
+<p><strong>Activity 2: Read the values (5 min).</strong> Set the slider to 160, 180, 200, 220 and 240 and write down the area each
+time. The read-outs are 0.11, 0.39, 0.50, 0.39 and 0.11. Explain why the values on the two sides of 200 mirror each
+other.</p>
+<p><strong>Activity 3: Height versus area (3 min).</strong> Set the slider to 170. The right edge of the square sits exactly under
+the apex of the triangle, so the overlap already reaches the triangle's full height, yet the read-out is 0.25, half
+the maximum. Compare with slider 200, where the square covers the whole triangle and the area is 0.50. Say which
+quantity the gauge measures.</p>
+<p><strong>Activity 4: Predict, then plot (5 min).</strong> Before touching the slider, sketch <span class="arithmatex">\((f * g)(x)\)</span> for <span class="arithmatex">\(x\)</span> from <span class="arithmatex">\(-2\)</span> to <span class="arithmatex">\(2\)</span>.
+Then set the slider to 140, 150, 160, ... 260 and plot the read-outs against <span class="arithmatex">\(x = (\text{slider} - 200)/60\)</span>. The points
+form a smooth bump, 2 widths wide, with a maximum of 0.50. It is not a triangle: near the start the area grows as
+the square of the overlap width (0.03, 0.11 and 0.25 at slider 150, 160 and 170).</p>
+<p><strong>Extension (homework).</strong></p>
 <ul>
-<li>The height of the purple triangle represents the area of overlap</li>
-<li>Maximum overlap occurs when the square aligns with the triangle's peak</li>
-<li>The result is symmetric (why?)</li>
+<li>Sketch the result for two squares, and for two triangles. Which is smoother?</li>
+<li>Find a real-world example of convolution and say what slides over what.</li>
+<li>Explain why the result is smooth even though the square has sharp edges.</li>
 </ul>
-<h3 id="part-3-mathematical-connection">Part 3: Mathematical Connection</h3>
-<p>The convolution formula:</p>
-<div class="arithmatex">\[
-(f * g)(x) = \int f(\tau)g(x-\tau)d\tau
-\]</div>
-<p>Connect simulation to formula:
-1. f(τ) is our moving square function
-2. g(x-τ) is our stationary triangle function
-3. The integral (∫) represents the area of overlap
-4. The slider position represents the x in our formula
-5. The height of the purple triangle represents (f * g)(x) at that x position</p>
-<p>If we want to explicitly show the limits of integration (typically from -∞ to ∞ for continuous convolution), we would write:</p>
-<div class="arithmatex">\[
-(f * g)(x) = \int_{-\infty}^{\infty} f(\tau)g(x-\tau)d\tau
-\]</div>
-<h3 id="part-4-practice-and-discussion-10-minutes">Part 4: Practice and Discussion (10 minutes)</h3>
-<p>Student Exercises:</p>
+<h3 id="assessment">Assessment</h3>
 <ol>
-<li>Predict the shape of the convolution result before sliding:</li>
-<li>Where will it start rising?</li>
-<li>Where will it peak?</li>
-<li>
-<p>Where will it return to zero?</p>
-</li>
-<li>
-<p>Discussion Questions:</p>
-</li>
-<li>Why is the result symmetric?</li>
-<li>What determines the maximum height of the result?</li>
-<li>How would the result change if we used two squares instead?</li>
-<li>How would it change with two triangles?</li>
+<li>What is the overlap area at slider 200, and why can no other position give more? <em>The area is 0.50, the full area
+    of the triangle, <span class="arithmatex">\(\tfrac{1}{2} \cdot 1 \cdot 1\)</span>. The square covers the whole triangle there, so nothing more can overlap.</em></li>
+<li>For which slider values is the output non-zero? <em>From 140 to 260, a span of 120 units. This is <span class="arithmatex">\(x\)</span> from <span class="arithmatex">\(-1\)</span> to <span class="arithmatex">\(+1\)</span>
+    widths, so the output is as wide as the square plus the triangle.</em></li>
+<li>At slider 170 the square already touches the apex, but the gauge is only half its maximum height. Why? <em>The square
+    covers only the left half of the triangle's base. By symmetry that half has half the area, 0.25.</em></li>
+<li>The square is made twice as wide and still 1 tall. How do the maximum and the width of the output change? <em>The
+    maximum stays 0.50, because the triangle is already completely covered. The output is non-zero over 3 of the
+    original widths (2 + 1) and has a flat top 1 width long while the triangle lies entirely inside the square.</em></li>
+<li>The convolution integral contains a flip, <span class="arithmatex">\(g(x-\tau)\)</span>. Why do you not see it in this MicroSim? <em>Both shapes are
+    symmetric about their centers, so the reversed shape looks the same. With an asymmetric function the flip matters,
+    as the Convolution Visualizer shows.</em></li>
 </ol>
-<h2 id="assessment-questions">Assessment Questions</h2>
-<ol>
-<li>What determines the height of the purple triangle at any given slider position?</li>
-<li>Why does the convolution result reach its maximum when the square is centered on the triangle?</li>
-<li>If we made the blue square wider, how would that affect the purple result?</li>
-<li>How does this geometric interpretation help understand the convolution formula?</li>
-</ol>
-<h2 id="extended-learning">Extended Learning</h2>
-<p>Challenge students to think about:</p>
-<ol>
-<li>How this relates to digital filters in signal processing</li>
-<li>Why convolution is useful for image blurring</li>
-<li>How changing the shapes of f(x) and g(x) would affect the result</li>
-<li>The relationship between convolution and correlation</li>
-</ol>
-<h2 id="common-misconceptions-to-address">Common Misconceptions to Address</h2>
-<ol>
-<li>The height of the result is NOT the height of overlap, but the AREA of overlap</li>
-<li>Convolution is NOT multiplication at a point, but integration of product over all overlapping points</li>
-<li>The result shape depends on BOTH input shapes, not just one</li>
-</ol>
-<h2 id="homework-suggestions">Homework Suggestions</h2>
-<ol>
-<li>Sketch predicted convolution results for different function pairs</li>
-<li>Find real-world examples of convolution in signal processing</li>
-<li>Write a brief explanation of why the convolution result is smooth even with a square input</li>
-</ol>
-<h2 id="additional-resources">Additional Resources</h2>
+<h3 id="common-misconceptions">Common Misconceptions</h3>
 <ul>
-<li>Signal processing textbook chapters on convolution</li>
-<li>Online visualizations of 2D convolution for image processing</li>
-<li>Audio processing examples using convolution for reverb effects</li>
+<li><strong>"The gauge shows how high the shapes overlap."</strong> The gauge shows area. Compare slider 170, where the overlap
+  already reaches the triangle's full height but the gauge is at half height, with slider 200.</li>
+<li><strong>"The purple triangle is the output signal."</strong> It is a gauge whose height is one value of the output at the current
+  <span class="arithmatex">\(x\)</span>. The output itself is the smooth bump you get by plotting the gauge height against <span class="arithmatex">\(x\)</span>.</li>
+<li><strong>"Convolution multiplies the two functions at a point."</strong> At each <span class="arithmatex">\(x\)</span> the product is a whole function of <span class="arithmatex">\(\tau\)</span>,
+  and the output value is the integral of that product over all the overlapping points.</li>
 </ul>
+<h2 id="references">References</h2>
+<ol>
+<li><a href="https://en.wikipedia.org/wiki/Convolution">Convolution</a> - Wikipedia - definition of the convolution integral, its properties and its graphical interpretation</li>
+<li><a href="https://www.dspguide.com/ch6.htm">Chapter 6: Convolution</a> - Steven W. Smith, The Scientist and Engineer's Guide to Digital Signal Processing - free online chapter that builds convolution from the impulse response</li>
+<li><a href="https://en.wikipedia.org/wiki/Impulse_response">Impulse response</a> - Wikipedia - why convolution with <span class="arithmatex">\(h(t)\)</span> describes what a linear system does to a signal</li>
+<li><a href="https://en.wikipedia.org/wiki/Linear_time-invariant_system">Linear time-invariant system</a> - Wikipedia - why the output of an LTI system is the convolution of the input with its impulse response</li>
+<li><a href="https://www.youtube.com/watch?v=KuXjwB4LzSA">But what is a convolution?</a> - 3Blue1Brown - a visual explanation of the sliding-and-multiplying picture</li>
+</ol>
 
 
 
@@ -2246,8 +3243,6 @@
 
 
 
-
-  
 
 
 
@@ -2271,12 +3266,10 @@
   
     
       
-        
-      
       <nav class="md-footer__inner md-grid" aria-label="Footer" >
         
           
-          <a href="../complex-plane/" class="md-footer__link md-footer__link--prev" aria-label="Previous: Complex Plane">
+          <a href="../compressed-sensing/" class="md-footer__link md-footer__link--prev" aria-label="Previous: Compressed Sensing">
             <div class="md-footer__button md-icon">
               
               <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
@@ -2286,20 +3279,20 @@
                 Previous
               </span>
               <div class="md-ellipsis">
-                Complex Plane
+                Compressed Sensing
               </div>
             </div>
           </a>
         
         
           
-          <a href="../euler-formula-explorer/" class="md-footer__link md-footer__link--next" aria-label="Next: Euler&#39;s Formula Explorer">
+          <a href="../convolution-theorem/" class="md-footer__link md-footer__link--next" aria-label="Next: Convolution Theorem and Circular Convolution">
             <div class="md-footer__title">
               <span class="md-footer__direction">
                 Next
               </span>
               <div class="md-ellipsis">
-                Euler's Formula Explorer
+                Convolution Theorem and Circular Convolution
               </div>
             </div>
             <div class="md-footer__button md-icon">

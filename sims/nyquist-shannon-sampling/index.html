@@ -6,7 +6,7 @@
       <meta charset="utf-8">
       <meta name="viewport" content="width=device-width,initial-scale=1">
       
-        <meta name="description" content="College Level Textbook on Signal Processing - License is Commons ShareAlike Attribution Noncommercial">
+        <meta name="description" content="Sample a 5 Hz sine wave at 1 to 50 Hz and compare ideal sinc and straight-line reconstructions to see the Nyquist rate and aliasing at work.">
       
       
         <meta name="author" content="Dan McCreary">
@@ -15,10 +15,10 @@
         <link rel="canonical" href="https://dmccreary.github.io/signal-processing/sims/nyquist-shannon-sampling/">
       
       
-        <link rel="prev" href="../mobius-transform/">
+        <link rel="prev" href="../noise-analysis-and-reduction-tool/">
       
       
-        <link rel="next" href="../rc-lowpass-filter/">
+        <link rel="next" href="../phase-spectrum/">
       
       
       <link rel="icon" href="../../img/favicon.ico">
@@ -54,6 +54,8 @@
     
       <link rel="stylesheet" href="../../css/extra.css">
     
+      <link rel="stylesheet" href="../../css/mascot.css">
+    
     <script>__md_scope=new URL("../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
     
       
@@ -65,9 +67,9 @@
       
         <meta  property="og:title"  content="Nyquist-Shannon Sampling - Signal Processing with AI" >
       
-        <meta  property="og:description"  content="College Level Textbook on Signal Processing - License is Commons ShareAlike Attribution Noncommercial" >
+        <meta  property="og:description"  content="Sample a 5 Hz sine wave at 1 to 50 Hz and compare ideal sinc and straight-line reconstructions to see the Nyquist rate and aliasing at work." >
       
-        <meta  property="og:image"  content="https://dmccreary.github.io/signal-processing/assets/images/social/sims/nyquist-shannon-sampling/index.png" >
+        <meta property="og:image" content="https://dmccreary.github.io/signal-processing/sims/nyquist-shannon-sampling/nyquist-shannon-sampling.png">
       
         <meta  property="og:image:type"  content="image/png" >
       
@@ -81,9 +83,9 @@
       
         <meta  name="twitter:title"  content="Nyquist-Shannon Sampling - Signal Processing with AI" >
       
-        <meta  name="twitter:description"  content="College Level Textbook on Signal Processing - License is Commons ShareAlike Attribution Noncommercial" >
+        <meta  name="twitter:description"  content="Sample a 5 Hz sine wave at 1 to 50 Hz and compare ideal sinc and straight-line reconstructions to see the Nyquist rate and aliasing at work." >
       
-        <meta  name="twitter:image"  content="https://dmccreary.github.io/signal-processing/assets/images/social/sims/nyquist-shannon-sampling/index.png" >
+        <meta name="twitter:image" content="https://dmccreary.github.io/signal-processing/sims/nyquist-shannon-sampling/nyquist-shannon-sampling.png">
       
     
     
@@ -122,7 +124,7 @@
   <nav class="md-header__inner md-grid" aria-label="Header">
     <a href="../.." title="Signal Processing with AI" class="md-header__button md-logo" aria-label="Signal Processing with AI" data-md-component="logo">
       
-  <img src="../../img/logo-192.png" alt="logo">
+  <img src="../../img/mascot/neutral.png" alt="logo">
 
     </a>
     <label class="md-header__button md-icon" for="__drawer">
@@ -217,8 +219,6 @@
           
             
               
-                
-              
               <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
                 <div class="md-sidebar__scrollwrap">
                   <div class="md-sidebar__inner">
@@ -230,7 +230,7 @@
   <label class="md-nav__title" for="__drawer">
     <a href="../.." title="Signal Processing with AI" class="md-nav__button md-logo" aria-label="Signal Processing with AI" data-md-component="logo">
       
-  <img src="../../img/logo-192.png" alt="logo">
+  <img src="../../img/mascot/neutral.png" alt="logo">
 
     </a>
     Signal Processing with AI
@@ -277,31 +277,11 @@
   
   
     <li class="md-nav__item">
-      <a href="../../chapters/" class="md-nav__link">
-        
-  
-  <span class="md-ellipsis">
-    Table of Contents
-  </span>
-  
-
-      </a>
-    </li>
-  
-
-    
-      
-      
-  
-  
-  
-  
-    <li class="md-nav__item">
       <a href="../../about/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
-    About This Website
+    About
   </span>
   
 
@@ -544,6 +524,174 @@
           
         
       
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
     
     
     
@@ -553,7 +701,7 @@
       
         
         
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_6" checked>
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_5" checked>
         
           
           
@@ -569,19 +717,103 @@
             </a>
             
               
-              <label class="md-nav__link " for="__nav_6" id="__nav_6_label" tabindex="0">
+              <label class="md-nav__link " for="__nav_5" id="__nav_5_label" tabindex="0">
                 <span class="md-nav__icon md-icon"></span>
               </label>
             
           </div>
         
-        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_6_label" aria-expanded="true">
-          <label class="md-nav__title" for="__nav_6">
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_5_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_5">
             <span class="md-nav__icon md-icon"></span>
             MicroSims
           </label>
           <ul class="md-nav__list" data-md-scrollfix>
             
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../image-convolution/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    2-D Convolution and Image Filtering
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../conv-layer-as-filter/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    A Convolutional Layer Is a Learned FIR Filter
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../adaptive-algorithm-comparison-tool/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Adaptive Algorithm Comparison Tool
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../adaptive-noise-cancellation/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Adaptive Noise and Echo Cancellation
+  </span>
+  
+
+      </a>
+    </li>
+  
+
               
             
               
@@ -633,11 +865,11 @@
   
   
     <li class="md-nav__item">
-      <a href="../base-and-treble/" class="md-nav__link">
+      <a href="../fft-basic/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
-    Base and Treble
+    Basic FFT
   </span>
   
 
@@ -654,11 +886,32 @@
   
   
     <li class="md-nav__item">
-      <a href="../fft-basic/" class="md-nav__link">
+      <a href="../base-and-treble/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
-    Basic FFT
+    Bass and Treble
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../bilinear-transform/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Bilinear Transform and Frequency Warping
   </span>
   
 
@@ -780,6 +1033,27 @@
   
   
     <li class="md-nav__item">
+      <a href="../compressed-sensing/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Compressed Sensing
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
       <a href="../convolution/" class="md-nav__link">
         
   
@@ -801,11 +1075,137 @@
   
   
     <li class="md-nav__item">
+      <a href="../convolution-theorem/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Convolution Theorem and Circular Convolution
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../convolution-visualizer/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Convolution Visualizer
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../correlation-and-matched-filtering/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Correlation and Matched Filtering
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../dct-basis-explorer/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    DCT Basis Explorer
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../dft-explorer/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    DFT Explorer
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
       <a href="../euler-formula-explorer/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
     Euler's Formula Explorer
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../even-and-odd-signal-decomposition/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Even and Odd Signal Decomposition
   </span>
   
 
@@ -969,6 +1369,27 @@
   
   
     <li class="md-nav__item">
+      <a href="../fft-spectrum-analyzer/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    FFT Spectrum Analyzer
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
       <a href="../fft-waveform-types/" class="md-nav__link">
         
   
@@ -990,11 +1411,263 @@
   
   
     <li class="md-nav__item">
+      <a href="../filter-bank-explorer/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Filter Bank and Polyphase Explorer
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../fir-filter-design-comparison-tool/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    FIR Filter Design Comparison Tool
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../fir-vs-iir/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    FIR vs IIR Filters
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../fourier-series-explorer/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Fourier Series Explorer
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../fourier-transform-pairs/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Fourier Transform Pairs
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
       <a href="../frequency-detection/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
     Frequency Detection
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../huffman-coding/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Huffman Coding
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../iir-prototype-comparison/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    IIR Prototype Comparison
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../impulse-and-frequency-response-analyzer/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Impulse and Frequency Response Analyzer
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../interactive-filter-design-and-analysis-tool/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Interactive Filter Design and Analysis Tool
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../interactive-pole-zero-analysis-tool/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Interactive Pole-Zero Analysis Tool
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../interactive-spectrogram-parameter-explorer/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Interactive Spectrogram Parameter Explorer
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../interactive-stft-spectrogram-analyzer/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Interactive STFT Spectrogram Analyzer
   </span>
   
 
@@ -1071,6 +1744,48 @@
                 
   
   
+  
+  
+    <li class="md-nav__item">
+      <a href="../multirate-sample-rate-converter/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Multirate Sample Rate Converter
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../noise-analysis-and-reduction-tool/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Noise Analysis and Reduction Tool
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
     
   
   
@@ -1120,64 +1835,19 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#chatgpt-response" class="md-nav__link">
+  <a href="#description" class="md-nav__link">
     <span class="md-ellipsis">
-      ChatGPT Response
+      Description
     </span>
   </a>
   
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#simulation-code" class="md-nav__link">
-    <span class="md-ellipsis">
-      Simulation Code
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#how-to-use-the-simulation" class="md-nav__link">
-    <span class="md-ellipsis">
-      How to Use the Simulation
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#explanation-of-the-code" class="md-nav__link">
-    <span class="md-ellipsis">
-      Explanation of the Code
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="Explanation of the Code">
+    <nav class="md-nav" aria-label="Description">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#variables" class="md-nav__link">
+  <a href="#mathematical-concepts" class="md-nav__link">
     <span class="md-ellipsis">
-      Variables
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#setup-function" class="md-nav__link">
-    <span class="md-ellipsis">
-      setup()` Function
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#draw-function" class="md-nav__link">
-    <span class="md-ellipsis">
-      draw() Function
+      Mathematical Concepts
     </span>
   </a>
   
@@ -1189,18 +1859,87 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#key-concepts-demonstrated" class="md-nav__link">
+  <a href="#lesson-plan" class="md-nav__link">
     <span class="md-ellipsis">
-      Key Concepts Demonstrated
+      Lesson Plan
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Lesson Plan">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#learning-objectives" class="md-nav__link">
+    <span class="md-ellipsis">
+      Learning Objectives
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#target-audience" class="md-nav__link">
+    <span class="md-ellipsis">
+      Target Audience
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#prerequisites" class="md-nav__link">
+    <span class="md-ellipsis">
+      Prerequisites
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#activities" class="md-nav__link">
+    <span class="md-ellipsis">
+      Activities
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#assessment" class="md-nav__link">
+    <span class="md-ellipsis">
+      Assessment
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#common-misconceptions" class="md-nav__link">
+    <span class="md-ellipsis">
+      Common Misconceptions
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#references" class="md-nav__link">
+    <span class="md-ellipsis">
+      References
     </span>
   </a>
   
 </li>
       
         <li class="md-nav__item">
-  <a href="#running-the-simulation" class="md-nav__link">
+  <a href="#development-notes" class="md-nav__link">
     <span class="md-ellipsis">
-      Running the Simulation
+      Development Notes
     </span>
   </a>
   
@@ -1222,11 +1961,137 @@
   
   
     <li class="md-nav__item">
+      <a href="../phase-spectrum/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Phase Spectrum - What the Magnitude Hides
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../phasor-addition/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Phasor Addition
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../psd-wiener-khinchin/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Power Spectral Density and the Wiener-Khinchin Theorem
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../distribution-explorer/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Probability Distribution Explorer
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../quantization-and-noise-shaping/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Quantization and Noise Shaping
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
       <a href="../rc-lowpass-filter/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
     RC Lowpass Filter
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../real-time-processing-simulator/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Real-Time Processing Simulator
   </span>
   
 
@@ -1264,6 +2129,90 @@
   
   
     <li class="md-nav__item">
+      <a href="../s-plane-explorer/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    s-Plane Explorer
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../sampling-theorem-explorer/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Sampling Theorem Explorer
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../signal-operations/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Signal Operations - Shift, Scale and Reverse
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../signal-type-explorer/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Signal Type Explorer
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
       <a href="../sine-wave/" class="md-nav__link">
         
   
@@ -1285,11 +2234,95 @@
   
   
     <li class="md-nav__item">
+      <a href="../spectral-leakage-and-windowing/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Spectral Leakage and Windowing
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
       <a href="../synth-timeline/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
     Synth Timeline
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../system-interconnections/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    System Interconnections - Series, Parallel, Feedback
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../system-property-explorer/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    System Property Explorer
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../time-frequency-analysis-explorer/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Time-Frequency Analysis Explorer
   </span>
   
 
@@ -1332,6 +2365,27 @@
   
   <span class="md-ellipsis">
     Tone Generator
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../wavelet-explorer/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Wavelet Explorer - CWT Scalogram and Haar DWT
   </span>
   
 
@@ -1508,6 +2562,12 @@
       
         
           
+        
+      
+        
+      
+        
+      
         
       
         
@@ -1722,6 +2782,26 @@
   
   
     <li class="md-nav__item">
+      <a href="../../instructors-guide/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Instructor's Guide
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
       <a href="../../license/" class="md-nav__link">
         
   
@@ -1767,26 +2847,6 @@
   
   <span class="md-ellipsis">
     Contact
-  </span>
-  
-
-      </a>
-    </li>
-  
-
-    
-      
-      
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../../ieee-paper-changes/" class="md-nav__link">
-        
-  
-  <span class="md-ellipsis">
-    Paper Changes
   </span>
   
 
@@ -1898,9 +2958,7 @@
             
             
               
-                
-              
-              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" hidden>
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
                 <div class="md-sidebar__scrollwrap">
                   <div class="md-sidebar__inner">
                     
@@ -1919,64 +2977,19 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#chatgpt-response" class="md-nav__link">
+  <a href="#description" class="md-nav__link">
     <span class="md-ellipsis">
-      ChatGPT Response
+      Description
     </span>
   </a>
   
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#simulation-code" class="md-nav__link">
-    <span class="md-ellipsis">
-      Simulation Code
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#how-to-use-the-simulation" class="md-nav__link">
-    <span class="md-ellipsis">
-      How to Use the Simulation
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#explanation-of-the-code" class="md-nav__link">
-    <span class="md-ellipsis">
-      Explanation of the Code
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="Explanation of the Code">
+    <nav class="md-nav" aria-label="Description">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#variables" class="md-nav__link">
+  <a href="#mathematical-concepts" class="md-nav__link">
     <span class="md-ellipsis">
-      Variables
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#setup-function" class="md-nav__link">
-    <span class="md-ellipsis">
-      setup()` Function
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#draw-function" class="md-nav__link">
-    <span class="md-ellipsis">
-      draw() Function
+      Mathematical Concepts
     </span>
   </a>
   
@@ -1988,18 +3001,87 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#key-concepts-demonstrated" class="md-nav__link">
+  <a href="#lesson-plan" class="md-nav__link">
     <span class="md-ellipsis">
-      Key Concepts Demonstrated
+      Lesson Plan
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Lesson Plan">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#learning-objectives" class="md-nav__link">
+    <span class="md-ellipsis">
+      Learning Objectives
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#target-audience" class="md-nav__link">
+    <span class="md-ellipsis">
+      Target Audience
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#prerequisites" class="md-nav__link">
+    <span class="md-ellipsis">
+      Prerequisites
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#activities" class="md-nav__link">
+    <span class="md-ellipsis">
+      Activities
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#assessment" class="md-nav__link">
+    <span class="md-ellipsis">
+      Assessment
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#common-misconceptions" class="md-nav__link">
+    <span class="md-ellipsis">
+      Common Misconceptions
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#references" class="md-nav__link">
+    <span class="md-ellipsis">
+      References
     </span>
   </a>
   
 </li>
       
         <li class="md-nav__item">
-  <a href="#running-the-simulation" class="md-nav__link">
+  <a href="#development-notes" class="md-nav__link">
     <span class="md-ellipsis">
-      Running the Simulation
+      Development Notes
     </span>
   </a>
   
@@ -2020,7 +3102,7 @@
                   
 
   
-    <a href="https://github.com/dmccreary/signal-processing/blob/master/docs/sims/nyquist-shannon-sampling/index.md" title="Edit this page" class="md-content__button md-icon">
+    <a href="https://github.com/dmccreary/signal-processing/blob/main/docs/sims/nyquist-shannon-sampling/index.md" title="Edit this page" class="md-content__button md-icon">
       
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M10 20H6V4h7v5h5v3.1l2-2V8l-6-6H6c-1.1 0-2 .9-2 2v16c0 1.1.9 2 2 2h4zm10.2-7c.1 0 .3.1.4.2l1.3 1.3c.2.2.2.6 0 .8l-1 1-2.1-2.1 1-1c.1-.1.2-.2.4-.2m0 3.9L14.1 23H12v-2.1l6.1-6.1z"/></svg>
     </a>
@@ -2029,29 +3111,155 @@
 
 
 <h1 id="nyquist-shannon-sampling">Nyquist-Shannon Sampling</h1>
-<p><img alt="" class="md-button md-button--primary" src="nyquist-shannon-sampling.png" /></p>
-<p><a href="nyquist-shannon-sampling.html">Run the Nyquist-Shannon Sampling MicroSim</a>
-<a href="https://editor.p5js.org/dmccreary/sketches/I95-hiV6z">Edit This MicroSim</a></p>
-<div class="admonition prompt">
-<p class="admonition-title">Prompt</p>
-</div>
-<p>Please help me create a p5.js simulation that helps
-  students understand Sampling and Aliasing. The Nyquist-Shannon
-  sampling theorem and the concept of aliasing involve understanding
-  how continuous signals are represented in discrete form. Grasping
-  how undersampling leads to frequency overlap (aliasing) can be non-intuitive.</p>
-<p>I would like an Interactive p5.js program that can demonstrate how
-  varying the sampling rate affects the reconstructed signal.
-  By adjusting parameters in real-time, students can visualize
-  aliasing effects and the importance of adhering to the Nyquist rate.</p>
-<p>Please create a p5.js simulation that allows students to use a
-  slider to adjust the sampling rate for a waveform using a slider.
-  Display two waveforms. One is the input with the samples drawn
-  as radius 7 red circles. The second waveform is one done from
-  the reconstruction of the sampling points.
-  Place the original on the top and the reconstruction under
-  the original.</p>
-<p>Use the following template:</p>
+<iframe src="main.html" width="100%" height="502px" scrolling="no"></iframe>
+
+<p>Copy this iframe to your website:</p>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="p">&lt;</span><span class="nt">iframe</span> <span class="na">src</span><span class="o">=</span><span class="s">"https://dmccreary.github.io/signal-processing/sims/nyquist-shannon-sampling/main.html"</span> <span class="na">width</span><span class="o">=</span><span class="s">"100%"</span> <span class="na">height</span><span class="o">=</span><span class="s">"502px"</span> <span class="na">scrolling</span><span class="o">=</span><span class="s">"no"</span><span class="p">&gt;&lt;/</span><span class="nt">iframe</span><span class="p">&gt;</span>
+</code></pre></div></td></tr></table></div>
+<p><a class="md-button md-button--primary" href="main.html">Run MicroSim in Fullscreen</a></p>
+<p><a href="https://editor.p5js.org/dmccreary/sketches/I95-hiV6z">Edit in the p5.js Editor</a></p>
+<h2 id="description">Description</h2>
+<p>This MicroSim samples a 5 Hz sine wave, <span class="arithmatex">\(x(t) = \sin(2\pi \cdot 5t)\)</span>, at the sampling rate <span class="arithmatex">\(f_s\)</span> set by the
+slider (1 to 50 Hz in steps of 0.1 Hz) and shows one second of the result.</p>
+<ul>
+<li><strong>Upper plot:</strong> the original signal in black and its samples <span class="arithmatex">\(x[n] = x(n/f_s)\)</span> as red dots.</li>
+<li><strong>Lower plot:</strong> two continuous signals rebuilt from the samples alone. The blue curve is the ideal (sinc)
+  reconstruction that the sampling theorem promises. The gray curve joins neighboring samples with straight lines.</li>
+</ul>
+<p>The read-out line gives the signal frequency <span class="arithmatex">\(f\)</span>, the Nyquist rate <span class="arithmatex">\(2f = 10\)</span> Hz, the Nyquist frequency <span class="arithmatex">\(f_s/2\)</span>
+and the number of samples per period <span class="arithmatex">\(f_s/f\)</span>. The colored status line is the Nyquist indicator: green when
+<span class="arithmatex">\(f_s &gt; 2f\)</span>, gold when <span class="arithmatex">\(f_s = 2f\)</span> exactly, and red when <span class="arithmatex">\(f_s &lt; 2f\)</span>, in which case it reports the alias frequency.</p>
+<p>This is the introductory sampling sim for the sections on the sampling theorem and aliasing in
+<a href="../../chapters/05-sampling-and-quantization/">Chapter 5: Sampling and Quantization</a>. The
+<a href="../sampling-theorem-explorer/">Sampling Theorem Explorer</a> adds spectra and more controls.</p>
+<h3 id="mathematical-concepts">Mathematical Concepts</h3>
+<p>The blue curve is the Whittaker-Shannon interpolation of the samples,</p>
+<div class="arithmatex">\[x_r(t) = \sum_{n} x[n]\,\operatorname{sinc}(f_s t - n), \qquad \operatorname{sinc}(u) = \frac{\sin(\pi u)}{\pi u}.\]</div>
+<p>The theorem needs every sample from <span class="arithmatex">\(n = -\infty\)</span> to <span class="arithmatex">\(\infty\)</span>. The sim uses the samples in the window plus
+2000 more on each side, which keeps the blue curve within 0.01 of the exact result for every slider setting.</p>
+<p>When <span class="arithmatex">\(f_s &gt; 2f\)</span> the sum returns the original 5 Hz wave. When <span class="arithmatex">\(f_s &lt; 2f\)</span> the samples are identical to the samples
+of a slower sine at the alias frequency</p>
+<div class="arithmatex">\[f_a = |f - k f_s|,\]</div>
+<p>where the integer <span class="arithmatex">\(k\)</span> makes <span class="arithmatex">\(f_a \le f_s/2\)</span>, and the sum returns that alias instead.</p>
+<h2 id="lesson-plan">Lesson Plan</h2>
+<h3 id="learning-objectives">Learning Objectives</h3>
+<p>After using this MicroSim, students will be able to:</p>
+<ol>
+<li><strong>State</strong> the Nyquist criterion <span class="arithmatex">\(f_s &gt; 2f\)</span> and calculate the Nyquist rate of a sinusoid of known frequency</li>
+<li><strong>Calculate</strong> the samples per period <span class="arithmatex">\(f_s/f\)</span> and the Nyquist frequency <span class="arithmatex">\(f_s/2\)</span> for a given sampling rate</li>
+<li><strong>Predict</strong> the alias frequency <span class="arithmatex">\(f_a = |f - k f_s|\)</span> when <span class="arithmatex">\(f_s &lt; 2f\)</span> and verify it by counting the cycles of the reconstruction</li>
+<li><strong>Distinguish</strong> ideal (sinc) reconstruction from straight-line interpolation and explain why a jagged straight-line plot does not mean that information was lost</li>
+<li><strong>Explain</strong> why sampling at exactly <span class="arithmatex">\(f_s = 2f\)</span> can fail to capture a sine wave</li>
+</ol>
+<h3 id="target-audience">Target Audience</h3>
+<p>Undergraduate students in a first signals and systems or digital signal processing course. Plan 20 minutes for
+the activities below.</p>
+<h3 id="prerequisites">Prerequisites</h3>
+<ul>
+<li>Frequency and period of a sine wave (<span class="arithmatex">\(f = 1/T\)</span>)</li>
+<li>Sampling as taking the values <span class="arithmatex">\(x[n] = x(nT_s)\)</span> every <span class="arithmatex">\(T_s = 1/f_s\)</span> seconds</li>
+<li>Reading a plot of amplitude against time</li>
+</ul>
+<h3 id="activities">Activities</h3>
+<p><strong>Activity 1: Above the Nyquist rate (5 min).</strong> Start at the default <span class="arithmatex">\(f_s\)</span> = 22.0 Hz. The read-out shows
+4.40 samples per period and <span class="arithmatex">\(f_s/2\)</span> = 11.00 Hz, and the status line is green. The blue curve passes through every
+red dot and matches the black original, while the gray straight lines cut the corners off each peak. Lower <span class="arithmatex">\(f_s\)</span> to
+12.0 Hz (2.40 samples per period): the gray zigzag no longer looks like a sine, yet the blue curve is still the 5 Hz wave.</p>
+<p><strong>Activity 2: Find the edge (5 min).</strong> Set <span class="arithmatex">\(f_s\)</span> = 10.5 Hz (2.10 samples per period): the status is still green and the
+blue curve still completes 5 cycles in one second. Set <span class="arithmatex">\(f_s\)</span> = 10.0 Hz: the status turns gold, the 11 samples fall at
+<span class="arithmatex">\(t\)</span> = 0, 0.1, ..., 1.0 s on zero crossings, and both reconstructions are flat lines. Set <span class="arithmatex">\(f_s\)</span> = 9.5 Hz: the status turns red
+and reports a 4.5 Hz alias. The blue curve completes 4.5 cycles and starts downward instead of upward.</p>
+<p><strong>Activity 3: Predict the alias (5-10 min).</strong> Before moving the slider, compute <span class="arithmatex">\(f_a = |5 - k f_s|\)</span> for <span class="arithmatex">\(f_s\)</span> = 8.0, 6.0
+and 4.5 Hz. Then check: at 8.0 Hz the status reports 3.0 Hz and the blue curve completes 3 cycles; at 6.0 Hz it reports
+1.0 Hz and the blue curve completes one cycle; at 4.5 Hz it reports 0.5 Hz and the blue curve rises to +1 at <span class="arithmatex">\(t\)</span> = 0.5 s
+and falls back to 0 at <span class="arithmatex">\(t\)</span> = 1 s, half a cycle.</p>
+<p><strong>Activity 4: Samples that vanish (5 min).</strong> Set <span class="arithmatex">\(f_s\)</span> = 5.0 Hz (1.00 sample per period). Every sample lands at
+the same point of the cycle, where <span class="arithmatex">\(\sin(2\pi n) = 0\)</span>, so the status reads "Every sample is 0" and the reconstruction is
+flat: the 5 Hz wave has aliased to 0 Hz. Try 2.5 Hz and 2.0 Hz and explain why the samples are again all zero.</p>
+<h3 id="assessment">Assessment</h3>
+<ol>
+<li>A 5 Hz sine wave is sampled at 8 Hz. What frequency does the reconstruction show?
+    <em>Answer: 3 Hz, since <span class="arithmatex">\(|5 - 8| = 3\)</span> Hz is below <span class="arithmatex">\(f_s/2 = 4\)</span> Hz.</em></li>
+<li>What is the lowest sampling rate that captures a 5 Hz sine wave, and why does exactly 10 Hz fail in this sim?
+    <em>Answer: any rate above 10 Hz. At exactly 10 Hz the samples fall at <span class="arithmatex">\(t = n/10\)</span>, where <span class="arithmatex">\(\sin(\pi n) = 0\)</span>, so every sample is zero.</em></li>
+<li>At <span class="arithmatex">\(f_s\)</span> = 12 Hz the gray curve looks nothing like a sine wave. Has information been lost?
+    <em>Answer: no. 12 Hz is above the 10 Hz Nyquist rate, and the blue sinc reconstruction recovers the 5 Hz wave; the distortion comes from straight-line interpolation, not from sampling.</em></li>
+<li>CD audio is sampled at 44.1 kHz. What is the highest frequency it can represent, and where does a 30 kHz tone appear if it reaches the converter unfiltered?
+    <em>Answer: 22.05 kHz; the 30 kHz tone aliases to <span class="arithmatex">\(|30 - 44.1| = 14.1\)</span> kHz.</em></li>
+<li>How many samples per period does the default setting take, and how many does the Nyquist rate take?
+    <em>Answer: 4.4 samples per period at 22 Hz; exactly 2 at the 10 Hz Nyquist rate.</em></li>
+</ol>
+<h3 id="common-misconceptions">Common Misconceptions</h3>
+<p><strong>"A sine wave needs many samples per period, say ten, to be captured."</strong> At <span class="arithmatex">\(f_s\)</span> = 12 Hz there are only 2.4 samples
+per period and the straight-line plot looks badly distorted, but the blue sinc reconstruction is the original 5 Hz wave.
+The number of samples needed is set by the theorem, not by how the dots look when joined with straight lines.</p>
+<p><strong>"Sampling at exactly twice the frequency is enough."</strong> At <span class="arithmatex">\(f_s\)</span> = 10.0 Hz every sample of this sine is zero and the
+wave disappears. The criterion is a strict inequality, <span class="arithmatex">\(f_s &gt; 2f\)</span>, and practical systems sample well above it.</p>
+<p><strong>"Aliasing makes a signal look noisy."</strong> At <span class="arithmatex">\(f_s\)</span> = 8.0 Hz the reconstruction is a clean, smooth sine wave. It is simply
+the wrong one: 3 Hz instead of 5 Hz. Nothing in the samples reveals that it is an alias.</p>
+<h2 id="references">References</h2>
+<ol>
+<li><a href="https://en.wikipedia.org/wiki/Nyquist%E2%80%93Shannon_sampling_theorem">Nyquist-Shannon sampling theorem</a> - Wikipedia - statement of the theorem, the condition <span class="arithmatex">\(f_s &gt; 2B\)</span>, and sinc reconstruction</li>
+<li><a href="https://en.wikipedia.org/wiki/Aliasing">Aliasing</a> - Wikipedia - how frequencies above <span class="arithmatex">\(f_s/2\)</span> fold to lower alias frequencies</li>
+<li><a href="https://en.wikipedia.org/wiki/Nyquist_rate">Nyquist rate</a> - Wikipedia - the minimum sampling rate <span class="arithmatex">\(2B\)</span> for a signal of bandwidth <span class="arithmatex">\(B\)</span></li>
+<li><a href="https://en.wikipedia.org/wiki/Nyquist_frequency">Nyquist frequency</a> - Wikipedia - the highest frequency <span class="arithmatex">\(f_s/2\)</span> that a given sampling rate can represent</li>
+<li><a href="https://en.wikipedia.org/wiki/Whittaker%E2%80%93Shannon_interpolation_formula">Whittaker-Shannon interpolation formula</a> - Wikipedia - the sinc sum used to draw the blue curve</li>
+<li><a href="https://www.dspguide.com/">The Scientist and Engineer's Guide to Digital Signal Processing</a> - Steven W. Smith - free online textbook; Chapter 3 (ADC and DAC) explains the sampling theorem and aliasing</li>
+</ol>
+<h2 id="development-notes">Development Notes</h2>
+<details>
+<summary>Prompt history</summary>
+<p><strong>Version 2.0.0 (2026-10-14).</strong> Ported from p5.js 1.10.0 to p5.js 2.3.2 and made responsive (one <code>createCanvas</code> call,
+<code>updateCanvasSize()</code>, <code>windowResized()</code>); the legacy entry file <code>nyquist-shannon-sampling.html</code> now redirects to
+<code>main.html</code>. Samples are now taken at the exact times <span class="arithmatex">\(t = n/f_s\)</span>. The earlier sketch stepped through the canvas in whole
+pixels (<code>floor(width / samplingRate)</code>), so the true number of samples per period differed from the label (4.5 instead of
+the 4.4 shown at the default setting on a 450 px canvas) and changed with the canvas width. The slider keeps its range,
+step and default (1 to 50, 0.1, 22); its value is now labeled as the sampling rate in Hz for the 5 Hz signal shown over
+one second, with samples per period (<span class="arithmatex">\(f_s/5\)</span>, the old label) in the read-out. The lower plot keeps the original
+straight-line reconstruction (now gray) and adds the ideal sinc reconstruction (blue), a legend, a time axis and the Nyquist
+status line with the alias frequency.</p>
+<p><strong>Original prompt</strong> (sent to ChatGPT o1-preview)</p>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
+<span class="normal"> 2</span>
+<span class="normal"> 3</span>
+<span class="normal"> 4</span>
+<span class="normal"> 5</span>
+<span class="normal"> 6</span>
+<span class="normal"> 7</span>
+<span class="normal"> 8</span>
+<span class="normal"> 9</span>
+<span class="normal">10</span>
+<span class="normal">11</span>
+<span class="normal">12</span>
+<span class="normal">13</span>
+<span class="normal">14</span>
+<span class="normal">15</span>
+<span class="normal">16</span>
+<span class="normal">17</span>
+<span class="normal">18</span>
+<span class="normal">19</span>
+<span class="normal">20</span></pre></div></td><td class="code"><div><pre><span></span><code>Please help me create a p5.js simulation that helps
+students understand Sampling and Aliasing. The Nyquist-Shannon
+sampling theorem and the concept of aliasing involve understanding
+how continuous signals are represented in discrete form. Grasping
+how undersampling leads to frequency overlap (aliasing) can be non-intuitive.
+
+I would like an Interactive p5.js program that can demonstrate how
+varying the sampling rate affects the reconstructed signal.
+By adjusting parameters in real-time, students can visualize
+aliasing effects and the importance of adhering to the Nyquist rate.
+
+Please create a p5.js simulation that allows students to use a
+slider to adjust the sampling rate for a waveform using a slider.
+Display two waveforms. One is the input with the samples drawn
+as radius 7 red circles. The second waveform is one done from
+the reconstruction of the sampling points.
+Place the original on the top and the reconstruction under
+the original.
+
+Use the following template:
+</code></pre></div></td></tr></table></div>
+<p><strong>Template supplied with the prompt</strong></p>
 <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
 <span class="normal"> 2</span>
 <span class="normal"> 3</span>
@@ -2112,8 +3320,8 @@
 
 <span class="kd">function</span><span class="w"> </span><span class="nx">setup</span><span class="w"> </span><span class="p">{</span>
 <span class="w">    </span><span class="kd">const</span><span class="w"> </span><span class="nx">canvas</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">createCanvas</span><span class="p">(</span><span class="nx">canvasWidth</span><span class="p">,</span><span class="w"> </span><span class="nx">canvasHeight</span><span class="p">);</span>
-<span class="w">    </span><span class="c1">// canvas.parent(&#39;canvas-container&#39;);</span>
-<span class="w">    </span><span class="kd">var</span><span class="w"> </span><span class="nx">mainElement</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nb">document</span><span class="p">.</span><span class="nx">querySelector</span><span class="p">(</span><span class="s1">&#39;main&#39;</span><span class="p">);</span>
+<span class="w">    </span><span class="c1">// canvas.parent('canvas-container');</span>
+<span class="w">    </span><span class="kd">var</span><span class="w"> </span><span class="nx">mainElement</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nb">document</span><span class="p">.</span><span class="nx">querySelector</span><span class="p">(</span><span class="s1">'main'</span><span class="p">);</span>
 <span class="w">    </span><span class="nx">canvas</span><span class="p">.</span><span class="nx">parent</span><span class="p">(</span><span class="nx">mainElement</span><span class="p">);</span>
 <span class="w">    </span><span class="nx">textSize</span><span class="p">(</span><span class="nx">defaultTextSize</span><span class="p">);</span>
 
@@ -2126,10 +3334,10 @@
 
 <span class="kd">function</span><span class="w"> </span><span class="nx">draw</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
 <span class="w">    </span><span class="c1">// make the background drawing region a very light blue</span>
-<span class="w">    </span><span class="nx">fill</span><span class="p">(</span><span class="s1">&#39;aliceblue&#39;</span><span class="p">);</span>
+<span class="w">    </span><span class="nx">fill</span><span class="p">(</span><span class="s1">'aliceblue'</span><span class="p">);</span>
 <span class="w">    </span><span class="nx">rect</span><span class="p">(</span><span class="mf">0</span><span class="p">,</span><span class="w"> </span><span class="mf">0</span><span class="p">,</span><span class="w"> </span><span class="nx">canvasWidth</span><span class="p">,</span><span class="w"> </span><span class="nx">drawHeight</span><span class="p">);</span>
 <span class="w">    </span><span class="c1">// make the background of the controls area white</span>
-<span class="w">    </span><span class="nx">fill</span><span class="p">(</span><span class="s1">&#39;white&#39;</span><span class="p">)</span>
+<span class="w">    </span><span class="nx">fill</span><span class="p">(</span><span class="s1">'white'</span><span class="p">)</span>
 <span class="w">    </span><span class="nx">rect</span><span class="p">(</span><span class="mf">0</span><span class="p">,</span><span class="w"> </span><span class="nx">drawHeight</span><span class="p">,</span><span class="w"> </span><span class="nx">canvasWidth</span><span class="p">,</span><span class="w"> </span><span class="nx">controlHeight</span><span class="p">);</span>
 
 <span class="w">    </span><span class="c1">// get the updated slider value</span>
@@ -2139,13 +3347,11 @@
 
 
 <span class="w">    </span><span class="c1">// draw label and value</span>
-<span class="w">    </span><span class="nx">text</span><span class="p">(</span><span class="s2">&quot;MySlider: &quot;</span><span class="w"> </span><span class="o">+</span><span class="w">  </span><span class="nx">val</span><span class="p">,</span><span class="w"> </span><span class="mf">10</span><span class="p">,</span><span class="w"> </span><span class="nx">drawHeight</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="mf">25</span><span class="p">)</span>
+<span class="w">    </span><span class="nx">text</span><span class="p">(</span><span class="s2">"MySlider: "</span><span class="w"> </span><span class="o">+</span><span class="w">  </span><span class="nx">val</span><span class="p">,</span><span class="w"> </span><span class="mf">10</span><span class="p">,</span><span class="w"> </span><span class="nx">drawHeight</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="mf">25</span><span class="p">)</span>
 <span class="p">}</span>
 </code></pre></div></td></tr></table></div>
-<h3 id="chatgpt-response">ChatGPT Response</h3>
-<p>o1-preview Thought for 6 seconds</p>
-<p>Sure! Below is a p5.js simulation that demonstrates sampling and aliasing. You can adjust the sampling rate using a slider to see how it affects the reconstructed signal.</p>
-<h3 id="simulation-code">Simulation Code</h3>
+<p><strong>ChatGPT response (o1-preview, thought for 6 seconds).</strong> "Below is a p5.js simulation that demonstrates sampling and
+aliasing. You can adjust the sampling rate using a slider to see how it affects the reconstructed signal."</p>
 <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">  1</span>
 <span class="normal">  2</span>
 <span class="normal">  3</span>
@@ -2291,7 +3497,7 @@
 <span class="kd">function</span><span class="w"> </span><span class="nx">setup</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
 <span class="w">  </span><span class="nx">createCanvas</span><span class="p">(</span><span class="nx">canvasWidth</span><span class="p">,</span><span class="w"> </span><span class="nx">canvasHeight</span><span class="p">);</span>
 <span class="w">  </span><span class="kd">const</span><span class="w"> </span><span class="nx">canvas</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">createCanvas</span><span class="p">(</span><span class="nx">canvasWidth</span><span class="p">,</span><span class="w"> </span><span class="nx">canvasHeight</span><span class="p">);</span>
-<span class="w">  </span><span class="kd">var</span><span class="w"> </span><span class="nx">mainElement</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nb">document</span><span class="p">.</span><span class="nx">querySelector</span><span class="p">(</span><span class="s1">&#39;main&#39;</span><span class="p">);</span>
+<span class="w">  </span><span class="kd">var</span><span class="w"> </span><span class="nx">mainElement</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nb">document</span><span class="p">.</span><span class="nx">querySelector</span><span class="p">(</span><span class="s1">'main'</span><span class="p">);</span>
 <span class="w">  </span><span class="nx">canvas</span><span class="p">.</span><span class="nx">parent</span><span class="p">(</span><span class="nx">mainElement</span><span class="p">);</span>
 <span class="w">  </span><span class="nx">textSize</span><span class="p">(</span><span class="nx">defaultTextSize</span><span class="p">);</span>
 
@@ -2313,33 +3519,33 @@
 <span class="p">}</span>
 
 <span class="kd">function</span><span class="w"> </span><span class="nx">draw</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
-<span class="w">  </span><span class="c1">// Fill the drawing region background with &#39;aliceblue&#39;</span>
-<span class="w">  </span><span class="nx">fill</span><span class="p">(</span><span class="s1">&#39;aliceblue&#39;</span><span class="p">);</span>
-<span class="w">  </span><span class="nx">stroke</span><span class="p">(</span><span class="s1">&#39;black&#39;</span><span class="p">);</span>
+<span class="w">  </span><span class="c1">// Fill the drawing region background with 'aliceblue'</span>
+<span class="w">  </span><span class="nx">fill</span><span class="p">(</span><span class="s1">'aliceblue'</span><span class="p">);</span>
+<span class="w">  </span><span class="nx">stroke</span><span class="p">(</span><span class="s1">'black'</span><span class="p">);</span>
 <span class="w">  </span><span class="nx">rect</span><span class="p">(</span><span class="mf">0</span><span class="p">,</span><span class="w"> </span><span class="mf">0</span><span class="p">,</span><span class="w"> </span><span class="nx">canvasWidth</span><span class="p">,</span><span class="w"> </span><span class="nx">drawHeight</span><span class="p">);</span>
 
-<span class="w">  </span><span class="c1">// Fill the control region background with &#39;white&#39;</span>
-<span class="w">  </span><span class="nx">fill</span><span class="p">(</span><span class="s1">&#39;white&#39;</span><span class="p">);</span>
+<span class="w">  </span><span class="c1">// Fill the control region background with 'white'</span>
+<span class="w">  </span><span class="nx">fill</span><span class="p">(</span><span class="s1">'white'</span><span class="p">);</span>
 <span class="w">  </span><span class="nx">rect</span><span class="p">(</span><span class="mf">0</span><span class="p">,</span><span class="w"> </span><span class="nx">drawHeight</span><span class="p">,</span><span class="w"> </span><span class="nx">canvasWidth</span><span class="p">,</span><span class="w"> </span><span class="nx">controlHeight</span><span class="p">);</span>
 
 <span class="w">  </span><span class="nx">samplingRate</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">samplingRateSlider</span><span class="p">.</span><span class="nx">value</span><span class="p">();</span>
 
 <span class="w">  </span><span class="c1">// Draw title</span>
 <span class="w">  </span><span class="nx">textSize</span><span class="p">(</span><span class="mf">24</span><span class="p">);</span>
-<span class="w">  </span><span class="nx">fill</span><span class="p">(</span><span class="s1">&#39;black&#39;</span><span class="p">);</span>
+<span class="w">  </span><span class="nx">fill</span><span class="p">(</span><span class="s1">'black'</span><span class="p">);</span>
 <span class="w">  </span><span class="nx">strokeWeight</span><span class="p">(</span><span class="mf">0</span><span class="p">);</span>
 <span class="w">  </span><span class="nx">textAlign</span><span class="p">(</span><span class="nx">CENTER</span><span class="p">);</span>
-<span class="w">  </span><span class="nx">text</span><span class="p">(</span><span class="s1">&#39;Nyquist-Shannon Sampling Rate&#39;</span><span class="p">,</span><span class="w"> </span><span class="nx">canvasWidth</span><span class="w"> </span><span class="o">/</span><span class="w"> </span><span class="mf">2</span><span class="p">,</span><span class="w"> </span><span class="mf">30</span><span class="p">);</span>
+<span class="w">  </span><span class="nx">text</span><span class="p">(</span><span class="s1">'Nyquist-Shannon Sampling Rate'</span><span class="p">,</span><span class="w"> </span><span class="nx">canvasWidth</span><span class="w"> </span><span class="o">/</span><span class="w"> </span><span class="mf">2</span><span class="p">,</span><span class="w"> </span><span class="mf">30</span><span class="p">);</span>
 
 <span class="w">  </span><span class="c1">// Draw labels</span>
 <span class="w">  </span><span class="nx">textSize</span><span class="p">(</span><span class="mf">16</span><span class="p">);</span>
-<span class="w">  </span><span class="nx">fill</span><span class="p">(</span><span class="s1">&#39;black&#39;</span><span class="p">);</span>
+<span class="w">  </span><span class="nx">fill</span><span class="p">(</span><span class="s1">'black'</span><span class="p">);</span>
 <span class="w">  </span><span class="nx">strokeWeight</span><span class="p">(</span><span class="mf">0</span><span class="p">);</span>
 <span class="w">  </span><span class="nx">textAlign</span><span class="p">(</span><span class="nx">CENTER</span><span class="p">);</span>
-<span class="w">  </span><span class="nx">text</span><span class="p">(</span><span class="s1">&#39;Original Signal with Sampling Points&#39;</span><span class="p">,</span><span class="w"> </span><span class="nx">canvasWidth</span><span class="w"> </span><span class="o">/</span><span class="w"> </span><span class="mf">2</span><span class="p">,</span><span class="w"> </span><span class="mf">60</span><span class="p">);</span>
-<span class="w">  </span><span class="nx">text</span><span class="p">(</span><span class="s1">&#39;Reconstructed Signal from Samples&#39;</span><span class="p">,</span><span class="w"> </span><span class="nx">canvasWidth</span><span class="w"> </span><span class="o">/</span><span class="w"> </span><span class="mf">2</span><span class="p">,</span><span class="w"> </span><span class="nx">drawHeight</span><span class="w"> </span><span class="o">/</span><span class="w"> </span><span class="mf">2</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="mf">45</span><span class="p">);</span>
+<span class="w">  </span><span class="nx">text</span><span class="p">(</span><span class="s1">'Original Signal with Sampling Points'</span><span class="p">,</span><span class="w"> </span><span class="nx">canvasWidth</span><span class="w"> </span><span class="o">/</span><span class="w"> </span><span class="mf">2</span><span class="p">,</span><span class="w"> </span><span class="mf">60</span><span class="p">);</span>
+<span class="w">  </span><span class="nx">text</span><span class="p">(</span><span class="s1">'Reconstructed Signal from Samples'</span><span class="p">,</span><span class="w"> </span><span class="nx">canvasWidth</span><span class="w"> </span><span class="o">/</span><span class="w"> </span><span class="mf">2</span><span class="p">,</span><span class="w"> </span><span class="nx">drawHeight</span><span class="w"> </span><span class="o">/</span><span class="w"> </span><span class="mf">2</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="mf">45</span><span class="p">);</span>
 <span class="w">  </span><span class="nx">textAlign</span><span class="p">(</span><span class="nx">LEFT</span><span class="p">);</span>
-<span class="w">  </span><span class="nx">text</span><span class="p">(</span><span class="s1">&#39;Sampling Rate: &#39;</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="nx">round</span><span class="p">(</span><span class="nx">samplingRate</span><span class="o">/</span><span class="mf">5</span><span class="p">,</span><span class="mf">2</span><span class="p">)</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="s1">&#39; samples per period&#39;</span><span class="p">,</span><span class="w"> </span><span class="mf">20</span><span class="p">,</span><span class="w"> </span><span class="nx">drawHeight</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="mf">20</span><span class="p">);</span>
+<span class="w">  </span><span class="nx">text</span><span class="p">(</span><span class="s1">'Sampling Rate: '</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="nx">round</span><span class="p">(</span><span class="nx">samplingRate</span><span class="o">/</span><span class="mf">5</span><span class="p">,</span><span class="mf">2</span><span class="p">)</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="s1">' samples per period'</span><span class="p">,</span><span class="w"> </span><span class="mf">20</span><span class="p">,</span><span class="w"> </span><span class="nx">drawHeight</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="mf">20</span><span class="p">);</span>
 
 <span class="w">  </span><span class="c1">// Draw original signal</span>
 <span class="w">  </span><span class="nx">stroke</span><span class="p">(</span><span class="mf">0</span><span class="p">);</span>
@@ -2365,7 +3571,7 @@
 <span class="w">  </span><span class="p">}</span>
 
 <span class="w">  </span><span class="c1">// Reconstruct the signal from samples</span>
-<span class="w">  </span><span class="nx">stroke</span><span class="p">(</span><span class="s1">&#39;blue&#39;</span><span class="p">);</span>
+<span class="w">  </span><span class="nx">stroke</span><span class="p">(</span><span class="s1">'blue'</span><span class="p">);</span>
 <span class="w">  </span><span class="nx">strokeWeight</span><span class="p">(</span><span class="mf">2</span><span class="p">);</span>
 <span class="w">  </span><span class="nx">noFill</span><span class="p">();</span>
 <span class="w">  </span><span class="nx">beginShape</span><span class="p">();</span>
@@ -2388,56 +3594,30 @@
 <span class="w">  </span><span class="nx">endShape</span><span class="p">();</span>
 <span class="p">}</span>
 </code></pre></div></td></tr></table></div>
-<h3 id="how-to-use-the-simulation">How to Use the Simulation</h3>
+<p><strong>How to use the original simulation (from the response)</strong></p>
 <ol>
-<li>
-<p><strong>Adjust the Sampling Rate</strong>: Use the slider at the bottom of the canvas to change the sampling rate. The sampling rate is displayed above the slider.</p>
-</li>
-<li>
-<p><strong>Observe the Top Graph</strong>: The top waveform represents the original signal. Red circles indicate the sampling points based on the current sampling rate.</p>
-</li>
-<li>
-<p><strong>Observe the Bottom Graph</strong>: The bottom waveform is reconstructed from the sampled points. As you adjust the sampling rate, notice how the reconstructed signal changes.</p>
-</li>
+<li><strong>Adjust the Sampling Rate</strong>: Use the slider at the bottom of the canvas to change the sampling rate. The sampling rate is displayed above the slider.</li>
+<li><strong>Observe the Top Graph</strong>: The top waveform represents the original signal. Red circles indicate the sampling points based on the current sampling rate.</li>
+<li><strong>Observe the Bottom Graph</strong>: The bottom waveform is reconstructed from the sampled points. As you adjust the sampling rate, notice how the reconstructed signal changes.</li>
 </ol>
-<h3 id="explanation-of-the-code">Explanation of the Code</h3>
-<h4 id="variables">Variables</h4>
+<p><strong>Explanation of the original code (from the response)</strong></p>
 <ul>
-<li><code>samplingRateSlider</code>: The slider control for adjusting the sampling rate.</li>
-<li><code>samplingRate</code>: The current sampling rate value from the slider.</li>
-<li><code>signalFrequency</code>: The frequency of the original signal.</li>
-<li><code>time</code>, <code>signal</code>, <code>sampledSignal</code>: Arrays to store time values, original signal values, and sampled signal points, respectively.</li>
+<li><code>samplingRateSlider</code>: the slider control for adjusting the sampling rate.</li>
+<li><code>samplingRate</code>: the current sampling rate value from the slider.</li>
+<li><code>signalFrequency</code>: the frequency of the original signal.</li>
+<li><code>time</code>, <code>signal</code>, <code>sampledSignal</code>: arrays that store the time values, the original signal values and the sampled points.</li>
+<li><code>setup()</code> initializes the canvas and the slider and computes the original signal using a sine function.</li>
+<li><code>draw()</code> clears the background, reads the slider, draws the labels and the original waveform, draws red circles at the
+  sampling points, and draws the reconstruction from the sampled points in the bottom half of the canvas.</li>
 </ul>
-<h4 id="setup-function">setup()` Function</h4>
+<p><strong>Key concepts named in the response</strong></p>
 <ul>
-<li>Initializes the canvas and the slider.</li>
-<li>Generates time values and computes the original signal using a sine function.</li>
+<li><strong>Sampling rate</strong>: the number of samples taken per period of the signal. A higher sampling rate captures the signal more accurately.</li>
+<li><strong>Aliasing</strong>: when the sampling rate is too low (below the Nyquist rate), the reconstructed signal may differ significantly from the original.</li>
 </ul>
-<h4 id="draw-function"><code>draw()</code> Function</h4>
-<ul>
-<li>Clears the background and updates the sampling rate from the slider.</li>
-<li>Draws labels and the original signal waveform.</li>
-<li>Samples the original signal at intervals based on the sampling rate and draws red circles at the sampling points.</li>
-<li>Reconstructs the signal from the sampled points and draws it in the bottom half of the canvas.</li>
-</ul>
-<h3 id="key-concepts-demonstrated">Key Concepts Demonstrated</h3>
-<ul>
-<li>
-<p><strong>Sampling Rate</strong>: The number of samples taken per period of the signal. A higher sampling rate captures the signal more accurately.</p>
-</li>
-<li>
-<p><strong>Aliasing</strong>: When the sampling rate is too low (below the Nyquist rate), the reconstructed signal may differ significantly from the original, demonstrating aliasing effects.</p>
-</li>
-</ul>
-<h3 id="running-the-simulation">Running the Simulation</h3>
-<p>To run this simulation:</p>
-<ol>
-<li>Copy the code above.</li>
-<li>Go to the p5.js online editor.</li>
-<li>Paste the code into the editor.</li>
-<li>Click the "Play" button to start the simulation.</li>
-</ol>
-<p>Feel free to experiment with different signal frequencies or modify the code to explore further concepts related to sampling and aliasing.</p>
+<p>The response ended by suggesting that the code be pasted into the p5.js online editor and that students experiment with
+different signal frequencies.</p>
+</details>
 
 
 
@@ -2450,8 +3630,6 @@
 
 
 
-
-  
 
 
 
@@ -2475,12 +3653,10 @@
   
     
       
-        
-      
       <nav class="md-footer__inner md-grid" aria-label="Footer" >
         
           
-          <a href="../mobius-transform/" class="md-footer__link md-footer__link--prev" aria-label="Previous: Mobius Transformation">
+          <a href="../noise-analysis-and-reduction-tool/" class="md-footer__link md-footer__link--prev" aria-label="Previous: Noise Analysis and Reduction Tool">
             <div class="md-footer__button md-icon">
               
               <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
@@ -2490,20 +3666,20 @@
                 Previous
               </span>
               <div class="md-ellipsis">
-                Mobius Transformation
+                Noise Analysis and Reduction Tool
               </div>
             </div>
           </a>
         
         
           
-          <a href="../rc-lowpass-filter/" class="md-footer__link md-footer__link--next" aria-label="Next: RC Lowpass Filter">
+          <a href="../phase-spectrum/" class="md-footer__link md-footer__link--next" aria-label="Next: Phase Spectrum - What the Magnitude Hides">
             <div class="md-footer__title">
               <span class="md-footer__direction">
                 Next
               </span>
               <div class="md-ellipsis">
-                RC Lowpass Filter
+                Phase Spectrum - What the Magnitude Hides
               </div>
             </div>
             <div class="md-footer__button md-icon">

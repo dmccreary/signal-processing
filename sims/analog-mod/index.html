@@ -6,7 +6,7 @@
       <meta charset="utf-8">
       <meta name="viewport" content="width=device-width,initial-scale=1">
       
-        <meta name="description" content="College Level Textbook on Signal Processing - License is Commons ShareAlike Attribution Noncommercial">
+        <meta name="description" content="Compare amplitude modulation (AM) and frequency modulation (FM) of a sine carrier by a sine message, in time and as a line spectrum with its bandwidth.">
       
       
         <meta name="author" content="Dan McCreary">
@@ -18,7 +18,7 @@
         <link rel="prev" href="../ai-pace-accelerating/">
       
       
-        <link rel="next" href="../base-and-treble/">
+        <link rel="next" href="../fft-basic/">
       
       
       <link rel="icon" href="../../img/favicon.ico">
@@ -54,6 +54,8 @@
     
       <link rel="stylesheet" href="../../css/extra.css">
     
+      <link rel="stylesheet" href="../../css/mascot.css">
+    
     <script>__md_scope=new URL("../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
     
       
@@ -65,9 +67,9 @@
       
         <meta  property="og:title"  content="Analog Modulation - Signal Processing with AI" >
       
-        <meta  property="og:description"  content="College Level Textbook on Signal Processing - License is Commons ShareAlike Attribution Noncommercial" >
+        <meta  property="og:description"  content="Compare amplitude modulation (AM) and frequency modulation (FM) of a sine carrier by a sine message, in time and as a line spectrum with its bandwidth." >
       
-        <meta  property="og:image"  content="https://dmccreary.github.io/signal-processing/assets/images/social/sims/analog-mod/index.png" >
+        <meta property="og:image" content="https://dmccreary.github.io/signal-processing/sims/analog-mod/analog-mod.png">
       
         <meta  property="og:image:type"  content="image/png" >
       
@@ -81,9 +83,9 @@
       
         <meta  name="twitter:title"  content="Analog Modulation - Signal Processing with AI" >
       
-        <meta  name="twitter:description"  content="College Level Textbook on Signal Processing - License is Commons ShareAlike Attribution Noncommercial" >
+        <meta  name="twitter:description"  content="Compare amplitude modulation (AM) and frequency modulation (FM) of a sine carrier by a sine message, in time and as a line spectrum with its bandwidth." >
       
-        <meta  name="twitter:image"  content="https://dmccreary.github.io/signal-processing/assets/images/social/sims/analog-mod/index.png" >
+        <meta name="twitter:image" content="https://dmccreary.github.io/signal-processing/sims/analog-mod/analog-mod.png">
       
     
     
@@ -122,7 +124,7 @@
   <nav class="md-header__inner md-grid" aria-label="Header">
     <a href="../.." title="Signal Processing with AI" class="md-header__button md-logo" aria-label="Signal Processing with AI" data-md-component="logo">
       
-  <img src="../../img/logo-192.png" alt="logo">
+  <img src="../../img/mascot/neutral.png" alt="logo">
 
     </a>
     <label class="md-header__button md-icon" for="__drawer">
@@ -228,7 +230,7 @@
   <label class="md-nav__title" for="__drawer">
     <a href="../.." title="Signal Processing with AI" class="md-nav__button md-logo" aria-label="Signal Processing with AI" data-md-component="logo">
       
-  <img src="../../img/logo-192.png" alt="logo">
+  <img src="../../img/mascot/neutral.png" alt="logo">
 
     </a>
     Signal Processing with AI
@@ -275,31 +277,11 @@
   
   
     <li class="md-nav__item">
-      <a href="../../chapters/" class="md-nav__link">
-        
-  
-  <span class="md-ellipsis">
-    Table of Contents
-  </span>
-  
-
-      </a>
-    </li>
-  
-
-    
-      
-      
-  
-  
-  
-  
-    <li class="md-nav__item">
       <a href="../../about/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
-    About This Website
+    About
   </span>
   
 
@@ -542,6 +524,174 @@
           
         
       
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
     
     
     
@@ -551,7 +701,7 @@
       
         
         
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_6" checked>
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_5" checked>
         
           
           
@@ -567,19 +717,103 @@
             </a>
             
               
-              <label class="md-nav__link " for="__nav_6" id="__nav_6_label" tabindex="0">
+              <label class="md-nav__link " for="__nav_5" id="__nav_5_label" tabindex="0">
                 <span class="md-nav__icon md-icon"></span>
               </label>
             
           </div>
         
-        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_6_label" aria-expanded="true">
-          <label class="md-nav__title" for="__nav_6">
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_5_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_5">
             <span class="md-nav__icon md-icon"></span>
             MicroSims
           </label>
           <ul class="md-nav__list" data-md-scrollfix>
             
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../image-convolution/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    2-D Convolution and Image Filtering
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../conv-layer-as-filter/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    A Convolutional Layer Is a Learned FIR Filter
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../adaptive-algorithm-comparison-tool/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Adaptive Algorithm Comparison Tool
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../adaptive-noise-cancellation/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Adaptive Noise and Echo Cancellation
+  </span>
+  
+
+      </a>
+    </li>
+  
+
               
             
               
@@ -656,6 +890,84 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
+  <a href="#description" class="md-nav__link">
+    <span class="md-ellipsis">
+      Description
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#lesson-plan" class="md-nav__link">
+    <span class="md-ellipsis">
+      Lesson Plan
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Lesson Plan">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#learning-objectives" class="md-nav__link">
+    <span class="md-ellipsis">
+      Learning Objectives
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#target-audience" class="md-nav__link">
+    <span class="md-ellipsis">
+      Target Audience
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#prerequisites" class="md-nav__link">
+    <span class="md-ellipsis">
+      Prerequisites
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#activities" class="md-nav__link">
+    <span class="md-ellipsis">
+      Activities
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#assessment" class="md-nav__link">
+    <span class="md-ellipsis">
+      Assessment
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#common-misconceptions" class="md-nav__link">
+    <span class="md-ellipsis">
+      Common Misconceptions
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#references" class="md-nav__link">
     <span class="md-ellipsis">
       References
@@ -665,9 +977,9 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#prompt" class="md-nav__link">
+  <a href="#development-notes" class="md-nav__link">
     <span class="md-ellipsis">
-      Prompt
+      Development Notes
     </span>
   </a>
   
@@ -689,11 +1001,11 @@
   
   
     <li class="md-nav__item">
-      <a href="../base-and-treble/" class="md-nav__link">
+      <a href="../fft-basic/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
-    Base and Treble
+    Basic FFT
   </span>
   
 
@@ -710,11 +1022,32 @@
   
   
     <li class="md-nav__item">
-      <a href="../fft-basic/" class="md-nav__link">
+      <a href="../base-and-treble/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
-    Basic FFT
+    Bass and Treble
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../bilinear-transform/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Bilinear Transform and Frequency Warping
   </span>
   
 
@@ -836,6 +1169,27 @@
   
   
     <li class="md-nav__item">
+      <a href="../compressed-sensing/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Compressed Sensing
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
       <a href="../convolution/" class="md-nav__link">
         
   
@@ -857,11 +1211,137 @@
   
   
     <li class="md-nav__item">
+      <a href="../convolution-theorem/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Convolution Theorem and Circular Convolution
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../convolution-visualizer/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Convolution Visualizer
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../correlation-and-matched-filtering/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Correlation and Matched Filtering
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../dct-basis-explorer/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    DCT Basis Explorer
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../dft-explorer/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    DFT Explorer
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
       <a href="../euler-formula-explorer/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
     Euler's Formula Explorer
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../even-and-odd-signal-decomposition/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Even and Odd Signal Decomposition
   </span>
   
 
@@ -1025,6 +1505,27 @@
   
   
     <li class="md-nav__item">
+      <a href="../fft-spectrum-analyzer/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    FFT Spectrum Analyzer
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
       <a href="../fft-waveform-types/" class="md-nav__link">
         
   
@@ -1046,11 +1547,263 @@
   
   
     <li class="md-nav__item">
+      <a href="../filter-bank-explorer/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Filter Bank and Polyphase Explorer
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../fir-filter-design-comparison-tool/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    FIR Filter Design Comparison Tool
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../fir-vs-iir/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    FIR vs IIR Filters
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../fourier-series-explorer/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Fourier Series Explorer
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../fourier-transform-pairs/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Fourier Transform Pairs
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
       <a href="../frequency-detection/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
     Frequency Detection
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../huffman-coding/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Huffman Coding
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../iir-prototype-comparison/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    IIR Prototype Comparison
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../impulse-and-frequency-response-analyzer/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Impulse and Frequency Response Analyzer
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../interactive-filter-design-and-analysis-tool/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Interactive Filter Design and Analysis Tool
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../interactive-pole-zero-analysis-tool/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Interactive Pole-Zero Analysis Tool
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../interactive-spectrogram-parameter-explorer/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Interactive Spectrogram Parameter Explorer
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../interactive-stft-spectrogram-analyzer/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Interactive STFT Spectrogram Analyzer
   </span>
   
 
@@ -1130,11 +1883,158 @@
   
   
     <li class="md-nav__item">
+      <a href="../multirate-sample-rate-converter/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Multirate Sample Rate Converter
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../noise-analysis-and-reduction-tool/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Noise Analysis and Reduction Tool
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
       <a href="../nyquist-shannon-sampling/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
     Nyquist-Shannon Sampling
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../phase-spectrum/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Phase Spectrum - What the Magnitude Hides
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../phasor-addition/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Phasor Addition
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../psd-wiener-khinchin/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Power Spectral Density and the Wiener-Khinchin Theorem
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../distribution-explorer/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Probability Distribution Explorer
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../quantization-and-noise-shaping/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Quantization and Noise Shaping
   </span>
   
 
@@ -1172,11 +2072,116 @@
   
   
     <li class="md-nav__item">
+      <a href="../real-time-processing-simulator/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Real-Time Processing Simulator
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
       <a href="../reverb/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
     Reverb Effect
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../s-plane-explorer/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    s-Plane Explorer
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../sampling-theorem-explorer/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Sampling Theorem Explorer
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../signal-operations/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Signal Operations - Shift, Scale and Reverse
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../signal-type-explorer/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Signal Type Explorer
   </span>
   
 
@@ -1214,11 +2219,95 @@
   
   
     <li class="md-nav__item">
+      <a href="../spectral-leakage-and-windowing/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Spectral Leakage and Windowing
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
       <a href="../synth-timeline/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
     Synth Timeline
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../system-interconnections/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    System Interconnections - Series, Parallel, Feedback
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../system-property-explorer/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    System Property Explorer
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../time-frequency-analysis-explorer/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Time-Frequency Analysis Explorer
   </span>
   
 
@@ -1261,6 +2350,27 @@
   
   <span class="md-ellipsis">
     Tone Generator
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../wavelet-explorer/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Wavelet Explorer - CWT Scalogram and Haar DWT
   </span>
   
 
@@ -1437,6 +2547,12 @@
       
         
           
+        
+      
+        
+      
+        
+      
         
       
         
@@ -1651,6 +2767,26 @@
   
   
     <li class="md-nav__item">
+      <a href="../../instructors-guide/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Instructor's Guide
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
       <a href="../../license/" class="md-nav__link">
         
   
@@ -1696,26 +2832,6 @@
   
   <span class="md-ellipsis">
     Contact
-  </span>
-  
-
-      </a>
-    </li>
-  
-
-    
-      
-      
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../../ieee-paper-changes/" class="md-nav__link">
-        
-  
-  <span class="md-ellipsis">
-    Paper Changes
   </span>
   
 
@@ -1846,6 +2962,84 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
+  <a href="#description" class="md-nav__link">
+    <span class="md-ellipsis">
+      Description
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#lesson-plan" class="md-nav__link">
+    <span class="md-ellipsis">
+      Lesson Plan
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Lesson Plan">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#learning-objectives" class="md-nav__link">
+    <span class="md-ellipsis">
+      Learning Objectives
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#target-audience" class="md-nav__link">
+    <span class="md-ellipsis">
+      Target Audience
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#prerequisites" class="md-nav__link">
+    <span class="md-ellipsis">
+      Prerequisites
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#activities" class="md-nav__link">
+    <span class="md-ellipsis">
+      Activities
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#assessment" class="md-nav__link">
+    <span class="md-ellipsis">
+      Assessment
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#common-misconceptions" class="md-nav__link">
+    <span class="md-ellipsis">
+      Common Misconceptions
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#references" class="md-nav__link">
     <span class="md-ellipsis">
       References
@@ -1855,9 +3049,9 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#prompt" class="md-nav__link">
+  <a href="#development-notes" class="md-nav__link">
     <span class="md-ellipsis">
-      Prompt
+      Development Notes
     </span>
   </a>
   
@@ -1878,7 +3072,7 @@
                   
 
   
-    <a href="https://github.com/dmccreary/signal-processing/blob/master/docs/sims/analog-mod/index.md" title="Edit this page" class="md-content__button md-icon">
+    <a href="https://github.com/dmccreary/signal-processing/blob/main/docs/sims/analog-mod/index.md" title="Edit this page" class="md-content__button md-icon">
       
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M10 20H6V4h7v5h5v3.1l2-2V8l-6-6H6c-1.1 0-2 .9-2 2v16c0 1.1.9 2 2 2h4zm10.2-7c.1 0 .3.1.4.2l1.3 1.3c.2.2.2.6 0 .8l-1 1-2.1-2.1 1-1c.1-.1.2-.2.4-.2m0 3.9L14.1 23H12v-2.1l6.1-6.1z"/></svg>
     </a>
@@ -1887,24 +3081,120 @@
 
 
 <h1 id="analog-modulation">Analog Modulation</h1>
-<figure>
-<p><img alt="" src="analog-mod.png" width="400" />
-   </p>
-<figcaption>Analog Modulation Sim</figcaption>
-</figure>
-<form action="analog-mod.html" style="text-align:center;">
-<button style="align-content: center;" class="md-button md-button--primary">
-Run the Analog modulation MicroSim
-</button>
-</form>
+<iframe src="main.html" width="100%" height="652px" scrolling="no"></iframe>
 
-<h2 id="references">References</h2>
+<p>Copy this iframe to your website:</p>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="p">&lt;</span><span class="nt">iframe</span> <span class="na">src</span><span class="o">=</span><span class="s">"https://dmccreary.github.io/signal-processing/sims/analog-mod/main.html"</span> <span class="na">width</span><span class="o">=</span><span class="s">"100%"</span> <span class="na">height</span><span class="o">=</span><span class="s">"652px"</span> <span class="na">scrolling</span><span class="o">=</span><span class="s">"no"</span><span class="p">&gt;&lt;/</span><span class="nt">iframe</span><span class="p">&gt;</span>
+</code></pre></div></td></tr></table></div>
+<p><a class="md-button md-button--primary" href="main.html">Run MicroSim in Fullscreen</a></p>
+<!-- TODO(user): add the p5.js editor link once the sketch is saved in editor.p5js.org:
+[Edit in the p5.js Editor](https://editor.p5js.org/<username>/sketches/analog-mod) -->
+
+<h2 id="description">Description</h2>
+<p>A sinusoidal message <span class="arithmatex">\(m(t) = A_m \sin(2\pi f_m t)\)</span> is placed on a sinusoidal carrier of amplitude <span class="arithmatex">\(A_c\)</span> and
+frequency <span class="arithmatex">\(f_c\)</span> in one of two ways:</p>
+<div class="arithmatex">\[\text{AM:}\quad s(t) = \left[A_c + m(t)\right]\sin(2\pi f_c t)\]</div>
+<div class="arithmatex">\[\text{FM:}\quad s(t) = A_c \sin\!\left(2\pi f_c t - \beta\cos(2\pi f_m t)\right), \qquad \beta = \frac{\Delta f}{f_m},\quad \Delta f = k_f A_m\]</div>
+<p>so the FM signal's instantaneous frequency is <span class="arithmatex">\(f_i(t) = f_c + k_f\,m(t)\)</span>. The sensitivity is fixed at
+<span class="arithmatex">\(k_f = 0.05\)</span> Hz per unit of message amplitude.</p>
 <ul>
-<li><a href="https://www.cdt21.com/design_guide/analogue-modulation/">Analog modulation introduction</a></li>
+<li><strong>Modulation</strong> selects <strong>AM</strong> (red), <strong>FM</strong> (blue), or <strong>AM + FM</strong> to stack both signals on the same scale.</li>
+<li><strong>Carrier amplitude Ac</strong> (0–200) and <strong>Message amplitude Am</strong> (0–200) are in arbitrary amplitude units.</li>
+<li><strong>Carrier frequency fc</strong> and <strong>Message frequency fm</strong> (1–30 Hz) set the frequencies. The plots span 1 s, so a frequency in hertz equals the number of cycles you see.</li>
 </ul>
-<h2 id="prompt">Prompt</h2>
+<p>In AM mode, the dashed envelope <span class="arithmatex">\(\pm[A_c + m(t)]\)</span> follows the message. The read-outs give the modulation
+index <span class="arithmatex">\(\mu = A_m/A_c\)</span>, the bandwidth <span class="arithmatex">\(B = 2f_m\)</span> and the share of power carried by the sidebands. In FM mode,
+the amplitude stays at <span class="arithmatex">\(A_c\)</span>. Instead, the cycles bunch together where the dashed message is high. The
+read-outs give <span class="arithmatex">\(\Delta f\)</span>, <span class="arithmatex">\(\beta\)</span>, the range of <span class="arithmatex">\(f_i\)</span>, and Carson's bandwidth <span class="arithmatex">\(B \approx 2(\Delta f + f_m)\)</span>.
+The lower plot is the amplitude spectrum. AM has a line at <span class="arithmatex">\(f_c\)</span> and one at each of <span class="arithmatex">\(f_c \pm f_m\)</span>. FM has
+lines at <span class="arithmatex">\(f_c \pm n f_m\)</span> with heights <span class="arithmatex">\(A_c|J_n(\beta)|\)</span>. The gold bar marks the bandwidth.</p>
+<p>The frequencies are scaled down so that single carrier cycles are visible. Real broadcast stations use far
+higher carriers, near 1 MHz for AM and 88–108 MHz for FM. Analog modulation is not a separate
+learning-graph concept. It builds on <strong>Sinusoidal Signals</strong>, <strong>Signal Amplitude</strong> and <strong>Signal Frequency</strong> in
+<a href="../../chapters/02-introduction-to-signals-and-systems/#sinusoidal-signals">Chapter 2: Introduction to Signals and Systems</a>.
+It also applies the <strong>Frequency Domain</strong> view of
+<a href="../../chapters/06-fourier-analysis-fundamentals/#properties-and-applications">Chapter 6: Fourier Analysis Fundamentals</a>.
+There, multiplying by a carrier shifts a spectrum and creates sidebands.</p>
+<h2 id="lesson-plan">Lesson Plan</h2>
+<h3 id="learning-objectives">Learning Objectives</h3>
+<p>By the end of this lesson, students will be able to:</p>
+<ol>
+<li><strong>Calculate</strong> the AM modulation index <span class="arithmatex">\(\mu = A_m/A_c\)</span> and predict the envelope limits <span class="arithmatex">\(A_c \pm A_m\)</span></li>
+<li><strong>Predict</strong> the frequencies and heights of the AM spectral lines (<span class="arithmatex">\(f_c\)</span> with height <span class="arithmatex">\(A_c\)</span>, and <span class="arithmatex">\(f_c \pm f_m\)</span> with height <span class="arithmatex">\(A_m/2\)</span>) and the AM bandwidth <span class="arithmatex">\(2f_m\)</span></li>
+<li><strong>Calculate</strong> the FM peak deviation <span class="arithmatex">\(\Delta f = k_f A_m\)</span>, the modulation index <span class="arithmatex">\(\beta = \Delta f/f_m\)</span> and Carson's bandwidth <span class="arithmatex">\(2(\Delta f + f_m)\)</span></li>
+<li><strong>Compare</strong> AM and FM in the time domain and the frequency domain: which property of the carrier carries the message, and how the bandwidth depends on <span class="arithmatex">\(A_m\)</span> and <span class="arithmatex">\(f_m\)</span></li>
+<li><strong>Explain</strong> over-modulation (<span class="arithmatex">\(\mu &gt; 1\)</span>) in AM and the vanishing FM carrier line at <span class="arithmatex">\(\beta \approx 2.405\)</span></li>
+</ol>
+<h3 id="target-audience">Target Audience</h3>
+<p>College undergraduates in a first signals and systems or communications course, after sinusoids and the
+Fourier transform have been introduced. Plan 25–35 minutes.</p>
+<h3 id="prerequisites">Prerequisites</h3>
+<ul>
+<li>Amplitude, frequency and phase of a sinusoid</li>
+<li>The product-to-sum identity <span class="arithmatex">\(\sin a \sin b = \tfrac{1}{2}[\cos(a-b) - \cos(a+b)]\)</span></li>
+<li>Reading a one-sided amplitude spectrum (line height = amplitude of that sinusoid)</li>
+</ul>
+<h3 id="activities">Activities</h3>
+<p><strong>Activity 1: AM lines (6 min).</strong> Select <strong>AM</strong> and set <span class="arithmatex">\(A_c\)</span> = 100, <span class="arithmatex">\(A_m\)</span> = 50, <span class="arithmatex">\(f_c\)</span> = 20 Hz,
+<span class="arithmatex">\(f_m\)</span> = 2 Hz. The envelope swings between 50 and 150, <span class="arithmatex">\(\mu\)</span> = 0.50, and the spectrum shows 25.0 at 18 Hz,
+100.0 at 20 Hz and 25.0 at 22 Hz, so <span class="arithmatex">\(B\)</span> = 4.0 Hz. Change <span class="arithmatex">\(f_m\)</span> to 4 Hz: the sidebands move to 16 and 24 Hz
+and <span class="arithmatex">\(B\)</span> = 8.0 Hz. Then set <span class="arithmatex">\(A_m\)</span> = 80: the sidebands grow to 40.0 and the sideband power rises to 24.2%,
+but the lines do not move and the carrier stays at 100.0.</p>
+<p><strong>Activity 2: Over-modulation (5 min).</strong> Keep AM, set <span class="arithmatex">\(f_m\)</span> = 2 Hz and raise <span class="arithmatex">\(A_m\)</span> to 100. Now <span class="arithmatex">\(\mu\)</span> = 1.00,
+the envelope just touches zero, and the sidebands carry 33.3% of the power. Raise <span class="arithmatex">\(A_m\)</span> to 150 (<span class="arithmatex">\(\mu\)</span> = 1.50).
+<span class="arithmatex">\(A_c + m(t)\)</span> now dips to <span class="arithmatex">\(-50\)</span>, the dashed envelope lines cross, and the waveform no longer has the shape
+of the message. The spectrum still has only three lines (75.0, 100.0, 75.0), so the spectrum alone does not
+reveal the problem.</p>
+<p><strong>Activity 3: FM lines and the carrier null (8 min).</strong> Select <strong>FM</strong> with <span class="arithmatex">\(A_c\)</span> = 100, <span class="arithmatex">\(A_m\)</span> = 50,
+<span class="arithmatex">\(f_c\)</span> = 20 Hz, <span class="arithmatex">\(f_m\)</span> = 2 Hz. Then <span class="arithmatex">\(\Delta f\)</span> = 2.50 Hz, <span class="arithmatex">\(\beta\)</span> = 1.25 and <span class="arithmatex">\(f_i\)</span> runs from 17.50 to 22.50 Hz. The carrier
+line is 64.6. The pairs at 18/22, 16/24 and 14/26 Hz are 51.1, 17.1 and 3.7, and Carson's <span class="arithmatex">\(B\)</span> = 9.0 Hz.
+Raise <span class="arithmatex">\(A_m\)</span> slowly to 96 (<span class="arithmatex">\(\Delta f\)</span> = 4.80 Hz, <span class="arithmatex">\(\beta\)</span> = 2.40). The carrier line falls to about 0.3,
+while the time plot still peaks at 100. Then set <span class="arithmatex">\(A_m\)</span> = 50 and <span class="arithmatex">\(f_m\)</span> = 5 Hz. <span class="arithmatex">\(\Delta f\)</span> stays 2.50 Hz, but
+<span class="arithmatex">\(\beta\)</span> drops to 0.50, the carrier line rises to 93.9, and only the 15 and 25 Hz pair (24.2) stays large.</p>
+<p><strong>Activity 4: AM and FM side by side (6 min).</strong> Select <strong>AM + FM</strong> and set <span class="arithmatex">\(f_c\)</span> = 10 Hz, <span class="arithmatex">\(f_m\)</span> = 2 Hz,
+<span class="arithmatex">\(A_m\)</span> = 100. The AM envelope swings from 0 to 200. The FM signal keeps a peak of 100, while its frequency
+swings from 5 to 15 Hz (<span class="arithmatex">\(\Delta f\)</span> = 5.00 Hz). Find the moments where the message is highest. AM is tallest
+there, and FM has its shortest cycles.</p>
+<h3 id="assessment">Assessment</h3>
+<ol>
+<li>An AM signal has <span class="arithmatex">\(A_c\)</span> = 100, <span class="arithmatex">\(A_m\)</span> = 80, <span class="arithmatex">\(f_c\)</span> = 20 Hz and <span class="arithmatex">\(f_m\)</span> = 4 Hz. Give <span class="arithmatex">\(\mu\)</span>, the line frequencies and heights, and the bandwidth. <em>(Answer: <span class="arithmatex">\(\mu\)</span> = 0.8; lines at 16, 20 and 24 Hz with heights 40, 100 and 40; <span class="arithmatex">\(B = 2f_m\)</span> = 8 Hz. Check it in the sim.)</em></li>
+<li>Show that the sidebands of a tone-modulated AM signal carry the fraction <span class="arithmatex">\(\mu^2/(2+\mu^2)\)</span> of the total power, and evaluate it at <span class="arithmatex">\(\mu = 1\)</span>. <em>(Answer: the carrier power is <span class="arithmatex">\(A_c^2/2\)</span>, and each sideband has amplitude <span class="arithmatex">\(\mu A_c/2\)</span> and power <span class="arithmatex">\(\mu^2 A_c^2/8\)</span>. The ratio is <span class="arithmatex">\((\mu^2 A_c^2/4)/(A_c^2/2 + \mu^2 A_c^2/4) = \mu^2/(2+\mu^2)\)</span>, which is 1/3 (33.3%) at <span class="arithmatex">\(\mu\)</span> = 1.)</em></li>
+<li>With <span class="arithmatex">\(k_f\)</span> = 0.05 Hz per unit, <span class="arithmatex">\(A_m\)</span> = 120 and <span class="arithmatex">\(f_m\)</span> = 3 Hz, find <span class="arithmatex">\(\Delta f\)</span>, <span class="arithmatex">\(\beta\)</span> and Carson's bandwidth. <em>(Answer: <span class="arithmatex">\(\Delta f\)</span> = 6 Hz, <span class="arithmatex">\(\beta\)</span> = 2.0, <span class="arithmatex">\(B \approx 2(6 + 3)\)</span> = 18 Hz. At <span class="arithmatex">\(f_c\)</span> = 20 Hz the carrier line is <span class="arithmatex">\(100\,|J_0(2)|\)</span> = 22.4.)</em></li>
+<li>Why does the FM signal's peak stay at <span class="arithmatex">\(A_c\)</span> while its carrier line shrinks as <span class="arithmatex">\(A_m\)</span> grows? <em>(Answer: FM changes only the phase, so the envelope and the total power <span class="arithmatex">\(A_c^2/2\)</span> stay constant. A larger <span class="arithmatex">\(\beta\)</span> moves that fixed power from the carrier into more sideband pairs, <span class="arithmatex">\(A_c J_n(\beta)\)</span>.)</em></li>
+<li>With <span class="arithmatex">\(f_m\)</span> = 1 Hz, which message amplitude makes the FM carrier line vanish? <em>(Answer: the first zero of <span class="arithmatex">\(J_0\)</span> is at <span class="arithmatex">\(\beta \approx 2.405\)</span>, so <span class="arithmatex">\(\Delta f = 2.405\)</span> Hz and <span class="arithmatex">\(A_m = 2.405/0.05 \approx 48\)</span>. At <span class="arithmatex">\(A_m\)</span> = 48 the sim gives <span class="arithmatex">\(\beta\)</span> = 2.40 and a carrier line of about 0.3.)</em></li>
+</ol>
+<h3 id="common-misconceptions">Common Misconceptions</h3>
+<p><strong>"A louder message widens an AM signal."</strong> In AM the sidebands always sit at <span class="arithmatex">\(f_c \pm f_m\)</span>. Raising
+<span class="arithmatex">\(A_m\)</span> from 50 to 150 (Activities 1 and 2) makes them taller but leaves <span class="arithmatex">\(B = 2f_m\)</span> unchanged. In FM, the same
+change raises <span class="arithmatex">\(\Delta f\)</span> from 2.50 to 7.50 Hz and Carson's bandwidth (at <span class="arithmatex">\(f_m\)</span> = 2 Hz) from 9.0 to 19.0 Hz.</p>
+<p><strong>"The carrier is always the strongest line."</strong> In AM the carrier line is always <span class="arithmatex">\(A_c\)</span>. In FM its height is
+<span class="arithmatex">\(A_c|J_0(\beta)|\)</span>, which can be zero. Activity 3 makes the carrier vanish at <span class="arithmatex">\(\beta\)</span> = 2.40 while the
+waveform keeps its full amplitude.</p>
+<h2 id="references">References</h2>
+<ol>
+<li><a href="https://en.wikipedia.org/wiki/Amplitude_modulation">Amplitude modulation</a> - Wikipedia - the AM equation, modulation index, sidebands and over-modulation</li>
+<li><a href="https://en.wikipedia.org/wiki/Frequency_modulation">Frequency modulation</a> - Wikipedia - instantaneous frequency, peak deviation and the Bessel-function spectrum of tone FM</li>
+<li><a href="https://en.wikipedia.org/wiki/Carson_bandwidth_rule">Carson bandwidth rule</a> - Wikipedia - the estimate <span class="arithmatex">\(B \approx 2(\Delta f + f_m)\)</span> shown by the gold bar</li>
+<li><a href="https://en.wikipedia.org/wiki/Bessel_function">Bessel function</a> - Wikipedia - <span class="arithmatex">\(J_n(\beta)\)</span>, which sets the heights of the FM lines, and the zeros of <span class="arithmatex">\(J_0\)</span></li>
+<li><a href="https://en.wikipedia.org/wiki/Sideband">Sideband</a> - Wikipedia - why multiplying by a carrier creates lines at <span class="arithmatex">\(f_c \pm f_m\)</span></li>
+<li><a href="https://www.dspguide.com/">The Scientist and Engineer's Guide to Digital Signal Processing</a> - Steven W. Smith - free textbook on the Fourier transform and spectra used to read the lower plot</li>
+<li><a href="https://www.cdt21.com/design_guide/analogue-modulation/">Analogue Modulation</a> - CDT design guide - the introduction cited by the original version of this page</li>
+</ol>
+<h2 id="development-notes">Development Notes</h2>
+<details>
+<summary>Prompt history</summary>
+<p>The original sketch (2025) was generated from this prompt:</p>
 <div class="highlight"><pre><span></span><code>Develop a p5.js simulation that demonstrates analog modulation examples, focusing on amplitude or frequency modulation schemes. Incorporate sliders for adjusting variables such as Ac (amplitude of the carrier signal), Am (amplitude of the modulating signal), fc (frequency of the carrier signal), and fm (frequency of the modulating signal). Ensure the ranges for these variables are selected carefully to facilitate seamless interactivity.
 </code></pre></div>
+<p><strong>2026-10-14 upgrade to p5.js 2.3.2.</strong> The canvas is now responsive, and the entry file <code>analog-mod.html</code> now
+redirects to <code>main.html</code>. The unused p5.sound library was removed, because the sketch never made or analyzed
+sound. The slider ranges and defaults are unchanged. The amplitudes were pixel heights in the original. They
+are now amplitude units on labeled axes, and the "cycles per screen" frequencies are hertz over a 1 s window.
+An AM / FM / AM + FM selector, the read-outs and the amplitude spectrum are new. The FM equation was
+corrected. The original used the phase term <span class="arithmatex">\((A_m/f_c)\sin(2\pi f_m t)\)</span>, which made the modulation index
+depend on the carrier frequency (10 rad at the default settings). The new equation is the textbook form, with
+<span class="arithmatex">\(\beta = k_f A_m/f_m\)</span> and <span class="arithmatex">\(k_f\)</span> = 0.05 Hz per unit.</p>
+</details>
 
 
 
@@ -1960,13 +3250,13 @@ Run the Analog modulation MicroSim
         
         
           
-          <a href="../base-and-treble/" class="md-footer__link md-footer__link--next" aria-label="Next: Base and Treble">
+          <a href="../fft-basic/" class="md-footer__link md-footer__link--next" aria-label="Next: Basic FFT">
             <div class="md-footer__title">
               <span class="md-footer__direction">
                 Next
               </span>
               <div class="md-ellipsis">
-                Base and Treble
+                Basic FFT
               </div>
             </div>
             <div class="md-footer__button md-icon">

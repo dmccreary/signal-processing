@@ -3,60 +3,84 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>FFT in Microcontrollers - Citation Graph</title>
+    <title>Citation Graph for FFT on Microcontrollers MicroSim using vis.js 4.21.0</title>
+    <!-- vis 4.21.0 is the legacy monolithic build; the version is pinned on purpose. -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/vis/4.21.0/vis.min.js"></script>
     <link href="https://cdnjs.cloudflare.com/ajax/libs/vis/4.21.0/vis.min.css" rel="stylesheet">
     <style>
+        * { box-sizing: border-box; }
+
+        html, body { height: 100%; }
+
         body {
             font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
             margin: 0;
-            padding: 20px;
+            padding: 8px;
             background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-            color: white;
+            color: #333;
         }
-        
+
+        /* The page fills the iframe: the network takes whatever height the other rows leave. */
         .container {
+            display: flex;
+            flex-direction: column;
+            height: 100%;
             max-width: 1400px;
             margin: 0 auto;
             background: rgba(255, 255, 255, 0.95);
             border-radius: 15px;
-            padding: 20px;
-            box-shadow: 0 20px 40px rgba(0,0,0,0.3);
+            padding: 10px 16px 8px;
+            box-shadow: 0 10px 25px rgba(0,0,0,0.3);
             color: #333;
         }
-        
+
         h1 {
             text-align: center;
-            margin-bottom: 10px;
+            margin: 0;
             color: #2c3e50;
-            font-size: 2.5em;
+            font-size: 1.7em;
             text-shadow: 2px 2px 4px rgba(0,0,0,0.1);
         }
-        
+
         .subtitle {
             text-align: center;
-            color: #7f8c8d;
-            margin-bottom: 20px;
-            font-size: 1.2em;
+            color: #566566;
+            margin: 2px 0 8px;
+            font-size: 1em;
         }
-        
+
         .controls {
             display: flex;
             justify-content: center;
-            gap: 15px;
-            margin-bottom: 20px;
+            align-items: flex-end;
             flex-wrap: wrap;
+            gap: 6px 14px;
+            margin-bottom: 8px;
         }
-        
+
         .control-group {
             display: flex;
             flex-direction: column;
             align-items: center;
-            gap: 5px;
+            gap: 2px;
+            font-size: 14px;
         }
-        
-        select, input, button {
-            padding: 8px 12px;
+
+        .slider-row {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            height: 33px;
+        }
+
+        #citationValue {
+            min-width: 2.2em;
+            text-align: left;
+            font-weight: bold;
+        }
+
+        select, button {
+            padding: 5px 10px;
             border: 2px solid #3498db;
             border-radius: 8px;
             font-size: 14px;
@@ -65,186 +89,204 @@
             cursor: pointer;
             transition: all 0.3s ease;
         }
-        
+
+        input[type=range] {
+            width: 140px;
+            cursor: pointer;
+        }
+
         select:hover, button:hover {
             background: #3498db;
             color: white;
             transform: translateY(-2px);
         }
-        
-        .info-panel {
-            position: absolute;
-            top: 20px;
-            right: 20px;
-            width: 350px;
-            background: rgba(255, 255, 255, 0.95);
-            border: 2px solid #3498db;
-            border-radius: 10px;
-            padding: 15px;
-            box-shadow: 0 10px 25px rgba(0,0,0,0.2);
-            max-height: 70vh;
-            overflow-y: auto;
-            display: none;
+
+        select:focus-visible, button:focus-visible, input:focus-visible {
+            outline: 3px solid #f1c40f;
+            outline-offset: 2px;
         }
-        
-        .info-panel h3 {
-            margin-top: 0;
-            color: #2c3e50;
-            border-bottom: 2px solid #3498db;
-            padding-bottom: 5px;
+
+        .network-wrap {
+            position: relative;
+            flex: 1 1 auto;
+            min-height: 220px;
         }
-        
-        .info-panel .close-btn {
-            float: right;
-            background: #e74c3c;
-            color: white;
-            border: none;
-            border-radius: 50%;
-            width: 25px;
-            height: 25px;
-            cursor: pointer;
-            font-weight: bold;
-        }
-        
+
         #network {
-            width: 100%;
-            height: 600px;
+            position: absolute;
+            top: 0;
+            right: 0;
+            bottom: 0;
+            left: 0;
             border: 3px solid #3498db;
             border-radius: 10px;
             background: white;
             box-shadow: inset 0 5px 15px rgba(0,0,0,0.1);
         }
-        
+
+        .info-panel {
+            position: absolute;
+            top: 10px;
+            right: 10px;
+            z-index: 5;
+            width: min(340px, calc(100% - 20px));
+            max-height: calc(100% - 20px);
+            overflow-y: auto;
+            background: rgba(255, 255, 255, 0.97);
+            border: 2px solid #3498db;
+            border-radius: 10px;
+            padding: 10px 14px;
+            box-shadow: 0 10px 25px rgba(0,0,0,0.2);
+            font-size: 14px;
+            display: none;
+        }
+
+        .info-panel h3 {
+            margin: 0 0 6px;
+            font-size: 1.05em;
+            color: #2c3e50;
+            border-bottom: 2px solid #3498db;
+            padding-bottom: 5px;
+        }
+
+        .info-panel h4 { margin: 8px 0 4px; }
+        .info-panel p { margin: 4px 0; }
+
+        .info-panel .close-btn {
+            float: right;
+            margin: 0 0 4px 8px;
+            padding: 0;
+            background: #e74c3c;
+            color: white;
+            border: none;
+            border-radius: 50%;
+            width: 26px;
+            height: 26px;
+            cursor: pointer;
+            font-weight: bold;
+        }
+
+        .info-panel .close-btn:hover {
+            background: #c0392b;
+            transform: none;
+        }
+
         .legend {
             display: flex;
             justify-content: center;
-            gap: 20px;
-            margin-top: 15px;
+            gap: 5px 8px;
+            margin-top: 8px;
             flex-wrap: wrap;
         }
-        
+
         .legend-item {
             display: flex;
             align-items: center;
-            gap: 8px;
+            gap: 6px;
             background: rgba(255, 255, 255, 0.8);
-            padding: 8px 12px;
+            padding: 2px 10px 2px 6px;
             border-radius: 20px;
             border: 2px solid #ddd;
+            font-size: 13px;
         }
-        
+
         .legend-color {
-            width: 20px;
-            height: 20px;
+            width: 14px;
+            height: 14px;
             border-radius: 50%;
             border: 2px solid #333;
         }
-        
-        .stats {
-            text-align: center;
-            margin-top: 15px;
+
+        .footer {
+            display: flex;
+            justify-content: center;
+            align-items: baseline;
+            flex-wrap: wrap;
+            gap: 2px 16px;
+            margin-top: 6px;
             font-size: 14px;
-            color: #7f8c8d;
+            color: #566566;
         }
-        
-        @media (max-width: 768px) {
-            .info-panel {
-                position: relative;
-                width: 100%;
-                margin-top: 20px;
-                right: auto;
-                top: auto;
-            }
-            
-            .controls {
-                flex-direction: column;
-                align-items: center;
-            }
+
+        .footer a { color: #2c6fa8; }
+
+        .sr-only {
+            position: absolute;
+            width: 1px;
+            height: 1px;
+            overflow: hidden;
+            clip: rect(0 0 0 0);
+            white-space: nowrap;
+        }
+
+        @media (max-width: 600px) {
+            body { padding: 4px; }
+            .container { padding: 8px 10px 6px; border-radius: 10px; }
+            h1 { font-size: 1.3em; }
+            .subtitle { font-size: 0.9em; margin-bottom: 6px; }
+            .legend-item { font-size: 12px; padding: 1px 8px 1px 5px; }
+            .footer { font-size: 12px; }
         }
     </style>
 </head>
 <body>
-    <div class="container">
-        <h1>🔬 FFT in Microcontrollers</h1>
-        <p class="subtitle">Citation Network Analysis</p>
-        
+    <main class="container">
+        <h1>&#128300; FFT in Microcontrollers</h1>
+        <p class="subtitle">Citation network of 15 sample papers</p>
+
         <div class="controls">
             <div class="control-group">
-                <label>Filter by Group:</label>
+                <label for="groupFilter">Filter by Group:</label>
                 <select id="groupFilter">
                     <option value="all">All Groups</option>
-                    <option value="foundational">Foundational</option>
-                    <option value="manycore">Manycore</option>
-                    <option value="algorithms">Algorithms</option>
-                    <option value="stm32">STM32</option>
-                    <option value="neural_networks">Neural Networks</option>
-                    <option value="fpga">FPGA</option>
-                    <option value="biomedical">Biomedical</option>
-                    <option value="memory">Memory</option>
-                    <option value="cordic">CORDIC</option>
-                    <option value="simd">SIMD</option>
                 </select>
             </div>
-            
+
             <div class="control-group">
-                <label>Min Citations:</label>
-                <input type="range" id="citationFilter" min="0" max="100" value="0">
-                <span id="citationValue">0</span>
+                <label for="citationFilter">Min Citations:</label>
+                <div class="slider-row">
+                    <input type="range" id="citationFilter" min="0" max="100" value="0">
+                    <span id="citationValue">0</span>
+                </div>
             </div>
-            
+
             <div class="control-group">
-                <label>Layout:</label>
+                <label for="layoutSelect">Layout:</label>
                 <select id="layoutSelect">
                     <option value="physics">Physics</option>
                     <option value="hierarchical">Hierarchical</option>
                     <option value="circular">Circular</option>
                 </select>
             </div>
-            
-            <button onclick="resetView()">Reset View</button>
-            <button onclick="exportData()">Export Data</button>
+
+            <button id="resetButton" onclick="resetView()">Reset View</button>
+            <button id="exportButton" onclick="exportData()">Export Data</button>
         </div>
-        
-        <div id="network"></div>
-        
-        <div class="legend">
-            <div class="legend-item">
-                <div class="legend-color" style="background-color: #d35400;"></div>
-                <span>Foundational</span>
-            </div>
-            <div class="legend-item">
-                <div class="legend-color" style="background-color: #e74c3c;"></div>
-                <span>Manycore</span>
-            </div>
-            <div class="legend-item">
-                <div class="legend-color" style="background-color: #3498db;"></div>
-                <span>Algorithms</span>
-            </div>
-            <div class="legend-item">
-                <div class="legend-color" style="background-color: #2ecc71;"></div>
-                <span>STM32</span>
-            </div>
-            <div class="legend-item">
-                <div class="legend-color" style="background-color: #9b59b6;"></div>
-                <span>Neural Networks</span>
-            </div>
-            <div class="legend-item">
-                <div class="legend-color" style="background-color: #8e44ad;"></div>
-                <span>FPGA</span>
-            </div>
+
+        <p class="sr-only" id="networkDescription">
+            Interactive directed citation graph of 15 papers about FFT implementations on microcontrollers.
+            Each node is a paper, sized by citation count and colored by research area. Each arrow points
+            from the citing paper to the cited paper. Click a node to read its authors, year, venue,
+            citation count and connections. The controls filter by research area and minimum citation count
+            and switch between physics, hierarchical and circular layouts.
+        </p>
+        <div class="network-wrap">
+            <div id="network" role="application" aria-label="FFT citation network" aria-describedby="networkDescription"></div>
+            <aside class="info-panel" id="infoPanel" aria-live="polite">
+                <button class="close-btn" onclick="closeInfoPanel()" aria-label="Close paper details">&times;</button>
+                <div id="infoPanelContent">
+                    <!-- Node information will be displayed here -->
+                </div>
+            </aside>
         </div>
-        
-        <div class="stats" id="stats">
-            Loading network statistics...
+
+        <div class="legend" id="legend"></div>
+
+        <div class="footer">
+            <span id="stats">Loading network statistics...</span>
+            <a href=".">Back to Documentation</a>
         </div>
-    </div>
-    
-    <div class="info-panel" id="infoPanel">
-        <button class="close-btn" onclick="closeInfoPanel()">×</button>
-        <div id="infoPanelContent">
-            <!-- Node information will be displayed here -->
-        </div>
-    </div>
+    </main>
 
     <script>
         // FFT Papers Citation Data
@@ -475,16 +517,85 @@
             ]
         };
 
+        // Research groups: one list drives the filter menu, the legend and the node colors,
+        // so the three can never disagree.
+        const GROUPS = [
+            {key: 'foundational',    label: 'Foundational',    color: '#d35400'},
+            {key: 'manycore',        label: 'Manycore',        color: '#e74c3c'},
+            {key: 'algorithms',      label: 'Algorithms',      color: '#3498db'},
+            {key: 'stm32',           label: 'STM32',           color: '#2ecc71'},
+            {key: 'neural_networks', label: 'Neural Networks', color: '#9b59b6'},
+            {key: 'fpga',            label: 'FPGA',            color: '#8e44ad'},
+            {key: 'biomedical',      label: 'Biomedical',      color: '#e67e22'},
+            {key: 'memory',          label: 'Memory',          color: '#1abc9c'},
+            {key: 'cordic',          label: 'CORDIC',          color: '#34495e'},
+            {key: 'simd',            label: 'SIMD',            color: '#c0392b'},
+            {key: 'optimization',    label: 'Optimization',    color: '#f39c12'}
+        ];
+        const groupLabels = {};
+        const groupStyles = {};
+        GROUPS.forEach(g => {
+            groupLabels[g.key] = g.label;
+            groupStyles[g.key] = {color: g.color};
+        });
+
+        const originalLabels = {};
+        paperData.nodes.forEach(n => { originalLabels[n.id] = n.label; });
+
         let network;
         let nodes, edges;
         let allNodes, allEdges;
+        let fitWhenStable = false;
+        let fitTimer = null;
+        let savedPositions = {};        // last known position of every paper
 
-        function initializeNetwork() {
+        function buildGroupControls() {
+            const select = document.getElementById('groupFilter');
+            const legend = document.getElementById('legend');
+            GROUPS.forEach(g => {
+                const option = document.createElement('option');
+                option.value = g.key;
+                option.textContent = g.label;
+                select.appendChild(option);
+
+                const item = document.createElement('div');
+                item.className = 'legend-item';
+                item.innerHTML = '<div class="legend-color" style="background-color: ' + g.color + ';"></div>' +
+                                 '<span>' + g.label + '</span>';
+                legend.appendChild(item);
+            });
+        }
+
+        // Break a long paper title into lines of at most maxChars characters so labels do not overlap.
+        function wrapLabel(text, maxChars) {
+            const lines = [];
+            let line = '';
+            text.split(' ').forEach(word => {
+                if (line && (line + ' ' + word).length > maxChars) {
+                    lines.push(line);
+                    line = word;
+                } else {
+                    line = line ? line + ' ' + word : word;
+                }
+            });
+            if (line) lines.push(line);
+            return lines.join('\n');
+        }
+
+        // Build the network from scratch. Reset View calls this again, which always
+        // gives the same starting layout (the random seed is fixed).
+        function createNetwork() {
+            if (network) network.destroy();
+            savedPositions = {};
+            fitWhenStable = false;
+            clearTimeout(fitTimer);
+
             // Create DataSets for nodes and edges
-            allNodes = new vis.DataSet(paperData.nodes);
+            const nodeData = paperData.nodes.map(n => Object.assign({}, n, {label: wrapLabel(n.label, 20)}));
+            allNodes = new vis.DataSet(nodeData);
             allEdges = new vis.DataSet(paperData.edges);
-            
-            nodes = new vis.DataSet(paperData.nodes);
+
+            nodes = new vis.DataSet(nodeData);
             edges = new vis.DataSet(paperData.edges);
 
             // Network options
@@ -499,19 +610,30 @@
                         }
                     },
                     font: {
-                        size: 12,
+                        size: 13,
                         face: 'Tahoma',
-                        color: '#343434'
+                        color: '#343434',
+                        strokeWidth: 3,
+                        strokeColor: '#ffffff'
                     },
                     borderWidth: 2,
                     shadow: true
                 },
+                // Without this, vis ignores the per-node color and paints each group
+                // with its own default palette, which does not match the legend.
+                groups: groupStyles,
                 edges: {
                     width: 2,
                     color: {
                         color: '#848484',
                         highlight: '#2196F3',
                         hover: '#2196F3'
+                    },
+                    font: {
+                        size: 11,
+                        color: '#555555',
+                        strokeWidth: 3,
+                        strokeColor: '#ffffff'
                     },
                     arrows: {
                         to: {
@@ -526,11 +648,12 @@
                 },
                 physics: {
                     forceAtlas2Based: {
-                        gravitationalConstant: -26,
+                        gravitationalConstant: -70,
                         centralGravity: 0.005,
-                        springLength: 230,
+                        springLength: 170,
                         springConstant: 0.18,
-                        damping: 0.15
+                        damping: 0.15,
+                        avoidOverlap: 1
                     },
                     maxVelocity: 146,
                     solver: 'forceAtlas2Based',
@@ -547,7 +670,8 @@
                     selectConnectedEdges: false
                 },
                 layout: {
-                    improvedLayout: true
+                    improvedLayout: true,
+                    randomSeed: 12      // fixed seed: the same layout on every load
                 }
             };
 
@@ -577,9 +701,22 @@
                 network.canvas.body.container.style.cursor = 'default';
             });
 
-            // Set up control event listeners
-            setupControls();
+            // After a filter or layout change in physics mode, zoom to the settled graph.
+            network.on('stabilized', function() {
+                if (fitWhenStable) {
+                    fitWhenStable = false;
+                    clearTimeout(fitTimer);
+                    fitView();
+                }
+            });
+
             updateStats();
+        }
+
+        function initializeNetwork() {
+            buildGroupControls();
+            setupControls();
+            createNetwork();
         }
 
         function setupControls() {
@@ -594,6 +731,37 @@
                 applyFilters();
             });
             layoutSelect.addEventListener('change', changeLayout);
+        }
+
+        function fitView() {
+            network.fit({
+                animation: {
+                    duration: 500,
+                    easingFunction: 'easeInOutQuad'
+                }
+            });
+        }
+
+        // Bring the whole graph back into view once its new positions are known.
+        function refitView() {
+            if (document.getElementById('layoutSelect').value === 'physics') {
+                fitWhenStable = true;   // wait for the physics simulation to settle ...
+                clearTimeout(fitTimer);
+                fitTimer = setTimeout(function() {   // ... but never wait longer than this
+                    if (fitWhenStable) {
+                        fitWhenStable = false;
+                        fitView();
+                    }
+                }, 2500);
+            } else {
+                fitView();
+            }
+        }
+
+        // Keep the positions of the papers that are about to be removed from the network.
+        function rememberPositions() {
+            const current = network.getPositions();
+            Object.keys(current).forEach(id => { savedPositions[id] = current[id]; });
         }
 
         function applyFilters() {
@@ -612,17 +780,44 @@
 
             // Filter edges to only show connections between visible nodes
             const visibleNodeIds = new Set(filteredNodes.map(node => node.id));
-            filteredEdges = filteredEdges.filter(edge => 
+            filteredEdges = filteredEdges.filter(edge =>
                 visibleNodeIds.has(edge.from) && visibleNodeIds.has(edge.to)
             );
 
-            // Update the datasets
+            // Update the datasets. Papers that come back keep their last position,
+            // so filtering does not shuffle the graph.
+            const layout = document.getElementById('layoutSelect').value;
+            rememberPositions();
             nodes.clear();
             edges.clear();
+            if (layout !== 'hierarchical') {
+                filteredNodes = filteredNodes.map(node => savedPositions[node.id]
+                    ? Object.assign({}, node, {x: savedPositions[node.id].x, y: savedPositions[node.id].y})
+                    : node);
+            }
             nodes.update(filteredNodes);
             edges.update(filteredEdges);
 
+            // Keep the circle if it is selected.
+            if (layout === 'circular') {
+                positionCircular();
+            }
+
+            refitView();
             updateStats();
+        }
+
+        // Place the visible nodes evenly around a circle.
+        function positionCircular() {
+            const nodeArray = nodes.get();
+            const center = {x: 0, y: 0};
+            const radius = 300;
+            nodeArray.forEach((node, index) => {
+                const angle = (2 * Math.PI * index) / nodeArray.length;
+                node.x = center.x + radius * Math.cos(angle);
+                node.y = center.y + radius * Math.sin(angle);
+            });
+            nodes.update(nodeArray);
         }
 
         function changeLayout() {
@@ -659,15 +854,7 @@
                         }
                     };
                     // Position nodes in a circle
-                    const nodeArray = nodes.get();
-                    const center = {x: 0, y: 0};
-                    const radius = 300;
-                    nodeArray.forEach((node, index) => {
-                        const angle = (2 * Math.PI * index) / nodeArray.length;
-                        node.x = center.x + radius * Math.cos(angle);
-                        node.y = center.y + radius * Math.sin(angle);
-                    });
-                    nodes.update(nodeArray);
+                    positionCircular();
                     break;
                 default: // physics
                     options = {
@@ -678,6 +865,9 @@
                         },
                         physics: {
                             enabled: true,
+                            // vis falls back to its default solver after the hierarchical
+                            // layout has been used, so name the solver again.
+                            solver: 'forceAtlas2Based',
                             stabilization: {
                                 enabled: true,
                                 iterations: 1000
@@ -688,6 +878,7 @@
             }
 
             network.setOptions(options);
+            refitView();
         }
 
         function showNodeInfo(nodeId) {
@@ -703,9 +894,9 @@
                 <p><strong>Year:</strong> ${node.year}</p>
                 <p><strong>Venue:</strong> ${node.venue}</p>
                 <p><strong>Citations:</strong> ${node.citations}</p>
-                <p><strong>Group:</strong> ${node.group}</p>
+                <p><strong>Group:</strong> ${groupLabels[node.group] || node.group}</p>
                 <p><strong>Abstract:</strong> ${node.abstract}</p>
-                
+
                 <h4>Citation Connections:</h4>
                 <div id="connectionsList"></div>
             `;
@@ -713,13 +904,13 @@
             // Show connections
             const connections = allEdges.get().filter(edge => edge.from === nodeId || edge.to === nodeId);
             const connectionsList = document.getElementById('connectionsList');
-            
+
             if (connections.length > 0) {
                 connections.forEach(connection => {
                     const connectedNodeId = connection.from === nodeId ? connection.to : connection.from;
                     const connectedNode = allNodes.get(connectedNodeId);
                     const direction = connection.from === nodeId ? 'cites' : 'cited by';
-                    
+
                     const connectionDiv = document.createElement('div');
                     connectionDiv.style.cssText = 'margin: 5px 0; padding: 5px; background: #f8f9fa; border-radius: 3px; font-size: 12px;';
                     connectionDiv.innerHTML = `<strong>${direction}:</strong> ${connectedNode.title} (${connectedNode.year})`;
@@ -741,17 +932,10 @@
             document.getElementById('citationFilter').value = '0';
             document.getElementById('citationValue').textContent = '0';
             document.getElementById('layoutSelect').value = 'physics';
-            
-            applyFilters();
-            changeLayout();
+
+            // Rebuild the network: all papers, Physics layout, the layout shown at page load.
             closeInfoPanel();
-            
-            network.fit({
-                animation: {
-                    duration: 1000,
-                    easingFunction: 'easeInOutQuad'
-                }
-            });
+            createNetwork();
         }
 
         function updateStats() {
@@ -762,14 +946,16 @@
 
             const groups = [...new Set(nodes.get().map(node => node.group))];
 
-            document.getElementById('stats').innerHTML = `
-                📊 Network Statistics: ${nodeCount} papers, ${edgeCount} citations, 
-                ${groups.length} research areas, Average citations: ${avgCitations}
-            `;
+            const plural = (count, word) => count + ' ' + word + (count === 1 ? '' : 's');
+            document.getElementById('stats').textContent =
+                '\u{1F4CA} Network Statistics: ' + plural(nodeCount, 'paper') + ', ' +
+                plural(edgeCount, 'citation link') + ', ' + plural(groups.length, 'research area') +
+                ', average citation count: ' + avgCitations;
         }
 
         function exportData() {
-            const visibleNodes = nodes.get();
+            // Export the original, unwrapped paper titles as labels.
+            const visibleNodes = nodes.get().map(node => Object.assign({}, node, {label: originalLabels[node.id]}));
             const visibleEdges = edges.get();
             const exportData = {
                 nodes: visibleNodes,

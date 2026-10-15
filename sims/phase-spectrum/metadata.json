@@ -1,0 +1,547 @@
+{
+  "microsim": {
+    "dublinCore": {
+      "title": "Phase Spectrum: What the Magnitude Hides",
+      "creator": [
+        "Dan McCreary"
+      ],
+      "subject": [
+        "Phase spectrum",
+        "Magnitude spectrum",
+        "Discrete Fourier transform",
+        "Time shift",
+        "Linear phase",
+        "Phase unwrapping"
+      ],
+      "description": "Three views of the phase spectrum. A: three harmonics with fixed amplitudes and adjustable phases change shape and peak while the magnitude spectrum and RMS stay fixed. B: a time shift tau turns the phase spectrum of a pulse or sawtooth into a line of slope -2 pi tau (100-point DFT, wrapped or unwrapped). C: a 256-point DFT swap experiment rebuilds signals from the magnitude of one and the phase of another, with zero-phase and phase-only variants.",
+      "publisher": "Dan McCreary",
+      "contributor": [
+        "Claude (Anthropic)"
+      ],
+      "date": "2026-10-14",
+      "type": "Interactive Simulation",
+      "format": "text/html",
+      "identifier": "https://dmccreary.github.io/signal-processing/sims/phase-spectrum/",
+      "language": "en",
+      "relation": [
+        "Chapter 7: DFT, FFT and Frequency Domain Analysis"
+      ],
+      "rights": "CC BY-NC-SA 4.0"
+    },
+    "search": {
+      "tags": [
+        "phase spectrum",
+        "magnitude spectrum",
+        "DFT",
+        "shift theorem",
+        "linear phase",
+        "phase unwrapping",
+        "phase wrapping",
+        "swap experiment"
+      ],
+      "searchKeywords": [
+        "phase vs magnitude",
+        "x(t - tau) phase ramp",
+        "phase slope -2 pi tau",
+        "magnitude and phase swap",
+        "zero phase reconstruction",
+        "phase only reconstruction"
+      ],
+      "visualizationType": [
+        "chart",
+        "interactive-demo",
+        "simulation"
+      ],
+      "interactionLevel": "high",
+      "complexity": 5,
+      "relatedConcepts": [
+        "Phase Spectrum",
+        "Magnitude Spectrum",
+        "Spectrum",
+        "Discrete Fourier Transform",
+        "Signal Phase",
+        "Frequency Domain",
+        "Time Domain"
+      ],
+      "applicationDomains": [
+        "education",
+        "exploration",
+        "demonstration"
+      ]
+    },
+    "educational": {
+      "gradeLevel": [
+        "Undergraduate"
+      ],
+      "subjectArea": [
+        "Engineering",
+        "Mathematics"
+      ],
+      "topic": [
+        "Phase spectrum",
+        "Shift theorem",
+        "Linear phase and delay",
+        "Phase wrapping and unwrapping",
+        "Magnitude-phase swap experiment"
+      ],
+      "learningObjectives": [
+        "Explain why signals with identical magnitude spectra can have very different waveforms and peak values",
+        "Identify phases that grow linearly with frequency, phi_k = k phi_1, as a pure time delay tau = -phi_1 / (360 degrees f0)",
+        "Calculate the phase -2 pi f tau added by a delay tau and the interval 1/|tau| at which the wrapped phase repeats",
+        "Distinguish 2 pi wrapping jumps from pi jumps caused by sign changes of a real spectrum",
+        "Analyze the swap experiment to conclude that the timing of a signal's features is carried by its phase"
+      ],
+      "bloomsTaxonomy": [
+        "Understand",
+        "Apply",
+        "Analyze"
+      ],
+      "prerequisites": [
+        "Complex numbers in polar form",
+        "Sinusoids and phase",
+        "The DFT and the magnitude spectrum"
+      ],
+      "duration": {
+        "typical": 25,
+        "range": {
+          "min": 15,
+          "max": 40
+        }
+      },
+      "difficulty": "Intermediate",
+      "scaffolding": {
+        "type": [
+          "guided-discovery",
+          "feedback"
+        ],
+        "adaptability": "fixed",
+        "removal": "user-controlled"
+      },
+      "misconceptions": [
+        {
+          "misconception": "The magnitude spectrum describes the signal; the phase is a minor detail",
+          "correction": "Phase sets how the components line up in time, so it determines the waveform's shape, peak and the timing of its features",
+          "evidence": "View A keeps |X| fixed while the peak moves between 1.44 and 1.83; in view C, |A| with the phase of B resembles B (r = 0.64)"
+        },
+        {
+          "misconception": "Every jump in a phase plot is a 2 pi wrap",
+          "correction": "Wrapping jumps are 2 pi and vanish when unwrapped; a real spectrum that changes sign adds jumps of pi that are not part of the delay",
+          "evidence": "In view B the rectangular pulse's phase jumps from 0 to 180 degrees between 9 and 10 Hz at tau = 0, and the unwrapped phase climbs by pi at each sign change"
+        }
+      ]
+    },
+    "technical": {
+      "framework": "p5.js",
+      "version": "1.0.0",
+      "canvasDimensions": {
+        "width": 760,
+        "height": 636,
+        "responsive": true
+      },
+      "regions": {
+        "drawHeight": 470,
+        "controlHeight": 166
+      },
+      "dependencies": [
+        "p5.js 2.3.2"
+      ],
+      "browserCompatibility": [
+        "Chrome 90+",
+        "Firefox 88+",
+        "Safari 14+",
+        "Edge 90+"
+      ],
+      "performance": {
+        "memoryUsage": "low",
+        "computationalComplexity": "O(n²)"
+      },
+      "deviceRequirements": {
+        "minScreenWidth": 375,
+        "touchSupport": true,
+        "keyboardRequired": false,
+        "mouseRequired": false,
+        "networkRequired": false
+      },
+      "accessibility": {
+        "screenReader": true,
+        "keyboardNavigation": true,
+        "colorContrast": true,
+        "altText": true,
+        "screenReaderScript": "Phase spectrum explorer with three views chosen by radio buttons. View A: three harmonics with fixed amplitudes and phase sliders; the waveform changes shape while the magnitude bars stay fixed. View B: a pulse or sawtooth is delayed by tau and its phase spectrum becomes a straight line of slope -2 pi tau, shown wrapped or unwrapped. View C: two signals A and B are rebuilt from the magnitude of one and the phase of the other, and each rebuilt signal resembles the signal that supplied its phase."
+      }
+    },
+    "userInterface": {
+      "layoutType": "responsive-width",
+      "layoutPattern": "drawing-region-above-controls",
+      "colorScheme": {
+        "drawingArea": "aliceblue",
+        "controlArea": "white",
+        "timeSignal": "blue",
+        "magnitude": "maroon",
+        "phase": "green",
+        "highlight": "dark goldenrod (peak, delay arrow, slope line, cursor, source overlay)",
+        "undefinedPhase": "light gray",
+        "text": "black"
+      },
+      "controls": [
+        {
+          "id": "viewRadio",
+          "type": "radio",
+          "label": "View",
+          "description": "Switches between A: Harmonics, B: Time shift and C: Swap",
+          "group": "view",
+          "properties": {
+            "options": [
+              {
+                "value": "A",
+                "label": "A: Harmonics"
+              },
+              {
+                "value": "B",
+                "label": "B: Time shift"
+              },
+              {
+                "value": "C",
+                "label": "C: Swap"
+              }
+            ],
+            "default": "A"
+          }
+        },
+        {
+          "id": "phi1Slider",
+          "type": "slider",
+          "label": "phi1 (1 Hz)",
+          "description": "Phase of the 1 Hz harmonic (view A)",
+          "group": "view-A",
+          "properties": {
+            "min": -180,
+            "max": 180,
+            "default": -90,
+            "step": 5,
+            "units": "degrees",
+            "showValue": true
+          }
+        },
+        {
+          "id": "phi2Slider",
+          "type": "slider",
+          "label": "phi2 (2 Hz)",
+          "description": "Phase of the 2 Hz harmonic (view A)",
+          "group": "view-A",
+          "properties": {
+            "min": -180,
+            "max": 180,
+            "default": -90,
+            "step": 5,
+            "units": "degrees",
+            "showValue": true
+          }
+        },
+        {
+          "id": "phi3Slider",
+          "type": "slider",
+          "label": "phi3 (3 Hz)",
+          "description": "Phase of the 3 Hz harmonic (view A)",
+          "group": "view-A",
+          "properties": {
+            "min": -180,
+            "max": 180,
+            "default": -90,
+            "step": 5,
+            "units": "degrees",
+            "showValue": true
+          }
+        },
+        {
+          "id": "zeroButton",
+          "type": "button",
+          "label": "All 0°",
+          "description": "Sets all three phases to 0 degrees (largest peak, 1.83)",
+          "group": "view-A",
+          "properties": {
+            "text": "All 0°",
+            "action": "setPhases(0, 0, 0)"
+          }
+        },
+        {
+          "id": "sawButton",
+          "type": "button",
+          "label": "Sawtooth",
+          "description": "Sets all three phases to -90 degrees (sum of sines: a sawtooth approximation)",
+          "group": "view-A",
+          "properties": {
+            "text": "Sawtooth",
+            "action": "setPhases(-90, -90, -90)"
+          }
+        },
+        {
+          "id": "delayButton",
+          "type": "button",
+          "label": "Delay",
+          "description": "Sets linear phases -60, -120, -180 degrees: the all-0 waveform delayed by 0.167 s",
+          "group": "view-A",
+          "properties": {
+            "text": "Delay",
+            "action": "setPhases(-60, -120, -180)"
+          }
+        },
+        {
+          "id": "randomButton",
+          "type": "button",
+          "label": "Random",
+          "description": "Sets random phases in 5 degree steps",
+          "group": "view-A",
+          "properties": {
+            "text": "Random",
+            "action": "random phases"
+          }
+        },
+        {
+          "id": "tauSlider",
+          "type": "slider",
+          "label": "Delay tau",
+          "description": "Circular time shift of the signal in whole samples (view B)",
+          "group": "view-B",
+          "properties": {
+            "min": -0.25,
+            "max": 0.25,
+            "default": 0.05,
+            "step": 0.01,
+            "units": "s",
+            "showValue": true
+          }
+        },
+        {
+          "id": "cursorSlider",
+          "type": "slider",
+          "label": "Cursor f",
+          "description": "Frequency at which |X| and the phase are read out (view B)",
+          "group": "view-B",
+          "properties": {
+            "min": 1,
+            "max": 50,
+            "default": 5,
+            "step": 1,
+            "units": "Hz",
+            "showValue": true
+          }
+        },
+        {
+          "id": "shiftSelect",
+          "type": "dropdown",
+          "label": "Signal",
+          "description": "Signal to delay in view B",
+          "group": "view-B",
+          "properties": {
+            "options": [
+              {
+                "value": "gauss",
+                "label": "Gaussian pulse"
+              },
+              {
+                "value": "rect",
+                "label": "rectangular pulse"
+              },
+              {
+                "value": "saw",
+                "label": "sawtooth"
+              }
+            ],
+            "default": "gauss"
+          }
+        },
+        {
+          "id": "unwrapCheckbox",
+          "type": "checkbox",
+          "label": "Unwrap phase",
+          "description": "Shows the phase as a continuous line instead of wrapped to (-pi, pi]",
+          "group": "view-B",
+          "properties": {
+            "checked": false
+          }
+        },
+        {
+          "id": "ghostCheckbox",
+          "type": "checkbox",
+          "label": "Show tau = 0 signal",
+          "description": "Draws the undelayed signal as a dashed gray reference",
+          "group": "view-B",
+          "properties": {
+            "checked": true
+          }
+        },
+        {
+          "id": "sigASelect",
+          "type": "dropdown",
+          "label": "Signal A",
+          "description": "First signal of the swap experiment (view C)",
+          "group": "view-C",
+          "properties": {
+            "options": [
+              {
+                "value": "rect",
+                "label": "rectangular pulse"
+              },
+              {
+                "value": "chirp",
+                "label": "damped chirp"
+              },
+              {
+                "value": "saw",
+                "label": "sawtooth burst"
+              }
+            ],
+            "default": "rect"
+          }
+        },
+        {
+          "id": "sigBSelect",
+          "type": "dropdown",
+          "label": "Signal B",
+          "description": "Second signal of the swap experiment (view C)",
+          "group": "view-C",
+          "properties": {
+            "options": [
+              {
+                "value": "rect",
+                "label": "rectangular pulse"
+              },
+              {
+                "value": "chirp",
+                "label": "damped chirp"
+              },
+              {
+                "value": "saw",
+                "label": "sawtooth burst"
+              }
+            ],
+            "default": "chirp"
+          }
+        },
+        {
+          "id": "modeSelect",
+          "type": "dropdown",
+          "label": "Rebuild with",
+          "description": "Swap the phases, zero phase (magnitude only) or phase only (unit magnitude)",
+          "group": "view-C",
+          "properties": {
+            "options": [
+              {
+                "value": "swap",
+                "label": "Swap the phases"
+              },
+              {
+                "value": "zero",
+                "label": "Zero phase (|X| only)"
+              },
+              {
+                "value": "phase",
+                "label": "Phase only (|X| = 1)"
+              }
+            ],
+            "default": "swap"
+          }
+        },
+        {
+          "id": "overlayCheckbox",
+          "type": "checkbox",
+          "label": "Overlay the source signal (dashed, scaled)",
+          "description": "Draws the signal that supplied the phase (or, for zero phase, the magnitude) over each rebuilt signal",
+          "group": "view-C",
+          "properties": {
+            "checked": true
+          }
+        }
+      ],
+      "visualElements": [
+        {
+          "type": "chart",
+          "description": "View A: waveform x(t) over two periods with the all-zero-phase reference, plus magnitude bars (maroon) and phase bars (green) for the three harmonics",
+          "interactive": true,
+          "updateTriggers": [
+            "phi1Slider",
+            "phi2Slider",
+            "phi3Slider",
+            "zeroButton",
+            "sawButton",
+            "delayButton",
+            "randomButton"
+          ]
+        },
+        {
+          "type": "chart",
+          "description": "View B: delayed signal with a tau arrow, normalised magnitude stems and phase dots with the line of slope -2 pi tau, wrapped or unwrapped, and a frequency cursor",
+          "interactive": true,
+          "updateTriggers": [
+            "tauSlider",
+            "cursorSlider",
+            "shiftSelect",
+            "unwrapCheckbox",
+            "ghostCheckbox"
+          ]
+        },
+        {
+          "type": "chart",
+          "description": "View C: four stacked time plots (A, B and two rebuilt signals) with correlation read-outs r_A and r_B",
+          "interactive": true,
+          "updateTriggers": [
+            "sigASelect",
+            "sigBSelect",
+            "modeSelect",
+            "overlayCheckbox"
+          ]
+        },
+        {
+          "type": "text-display",
+          "description": "Read-outs: peak and RMS (A); slope -2 pi tau, wrap interval and cursor |X| and phase (B); r_A, r_B and zero-phase peak time (C)",
+          "interactive": false,
+          "updateTriggers": [
+            "viewRadio"
+          ]
+        }
+      ]
+    },
+    "simulation": {
+      "model": {
+        "type": "mathematical",
+        "description": "A: x(t) = sum_k A_k cos(2 pi k f0 t + phi_k) with A_k = 1, 1/2, 1/3 and f0 = 1 Hz. B: a 100-sample signal (fs = 100 Hz) is circularly shifted by tau and transformed with a DFT; bins with |X| < 0.1% of the maximum have undefined phase. C: two 256-sample signals are transformed and rebuilt by the inverse DFT from |X1| e^{j angle X2}, |X| alone, or e^{j angle X}.",
+        "equations": [
+          "x(t - tau) <-> X(f) e^{-j 2 pi f tau}",
+          "slope of phase = -2 pi tau rad/Hz",
+          "wrap interval = 1/|tau| Hz",
+          "RMS = sqrt(sum A_k^2 / 2) = 0.825",
+          "y = IDFT(|X_A| e^{j angle X_B})"
+        ],
+        "algorithms": [
+          "Direct DFT and inverse DFT (N = 100 and N = 256)",
+          "Phase unwrapping by adding multiples of 2 pi between neighbouring defined bins",
+          "Pearson correlation coefficient"
+        ],
+        "limitations": [
+          "Shifts are circular and in whole samples (0.01 s)",
+          "Unwrapping cannot remove the pi jumps of a real spectrum that changes sign",
+          "Phase is undefined (set to 0 in view C) where |X| is below 0.1% of its maximum"
+        ]
+      }
+    },
+    "usage": {
+      "recommendedUsage": [
+        "demonstration",
+        "exploration",
+        "guided-practice"
+      ],
+      "instructionalStrategies": [
+        "Predict the waveform from the phases before pressing a preset",
+        "Read the phase at a cursor frequency and compute the delay",
+        "Contrast wrapped and unwrapped phase",
+        "Predict which original a swapped reconstruction resembles"
+      ],
+      "extensions": [
+        "Add a user-drawn signal to the swap experiment",
+        "Show group delay as the negative derivative of the unwrapped phase"
+      ]
+    }
+  },
+  "canvasHeight": 636
+}

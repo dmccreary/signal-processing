@@ -1,0 +1,403 @@
+{
+  "microsim": {
+    "dublinCore": {
+      "title": "System Property Explorer",
+      "creator": [
+        "Dan McCreary"
+      ],
+      "subject": [
+        "Signal Processing",
+        "Signals and Systems",
+        "Linear Systems",
+        "Time-Invariant Systems",
+        "Causality",
+        "BIBO Stability"
+      ],
+      "description": "Run linearity, time-invariance, causality and BIBO stability tests on eight example continuous-time systems. Each test overlays the two signals that the property says must be equal, reports whether they match, and explains the true classification of the system.",
+      "publisher": "Dan McCreary",
+      "contributor": [
+        "Claude (Anthropic)"
+      ],
+      "date": "2026-10-02",
+      "type": "Interactive Simulation",
+      "format": "text/html",
+      "identifier": "https://dmccreary.github.io/signal-processing/sims/system-property-explorer/",
+      "language": "en",
+      "relation": [
+        "Chapter 3: System Properties and Analysis"
+      ],
+      "rights": "CC BY-NC-SA 4.0"
+    },
+    "search": {
+      "tags": [
+        "linearity",
+        "time-invariance",
+        "causality",
+        "BIBO stability",
+        "superposition",
+        "memoryless systems",
+        "LTI systems",
+        "system properties"
+      ],
+      "searchKeywords": [
+        "test a system for linearity",
+        "time-invariant vs time-varying system",
+        "causal vs non-causal system",
+        "BIBO stability test",
+        "superposition principle",
+        "system classification"
+      ],
+      "visualizationType": [
+        "graph",
+        "interactive-demo",
+        "simulation"
+      ],
+      "interactionLevel": "high",
+      "complexity": 5,
+      "relatedConcepts": [
+        "Linear Systems",
+        "Nonlinear Systems",
+        "Time-Invariant Systems",
+        "Time-Varying Systems",
+        "Causality",
+        "Non-Causal Systems",
+        "Stability",
+        "Unstable Systems",
+        "Memoryless Systems"
+      ],
+      "applicationDomains": [
+        "education",
+        "exploration",
+        "demonstration"
+      ],
+      "showcase": false
+    },
+    "educational": {
+      "gradeLevel": [
+        "Undergraduate"
+      ],
+      "subjectArea": [
+        "Engineering",
+        "Mathematics"
+      ],
+      "topic": [
+        "System properties: linearity, time-invariance, causality, stability and memory",
+        "Superposition",
+        "BIBO stability"
+      ],
+      "learningObjectives": [
+        "Explain the superposition principle and test a system for linearity",
+        "Distinguish time-invariant systems from time-varying systems using a shifted input",
+        "Determine whether a system is causal by comparing outputs for inputs that agree up to a given time",
+        "Classify a system as BIBO stable or unstable from its response to a bounded input",
+        "Evaluate why a single matching example cannot prove that a system has a property"
+      ],
+      "bloomsTaxonomy": [
+        "Understand",
+        "Analyze",
+        "Evaluate"
+      ],
+      "prerequisites": [
+        "Signals as functions of time",
+        "Time shifting",
+        "The unit step function",
+        "Basic integration"
+      ],
+      "duration": {
+        "typical": 25,
+        "range": {
+          "min": 20,
+          "max": 30
+        }
+      },
+      "difficulty": "Intermediate",
+      "scaffolding": {
+        "type": [
+          "guided-discovery",
+          "feedback"
+        ],
+        "adaptability": "fixed",
+        "removal": "user-controlled"
+      },
+      "misconceptions": [
+        {
+          "misconception": "A system whose equation contains t multiplied by x(t) is nonlinear",
+          "correction": "y(t) = t x(t) obeys superposition, so it is linear; the gain t depends on time, which makes it time-varying",
+          "evidence": "Select the time-varying multiplier: the linearity curves coincide, but the time-invariance curves separate by t0 times the input amplitude"
+        },
+        {
+          "misconception": "Adding a constant to the signal keeps a system linear",
+          "correction": "The offset system y(t) = x(t) + 1 maps a zero input to a nonzero output, which violates superposition",
+          "evidence": "Select the offset system and the linearity test: the maximum difference equals the amplitude A for every setting"
+        },
+        {
+          "misconception": "One matching example proves that a property holds",
+          "correction": "A property must hold for every input; one counterexample disproves it, but matching curves only show it for those inputs",
+          "evidence": "Select the squarer, linearity test, A = 1 and t0 = 4 s: the curves coincide although the squarer is nonlinear"
+        }
+      ]
+    },
+    "technical": {
+      "framework": "p5.js",
+      "version": "2.0.0",
+      "canvasDimensions": {
+        "width": 670,
+        "height": 615,
+        "responsive": true
+      },
+      "regions": {
+        "drawHeight": 500,
+        "controlHeight": 115
+      },
+      "dependencies": [
+        "p5.js 2.3.2"
+      ],
+      "browserCompatibility": [
+        "Chrome 90+",
+        "Firefox 88+",
+        "Safari 14+",
+        "Edge 90+"
+      ],
+      "performance": {
+        "memoryUsage": "low",
+        "loadTime": 500
+      },
+      "deviceRequirements": {
+        "minScreenWidth": 320,
+        "touchSupport": true,
+        "keyboardRequired": false,
+        "mouseRequired": false,
+        "networkRequired": false
+      },
+      "accessibility": {
+        "screenReader": true,
+        "keyboardNavigation": true,
+        "colorContrast": true,
+        "altText": true,
+        "screenReaderScript": "Input and output plots for eight example systems. A System menu and a Test menu choose the system and the property test, and sliders set the amplitude, frequency and time shift of the test input. Five badges list the true properties of the selected system, and a panel reports whether the two compared signals match."
+      }
+    },
+    "userInterface": {
+      "layoutType": "responsive-width",
+      "layoutPattern": "drawing-region-above-controls",
+      "colorScheme": {
+        "drawingArea": "aliceblue",
+        "controlArea": "white",
+        "borders": "silver",
+        "accent": "blue",
+        "text": "black"
+      },
+      "responsiveBreakpoints": [
+        {
+          "width": 600,
+          "description": "Below 600 px the property badges switch to two lines, the System menu takes the whole first row, and the Test menu moves beside the time-shift slider"
+        }
+      ],
+      "controls": [
+        {
+          "id": "systemSelect",
+          "type": "dropdown",
+          "label": "System",
+          "description": "Chooses one of eight example systems: amplifier, linear filter, time-varying multiplier, squarer, compressor, predictor, integrator or offset",
+          "group": "system",
+          "properties": {
+            "options": [
+              {
+                "value": "amp",
+                "label": "Amplifier: y(t) = 2x(t)"
+              },
+              {
+                "value": "avg",
+                "label": "Linear filter: y(t) = integral of x over the last 1 s"
+              },
+              {
+                "value": "tmult",
+                "label": "Time-varying multiplier: y(t) = t x(t)"
+              },
+              {
+                "value": "square",
+                "label": "Squarer: y(t) = x^2(t)"
+              },
+              {
+                "value": "tanh",
+                "label": "Compressor: y(t) = tanh(x(t))"
+              },
+              {
+                "value": "advance",
+                "label": "Predictor: y(t) = x(t + 1)"
+              },
+              {
+                "value": "integrator",
+                "label": "Integrator: y(t) = integral of x from -infinity to t"
+              },
+              {
+                "value": "offset",
+                "label": "Offset: y(t) = x(t) + 1"
+              }
+            ],
+            "default": "tmult"
+          }
+        },
+        {
+          "id": "testSelect",
+          "type": "dropdown",
+          "label": "Test",
+          "description": "Chooses the property test: linearity, time-invariance, causality or BIBO stability",
+          "group": "test",
+          "properties": {
+            "options": [
+              {
+                "value": "linear",
+                "label": "Linearity"
+              },
+              {
+                "value": "timeInvariant",
+                "label": "Time-invariance"
+              },
+              {
+                "value": "causal",
+                "label": "Causality"
+              },
+              {
+                "value": "stable",
+                "label": "BIBO stability"
+              }
+            ],
+            "default": "timeInvariant"
+          }
+        },
+        {
+          "id": "ampSlider",
+          "type": "slider",
+          "label": "Amplitude A",
+          "description": "Sets the amplitude A of the test input (the weight of x1 in the linearity test, the burst amplitude, or the bound of the step)",
+          "group": "test-input",
+          "properties": {
+            "min": 0.5,
+            "max": 3,
+            "default": 2,
+            "step": 0.1,
+            "showValue": true
+          }
+        },
+        {
+          "id": "freqSlider",
+          "type": "slider",
+          "label": "Frequency f",
+          "description": "Sets the frequency of the sine burst used as the test input; greyed out for the stability test, which uses a step",
+          "group": "test-input",
+          "properties": {
+            "min": 0.25,
+            "max": 2,
+            "default": 0.5,
+            "step": 0.25,
+            "units": "Hz",
+            "showValue": true
+          }
+        },
+        {
+          "id": "shiftSlider",
+          "type": "slider",
+          "label": "Time shift t0",
+          "description": "Sets the time shift t0: the delay in the time-invariance test, the start of the pulse in the linearity test, the time where the two inputs first differ in the causality test, and the start of the step in the stability test",
+          "group": "test-input",
+          "properties": {
+            "min": 0.5,
+            "max": 4,
+            "default": 2,
+            "step": 0.1,
+            "units": "s",
+            "showValue": true
+          }
+        }
+      ],
+      "visualElements": [
+        {
+          "type": "diagram",
+          "description": "Five badges give the true classification of the selected system: linear, time-invariant, causal, BIBO stable and memoryless; the badge for the running test has a heavy outline",
+          "interactive": false,
+          "updateTriggers": [
+            "systemSelect",
+            "testSelect"
+          ]
+        },
+        {
+          "type": "chart",
+          "description": "Input plot: the test input signals, including the bound +/-A (dotted) for the stability test",
+          "interactive": true,
+          "updateTriggers": [
+            "systemSelect",
+            "testSelect",
+            "ampSlider",
+            "freqSlider",
+            "shiftSlider"
+          ]
+        },
+        {
+          "type": "chart",
+          "description": "Output plot: the two output signals that the property says must be equal, as a solid blue and a dashed orange curve, with a red trace for any output difference before t0 in the causality test",
+          "interactive": true,
+          "updateTriggers": [
+            "systemSelect",
+            "testSelect",
+            "ampSlider",
+            "freqSlider",
+            "shiftSlider"
+          ]
+        },
+        {
+          "type": "text-display",
+          "description": "Verdict panel with the maximum difference and a one-line reason why the property holds or fails",
+          "interactive": false,
+          "updateTriggers": [
+            "systemSelect",
+            "testSelect",
+            "ampSlider",
+            "freqSlider",
+            "shiftSlider"
+          ]
+        }
+      ]
+    },
+    "simulation": {
+      "model": {
+        "type": "mathematical",
+        "description": "Continuous-time systems are simulated on a 0.01 s grid from -8 s to 14 s and plotted from -2 s to 10 s; each test builds the two signals that a property says must be equal and reports their maximum difference",
+        "equations": [
+          "Linearity: T[a x1 + b x2] = a T[x1] + b T[x2]",
+          "Time-invariance: T[x(t - t0)] = y(t - t0)",
+          "Causality: y(t0) depends only on x(t) for t <= t0",
+          "BIBO stability: |x(t)| < Mx implies |y(t)| < My"
+        ],
+        "algorithms": [
+          "Sample-by-sample system evaluation on a fixed grid",
+          "Running sum for the integrator and the 1 s linear filter"
+        ],
+        "assumptions": [
+          "Property badges show the analytically known classification; the plotted comparison is one numerical example"
+        ],
+        "limitations": [
+          "One example can disprove a property but cannot prove it",
+          "Stability is tested only with a bounded step"
+        ]
+      }
+    },
+    "usage": {
+      "recommendedUsage": [
+        "demonstration",
+        "exploration",
+        "guided-practice"
+      ],
+      "instructionalStrategies": [
+        "Predict, test and explain",
+        "Counterexample hunting",
+        "Compare systems by changing one test at a time"
+      ],
+      "extensions": [
+        "Add a system that is not memoryless and not invertible",
+        "Add a test for invertibility"
+      ]
+    }
+  },
+  "canvasHeight": 615
+}

@@ -1,0 +1,199 @@
+{
+  "microsim": {
+    "dublinCore": {
+      "title": "Power Spectral Density and the Wiener-Khinchin Theorem",
+      "creator": ["Dan McCreary"],
+      "subject": ["Power spectral density", "Wiener-Khinchin theorem", "Autocorrelation", "Periodogram", "Welch's method", "Bartlett's method", "Autoregressive process", "Moving-average process"],
+      "description": "Interactive MicroSim that estimates the power spectral density of a random process two ways and overlays the closed-form S(omega): an averaged periodogram (Welch with Hann windows and 50% overlap, or Bartlett with rectangular segments) and the Wiener-Khinchin route, the Fourier transform of the biased sample autocorrelation tapered by a lag window matched to the segment window. Processes are white noise, AR(1), a moving average of length q, and a sinusoid in noise, all driven by seeded white noise. Read-outs give the RMS dB difference between the two estimates and each one's RMS error against theory; with one rectangular segment the two estimates are identical.",
+      "publisher": "Dan McCreary",
+      "contributor": ["Claude (Anthropic)"],
+      "date": "2026-10-14",
+      "type": "Interactive Simulation",
+      "format": "text/html",
+      "identifier": "https://dmccreary.github.io/signal-processing/sims/psd-wiener-khinchin/",
+      "language": "en",
+      "relation": ["Chapter 12: Stochastic Processes and Random Signals", "Noise Analysis and Reduction Tool"],
+      "rights": "CC BY-NC-SA 4.0"
+    },
+    "search": {
+      "tags": ["power spectral density", "PSD", "Wiener-Khinchin", "autocorrelation", "periodogram", "Welch", "Bartlett", "Blackman-Tukey", "AR(1)", "moving average", "spectral estimation"],
+      "searchKeywords": ["PSD is the Fourier transform of the autocorrelation", "periodogram equals FT of sample autocorrelation", "Welch averaged periodogram", "lag window spectral estimate", "AR(1) power spectrum", "periodogram variance does not decrease"],
+      "visualizationType": ["chart", "interactive-demo", "simulation"],
+      "interactionLevel": "high",
+      "complexity": 7,
+      "relatedConcepts": ["Power Spectral Density", "Wiener-Khinchin Theorem", "Autocorrelation Function", "White Noise", "Colored Noise"],
+      "applicationDomains": ["education", "exploration", "demonstration", "analysis"]
+    },
+    "educational": {
+      "gradeLevel": ["Undergraduate"],
+      "subjectArea": ["Engineering", "Mathematics", "Statistics"],
+      "topic": ["Power spectral density", "Wiener-Khinchin theorem", "Periodogram and averaged periodograms", "Autocorrelation estimation", "Variance and resolution of spectral estimates"],
+      "learningObjectives": [
+        "Explain the Wiener-Khinchin theorem and verify that the periodogram of one rectangular segment equals the Fourier transform of the biased sample autocorrelation",
+        "Calculate r[k], S(0) and S(pi) for AR(1) and moving-average processes from their closed forms",
+        "Analyze how the number of averaged segments K trades variance against frequency resolution, using the RMS error against theory and the depth of the moving-average nulls",
+        "Relate features of an autocorrelation (decay rate, alternating sign, finite length, a component that never decays) to features of the PSD",
+        "Distinguish agreement between two estimates from accuracy against the true PSD"
+      ],
+      "bloomsTaxonomy": ["Understand", "Apply", "Analyze", "Evaluate"],
+      "prerequisites": ["The DFT and decibels", "Mean, variance and autocorrelation of a wide-sense stationary process", "Windowing a finite record"],
+      "duration": {"typical": 30, "range": {"min": 20, "max": 45}},
+      "difficulty": "Advanced",
+      "scaffolding": {
+        "type": ["guided-discovery", "feedback"],
+        "adaptability": "fixed",
+        "removal": "user-controlled"
+      },
+      "misconceptions": [
+        {
+          "misconception": "A longer record gives a more accurate periodogram",
+          "correction": "Each periodogram value keeps a standard deviation about equal to its mean however long the record is; only averaging segments (or lag windowing) reduces the variance",
+          "evidence": "With Bartlett and K = 1 the RMS error against theory stays between 5.4 and 6.4 dB for N = 64 to 4096, while Welch with N = 4096 and K = 63 reaches 0.57 dB"
+        },
+        {
+          "misconception": "If two PSD estimates agree, they are correct",
+          "correction": "Both estimates are computed from the same record and share its errors; their agreement demonstrates the Wiener-Khinchin identity, not accuracy",
+          "evidence": "With Bartlett and K = 1 the two estimates differ by 0.00 dB, yet each is 6.35 dB RMS from the true PSD"
+        }
+      ]
+    },
+    "technical": {
+      "framework": "p5.js",
+      "version": "1.0.0",
+      "canvasDimensions": {"width": 900, "height": 784, "responsive": true},
+      "regions": {"drawHeight": 612, "controlHeight": 172},
+      "dependencies": ["p5.js 2.3.2"],
+      "browserCompatibility": ["Chrome 90+", "Firefox 88+", "Safari 14+", "Edge 90+"],
+      "performance": {"memoryUsage": "low", "loadTime": 500, "computationalComplexity": "O(n log n)"},
+      "deviceRequirements": {
+        "minScreenWidth": 375,
+        "touchSupport": true,
+        "keyboardRequired": false,
+        "mouseRequired": false,
+        "networkRequired": false
+      },
+      "accessibility": {
+        "screenReader": true,
+        "keyboardNavigation": true,
+        "colorContrast": true,
+        "altText": true,
+        "screenReaderScript": "Three stacked plots estimate the power spectral density of a random process. Top: the first samples of one realization x[n], with the analysis segments in gold. Middle: the sample autocorrelation r-hat[k] for lags -32 to 32 (blue stems), the theoretical autocorrelation (black rings) and the lag window (gold). Bottom: the PSD in dB from 0 to pi radians per sample, estimated by an averaged periodogram (maroon) and by the Fourier transform of r-hat[k] (green, the Wiener-Khinchin theorem), with the theoretical S(omega) dashed in black. Read-outs give the RMS difference between the two estimates and their errors against theory. Controls choose the process, its parameter, the record length N, the number of averaged segments K, the window method and the random seed."
+      }
+    },
+    "userInterface": {
+      "layoutType": "responsive-width",
+      "layoutPattern": "drawing-region-above-controls",
+      "colorScheme": {
+        "drawingArea": "aliceblue",
+        "controlArea": "white",
+        "realizationAndAutocorrelation": "blue",
+        "averagedPeriodogram": "maroon",
+        "wienerKhinchinEstimate": "green",
+        "theory": "black dashed",
+        "windowsAndHover": "gold",
+        "warning": "red",
+        "text": "black"
+      },
+      "controls": [
+        {
+          "id": "processSelect",
+          "type": "dropdown",
+          "label": "Process",
+          "description": "Chooses the random process; all are driven by the same seeded unit-variance white noise",
+          "group": "process",
+          "properties": {
+            "options": [
+              {"value": "white", "label": "white noise"},
+              {"value": "ar1", "label": "AR(1) process"},
+              {"value": "ma", "label": "moving average MA(q)"},
+              {"value": "sine", "label": "sinusoid + white noise"}
+            ],
+            "default": "ar1"
+          }
+        },
+        {
+          "id": "methodSelect",
+          "type": "dropdown",
+          "label": "Method",
+          "description": "Chooses the averaged periodogram: Welch (Hann windows, 50% overlap) or Bartlett (rectangular windows, no overlap); the lag window of the Wiener-Khinchin estimate follows the choice",
+          "group": "estimation",
+          "properties": {
+            "options": [
+              {"value": "welch", "label": "Welch (Hann, 50% overlap)"},
+              {"value": "bartlett", "label": "Bartlett (rectangular)"}
+            ],
+            "default": "welch"
+          }
+        },
+        {
+          "id": "paramSlider",
+          "type": "slider",
+          "label": "Process parameter (a, q or omega_0)",
+          "description": "AR coefficient a from -0.95 to 0.95 (step 0.05, default 0.90); MA length q from 1 to 32 (default 8); sinusoid frequency omega_0 from 0.05 pi to 0.95 pi (step 0.01 pi, default 0.25 pi); disabled for white noise",
+          "group": "process",
+          "properties": {"min": -0.95, "max": 0.95, "default": 0.9, "step": 0.05, "showValue": true}
+        },
+        {
+          "id": "nSlider",
+          "type": "slider",
+          "label": "Record length N",
+          "description": "Sets the record length N = 2^value, from 64 to 4096 samples",
+          "group": "estimation",
+          "properties": {"min": 6, "max": 12, "default": 10, "step": 1, "units": "log2 samples", "showValue": true}
+        },
+        {
+          "id": "kSlider",
+          "type": "slider",
+          "label": "Averages K",
+          "description": "Sets the number of averaged segments K; the segment length is M = floor(N/K) (Bartlett) or floor(2N/(K+1)) (Welch), and K is capped so that M is at least 16",
+          "group": "estimation",
+          "properties": {"min": 1, "max": 64, "default": 7, "step": 1, "showValue": true}
+        },
+        {
+          "id": "newButton",
+          "type": "button",
+          "label": "New realization",
+          "description": "Advances the random seed by one and draws new white noise",
+          "group": "seed",
+          "properties": {"action": "increment seed"}
+        },
+        {
+          "id": "resetButton",
+          "type": "button",
+          "label": "Reset seed",
+          "description": "Returns to seed 1 so that results can be reproduced and compared",
+          "group": "seed",
+          "properties": {"action": "set seed to 1"}
+        }
+      ],
+      "visualElements": [
+        {"type": "chart", "description": "Realization x[n] (first 512 samples, blue) with the Hann windows or rectangular segments in gold", "interactive": false, "updateTriggers": ["processSelect", "paramSlider", "nSlider", "kSlider", "methodSelect", "newButton", "resetButton"]},
+        {"type": "chart", "description": "Biased sample autocorrelation r-hat[k] for |k| <= 32 (blue stems), theoretical r[k] (black rings) and lag window c[k] (gold dashed); hovering a lag prints r-hat[k] and r[k]", "interactive": true, "updateTriggers": ["processSelect", "paramSlider", "nSlider", "kSlider", "methodSelect"]},
+        {"type": "chart", "description": "PSD in dB for 0 to pi: averaged periodogram (maroon band), Fourier transform of c[k] r-hat[k] (green), theory (black dashed) and, for the sinusoid, an arrow for the spectral line; hovering a frequency prints the three values", "interactive": true, "updateTriggers": ["processSelect", "paramSlider", "nSlider", "kSlider", "methodSelect"]},
+        {"type": "text-display", "description": "RMS and maximum dB difference between the two estimates, and each estimate's RMS dB error against theory", "interactive": false, "updateTriggers": ["processSelect", "paramSlider", "nSlider", "kSlider", "methodSelect"]}
+      ]
+    },
+    "simulation": {
+      "model": {
+        "type": "statistical",
+        "description": "Generates N samples of a zero-mean process from seeded Gaussian white noise (Box-Muller), computes the biased sample autocorrelation with an FFT, the averaged periodogram of K windowed segments of M samples, and the lag-windowed Fourier transform of the sample autocorrelation, all on an FFT grid of at least 1024 points, and compares them in dB with the closed-form PSD",
+        "equations": [
+          "S(w) = sum_k r[k] e^{-jwk} (Wiener-Khinchin)",
+          "AR(1): r[k] = sigma^2 a^|k| / (1 - a^2), S(w) = sigma^2 / |1 - a e^{-jw}|^2",
+          "MA(q): r[k] = sigma^2 (1 - |k|/q) for |k| < q, S(w) = sigma^2 sin^2(qw/2) / (q sin^2(w/2))",
+          "r-hat[k] = (1/N) sum_n x[n] x[n + |k|]",
+          "(1/N)|X(w)|^2 = sum_{|k|<N} r-hat[k] e^{-jwk}",
+          "S_avg(w) = (1/K) sum_i |sum_n v[n] x[n + iD] e^{-jwn}|^2 / sum_n v[n]^2",
+          "S_WK(w) = sum_{|k|<M} c[k] r-hat[k] e^{-jwk}"
+        ],
+        "algorithms": ["Seeded PRNG (mulberry32) with the Box-Muller transform", "Radix-2 FFT", "Autocorrelation by zero-padded FFT", "Welch and Bartlett averaged periodograms", "Lag-windowed (Blackman-Tukey) spectral estimate"]
+      }
+    },
+    "usage": {
+      "recommendedUsage": ["demonstration", "exploration", "guided-practice"],
+      "instructionalStrategies": ["Verify the periodogram identity with one rectangular segment before averaging", "Step K and record the RMS error against theory to see the variance-resolution trade-off", "Predict the PSD shape from the autocorrelation before reading it"],
+      "extensions": ["Add an AR(2) process with a resonant peak", "Add a parametric (Yule-Walker) estimate as a third route to the PSD"]
+    }
+  },
+  "canvasHeight": 784
+}

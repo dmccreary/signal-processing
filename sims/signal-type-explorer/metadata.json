@@ -1,0 +1,277 @@
+{
+  "microsim": {
+    "dublinCore": {
+      "title": "Signal Type Explorer",
+      "creator": ["Dan McCreary"],
+      "subject": [
+        "Signal Processing",
+        "Signals and Systems",
+        "Continuous-Time Signals",
+        "Discrete-Time Signals",
+        "Signal Energy and Power"
+      ],
+      "description": "Compare continuous-time and discrete-time views of sinusoid, square wave, exponential and step signals while adjusting amplitude, frequency, phase, time shift and time scale, with closed-form energy, average power and RMS readouts.",
+      "publisher": "Dan McCreary",
+      "contributor": ["Claude (Anthropic)"],
+      "date": "2026-10-02",
+      "type": "Interactive Simulation",
+      "format": "text/html",
+      "identifier": "https://dmccreary.github.io/signal-processing/sims/signal-type-explorer/",
+      "language": "en",
+      "relation": ["Chapter 2: Introduction to Signals and Systems"],
+      "rights": "CC BY-NC-SA 4.0"
+    },
+    "search": {
+      "tags": [
+        "continuous-time signal",
+        "discrete-time signal",
+        "sinusoid",
+        "square wave",
+        "exponential",
+        "unit step",
+        "signal energy",
+        "signal power",
+        "RMS",
+        "time shift",
+        "time scaling"
+      ],
+      "searchKeywords": [
+        "signal types",
+        "energy signal vs power signal",
+        "discrete-time sampling",
+        "time shift and time scale",
+        "signal operations"
+      ],
+      "visualizationType": ["graph", "interactive-demo", "simulation"],
+      "interactionLevel": "high",
+      "complexity": 4,
+      "relatedConcepts": [
+        "Continuous-Time Signals",
+        "Discrete-Time Signals",
+        "Energy Signals",
+        "Power Signals",
+        "Time Shifting",
+        "Time Scaling",
+        "Sinusoidal Signals",
+        "Unit Step Function"
+      ],
+      "applicationDomains": ["education", "exploration", "demonstration"],
+      "showcase": false
+    },
+    "educational": {
+      "gradeLevel": ["Undergraduate"],
+      "subjectArea": ["Engineering", "Mathematics"],
+      "topic": [
+        "Signal classifications, parameters and operations",
+        "Continuous-time and discrete-time signals",
+        "Signal energy, average power and RMS",
+        "Time shifting, time scaling and time reversal"
+      ],
+      "learningObjectives": [
+        "Distinguish continuous-time and discrete-time representations of the same signal",
+        "Predict how amplitude, frequency and phase change a sinusoid",
+        "Classify a signal as an energy signal or a power signal from its energy and average power",
+        "Analyze how time shifting, time scaling and time reversal change a waveform and its energy or power",
+        "Explain why the samples of a sinusoid stop following the curve when f|a| exceeds 10 Hz"
+      ],
+      "bloomsTaxonomy": ["Understand", "Analyze"],
+      "prerequisites": [
+        "Sine and cosine functions",
+        "The exponential function",
+        "Integration as area"
+      ],
+      "duration": {"typical": 18, "range": {"min": 15, "max": 20}},
+      "difficulty": "Beginner",
+      "scaffolding": {
+        "type": ["guided-discovery", "feedback"],
+        "adaptability": "fixed",
+        "removal": "user-controlled"
+      },
+      "misconceptions": [
+        {
+          "misconception": "Shifting or scaling a signal changes its power",
+          "correction": "A time shift never changes energy or power; scaling by a divides the energy of an energy signal by |a| and leaves the power of a power signal unchanged",
+          "evidence": "Pin a sinusoid and move the time shift: the power readout does not change; set a = 2 on the exponential and its energy halves"
+        },
+        {
+          "misconception": "A discrete-time signal is the continuous curve with the gaps left out, so its readouts always match",
+          "correction": "x[n] exists only at integer n and its energy and power can differ from those of x(t)",
+          "evidence": "At f = 10 Hz the sampled power reads 4.00 against 2.00 for the continuous curve, and the sampled exponential energy is about 20 times the continuous-time energy"
+        }
+      ]
+    },
+    "technical": {
+      "framework": "p5.js",
+      "version": "2.0.0",
+      "canvasDimensions": {"width": 670, "height": 590, "responsive": true},
+      "regions": {"drawHeight": 440, "controlHeight": 150},
+      "dependencies": ["p5.js 2.3.2"],
+      "browserCompatibility": ["Chrome 90+", "Firefox 88+", "Safari 14+", "Edge 90+"],
+      "performance": {"memoryUsage": "low", "loadTime": 500},
+      "deviceRequirements": {
+        "minScreenWidth": 320,
+        "touchSupport": true,
+        "keyboardRequired": false,
+        "mouseRequired": false,
+        "networkRequired": false
+      },
+      "accessibility": {
+        "screenReader": true,
+        "keyboardNavigation": true,
+        "colorContrast": true,
+        "altText": true,
+        "screenReaderScript": "Plot of a sinusoid, square wave, decaying exponential or step function shown as a continuous-time curve and as discrete-time samples, with sliders for amplitude, frequency, phase, time shift and time scale, and a table of energy, average power and RMS amplitude."
+      }
+    },
+    "userInterface": {
+      "layoutType": "responsive-width",
+      "layoutPattern": "drawing-region-above-controls",
+      "colorScheme": {
+        "drawingArea": "aliceblue",
+        "controlArea": "white",
+        "accent": "blue",
+        "text": "black"
+      },
+      "controls": [
+        {
+          "id": "typeSelect",
+          "type": "dropdown",
+          "label": "Signal",
+          "description": "Chooses the base signal: sinusoid, square wave, decaying exponential or step function",
+          "group": "signal",
+          "properties": {
+            "options": [
+              {"value": "sinusoid", "label": "Sinusoid"},
+              {"value": "square", "label": "Square wave"},
+              {"value": "exponential", "label": "Exponential"},
+              {"value": "step", "label": "Step function"}
+            ],
+            "default": "sinusoid"
+          }
+        },
+        {
+          "id": "viewSelect",
+          "type": "dropdown",
+          "label": "View",
+          "description": "Shows the continuous-time curve, the discrete-time samples, or both",
+          "group": "signal",
+          "properties": {
+            "options": [
+              {"value": "ct", "label": "Continuous-time x(t)"},
+              {"value": "dt", "label": "Discrete-time x[n]"},
+              {"value": "both", "label": "Both"}
+            ],
+            "default": "both"
+          }
+        },
+        {
+          "id": "ampSlider",
+          "type": "slider",
+          "label": "Amplitude A",
+          "description": "Sets the amplitude A of the signal",
+          "group": "signal",
+          "properties": {"min": 0, "max": 5, "default": 2, "step": 0.1, "showValue": true}
+        },
+        {
+          "id": "freqSlider",
+          "type": "slider",
+          "label": "Frequency f (Hz) / decay rate alpha (1/s)",
+          "description": "Sets the frequency f of the sinusoid and square wave, or the decay rate alpha of the exponential; unused for the step",
+          "group": "signal",
+          "properties": {"min": 0.1, "max": 10, "default": 1, "step": 0.1, "units": "Hz or 1/s", "showValue": true}
+        },
+        {
+          "id": "phaseSlider",
+          "type": "slider",
+          "label": "Phase",
+          "description": "Sets the phase of the sinusoid and square wave; unused for the exponential and step",
+          "group": "signal",
+          "properties": {"min": 0, "max": 360, "default": 0, "step": 5, "units": "degrees", "showValue": true}
+        },
+        {
+          "id": "shiftSlider",
+          "type": "slider",
+          "label": "Time shift t0",
+          "description": "Delays the signal by t0 seconds (negative values advance it)",
+          "group": "operations",
+          "properties": {"min": -1.5, "max": 1.5, "default": 0, "step": 0.1, "units": "s", "showValue": true}
+        },
+        {
+          "id": "scaleSlider",
+          "type": "slider",
+          "label": "Time scale a",
+          "description": "Compresses (a > 1) or expands (a < 1) the signal in time",
+          "group": "operations",
+          "properties": {"min": 0.25, "max": 4, "default": 1, "step": 0.25, "showValue": true}
+        },
+        {
+          "id": "reverseCheckbox",
+          "type": "checkbox",
+          "label": "Reverse",
+          "description": "Makes the time scale negative, which flips the signal about t = t0",
+          "group": "operations",
+          "properties": {"checked": false}
+        },
+        {
+          "id": "pinButton",
+          "type": "button",
+          "label": "Pin",
+          "description": "Keeps the current signal on the plot for comparison; up to three signals can be pinned",
+          "group": "comparison",
+          "properties": {"text": "Pin", "action": "pinCurrentSignal", "style": "secondary"}
+        },
+        {
+          "id": "clearButton",
+          "type": "button",
+          "label": "Clear",
+          "description": "Removes all pinned signals",
+          "group": "comparison",
+          "properties": {"text": "Clear", "action": "clear pinned list", "style": "secondary"}
+        }
+      ],
+      "visualElements": [
+        {
+          "type": "graph",
+          "description": "Amplitude versus time (or sample index) plot with a continuous curve and stems for the samples; pinned signals use different colors",
+          "interactive": true,
+          "updateTriggers": ["typeSelect", "viewSelect", "ampSlider", "freqSlider", "phaseSlider", "shiftSlider", "scaleSlider", "reverseCheckbox", "pinButton", "clearButton"]
+        },
+        {
+          "type": "text-display",
+          "description": "Table of energy, average power, RMS amplitude and class for the continuous-time and discrete-time views, with a legend of the traces",
+          "interactive": false,
+          "updateTriggers": ["typeSelect", "viewSelect", "ampSlider", "freqSlider", "shiftSlider", "scaleSlider", "reverseCheckbox"]
+        }
+      ]
+    },
+    "simulation": {
+      "model": {
+        "type": "mathematical",
+        "description": "Evaluates y(t) = x(a(t - t0)) for four basic signals, samples it every Ts = 0.05 s, and reports closed-form energy, average power and RMS amplitude for the ideal infinitely long signal",
+        "equations": [
+          "y(t) = x(a(t - t0))",
+          "x[n] = y(n Ts), Ts = 0.05 s",
+          "E = integral |y(t)|^2 dt",
+          "P = lim (1/2T) integral_{-T}^{T} |y(t)|^2 dt",
+          "RMS = sqrt(P)"
+        ]
+      },
+      "assumptions": [
+        "Energy, power and RMS are closed-form values for the ideal, infinitely long signal",
+        "The discrete-time view uses a fixed sampling period of 0.05 s"
+      ]
+    },
+    "usage": {
+      "recommendedUsage": ["exploration", "guided-practice", "individual-study"],
+      "instructionalStrategies": [
+        "Predict-then-verify with the amplitude and time-scale sliders",
+        "Pin a signal and compare it with a shifted or scaled copy"
+      ],
+      "extensions": [
+        "Add the unit impulse and a user-drawn signal",
+        "Let the student change the sampling period Ts"
+      ]
+    }
+  },
+  "canvasHeight": 590
+}

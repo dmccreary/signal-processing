@@ -1,0 +1,175 @@
+{
+  "microsim": {
+    "dublinCore": {
+      "title": "Sampling Theorem Explorer",
+      "creator": ["Dan McCreary"],
+      "subject": ["Signal Processing", "Sampling Theorem", "Nyquist Frequency", "Aliasing", "Signal Reconstruction"],
+      "description": "Sample a sine wave at an adjustable rate and rebuild it from the samples with ideal sinc interpolation, a zero-order hold or linear interpolation. Time plots and a spectrum with the Nyquist frequency marked show why a tone above half the sampling rate folds to a lower alias frequency.",
+      "publisher": "Dan McCreary",
+      "contributor": ["Claude (Anthropic)"],
+      "date": "2026-10-02",
+      "type": "Interactive Simulation",
+      "format": "text/html",
+      "identifier": "https://dmccreary.github.io/signal-processing/sims/sampling-theorem-explorer/",
+      "language": "en",
+      "relation": ["Chapter 5: Sampling and Quantization"],
+      "rights": "CC BY-NC-SA 4.0"
+    },
+    "search": {
+      "tags": ["sampling theorem", "nyquist frequency", "nyquist rate", "aliasing", "alias frequency", "signal reconstruction", "sinc interpolation", "zero-order hold", "spectral copies"],
+      "searchKeywords": ["sampling theorem explorer", "nyquist shannon sampling", "aliasing demonstration", "alias frequency calculator", "sinc interpolation", "zero-order hold reconstruction"],
+      "visualizationType": ["graph", "chart", "interactive-demo"],
+      "interactionLevel": "moderate",
+      "complexity": 5,
+      "relatedConcepts": ["Sampling", "Nyquist Frequency", "Nyquist Rate", "Aliasing", "Signal Reconstruction", "Sinc Interpolation", "Zero-Order Hold", "Spectral Replication"],
+      "applicationDomains": ["education", "exploration", "demonstration"],
+      "showcase": false
+    },
+    "educational": {
+      "gradeLevel": ["Undergraduate"],
+      "subjectArea": ["Engineering", "Mathematics"],
+      "topic": ["The sampling theorem", "Aliasing and the alias frequency", "Spectral copies created by sampling", "Ideal and practical signal reconstruction"],
+      "learningObjectives": [
+        "State the sampling theorem and the meaning of the Nyquist rate and the Nyquist frequency",
+        "Predict the alias frequency of an under-sampled tone",
+        "Explain aliasing as the overlap of spectral copies created by sampling",
+        "Compare ideal sinc reconstruction with zero-order hold and linear interpolation",
+        "Relate the heights of the spectral lines under a practical reconstruction to |sinc(f/fs)| and sinc^2(f/fs)"
+      ],
+      "bloomsTaxonomy": ["Understand", "Apply", "Analyze"],
+      "prerequisites": ["Sinusoids, frequency and period", "The idea of a frequency spectrum", "Discrete-time signals"],
+      "duration": {"typical": 22, "range": {"min": 20, "max": 25}},
+      "difficulty": "Intermediate",
+      "scaffolding": {
+        "type": ["guided-discovery", "feedback"],
+        "adaptability": "fixed",
+        "removal": "user-controlled"
+      },
+      "misconceptions": [
+        {
+          "misconception": "Sampling at exactly twice the highest frequency always allows perfect reconstruction",
+          "correction": "The theorem needs fs strictly greater than 2 fmax; at fs = 2 fmax a zero-phase sine is sampled only at its zero crossings and nothing is recovered",
+          "evidence": "Set fmax = 25 Hz and fs = 50 Hz: the banner turns red, every sample is zero and the reconstruction is a flat line"
+        },
+        {
+          "misconception": "An under-sampled tone simply disappears or turns into noise",
+          "correction": "It reappears as a clean sine at the alias frequency |fmax - k fs| inside [0, fs/2]",
+          "evidence": "Set fmax = 40 Hz and fs = 50 Hz: the reconstruction is a 10 Hz sine and the spectrum has a grey copy at 10 Hz inside the shaded band"
+        },
+        {
+          "misconception": "Aliasing can be removed by filtering after sampling",
+          "correction": "The samples of the 40 Hz tone and of an inverted 10 Hz sine are identical, so no processing of the samples can tell them apart; the tone must be removed before the sampler",
+          "evidence": "At fs = 50 Hz the samples for fmax = 40 Hz are the negatives of the samples for fmax = 10 Hz, so they equal the samples of an inverted 10 Hz sine"
+        }
+      ]
+    },
+    "technical": {
+      "framework": "p5.js",
+      "version": "2.0.0",
+      "canvasDimensions": {"width": 670, "height": 625, "responsive": true},
+      "regions": {"drawHeight": 510, "controlHeight": 115},
+      "dependencies": ["p5.js 2.3.2"],
+      "browserCompatibility": ["Chrome 90+", "Firefox 88+", "Safari 14+", "Edge 90+"],
+      "performance": {"memoryUsage": "low", "loadTime": 500},
+      "deviceRequirements": {
+        "minScreenWidth": 320,
+        "touchSupport": true,
+        "keyboardRequired": false,
+        "mouseRequired": false,
+        "networkRequired": false
+      },
+      "accessibility": {
+        "screenReader": true,
+        "keyboardNavigation": true,
+        "colorContrast": true,
+        "altText": true,
+        "screenReaderScript": "Four plots: a continuous sine wave, its samples, the signal reconstructed from the samples, and the frequency spectrum with the Nyquist frequency marked. A banner states whether the sampling rate is high enough or the tone is aliased to a lower frequency."
+      }
+    },
+    "userInterface": {
+      "layoutType": "responsive-width",
+      "layoutPattern": "drawing-region-above-controls",
+      "colorScheme": {
+        "drawingArea": "aliceblue",
+        "controlArea": "white",
+        "accent": "darkgreen",
+        "text": "black"
+      },
+      "controls": [
+        {
+          "id": "freqSlider",
+          "type": "slider",
+          "label": "Signal frequency fmax (Hz)",
+          "description": "Sets the frequency of the sine wave being sampled",
+          "group": "signal",
+          "properties": {"min": 1, "max": 100, "default": 20, "step": 1, "showValue": true}
+        },
+        {
+          "id": "rateSlider",
+          "type": "slider",
+          "label": "Sampling rate fs (Hz)",
+          "description": "Sets the sampling rate; the Nyquist frequency is fs / 2",
+          "group": "sampling",
+          "properties": {"min": 1, "max": 200, "default": 50, "step": 1, "showValue": true}
+        },
+        {
+          "id": "reconSelect",
+          "type": "dropdown",
+          "label": "Reconstruction",
+          "description": "Chooses how the signal is rebuilt from its samples",
+          "group": "reconstruction",
+          "properties": {
+            "options": [
+              {"value": "ideal", "label": "Ideal (sinc interpolation)"},
+              {"value": "zoh", "label": "Practical: zero-order hold"},
+              {"value": "linear", "label": "Practical: linear interpolation"}
+            ],
+            "default": "ideal"
+          }
+        },
+        {
+          "id": "sincCheckbox",
+          "type": "checkbox",
+          "label": "Show sinc pulses",
+          "description": "Draws the individual sinc pulses whose sum is the ideal reconstruction; available only with ideal reconstruction",
+          "group": "reconstruction",
+          "properties": {"checked": false}
+        }
+      ],
+      "visualElements": [
+        {"type": "graph", "description": "Three time plots over 200 ms: the continuous signal, its samples and the reconstructed signal with the original dashed", "interactive": false, "updateTriggers": ["freqSlider", "rateSlider", "reconSelect", "sincCheckbox"]},
+        {"type": "chart", "description": "Spectrum from 0 to 200 Hz with spectral copies at k fs +/- fmax, the Nyquist band, the reconstruction filter gain and the reconstruction output", "interactive": false, "updateTriggers": ["freqSlider", "rateSlider", "reconSelect"]},
+        {"type": "text-display", "description": "Banner stating whether fs > 2 fmax, fs = 2 fmax or fs < 2 fmax and the alias frequency", "interactive": false, "updateTriggers": ["freqSlider", "rateSlider"]}
+      ]
+    },
+    "simulation": {
+      "model": {
+        "type": "mathematical",
+        "description": "A zero-phase sine is sampled at fs and rebuilt by sinc interpolation (drawn in closed form as the sine at the folded frequency), a zero-order hold or linear interpolation",
+        "equations": [
+          "x(t) = sin(2 pi fmax t)",
+          "x[n] = x(n Ts), Ts = 1/fs",
+          "No aliasing when fs > 2 fmax",
+          "alias frequency = |fmax - k fs|, k = round(fmax / fs)",
+          "x_r(t) = sum over n of x[n] sinc((t - n Ts) / Ts)",
+          "zero-order hold gain = |sinc(f / fs)|, linear interpolation gain = sinc^2(f / fs)"
+        ]
+      },
+      "variables": [
+        {"name": "fmax", "type": "input", "dataType": "integer", "description": "Frequency of the sampled tone in hertz"},
+        {"name": "fs", "type": "input", "dataType": "integer", "description": "Sampling rate in hertz"},
+        {"name": "alias", "type": "output", "dataType": "number", "description": "Frequency of the reconstructed tone in [0, fs/2]"}
+      ]
+    },
+    "usage": {
+      "recommendedUsage": ["demonstration", "exploration", "guided-practice"],
+      "instructionalStrategies": [
+        "Predict-then-verify the alias frequency before reading the banner",
+        "Lower the sampling rate step by step and record where reconstruction fails",
+        "Compare the spectral lines of the zero-order hold and linear interpolation"
+      ],
+      "extensions": ["Add a second tone and show that two aliases can land on the same frequency", "Add an anti-aliasing filter before the sampler"]
+    }
+  },
+  "canvasHeight": 625
+}

@@ -6,7 +6,7 @@
       <meta charset="utf-8">
       <meta name="viewport" content="width=device-width,initial-scale=1">
       
-        <meta name="description" content="College Level Textbook on Signal Processing - License is Commons ShareAlike Attribution Noncommercial">
+        <meta name="description" content="Set R and C of an RC low-pass filter and watch its Bode plot, with the corner frequency fc = 1/(2πRC), the -3 dB and -45° points, and the -20 dB/decade roll-off.">
       
       
         <meta name="author" content="Dan McCreary">
@@ -15,10 +15,10 @@
         <link rel="canonical" href="https://dmccreary.github.io/signal-processing/sims/rc-lowpass-filter/">
       
       
-        <link rel="prev" href="../nyquist-shannon-sampling/">
+        <link rel="prev" href="../quantization-and-noise-shaping/">
       
       
-        <link rel="next" href="../reverb/">
+        <link rel="next" href="../real-time-processing-simulator/">
       
       
       <link rel="icon" href="../../img/favicon.ico">
@@ -26,7 +26,7 @@
     
     
       
-        <title>RC Lowpass Filter - Signal Processing with AI</title>
+        <title>RC Low-Pass Filter Bode Plot - Signal Processing with AI</title>
       
     
     
@@ -54,6 +54,8 @@
     
       <link rel="stylesheet" href="../../css/extra.css">
     
+      <link rel="stylesheet" href="../../css/mascot.css">
+    
     <script>__md_scope=new URL("../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
     
       
@@ -63,11 +65,11 @@
       
         <meta  property="og:type"  content="website" >
       
-        <meta  property="og:title"  content="RC Lowpass Filter - Signal Processing with AI" >
+        <meta  property="og:title"  content="RC Low-Pass Filter Bode Plot - Signal Processing with AI" >
       
-        <meta  property="og:description"  content="College Level Textbook on Signal Processing - License is Commons ShareAlike Attribution Noncommercial" >
+        <meta  property="og:description"  content="Set R and C of an RC low-pass filter and watch its Bode plot, with the corner frequency fc = 1/(2πRC), the -3 dB and -45° points, and the -20 dB/decade roll-off." >
       
-        <meta  property="og:image"  content="https://dmccreary.github.io/signal-processing/assets/images/social/sims/rc-lowpass-filter/index.png" >
+        <meta property="og:image" content="https://dmccreary.github.io/signal-processing/sims/rc-lowpass-filter/rc-lowpass-filter.png">
       
         <meta  property="og:image:type"  content="image/png" >
       
@@ -79,11 +81,11 @@
       
         <meta  name="twitter:card"  content="summary_large_image" >
       
-        <meta  name="twitter:title"  content="RC Lowpass Filter - Signal Processing with AI" >
+        <meta  name="twitter:title"  content="RC Low-Pass Filter Bode Plot - Signal Processing with AI" >
       
-        <meta  name="twitter:description"  content="College Level Textbook on Signal Processing - License is Commons ShareAlike Attribution Noncommercial" >
+        <meta  name="twitter:description"  content="Set R and C of an RC low-pass filter and watch its Bode plot, with the corner frequency fc = 1/(2πRC), the -3 dB and -45° points, and the -20 dB/decade roll-off." >
       
-        <meta  name="twitter:image"  content="https://dmccreary.github.io/signal-processing/assets/images/social/sims/rc-lowpass-filter/index.png" >
+        <meta name="twitter:image" content="https://dmccreary.github.io/signal-processing/sims/rc-lowpass-filter/rc-lowpass-filter.png">
       
     
     
@@ -104,7 +106,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#rc-lowpass-filter" class="md-skip">
+        <a href="#rc-low-pass-filter-bode-plot" class="md-skip">
           Skip to content
         </a>
       
@@ -122,7 +124,7 @@
   <nav class="md-header__inner md-grid" aria-label="Header">
     <a href="../.." title="Signal Processing with AI" class="md-header__button md-logo" aria-label="Signal Processing with AI" data-md-component="logo">
       
-  <img src="../../img/logo-192.png" alt="logo">
+  <img src="../../img/mascot/neutral.png" alt="logo">
 
     </a>
     <label class="md-header__button md-icon" for="__drawer">
@@ -139,7 +141,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              RC Lowpass Filter
+              RC Low-Pass Filter Bode Plot
             
           </span>
         </div>
@@ -228,7 +230,7 @@
   <label class="md-nav__title" for="__drawer">
     <a href="../.." title="Signal Processing with AI" class="md-nav__button md-logo" aria-label="Signal Processing with AI" data-md-component="logo">
       
-  <img src="../../img/logo-192.png" alt="logo">
+  <img src="../../img/mascot/neutral.png" alt="logo">
 
     </a>
     Signal Processing with AI
@@ -275,31 +277,11 @@
   
   
     <li class="md-nav__item">
-      <a href="../../chapters/" class="md-nav__link">
-        
-  
-  <span class="md-ellipsis">
-    Table of Contents
-  </span>
-  
-
-      </a>
-    </li>
-  
-
-    
-      
-      
-  
-  
-  
-  
-    <li class="md-nav__item">
       <a href="../../about/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
-    About This Website
+    About
   </span>
   
 
@@ -542,6 +524,174 @@
           
         
       
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
     
     
     
@@ -551,7 +701,7 @@
       
         
         
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_6" checked>
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_5" checked>
         
           
           
@@ -567,19 +717,103 @@
             </a>
             
               
-              <label class="md-nav__link " for="__nav_6" id="__nav_6_label" tabindex="0">
+              <label class="md-nav__link " for="__nav_5" id="__nav_5_label" tabindex="0">
                 <span class="md-nav__icon md-icon"></span>
               </label>
             
           </div>
         
-        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_6_label" aria-expanded="true">
-          <label class="md-nav__title" for="__nav_6">
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_5_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_5">
             <span class="md-nav__icon md-icon"></span>
             MicroSims
           </label>
           <ul class="md-nav__list" data-md-scrollfix>
             
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../image-convolution/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    2-D Convolution and Image Filtering
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../conv-layer-as-filter/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    A Convolutional Layer Is a Learned FIR Filter
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../adaptive-algorithm-comparison-tool/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Adaptive Algorithm Comparison Tool
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../adaptive-noise-cancellation/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Adaptive Noise and Echo Cancellation
+  </span>
+  
+
+      </a>
+    </li>
+  
+
               
             
               
@@ -631,11 +865,11 @@
   
   
     <li class="md-nav__item">
-      <a href="../base-and-treble/" class="md-nav__link">
+      <a href="../fft-basic/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
-    Base and Treble
+    Basic FFT
   </span>
   
 
@@ -652,11 +886,32 @@
   
   
     <li class="md-nav__item">
-      <a href="../fft-basic/" class="md-nav__link">
+      <a href="../base-and-treble/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
-    Basic FFT
+    Bass and Treble
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../bilinear-transform/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Bilinear Transform and Frequency Warping
   </span>
   
 
@@ -778,6 +1033,27 @@
   
   
     <li class="md-nav__item">
+      <a href="../compressed-sensing/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Compressed Sensing
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
       <a href="../convolution/" class="md-nav__link">
         
   
@@ -799,11 +1075,137 @@
   
   
     <li class="md-nav__item">
+      <a href="../convolution-theorem/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Convolution Theorem and Circular Convolution
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../convolution-visualizer/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Convolution Visualizer
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../correlation-and-matched-filtering/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Correlation and Matched Filtering
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../dct-basis-explorer/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    DCT Basis Explorer
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../dft-explorer/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    DFT Explorer
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
       <a href="../euler-formula-explorer/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
     Euler's Formula Explorer
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../even-and-odd-signal-decomposition/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Even and Odd Signal Decomposition
   </span>
   
 
@@ -967,6 +1369,27 @@
   
   
     <li class="md-nav__item">
+      <a href="../fft-spectrum-analyzer/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    FFT Spectrum Analyzer
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
       <a href="../fft-waveform-types/" class="md-nav__link">
         
   
@@ -988,11 +1411,263 @@
   
   
     <li class="md-nav__item">
+      <a href="../filter-bank-explorer/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Filter Bank and Polyphase Explorer
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../fir-filter-design-comparison-tool/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    FIR Filter Design Comparison Tool
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../fir-vs-iir/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    FIR vs IIR Filters
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../fourier-series-explorer/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Fourier Series Explorer
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../fourier-transform-pairs/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Fourier Transform Pairs
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
       <a href="../frequency-detection/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
     Frequency Detection
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../huffman-coding/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Huffman Coding
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../iir-prototype-comparison/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    IIR Prototype Comparison
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../impulse-and-frequency-response-analyzer/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Impulse and Frequency Response Analyzer
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../interactive-filter-design-and-analysis-tool/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Interactive Filter Design and Analysis Tool
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../interactive-pole-zero-analysis-tool/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Interactive Pole-Zero Analysis Tool
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../interactive-spectrogram-parameter-explorer/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Interactive Spectrogram Parameter Explorer
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../interactive-stft-spectrogram-analyzer/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Interactive STFT Spectrogram Analyzer
   </span>
   
 
@@ -1072,11 +1747,158 @@
   
   
     <li class="md-nav__item">
+      <a href="../multirate-sample-rate-converter/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Multirate Sample Rate Converter
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../noise-analysis-and-reduction-tool/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Noise Analysis and Reduction Tool
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
       <a href="../nyquist-shannon-sampling/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
     Nyquist-Shannon Sampling
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../phase-spectrum/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Phase Spectrum - What the Magnitude Hides
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../phasor-addition/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Phasor Addition
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../psd-wiener-khinchin/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Power Spectral Density and the Wiener-Khinchin Theorem
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../distribution-explorer/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Probability Distribution Explorer
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../quantization-and-noise-shaping/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Quantization and Noise Shaping
   </span>
   
 
@@ -1102,6 +1924,17 @@
         
       
       
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  <span class="md-ellipsis">
+    RC Lowpass Filter
+  </span>
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
       <a href="./" class="md-nav__link md-nav__link--active">
         
   
@@ -1112,6 +1945,157 @@
 
       </a>
       
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#description" class="md-nav__link">
+    <span class="md-ellipsis">
+      Description
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Description">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#mathematical-concepts" class="md-nav__link">
+    <span class="md-ellipsis">
+      Mathematical Concepts
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#lesson-plan" class="md-nav__link">
+    <span class="md-ellipsis">
+      Lesson Plan
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Lesson Plan">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#learning-objectives" class="md-nav__link">
+    <span class="md-ellipsis">
+      Learning Objectives
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#target-audience" class="md-nav__link">
+    <span class="md-ellipsis">
+      Target Audience
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#prerequisites" class="md-nav__link">
+    <span class="md-ellipsis">
+      Prerequisites
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#activities" class="md-nav__link">
+    <span class="md-ellipsis">
+      Activities
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#assessment" class="md-nav__link">
+    <span class="md-ellipsis">
+      Assessment
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#common-misconceptions" class="md-nav__link">
+    <span class="md-ellipsis">
+      Common Misconceptions
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#references" class="md-nav__link">
+    <span class="md-ellipsis">
+      References
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#development-notes" class="md-nav__link">
+    <span class="md-ellipsis">
+      Development Notes
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../real-time-processing-simulator/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Real-Time Processing Simulator
+  </span>
+  
+
+      </a>
     </li>
   
 
@@ -1129,6 +2113,90 @@
   
   <span class="md-ellipsis">
     Reverb Effect
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../s-plane-explorer/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    s-Plane Explorer
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../sampling-theorem-explorer/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Sampling Theorem Explorer
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../signal-operations/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Signal Operations - Shift, Scale and Reverse
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../signal-type-explorer/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Signal Type Explorer
   </span>
   
 
@@ -1166,11 +2234,95 @@
   
   
     <li class="md-nav__item">
+      <a href="../spectral-leakage-and-windowing/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Spectral Leakage and Windowing
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
       <a href="../synth-timeline/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
     Synth Timeline
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../system-interconnections/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    System Interconnections - Series, Parallel, Feedback
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../system-property-explorer/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    System Property Explorer
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../time-frequency-analysis-explorer/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Time-Frequency Analysis Explorer
   </span>
   
 
@@ -1213,6 +2365,27 @@
   
   <span class="md-ellipsis">
     Tone Generator
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../wavelet-explorer/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Wavelet Explorer - CWT Scalogram and Haar DWT
   </span>
   
 
@@ -1389,6 +2562,12 @@
       
         
           
+        
+      
+        
+      
+        
+      
         
       
         
@@ -1603,6 +2782,26 @@
   
   
     <li class="md-nav__item">
+      <a href="../../instructors-guide/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Instructor's Guide
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
       <a href="../../license/" class="md-nav__link">
         
   
@@ -1648,26 +2847,6 @@
   
   <span class="md-ellipsis">
     Contact
-  </span>
-  
-
-      </a>
-    </li>
-  
-
-    
-      
-      
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../../ieee-paper-changes/" class="md-nav__link">
-        
-  
-  <span class="md-ellipsis">
-    Paper Changes
   </span>
   
 
@@ -1791,6 +2970,125 @@
     
   
   
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#description" class="md-nav__link">
+    <span class="md-ellipsis">
+      Description
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Description">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#mathematical-concepts" class="md-nav__link">
+    <span class="md-ellipsis">
+      Mathematical Concepts
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#lesson-plan" class="md-nav__link">
+    <span class="md-ellipsis">
+      Lesson Plan
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Lesson Plan">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#learning-objectives" class="md-nav__link">
+    <span class="md-ellipsis">
+      Learning Objectives
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#target-audience" class="md-nav__link">
+    <span class="md-ellipsis">
+      Target Audience
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#prerequisites" class="md-nav__link">
+    <span class="md-ellipsis">
+      Prerequisites
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#activities" class="md-nav__link">
+    <span class="md-ellipsis">
+      Activities
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#assessment" class="md-nav__link">
+    <span class="md-ellipsis">
+      Assessment
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#common-misconceptions" class="md-nav__link">
+    <span class="md-ellipsis">
+      Common Misconceptions
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#references" class="md-nav__link">
+    <span class="md-ellipsis">
+      References
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#development-notes" class="md-nav__link">
+    <span class="md-ellipsis">
+      Development Notes
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
 </nav>
                   </div>
                 </div>
@@ -1804,7 +3102,7 @@
                   
 
   
-    <a href="https://github.com/dmccreary/signal-processing/blob/master/docs/sims/rc-lowpass-filter/index.md" title="Edit this page" class="md-content__button md-icon">
+    <a href="https://github.com/dmccreary/signal-processing/blob/main/docs/sims/rc-lowpass-filter/index.md" title="Edit this page" class="md-content__button md-icon">
       
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M10 20H6V4h7v5h5v3.1l2-2V8l-6-6H6c-1.1 0-2 .9-2 2v16c0 1.1.9 2 2 2h4zm10.2-7c.1 0 .3.1.4.2l1.3 1.3c.2.2.2.6 0 .8l-1 1-2.1-2.1 1-1c.1-.1.2-.2.4-.2m0 3.9L14.1 23H12v-2.1l6.1-6.1z"/></svg>
     </a>
@@ -1812,15 +3110,137 @@
   
 
 
-<h1 id="rc-lowpass-filter">RC Lowpass Filter</h1>
-<p>Creates a Bode Plot showing phase and magnitude for any inputted RC filter combination</p>
-<figure>
-<p><img alt="" src="rc-lowpass-filter.png" width="400" /></p>
-</figure>
-<form action="rc-lowpass-filter.html" style="text-align:center;">
-<button style="align-content: center;" class="md-button md-button--primary">Run the RC Lowpass Filter Simulation
-</button>
-</form>
+<h1 id="rc-low-pass-filter-bode-plot">RC Low-Pass Filter Bode Plot</h1>
+<iframe src="main.html" width="100%" height="604px" scrolling="no"></iframe>
+
+<p>Copy this iframe to your website:</p>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="p">&lt;</span><span class="nt">iframe</span> <span class="na">src</span><span class="o">=</span><span class="s">"https://dmccreary.github.io/signal-processing/sims/rc-lowpass-filter/main.html"</span> <span class="na">width</span><span class="o">=</span><span class="s">"100%"</span> <span class="na">height</span><span class="o">=</span><span class="s">"604px"</span> <span class="na">scrolling</span><span class="o">=</span><span class="s">"no"</span><span class="p">&gt;&lt;/</span><span class="nt">iframe</span><span class="p">&gt;</span>
+</code></pre></div></td></tr></table></div>
+<p><a class="md-button md-button--primary" href="main.html">Run MicroSim in Fullscreen</a></p>
+<!-- TODO(user): add the p5.js editor link once the sketch is saved in editor.p5js.org:
+[Edit in the p5.js Editor](https://editor.p5js.org/<username>/sketches/rc-lowpass-filter) -->
+
+<h2 id="description">Description</h2>
+<p>This MicroSim draws the Bode plot of the simplest analog filter: a resistor <span class="arithmatex">\(R\)</span> in series with the signal and a
+capacitor <span class="arithmatex">\(C\)</span> from the output to ground. The top plot is the gain in decibels and the bottom plot is the phase in
+degrees. Both share a logarithmic frequency axis from 1 Hz to 100 kHz.</p>
+<ul>
+<li><strong>Resistance R</strong> steps through the standard E12 resistor values from 10 Ω to 100 kΩ (12 values per decade).</li>
+<li><strong>Capacitance C</strong> steps through the E12 capacitor values from 1 nF to 100 µF.</li>
+<li><strong>Show straight-line asymptotes</strong> adds the grey dashed straight-line approximations that are used to sketch
+  Bode plots by hand.</li>
+</ul>
+<p>The read-outs at the top give the time constant <span class="arithmatex">\(\tau = RC\)</span> and the corner frequency <span class="arithmatex">\(f_c = 1/(2\pi RC)\)</span>.
+The orange dashed line marks <span class="arithmatex">\(f_c\)</span>. The orange dots mark the two values that hold for every first-order low-pass
+filter: a gain of <span class="arithmatex">\(-3\)</span> dB and a phase of <span class="arithmatex">\(-45°\)</span> at <span class="arithmatex">\(f_c\)</span>. The black triangle spans one decade well above <span class="arithmatex">\(f_c\)</span>
+and shows the gain falling by 20 dB across it. Hover over either plot to move the grey cursor and read the gain and
+phase at that frequency. The cursor snaps to <span class="arithmatex">\(f_c/10\)</span>, <span class="arithmatex">\(f_c\)</span>, <span class="arithmatex">\(10f_c\)</span> and <span class="arithmatex">\(100f_c\)</span>, and it follows
+<span class="arithmatex">\(f_c\)</span> when you move a slider.</p>
+<p>This simulation supports the low-pass filter section of
+<a href="../../chapters/09-filter-design-fundamentals/">Chapter 9: Filter Design Fundamentals</a>.</p>
+<h3 id="mathematical-concepts">Mathematical Concepts</h3>
+<p>The capacitor and resistor form a voltage divider whose ratio depends on frequency:</p>
+<div class="arithmatex">\[H(f) = \frac{V_{out}}{V_{in}} = \frac{1/(j2\pi f C)}{R + 1/(j2\pi f C)} = \frac{1}{1 + j f/f_c},
+\qquad f_c = \frac{1}{2\pi RC} = \frac{1}{2\pi\tau}\]</div>
+<p>The plotted gain and phase are</p>
+<div class="arithmatex">\[G(f) = 20\log_{10}|H(f)| = -10\log_{10}\left(1 + (f/f_c)^2\right) \text{ dB}, \qquad
+\angle H(f) = -\arctan(f/f_c)\]</div>
+<p>At <span class="arithmatex">\(f = f_c\)</span> the gain is <span class="arithmatex">\(-10\log_{10} 2 = -3.01\)</span> dB (<span class="arithmatex">\(|H| = 1/\sqrt{2} = 0.707\)</span>) and the phase is <span class="arithmatex">\(-45°\)</span>.
+Well above <span class="arithmatex">\(f_c\)</span>, <span class="arithmatex">\(|H(f)| \approx f_c/f\)</span>, so the gain falls by 20 dB for every factor of 10 in frequency
+(about 6 dB per octave) and the phase approaches <span class="arithmatex">\(-90°\)</span>. The straight-line asymptotes are 0 dB below <span class="arithmatex">\(f_c\)</span> and
+<span class="arithmatex">\(-20\log_{10}(f/f_c)\)</span> dB above it for the gain, and for the phase 0° below <span class="arithmatex">\(f_c/10\)</span>, <span class="arithmatex">\(-90°\)</span> above <span class="arithmatex">\(10f_c\)</span>, and a
+straight line through <span class="arithmatex">\(-45°\)</span> at <span class="arithmatex">\(f_c\)</span> in between.</p>
+<h2 id="lesson-plan">Lesson Plan</h2>
+<h3 id="learning-objectives">Learning Objectives</h3>
+<p>After using this MicroSim, students will be able to:</p>
+<ol>
+<li><strong>Calculate</strong> the time constant <span class="arithmatex">\(\tau = RC\)</span> and the corner frequency <span class="arithmatex">\(f_c = 1/(2\pi RC)\)</span> for given values of <span class="arithmatex">\(R\)</span> and <span class="arithmatex">\(C\)</span>.</li>
+<li><strong>Identify</strong> the <span class="arithmatex">\(-3\)</span> dB gain and the <span class="arithmatex">\(-45°\)</span> phase at the corner frequency on a Bode plot.</li>
+<li><strong>Explain</strong> why the gain falls by 20 dB per decade and the phase approaches <span class="arithmatex">\(-90°\)</span> well above <span class="arithmatex">\(f_c\)</span>.</li>
+<li><strong>Predict</strong> how changing <span class="arithmatex">\(R\)</span> or <span class="arithmatex">\(C\)</span> moves the Bode plot along the frequency axis without changing its shape.</li>
+<li><strong>Select</strong> standard E12 values of <span class="arithmatex">\(R\)</span> and <span class="arithmatex">\(C\)</span> that place the corner frequency near a target frequency.</li>
+</ol>
+<h3 id="target-audience">Target Audience</h3>
+<p>Undergraduate students in a signals and systems, circuits, or introductory signal processing course.
+Plan 20-30 minutes for the activities below.</p>
+<h3 id="prerequisites">Prerequisites</h3>
+<ul>
+<li>Complex numbers, magnitude and phase</li>
+<li>Decibels and logarithms</li>
+<li>The impedance of a resistor (<span class="arithmatex">\(R\)</span>) and of a capacitor (<span class="arithmatex">\(1/(j2\pi fC)\)</span>)</li>
+</ul>
+<h3 id="activities">Activities</h3>
+<p><strong>Activity 1: Find the corner (5 min).</strong> Start from the default <span class="arithmatex">\(R = 1\)</span> kΩ and <span class="arithmatex">\(C = 1\)</span> µF.</p>
+<ul>
+<li>Confirm the read-outs: <span class="arithmatex">\(\tau = 1.00\)</span> ms and <span class="arithmatex">\(f_c = 1/(2\pi \times 0.001) = 159\)</span> Hz.</li>
+<li>The cursor starts at <span class="arithmatex">\(f_c\)</span>. Read <span class="arithmatex">\(|H| = 0.707 = -3.01\)</span> dB on the gain plot and <span class="arithmatex">\(-45.0°\)</span> on the phase plot.</li>
+</ul>
+<p><strong>Activity 2: Measure the roll-off (5 min).</strong> Keep the default values and hover near the triangle.</p>
+<ul>
+<li>Move the cursor to <span class="arithmatex">\(10f_c = 1.59\)</span> kHz (it snaps there). The gain is <span class="arithmatex">\(-20.04\)</span> dB (<span class="arithmatex">\(|H| = 0.0995\)</span>) and the phase is <span class="arithmatex">\(-84.3°\)</span>.</li>
+<li>Move it to <span class="arithmatex">\(100f_c = 15.9\)</span> kHz. The gain is <span class="arithmatex">\(-40.00\)</span> dB and the phase is <span class="arithmatex">\(-89.4°\)</span>. The triangle shows the same
+  drop of <span class="arithmatex">\(-20.0\)</span> dB over that decade.</li>
+<li>Move it to <span class="arithmatex">\(f_c/10 = 15.9\)</span> Hz. The gain is only <span class="arithmatex">\(-0.04\)</span> dB and the phase is <span class="arithmatex">\(-5.7°\)</span>.</li>
+</ul>
+<p><strong>Activity 3: Only the product RC matters (5 min).</strong> Set <span class="arithmatex">\(R = 10\)</span> kΩ and <span class="arithmatex">\(C = 1\)</span> µF, then <span class="arithmatex">\(R = 1\)</span> kΩ and <span class="arithmatex">\(C = 10\)</span> µF.</p>
+<ul>
+<li>Both give <span class="arithmatex">\(\tau = 10.0\)</span> ms and <span class="arithmatex">\(f_c = 15.9\)</span> Hz, and the two Bode plots are identical.</li>
+<li>Now set <span class="arithmatex">\(R = 10\)</span> kΩ and <span class="arithmatex">\(C = 10\)</span> nF. Then <span class="arithmatex">\(\tau = 100\)</span> µs and <span class="arithmatex">\(f_c = 1.59\)</span> kHz: the whole curve moves two decades to the right without changing shape.</li>
+</ul>
+<p><strong>Activity 4: Design with standard parts (10 min).</strong> Choose components for a corner near 1 kHz with <span class="arithmatex">\(C = 100\)</span> nF.</p>
+<ul>
+<li>The exact value would be <span class="arithmatex">\(R = 1/(2\pi \times 1000 \times 100\text{ nF}) = 1.59\)</span> kΩ, which is not an E12 value.</li>
+<li>Try the neighbours: 1.5 kΩ gives <span class="arithmatex">\(f_c = 1.06\)</span> kHz and 1.8 kΩ gives <span class="arithmatex">\(f_c = 884\)</span> Hz.</li>
+<li>Find another pair that comes closer (for example 3.3 kΩ with 47 nF gives <span class="arithmatex">\(f_c = 1.03\)</span> kHz).</li>
+</ul>
+<p><strong>Activity 5: How good is the sketch? (5 min).</strong> Turn <strong>Show straight-line asymptotes</strong> on and compare the dashed lines with the curves.</p>
+<ul>
+<li>The largest gain error is 3.01 dB, exactly at <span class="arithmatex">\(f_c\)</span>.</li>
+<li>The largest phase error is 5.7°, at <span class="arithmatex">\(f_c/10\)</span> and at <span class="arithmatex">\(10f_c\)</span>.</li>
+</ul>
+<h3 id="assessment">Assessment</h3>
+<ol>
+<li>A filter uses <span class="arithmatex">\(R = 4.7\)</span> kΩ and <span class="arithmatex">\(C = 10\)</span> nF. What are <span class="arithmatex">\(\tau\)</span> and <span class="arithmatex">\(f_c\)</span>?
+   <em>(Answer: <span class="arithmatex">\(\tau = 47\)</span> µs and <span class="arithmatex">\(f_c = 1/(2\pi \times 47\ \mu\text{s}) = 3.39\)</span> kHz.)</em></li>
+<li>What are the gain and the phase of any first-order RC low-pass filter at its corner frequency?
+   <em>(Answer: <span class="arithmatex">\(|H| = 1/\sqrt{2} = 0.707\)</span>, which is <span class="arithmatex">\(-3.01\)</span> dB, and the phase is <span class="arithmatex">\(-45°\)</span>.)</em></li>
+<li>A filter has <span class="arithmatex">\(f_c = 200\)</span> Hz. Estimate its gain at 20 kHz.
+   <em>(Answer: 20 kHz is two decades above <span class="arithmatex">\(f_c\)</span>, so the gain is about <span class="arithmatex">\(-40\)</span> dB. The exact value is <span class="arithmatex">\(-40.0\)</span> dB.)</em></li>
+<li>You double <span class="arithmatex">\(R\)</span> and leave <span class="arithmatex">\(C\)</span> unchanged. What happens to <span class="arithmatex">\(f_c\)</span> and to the shape of the Bode plot?
+   <em>(Answer: <span class="arithmatex">\(f_c\)</span> halves, so the curves move left by <span class="arithmatex">\(\log_{10}2 = 0.30\)</span> decade. Their shape does not change.)</em></li>
+<li>Why does the gain fall by 20 dB per decade well above <span class="arithmatex">\(f_c\)</span>?
+   <em>(Answer: for <span class="arithmatex">\(f \gg f_c\)</span>, <span class="arithmatex">\(|H(f)| \approx f_c/f\)</span>. A factor of 10 in <span class="arithmatex">\(f\)</span> divides <span class="arithmatex">\(|H|\)</span> by 10, which is <span class="arithmatex">\(20\log_{10}10 = 20\)</span> dB.)</em></li>
+</ol>
+<h3 id="common-misconceptions">Common Misconceptions</h3>
+<ul>
+<li><strong>"The cutoff frequency is where the filter stops passing signals."</strong> At <span class="arithmatex">\(f_c\)</span> the output still has 70.7% of
+  the input amplitude, and at <span class="arithmatex">\(2f_c\)</span> it still has 44.7% (<span class="arithmatex">\(-6.99\)</span> dB). Hover just above <span class="arithmatex">\(f_c\)</span> and watch the gain
+  fall gradually: an RC filter attenuates, it does not block.</li>
+<li><strong>"A larger resistor or capacitor raises the cutoff."</strong> Move either slider to the right and the orange line moves
+  to the left. Because <span class="arithmatex">\(f_c = 1/(2\pi RC)\)</span>, a larger <span class="arithmatex">\(R\)</span> or <span class="arithmatex">\(C\)</span> means a slower filter and a lower corner.</li>
+<li><strong>"The straight-line sketch is the real response."</strong> Turn the asymptotes on: the true curve lies 3 dB below the
+  corner of the sketch.</li>
+</ul>
+<h2 id="references">References</h2>
+<ol>
+<li><a href="https://en.wikipedia.org/wiki/RC_circuit">RC circuit</a> - Wikipedia - derivation of the RC low-pass transfer function, time constant and cutoff frequency</li>
+<li><a href="https://en.wikipedia.org/wiki/Bode_plot">Bode plot</a> - Wikipedia - gain and phase plots on a logarithmic frequency axis and their straight-line approximations</li>
+<li><a href="https://en.wikipedia.org/wiki/Low-pass_filter">Low-pass filter</a> - Wikipedia - first-order low-pass filters and the 20 dB per decade roll-off</li>
+<li><a href="https://en.wikipedia.org/wiki/Cutoff_frequency">Cutoff frequency</a> - Wikipedia - the -3 dB (half-power) definition of the corner frequency</li>
+<li><a href="https://en.wikipedia.org/wiki/E_series_of_preferred_numbers">E series of preferred numbers</a> - Wikipedia - the E12 values used by the R and C sliders</li>
+<li><a href="https://www.dspguide.com/">The Scientist and Engineer's Guide to Digital Signal Processing</a> - Steven W. Smith - free online textbook with chapters on filters and on analog electronic filters</li>
+</ol>
+<h2 id="development-notes">Development Notes</h2>
+<p>Version 2.0 (October 2026) rebuilt the original page, which used Plotly, as a p5.js 2.3.2 sketch. Changes from version 1:</p>
+<ul>
+<li>The two number boxes and the <strong>Generate Bode Plot</strong> button were replaced by sliders that step through standard
+  E12 values, so the plot updates as you drag. Values outside 10 Ω to 100 kΩ and 1 nF to 100 µF can no longer be entered.</li>
+<li>The frequency axis now runs from 1 Hz to 100 kHz (it was 10 Hz to 100 kHz).</li>
+<li>Gain and phase are drawn as two stacked plots that share the frequency axis, instead of one plot with two
+  vertical axes. They keep their original colors (gain red, phase blue).</li>
+<li>New: the corner-frequency marker, the time-constant and corner-frequency read-outs, the slope triangle, the
+  straight-line asymptotes, the cursor and the circuit diagram.</li>
+</ul>
 
 
 
@@ -1859,7 +3279,7 @@
       <nav class="md-footer__inner md-grid" aria-label="Footer" >
         
           
-          <a href="../nyquist-shannon-sampling/" class="md-footer__link md-footer__link--prev" aria-label="Previous: Nyquist-Shannon Sampling">
+          <a href="../quantization-and-noise-shaping/" class="md-footer__link md-footer__link--prev" aria-label="Previous: Quantization and Noise Shaping">
             <div class="md-footer__button md-icon">
               
               <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
@@ -1869,20 +3289,20 @@
                 Previous
               </span>
               <div class="md-ellipsis">
-                Nyquist-Shannon Sampling
+                Quantization and Noise Shaping
               </div>
             </div>
           </a>
         
         
           
-          <a href="../reverb/" class="md-footer__link md-footer__link--next" aria-label="Next: Reverb Effect">
+          <a href="../real-time-processing-simulator/" class="md-footer__link md-footer__link--next" aria-label="Next: Real-Time Processing Simulator">
             <div class="md-footer__title">
               <span class="md-footer__direction">
                 Next
               </span>
               <div class="md-ellipsis">
-                Reverb Effect
+                Real-Time Processing Simulator
               </div>
             </div>
             <div class="md-footer__button md-icon">

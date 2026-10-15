@@ -1,78 +1,417 @@
 {
-  "title": "Learning Graph Viewer",
-  "description": "Interactive visualization of learning graphs showing concept dependencies with search, taxonomy filtering, and statistics.",
-  "creator": "Dan McCreary",
-  "date": "2024-01-01",
-  "subject": [
-    "Education",
-    "Graph Visualization",
-    "Learning Graphs",
-    "Knowledge Mapping"
-  ],
-  "type": "Interactive Simulation",
-  "format": "text/html",
-  "language": "en",
-  "rights": "CC BY-NC-SA 4.0",
-  "identifier": "https://dmccreary.github.io/signal-processing/sims/graph-viewer/",
-  "publisher": "Dan McCreary",
-  "educationalLevel": "Undergraduate",
-  "learningResourceType": "simulation",
-  "audience": "Educators, Students",
-  "version": "2.0.0",
-  "bloomLevel": [
-    "Understand",
-    "Analyze"
-  ],
-  "concepts": [
-    "Learning graphs",
-    "Concept dependencies",
-    "Knowledge visualization",
-    "Taxonomy"
-  ],
-  "prerequisites": [
-    "Basic understanding of graph concepts"
-  ],
-  "library": "vis-network",
-  "visualizationType": [
-    "animation",
-    "graph",
-    "interactive-demo",
-    "network",
-    "simulation"
-  ],
-  "learningObjectives": [
-    "Understand the key concepts of learning graph viewer",
-    "Explore learning graph viewer through interactive visualization",
-    "Apply knowledge of learning graph viewer to solve problems",
-    "Experiment with parameters to observe their effects on learning graph viewer"
-  ],
-  "bloomsTaxonomy": [
-    "Remember",
-    "Apply",
-    "Create"
-  ],
-  "pedagogical": {
-    "pattern": "reference",
-    "bloomAlignment": [
-      "remember",
-      "apply",
-      "evaluate"
-    ],
-    "bloomVerbs": [
-      "identify",
-      "list",
-      "recognize",
-      "apply",
-      "illustrate"
-    ],
-    "pacing": "self-paced",
-    "supportsPrediction": false,
-    "dataVisibility": "medium",
-    "feedbackType": [
-      "immediate",
-      "corrective",
-      "explanatory"
-    ],
-    "interactionStyle": "observe"
-  }
+  "microsim": {
+    "dublinCore": {
+      "title": "Learning Graph Viewer",
+      "creator": [
+        "Dan McCreary"
+      ],
+      "subject": [
+        "Learning graphs",
+        "Concept dependencies",
+        "Prerequisite structure",
+        "Knowledge mapping",
+        "Signal processing curriculum"
+      ],
+      "description": "Interactive visualization of the course learning graph showing concept dependencies, with taxonomy filtering, type-ahead search and live node, edge and orphan statistics.",
+      "publisher": "Dan McCreary",
+      "contributor": [
+        "Claude (Anthropic)"
+      ],
+      "date": "2024-10-18",
+      "type": "Interactive Simulation",
+      "format": "text/html",
+      "identifier": "https://dmccreary.github.io/signal-processing/sims/graph-viewer/",
+      "language": "en",
+      "relation": [
+        "Learning Graph",
+        "Learning Graph Viewer V1"
+      ],
+      "rights": "CC BY-NC-SA 4.0"
+    },
+    "search": {
+      "tags": [
+        "learning graph",
+        "concept dependencies",
+        "prerequisites",
+        "taxonomy",
+        "vis-network",
+        "course planning",
+        "knowledge graph"
+      ],
+      "searchKeywords": [
+        "learning graph viewer",
+        "concept dependency graph",
+        "prerequisite graph",
+        "taxonomy filter",
+        "orphan nodes"
+      ],
+      "visualizationType": [
+        "graph",
+        "interactive-demo",
+        "data-visualization"
+      ],
+      "interactionLevel": "high",
+      "complexity": 4,
+      "relatedConcepts": [
+        "Learning graphs",
+        "Concept dependencies",
+        "Prerequisites",
+        "Taxonomy",
+        "Directed acyclic graph"
+      ],
+      "applicationDomains": [
+        "education",
+        "exploration",
+        "analysis"
+      ],
+      "showcase": false
+    },
+    "educational": {
+      "gradeLevel": [
+        "Undergraduate"
+      ],
+      "subjectArea": [
+        "Engineering",
+        "Computer Science"
+      ],
+      "topic": [
+        "Learning graphs",
+        "Concept dependencies",
+        "Taxonomy categories",
+        "Course planning"
+      ],
+      "learningObjectives": [
+        "Identify the prerequisites of a concept by tracing the arrows that point into its node",
+        "Use the legend checkboxes to isolate one category and predict the node, edge and orphan counts before reading them from the statistics",
+        "Explain why the orphan count rises when a category is hidden, even though the full graph has no orphans",
+        "Locate a concept with the search box and state which category it belongs to",
+        "Evaluate a study sequence by deciding which categories must be shown together so that no visible concept is missing a prerequisite"
+      ],
+      "bloomsTaxonomy": [
+        "Understand",
+        "Apply",
+        "Analyze",
+        "Evaluate"
+      ],
+      "prerequisites": [
+        "Reading a directed graph",
+        "The idea of a prerequisite"
+      ],
+      "duration": {
+        "typical": 20,
+        "range": {
+          "min": 10,
+          "max": 40
+        }
+      },
+      "difficulty": "Beginner",
+      "scaffolding": {
+        "type": [
+          "guided-discovery",
+          "feedback"
+        ],
+        "adaptability": "fixed",
+        "removal": "user-controlled"
+      },
+      "misconceptions": [
+        {
+          "misconception": "An arrow points from a concept to the things it needs",
+          "correction": "Arrows point from a prerequisite to the concept that depends on it",
+          "evidence": "Search for Real Numbers: it has no arrow pointing in and 13 arrows leaving it"
+        },
+        {
+          "misconception": "Orphans are the concepts that nothing else depends on",
+          "correction": "In this viewer an orphan is a visible node with no visible edge in either direction; the full graph has 0 orphans although 112 concepts have no dependents",
+          "evidence": "Check only System Properties: the statistics report 14 orphans; also check Signal Fundamentals and the count returns to 0"
+        }
+      ]
+    },
+    "technical": {
+      "framework": "other",
+      "version": "2.0.0",
+      "canvasDimensions": {
+        "width": 900,
+        "height": 700,
+        "responsive": true
+      },
+      "dependencies": [
+        "vis-network 10.0.2 (standalone UMD build from unpkg)"
+      ],
+      "browserCompatibility": [
+        "Chrome 90+",
+        "Firefox 88+",
+        "Safari 14+",
+        "Edge 90+"
+      ],
+      "performance": {
+        "memoryUsage": "moderate",
+        "loadTime": 1500
+      },
+      "deviceRequirements": {
+        "minScreenWidth": 320,
+        "touchSupport": true,
+        "keyboardRequired": false,
+        "mouseRequired": false,
+        "networkRequired": true
+      },
+      "accessibility": {
+        "screenReader": true,
+        "keyboardNavigation": true,
+        "colorContrast": true,
+        "altText": true,
+        "screenReaderScript": "Interactive network diagram of the course learning graph. Each node is a concept and each arrow points from a prerequisite to a concept that depends on it. Use the legend checkboxes to show or hide a category and the search box to find a concept by name."
+      }
+    },
+    "userInterface": {
+      "layoutType": "two-column",
+      "layoutPattern": "collapsible-legend-sidebar-left-network-right",
+      "colorScheme": {
+        "drawingArea": "aliceblue",
+        "controlArea": "white",
+        "accent": "green",
+        "text": "black"
+      },
+      "responsiveBreakpoints": [
+        {
+          "minWidth": 0,
+          "layout": "legend sidebar collapsed on load below 600 px"
+        }
+      ],
+      "controls": [
+        {
+          "id": "toggle-button",
+          "type": "button",
+          "label": "Menu (hamburger) button",
+          "description": "Collapses or expands the legend sidebar; the sidebar starts collapsed on screens narrower than 600 px",
+          "group": "sidebar",
+          "properties": {
+            "style": "secondary"
+          }
+        },
+        {
+          "id": "check-all",
+          "type": "button",
+          "label": "Check All",
+          "description": "Shows every category",
+          "group": "legend",
+          "properties": {
+            "style": "success"
+          }
+        },
+        {
+          "id": "uncheck-all",
+          "type": "button",
+          "label": "Uncheck All",
+          "description": "Hides every category",
+          "group": "legend",
+          "properties": {
+            "style": "secondary"
+          }
+        },
+        {
+          "id": "groupMATH",
+          "type": "checkbox",
+          "label": "Mathematical Foundations",
+          "description": "Shows or hides every concept in the Mathematical Foundations category (MATH)",
+          "group": "legend",
+          "properties": {
+            "default": true
+          }
+        },
+        {
+          "id": "groupSIG",
+          "type": "checkbox",
+          "label": "Signal Fundamentals",
+          "description": "Shows or hides every concept in the Signal Fundamentals category (SIG)",
+          "group": "legend",
+          "properties": {
+            "default": true
+          }
+        },
+        {
+          "id": "groupSYS",
+          "type": "checkbox",
+          "label": "System Properties",
+          "description": "Shows or hides every concept in the System Properties category (SYS)",
+          "group": "legend",
+          "properties": {
+            "default": true
+          }
+        },
+        {
+          "id": "groupCONV",
+          "type": "checkbox",
+          "label": "Convolution and Correlation",
+          "description": "Shows or hides every concept in the Convolution and Correlation category (CONV)",
+          "group": "legend",
+          "properties": {
+            "default": true
+          }
+        },
+        {
+          "id": "groupSAMP",
+          "type": "checkbox",
+          "label": "Sampling and Quantization",
+          "description": "Shows or hides every concept in the Sampling and Quantization category (SAMP)",
+          "group": "legend",
+          "properties": {
+            "default": true
+          }
+        },
+        {
+          "id": "groupFOUR",
+          "type": "checkbox",
+          "label": "Fourier Analysis",
+          "description": "Shows or hides every concept in the Fourier Analysis category (FOUR)",
+          "group": "legend",
+          "properties": {
+            "default": true
+          }
+        },
+        {
+          "id": "groupXFRM",
+          "type": "checkbox",
+          "label": "Advanced Transforms",
+          "description": "Shows or hides every concept in the Advanced Transforms category (XFRM)",
+          "group": "legend",
+          "properties": {
+            "default": true
+          }
+        },
+        {
+          "id": "groupFILT",
+          "type": "checkbox",
+          "label": "Filter Design",
+          "description": "Shows or hides every concept in the Filter Design category (FILT)",
+          "group": "legend",
+          "properties": {
+            "default": true
+          }
+        },
+        {
+          "id": "groupADAP",
+          "type": "checkbox",
+          "label": "Adaptive Processing",
+          "description": "Shows or hides every concept in the Adaptive Processing category (ADAP)",
+          "group": "legend",
+          "properties": {
+            "default": true
+          }
+        },
+        {
+          "id": "groupRAND",
+          "type": "checkbox",
+          "label": "Stochastic Processes",
+          "description": "Shows or hides every concept in the Stochastic Processes category (RAND)",
+          "group": "legend",
+          "properties": {
+            "default": true
+          }
+        },
+        {
+          "id": "groupADVN",
+          "type": "checkbox",
+          "label": "Advanced Topics",
+          "description": "Shows or hides every concept in the Advanced Topics category (ADVN)",
+          "group": "legend",
+          "properties": {
+            "default": true
+          }
+        },
+        {
+          "id": "groupAPPL",
+          "type": "checkbox",
+          "label": "Applications and AI",
+          "description": "Shows or hides every concept in the Applications and AI category (APPL)",
+          "group": "legend",
+          "properties": {
+            "default": true
+          }
+        },
+        {
+          "id": "search-input",
+          "type": "text-input",
+          "label": "Search nodes by name",
+          "description": "Type-ahead search over the visible concepts; clicking a result zooms to and selects the node",
+          "group": "search",
+          "properties": {
+            "placeholder": "Search nodes by name..."
+          }
+        }
+      ],
+      "visualElements": [
+        {
+          "type": "graph",
+          "description": "Force-directed network of the learning graph; node color is the taxonomy category and arrows point from prerequisite to dependent concept",
+          "interactive": true,
+          "updateTriggers": [
+            "check-all",
+            "uncheck-all",
+            "groupMATH",
+            "groupSIG",
+            "groupSYS",
+            "groupCONV",
+            "groupSAMP",
+            "groupFOUR",
+            "groupXFRM",
+            "groupFILT",
+            "groupADAP",
+            "groupRAND",
+            "groupADVN",
+            "groupAPPL",
+            "search-input"
+          ]
+        },
+        {
+          "type": "text-display",
+          "description": "Graph Statistics list with the visible node, edge and orphan counts",
+          "interactive": false,
+          "updateTriggers": [
+            "check-all",
+            "uncheck-all",
+            "groupMATH",
+            "groupSIG",
+            "groupSYS",
+            "groupCONV",
+            "groupSAMP",
+            "groupFOUR",
+            "groupXFRM",
+            "groupFILT",
+            "groupADAP",
+            "groupRAND",
+            "groupADVN",
+            "groupAPPL"
+          ]
+        }
+      ]
+    },
+    "simulation": {
+      "model": {
+        "type": "algorithmic",
+        "description": "Filters a directed graph by node attribute and recomputes the visible node count, the visible edge count (both endpoints visible) and the orphan count (visible nodes with no visible edge)",
+        "algorithms": [
+          "forceAtlas2Based layout",
+          "visibility filtering by group",
+          "substring search over visible node labels"
+        ]
+      }
+    },
+    "usage": {
+      "recommendedUsage": [
+        "exploration",
+        "demonstration",
+        "individual-study"
+      ],
+      "instructionalStrategies": [
+        "Predict-then-verify with the legend filters",
+        "Prerequisite tracing from a searched concept",
+        "Gap analysis with the orphan count"
+      ],
+      "extensions": [
+        "Compare with the Learning Graph Viewer V1, which pins foundation and goal nodes",
+        "Load a different learning-graph.json to inspect another course"
+      ]
+    }
+  },
+  "canvasHeight": 700
 }

@@ -6,7 +6,7 @@
       <meta charset="utf-8">
       <meta name="viewport" content="width=device-width,initial-scale=1">
       
-        <meta name="description" content="Interactive demonstration of sine wave parameters including amplitude, period, and phase with adjustable sliders.">
+        <meta name="description" content="Plot y(t) = A sin(2πt/T + φ) and use three sliders to see how amplitude, period and phase change a sine wave, with frequency and time-shift read-outs.">
       
       
         <meta name="author" content="Dan McCreary">
@@ -15,10 +15,10 @@
         <link rel="canonical" href="https://dmccreary.github.io/signal-processing/sims/sine-wave/">
       
       
-        <link rel="prev" href="../reverb/">
+        <link rel="prev" href="../signal-type-explorer/">
       
       
-        <link rel="next" href="../synth-timeline/">
+        <link rel="next" href="../spectral-leakage-and-windowing/">
       
       
       <link rel="icon" href="../../img/favicon.ico">
@@ -54,6 +54,8 @@
     
       <link rel="stylesheet" href="../../css/extra.css">
     
+      <link rel="stylesheet" href="../../css/mascot.css">
+    
     <script>__md_scope=new URL("../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
     
       
@@ -65,7 +67,7 @@
       
         <meta  property="og:title"  content="Sine Wave - Signal Processing with AI" >
       
-        <meta  property="og:description"  content="Interactive demonstration of sine wave parameters including amplitude, period, and phase with adjustable sliders." >
+        <meta  property="og:description"  content="Plot y(t) = A sin(2πt/T + φ) and use three sliders to see how amplitude, period and phase change a sine wave, with frequency and time-shift read-outs." >
       
         <meta property="og:image" content="https://dmccreary.github.io/signal-processing/sims/sine-wave/sine-wave.png">
       
@@ -81,7 +83,7 @@
       
         <meta  name="twitter:title"  content="Sine Wave - Signal Processing with AI" >
       
-        <meta  name="twitter:description"  content="Interactive demonstration of sine wave parameters including amplitude, period, and phase with adjustable sliders." >
+        <meta  name="twitter:description"  content="Plot y(t) = A sin(2πt/T + φ) and use three sliders to see how amplitude, period and phase change a sine wave, with frequency and time-shift read-outs." >
       
         <meta name="twitter:image" content="https://dmccreary.github.io/signal-processing/sims/sine-wave/sine-wave.png">
       
@@ -122,7 +124,7 @@
   <nav class="md-header__inner md-grid" aria-label="Header">
     <a href="../.." title="Signal Processing with AI" class="md-header__button md-logo" aria-label="Signal Processing with AI" data-md-component="logo">
       
-  <img src="../../img/logo-192.png" alt="logo">
+  <img src="../../img/mascot/neutral.png" alt="logo">
 
     </a>
     <label class="md-header__button md-icon" for="__drawer">
@@ -217,8 +219,6 @@
           
             
               
-                
-              
               <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
                 <div class="md-sidebar__scrollwrap">
                   <div class="md-sidebar__inner">
@@ -230,7 +230,7 @@
   <label class="md-nav__title" for="__drawer">
     <a href="../.." title="Signal Processing with AI" class="md-nav__button md-logo" aria-label="Signal Processing with AI" data-md-component="logo">
       
-  <img src="../../img/logo-192.png" alt="logo">
+  <img src="../../img/mascot/neutral.png" alt="logo">
 
     </a>
     Signal Processing with AI
@@ -277,31 +277,11 @@
   
   
     <li class="md-nav__item">
-      <a href="../../chapters/" class="md-nav__link">
-        
-  
-  <span class="md-ellipsis">
-    Table of Contents
-  </span>
-  
-
-      </a>
-    </li>
-  
-
-    
-      
-      
-  
-  
-  
-  
-    <li class="md-nav__item">
       <a href="../../about/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
-    About This Website
+    About
   </span>
   
 
@@ -544,6 +524,174 @@
           
         
       
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
     
     
     
@@ -553,7 +701,7 @@
       
         
         
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_6" checked>
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_5" checked>
         
           
           
@@ -569,19 +717,103 @@
             </a>
             
               
-              <label class="md-nav__link " for="__nav_6" id="__nav_6_label" tabindex="0">
+              <label class="md-nav__link " for="__nav_5" id="__nav_5_label" tabindex="0">
                 <span class="md-nav__icon md-icon"></span>
               </label>
             
           </div>
         
-        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_6_label" aria-expanded="true">
-          <label class="md-nav__title" for="__nav_6">
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_5_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_5">
             <span class="md-nav__icon md-icon"></span>
             MicroSims
           </label>
           <ul class="md-nav__list" data-md-scrollfix>
             
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../image-convolution/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    2-D Convolution and Image Filtering
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../conv-layer-as-filter/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    A Convolutional Layer Is a Learned FIR Filter
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../adaptive-algorithm-comparison-tool/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Adaptive Algorithm Comparison Tool
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../adaptive-noise-cancellation/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Adaptive Noise and Echo Cancellation
+  </span>
+  
+
+      </a>
+    </li>
+  
+
               
             
               
@@ -633,11 +865,11 @@
   
   
     <li class="md-nav__item">
-      <a href="../base-and-treble/" class="md-nav__link">
+      <a href="../fft-basic/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
-    Base and Treble
+    Basic FFT
   </span>
   
 
@@ -654,11 +886,32 @@
   
   
     <li class="md-nav__item">
-      <a href="../fft-basic/" class="md-nav__link">
+      <a href="../base-and-treble/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
-    Basic FFT
+    Bass and Treble
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../bilinear-transform/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Bilinear Transform and Frequency Warping
   </span>
   
 
@@ -780,6 +1033,27 @@
   
   
     <li class="md-nav__item">
+      <a href="../compressed-sensing/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Compressed Sensing
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
       <a href="../convolution/" class="md-nav__link">
         
   
@@ -801,11 +1075,137 @@
   
   
     <li class="md-nav__item">
+      <a href="../convolution-theorem/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Convolution Theorem and Circular Convolution
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../convolution-visualizer/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Convolution Visualizer
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../correlation-and-matched-filtering/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Correlation and Matched Filtering
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../dct-basis-explorer/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    DCT Basis Explorer
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../dft-explorer/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    DFT Explorer
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
       <a href="../euler-formula-explorer/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
     Euler's Formula Explorer
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../even-and-odd-signal-decomposition/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Even and Odd Signal Decomposition
   </span>
   
 
@@ -969,6 +1369,27 @@
   
   
     <li class="md-nav__item">
+      <a href="../fft-spectrum-analyzer/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    FFT Spectrum Analyzer
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
       <a href="../fft-waveform-types/" class="md-nav__link">
         
   
@@ -990,11 +1411,263 @@
   
   
     <li class="md-nav__item">
+      <a href="../filter-bank-explorer/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Filter Bank and Polyphase Explorer
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../fir-filter-design-comparison-tool/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    FIR Filter Design Comparison Tool
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../fir-vs-iir/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    FIR vs IIR Filters
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../fourier-series-explorer/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Fourier Series Explorer
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../fourier-transform-pairs/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Fourier Transform Pairs
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
       <a href="../frequency-detection/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
     Frequency Detection
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../huffman-coding/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Huffman Coding
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../iir-prototype-comparison/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    IIR Prototype Comparison
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../impulse-and-frequency-response-analyzer/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Impulse and Frequency Response Analyzer
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../interactive-filter-design-and-analysis-tool/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Interactive Filter Design and Analysis Tool
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../interactive-pole-zero-analysis-tool/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Interactive Pole-Zero Analysis Tool
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../interactive-spectrogram-parameter-explorer/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Interactive Spectrogram Parameter Explorer
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../interactive-stft-spectrogram-analyzer/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Interactive STFT Spectrogram Analyzer
   </span>
   
 
@@ -1074,11 +1747,158 @@
   
   
     <li class="md-nav__item">
+      <a href="../multirate-sample-rate-converter/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Multirate Sample Rate Converter
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../noise-analysis-and-reduction-tool/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Noise Analysis and Reduction Tool
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
       <a href="../nyquist-shannon-sampling/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
     Nyquist-Shannon Sampling
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../phase-spectrum/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Phase Spectrum - What the Magnitude Hides
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../phasor-addition/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Phasor Addition
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../psd-wiener-khinchin/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Power Spectral Density and the Wiener-Khinchin Theorem
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../distribution-explorer/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Probability Distribution Explorer
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../quantization-and-noise-shaping/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Quantization and Noise Shaping
   </span>
   
 
@@ -1116,11 +1936,116 @@
   
   
     <li class="md-nav__item">
+      <a href="../real-time-processing-simulator/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Real-Time Processing Simulator
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
       <a href="../reverb/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
     Reverb Effect
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../s-plane-explorer/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    s-Plane Explorer
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../sampling-theorem-explorer/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Sampling Theorem Explorer
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../signal-operations/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Signal Operations - Shift, Scale and Reverse
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../signal-type-explorer/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Signal Type Explorer
   </span>
   
 
@@ -1183,20 +2108,26 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#prompt" class="md-nav__link">
+  <a href="#description" class="md-nav__link">
     <span class="md-ellipsis">
-      Prompt
+      Description
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Description">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#mathematical-concepts" class="md-nav__link">
+    <span class="md-ellipsis">
+      Mathematical Concepts
     </span>
   </a>
   
 </li>
-      
-        <li class="md-nav__item">
-  <a href="#result" class="md-nav__link">
-    <span class="md-ellipsis">
-      Result
-    </span>
-  </a>
+        
+      </ul>
+    </nav>
   
 </li>
       
@@ -1211,126 +2142,54 @@
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#prompt_1" class="md-nav__link">
+  <a href="#learning-objectives" class="md-nav__link">
     <span class="md-ellipsis">
-      Prompt
+      Learning Objectives
     </span>
   </a>
   
 </li>
         
           <li class="md-nav__item">
-  <a href="#grade-level" class="md-nav__link">
+  <a href="#target-audience" class="md-nav__link">
     <span class="md-ellipsis">
-      Grade Level
+      Target Audience
     </span>
   </a>
   
 </li>
         
           <li class="md-nav__item">
-  <a href="#subject" class="md-nav__link">
+  <a href="#prerequisites" class="md-nav__link">
     <span class="md-ellipsis">
-      Subject
+      Prerequisites
     </span>
   </a>
   
 </li>
         
           <li class="md-nav__item">
-  <a href="#duration" class="md-nav__link">
+  <a href="#activities" class="md-nav__link">
     <span class="md-ellipsis">
-      Duration
+      Activities
     </span>
   </a>
   
 </li>
         
           <li class="md-nav__item">
-  <a href="#tools-needed" class="md-nav__link">
+  <a href="#assessment" class="md-nav__link">
     <span class="md-ellipsis">
-      Tools Needed
+      Assessment
     </span>
   </a>
   
 </li>
         
           <li class="md-nav__item">
-  <a href="#objectives" class="md-nav__link">
+  <a href="#common-misconceptions" class="md-nav__link">
     <span class="md-ellipsis">
-      Objectives
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#introduction-10-minutes" class="md-nav__link">
-    <span class="md-ellipsis">
-      Introduction (10 minutes)
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#demonstration-15-minutes" class="md-nav__link">
-    <span class="md-ellipsis">
-      Demonstration (15 minutes)
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#interactive-activity-30-minutes" class="md-nav__link">
-    <span class="md-ellipsis">
-      Interactive Activity (30 minutes)
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#group-discussion-10-minutes" class="md-nav__link">
-    <span class="md-ellipsis">
-      Group Discussion (10 minutes)
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#assessment-5-15-minutes" class="md-nav__link">
-    <span class="md-ellipsis">
-      Assessment (5-15 minutes)
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#homework-optional" class="md-nav__link">
-    <span class="md-ellipsis">
-      Homework (optional)
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#extensions-optional" class="md-nav__link">
-    <span class="md-ellipsis">
-      Extensions (optional)
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#resources" class="md-nav__link">
-    <span class="md-ellipsis">
-      Resources
+      Common Misconceptions
     </span>
   </a>
   
@@ -1345,6 +2204,15 @@
   <a href="#references" class="md-nav__link">
     <span class="md-ellipsis">
       References
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#development-notes" class="md-nav__link">
+    <span class="md-ellipsis">
+      Development Notes
     </span>
   </a>
   
@@ -1366,11 +2234,95 @@
   
   
     <li class="md-nav__item">
+      <a href="../spectral-leakage-and-windowing/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Spectral Leakage and Windowing
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
       <a href="../synth-timeline/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
     Synth Timeline
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../system-interconnections/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    System Interconnections - Series, Parallel, Feedback
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../system-property-explorer/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    System Property Explorer
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../time-frequency-analysis-explorer/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Time-Frequency Analysis Explorer
   </span>
   
 
@@ -1413,6 +2365,27 @@
   
   <span class="md-ellipsis">
     Tone Generator
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../wavelet-explorer/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Wavelet Explorer - CWT Scalogram and Haar DWT
   </span>
   
 
@@ -1589,6 +2562,12 @@
       
         
           
+        
+      
+        
+      
+        
+      
         
       
         
@@ -1803,6 +2782,26 @@
   
   
     <li class="md-nav__item">
+      <a href="../../instructors-guide/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Instructor's Guide
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
       <a href="../../license/" class="md-nav__link">
         
   
@@ -1848,26 +2847,6 @@
   
   <span class="md-ellipsis">
     Contact
-  </span>
-  
-
-      </a>
-    </li>
-  
-
-    
-      
-      
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../../ieee-paper-changes/" class="md-nav__link">
-        
-  
-  <span class="md-ellipsis">
-    Paper Changes
   </span>
   
 
@@ -1979,9 +2958,7 @@
             
             
               
-                
-              
-              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" hidden>
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
                 <div class="md-sidebar__scrollwrap">
                   <div class="md-sidebar__inner">
                     
@@ -2000,20 +2977,26 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#prompt" class="md-nav__link">
+  <a href="#description" class="md-nav__link">
     <span class="md-ellipsis">
-      Prompt
+      Description
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Description">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#mathematical-concepts" class="md-nav__link">
+    <span class="md-ellipsis">
+      Mathematical Concepts
     </span>
   </a>
   
 </li>
-      
-        <li class="md-nav__item">
-  <a href="#result" class="md-nav__link">
-    <span class="md-ellipsis">
-      Result
-    </span>
-  </a>
+        
+      </ul>
+    </nav>
   
 </li>
       
@@ -2028,126 +3011,54 @@
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#prompt_1" class="md-nav__link">
+  <a href="#learning-objectives" class="md-nav__link">
     <span class="md-ellipsis">
-      Prompt
+      Learning Objectives
     </span>
   </a>
   
 </li>
         
           <li class="md-nav__item">
-  <a href="#grade-level" class="md-nav__link">
+  <a href="#target-audience" class="md-nav__link">
     <span class="md-ellipsis">
-      Grade Level
+      Target Audience
     </span>
   </a>
   
 </li>
         
           <li class="md-nav__item">
-  <a href="#subject" class="md-nav__link">
+  <a href="#prerequisites" class="md-nav__link">
     <span class="md-ellipsis">
-      Subject
+      Prerequisites
     </span>
   </a>
   
 </li>
         
           <li class="md-nav__item">
-  <a href="#duration" class="md-nav__link">
+  <a href="#activities" class="md-nav__link">
     <span class="md-ellipsis">
-      Duration
+      Activities
     </span>
   </a>
   
 </li>
         
           <li class="md-nav__item">
-  <a href="#tools-needed" class="md-nav__link">
+  <a href="#assessment" class="md-nav__link">
     <span class="md-ellipsis">
-      Tools Needed
+      Assessment
     </span>
   </a>
   
 </li>
         
           <li class="md-nav__item">
-  <a href="#objectives" class="md-nav__link">
+  <a href="#common-misconceptions" class="md-nav__link">
     <span class="md-ellipsis">
-      Objectives
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#introduction-10-minutes" class="md-nav__link">
-    <span class="md-ellipsis">
-      Introduction (10 minutes)
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#demonstration-15-minutes" class="md-nav__link">
-    <span class="md-ellipsis">
-      Demonstration (15 minutes)
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#interactive-activity-30-minutes" class="md-nav__link">
-    <span class="md-ellipsis">
-      Interactive Activity (30 minutes)
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#group-discussion-10-minutes" class="md-nav__link">
-    <span class="md-ellipsis">
-      Group Discussion (10 minutes)
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#assessment-5-15-minutes" class="md-nav__link">
-    <span class="md-ellipsis">
-      Assessment (5-15 minutes)
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#homework-optional" class="md-nav__link">
-    <span class="md-ellipsis">
-      Homework (optional)
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#extensions-optional" class="md-nav__link">
-    <span class="md-ellipsis">
-      Extensions (optional)
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#resources" class="md-nav__link">
-    <span class="md-ellipsis">
-      Resources
+      Common Misconceptions
     </span>
   </a>
   
@@ -2162,6 +3073,15 @@
   <a href="#references" class="md-nav__link">
     <span class="md-ellipsis">
       References
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#development-notes" class="md-nav__link">
+    <span class="md-ellipsis">
+      Development Notes
     </span>
   </a>
   
@@ -2182,7 +3102,7 @@
                   
 
   
-    <a href="https://github.com/dmccreary/signal-processing/blob/master/docs/sims/sine-wave/index.md" title="Edit this page" class="md-content__button md-icon">
+    <a href="https://github.com/dmccreary/signal-processing/blob/main/docs/sims/sine-wave/index.md" title="Edit this page" class="md-content__button md-icon">
       
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M10 20H6V4h7v5h5v3.1l2-2V8l-6-6H6c-1.1 0-2 .9-2 2v16c0 1.1.9 2 2 2h4zm10.2-7c.1 0 .3.1.4.2l1.3 1.3c.2.2.2.6 0 .8l-1 1-2.1-2.1 1-1c.1-.1.2-.2.4-.2m0 3.9L14.1 23H12v-2.1l6.1-6.1z"/></svg>
     </a>
@@ -2191,25 +3111,101 @@
 
 
 <h1 id="sine-wave">Sine Wave</h1>
-<iframe src="./main.html" height="480px" scrolling="no"
-  style="overflow: hidden;"></iframe>
+<iframe src="main.html" width="100%" height="572px" scrolling="no"></iframe>
 
-<p><a class="md-button md-button--primary" href="./sine-wave.html">Run the Sine Wave MicroSim</a>
-<a href="https://editor.p5js.org/dmccreary/sketches/0SEATs3jW">Edit the Sine Wave MicroSim</a></p>
-<p>To include this MicroSim on your web site, just copy the following line of HTML code:</p>
-<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
-<span class="normal">2</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="p">&lt;</span><span class="nt">iframe</span> <span class="na">src</span><span class="o">=</span><span class="s">&quot;https://dmccreary.github.io/signal-processing/sims/sine-wave/main.html&quot;</span> <span class="na">height</span><span class="o">=</span><span class="s">&quot;480px&quot;</span> <span class="na">scrolling</span><span class="o">=</span><span class="s">&quot;no&quot;</span>
-  <span class="na">style</span><span class="o">=</span><span class="s">&quot;overflow: hidden;&quot;</span><span class="p">&gt;&lt;/</span><span class="nt">iframe</span><span class="p">&gt;</span>
+<p>Copy this iframe to your website:</p>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="p">&lt;</span><span class="nt">iframe</span> <span class="na">src</span><span class="o">=</span><span class="s">"https://dmccreary.github.io/signal-processing/sims/sine-wave/main.html"</span> <span class="na">width</span><span class="o">=</span><span class="s">"100%"</span> <span class="na">height</span><span class="o">=</span><span class="s">"572px"</span> <span class="na">scrolling</span><span class="o">=</span><span class="s">"no"</span><span class="p">&gt;&lt;/</span><span class="nt">iframe</span><span class="p">&gt;</span>
 </code></pre></div></td></tr></table></div>
-<p>In this demo, we use three range control sliders to change 
-the ways a sine wave is drawn on a canvas.
-The three parameters are:</p>
+<p><a class="md-button md-button--primary" href="main.html">Run MicroSim in Fullscreen</a></p>
+<p><a href="https://editor.p5js.org/dmccreary/sketches/0SEATs3jW">Edit in the p5.js Editor</a></p>
+<h2 id="description">Description</h2>
+<p>This MicroSim draws one sinusoid, <span class="arithmatex">\(y(t) = A\sin\left(\frac{2\pi t}{T} + \varphi\right)\)</span>, over a fixed 10 ms window
+from <span class="arithmatex">\(-5\)</span> ms to <span class="arithmatex">\(+5\)</span> ms. Three sliders set the three parameters that completely define the wave:</p>
+<ul>
+<li><strong>Amplitude <span class="arithmatex">\(A\)</span></strong> (0 to 2, arbitrary units) sets the height of the peaks.</li>
+<li><strong>Period <span class="arithmatex">\(T\)</span></strong> (0.5 to 5 ms) sets the time taken by one full cycle.</li>
+<li><strong>Phase <span class="arithmatex">\(\varphi\)</span></strong> (-180° to +180°) sets where in its cycle the wave is at <span class="arithmatex">\(t = 0\)</span>.</li>
+</ul>
+<p>Gold markers show each parameter on the plot: dashed lines at <span class="arithmatex">\(\pm A\)</span>, a dimension line exactly one period wide,
+and an arrow on the time axis for the time shift <span class="arithmatex">\(\Delta t\)</span>. The read-out panel at the top gives the equation with the
+current numbers, the frequency <span class="arithmatex">\(f\)</span>, the angular frequency <span class="arithmatex">\(\omega\)</span>, the time shift <span class="arithmatex">\(\Delta t\)</span> and the value <span class="arithmatex">\(y(0)\)</span>,
+which is also marked by the open circle at <span class="arithmatex">\(t = 0\)</span>.</p>
+<p>A positive phase moves the wave to the left (the wave <em>leads</em>), the same convention as <span class="arithmatex">\(A\cos(\omega t + \varphi)\)</span>
+in the text. A phase of +90° turns the sine into a cosine. This simulation supports the section on sinusoidal signals
+in <a href="../../chapters/02-introduction-to-signals-and-systems/">Chapter 2: Introduction to Signals and Systems</a>.</p>
+<h3 id="mathematical-concepts">Mathematical Concepts</h3>
+<p>The three read-outs are computed from the period <span class="arithmatex">\(T\)</span> and the phase <span class="arithmatex">\(\varphi\)</span>:</p>
+<div class="arithmatex">\[f = \frac{1}{T}, \qquad \omega = 2\pi f = \frac{2\pi}{T}, \qquad \Delta t = -\frac{\varphi}{\omega} = -\frac{\varphi T}{2\pi}\]</div>
+<p>Writing the wave as <span class="arithmatex">\(y(t) = A\sin\big(\omega (t - \Delta t)\big)\)</span> shows that the phase is a time shift expressed as a
+fraction of a cycle: a phase of <span class="arithmatex">\(2\pi\)</span> radians (360°) is one full period.</p>
+<h2 id="lesson-plan">Lesson Plan</h2>
+<h3 id="learning-objectives">Learning Objectives</h3>
+<p>After using this MicroSim, students will be able to:</p>
 <ol>
-<li>amplitude</li>
-<li>period</li>
-<li>and phase</li>
+<li><strong>Identify</strong> the amplitude, period and phase of a sine wave from the markers on its plot</li>
+<li><strong>Calculate</strong> the frequency <span class="arithmatex">\(f = 1/T\)</span> and the angular frequency <span class="arithmatex">\(\omega = 2\pi f\)</span> from a period read off the time axis</li>
+<li><strong>Predict</strong> how changing the amplitude, period or phase alters the plotted wave before moving a slider</li>
+<li><strong>Compute</strong> the time shift <span class="arithmatex">\(\Delta t = -\varphi T / 2\pi\)</span> produced by a given phase and explain why it depends on the period</li>
+<li><strong>Explain</strong> why a phase of +90° turns a sine wave into a cosine wave</li>
 </ol>
-<h3 id="prompt">Prompt</h3>
+<h3 id="target-audience">Target Audience</h3>
+<p>College-level introductory signal processing, or any course that first introduces sinusoids (pre-calculus,
+calculus, circuits, physics). Plan 20-30 minutes for the activities. A suggested class flow is 10 minutes of motivation
+(sine waves in sound, radio and AC power), 15 minutes of instructor demonstration, 30 minutes of student
+activities and 10 minutes of group discussion.</p>
+<h3 id="prerequisites">Prerequisites</h3>
+<ul>
+<li>Graphing a function on a Cartesian grid</li>
+<li>Right-triangle trigonometry and the radian measure of angles</li>
+<li>Function notation such as <span class="arithmatex">\(y(t)\)</span></li>
+</ul>
+<h3 id="activities">Activities</h3>
+<p><strong>Activity 1: Amplitude (5 min).</strong> Set <span class="arithmatex">\(T\)</span> = 4.0 ms and <span class="arithmatex">\(\varphi\)</span> = 0°, then move <span class="arithmatex">\(A\)</span> to 0.50, 1.00 and 2.00.
+The peaks reach <span class="arithmatex">\(\pm A\)</span>, so the peak-to-peak value is 1.0, 2.0 and 4.0. The period bracket stays 4.0 ms wide and the
+frequency stays 250.0 Hz: amplitude changes only the height.</p>
+<p><strong>Activity 2: Period and frequency (5-10 min).</strong> Set <span class="arithmatex">\(A\)</span> = 1.00 and <span class="arithmatex">\(\varphi\)</span> = 0°, then set <span class="arithmatex">\(T\)</span> to 5.0, 4.0, 2.0,
+1.0 and 0.5 ms. The frequency read-out shows 200.0 Hz, 250.0 Hz, 500.0 Hz, 1.00 kHz and 2.00 kHz, and the
+10 ms window holds 2, 2.5, 5, 10 and 20 cycles. Halving the period doubles the frequency.</p>
+<p><strong>Activity 3: Phase (5-10 min).</strong> Set <span class="arithmatex">\(A\)</span> = 1.00 and <span class="arithmatex">\(T\)</span> = 4.0 ms. Move <span class="arithmatex">\(\varphi\)</span> to +90°: the wave becomes a cosine,
+<span class="arithmatex">\(y(0) = 1.00\)</span> sits on a peak and the time shift is <span class="arithmatex">\(\Delta t = -1.00\)</span> ms (left). Move <span class="arithmatex">\(\varphi\)</span> to -90°: <span class="arithmatex">\(\Delta t = +1.00\)</span> ms (right)
+and <span class="arithmatex">\(y(0) = -1.00\)</span>. Move <span class="arithmatex">\(\varphi\)</span> to 180°: the wave is upside down, <span class="arithmatex">\(y(0) = 0.00\)</span> and <span class="arithmatex">\(\Delta t = -2.00\)</span> ms, half a period.</p>
+<p><strong>Activity 4: Predict, then verify (5-10 min).</strong> Without looking at the read-out, predict <span class="arithmatex">\(\Delta t\)</span> for <span class="arithmatex">\(T\)</span> = 2.0 ms and
+<span class="arithmatex">\(\varphi\)</span> = 90°, then set the sliders. The read-out shows <span class="arithmatex">\(\Delta t = -0.50\)</span> ms. Now set <span class="arithmatex">\(T\)</span> = 4.0 ms: the same phase gives
+<span class="arithmatex">\(\Delta t = -1.00\)</span> ms, because a quarter cycle lasts longer when the period is longer.</p>
+<p><strong>Extension and homework (optional).</strong> Open the sketch in the p5.js editor and add the cosine and the tangent
+functions to the plot, then compare the cosine with the sine at <span class="arithmatex">\(\varphi\)</span> = 90°. For homework, write your own sketch
+with an adjustable sine wave and describe in a short report, with screenshots, how each parameter changes the wave.</p>
+<h3 id="assessment">Assessment</h3>
+<ol>
+<li>A sine wave has a period of 2.5 ms. What are its frequency and angular frequency? <em>(Answer: <span class="arithmatex">\(f = 1/T = 400\)</span> Hz and <span class="arithmatex">\(\omega = 2\pi f \approx 2513\)</span> rad/s.)</em></li>
+<li>A wave has <span class="arithmatex">\(A = 1.5\)</span>. What is its peak-to-peak value? <em>(Answer: 3.0, from <span class="arithmatex">\(-1.5\)</span> to <span class="arithmatex">\(+1.5\)</span>.)</em></li>
+<li>With <span class="arithmatex">\(T\)</span> = 4.0 ms, the phase is set to 45°. By how much and in which direction is the wave shifted from the <span class="arithmatex">\(\varphi\)</span> = 0° wave? <em>(Answer: <span class="arithmatex">\(\Delta t = -\varphi T / 2\pi = -(45/360)(4\text{ ms}) = -0.5\)</span> ms, so it is shifted 0.5 ms to the left.)</em></li>
+<li>Which phase makes <span class="arithmatex">\(A\sin(\omega t + \varphi)\)</span> identical to <span class="arithmatex">\(A\cos(\omega t)\)</span>? Which phase turns it into <span class="arithmatex">\(-A\sin(\omega t)\)</span>? <em>(Answer: <span class="arithmatex">\(\varphi\)</span> = +90° gives the cosine; <span class="arithmatex">\(\varphi\)</span> = ±180° gives <span class="arithmatex">\(-A\sin(\omega t)\)</span>.)</em></li>
+<li>Why does a phase of 90° produce a 1.00 ms shift at <span class="arithmatex">\(T\)</span> = 4.0 ms but only 0.50 ms at <span class="arithmatex">\(T\)</span> = 2.0 ms? <em>(Answer: 90° is a quarter of a cycle, and a quarter of 4.0 ms is 1.00 ms while a quarter of 2.0 ms is 0.50 ms.)</em></li>
+</ol>
+<h3 id="common-misconceptions">Common Misconceptions</h3>
+<p><strong>"Phase is a time delay in milliseconds."</strong> Phase is an angle, a fraction of one cycle. The same <span class="arithmatex">\(\varphi\)</span> gives a
+different time shift for every period. Compare the <span class="arithmatex">\(\Delta t\)</span> arrow for <span class="arithmatex">\(\varphi\)</span> = 90° at <span class="arithmatex">\(T\)</span> = 2.0 ms and <span class="arithmatex">\(T\)</span> = 4.0 ms
+(Activity 4). Also note the sign: a positive phase moves the wave left, not right.</p>
+<p><strong>"A longer period means a higher frequency."</strong> The two are reciprocals. Increase <span class="arithmatex">\(T\)</span> from 2.0 to 4.0 ms and the
+frequency read-out falls from 500.0 Hz to 250.0 Hz while the number of cycles in the window falls from 5 to 2.5.</p>
+<h2 id="references">References</h2>
+<ol>
+<li><a href="https://en.wikipedia.org/wiki/Sine_wave">Sine wave</a> - Wikipedia - definition of the sinusoid in terms of amplitude, frequency and phase</li>
+<li><a href="https://en.wikipedia.org/wiki/Amplitude">Amplitude</a> - Wikipedia - peak, peak-to-peak and other amplitude measures</li>
+<li><a href="https://en.wikipedia.org/wiki/Frequency">Frequency</a> - Wikipedia - the relationship between period, frequency and angular frequency</li>
+<li><a href="https://en.wikipedia.org/wiki/Phase_%28waves%29">Phase (waves)</a> - Wikipedia - phase offset, leading and lagging waves, and time shift</li>
+<li><a href="https://en.wikipedia.org/wiki/Sine_and_cosine">Sine and cosine</a> - Wikipedia - why a 90 degree phase shift converts sine into cosine</li>
+<li><a href="https://www.dspguide.com/">The Scientist and Engineer's Guide to Digital Signal Processing</a> - Steven W. Smith - free online textbook with chapters on sinusoids and signal parameters</li>
+</ol>
+<h2 id="development-notes">Development Notes</h2>
+<details>
+<summary>Prompt history</summary>
+<p><strong>Version 2.0.0 (2026-10-14).</strong> Ported from p5.js 1.4.0 to p5.js 2.3.2. The period slider now sets the true period
+in milliseconds (the earlier sketch plotted <span class="arithmatex">\(\sin(x/p)\)</span> in pixels, so the number shown was not the period). The phase slider is
+now an angle in degrees using the <span class="arithmatex">\(\sin(\omega t + \varphi)\)</span> convention, and the plot gained a labeled time axis,
+<span class="arithmatex">\(\pm A\)</span> markers, a period marker, a time-shift arrow and the read-out panel.</p>
+<p><strong>Original sketch prompt</strong></p>
 <div class="highlight"><pre><span></span><code>Generate a static sine wave on a grid of cartesian coordinates. 
 Make (0,0) be at the center of an 600x400 canvas and larger y at the top.  
 Add sliders for period, amplitude and phase.
@@ -2218,7 +3214,7 @@ Make the sliders span the width less the leftSliderMargin of 100.
 Draw and label the X and Y Axis.
 </code></pre></div>
 <p><a href="https://editor.p5js.org/dmccreary/sketches/f7E377T03">Edit This MicroSim with the P5.js Editor</a></p>
-<h3 id="result">Result</h3>
+<p><strong>Original sketch result (p5.js 1.x)</strong></p>
 <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
 <span class="normal"> 2</span>
 <span class="normal"> 3</span>
@@ -2319,15 +3315,15 @@ Draw and label the X and Y Axis.
 <span class="w">  </span><span class="c1">// Create sliders</span>
 <span class="w">  </span><span class="nx">amplitudeSlider</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">createSlider</span><span class="p">(</span><span class="mf">0</span><span class="p">,</span><span class="w"> </span><span class="mf">200</span><span class="p">,</span><span class="w"> </span><span class="mf">100</span><span class="p">);</span>
 <span class="w">  </span><span class="nx">amplitudeSlider</span><span class="p">.</span><span class="nx">position</span><span class="p">(</span><span class="nx">labelValueMargin</span><span class="p">,</span><span class="w"> </span><span class="nx">height</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="mf">20</span><span class="p">);</span>
-<span class="w">  </span><span class="nx">amplitudeSlider</span><span class="p">.</span><span class="nx">style</span><span class="p">(</span><span class="s1">&#39;width&#39;</span><span class="p">,</span><span class="w"> </span><span class="nx">width</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="nx">labelValueMargin</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="s1">&#39;px&#39;</span><span class="p">)</span>
+<span class="w">  </span><span class="nx">amplitudeSlider</span><span class="p">.</span><span class="nx">style</span><span class="p">(</span><span class="s1">'width'</span><span class="p">,</span><span class="w"> </span><span class="nx">width</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="nx">labelValueMargin</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="s1">'px'</span><span class="p">)</span>
 
 <span class="w">  </span><span class="nx">periodSlider</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">createSlider</span><span class="p">(</span><span class="mf">1</span><span class="p">,</span><span class="w"> </span><span class="mf">100</span><span class="p">,</span><span class="w"> </span><span class="mf">50</span><span class="p">);</span>
 <span class="w">  </span><span class="nx">periodSlider</span><span class="p">.</span><span class="nx">position</span><span class="p">(</span><span class="nx">labelValueMargin</span><span class="p">,</span><span class="w"> </span><span class="nx">height</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="mf">40</span><span class="p">);</span>
-<span class="w">  </span><span class="nx">periodSlider</span><span class="p">.</span><span class="nx">style</span><span class="p">(</span><span class="s1">&#39;width&#39;</span><span class="p">,</span><span class="w"> </span><span class="nx">width</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="nx">labelValueMargin</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="s1">&#39;px&#39;</span><span class="p">)</span>
+<span class="w">  </span><span class="nx">periodSlider</span><span class="p">.</span><span class="nx">style</span><span class="p">(</span><span class="s1">'width'</span><span class="p">,</span><span class="w"> </span><span class="nx">width</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="nx">labelValueMargin</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="s1">'px'</span><span class="p">)</span>
 
 <span class="w">  </span><span class="nx">phaseSlider</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">createSlider</span><span class="p">(</span><span class="o">-</span><span class="nx">PI</span><span class="o">*</span><span class="mf">100</span><span class="p">,</span><span class="w"> </span><span class="nx">PI</span><span class="o">*</span><span class="mf">100</span><span class="p">,</span><span class="w"> </span><span class="mf">0</span><span class="p">,</span><span class="w"> </span><span class="mf">0.01</span><span class="p">);</span>
 <span class="w">  </span><span class="nx">phaseSlider</span><span class="p">.</span><span class="nx">position</span><span class="p">(</span><span class="nx">labelValueMargin</span><span class="p">,</span><span class="w"> </span><span class="nx">height</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="mf">60</span><span class="p">);</span>
-<span class="w">  </span><span class="nx">phaseSlider</span><span class="p">.</span><span class="nx">style</span><span class="p">(</span><span class="s1">&#39;width&#39;</span><span class="p">,</span><span class="w"> </span><span class="nx">width</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="nx">labelValueMargin</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="s1">&#39;px&#39;</span><span class="p">)</span>
+<span class="w">  </span><span class="nx">phaseSlider</span><span class="p">.</span><span class="nx">style</span><span class="p">(</span><span class="s1">'width'</span><span class="p">,</span><span class="w"> </span><span class="nx">width</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="nx">labelValueMargin</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="s1">'px'</span><span class="p">)</span>
 <span class="p">}</span>
 
 <span class="kd">function</span><span class="w"> </span><span class="nx">draw</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
@@ -2350,11 +3346,11 @@ Draw and label the X and Y Axis.
 <span class="p">}</span>
 
 <span class="kd">function</span><span class="w"> </span><span class="nx">drawAxis</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
-<span class="w">  </span><span class="nx">fill</span><span class="p">(</span><span class="s1">&#39;black&#39;</span><span class="p">)</span>
+<span class="w">  </span><span class="nx">fill</span><span class="p">(</span><span class="s1">'black'</span><span class="p">)</span>
 <span class="w">  </span><span class="nx">strokeWeight</span><span class="p">(</span><span class="mf">0</span><span class="p">)</span>
-<span class="w">  </span><span class="nx">text</span><span class="p">(</span><span class="s1">&#39;y&#39;</span><span class="p">,</span><span class="w"> </span><span class="nx">halfWidth</span><span class="o">-</span><span class="mf">20</span><span class="p">,</span><span class="w"> </span><span class="mf">15</span><span class="p">)</span>
-<span class="w">  </span><span class="nx">text</span><span class="p">(</span><span class="s1">&#39;x&#39;</span><span class="p">,</span><span class="w"> </span><span class="nx">width</span><span class="o">-</span><span class="mf">20</span><span class="p">,</span><span class="w"> </span><span class="nx">halfHeight</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="mf">20</span><span class="p">)</span>
-<span class="w">  </span><span class="nx">stroke</span><span class="p">(</span><span class="s1">&#39;gray&#39;</span><span class="p">)</span>
+<span class="w">  </span><span class="nx">text</span><span class="p">(</span><span class="s1">'y'</span><span class="p">,</span><span class="w"> </span><span class="nx">halfWidth</span><span class="o">-</span><span class="mf">20</span><span class="p">,</span><span class="w"> </span><span class="mf">15</span><span class="p">)</span>
+<span class="w">  </span><span class="nx">text</span><span class="p">(</span><span class="s1">'x'</span><span class="p">,</span><span class="w"> </span><span class="nx">width</span><span class="o">-</span><span class="mf">20</span><span class="p">,</span><span class="w"> </span><span class="nx">halfHeight</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="mf">20</span><span class="p">)</span>
+<span class="w">  </span><span class="nx">stroke</span><span class="p">(</span><span class="s1">'gray'</span><span class="p">)</span>
 <span class="w">  </span><span class="nx">strokeWeight</span><span class="p">(</span><span class="mf">1</span><span class="p">)</span>
 <span class="w">  </span><span class="nx">setLineDash</span><span class="p">([</span><span class="mf">5</span><span class="p">,</span><span class="w"> </span><span class="mf">5</span><span class="p">])</span>
 
@@ -2365,14 +3361,14 @@ Draw and label the X and Y Axis.
 
 <span class="w">  </span><span class="nx">stroke</span><span class="p">(</span><span class="mf">0</span><span class="p">)</span>
 <span class="w">  </span><span class="nx">strokeWeight</span><span class="p">(</span><span class="mf">0</span><span class="p">);</span>
-<span class="w">  </span><span class="nx">fill</span><span class="p">(</span><span class="s1">&#39;black&#39;</span><span class="p">);</span><span class="w"> </span><span class="c1">// Text color</span>
-<span class="w">  </span><span class="nx">text</span><span class="p">(</span><span class="s1">&#39;Amplitude: &#39;</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="nx">amplitude</span><span class="o">/</span><span class="mf">100</span><span class="p">,</span><span class="w">    </span><span class="mf">10</span><span class="p">,</span><span class="w"> </span><span class="nx">height</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="mf">5</span><span class="p">);</span>
-<span class="w">  </span><span class="nx">text</span><span class="p">(</span><span class="s1">&#39;Period: &#39;</span><span class="w">    </span><span class="o">+</span><span class="w"> </span><span class="nx">period</span><span class="p">,</span><span class="w">           </span><span class="mf">10</span><span class="p">,</span><span class="w"> </span><span class="nx">height</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="mf">25</span><span class="p">);</span>
-<span class="w">  </span><span class="nx">text</span><span class="p">(</span><span class="s1">&#39;Phase: &#39;</span><span class="w">     </span><span class="o">+</span><span class="w"> </span><span class="nx">phase</span><span class="p">.</span><span class="nx">toFixed</span><span class="p">(</span><span class="mf">2</span><span class="p">),</span><span class="w"> </span><span class="mf">10</span><span class="p">,</span><span class="w"> </span><span class="nx">height</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="mf">45</span><span class="p">);</span>
+<span class="w">  </span><span class="nx">fill</span><span class="p">(</span><span class="s1">'black'</span><span class="p">);</span><span class="w"> </span><span class="c1">// Text color</span>
+<span class="w">  </span><span class="nx">text</span><span class="p">(</span><span class="s1">'Amplitude: '</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="nx">amplitude</span><span class="o">/</span><span class="mf">100</span><span class="p">,</span><span class="w">    </span><span class="mf">10</span><span class="p">,</span><span class="w"> </span><span class="nx">height</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="mf">5</span><span class="p">);</span>
+<span class="w">  </span><span class="nx">text</span><span class="p">(</span><span class="s1">'Period: '</span><span class="w">    </span><span class="o">+</span><span class="w"> </span><span class="nx">period</span><span class="p">,</span><span class="w">           </span><span class="mf">10</span><span class="p">,</span><span class="w"> </span><span class="nx">height</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="mf">25</span><span class="p">);</span>
+<span class="w">  </span><span class="nx">text</span><span class="p">(</span><span class="s1">'Phase: '</span><span class="w">     </span><span class="o">+</span><span class="w"> </span><span class="nx">phase</span><span class="p">.</span><span class="nx">toFixed</span><span class="p">(</span><span class="mf">2</span><span class="p">),</span><span class="w"> </span><span class="mf">10</span><span class="p">,</span><span class="w"> </span><span class="nx">height</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="mf">45</span><span class="p">);</span>
 <span class="p">}</span>
 
 <span class="kd">function</span><span class="w"> </span><span class="nx">drawSineWave</span><span class="p">(</span><span class="nx">amplitude</span><span class="p">,</span><span class="w"> </span><span class="nx">frequency</span><span class="p">,</span><span class="w"> </span><span class="nx">phase</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
-<span class="w">  </span><span class="nx">stroke</span><span class="p">(</span><span class="s1">&#39;blue&#39;</span><span class="p">);</span>
+<span class="w">  </span><span class="nx">stroke</span><span class="p">(</span><span class="s1">'blue'</span><span class="p">);</span>
 <span class="w">  </span><span class="nx">strokeWeight</span><span class="p">(</span><span class="mf">3</span><span class="p">)</span>
 <span class="w">  </span><span class="nx">noFill</span><span class="p">();</span>
 <span class="w">  </span><span class="c1">// turn off dash line</span>
@@ -2385,13 +3381,8 @@ Draw and label the X and Y Axis.
 <span class="w">  </span><span class="nx">endShape</span><span class="p">();</span>
 <span class="p">}</span>
 </code></pre></div></td></tr></table></div>
-<div class="admonition challenge">
-<p class="admonition-title">Challenge</p>
-<p>Create your own trigonometry demos by drawing
-the cosine and tangent functions.</p>
-</div>
-<h2 id="lesson-plan">Lesson Plan</h2>
-<h3 id="prompt_1">Prompt</h3>
+<p><strong>Original challenge:</strong> create your own trigonometry demos by drawing the cosine and tangent functions.</p>
+<p><strong>Original lesson plan prompt</strong></p>
 <div class="highlight"><pre><span></span><code>Generate a lesson plan for a 9th grade geometry class 
 that accompanies the following p5.js demonstration:
 
@@ -2401,68 +3392,7 @@ One slider changes the amplitude of the sine wave.
 One slider changes the period of the sine wave.
 One slider changes the phase of the sine wave.
 </code></pre></div>
-<h3 id="grade-level">Grade Level</h3>
-<p>9th Grade  </p>
-<h3 id="subject">Subject</h3>
-<p>Geometry  </p>
-<h3 id="duration">Duration</h3>
-<p>1-2 class periods (40-80 minutes)  </p>
-<h3 id="tools-needed">Tools Needed</h3>
-<p>Computers with internet access, p5.js web editor, projector for demonstrations.</p>
-<h3 id="objectives">Objectives</h3>
-<ol>
-<li>Understand the basic properties of sine waves (amplitude, period, phase).</li>
-<li>Learn how to manipulate these properties using p5.js.</li>
-<li>Visualize the effects of changing each property on the shape of the sine wave.</li>
-</ol>
-<h3 id="introduction-10-minutes">Introduction (10 minutes)</h3>
-<ul>
-<li>Begin with a brief overview of sine waves and their significance in mathematics and the real world (e.g., sound waves, light waves).</li>
-<li>Introduce the p5.js tool and its purpose in visualizing mathematical concepts.</li>
-</ul>
-<h3 id="demonstration-15-minutes">Demonstration (15 minutes)</h3>
-<ul>
-<li>Project the p5.js sine wave demonstration on the screen.</li>
-<li>Explain each control slider and its corresponding property:</li>
-<li><strong>Amplitude:</strong> Height of the wave peaks.</li>
-<li><strong>Period:</strong> Distance between successive wave peaks.</li>
-<li><strong>Phase:</strong> Horizontal shift of the entire wave.</li>
-</ul>
-<h3 id="interactive-activity-30-minutes">Interactive Activity (30 minutes)</h3>
-<ul>
-<li>Students will use the p5.js web editor to experiment with the sine wave.</li>
-<li>Tasks for students:</li>
-<li>Adjust the amplitude and observe changes.</li>
-<li>Modify the period and note the effects.</li>
-<li>Change the phase and discuss how the wave shifts.</li>
-<li>Encourage students to note their observations and any patterns they discover.</li>
-</ul>
-<h3 id="group-discussion-10-minutes">Group Discussion (10 minutes)</h3>
-<ul>
-<li>Regroup and discuss the findings.</li>
-<li>Ask students to explain how each parameter affects the wave.</li>
-<li>Discuss practical applications of sine waves.</li>
-</ul>
-<h3 id="assessment-5-15-minutes">Assessment (5-15 minutes)</h3>
-<ul>
-<li>Provide a short quiz or worksheet asking students to match wave diagrams with their corresponding amplitude, period, and phase settings.</li>
-</ul>
-<h3 id="homework-optional">Homework (optional)</h3>
-<ul>
-<li>Students create their own p5.js sketch that includes a sine wave with adjustable properties.</li>
-<li>They should write a brief report explaining how changing each property affects the wave and include screenshots of their sketch.</li>
-</ul>
-<h3 id="extensions-optional">Extensions (optional)</h3>
-<ul>
-<li>Introduce concepts of frequency and angular velocity related to sine waves.</li>
-<li>Explore other trigonometric functions like cosine and tangent using p5.js.</li>
-</ul>
-<h3 id="resources">Resources</h3>
-<ul>
-<li>Access to the p5.js web editor and basic tutorials.</li>
-<li>Diagrams and explanations of sine waves and their properties.</li>
-</ul>
-<h2 id="references">References</h2>
+</details>
 
 
 
@@ -2475,8 +3405,6 @@ One slider changes the phase of the sine wave.
 
 
 
-
-  
 
 
 
@@ -2500,12 +3428,10 @@ One slider changes the phase of the sine wave.
   
     
       
-        
-      
       <nav class="md-footer__inner md-grid" aria-label="Footer" >
         
           
-          <a href="../reverb/" class="md-footer__link md-footer__link--prev" aria-label="Previous: Reverb Effect">
+          <a href="../signal-type-explorer/" class="md-footer__link md-footer__link--prev" aria-label="Previous: Signal Type Explorer">
             <div class="md-footer__button md-icon">
               
               <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
@@ -2515,20 +3441,20 @@ One slider changes the phase of the sine wave.
                 Previous
               </span>
               <div class="md-ellipsis">
-                Reverb Effect
+                Signal Type Explorer
               </div>
             </div>
           </a>
         
         
           
-          <a href="../synth-timeline/" class="md-footer__link md-footer__link--next" aria-label="Next: Synth Timeline">
+          <a href="../spectral-leakage-and-windowing/" class="md-footer__link md-footer__link--next" aria-label="Next: Spectral Leakage and Windowing">
             <div class="md-footer__title">
               <span class="md-footer__direction">
                 Next
               </span>
               <div class="md-ellipsis">
-                Synth Timeline
+                Spectral Leakage and Windowing
               </div>
             </div>
             <div class="md-footer__button md-icon">

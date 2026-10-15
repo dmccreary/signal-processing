@@ -1,0 +1,3230 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+        <meta name="description" content="How to teach with the Signal Processing with AI textbook - chapters, MicroSims, quizzes, pacing, licensing, customization, and analytics.">
+      
+      
+        <meta name="author" content="Dan McCreary">
+      
+      
+        <link rel="canonical" href="https://dmccreary.github.io/signal-processing/instructors-guide/">
+      
+      
+        <link rel="prev" href="../how-we-built-this-site/">
+      
+      
+        <link rel="next" href="../license/">
+      
+      
+      <link rel="icon" href="../img/favicon.ico">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.5.43">
+    
+    
+      
+        <title>Instructor's Guide - Signal Processing with AI</title>
+      
+    
+    
+      <link rel="stylesheet" href="../assets/stylesheets/main.0253249f.min.css">
+      
+        
+        <link rel="stylesheet" href="../assets/stylesheets/palette.06af60db.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+      <link rel="stylesheet" href="../css/extra.css">
+    
+      <link rel="stylesheet" href="../css/mascot.css">
+    
+    <script>__md_scope=new URL("..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+      
+        <meta  property="og:type"  content="website" >
+      
+        <meta  property="og:title"  content="Instructor's Guide - Signal Processing with AI" >
+      
+        <meta  property="og:description"  content="How to teach with the Signal Processing with AI textbook - chapters, MicroSims, quizzes, pacing, licensing, customization, and analytics." >
+      
+        <meta  property="og:image"  content="https://dmccreary.github.io/signal-processing/assets/images/social/instructors-guide/index.png" >
+      
+        <meta  property="og:image:type"  content="image/png" >
+      
+        <meta  property="og:image:width"  content="1200" >
+      
+        <meta  property="og:image:height"  content="630" >
+      
+        <meta  property="og:url"  content="https://dmccreary.github.io/signal-processing/instructors-guide/" >
+      
+        <meta  name="twitter:card"  content="summary_large_image" >
+      
+        <meta  name="twitter:title"  content="Instructor's Guide - Signal Processing with AI" >
+      
+        <meta  name="twitter:description"  content="How to teach with the Signal Processing with AI textbook - chapters, MicroSims, quizzes, pacing, licensing, customization, and analytics." >
+      
+        <meta  name="twitter:image"  content="https://dmccreary.github.io/signal-processing/assets/images/social/instructors-guide/index.png" >
+      
+    
+    
+  </head>
+  
+  
+    
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="maroon" data-md-color-accent="gold">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#instructors-guide" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+  
+
+<header class="md-header md-header--shadow" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href=".." title="Signal Processing with AI" class="md-header__button md-logo" aria-label="Signal Processing with AI" data-md-component="logo">
+      
+  <img src="../img/mascot/neutral.png" alt="logo">
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            Signal Processing with AI
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              Instructor's Guide
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+    
+    
+    
+    
+      <label class="md-header__button md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+      </label>
+      <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Search">
+        
+        <button type="reset" class="md-search__icon md-icon" title="Clear" aria-label="Clear" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+        </button>
+      </nav>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+    
+      <div class="md-header__source">
+        <a href="https://github.com/dmccreary/signal-processing" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 6.6.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2024 Fonticons, Inc.--><path d="M439.55 236.05 244 40.45a28.87 28.87 0 0 0-40.81 0l-40.66 40.63 51.52 51.52c27.06-9.14 52.68 16.77 43.39 43.68l49.66 49.66c34.23-11.8 61.18 31 35.47 56.69-26.49 26.49-70.21-2.87-56-37.34L240.22 199v121.85c25.3 12.54 22.26 41.85 9.08 55a34.34 34.34 0 0 1-48.55 0c-17.57-17.6-11.07-46.91 11.25-56v-123c-20.8-8.51-24.6-30.74-18.64-45L142.57 101 8.45 235.14a28.86 28.86 0 0 0 0 40.81l195.61 195.6a28.86 28.86 0 0 0 40.8 0l194.69-194.69a28.86 28.86 0 0 0 0-40.81"/></svg>
+  </div>
+  <div class="md-source__repository">
+    GitHub Repo
+  </div>
+</a>
+      </div>
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+
+<nav class="md-nav md-nav--primary" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href=".." title="Signal Processing with AI" class="md-nav__button md-logo" aria-label="Signal Processing with AI" data-md-component="logo">
+      
+  <img src="../img/mascot/neutral.png" alt="logo">
+
+    </a>
+    Signal Processing with AI
+  </label>
+  
+    <div class="md-nav__source">
+      <a href="https://github.com/dmccreary/signal-processing" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 6.6.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2024 Fonticons, Inc.--><path d="M439.55 236.05 244 40.45a28.87 28.87 0 0 0-40.81 0l-40.66 40.63 51.52 51.52c27.06-9.14 52.68 16.77 43.39 43.68l49.66 49.66c34.23-11.8 61.18 31 35.47 56.69-26.49 26.49-70.21-2.87-56-37.34L240.22 199v121.85c25.3 12.54 22.26 41.85 9.08 55a34.34 34.34 0 0 1-48.55 0c-17.57-17.6-11.07-46.91 11.25-56v-123c-20.8-8.51-24.6-30.74-18.64-45L142.57 101 8.45 235.14a28.86 28.86 0 0 0 0 40.81l195.61 195.6a28.86 28.86 0 0 0 40.8 0l194.69-194.69a28.86 28.86 0 0 0 0-40.81"/></svg>
+  </div>
+  <div class="md-source__repository">
+    GitHub Repo
+  </div>
+</a>
+    </div>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href=".." class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Home
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../about/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    About
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../course-description/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Course Description
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+        
+        
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+    <a href="../chapters/" class="md-nav__link">
+      
+  
+  <span class="md-ellipsis">
+    Chapters
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+    
+    
+    
+      
+        
+        
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+    <a href="../sims/" class="md-nav__link">
+      
+  
+  <span class="md-ellipsis">
+    MicroSims
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+    
+    
+    
+      
+        
+        
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+    <a href="../stories/" class="md-nav__link">
+      
+  
+  <span class="md-ellipsis">
+    Stories
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+    
+    
+    
+      
+        
+        
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+    <a href="../circuits/" class="md-nav__link">
+      
+  
+  <span class="md-ellipsis">
+    Circuits
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+        
+        
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+    <a href="../learning-graph/" class="md-nav__link">
+      
+  
+  <span class="md-ellipsis">
+    Learning Graph
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+    
+    
+    
+      
+        
+        
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+    <a href="../research/" class="md-nav__link">
+      
+  
+  <span class="md-ellipsis">
+    Research
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../report-card/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Report Card
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../checklist/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Checklist
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../faq/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    FAQs
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../glossary/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Glossary
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../how-we-built-this-site/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    How We Built This Site
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  <span class="md-ellipsis">
+    Instructor's Guide
+  </span>
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        
+  
+  <span class="md-ellipsis">
+    Instructor's Guide
+  </span>
+  
+
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#before-you-teach" class="md-nav__link">
+    <span class="md-ellipsis">
+      Before You Teach
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#about-this-intelligent-textbook" class="md-nav__link">
+    <span class="md-ellipsis">
+      About This Intelligent Textbook
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="About This Intelligent Textbook">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#what-is-an-intelligent-textbook" class="md-nav__link">
+    <span class="md-ellipsis">
+      What is an Intelligent Textbook?
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#the-five-levels-of-intelligent-textbooks" class="md-nav__link">
+    <span class="md-ellipsis">
+      The Five Levels of Intelligent Textbooks
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#what-makes-this-textbook-different" class="md-nav__link">
+    <span class="md-ellipsis">
+      What Makes This Textbook Different
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#the-course-at-a-glance" class="md-nav__link">
+    <span class="md-ellipsis">
+      The Course at a Glance
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#using-the-chapters" class="md-nav__link">
+    <span class="md-ellipsis">
+      Using the Chapters
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Using the Chapters">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#chapter-map" class="md-nav__link">
+    <span class="md-ellipsis">
+      Chapter Map
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#what-each-chapter-contains" class="md-nav__link">
+    <span class="md-ellipsis">
+      What Each Chapter Contains
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#suggested-15-week-pacing" class="md-nav__link">
+    <span class="md-ellipsis">
+      Suggested 15-Week Pacing
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#suggested-classroom-use" class="md-nav__link">
+    <span class="md-ellipsis">
+      Suggested Classroom Use
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#using-the-microsims" class="md-nav__link">
+    <span class="md-ellipsis">
+      Using the MicroSims
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Using the MicroSims">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#what-is-a-microsim" class="md-nav__link">
+    <span class="md-ellipsis">
+      What is a MicroSim?
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#where-to-find-them" class="md-nav__link">
+    <span class="md-ellipsis">
+      Where to Find Them
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#microsim-specifications-in-chapters" class="md-nav__link">
+    <span class="md-ellipsis">
+      MicroSim Specifications in Chapters
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#tips-for-using-microsims-in-class" class="md-nav__link">
+    <span class="md-ellipsis">
+      Tips for Using MicroSims in Class
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#embedding-a-microsim-in-your-own-web-page" class="md-nav__link">
+    <span class="md-ellipsis">
+      Embedding a MicroSim in Your Own Web Page
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#using-the-quizzes" class="md-nav__link">
+    <span class="md-ellipsis">
+      Using the Quizzes
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Using the Quizzes">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#what-are-the-quizzes" class="md-nav__link">
+    <span class="md-ellipsis">
+      What are the Quizzes?
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#how-quizzes-work" class="md-nav__link">
+    <span class="md-ellipsis">
+      How Quizzes Work
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#tips-for-using-quizzes-in-class" class="md-nav__link">
+    <span class="md-ellipsis">
+      Tips for Using Quizzes in Class
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#blooms-taxonomy" class="md-nav__link">
+    <span class="md-ellipsis">
+      Bloom's Taxonomy
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#using-the-glossary" class="md-nav__link">
+    <span class="md-ellipsis">
+      Using the Glossary
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#using-the-faq" class="md-nav__link">
+    <span class="md-ellipsis">
+      Using the FAQ
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#the-learning-graph" class="md-nav__link">
+    <span class="md-ellipsis">
+      The Learning Graph
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="The Learning Graph">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#what-is-a-learning-graph" class="md-nav__link">
+    <span class="md-ellipsis">
+      What is a Learning Graph?
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#how-instructors-can-use-it" class="md-nav__link">
+    <span class="md-ellipsis">
+      How Instructors Can Use It
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#stories-and-circuits" class="md-nav__link">
+    <span class="md-ellipsis">
+      Stories and Circuits
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#feedback" class="md-nav__link">
+    <span class="md-ellipsis">
+      Feedback
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Feedback">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#reporting-issues-and-suggestions" class="md-nav__link">
+    <span class="md-ellipsis">
+      Reporting Issues and Suggestions
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#understanding-the-license" class="md-nav__link">
+    <span class="md-ellipsis">
+      Understanding the License
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Understanding the License">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#what-you-can-do" class="md-nav__link">
+    <span class="md-ellipsis">
+      What You Can Do
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#what-you-cannot-do" class="md-nav__link">
+    <span class="md-ellipsis">
+      What You Cannot Do
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#customizing-your-own-textbook" class="md-nav__link">
+    <span class="md-ellipsis">
+      Customizing Your Own Textbook
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Customizing Your Own Textbook">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#key-technical-terms" class="md-nav__link">
+    <span class="md-ellipsis">
+      Key Technical Terms
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#step-1-create-a-github-account" class="md-nav__link">
+    <span class="md-ellipsis">
+      Step 1: Create a GitHub Account
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#step-2-fork-or-clone-the-repository" class="md-nav__link">
+    <span class="md-ellipsis">
+      Step 2: Fork or Clone the Repository
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#step-3-make-changes" class="md-nav__link">
+    <span class="md-ellipsis">
+      Step 3: Make Changes
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#step-4-preview-your-changes-locally" class="md-nav__link">
+    <span class="md-ellipsis">
+      Step 4: Preview Your Changes Locally
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#step-5-publish-your-version" class="md-nav__link">
+    <span class="md-ellipsis">
+      Step 5: Publish Your Version
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#using-the-prompts" class="md-nav__link">
+    <span class="md-ellipsis">
+      Using the Prompts
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#analytics-and-student-privacy" class="md-nav__link">
+    <span class="md-ellipsis">
+      Analytics and Student Privacy
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Analytics and Student Privacy">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#what-is-web-analytics" class="md-nav__link">
+    <span class="md-ellipsis">
+      What is Web Analytics?
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#google-analytics" class="md-nav__link">
+    <span class="md-ellipsis">
+      Google Analytics
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#xapi-and-individual-student-data" class="md-nav__link">
+    <span class="md-ellipsis">
+      xAPI and Individual Student Data
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#related-pages" class="md-nav__link">
+    <span class="md-ellipsis">
+      Related Pages
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../license/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    License
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../references/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    References
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../contact/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Contact
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+        
+        
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+    <a href="../prompts/" class="md-nav__link">
+      
+  
+  <span class="md-ellipsis">
+    Prompts
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#before-you-teach" class="md-nav__link">
+    <span class="md-ellipsis">
+      Before You Teach
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#about-this-intelligent-textbook" class="md-nav__link">
+    <span class="md-ellipsis">
+      About This Intelligent Textbook
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="About This Intelligent Textbook">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#what-is-an-intelligent-textbook" class="md-nav__link">
+    <span class="md-ellipsis">
+      What is an Intelligent Textbook?
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#the-five-levels-of-intelligent-textbooks" class="md-nav__link">
+    <span class="md-ellipsis">
+      The Five Levels of Intelligent Textbooks
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#what-makes-this-textbook-different" class="md-nav__link">
+    <span class="md-ellipsis">
+      What Makes This Textbook Different
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#the-course-at-a-glance" class="md-nav__link">
+    <span class="md-ellipsis">
+      The Course at a Glance
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#using-the-chapters" class="md-nav__link">
+    <span class="md-ellipsis">
+      Using the Chapters
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Using the Chapters">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#chapter-map" class="md-nav__link">
+    <span class="md-ellipsis">
+      Chapter Map
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#what-each-chapter-contains" class="md-nav__link">
+    <span class="md-ellipsis">
+      What Each Chapter Contains
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#suggested-15-week-pacing" class="md-nav__link">
+    <span class="md-ellipsis">
+      Suggested 15-Week Pacing
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#suggested-classroom-use" class="md-nav__link">
+    <span class="md-ellipsis">
+      Suggested Classroom Use
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#using-the-microsims" class="md-nav__link">
+    <span class="md-ellipsis">
+      Using the MicroSims
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Using the MicroSims">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#what-is-a-microsim" class="md-nav__link">
+    <span class="md-ellipsis">
+      What is a MicroSim?
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#where-to-find-them" class="md-nav__link">
+    <span class="md-ellipsis">
+      Where to Find Them
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#microsim-specifications-in-chapters" class="md-nav__link">
+    <span class="md-ellipsis">
+      MicroSim Specifications in Chapters
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#tips-for-using-microsims-in-class" class="md-nav__link">
+    <span class="md-ellipsis">
+      Tips for Using MicroSims in Class
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#embedding-a-microsim-in-your-own-web-page" class="md-nav__link">
+    <span class="md-ellipsis">
+      Embedding a MicroSim in Your Own Web Page
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#using-the-quizzes" class="md-nav__link">
+    <span class="md-ellipsis">
+      Using the Quizzes
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Using the Quizzes">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#what-are-the-quizzes" class="md-nav__link">
+    <span class="md-ellipsis">
+      What are the Quizzes?
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#how-quizzes-work" class="md-nav__link">
+    <span class="md-ellipsis">
+      How Quizzes Work
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#tips-for-using-quizzes-in-class" class="md-nav__link">
+    <span class="md-ellipsis">
+      Tips for Using Quizzes in Class
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#blooms-taxonomy" class="md-nav__link">
+    <span class="md-ellipsis">
+      Bloom's Taxonomy
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#using-the-glossary" class="md-nav__link">
+    <span class="md-ellipsis">
+      Using the Glossary
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#using-the-faq" class="md-nav__link">
+    <span class="md-ellipsis">
+      Using the FAQ
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#the-learning-graph" class="md-nav__link">
+    <span class="md-ellipsis">
+      The Learning Graph
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="The Learning Graph">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#what-is-a-learning-graph" class="md-nav__link">
+    <span class="md-ellipsis">
+      What is a Learning Graph?
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#how-instructors-can-use-it" class="md-nav__link">
+    <span class="md-ellipsis">
+      How Instructors Can Use It
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#stories-and-circuits" class="md-nav__link">
+    <span class="md-ellipsis">
+      Stories and Circuits
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#feedback" class="md-nav__link">
+    <span class="md-ellipsis">
+      Feedback
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Feedback">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#reporting-issues-and-suggestions" class="md-nav__link">
+    <span class="md-ellipsis">
+      Reporting Issues and Suggestions
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#understanding-the-license" class="md-nav__link">
+    <span class="md-ellipsis">
+      Understanding the License
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Understanding the License">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#what-you-can-do" class="md-nav__link">
+    <span class="md-ellipsis">
+      What You Can Do
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#what-you-cannot-do" class="md-nav__link">
+    <span class="md-ellipsis">
+      What You Cannot Do
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#customizing-your-own-textbook" class="md-nav__link">
+    <span class="md-ellipsis">
+      Customizing Your Own Textbook
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Customizing Your Own Textbook">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#key-technical-terms" class="md-nav__link">
+    <span class="md-ellipsis">
+      Key Technical Terms
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#step-1-create-a-github-account" class="md-nav__link">
+    <span class="md-ellipsis">
+      Step 1: Create a GitHub Account
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#step-2-fork-or-clone-the-repository" class="md-nav__link">
+    <span class="md-ellipsis">
+      Step 2: Fork or Clone the Repository
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#step-3-make-changes" class="md-nav__link">
+    <span class="md-ellipsis">
+      Step 3: Make Changes
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#step-4-preview-your-changes-locally" class="md-nav__link">
+    <span class="md-ellipsis">
+      Step 4: Preview Your Changes Locally
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#step-5-publish-your-version" class="md-nav__link">
+    <span class="md-ellipsis">
+      Step 5: Publish Your Version
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#using-the-prompts" class="md-nav__link">
+    <span class="md-ellipsis">
+      Using the Prompts
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#analytics-and-student-privacy" class="md-nav__link">
+    <span class="md-ellipsis">
+      Analytics and Student Privacy
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Analytics and Student Privacy">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#what-is-web-analytics" class="md-nav__link">
+    <span class="md-ellipsis">
+      What is Web Analytics?
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#google-analytics" class="md-nav__link">
+    <span class="md-ellipsis">
+      Google Analytics
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#xapi-and-individual-student-data" class="md-nav__link">
+    <span class="md-ellipsis">
+      xAPI and Individual Student Data
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#related-pages" class="md-nav__link">
+    <span class="md-ellipsis">
+      Related Pages
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+  
+    <a href="https://github.com/dmccreary/signal-processing/blob/main/docs/instructors-guide/index.md" title="Edit this page" class="md-content__button md-icon">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M10 20H6V4h7v5h5v3.1l2-2V8l-6-6H6c-1.1 0-2 .9-2 2v16c0 1.1.9 2 2 2h4zm10.2-7c.1 0 .3.1.4.2l1.3 1.3c.2.2.2.6 0 .8l-1 1-2.1-2.1 1-1c.1-.1.2-.2.4-.2m0 3.9L14.1 23H12v-2.1l6.1-6.1z"/></svg>
+    </a>
+  
+  
+
+
+<h1 id="instructors-guide">Instructor's Guide</h1>
+<p>Welcome to the instructor's guide for <em>Signal Processing with AI: A College-Level
+Intelligent Textbook</em>. This guide explains what is in the textbook, how to use each
+part of it in a course, and how to make your own customized copy. No prior technical
+knowledge is assumed. Every technical term is defined before it is used.</p>
+<h2 id="before-you-teach">Before You Teach</h2>
+<div class="admonition warning">
+<p class="admonition-title">Read this first: what this textbook is and is not</p>
+<p>The author describes this site as a <strong>proof-of-concept</strong>. The <a href="../about/">About page</a>
+states plainly that it is not a complete course on signal processing. It is a course
+that shows how generative AI can be used to create and maintain signal processing
+content.</p>
+<p>Much of the content was generated with generative AI. The site's own
+<a href="../report-card/">Report Card</a> gives "Mathematical and Technical Rigor" the lowest
+of its five summary grades (C+), and names Z-transforms and statistical signal
+processing as the areas most likely to contain subtle errors. Before you assign material from
+<strong>Chapter 8 (Advanced Transforms)</strong> or <strong>Chapter 12 (Stochastic Processes)</strong>, check
+the derivations against a standard textbook. Review quiz questions before using them
+for graded work: the Report Card also notes that AI-written quizzes can have weak
+distractors (the wrong answer choices).</p>
+</div>
+<p>Things this textbook does <strong>not</strong> include, so you can plan for them:</p>
+<ul>
+<li><strong>Problem sets and answer keys.</strong> The chapters have no exercise sections. The
+  <a href="../faq/">FAQ</a> describes weekly problem sets, a midterm project, and a capstone, but
+  those assignments are for the instructor to write.</li>
+<li><strong>Per-chapter reading lists.</strong> There is one site-level <a href="../references/">References</a>
+  page, which lists the tools used to build the site, not signal processing readings.</li>
+<li><strong>Automatic grading or student tracking.</strong> Quizzes are self-check only (see
+  <a href="#using-the-quizzes">Using the Quizzes</a>).</li>
+</ul>
+<h2 id="about-this-intelligent-textbook">About This Intelligent Textbook</h2>
+<h3 id="what-is-an-intelligent-textbook">What is an Intelligent Textbook?</h3>
+<p>An <strong>intelligent textbook</strong> is a digital textbook that goes beyond static text and
+images. It includes interactive simulations, self-checking quizzes, a searchable
+glossary, and a structured map of how concepts depend on each other. The goal is a
+richer learning experience than a printed book or a PDF can give.</p>
+<h3 id="the-five-levels-of-intelligent-textbooks">The Five Levels of Intelligent Textbooks</h3>
+<p>Intelligent textbooks are grouped into five levels based on how interactive and adaptive
+they are:</p>
+<iframe src="../sims/book-levels/main.html" width="600px" height="500px" scrolling="no"
+  style="overflow: hidden;"></iframe>
+
+<table>
+<thead>
+<tr>
+<th>Level</th>
+<th>Name</th>
+<th>Description</th>
+<th>Example Features</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Level 1</strong></td>
+<td>Static Digital</td>
+<td>A PDF or basic web version of a print textbook</td>
+<td>Text and images only</td>
+</tr>
+<tr>
+<td><strong>Level 2</strong></td>
+<td>Interactive</td>
+<td>Adds interactive elements</td>
+<td>MicroSims, quizzes, searchable glossary</td>
+</tr>
+<tr>
+<td><strong>Level 3</strong></td>
+<td>Adaptive</td>
+<td>Adjusts content based on student performance</td>
+<td>Personalized learning paths</td>
+</tr>
+<tr>
+<td><strong>Level 4</strong></td>
+<td>AI-Assisted</td>
+<td>Includes an AI tutor</td>
+<td>Chatbot integration, automated feedback</td>
+</tr>
+<tr>
+<td><strong>Level 5</strong></td>
+<td>Fully Adaptive AI</td>
+<td>Continuously learns from student interactions</td>
+<td>Real-time content generation</td>
+</tr>
+</tbody>
+</table>
+<p><strong>This textbook is a Level 2 Interactive Intelligent Textbook.</strong> It has simulations,
+quizzes, a glossary, a FAQ, and a learning graph. It does not adapt to individual
+students and does not include an AI tutor.</p>
+<h3 id="what-makes-this-textbook-different">What Makes This Textbook Different</h3>
+<ul>
+<li><strong>Interactive MicroSims</strong> let students change a parameter in their browser and watch
+  the signal respond. No software installation is required.</li>
+<li><strong>A learning graph</strong> of 200 concepts and 262 prerequisite links shows how every idea in
+  the book connects to the others.</li>
+<li><strong>AI-assisted creation is part of the lesson.</strong> The course description includes
+  learning objectives about using generative AI to explore, build, and test signal
+  processing ideas (objectives 7, 9, 16, and 18).</li>
+<li><strong>Free and open source.</strong> The whole site is licensed under Creative Commons
+  (see <a href="#understanding-the-license">Understanding the License</a>) and is designed to be
+  forked and customized.</li>
+</ul>
+<h2 id="the-course-at-a-glance">The Course at a Glance</h2>
+<table>
+<thead>
+<tr>
+<th>Item</th>
+<th>Details</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Audience</td>
+<td>College students with varied mathematics backgrounds</td>
+</tr>
+<tr>
+<td>Credits</td>
+<td>3 (the <a href="../faq/">FAQ</a> describes a 15-week semester)</td>
+</tr>
+<tr>
+<td>Prerequisites</td>
+<td>Introductory electrical engineering or physics, basic calculus and linear algebra, programming basics in Python or MATLAB</td>
+</tr>
+<tr>
+<td>Chapters</td>
+<td>15, each with its own quiz</td>
+</tr>
+<tr>
+<td>Concepts</td>
+<td>200 (from the learning graph)</td>
+</tr>
+<tr>
+<td>Interactive MicroSims</td>
+<td>31 (22 on signal processing topics, 9 about course design)</td>
+</tr>
+<tr>
+<td>Quiz questions</td>
+<td>150 (10 per chapter)</td>
+</tr>
+<tr>
+<td>Glossary terms</td>
+<td>141</td>
+</tr>
+<tr>
+<td>FAQ questions</td>
+<td>87</td>
+</tr>
+<tr>
+<td>Chapter text</td>
+<td>About 66,000 words, 4,000 to 5,000 words per chapter</td>
+</tr>
+</tbody>
+</table>
+<p>The <a href="../course-description/">Course Description</a> lists the 50 topics covered, the
+topics deliberately left out, and 18 learning objectives organized by Bloom's Taxonomy.</p>
+<h2 id="using-the-chapters">Using the Chapters</h2>
+<h3 id="chapter-map">Chapter Map</h3>
+<p>The chapters build on each other, so students should work through them in order.</p>
+<table>
+<thead>
+<tr>
+<th>Chapters</th>
+<th>Topic Area</th>
+<th>Concepts</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1</td>
+<td>Mathematical foundations (complex numbers, linear algebra, calculus, probability, trigonometry)</td>
+<td>25</td>
+</tr>
+<tr>
+<td>2-3</td>
+<td>Signals and systems (classification and operations of signals; linearity, time-invariance, causality, stability)</td>
+<td>45</td>
+</tr>
+<tr>
+<td>4</td>
+<td>Convolution and correlation</td>
+<td>10</td>
+</tr>
+<tr>
+<td>5</td>
+<td>Sampling and quantization (Nyquist criterion, aliasing)</td>
+<td>15</td>
+</tr>
+<tr>
+<td>6-7</td>
+<td>Fourier analysis (series, transforms, DFT, FFT, windowing, spectral analysis)</td>
+<td>20</td>
+</tr>
+<tr>
+<td>8</td>
+<td>Advanced transforms (Laplace, Z-transform, pole-zero analysis, wavelets, short-time Fourier transform)</td>
+<td>15</td>
+</tr>
+<tr>
+<td>9-10</td>
+<td>Filter design (FIR and IIR filters, classical approximations, implementation)</td>
+<td>25</td>
+</tr>
+<tr>
+<td>11</td>
+<td>Adaptive signal processing (LMS and RLS, noise cancellation, equalization)</td>
+<td>10</td>
+</tr>
+<tr>
+<td>12</td>
+<td>Stochastic processes and random signals (noise, power spectral density)</td>
+<td>10</td>
+</tr>
+<tr>
+<td>13</td>
+<td>Multirate signal processing and compression</td>
+<td>10</td>
+</tr>
+<tr>
+<td>14</td>
+<td>Time-frequency analysis and advanced topics (spectrograms, non-stationary signals)</td>
+<td>5</td>
+</tr>
+<tr>
+<td>15</td>
+<td>Applications and AI integration (DSP hardware, audio, image, video, AI-driven analysis)</td>
+<td>10</td>
+</tr>
+</tbody>
+</table>
+<p>The <a href="../chapters/">Chapters overview</a> groups these into foundations (1-5), core
+topics (6-10), advanced topics (11-14), and applications (15).</p>
+<h3 id="what-each-chapter-contains">What Each Chapter Contains</h3>
+<p>Chapters have a consistent skeleton:</p>
+<ol>
+<li><strong>Summary.</strong> A short overview of what the chapter covers.</li>
+<li><strong>Concepts Covered.</strong> A numbered list of the chapter's concepts. The numbers match the
+   concept numbers in the learning graph.</li>
+<li><strong>Prerequisites.</strong> Links to the earlier chapters the material builds on. Chapter 1
+   assumes only the prerequisites in the course description.</li>
+<li><strong>Introduction.</strong> Motivation and context.</li>
+<li><strong>Topic sections.</strong> One section per topic, with a subsection for each concept.
+   Equations are written in LaTeX and rendered by a math library called MathJax.</li>
+<li><strong>Interactive Demonstrations</strong> (six chapters). Collapsible MicroSim specifications.
+   See <a href="#microsim-specifications-in-chapters">MicroSim specifications in chapters</a>.</li>
+<li><strong>Comparison Tables</strong> (six chapters). Side-by-side summaries of related methods.</li>
+<li><strong>Summary.</strong> A closing recap. Chapter 15 ends with "Summary and Looking Forward".</li>
+</ol>
+<p>Each chapter has a separate <strong>Quiz</strong> page, listed directly under it in the left
+navigation.</p>
+<h3 id="suggested-15-week-pacing">Suggested 15-Week Pacing</h3>
+<p>The chapters vary in length (5 to 25 concepts each) but not in word count. One chapter
+per week fits a 15-week semester. This is a starting point, not a requirement.</p>
+<table>
+<thead>
+<tr>
+<th>Week</th>
+<th>Chapter</th>
+<th>Note</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1</td>
+<td>1 - Mathematical Foundations</td>
+<td>May be review for students who have completed the prerequisites</td>
+</tr>
+<tr>
+<td>2</td>
+<td>2 - Signals and Systems</td>
+<td>25 concepts: introduce vocabulary quickly</td>
+</tr>
+<tr>
+<td>3</td>
+<td>3 - System Properties</td>
+<td></td>
+</tr>
+<tr>
+<td>4</td>
+<td>4 - Convolution and Correlation</td>
+<td>Use the Convolution MicroSim</td>
+</tr>
+<tr>
+<td>5</td>
+<td>5 - Sampling and Quantization</td>
+<td>Use the Nyquist-Shannon Sampling MicroSim</td>
+</tr>
+<tr>
+<td>6</td>
+<td>6 - Fourier Analysis</td>
+<td>Pair with the FFT MicroSims</td>
+</tr>
+<tr>
+<td>7</td>
+<td>7 - DFT, FFT and Frequency Domain Analysis</td>
+<td>Natural place for a midterm</td>
+</tr>
+<tr>
+<td>8</td>
+<td>8 - Advanced Transforms</td>
+<td>Verify derivations first (see warning above)</td>
+</tr>
+<tr>
+<td>9</td>
+<td>9 - Filter Design Fundamentals</td>
+<td></td>
+</tr>
+<tr>
+<td>10</td>
+<td>10 - Advanced Filter Design</td>
+<td></td>
+</tr>
+<tr>
+<td>11</td>
+<td>11 - Adaptive Signal Processing</td>
+<td></td>
+</tr>
+<tr>
+<td>12</td>
+<td>12 - Stochastic Processes</td>
+<td>Verify derivations first</td>
+</tr>
+<tr>
+<td>13</td>
+<td>13 - Multirate and Compression</td>
+<td></td>
+</tr>
+<tr>
+<td>14</td>
+<td>14 - Time-Frequency Analysis</td>
+<td>Only 5 concepts: room to start the capstone</td>
+</tr>
+<tr>
+<td>15</td>
+<td>15 - Applications and AI Integration</td>
+<td>Capstone presentations</td>
+</tr>
+</tbody>
+</table>
+<h3 id="suggested-classroom-use">Suggested Classroom Use</h3>
+<ul>
+<li><strong>Before class:</strong> Assign the chapter's Summary, Concepts Covered, and Introduction as
+  reading, and have students look up unfamiliar terms in the glossary.</li>
+<li><strong>During class:</strong> Project a MicroSim. Ask students to predict what will happen when
+  you move a slider, then test the prediction.</li>
+<li><strong>After class:</strong> Assign the chapter quiz as a self-check, then your own problem set.</li>
+<li><strong>Pacing:</strong> The <a href="../faq/">FAQ</a> estimates about 9 hours per week for students:
+  3 lecture, 2 lab, and 4 independent study.</li>
+</ul>
+<h2 id="using-the-microsims">Using the MicroSims</h2>
+<h3 id="what-is-a-microsim">What is a MicroSim?</h3>
+<p>A <strong>MicroSim</strong> (short for "micro-simulation") is a small interactive simulation that
+runs in a web browser. Students change a value with a slider or button and immediately
+see the effect. MicroSims work on any device with a modern browser (Chrome, Firefox,
+Safari, or Edge) and require no installation.</p>
+<h3 id="where-to-find-them">Where to Find Them</h3>
+<p>All working MicroSims are listed under <strong>MicroSims</strong> in the left navigation and on the
+<a href="../sims/">MicroSims overview page</a>. They are built mostly with <strong>p5.js</strong>, a
+JavaScript library for drawing and animation, plus <strong>vis-network</strong> for graph diagrams.</p>
+<p><strong>Signal processing MicroSims (22):</strong></p>
+<table>
+<thead>
+<tr>
+<th>Topic</th>
+<th>MicroSims</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Math foundations</td>
+<td>Complex Plane, Euler's Formula Explorer, Mobius Transformation</td>
+</tr>
+<tr>
+<td>Waves and tones</td>
+<td>Sine Wave, Tone Generator</td>
+</tr>
+<tr>
+<td>Sampling</td>
+<td>Nyquist-Shannon Sampling</td>
+</tr>
+<tr>
+<td>Convolution</td>
+<td>Convolution</td>
+</tr>
+<tr>
+<td>Frequency analysis</td>
+<td>Basic FFT, FFT 2 Oscillators, FFT 3 Oscillators, FFT Waveform Types, FFT Size, FFT Butterfly, Frequency Detection</td>
+</tr>
+<tr>
+<td>Live audio</td>
+<td>FFT From Microphone, FFT Live Audio with Parameters, FFT Sound File</td>
+</tr>
+<tr>
+<td>Filters and effects</td>
+<td>RC Lowpass Filter, Base and Treble, Reverb Effect</td>
+</tr>
+<tr>
+<td>Communications</td>
+<td>Analog Modulation</td>
+</tr>
+<tr>
+<td>History</td>
+<td>Synth Timeline</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Course-design MicroSims (9):</strong> AI Pace, Bloom's Taxonomy, Book Generation Workflow,
+Book Levels, Citation Graph, Learning Graph Viewer, Learning Graph V1, Timeline Viewer,
+and Word Cloud. These explain how the book was designed and are useful for a unit on AI
+in education.</p>
+<div class="admonition note">
+<p class="admonition-title">Preview each MicroSim before class</p>
+<p>Several MicroSim folders still contain a <code>TODO.md</code> file, which means work is in
+progress. Open each simulation you plan to use ahead of time. The FFT From Microphone
+MicroSim asks your browser for permission to use the microphone, and the audio
+MicroSims may need a click before they will play sound.</p>
+</div>
+<h3 id="microsim-specifications-in-chapters">MicroSim Specifications in Chapters</h3>
+<p>Only Chapter 1 embeds running simulations (Complex Plane and Euler's Formula Explorer).
+In the other chapters, the <strong>Interactive Demonstrations</strong> sections contain collapsible
+blocks labelled "MicroSim: ..." (21 in total). Each block is a <strong>specification</strong>: a
+Purpose, a list of Features, Learning Objectives, and Implementation Requirements. They
+describe a simulation that could be built, and not all of them have been built.</p>
+<p>The specifications have two uses:</p>
+<ul>
+<li><strong>Lesson planning.</strong> They state what each simulation should teach.</li>
+<li><strong>Student projects.</strong> Learning objectives 16 and 17 in the course description ask
+  students to design algorithms and develop simulations, and objective 18 asks for
+  projects that show how generative AI can help. A specification is a ready-made starting
+  prompt for that kind of assignment.</li>
+</ul>
+<h3 id="tips-for-using-microsims-in-class">Tips for Using MicroSims in Class</h3>
+<ol>
+<li><strong>Project them on a screen.</strong> Have students call out predictions before you move a
+   slider.</li>
+<li><strong>Give independent time.</strong> After a demonstration, let students experiment for 5-10
+   minutes on their own devices.</li>
+<li><strong>Connect to the text.</strong> After exploring a simulation, have students re-read the
+   matching chapter section.</li>
+<li><strong>Try fullscreen.</strong> Some MicroSim pages have a "Run ... Fullscreen" button that opens
+   the simulation at full size, which is easier to read on a projector.</li>
+<li><strong>Check your connection.</strong> MicroSims load from the website, so they need an internet
+   connection unless you build the site locally (see
+   <a href="#customizing-your-own-textbook">Customizing Your Own Textbook</a>).</li>
+</ol>
+<h3 id="embedding-a-microsim-in-your-own-web-page">Embedding a MicroSim in Your Own Web Page</h3>
+<div class="admonition tip">
+<p class="admonition-title">Embed MicroSims anywhere</p>
+<p>You can add any MicroSim to <strong>any web page</strong>, such as a Google Site, a WordPress blog,
+a Canvas or Schoology page, or a plain HTML file. Paste one line of HTML:</p>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
+<span class="normal">2</span>
+<span class="normal">3</span>
+<span class="normal">4</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="p">&lt;</span><span class="nt">iframe</span> <span class="na">src</span><span class="o">=</span><span class="s">"https://dmccreary.github.io/signal-processing/sims/YOUR-MICROSIM-NAME/main.html"</span>
+    <span class="na">width</span><span class="o">=</span><span class="s">"100%"</span> <span class="na">height</span><span class="o">=</span><span class="s">"450px"</span>
+    <span class="na">scrolling</span><span class="o">=</span><span class="s">"no"</span><span class="p">&gt;</span>
+<span class="p">&lt;/</span><span class="nt">iframe</span><span class="p">&gt;</span>
+</code></pre></div></td></tr></table></div>
+<p>Replace <code>YOUR-MICROSIM-NAME</code> with the folder name shown in your browser's address bar
+when you open the MicroSim page. An <strong>iframe</strong> is a web technology that displays one
+web page inside another.</p>
+<p>A few MicroSims use a differently named HTML file, such as
+<code>rc-lowpass-filter.html</code>, instead of <code>main.html</code>. If the embed is blank, look in that
+MicroSim's folder under <code>docs/sims/</code> in the GitHub repository to find the HTML file
+name and use it in place of <code>main.html</code>.</p>
+</div>
+<h2 id="using-the-quizzes">Using the Quizzes</h2>
+<h3 id="what-are-the-quizzes">What are the Quizzes?</h3>
+<p>Each chapter has a <strong>quiz page</strong> of 10 multiple-choice questions, 150 in total. Each
+question has four options. Students click <strong>Show Answer</strong> to reveal the correct answer,
+an explanation, the <strong>Concept Tested</strong>, and a link back to the chapter section that
+covers it.</p>
+<h3 id="how-quizzes-work">How Quizzes Work</h3>
+<ul>
+<li>Open a quiz from the <strong>Quiz</strong> link under each chapter in the left navigation.</li>
+<li>Quizzes are <strong>self-check tools</strong>. Nothing is scored, saved, or reported to you.</li>
+<li>Questions are not labelled by cognitive level. The <a href="../faq/">FAQ</a> describes the
+  quizzes as aligned with Bloom's Taxonomy, so read the questions to see which levels
+  they actually reach.</li>
+</ul>
+<h3 id="tips-for-using-quizzes-in-class">Tips for Using Quizzes in Class</h3>
+<ul>
+<li><strong>Exit ticket.</strong> Have students take the quiz at the end of a session.</li>
+<li><strong>Diagnostic.</strong> Assign the quiz before the chapter to see what students already know.</li>
+<li><strong>Peer discussion.</strong> Have pairs argue for an answer before revealing it.</li>
+<li><strong>Question bank.</strong> Copy questions into your own LMS to build graded tests. The license
+  allows this (see below). Review each question first, as noted at the top of this guide.</li>
+</ul>
+<h3 id="blooms-taxonomy">Bloom's Taxonomy</h3>
+<p><strong>Bloom's Taxonomy</strong> is a framework that classifies thinking skills from simple to
+complex. The course description's 18 learning objectives are organized with three at
+each level.</p>
+<table>
+<thead>
+<tr>
+<th>Level</th>
+<th>Name</th>
+<th>What it means</th>
+<th>Example verbs</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>L1</td>
+<td>Remember</td>
+<td>Recall facts and definitions</td>
+<td>Define, list, name</td>
+</tr>
+<tr>
+<td>L2</td>
+<td>Understand</td>
+<td>Explain concepts in your own words</td>
+<td>Explain, describe, summarize</td>
+</tr>
+<tr>
+<td>L3</td>
+<td>Apply</td>
+<td>Use concepts to solve problems</td>
+<td>Use, implement, calculate</td>
+</tr>
+<tr>
+<td>L4</td>
+<td>Analyze</td>
+<td>Break down and examine relationships</td>
+<td>Differentiate, examine, interpret</td>
+</tr>
+<tr>
+<td>L5</td>
+<td>Evaluate</td>
+<td>Make judgments against criteria</td>
+<td>Assess, compare, critique</td>
+</tr>
+<tr>
+<td>L6</td>
+<td>Create</td>
+<td>Produce original work</td>
+<td>Design, develop, construct</td>
+</tr>
+</tbody>
+</table>
+<p>The <a href="../sims/blooms-taxonomy/">Bloom's Taxonomy MicroSim</a> shows this
+visually. Because the chapters contain no exercises, you will need to write L5 and L6
+assignments yourself.</p>
+<h2 id="using-the-glossary">Using the Glossary</h2>
+<p>The <a href="../glossary/">glossary</a> is an alphabetical list of 141 terms. Each entry has a
+definition, and most include an example of how students meet the term in the course.</p>
+<ul>
+<li><strong>Find a term:</strong> Use your browser's find command (Ctrl+F or Cmd+F) on the glossary
+  page, or use the site search bar at the top of any page.</li>
+<li><strong>Vocabulary preview:</strong> Before a chapter, have students look up its key terms.</li>
+<li><strong>Student-written definitions:</strong> Students write their own definition after reading,
+  then compare it with the glossary.</li>
+<li><strong>Matching warm-up:</strong> Give students definitions and have them match the terms.</li>
+</ul>
+<h2 id="using-the-faq">Using the FAQ</h2>
+<p>The <a href="../faq/">FAQ</a> has 87 questions in six groups:</p>
+<table>
+<thead>
+<tr>
+<th>Group</th>
+<th>Example questions</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Getting Started</td>
+<td>What is this course about? What prerequisites do I need?</td>
+</tr>
+<tr>
+<td>Core Concepts</td>
+<td>What is a signal? What is the FFT?</td>
+</tr>
+<tr>
+<td>Technical Detail</td>
+<td>DFT versus FFT, window functions, the Laplace transform, poles and zeros</td>
+</tr>
+<tr>
+<td>Common Challenges</td>
+<td>Why does my FFT output look wrong? Why is my filter unstable?</td>
+</tr>
+<tr>
+<td>Best Practices</td>
+<td>How do I design a low-pass filter? How should I preprocess signals?</td>
+</tr>
+<tr>
+<td>Advanced Topics</td>
+<td>Machine learning, convolutional neural networks, time-frequency analysis</td>
+</tr>
+</tbody>
+</table>
+<p>Use FAQ questions as discussion starters, as homework support outside class hours, or
+as a study guide before an exam.</p>
+<h2 id="the-learning-graph">The Learning Graph</h2>
+<h3 id="what-is-a-learning-graph">What is a Learning Graph?</h3>
+<p>A <strong>learning graph</strong> is a map of how concepts depend on each other. It is a <strong>directed
+acyclic graph (DAG)</strong>: a set of concepts (nodes) joined by arrows (edges) that point
+from a prerequisite to the concept that needs it, with no loops. This book's graph has
+200 concepts, 262 dependencies, and 12 categories:</p>
+<p>Mathematical Foundations, Signal Fundamentals, System Properties, Convolution and
+Correlation, Sampling and Quantization, Fourier Analysis, Advanced Transforms, Filter
+Design, Adaptive Processing, Stochastic Processes, Advanced Topics, and Applications
+and AI.</p>
+<h3 id="how-instructors-can-use-it">How Instructors Can Use It</h3>
+<ul>
+<li><strong>Prerequisite checking.</strong> Before teaching a concept, confirm students know the
+  concepts that point to it.</li>
+<li><strong>Remediation.</strong> When a student struggles, trace the arrows backward to find the gap.</li>
+<li><strong>Curriculum mapping.</strong> Compare the graph to your syllabus to find coverage gaps.</li>
+<li><strong>Enrichment.</strong> Strong students can follow arrows forward past the current chapter.</li>
+</ul>
+<p>Open the <a href="../sims/graph-viewer/">Learning Graph Viewer</a> to explore it
+interactively. The <a href="../learning-graph/">Learning Graph section</a> holds the full
+concept list, the taxonomy, and quality reports.</p>
+<h2 id="stories-and-circuits">Stories and Circuits</h2>
+<p>These sections are supplementary. They are not required for the quizzes.</p>
+<ul>
+<li><strong><a href="../stories/">Stories</a></strong> are six illustrated narratives about the people and
+  ideas behind the field: Claude Shannon, Hedy Lamarr, the FFT, radar in World War II,
+  Robert Moog, and Ingrid Daubechies' wavelets. They make good short readings to open a
+  class or to start a discussion about who gets credit for engineering ideas.</li>
+<li><strong><a href="../circuits/">Circuits</a></strong> has circuit diagrams, such as inverting and
+  non-inverting op-amps, plus a list of important analog circuits. Use them to connect
+  filter mathematics to real hardware.</li>
+</ul>
+<h2 id="feedback">Feedback</h2>
+<h3 id="reporting-issues-and-suggestions">Reporting Issues and Suggestions</h3>
+<p>This textbook is an open-source project hosted on <strong>GitHub</strong>, a website where software
+and content projects are developed collaboratively. You do not need to understand
+programming to report a problem.</p>
+<p>A <strong>GitHub Issue</strong> is like a support ticket: a way to report an error, suggest an
+improvement, or ask a question.</p>
+<ol>
+<li>Go to the repository at
+   <a href="https://github.com/dmccreary/signal-processing">github.com/dmccreary/signal-processing</a>.</li>
+<li>Click the <strong>Issues</strong> tab, then the green <strong>New issue</strong> button.</li>
+<li>Give the issue a clear title, such as "Error in Chapter 8 Z-transform example".</li>
+<li>Describe which page has the problem, what you expected, and what you saw.</li>
+<li>Click <strong>Submit new issue</strong>.</li>
+</ol>
+<p>You need a free GitHub account to submit issues. Otherwise, use the
+<a href="../contact/">Contact page</a>.</p>
+<p>Useful feedback includes factual and mathematical errors (especially in the chapters
+flagged above), broken links, MicroSims that fail to load, and topics that should be
+covered.</p>
+<h2 id="understanding-the-license">Understanding the License</h2>
+<p>A <strong>license</strong> is a legal document that explains what others may do with a piece of
+work. A <strong>Creative Commons (CC) license</strong> is a standard, plain-language license for
+educational and creative content.</p>
+<p>This textbook uses <strong>CC BY-NC-SA 4.0</strong>:</p>
+<table>
+<thead>
+<tr>
+<th>Code</th>
+<th>Name</th>
+<th>What it means</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>BY</strong></td>
+<td>Attribution</td>
+<td>You must credit the original author</td>
+</tr>
+<tr>
+<td><strong>NC</strong></td>
+<td>NonCommercial</td>
+<td>You may not use the material for commercial purposes</td>
+</tr>
+<tr>
+<td><strong>SA</strong></td>
+<td>ShareAlike</td>
+<td>If you modify it, you must share your version under the same license</td>
+</tr>
+<tr>
+<td><strong>4.0</strong></td>
+<td>Version 4.0</td>
+<td>The current version of the license</td>
+</tr>
+</tbody>
+</table>
+<h3 id="what-you-can-do">What You Can Do</h3>
+<ul>
+<li>Copy the textbook or individual chapters for your students.</li>
+<li>Share the link with other teachers, students, or parents.</li>
+<li>Print chapters for class use.</li>
+<li>Modify the content: add examples, remove sections, or reorder chapters.</li>
+<li>Translate it into other languages.</li>
+<li>Build your own version based on this one.</li>
+</ul>
+<h3 id="what-you-cannot-do">What You Cannot Do</h3>
+<ul>
+<li>Sell the textbook or charge students for access to it.</li>
+<li>Remove attribution. You must credit the original author, Dan McCreary.</li>
+<li>Share a modified version under a different license.</li>
+<li>Present the material as your own original work.</li>
+</ul>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>If you are unsure whether your situation counts as "non-commercial", for example a
+paid training program, ask your institution or read the
+<a href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.en">Creative Commons license page</a>.
+This guide is not legal advice.</p>
+</div>
+<p>The full text is on the <a href="../license/">License</a> page.</p>
+<h2 id="customizing-your-own-textbook">Customizing Your Own Textbook</h2>
+<p>You can create your own version of this textbook. The steps below explain how.</p>
+<h3 id="key-technical-terms">Key Technical Terms</h3>
+<ul>
+<li><strong>Repository (repo):</strong> A folder on GitHub that holds all of a project's files.</li>
+<li><strong>Git:</strong> A tool that tracks changes to files over time.</li>
+<li><strong>Clone:</strong> Copying a repository to your own computer.</li>
+<li><strong>Fork:</strong> Copying a repository to your own GitHub account.</li>
+<li><strong>MkDocs:</strong> The software that turns the textbook's Markdown files into a website.</li>
+<li><strong>Markdown:</strong> A simple text format. <code>**bold**</code> makes <strong>bold</strong>, <code># Heading</code> makes a
+  heading, and <code>-</code> makes a bullet.</li>
+<li><strong>mkdocs.yml:</strong> The main configuration file. It controls the title, navigation, colors,
+  and which features are enabled.</li>
+</ul>
+<h3 id="step-1-create-a-github-account">Step 1: Create a GitHub Account</h3>
+<p>If you do not have one, create a free account at <a href="https://github.com">github.com</a>.</p>
+<h3 id="step-2-fork-or-clone-the-repository">Step 2: Fork or Clone the Repository</h3>
+<p><strong>Option A: Fork (easier).</strong> Open
+<a href="https://github.com/dmccreary/signal-processing">github.com/dmccreary/signal-processing</a>,
+click <strong>Fork</strong>, and edit your copy on GitHub.</p>
+<p><strong>Option B: Clone (more control).</strong> Install <a href="https://git-scm.com/">Git</a>, open a
+terminal, and run:</p>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span></pre></div></td><td class="code"><div><pre><span></span><code>git<span class="w"> </span>clone<span class="w"> </span>https://github.com/dmccreary/signal-processing.git
+</code></pre></div></td></tr></table></div>
+<h3 id="step-3-make-changes">Step 3: Make Changes</h3>
+<p>All content is in the <code>docs/</code> folder as Markdown (<code>.md</code>) files. Edit them with any text
+editor.</p>
+<p><strong>Title, description, and address.</strong> In <code>mkdocs.yml</code>, change these lines:</p>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
+<span class="normal">2</span>
+<span class="normal">3</span>
+<span class="normal">4</span>
+<span class="normal">5</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="nt">site_name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Your Course Title</span>
+<span class="nt">site_description</span><span class="p">:</span><span class="w"> </span><span class="s">'Your</span><span class="nv"> </span><span class="s">description'</span>
+<span class="nt">site_author</span><span class="p">:</span><span class="w"> </span><span class="s">'Your</span><span class="nv"> </span><span class="s">Name'</span>
+<span class="nt">site_url</span><span class="p">:</span><span class="w"> </span><span class="s">'https://YOUR-USERNAME.github.io/YOUR-REPO-NAME/'</span>
+<span class="nt">repo_url</span><span class="p">:</span><span class="w"> </span><span class="s">'https://github.com/YOUR-USERNAME/YOUR-REPO-NAME'</span>
+</code></pre></div></td></tr></table></div>
+<p><strong>Colors.</strong> The maroon color is set in <code>docs/css/extra.css</code>. Look for the
+<code>--md-primary-fg-color</code> lines near the top and change the hex color codes.</p>
+<p><strong>Logo and icon.</strong> Replace <code>docs/img/logo-192.png</code> (the header logo) and
+<code>docs/img/favicon.ico</code> (the browser tab icon) with your own images, keeping the same
+file names.</p>
+<p><strong>Chapters and navigation.</strong> The <code>nav:</code> section of <code>mkdocs.yml</code> lists every page in the
+left menu. Add, remove, or reorder entries to match your syllabus.</p>
+<h3 id="step-4-preview-your-changes-locally">Step 4: Preview Your Changes Locally</h3>
+<ol>
+<li>Install Python 3 from <a href="https://python.org">python.org</a>.</li>
+<li>
+<p>Install MkDocs, the Material theme, and the page-exclude plugin:</p>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span></pre></div></td><td class="code"><div><pre><span></span><code>pip<span class="w"> </span>install<span class="w"> </span>mkdocs<span class="w"> </span><span class="s2">"mkdocs-material[imaging]"</span><span class="w"> </span>mkdocs-exclude
+</code></pre></div></td></tr></table></div>
+</li>
+<li>
+<p>From the project folder, start the preview server:</p>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span></pre></div></td><td class="code"><div><pre><span></span><code>mkdocs<span class="w"> </span>serve
+</code></pre></div></td></tr></table></div>
+</li>
+<li>
+<p>Open <code>http://127.0.0.1:8000/signal-processing/</code> in your browser. The page reloads
+   when you save a file.</p>
+</li>
+</ol>
+<div class="admonition note">
+<p class="admonition-title">If you see an error mentioning Cairo</p>
+<p>The site uses Material's social-card plugin, which needs a graphics library called
+Cairo. Either install Cairo (see the Material for MkDocs documentation on social
+cards) or delete the <code>- social</code> line under <code>plugins:</code> in <code>mkdocs.yml</code>. The site
+works without social cards.</p>
+</div>
+<h3 id="step-5-publish-your-version">Step 5: Publish Your Version</h3>
+<p>To publish your site for free with GitHub Pages, run:</p>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span></pre></div></td><td class="code"><div><pre><span></span><code>mkdocs<span class="w"> </span>gh-deploy
+</code></pre></div></td></tr></table></div>
+<p>This builds the site and publishes it to
+<code>https://YOUR-USERNAME.github.io/YOUR-REPO-NAME/</code> in about one to two minutes. If the
+page does not appear, open your repository's <strong>Settings</strong>, choose <strong>Pages</strong>, and select
+the <code>gh-pages</code> branch as the source.</p>
+<h3 id="using-the-prompts">Using the Prompts</h3>
+<p>The <a href="../prompts/">Prompts section</a> records the AI prompts used to build this
+book, from the course description through the learning graph, glossary, and MicroSims.
+<a href="../how-we-built-this-site/">How We Built This Site</a> explains the tool choices. If you
+adapt the book to a new subject or add chapters, reusing these prompts is the fastest
+route.</p>
+<h2 id="analytics-and-student-privacy">Analytics and Student Privacy</h2>
+<h3 id="what-is-web-analytics">What is Web Analytics?</h3>
+<p><strong>Web analytics</strong> measures how visitors use a website: which pages they open, how long
+they stay, and what device they use. For a textbook it can show which chapters students
+read and which they skip.</p>
+<h3 id="google-analytics">Google Analytics</h3>
+<p><strong>Google Analytics</strong> is a free Google service that records website visits. To use your
+own account:</p>
+<ol>
+<li>Go to <a href="https://analytics.google.com/">analytics.google.com</a> and sign in.</li>
+<li>Create a <strong>property</strong> (Google's term for a tracked website). Google gives you a
+   <strong>Measurement ID</strong> that looks like <code>G-XXXXXXXXXX</code>.</li>
+<li>
+<p>In <code>mkdocs.yml</code>, make sure the setting sits <strong>inside</strong> the <code>extra:</code> section:</p>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
+<span class="normal">2</span>
+<span class="normal">3</span>
+<span class="normal">4</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="nt">extra</span><span class="p">:</span>
+<span class="w">  </span><span class="nt">analytics</span><span class="p">:</span>
+<span class="w">    </span><span class="nt">provider</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">google</span>
+<span class="w">    </span><span class="nt">property</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">G-YOUR-MEASUREMENT-ID</span>
+</code></pre></div></td></tr></table></div>
+</li>
+<li>
+<p>Rebuild and deploy. Data typically appears within 24 to 48 hours.</p>
+</li>
+</ol>
+<div class="admonition warning">
+<p class="admonition-title">Replace the original author's ID</p>
+<p><code>mkdocs.yml</code> contains the original author's Measurement ID. If you fork the book,
+replace it with your own. Otherwise your students' visits are counted in the
+author's property.</p>
+</div>
+<p>Analytics can show the most and least visited chapters, time on page, device types, and
+where visitors are located. It reports aggregate page views, not individual students.</p>
+<h3 id="xapi-and-individual-student-data">xAPI and Individual Student Data</h3>
+<p><strong>xAPI</strong> (Experience API) is a standard for recording detailed learning activity, such
+as "student answered question 3 correctly". The records are stored in a <strong>Learning
+Record Store (LRS)</strong>.</p>
+<p><strong>This textbook does not currently send xAPI records.</strong> Quiz answers are never
+collected. If you add tracking, be aware of these rules first:</p>
+<ul>
+<li><strong>FERPA</strong> (Family Educational Rights and Privacy Act): U.S. law protecting student
+  education records. Data that identifies individual students is covered.</li>
+<li><strong>GDPR</strong> (General Data Protection Regulation): European Union law that applies if any
+  of your students are in the EU.</li>
+<li><strong>COPPA</strong> (Children's Online Privacy Protection Act): U.S. law for children under 13,
+  relevant only if you use the book with younger learners.</li>
+<li><strong>State and institutional rules.</strong> Many U.S. states and institutions add their own
+  requirements.</li>
+</ul>
+<p>The anonymous aggregate analytics above are the safest option. Consult your institution's
+data privacy office before collecting individual student data.</p>
+<h2 id="related-pages">Related Pages</h2>
+<ul>
+<li><a href="../course-description/">Course Description</a>: topics, objectives, and prerequisites</li>
+<li><a href="../chapters/">Chapters Overview</a>: all 15 chapters</li>
+<li><a href="../learning-graph/book-metrics/">Book Metrics</a> and
+  <a href="../learning-graph/chapter-metrics/">Chapter Metrics</a>: content statistics</li>
+<li><a href="../report-card/">Report Card</a>: the author's assessment of AI performance on each task</li>
+<li><a href="../about/">About This Website</a>: purpose and build workflow</li>
+</ul>
+
+
+
+
+
+
+
+  
+  
+
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+          <button type="button" class="md-top md-icon" data-md-component="top" hidden>
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8z"/></svg>
+  Back to top
+</button>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+    
+      
+      <nav class="md-footer__inner md-grid" aria-label="Footer" >
+        
+          
+          <a href="../how-we-built-this-site/" class="md-footer__link md-footer__link--prev" aria-label="Previous: How We Built This Site">
+            <div class="md-footer__button md-icon">
+              
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+            </div>
+            <div class="md-footer__title">
+              <span class="md-footer__direction">
+                Previous
+              </span>
+              <div class="md-ellipsis">
+                How We Built This Site
+              </div>
+            </div>
+          </a>
+        
+        
+          
+          <a href="../license/" class="md-footer__link md-footer__link--next" aria-label="Next: License">
+            <div class="md-footer__title">
+              <span class="md-footer__direction">
+                Next
+              </span>
+              <div class="md-ellipsis">
+                License
+              </div>
+            </div>
+            <div class="md-footer__button md-icon">
+              
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M4 11v2h12l-5.5 5.5 1.42 1.42L19.84 12l-7.92-7.92L10.5 5.5 16 11z"/></svg>
+            </div>
+          </a>
+        
+      </nav>
+    
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+    <div class="md-copyright__highlight">
+      Copyright &copy; 2025 Dan McCreary. Licensed under <a href="license/">CC BY-NC-SA 4.0</a> for non-commercial use.
+    </div>
+  
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    <script id="__config" type="application/json">{"base": "..", "features": ["content.code.copy", "navigation.expand", "navigation.path", "navigation.prune", "navigation.indexes", "toc.follow", "navigation.top", "navigation.footer", "content.action.edit"], "search": "../assets/javascripts/workers/search.6ce7567c.min.js", "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}}</script>
+    
+    
+      <script src="../assets/javascripts/bundle.83f73b43.min.js"></script>
+      
+        <script src="../js/extra.js"></script>
+      
+        <script src="https://unpkg.com/mathjax@3/es5/tex-mml-chtml.js"></script>
+      
+    
+  </body>
+</html>

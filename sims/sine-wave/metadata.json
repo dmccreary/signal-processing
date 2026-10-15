@@ -1,82 +1,138 @@
 {
-  "title": "Sine Wave",
-  "description": "Interactive demonstration of sine wave parameters including amplitude, period, and phase with adjustable sliders on a Cartesian coordinate system.",
-  "creator": "Dan McCreary",
-  "date": "2024-01-01",
-  "subject": [
-    "Mathematics",
-    "Trigonometry",
-    "Signal Processing",
-    "Sine Waves"
-  ],
-  "type": "Interactive Simulation",
-  "format": "text/html",
-  "language": "en",
-  "rights": "CC BY-NC-SA 4.0",
-  "identifier": "https://dmccreary.github.io/signal-processing/sims/sine-wave/",
-  "publisher": "Dan McCreary",
-  "educationalLevel": "9th Grade",
-  "learningResourceType": "simulation",
-  "audience": "Students, Educators",
-  "version": "1.0.0",
-  "bloomLevel": [
-    "Understand",
-    "Apply"
-  ],
-  "concepts": [
-    "Sine wave",
-    "Amplitude",
-    "Period",
-    "Phase",
-    "Trigonometry"
-  ],
-  "prerequisites": [
-    "Basic coordinate system",
-    "Introduction to trigonometric functions"
-  ],
-  "library": "p5.js",
-  "visualizationType": [
-    "animation",
-    "diagram",
-    "graph",
-    "interactive-demo",
-    "network"
-  ],
-  "learningObjectives": [
-    "Understand the mathematical concept of sine wave",
-    "Apply sine wave to solve problems",
-    "Visualize and interpret sine wave relationships",
-    "Experiment with parameters to observe their effects on sine wave"
-  ],
-  "bloomsTaxonomy": [
-    "Remember",
-    "Understand",
-    "Apply",
-    "Evaluate",
-    "Create"
-  ],
-  "pedagogical": {
-    "pattern": "assessment",
-    "bloomAlignment": [
-      "understand",
-      "apply",
-      "evaluate"
-    ],
-    "bloomVerbs": [
-      "classify",
-      "describe",
-      "explain",
-      "summarize",
-      "apply"
-    ],
-    "pacing": "self-paced",
-    "supportsPrediction": false,
-    "dataVisibility": "high",
-    "feedbackType": [
-      "immediate",
-      "corrective",
-      "explanatory"
-    ],
-    "interactionStyle": "manipulate"
-  }
+  "microsim": {
+    "dublinCore": {
+      "title": "Sine Wave",
+      "creator": ["Dan McCreary"],
+      "subject": ["Sine waves", "Sinusoidal signals", "Amplitude", "Period and frequency", "Phase"],
+      "description": "Interactive plot of y(t) = A sin(2 pi t / T + phi) over a 10 ms window. Amplitude, period and phase sliders change the wave, with markers for A, T and the time shift and read-outs of frequency and angular frequency.",
+      "publisher": "Dan McCreary",
+      "contributor": ["Claude (Anthropic)"],
+      "date": "2025-05-07",
+      "type": "Interactive Simulation",
+      "format": "text/html",
+      "identifier": "https://dmccreary.github.io/signal-processing/sims/sine-wave/",
+      "language": "en",
+      "relation": ["Chapter 2: Introduction to Signals and Systems"],
+      "rights": "CC BY-NC-SA 4.0"
+    },
+    "search": {
+      "tags": ["sine wave", "sinusoid", "amplitude", "period", "frequency", "phase", "time shift"],
+      "searchKeywords": ["sine wave parameters", "amplitude period phase", "frequency from period", "phase shift in time", "sin(2 pi t / T + phi)"],
+      "visualizationType": ["graph", "interactive-demo"],
+      "interactionLevel": "moderate",
+      "complexity": 2,
+      "relatedConcepts": ["Sinusoidal Signals", "Signal Amplitude", "Signal Frequency", "Signal Phase", "Periodic Signals", "Time Shifting"],
+      "applicationDomains": ["education", "exploration", "demonstration"],
+      "showcase": false
+    },
+    "educational": {
+      "gradeLevel": ["Undergraduate"],
+      "subjectArea": ["Mathematics", "Engineering"],
+      "topic": ["Sinusoidal signals", "Amplitude, period and phase", "Frequency and angular frequency", "Phase as a time shift"],
+      "learningObjectives": [
+        "Identify the amplitude, period and phase of a sine wave from the markers on its plot",
+        "Calculate the frequency f = 1/T and the angular frequency ω = 2πf from a period read off the time axis",
+        "Predict how changing the amplitude, period or phase alters the plotted wave before moving a slider",
+        "Compute the time shift Δt = −φT/2π produced by a given phase and explain why it depends on the period",
+        "Explain why a phase of +90° turns a sine wave into a cosine wave"
+      ],
+      "bloomsTaxonomy": ["Remember", "Understand", "Apply"],
+      "prerequisites": ["Graphing a function on a Cartesian grid", "Right-triangle trigonometry and radian measure", "Function notation y(t)"],
+      "duration": {"typical": 25, "range": {"min": 10, "max": 40}},
+      "difficulty": "Beginner",
+      "scaffolding": {
+        "type": ["guided-discovery", "feedback"],
+        "adaptability": "fixed",
+        "removal": "user-controlled"
+      },
+      "misconceptions": [
+        {
+          "misconception": "Phase is a time delay measured in milliseconds, and a positive phase moves the wave to the right",
+          "correction": "Phase is an angle, a fraction of one cycle, so the same phase gives a different time shift for each period; in A sin(ωt + φ) a positive phase moves the wave left",
+          "evidence": "Set φ = 90° and compare the time-shift arrow at T = 2.0 ms (Δt = −0.50 ms) and T = 4.0 ms (Δt = −1.00 ms)"
+        },
+        {
+          "misconception": "A longer period means a higher frequency",
+          "correction": "Frequency is the reciprocal of the period, f = 1/T, so a longer period means a lower frequency",
+          "evidence": "Increase T from 2.0 ms to 4.0 ms and watch f fall from 500.0 Hz to 250.0 Hz while the window holds fewer cycles"
+        }
+      ]
+    },
+    "technical": {
+      "framework": "p5.js",
+      "version": "2.0.0",
+      "canvasDimensions": {"width": 670, "height": 570, "responsive": true},
+      "regions": {"drawHeight": 460, "controlHeight": 110},
+      "dependencies": ["p5.js 2.3.2"],
+      "browserCompatibility": ["Chrome 90+", "Firefox 88+", "Safari 14+", "Edge 90+"],
+      "performance": {"memoryUsage": "low", "loadTime": 500},
+      "deviceRequirements": {
+        "minScreenWidth": 320,
+        "touchSupport": true,
+        "keyboardRequired": false,
+        "mouseRequired": false,
+        "networkRequired": false
+      },
+      "accessibility": {
+        "screenReader": true,
+        "keyboardNavigation": true,
+        "colorContrast": true,
+        "altText": true,
+        "screenReaderScript": "Plot of a sine wave over a 10 millisecond window. Three sliders set the amplitude A from 0 to 2, the period T from 0.5 to 5 milliseconds and the phase from minus 180 to plus 180 degrees. A read-out panel gives the equation, the frequency, the angular frequency, the time shift and the value at time zero."
+      }
+    },
+    "userInterface": {
+      "layoutType": "responsive-width",
+      "layoutPattern": "drawing-region-above-controls",
+      "colorScheme": {
+        "drawingArea": "aliceblue",
+        "controlArea": "white",
+        "accent": "blue",
+        "text": "black"
+      },
+      "controls": [
+        {
+          "id": "amplitudeSlider",
+          "type": "slider",
+          "label": "Amplitude A",
+          "description": "Sets the peak value of the sine wave in arbitrary units",
+          "group": "wave-parameters",
+          "properties": {"min": 0, "max": 2, "default": 1, "step": 0.05, "showValue": true}
+        },
+        {
+          "id": "periodSlider",
+          "type": "slider",
+          "label": "Period T (ms)",
+          "description": "Sets the time of one full cycle in milliseconds; the frequency read-out is 1000/T in hertz",
+          "group": "wave-parameters",
+          "properties": {"min": 0.5, "max": 5, "default": 4, "step": 0.1, "unit": "ms", "showValue": true}
+        },
+        {
+          "id": "phaseSlider",
+          "type": "slider",
+          "label": "Phase φ (degrees)",
+          "description": "Sets the phase angle of the sine wave; a positive phase moves the wave to the left",
+          "group": "wave-parameters",
+          "properties": {"min": -180, "max": 180, "default": 0, "step": 5, "unit": "degrees", "showValue": true}
+        }
+      ],
+      "visualElements": [
+        {"type": "graph", "description": "Time-domain plot of the sine wave in blue with a one-millisecond grid, dashed lines at plus and minus A, a dimension line one period wide and a time-shift arrow", "interactive": true, "updateTriggers": ["amplitudeSlider", "periodSlider", "phaseSlider"]},
+        {"type": "text-display", "description": "Read-out panel with the equation, f = 1/T, angular frequency, time shift and y(0)", "interactive": false, "updateTriggers": ["amplitudeSlider", "periodSlider", "phaseSlider"]}
+      ]
+    },
+    "simulation": {
+      "model": {
+        "type": "mathematical",
+        "description": "Evaluates y(t) = A sin(2 pi t / T + phi) once per pixel across the -5 ms to +5 ms window and derives f, omega and the time shift from T and phi",
+        "equations": ["y(t) = A sin(2 pi t / T + phi)", "f = 1 / T", "omega = 2 pi f", "delta_t = -phi T / (2 pi)"]
+      }
+    },
+    "usage": {
+      "recommendedUsage": ["demonstration", "exploration", "guided-practice"],
+      "instructionalStrategies": ["Vary one parameter at a time and observe what stays fixed", "Predict-then-verify the time shift for a given phase and period"],
+      "extensions": ["Add the cosine and tangent functions to the plot", "Add a second sinusoid and show the sum of two waves"]
+    }
+  },
+  "canvasHeight": 570
 }

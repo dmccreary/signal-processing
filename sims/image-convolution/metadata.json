@@ -1,0 +1,223 @@
+{
+  "microsim": {
+    "dublinCore": {
+      "title": "2-D Convolution and Image Filtering",
+      "creator": ["Dan McCreary"],
+      "subject": ["2-D convolution", "Image processing", "Image filtering", "Edge detection", "Cross-correlation", "Padding", "Noise reduction"],
+      "description": "Interactive MicroSim that slides a 3x3 or 5x5 kernel over a synthetic 32 x 32 grayscale image. For the current pixel it shows the kernel rotated by 180 degrees, the neighbourhood under the window, the products and their sum, y[m, n] = (1/D) sum_i sum_j h[i, j] x[m - i, n - j]. The window is animated over a 12 x 12 crop whose output fills in beside it, and the full output image is shown next to the input. Kernels include identity, box blur 3x3 and 5x5, Gaussian, sharpen, Sobel x and y, Laplacian, emboss and an editable 3x3 kernel; checkboxes switch zero or edge padding, normalisation by the sum of the weights, kernel flipping (convolution versus cross-correlation) and additive noise.",
+      "publisher": "Dan McCreary",
+      "contributor": ["Claude (Anthropic)"],
+      "date": "2026-10-14",
+      "type": "Interactive Simulation",
+      "format": "text/html",
+      "identifier": "https://dmccreary.github.io/signal-processing/sims/image-convolution/",
+      "language": "en",
+      "relation": ["Chapter 15: Signal Processing Applications and AI Integration", "Convolution Visualizer", "Convolution"],
+      "rights": "CC BY-NC-SA 4.0"
+    },
+    "search": {
+      "tags": ["2-D convolution", "image filtering", "kernel", "box blur", "Gaussian blur", "sharpen", "Sobel operator", "Laplacian", "emboss", "edge detection", "zero padding", "cross-correlation"],
+      "searchKeywords": ["image convolution kernel", "sliding window multiply-add", "convolution vs correlation flip kernel", "Sobel edge detection sign", "normalise blur kernel", "zero padding border artifacts", "noise gain sqrt sum h squared"],
+      "visualizationType": ["simulation", "interactive-demo", "animation"],
+      "interactionLevel": "high",
+      "complexity": 6,
+      "relatedConcepts": ["Image Processing", "Video Processing", "Convolution", "Discrete Convolution", "Cross-Correlation", "Convolutional Neural Networks", "Noise Reduction"],
+      "applicationDomains": ["education", "exploration", "demonstration", "analysis"]
+    },
+    "educational": {
+      "gradeLevel": ["Undergraduate"],
+      "subjectArea": ["Engineering", "Computer Science"],
+      "topic": ["2-D convolution", "Image filtering with kernels", "Edge detection", "Convolution versus cross-correlation", "Border padding", "Noise in filtered images"],
+      "learningObjectives": [
+        "Calculate the output of a 3 x 3 kernel at one pixel by rotating the kernel, multiplying it with the neighbourhood and adding the products",
+        "Predict the output of a kernel on a flat region from the sum of its weights, and explain why blur kernels are normalised",
+        "Distinguish convolution from cross-correlation and identify the kernels for which the difference changes the result",
+        "Compare how smoothing and derivative kernels respond to edges, thin lines, ramps and noise, using sigma_out = sigma_in sqrt(sum h^2)",
+        "Evaluate the artifacts that zero padding and edge padding create at the image border"
+      ],
+      "bloomsTaxonomy": ["Apply", "Analyze", "Evaluate"],
+      "prerequisites": ["1-D discrete convolution and the impulse response", "A grayscale image as a 2-D array of numbers", "Summation notation"],
+      "duration": {"typical": 25, "range": {"min": 15, "max": 40}},
+      "difficulty": "Intermediate",
+      "scaffolding": {
+        "type": ["guided-discovery", "feedback"],
+        "adaptability": "fixed",
+        "removal": "user-controlled"
+      },
+      "misconceptions": [
+        {
+          "misconception": "Convolution slides the kernel exactly as it is written",
+          "correction": "True convolution rotates the kernel by 180 degrees before sliding it; without the rotation the operation is cross-correlation, which is what CNN layers compute",
+          "evidence": "Symmetric kernels give identical results either way, but with Sobel x the output at pixel (7, 13) changes from 640 to -640 when Flip kernel is unchecked"
+        },
+        {
+          "misconception": "A black output pixel means the filter did not respond",
+          "correction": "Displaying y clipped to 0-255 hides negative outputs; a signed display maps 0 to mid-gray",
+          "evidence": "With Sobel x and the clip display the left edge of the square (y = -640) and the flat background (y = 0) are both black; the signed display shows them as gray 43 and gray 128"
+        }
+      ]
+    },
+    "technical": {
+      "framework": "p5.js",
+      "version": "1.0.0",
+      "canvasDimensions": {"width": 900, "height": 672, "responsive": true},
+      "regions": {"drawHeight": 522, "controlHeight": 150},
+      "dependencies": ["p5.js 2.3.2"],
+      "browserCompatibility": ["Chrome 90+", "Firefox 88+", "Safari 14+", "Edge 90+"],
+      "performance": {"memoryUsage": "low", "loadTime": 500, "computationalComplexity": "O(n)"},
+      "deviceRequirements": {
+        "minScreenWidth": 375,
+        "touchSupport": true,
+        "keyboardRequired": false,
+        "mouseRequired": false,
+        "networkRequired": false
+      },
+      "accessibility": {
+        "screenReader": true,
+        "keyboardNavigation": true,
+        "colorContrast": true,
+        "altText": true,
+        "screenReaderScript": "Two-dimensional convolution of a small synthetic grayscale image. Left to right: the 32 by 32 input image, a zoom on a 12 by 12 crop with a gold kernel window, the output of that crop filling in as the window slides, and the full output image. Below, the kernel rotated by 180 degrees, the pixel values under the window, their products and the sum are shown for the current pixel. Controls choose the kernel, edit a 3 by 3 kernel, play or step the window, and switch zero or edge padding, normalisation, kernel flipping, noise and the output display. Arrow keys move the window."
+      }
+    },
+    "userInterface": {
+      "layoutType": "responsive-width",
+      "layoutPattern": "drawing-region-above-controls",
+      "colorScheme": {
+        "drawingArea": "aliceblue",
+        "controlArea": "white",
+        "input": "blue",
+        "output": "green",
+        "kernelWindowAndCurrentPixel": "gold",
+        "paddingCells": "red",
+        "positiveWeights": "light blue",
+        "negativeWeights": "light red",
+        "text": "black"
+      },
+      "controls": [
+        {
+          "id": "kernelSelect",
+          "type": "dropdown",
+          "label": "Kernel",
+          "description": "Chooses the kernel h; editing any cell of the kernel grid switches to Custom",
+          "group": "kernel",
+          "properties": {
+            "options": [
+              {"value": "identity", "label": "Identity"},
+              {"value": "box3", "label": "Box blur 3x3"},
+              {"value": "box5", "label": "Box blur 5x5"},
+              {"value": "gauss", "label": "Gaussian 3x3"},
+              {"value": "sharpen", "label": "Sharpen"},
+              {"value": "sobelx", "label": "Sobel x"},
+              {"value": "sobely", "label": "Sobel y"},
+              {"value": "laplacian", "label": "Laplacian"},
+              {"value": "emboss", "label": "Emboss"},
+              {"value": "custom", "label": "Custom 3x3 (type in grid)"}
+            ],
+            "default": "sobelx"
+          }
+        },
+        {
+          "id": "cellInputs",
+          "type": "text-input",
+          "label": "Kernel h[i, j] (3 x 3 grid of nine inputs)",
+          "description": "Nine text inputs showing the current 3x3 kernel weights h[i, j], i = row offset -1..1, j = column offset -1..1; typing a number or a fraction such as 1/9 makes a custom kernel. Disabled for the 5x5 box blur",
+          "group": "kernel",
+          "properties": {"count": 9, "accepts": "integers, decimals, fractions a/b", "default": "Sobel x weights"}
+        },
+        {
+          "id": "playButton",
+          "type": "button",
+          "label": "Play / Pause",
+          "description": "Sweeps the kernel window across the 12 x 12 crop in raster order at about 6 pixels per second",
+          "group": "animation",
+          "properties": {"initialState": "paused"}
+        },
+        {
+          "id": "stepButton",
+          "type": "button",
+          "label": "Step",
+          "description": "Moves the window one pixel along the raster scan of the crop and pauses",
+          "group": "animation",
+          "properties": {}
+        },
+        {
+          "id": "padCheckbox",
+          "type": "checkbox",
+          "label": "Edge padding",
+          "description": "Checked: pixels outside the image repeat the nearest border pixel; unchecked: they are 0 (zero padding)",
+          "group": "options",
+          "properties": {"checked": false}
+        },
+        {
+          "id": "normCheckbox",
+          "type": "checkbox",
+          "label": "Normalise (÷ sum)",
+          "description": "Divides the result by D = sum of the kernel weights when that sum is not 0, so flat regions keep their gray level",
+          "group": "options",
+          "properties": {"checked": true}
+        },
+        {
+          "id": "flipCheckbox",
+          "type": "checkbox",
+          "label": "Flip kernel (convolution)",
+          "description": "Checked: true convolution (kernel rotated by 180 degrees); unchecked: cross-correlation as computed in CNN layers",
+          "group": "options",
+          "properties": {"checked": true}
+        },
+        {
+          "id": "noiseCheckbox",
+          "type": "checkbox",
+          "label": "Add noise",
+          "description": "Adds fixed (seeded) Gaussian noise with sigma = 12 gray levels and reports the noise standard deviation before and after filtering",
+          "group": "options",
+          "properties": {"checked": false}
+        },
+        {
+          "id": "displaySelect",
+          "type": "dropdown",
+          "label": "Output display",
+          "description": "Maps output values to gray levels: auto (signed when the weights sum to 0, otherwise clip), clip to 0-255, signed 128 + 127 y / max|y|, or 255 |y| / max|y|",
+          "group": "display",
+          "properties": {
+            "options": [
+              {"value": "auto", "label": "auto"},
+              {"value": "clip", "label": "clip to 0-255"},
+              {"value": "signed", "label": "signed (0 = gray)"},
+              {"value": "abs", "label": "|y| (magnitude)"}
+            ],
+            "default": "auto"
+          }
+        }
+      ],
+      "visualElements": [
+        {"type": "image", "description": "Input image x (32 x 32) with the 12 x 12 crop outlined and the kernel window; click to move the crop", "interactive": true, "updateTriggers": ["noiseCheckbox"]},
+        {"type": "image", "description": "Zoom on the crop with a faded ring of neighbouring pixels, padding cells outlined in red and the gold kernel window", "interactive": true, "updateTriggers": ["kernelSelect", "playButton", "stepButton", "padCheckbox", "noiseCheckbox"]},
+        {"type": "image", "description": "Zoom on the output of the crop, filled in up to the current pixel in raster order", "interactive": true, "updateTriggers": ["kernelSelect", "cellInputs", "playButton", "stepButton", "padCheckbox", "normCheckbox", "flipCheckbox", "noiseCheckbox", "displaySelect"]},
+        {"type": "image", "description": "Full output image y with the crop and the current pixel marked", "interactive": true, "updateTriggers": ["kernelSelect", "cellInputs", "padCheckbox", "normCheckbox", "flipCheckbox", "noiseCheckbox", "displaySelect"]},
+        {"type": "diagram", "description": "Multiply-add panel: kernel rotated by 180 degrees, neighbourhood values, products, their sum, the divisor D, y[m, n] and its displayed gray level", "interactive": false, "updateTriggers": ["kernelSelect", "cellInputs", "playButton", "stepButton", "padCheckbox", "normCheckbox", "flipCheckbox", "noiseCheckbox"]},
+        {"type": "text-display", "description": "Display mapping, output range and noise standard deviation in and out", "interactive": false, "updateTriggers": ["kernelSelect", "displaySelect", "noiseCheckbox", "padCheckbox"]}
+      ]
+    },
+    "simulation": {
+      "model": {
+        "type": "mathematical",
+        "description": "Direct 2-D convolution of a 32 x 32 image with a K x K kernel (K = 3 or 5) and zero or edge padding; optional normalisation by the sum of the weights, optional cross-correlation, seeded Gaussian noise and three output-to-gray mappings",
+        "equations": [
+          "y[m, n] = (1/D) sum_{i=-R..R} sum_{j=-R..R} h[i, j] x[m - i, n - j]",
+          "cross-correlation: y[m, n] = (1/D) sum_i sum_j h[i, j] x[m + i, n + j]",
+          "D = sum of weights if Normalise is on and the sum is not 0, else 1",
+          "sigma_out = sigma_in sqrt(sum h[i, j]^2) for white noise",
+          "signed display: gray = 128 + 127 y / max|y|"
+        ],
+        "algorithms": ["Direct 2-D convolution sum", "Zero and replicate (edge) padding", "Box-Muller Gaussian noise with a seeded mulberry32 generator"]
+      }
+    },
+    "usage": {
+      "recommendedUsage": ["demonstration", "exploration", "guided-practice"],
+      "instructionalStrategies": ["Compute one output pixel by hand, then check the multiply-add panel", "Toggle Flip kernel with an asymmetric kernel and with a symmetric one", "Compare noise levels before and after smoothing and derivative kernels"],
+      "extensions": ["Add separable filtering (rows then columns) and count the multiplications", "Add a frame sequence to show video filtering frame by frame and across frames", "Add the gradient magnitude sqrt(Gx^2 + Gy^2) from the two Sobel kernels"]
+    }
+  },
+  "canvasHeight": 672
+}

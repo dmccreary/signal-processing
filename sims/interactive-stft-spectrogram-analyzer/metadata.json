@@ -1,0 +1,221 @@
+{
+  "microsim": {
+    "dublinCore": {
+      "title": "Interactive STFT Spectrogram Analyzer",
+      "creator": ["Dan McCreary"],
+      "subject": ["Signal Processing", "Short-Time Fourier Transform", "Spectrogram", "Time-Frequency Resolution", "Window Functions"],
+      "description": "A test signal built from two tones, two clicks, a chirp and noise is analyzed with the short-time Fourier transform twice, with a short and a long window. The two spectrograms share a time axis, each with the spectrum of the frame at the cursor, and cursors measure time and frequency separations.",
+      "publisher": "Dan McCreary",
+      "contributor": ["Claude (Anthropic)"],
+      "date": "2026-10-02",
+      "type": "Interactive Simulation",
+      "format": "text/html",
+      "identifier": "https://dmccreary.github.io/signal-processing/sims/interactive-stft-spectrogram-analyzer/",
+      "language": "en",
+      "relation": ["Chapter 8: Advanced Transforms", "Time-Frequency Analysis Explorer", "Spectral Leakage and Windowing"],
+      "rights": "CC BY-NC-SA 4.0"
+    },
+    "search": {
+      "tags": ["STFT", "spectrogram", "window length", "time-frequency resolution", "window function", "hop size", "uncertainty principle"],
+      "searchKeywords": ["short-time Fourier transform", "spectrogram window length", "time and frequency resolution trade-off", "STFT hop size", "Hann window spectrogram"],
+      "visualizationType": ["data-visualization", "interactive-demo", "simulation"],
+      "interactionLevel": "high",
+      "complexity": 6,
+      "relatedConcepts": ["Short-Time Fourier Transform", "Spectrogram", "Window Functions", "Spectral Leakage", "Frequency Resolution", "Time-Frequency Analysis"],
+      "applicationDomains": ["education", "exploration", "analysis"],
+      "showcase": false
+    },
+    "educational": {
+      "gradeLevel": ["Undergraduate"],
+      "subjectArea": ["Engineering", "Mathematics"],
+      "topic": ["Short-time Fourier transform", "Spectrograms", "Time-frequency resolution trade-off", "Window length, window type and hop size"],
+      "learningObjectives": [
+        "Compare spectrograms of one signal made with a short and a long window",
+        "Predict from the window length whether two tones or two clicks will be separated",
+        "Measure time and frequency separations on a spectrogram with cursors",
+        "Justify a choice of window length, window type and hop size for a given signal",
+        "Explain why the time span and the bin spacing of a window cannot both be made small"
+      ],
+      "bloomsTaxonomy": ["Analyze", "Evaluate"],
+      "prerequisites": ["The DFT, bin spacing and window functions", "The idea of a spectrogram", "Sampling rate and sample period"],
+      "duration": {"typical": 28, "range": {"min": 25, "max": 35}},
+      "difficulty": "Intermediate",
+      "scaffolding": {
+        "type": ["guided-discovery", "feedback"],
+        "adaptability": "fixed",
+        "removal": "user-controlled"
+      },
+      "misconceptions": [
+        {
+          "misconception": "There is one best window length for every signal",
+          "correction": "A short window resolves events in time and a long window resolves components in frequency; which is better depends on what has to be separated",
+          "evidence": "With the default spacings window A (N = 64) separates the clicks but merges the tones, and window B (N = 1024) does the opposite"
+        },
+        {
+          "misconception": "A smaller hop size improves time resolution",
+          "correction": "The hop size only sets how finely the spectrogram is sampled in time; the resolution is set by the window length and window type",
+          "evidence": "Change the hop from N/2 to N/8: the picture has more columns but the click lines and tone lines keep the same width"
+        },
+        {
+          "misconception": "Information that a spectrogram does not show has been destroyed",
+          "correction": "Two clicks inside one long window are not separate in the picture, but their spacing is still encoded as ripples in the frame spectrum, 1/spacing hertz apart",
+          "evidence": "Untick Two tones, set the click spacing to 4 ms and window B to 1024: the frame spectrum shows ripples 250 Hz apart"
+        }
+      ]
+    },
+    "technical": {
+      "framework": "p5.js",
+      "version": "2.0.0",
+      "canvasDimensions": {"width": 670, "height": 610, "responsive": true},
+      "regions": {"drawHeight": 460, "controlHeight": 150},
+      "dependencies": ["p5.js 2.3.2"],
+      "browserCompatibility": ["Chrome 90+", "Firefox 88+", "Safari 14+", "Edge 90+"],
+      "performance": {
+        "memoryUsage": "low",
+        "computationalComplexity": "O(n log n)",
+        "loadTime": 500,
+        "optimizations": ["Spectrograms are recomputed only when the signal, window length, hop size or window type changes", "Each spectrogram is cached as one image pixel per frame and per bin"]
+      },
+      "deviceRequirements": {
+        "minScreenWidth": 320,
+        "touchSupport": true,
+        "keyboardRequired": false,
+        "mouseRequired": false,
+        "networkRequired": false
+      },
+      "accessibility": {
+        "screenReader": true,
+        "keyboardNavigation": true,
+        "colorContrast": true,
+        "altText": true,
+        "screenReaderScript": "Waveform and two spectrograms of the same test signal, one computed with a short window and one with a long window, each with the spectrum of the frame at the time cursor beside it. Checkboxes switch the tones, clicks, chirp and noise on and off; sliders set the tone spacing, the click spacing and the two window lengths; menus choose the window type and hop size. Clicking a spectrogram places the time and frequency cursor."
+      }
+    },
+    "userInterface": {
+      "layoutType": "responsive-width",
+      "layoutPattern": "drawing-region-above-controls",
+      "colorScheme": {
+        "drawingArea": "aliceblue",
+        "controlArea": "white",
+        "borders": "silver",
+        "accent": "teal",
+        "text": "black"
+      },
+      "responsiveBreakpoints": [
+        {"width": 600, "description": "Below 600 px the labels and captions are shortened, the frame spectra are narrower and the time axis shows fewer ticks"}
+      ],
+      "controls": [
+        {
+          "id": "tonesCheckbox",
+          "type": "checkbox",
+          "label": "Two tones",
+          "description": "Adds two steady sinusoids of amplitude 1 at 500 Hz and at 500 Hz plus the tone spacing",
+          "group": "signal",
+          "properties": {"default": true}
+        },
+        {
+          "id": "clicksCheckbox",
+          "type": "checkbox",
+          "label": "Two clicks",
+          "description": "Adds two single-sample impulses of amplitude 8 at 500 ms and at 500 ms plus the click spacing",
+          "group": "signal",
+          "properties": {"default": true}
+        },
+        {
+          "id": "chirpCheckbox",
+          "type": "checkbox",
+          "label": "Chirp",
+          "description": "Adds a sinusoid whose frequency rises from 1100 Hz at 0 s to 1900 Hz at 1 s (1300 Hz to 1700 Hz across the displayed 250 to 750 ms)",
+          "group": "signal",
+          "properties": {"default": false}
+        },
+        {
+          "id": "noiseCheckbox",
+          "type": "checkbox",
+          "label": "Noise",
+          "description": "Adds white Gaussian noise with standard deviation 0.2",
+          "group": "signal",
+          "properties": {"default": false}
+        },
+        {
+          "id": "toneSlider",
+          "type": "slider",
+          "label": "Tone spacing",
+          "description": "Sets the frequency difference between the two tones",
+          "group": "signal",
+          "properties": {"min": 10, "max": 400, "default": 100, "step": 10, "units": "Hz", "showValue": true}
+        },
+        {
+          "id": "clickSlider",
+          "type": "slider",
+          "label": "Click spacing",
+          "description": "Sets the time between the two clicks",
+          "group": "signal",
+          "properties": {"min": 2, "max": 100, "default": 20, "step": 2, "units": "ms", "showValue": true}
+        },
+        {
+          "id": "lengthSliderA",
+          "type": "slider",
+          "label": "Window A: N",
+          "description": "Chooses the window length of spectrogram A from 32, 64, 128, 256, 512, 1024 and 2048 samples (slider position 0 to 6)",
+          "group": "windows",
+          "properties": {"min": 0, "max": 6, "default": 1, "step": 1, "units": "slider position; N = 32 * 2^position", "showValue": true}
+        },
+        {
+          "id": "lengthSliderB",
+          "type": "slider",
+          "label": "Window B: N",
+          "description": "Chooses the window length of spectrogram B from 32, 64, 128, 256, 512, 1024 and 2048 samples (slider position 0 to 6)",
+          "group": "windows",
+          "properties": {"min": 0, "max": 6, "default": 5, "step": 1, "units": "slider position; N = 32 * 2^position", "showValue": true}
+        },
+        {
+          "id": "windowSelect",
+          "type": "dropdown",
+          "label": "Window type",
+          "description": "Chooses the window function applied to every frame of both spectrograms",
+          "group": "windows",
+          "properties": {"options": [{"value": "hann", "label": "Hann"}, {"value": "hamming", "label": "Hamming"}, {"value": "blackman", "label": "Blackman"}, {"value": "rect", "label": "Rectangular"}], "default": "hann"}
+        },
+        {
+          "id": "hopSelect",
+          "type": "dropdown",
+          "label": "Hop size H",
+          "description": "Chooses the step between successive frames as a fraction of the window length",
+          "group": "windows",
+          "properties": {"options": [{"value": "8", "label": "N/8 (87.5% overlap)"}, {"value": "4", "label": "N/4 (75% overlap)"}, {"value": "2", "label": "N/2 (50% overlap)"}, {"value": "1", "label": "N (no overlap)"}], "default": "4"}
+        }
+      ],
+      "visualElements": [
+        {"type": "chart", "description": "Waveform of the test signal with a bar for the samples each window uses at the cursor", "interactive": true, "updateTriggers": ["tonesCheckbox", "clicksCheckbox", "chirpCheckbox", "noiseCheckbox", "toneSlider", "clickSlider", "lengthSliderA", "lengthSliderB", "windowSelect", "hopSelect"]},
+        {"type": "chart", "description": "Two spectrograms on a common time axis, 250 to 750 ms and 0 to 2000 Hz, drawn with the viridis colour map from -60 dB to 0 dB, with time and frequency cursors", "interactive": true, "updateTriggers": ["tonesCheckbox", "clicksCheckbox", "chirpCheckbox", "noiseCheckbox", "toneSlider", "clickSlider", "lengthSliderA", "lengthSliderB", "windowSelect", "hopSelect"]},
+        {"type": "chart", "description": "Spectrum of the frame at the time cursor beside each spectrogram, on the same frequency axis", "interactive": false, "updateTriggers": ["lengthSliderA", "lengthSliderB", "windowSelect"]},
+        {"type": "text-display", "description": "Caption of each spectrogram with N, window time span, bin spacing, and the tone and click spacings in the window's own units; cursor and pointer read-out", "interactive": false, "updateTriggers": ["toneSlider", "clickSlider", "lengthSliderA", "lengthSliderB"]}
+      ]
+    },
+    "simulation": {
+      "model": {
+        "type": "mathematical",
+        "description": "A synthetic 1 s signal sampled at 8000 Hz is cut into windowed frames and each frame is transformed with a radix-2 FFT of the same length as the window (no zero-padding). Magnitudes are scaled so that a bin-centred sinusoid of amplitude 1 reads 0 dB.",
+        "equations": [
+          "X[m, k] = sum over n of x[n + m H] w[n] e^(-j 2 pi k n / N)",
+          "window time span = N / fs; bin spacing = fs / N; their product is 1",
+          "two impulses tau seconds apart have a spectrum with ripples every 1 / tau hertz"
+        ],
+        "algorithms": ["Radix-2 decimation-in-time FFT", "Short-time Fourier transform with Hann, Hamming, Blackman and rectangular windows"],
+        "assumptions": [
+          "fs = 8000 Hz; the signal is 1 s long and 250 to 750 ms and 0 to 2000 Hz are displayed",
+          "Tones have amplitude 1, clicks are single samples of amplitude 8, the chirp rises from 1100 to 1900 Hz over the full second, and the noise has standard deviation 0.2",
+          "The FFT length equals the window length (no zero-padding)",
+          "The colour scale spans 60 dB; levels above 0 dB are drawn in the brightest colour"
+        ]
+      }
+    },
+    "usage": {
+      "recommendedUsage": ["demonstration", "exploration", "guided-practice"],
+      "instructionalStrategies": ["Predict-then-verify using the bins-apart and windows-apart read-outs", "Side-by-side comparison of two analyses of the same signal", "Measure separations with the cursor and pointer"],
+      "extensions": ["Add a speech or music recording and compare wideband and narrowband spectrograms", "Add zero-padding to separate the effect of the FFT length from the window length"]
+    }
+  },
+  "canvasHeight": 610
+}

@@ -50,7 +50,7 @@ const events = [
   {
     year: 1984,
     title: "Kurzweil K250",
-    description: "First sampling synthesizer with realistic acoustic instrument recreation",
+    description: "Sampling synthesizer that realistically reproduced acoustic instruments",
     category: "Digital Era"
   },
   {

@@ -1,0 +1,154 @@
+{
+  "microsim": {
+    "dublinCore": {
+      "title": "RC Low-Pass Filter Bode Plot",
+      "creator": ["Dan McCreary"],
+      "subject": ["RC circuits", "Low-pass filters", "Bode plots", "Frequency response", "Signal processing"],
+      "description": "Interactive Bode plot of a first-order RC low-pass filter. Sliders set R and C through standard E12 values; the gain (dB) and phase (degrees) are plotted against log frequency from 1 Hz to 100 kHz, with the corner frequency fc = 1/(2 pi R C), the -3 dB and -45 degree points, the -20 dB/decade roll-off and the straight-line asymptotes.",
+      "publisher": "Dan McCreary",
+      "contributor": ["Claude (Anthropic)"],
+      "date": "2025-05-14",
+      "type": "Interactive Simulation",
+      "format": "text/html",
+      "identifier": "https://dmccreary.github.io/signal-processing/sims/rc-lowpass-filter/",
+      "language": "en",
+      "relation": ["Chapter 9: Filter Design Fundamentals", "Impulse and Frequency Response Analyzer"],
+      "rights": "CC BY-NC-SA 4.0"
+    },
+    "search": {
+      "tags": ["RC filter", "low-pass filter", "Bode plot", "corner frequency", "cutoff frequency", "time constant", "roll-off", "decibels", "phase response"],
+      "searchKeywords": ["RC low-pass Bode plot", "-3 dB cutoff frequency", "20 dB per decade", "first-order filter frequency response", "fc = 1/(2 pi R C)"],
+      "visualizationType": ["chart", "interactive-demo", "simulation"],
+      "interactionLevel": "moderate",
+      "complexity": 4,
+      "relatedConcepts": ["Low-Pass Filter", "Cutoff Frequency", "Frequency Response", "Magnitude Response", "Phase Response", "Decibels", "Bode Plot", "Time Constant"],
+      "applicationDomains": ["education", "exploration", "demonstration"],
+      "showcase": false
+    },
+    "educational": {
+      "gradeLevel": ["Undergraduate"],
+      "subjectArea": ["Engineering", "Physics"],
+      "topic": ["RC low-pass filter", "Bode plot", "Corner frequency", "Roll-off", "Phase response"],
+      "learningObjectives": [
+        "Calculate the time constant tau = RC and the corner frequency fc = 1/(2 pi R C) for given values of R and C",
+        "Identify the -3 dB gain and the -45 degree phase at the corner frequency on a Bode plot",
+        "Explain why the gain falls by 20 dB per decade and the phase approaches -90 degrees well above fc",
+        "Predict how changing R or C moves the Bode plot along the frequency axis without changing its shape",
+        "Select standard E12 values of R and C that place the corner frequency near a target frequency"
+      ],
+      "bloomsTaxonomy": ["Understand", "Apply", "Analyze"],
+      "prerequisites": ["Complex numbers, magnitude and phase", "Decibels and logarithms", "Impedance of a resistor and a capacitor"],
+      "duration": {"typical": 25, "range": {"min": 15, "max": 35}},
+      "difficulty": "Intermediate",
+      "scaffolding": {
+        "type": ["guided-discovery", "feedback"],
+        "adaptability": "fixed",
+        "removal": "user-controlled"
+      },
+      "misconceptions": [
+        {
+          "misconception": "The cutoff frequency is where the filter stops passing signals",
+          "correction": "At fc the output amplitude is still 70.7% of the input (-3.01 dB) and at 2 fc it is 44.7% (-6.99 dB); the attenuation grows gradually",
+          "evidence": "Hover just above the orange corner line and watch the gain read-out fall gradually"
+        },
+        {
+          "misconception": "A larger resistor or capacitor raises the cutoff frequency",
+          "correction": "fc = 1/(2 pi R C), so increasing R or C lowers fc",
+          "evidence": "Move either slider to the right and the orange corner line moves to the left"
+        },
+        {
+          "misconception": "The straight-line Bode sketch is the real response",
+          "correction": "The exact gain is 3.01 dB below the asymptotes at fc and the phase differs by up to 5.7 degrees at fc/10 and 10 fc",
+          "evidence": "Turn on the straight-line asymptotes and compare them with the curves near fc"
+        }
+      ]
+    },
+    "technical": {
+      "framework": "p5.js",
+      "version": "2.0.0",
+      "canvasDimensions": {"width": 670, "height": 602, "responsive": true},
+      "regions": {"drawHeight": 492, "controlHeight": 110},
+      "dependencies": ["p5.js 2.3.2"],
+      "browserCompatibility": ["Chrome 90+", "Firefox 88+", "Safari 14+", "Edge 90+"],
+      "performance": {"memoryUsage": "low", "loadTime": 500},
+      "deviceRequirements": {
+        "minScreenWidth": 375,
+        "touchSupport": true,
+        "keyboardRequired": false,
+        "mouseRequired": false,
+        "networkRequired": false
+      },
+      "accessibility": {
+        "screenReader": true,
+        "keyboardNavigation": true,
+        "colorContrast": true,
+        "altText": true,
+        "screenReaderScript": "Bode plot of an RC low-pass filter. Two sliders set the resistance and the capacitance. The top plot shows the gain in decibels and the bottom plot the phase in degrees against frequency from 1 Hz to 100 kHz. The corner frequency, where the gain is -3 dB and the phase is -45 degrees, is marked and read out together with the time constant."
+      }
+    },
+    "userInterface": {
+      "layoutType": "responsive-width",
+      "layoutPattern": "drawing-region-above-controls",
+      "colorScheme": {
+        "drawingArea": "aliceblue",
+        "controlArea": "white",
+        "gain": "red",
+        "phase": "blue",
+        "cornerMarker": "darkorange",
+        "asymptotes": "dimgray",
+        "text": "black"
+      },
+      "controls": [
+        {
+          "id": "rSlider",
+          "type": "slider",
+          "label": "Resistance R",
+          "description": "Index into the E12 resistor values from 10 ohm to 100 kohm (12 log-spaced values per decade); the label shows the resistance",
+          "group": "components",
+          "properties": {"min": 0, "max": 48, "default": 24, "step": 1, "units": "ohm (E12 index)", "logarithmic": true}
+        },
+        {
+          "id": "cSlider",
+          "type": "slider",
+          "label": "Capacitance C",
+          "description": "Index into the E12 capacitor values from 1 nF to 100 uF (12 log-spaced values per decade); the label shows the capacitance",
+          "group": "components",
+          "properties": {"min": 0, "max": 60, "default": 36, "step": 1, "units": "farad (E12 index)", "logarithmic": true}
+        },
+        {
+          "id": "asymptoteCheckbox",
+          "type": "checkbox",
+          "label": "Show straight-line asymptotes",
+          "description": "Shows or hides the dashed straight-line Bode approximations of the gain and phase",
+          "group": "display",
+          "properties": {"default": true}
+        }
+      ],
+      "visualElements": [
+        {"type": "chart", "description": "Gain plot: 20 log10 |H(f)| in dB against log frequency (red), with the -3 dB corner point, the -20 dB/decade slope triangle and optional asymptotes", "interactive": true, "updateTriggers": ["rSlider", "cSlider", "asymptoteCheckbox"]},
+        {"type": "chart", "description": "Phase plot: angle of H(f) in degrees against log frequency (blue), with the -45 degree corner point and optional asymptotes", "interactive": true, "updateTriggers": ["rSlider", "cSlider", "asymptoteCheckbox"]},
+        {"type": "diagram", "description": "Circuit diagram of the RC low-pass filter labelled with the current R and C", "interactive": false, "updateTriggers": ["rSlider", "cSlider"]},
+        {"type": "text-display", "description": "Read-outs of the time constant tau = RC, the corner frequency fc and the gain and phase at the hover cursor", "interactive": false, "updateTriggers": ["rSlider", "cSlider"]}
+      ]
+    },
+    "simulation": {
+      "model": {
+        "type": "mathematical",
+        "description": "First-order RC low-pass transfer function evaluated on a logarithmic frequency grid",
+        "equations": [
+          "tau = R C",
+          "fc = 1 / (2 pi R C)",
+          "H(f) = 1 / (1 + j f / fc)",
+          "G(f) = -10 log10(1 + (f / fc)^2) dB",
+          "phase(f) = -arctan(f / fc)"
+        ]
+      }
+    },
+    "usage": {
+      "recommendedUsage": ["demonstration", "exploration", "guided-practice"],
+      "instructionalStrategies": ["Predict-then-verify with the cursor read-outs", "Compare the exact response with the straight-line Bode sketch", "Design with standard E12 component values"],
+      "extensions": ["Add the matching RC high-pass filter and compare the two Bode plots", "Cascade two RC sections and observe the -40 dB/decade roll-off"]
+    }
+  },
+  "canvasHeight": 602
+}

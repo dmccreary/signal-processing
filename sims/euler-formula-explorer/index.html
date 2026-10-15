@@ -6,7 +6,7 @@
       <meta charset="utf-8">
       <meta name="viewport" content="width=device-width,initial-scale=1">
       
-        <meta name="description" content="Interactive visualization demonstrating Euler's formula e^(iθ) = cos(θ) + i·sin(θ) with synchronized unit circle rotation and sine/cosine wave traces.">
+        <meta name="description" content="Watch the point e^(iθ) travel around the unit circle while its real and imaginary parts trace the cosine and sine waves, with live numeric read-outs.">
       
       
         <meta name="author" content="Dan McCreary">
@@ -15,10 +15,10 @@
         <link rel="canonical" href="https://dmccreary.github.io/signal-processing/sims/euler-formula-explorer/">
       
       
-        <link rel="prev" href="../convolution/">
+        <link rel="prev" href="../dft-explorer/">
       
       
-        <link rel="next" href="../fft-2-osc/">
+        <link rel="next" href="../even-and-odd-signal-decomposition/">
       
       
       <link rel="icon" href="../../img/favicon.ico">
@@ -54,6 +54,8 @@
     
       <link rel="stylesheet" href="../../css/extra.css">
     
+      <link rel="stylesheet" href="../../css/mascot.css">
+    
     <script>__md_scope=new URL("../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
     
       
@@ -65,7 +67,7 @@
       
         <meta  property="og:title"  content="Euler's Formula Explorer - Signal Processing with AI" >
       
-        <meta  property="og:description"  content="Interactive visualization demonstrating Euler's formula e^(iθ) = cos(θ) + i·sin(θ) with synchronized unit circle rotation and sine/cosine wave traces." >
+        <meta  property="og:description"  content="Watch the point e^(iθ) travel around the unit circle while its real and imaginary parts trace the cosine and sine waves, with live numeric read-outs." >
       
         <meta property="og:image" content="https://dmccreary.github.io/signal-processing/sims/euler-formula-explorer/euler-formula-explorer.png">
       
@@ -81,7 +83,7 @@
       
         <meta  name="twitter:title"  content="Euler's Formula Explorer - Signal Processing with AI" >
       
-        <meta  name="twitter:description"  content="Interactive visualization demonstrating Euler's formula e^(iθ) = cos(θ) + i·sin(θ) with synchronized unit circle rotation and sine/cosine wave traces." >
+        <meta  name="twitter:description"  content="Watch the point e^(iθ) travel around the unit circle while its real and imaginary parts trace the cosine and sine waves, with live numeric read-outs." >
       
         <meta name="twitter:image" content="https://dmccreary.github.io/signal-processing/sims/euler-formula-explorer/euler-formula-explorer.png">
       
@@ -122,7 +124,7 @@
   <nav class="md-header__inner md-grid" aria-label="Header">
     <a href="../.." title="Signal Processing with AI" class="md-header__button md-logo" aria-label="Signal Processing with AI" data-md-component="logo">
       
-  <img src="../../img/logo-192.png" alt="logo">
+  <img src="../../img/mascot/neutral.png" alt="logo">
 
     </a>
     <label class="md-header__button md-icon" for="__drawer">
@@ -228,7 +230,7 @@
   <label class="md-nav__title" for="__drawer">
     <a href="../.." title="Signal Processing with AI" class="md-nav__button md-logo" aria-label="Signal Processing with AI" data-md-component="logo">
       
-  <img src="../../img/logo-192.png" alt="logo">
+  <img src="../../img/mascot/neutral.png" alt="logo">
 
     </a>
     Signal Processing with AI
@@ -275,31 +277,11 @@
   
   
     <li class="md-nav__item">
-      <a href="../../chapters/" class="md-nav__link">
-        
-  
-  <span class="md-ellipsis">
-    Table of Contents
-  </span>
-  
-
-      </a>
-    </li>
-  
-
-    
-      
-      
-  
-  
-  
-  
-    <li class="md-nav__item">
       <a href="../../about/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
-    About This Website
+    About
   </span>
   
 
@@ -542,6 +524,174 @@
           
         
       
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
     
     
     
@@ -551,7 +701,7 @@
       
         
         
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_6" checked>
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_5" checked>
         
           
           
@@ -567,19 +717,103 @@
             </a>
             
               
-              <label class="md-nav__link " for="__nav_6" id="__nav_6_label" tabindex="0">
+              <label class="md-nav__link " for="__nav_5" id="__nav_5_label" tabindex="0">
                 <span class="md-nav__icon md-icon"></span>
               </label>
             
           </div>
         
-        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_6_label" aria-expanded="true">
-          <label class="md-nav__title" for="__nav_6">
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_5_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_5">
             <span class="md-nav__icon md-icon"></span>
             MicroSims
           </label>
           <ul class="md-nav__list" data-md-scrollfix>
             
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../image-convolution/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    2-D Convolution and Image Filtering
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../conv-layer-as-filter/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    A Convolutional Layer Is a Learned FIR Filter
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../adaptive-algorithm-comparison-tool/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Adaptive Algorithm Comparison Tool
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../adaptive-noise-cancellation/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Adaptive Noise and Echo Cancellation
+  </span>
+  
+
+      </a>
+    </li>
+  
+
               
             
               
@@ -631,11 +865,11 @@
   
   
     <li class="md-nav__item">
-      <a href="../base-and-treble/" class="md-nav__link">
+      <a href="../fft-basic/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
-    Base and Treble
+    Basic FFT
   </span>
   
 
@@ -652,11 +886,32 @@
   
   
     <li class="md-nav__item">
-      <a href="../fft-basic/" class="md-nav__link">
+      <a href="../base-and-treble/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
-    Basic FFT
+    Bass and Treble
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../bilinear-transform/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Bilinear Transform and Frequency Warping
   </span>
   
 
@@ -778,11 +1033,137 @@
   
   
     <li class="md-nav__item">
+      <a href="../compressed-sensing/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Compressed Sensing
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
       <a href="../convolution/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
     Convolution
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../convolution-theorem/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Convolution Theorem and Circular Convolution
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../convolution-visualizer/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Convolution Visualizer
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../correlation-and-matched-filtering/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Correlation and Matched Filtering
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../dct-basis-explorer/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    DCT Basis Explorer
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../dft-explorer/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    DFT Explorer
   </span>
   
 
@@ -845,97 +1226,46 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#about-this-microsim" class="md-nav__link">
+  <a href="#description" class="md-nav__link">
     <span class="md-ellipsis">
-      About This MicroSim
+      Description
     </span>
   </a>
   
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#embedding-this-microsim" class="md-nav__link">
-    <span class="md-ellipsis">
-      Embedding This MicroSim
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
+    <nav class="md-nav" aria-label="Description">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
   <a href="#key-features" class="md-nav__link">
     <span class="md-ellipsis">
       Key Features
     </span>
   </a>
   
-    <nav class="md-nav" aria-label="Key Features">
-      <ul class="md-nav__list">
+</li>
         
           <li class="md-nav__item">
-  <a href="#left-panel-unit-circle" class="md-nav__link">
+  <a href="#controls" class="md-nav__link">
     <span class="md-ellipsis">
-      Left Panel: Unit Circle
+      Controls
     </span>
   </a>
   
 </li>
         
           <li class="md-nav__item">
-  <a href="#right-panel-wave-traces" class="md-nav__link">
+  <a href="#mathematical-concepts" class="md-nav__link">
     <span class="md-ellipsis">
-      Right Panel: Wave Traces
+      Mathematical Concepts
     </span>
   </a>
   
 </li>
         
           <li class="md-nav__item">
-  <a href="#interactive-controls" class="md-nav__link">
+  <a href="#applications-in-signal-processing" class="md-nav__link">
     <span class="md-ellipsis">
-      Interactive Controls
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#mathematical-background" class="md-nav__link">
-    <span class="md-ellipsis">
-      Mathematical Background
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="Mathematical Background">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#why-eulers-formula-matters" class="md-nav__link">
-    <span class="md-ellipsis">
-      Why Euler's Formula Matters
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#the-unit-circle-connection" class="md-nav__link">
-    <span class="md-ellipsis">
-      The Unit Circle Connection
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#special-values" class="md-nav__link">
-    <span class="md-ellipsis">
-      Special Values
+      Applications in Signal Processing
     </span>
   </a>
   
@@ -966,18 +1296,9 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#grade-level" class="md-nav__link">
+  <a href="#target-audience" class="md-nav__link">
     <span class="md-ellipsis">
-      Grade Level
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#duration" class="md-nav__link">
-    <span class="md-ellipsis">
-      Duration
+      Target Audience
     </span>
   </a>
   
@@ -993,69 +1314,27 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#suggested-activities" class="md-nav__link">
+  <a href="#activities" class="md-nav__link">
     <span class="md-ellipsis">
-      Suggested Activities
+      Activities
     </span>
   </a>
   
 </li>
         
           <li class="md-nav__item">
-  <a href="#assessment-questions" class="md-nav__link">
+  <a href="#assessment" class="md-nav__link">
     <span class="md-ellipsis">
-      Assessment Questions
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#applications-in-signal-processing" class="md-nav__link">
-    <span class="md-ellipsis">
-      Applications in Signal Processing
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="Applications in Signal Processing">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#phasors" class="md-nav__link">
-    <span class="md-ellipsis">
-      Phasors
+      Assessment
     </span>
   </a>
   
 </li>
         
           <li class="md-nav__item">
-  <a href="#fourier-transform" class="md-nav__link">
+  <a href="#common-misconceptions" class="md-nav__link">
     <span class="md-ellipsis">
-      Fourier Transform
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#modulation" class="md-nav__link">
-    <span class="md-ellipsis">
-      Modulation
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#filter-design" class="md-nav__link">
-    <span class="md-ellipsis">
-      Filter Design
+      Common Misconceptions
     </span>
   </a>
   
@@ -1075,10 +1354,40 @@
   
 </li>
       
+        <li class="md-nav__item">
+  <a href="#development-notes" class="md-nav__link">
+    <span class="md-ellipsis">
+      Development Notes
+    </span>
+  </a>
+  
+</li>
+      
     </ul>
   
 </nav>
       
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../even-and-odd-signal-decomposition/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Even and Odd Signal Decomposition
+  </span>
+  
+
+      </a>
     </li>
   
 
@@ -1238,6 +1547,27 @@
   
   
     <li class="md-nav__item">
+      <a href="../fft-spectrum-analyzer/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    FFT Spectrum Analyzer
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
       <a href="../fft-waveform-types/" class="md-nav__link">
         
   
@@ -1259,11 +1589,263 @@
   
   
     <li class="md-nav__item">
+      <a href="../filter-bank-explorer/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Filter Bank and Polyphase Explorer
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../fir-filter-design-comparison-tool/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    FIR Filter Design Comparison Tool
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../fir-vs-iir/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    FIR vs IIR Filters
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../fourier-series-explorer/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Fourier Series Explorer
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../fourier-transform-pairs/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Fourier Transform Pairs
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
       <a href="../frequency-detection/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
     Frequency Detection
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../huffman-coding/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Huffman Coding
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../iir-prototype-comparison/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    IIR Prototype Comparison
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../impulse-and-frequency-response-analyzer/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Impulse and Frequency Response Analyzer
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../interactive-filter-design-and-analysis-tool/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Interactive Filter Design and Analysis Tool
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../interactive-pole-zero-analysis-tool/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Interactive Pole-Zero Analysis Tool
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../interactive-spectrogram-parameter-explorer/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Interactive Spectrogram Parameter Explorer
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../interactive-stft-spectrogram-analyzer/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Interactive STFT Spectrogram Analyzer
   </span>
   
 
@@ -1343,11 +1925,158 @@
   
   
     <li class="md-nav__item">
+      <a href="../multirate-sample-rate-converter/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Multirate Sample Rate Converter
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../noise-analysis-and-reduction-tool/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Noise Analysis and Reduction Tool
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
       <a href="../nyquist-shannon-sampling/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
     Nyquist-Shannon Sampling
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../phase-spectrum/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Phase Spectrum - What the Magnitude Hides
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../phasor-addition/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Phasor Addition
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../psd-wiener-khinchin/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Power Spectral Density and the Wiener-Khinchin Theorem
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../distribution-explorer/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Probability Distribution Explorer
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../quantization-and-noise-shaping/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Quantization and Noise Shaping
   </span>
   
 
@@ -1385,11 +2114,116 @@
   
   
     <li class="md-nav__item">
+      <a href="../real-time-processing-simulator/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Real-Time Processing Simulator
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
       <a href="../reverb/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
     Reverb Effect
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../s-plane-explorer/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    s-Plane Explorer
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../sampling-theorem-explorer/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Sampling Theorem Explorer
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../signal-operations/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Signal Operations - Shift, Scale and Reverse
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../signal-type-explorer/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Signal Type Explorer
   </span>
   
 
@@ -1427,11 +2261,95 @@
   
   
     <li class="md-nav__item">
+      <a href="../spectral-leakage-and-windowing/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Spectral Leakage and Windowing
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
       <a href="../synth-timeline/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
     Synth Timeline
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../system-interconnections/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    System Interconnections - Series, Parallel, Feedback
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../system-property-explorer/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    System Property Explorer
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../time-frequency-analysis-explorer/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Time-Frequency Analysis Explorer
   </span>
   
 
@@ -1474,6 +2392,27 @@
   
   <span class="md-ellipsis">
     Tone Generator
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../wavelet-explorer/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Wavelet Explorer - CWT Scalogram and Haar DWT
   </span>
   
 
@@ -1650,6 +2589,12 @@
       
         
           
+        
+      
+        
+      
+        
+      
         
       
         
@@ -1864,6 +2809,26 @@
   
   
     <li class="md-nav__item">
+      <a href="../../instructors-guide/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Instructor's Guide
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
       <a href="../../license/" class="md-nav__link">
         
   
@@ -1909,26 +2874,6 @@
   
   <span class="md-ellipsis">
     Contact
-  </span>
-  
-
-      </a>
-    </li>
-  
-
-    
-      
-      
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../../ieee-paper-changes/" class="md-nav__link">
-        
-  
-  <span class="md-ellipsis">
-    Paper Changes
   </span>
   
 
@@ -2059,97 +3004,46 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#about-this-microsim" class="md-nav__link">
+  <a href="#description" class="md-nav__link">
     <span class="md-ellipsis">
-      About This MicroSim
+      Description
     </span>
   </a>
   
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#embedding-this-microsim" class="md-nav__link">
-    <span class="md-ellipsis">
-      Embedding This MicroSim
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
+    <nav class="md-nav" aria-label="Description">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
   <a href="#key-features" class="md-nav__link">
     <span class="md-ellipsis">
       Key Features
     </span>
   </a>
   
-    <nav class="md-nav" aria-label="Key Features">
-      <ul class="md-nav__list">
+</li>
         
           <li class="md-nav__item">
-  <a href="#left-panel-unit-circle" class="md-nav__link">
+  <a href="#controls" class="md-nav__link">
     <span class="md-ellipsis">
-      Left Panel: Unit Circle
+      Controls
     </span>
   </a>
   
 </li>
         
           <li class="md-nav__item">
-  <a href="#right-panel-wave-traces" class="md-nav__link">
+  <a href="#mathematical-concepts" class="md-nav__link">
     <span class="md-ellipsis">
-      Right Panel: Wave Traces
+      Mathematical Concepts
     </span>
   </a>
   
 </li>
         
           <li class="md-nav__item">
-  <a href="#interactive-controls" class="md-nav__link">
+  <a href="#applications-in-signal-processing" class="md-nav__link">
     <span class="md-ellipsis">
-      Interactive Controls
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#mathematical-background" class="md-nav__link">
-    <span class="md-ellipsis">
-      Mathematical Background
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="Mathematical Background">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#why-eulers-formula-matters" class="md-nav__link">
-    <span class="md-ellipsis">
-      Why Euler's Formula Matters
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#the-unit-circle-connection" class="md-nav__link">
-    <span class="md-ellipsis">
-      The Unit Circle Connection
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#special-values" class="md-nav__link">
-    <span class="md-ellipsis">
-      Special Values
+      Applications in Signal Processing
     </span>
   </a>
   
@@ -2180,18 +3074,9 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#grade-level" class="md-nav__link">
+  <a href="#target-audience" class="md-nav__link">
     <span class="md-ellipsis">
-      Grade Level
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#duration" class="md-nav__link">
-    <span class="md-ellipsis">
-      Duration
+      Target Audience
     </span>
   </a>
   
@@ -2207,69 +3092,27 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#suggested-activities" class="md-nav__link">
+  <a href="#activities" class="md-nav__link">
     <span class="md-ellipsis">
-      Suggested Activities
+      Activities
     </span>
   </a>
   
 </li>
         
           <li class="md-nav__item">
-  <a href="#assessment-questions" class="md-nav__link">
+  <a href="#assessment" class="md-nav__link">
     <span class="md-ellipsis">
-      Assessment Questions
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#applications-in-signal-processing" class="md-nav__link">
-    <span class="md-ellipsis">
-      Applications in Signal Processing
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="Applications in Signal Processing">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#phasors" class="md-nav__link">
-    <span class="md-ellipsis">
-      Phasors
+      Assessment
     </span>
   </a>
   
 </li>
         
           <li class="md-nav__item">
-  <a href="#fourier-transform" class="md-nav__link">
+  <a href="#common-misconceptions" class="md-nav__link">
     <span class="md-ellipsis">
-      Fourier Transform
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#modulation" class="md-nav__link">
-    <span class="md-ellipsis">
-      Modulation
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#filter-design" class="md-nav__link">
-    <span class="md-ellipsis">
-      Filter Design
+      Common Misconceptions
     </span>
   </a>
   
@@ -2284,6 +3127,15 @@
   <a href="#references" class="md-nav__link">
     <span class="md-ellipsis">
       References
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#development-notes" class="md-nav__link">
+    <span class="md-ellipsis">
+      Development Notes
     </span>
   </a>
   
@@ -2304,7 +3156,7 @@
                   
 
   
-    <a href="https://github.com/dmccreary/signal-processing/blob/master/docs/sims/euler-formula-explorer/index.md" title="Edit this page" class="md-content__button md-icon">
+    <a href="https://github.com/dmccreary/signal-processing/blob/main/docs/sims/euler-formula-explorer/index.md" title="Edit this page" class="md-content__button md-icon">
       
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M10 20H6V4h7v5h5v3.1l2-2V8l-6-6H6c-1.1 0-2 .9-2 2v16c0 1.1.9 2 2 2h4zm10.2-7c.1 0 .3.1.4.2l1.3 1.3c.2.2.2.6 0 .8l-1 1-2.1-2.1 1-1c.1-.1.2-.2.4-.2m0 3.9L14.1 23H12v-2.1l6.1-6.1z"/></svg>
     </a>
@@ -2313,37 +3165,35 @@
 
 
 <h1 id="eulers-formula-explorer">Euler's Formula Explorer</h1>
-<iframe src="main.html" height="602px" width="100%" scrolling="no"></iframe>
+<iframe src="main.html" width="100%" height="602px" scrolling="no"></iframe>
 
-<p><a class="md-button md-button--primary" href="main.html">Run the Euler's Formula Explorer Fullscreen</a>
-<br/>
-<a href="https://editor.p5js.org/">Edit this MicroSim with the p5.js Editor</a></p>
-<h2 id="about-this-microsim">About This MicroSim</h2>
-<p>This interactive simulation demonstrates <strong>Euler's Formula</strong>, one of the most beautiful and important equations in mathematics:</p>
-<div class="arithmatex">\[e^{i\theta} = \cos(\theta) + i\sin(\theta)\]</div>
-<p>The visualization shows how a point rotating on the unit circle in the complex plane generates both cosine and sine waves simultaneously. Students can observe the deep connection between exponential functions, trigonometry, and complex numbers.</p>
-<h2 id="embedding-this-microsim">Embedding This MicroSim</h2>
-<p>You can include this MicroSim on your website using the following <code>iframe</code>:</p>
-<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="p">&lt;</span><span class="nt">iframe</span> <span class="na">src</span><span class="o">=</span><span class="s">&quot;https://dmccreary.github.io/signal-processing/sims/euler-formula-explorer/main.html&quot;</span> <span class="na">height</span><span class="o">=</span><span class="s">&quot;602px&quot;</span> <span class="na">scrolling</span><span class="o">=</span><span class="s">&quot;no&quot;</span><span class="p">&gt;&lt;/</span><span class="nt">iframe</span><span class="p">&gt;</span>
+<p>Copy this iframe to your website:</p>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="p">&lt;</span><span class="nt">iframe</span> <span class="na">src</span><span class="o">=</span><span class="s">"https://dmccreary.github.io/signal-processing/sims/euler-formula-explorer/main.html"</span> <span class="na">width</span><span class="o">=</span><span class="s">"100%"</span> <span class="na">height</span><span class="o">=</span><span class="s">"602px"</span> <span class="na">scrolling</span><span class="o">=</span><span class="s">"no"</span><span class="p">&gt;&lt;/</span><span class="nt">iframe</span><span class="p">&gt;</span>
 </code></pre></div></td></tr></table></div>
-<h2 id="key-features">Key Features</h2>
-<h3 id="left-panel-unit-circle">Left Panel: Unit Circle</h3>
+<p><a class="md-button md-button--primary" href="main.html">Run MicroSim in Fullscreen</a></p>
+<!-- TODO(user): add editor link -->
+
+<h2 id="description">Description</h2>
+<p>This MicroSim demonstrates <strong>Euler's formula</strong>, one of the most important equations in signal processing:</p>
+<div class="arithmatex">\[e^{i\theta} = \cos(\theta) + i\sin(\theta)\]</div>
+<p>The left panel shows the complex plane with a green vector of length 1 that points at angle <span class="arithmatex">\(\theta\)</span> from the positive real axis. Its tip is the complex number <span class="arithmatex">\(e^{i\theta}\)</span>. The blue dot is the projection of the tip onto the real axis, which is <span class="arithmatex">\(\cos(\theta)\)</span>. The red dot is the projection onto the imaginary axis, which is <span class="arithmatex">\(\sin(\theta)\)</span>. The right panel plots the two projections against <span class="arithmatex">\(\theta\)</span>: a faint curve shows one full period and a bold curve shows the part swept out so far. A dashed level line connects each plot's current point to its value axis. The box under the circle reports <span class="arithmatex">\(\theta\)</span> in radians and degrees, <span class="arithmatex">\(\cos(\theta)\)</span>, <span class="arithmatex">\(\sin(\theta)\)</span> and the number <span class="arithmatex">\(e^{i\theta}\)</span> in rectangular form.</p>
+<p>Use <strong>Play</strong> to rotate the vector, the <strong>Angle</strong> slider to set <span class="arithmatex">\(\theta\)</span> yourself, and the <strong>Speed</strong> slider to change how fast it turns. This simulation supports the section on Euler's formula in <a href="../../chapters/01-mathematical-foundations/">Chapter 1: Mathematical Foundations</a>.</p>
+<h3 id="key-features">Key Features</h3>
+<p><strong>Left panel: unit circle</strong></p>
 <ul>
-<li><strong>Unit circle</strong> in the complex plane (radius = 1)</li>
-<li><strong>Rotating green vector</strong> from origin showing <span class="arithmatex">\(e^{i\theta}\)</span></li>
-<li><strong>Blue projection</strong> on real axis showing <span class="arithmatex">\(\cos(\theta)\)</span></li>
-<li><strong>Red projection</strong> on imaginary axis showing <span class="arithmatex">\(\sin(\theta)\)</span></li>
-<li><strong>Dashed lines</strong> connecting the point to its axis projections</li>
-<li><strong>Angle arc</strong> showing the current value of <span class="arithmatex">\(\theta\)</span></li>
+<li>The unit circle in the complex plane (radius = 1)</li>
+<li>The rotating green vector from the origin, whose tip is <span class="arithmatex">\(e^{i\theta}\)</span></li>
+<li>A blue point on the real axis showing <span class="arithmatex">\(\cos(\theta)\)</span> and a red point on the imaginary axis showing <span class="arithmatex">\(\sin(\theta)\)</span></li>
+<li>Dashed lines connecting the tip to its two axis projections</li>
+<li>An arc marking the angle <span class="arithmatex">\(\theta\)</span></li>
 </ul>
-<h3 id="right-panel-wave-traces">Right Panel: Wave Traces</h3>
+<p><strong>Right panel: wave traces</strong></p>
 <ul>
-<li><strong>Cosine plot</strong> (blue) showing <span class="arithmatex">\(\cos(\theta)\)</span> vs <span class="arithmatex">\(\theta\)</span></li>
-<li><strong>Sine plot</strong> (red) showing <span class="arithmatex">\(\sin(\theta)\)</span> vs <span class="arithmatex">\(\theta\)</span></li>
-<li><strong>Current position</strong> highlighted on each trace</li>
-<li><strong>Connecting lines</strong> from unit circle to corresponding plot values</li>
+<li>A cosine plot (blue) and a sine plot (red) against <span class="arithmatex">\(\theta\)</span> from 0 to <span class="arithmatex">\(2\pi\)</span></li>
+<li>The current point on each plot, with its value printed beside it</li>
+<li>A dashed level line from each plot's value axis to the current point</li>
 </ul>
-<h3 id="interactive-controls">Interactive Controls</h3>
+<h3 id="controls">Controls</h3>
 <table>
 <thead>
 <tr>
@@ -2353,46 +3203,42 @@
 </thead>
 <tbody>
 <tr>
-<td><strong>Play/Pause</strong></td>
+<td><strong>Play / Pause</strong></td>
 <td>Start or stop the automatic rotation</td>
 </tr>
 <tr>
-<td><strong>Angle Slider</strong></td>
-<td>Manually set θ from 0 to 2π</td>
+<td><strong>Angle slider</strong></td>
+<td>Set <span class="arithmatex">\(\theta\)</span> from 0 to <span class="arithmatex">\(2\pi\)</span> in steps of <span class="arithmatex">\(0.01\pi\)</span> (1.8°); moving it while the animation runs pauses the animation</td>
 </tr>
 <tr>
-<td><strong>Speed Slider</strong></td>
-<td>Adjust animation speed (0.1x to 5x)</td>
+<td><strong>Speed slider</strong></td>
+<td>Set the rotation speed from 0.1x to 5.0x; at 1.0x the vector turns at 1.2 rad/s, so one revolution takes about 5.24 s</td>
 </tr>
 <tr>
 <td><strong>Reset</strong></td>
-<td>Return to θ = 0 and clear traces</td>
+<td>Return to <span class="arithmatex">\(\theta = 0\)</span>, clear the traces and pause (the speed setting is kept)</td>
 </tr>
 </tbody>
 </table>
-<h2 id="mathematical-background">Mathematical Background</h2>
-<h3 id="why-eulers-formula-matters">Why Euler's Formula Matters</h3>
-<p>Euler's formula connects three fundamental mathematical operations:
-- <strong>Exponentiation</strong> (<span class="arithmatex">\(e^x\)</span>)
-- <strong>Trigonometry</strong> (<span class="arithmatex">\(\cos\)</span>, <span class="arithmatex">\(\sin\)</span>)
-- <strong>Complex numbers</strong> (<span class="arithmatex">\(i\)</span>)</p>
-<p>This relationship is essential in signal processing because it allows us to:</p>
+<h3 id="mathematical-concepts">Mathematical Concepts</h3>
+<p>Euler's formula connects three fundamental ideas:</p>
+<ul>
+<li><strong>Exponentiation</strong> (<span class="arithmatex">\(e^x\)</span>)</li>
+<li><strong>Trigonometry</strong> (<span class="arithmatex">\(\cos\)</span>, <span class="arithmatex">\(\sin\)</span>)</li>
+<li><strong>Complex numbers</strong> (<span class="arithmatex">\(i\)</span>)</li>
+</ul>
+<p>It matters in signal processing because it allows us to:</p>
 <ol>
-<li><strong>Represent sinusoids compactly</strong>: <span class="arithmatex">\(A\cos(\omega t + \phi) = \text{Re}[Ae^{i(\omega t + \phi)}]\)</span></li>
-<li><strong>Simplify calculations</strong>: Multiplication of complex exponentials adds phases</li>
-<li><strong>Understand frequency analysis</strong>: The Fourier transform decomposes signals into complex exponentials</li>
+<li><strong>Represent sinusoids compactly</strong>: <span class="arithmatex">\(A\cos(\omega t + \phi) = \text{Re}\left[Ae^{i(\omega t + \phi)}\right]\)</span></li>
+<li><strong>Simplify calculations</strong>: multiplying complex exponentials adds their phases, <span class="arithmatex">\(e^{i\theta_1} e^{i\theta_2} = e^{i(\theta_1 + \theta_2)}\)</span></li>
+<li><strong>Understand frequency analysis</strong>: the Fourier transform decomposes signals into complex exponentials</li>
 </ol>
-<h3 id="the-unit-circle-connection">The Unit Circle Connection</h3>
-<p>When <span class="arithmatex">\(\theta\)</span> increases from 0 to <span class="arithmatex">\(2\pi\)</span>:
-- The point <span class="arithmatex">\(e^{i\theta}\)</span> traces the unit circle counterclockwise
-- The real part traces out exactly one period of cosine
-- The imaginary part traces out exactly one period of sine</p>
-<p>This is why <span class="arithmatex">\(e^{i\theta}\)</span> is called a <strong>complex sinusoid</strong> or <strong>phasor</strong>.</p>
-<h3 id="special-values">Special Values</h3>
+<p>Because <span class="arithmatex">\(\cos^2(\theta) + \sin^2(\theta) = 1\)</span>, the tip always lies on the unit circle: <span class="arithmatex">\(|e^{i\theta}| = 1\)</span> for every <span class="arithmatex">\(\theta\)</span>. As <span class="arithmatex">\(\theta\)</span> increases from 0 to <span class="arithmatex">\(2\pi\)</span> the tip travels once around the circle counterclockwise, the real part completes one cycle of cosine and the imaginary part completes one cycle of sine. A point that rotates at a steady rate is called a <strong>complex sinusoid</strong> or <strong>phasor</strong>.</p>
 <table>
 <thead>
 <tr>
 <th><span class="arithmatex">\(\theta\)</span></th>
+<th>Angle slider</th>
 <th><span class="arithmatex">\(e^{i\theta}\)</span></th>
 <th><span class="arithmatex">\(\cos(\theta)\)</span></th>
 <th><span class="arithmatex">\(\sin(\theta)\)</span></th>
@@ -2401,100 +3247,106 @@
 <tbody>
 <tr>
 <td>0</td>
+<td>0.00π</td>
 <td>1</td>
 <td>1</td>
 <td>0</td>
 </tr>
 <tr>
 <td><span class="arithmatex">\(\pi/2\)</span></td>
+<td>0.50π</td>
 <td><span class="arithmatex">\(i\)</span></td>
 <td>0</td>
 <td>1</td>
 </tr>
 <tr>
 <td><span class="arithmatex">\(\pi\)</span></td>
-<td>-1</td>
-<td>-1</td>
+<td>1.00π</td>
+<td><span class="arithmatex">\(-1\)</span></td>
+<td><span class="arithmatex">\(-1\)</span></td>
 <td>0</td>
 </tr>
 <tr>
 <td><span class="arithmatex">\(3\pi/2\)</span></td>
+<td>1.50π</td>
 <td><span class="arithmatex">\(-i\)</span></td>
 <td>0</td>
-<td>-1</td>
+<td><span class="arithmatex">\(-1\)</span></td>
 </tr>
 <tr>
 <td><span class="arithmatex">\(2\pi\)</span></td>
+<td>2.00π</td>
 <td>1</td>
 <td>1</td>
 <td>0</td>
 </tr>
 </tbody>
 </table>
+<h3 id="applications-in-signal-processing">Applications in Signal Processing</h3>
+<ul>
+<li><strong>Phasors:</strong> in AC circuit analysis a sinusoidal voltage or current is represented by a phasor <span class="arithmatex">\(Ve^{i\phi}\)</span>, which turns impedance calculations into complex arithmetic.</li>
+<li><strong>Fourier transform:</strong> the transform uses <span class="arithmatex">\(e^{-i\omega t}\)</span> as its basis functions and decomposes a signal into frequency components.</li>
+<li><strong>Modulation:</strong> AM, FM and PM can be understood as varying the amplitude, frequency or phase of a complex exponential.</li>
+<li><strong>Filter design:</strong> transfer functions and frequency responses are written with complex exponentials, which makes their analysis tractable.</li>
+</ul>
 <h2 id="lesson-plan">Lesson Plan</h2>
 <h3 id="learning-objectives">Learning Objectives</h3>
-<p>By the end of this lesson, students will be able to:</p>
+<p>After using this MicroSim, students will be able to:</p>
 <ol>
-<li><strong>Visualize</strong> Euler's formula as rotation on the unit circle</li>
-<li><strong>Explain</strong> how cosine and sine relate to the real and imaginary parts</li>
-<li><strong>Connect</strong> complex exponentials to sinusoidal signals</li>
-<li><strong>Apply</strong> this understanding to phasor representation in signal processing</li>
+<li><strong>Explain</strong> how the rotating green vector on the unit circle represents <span class="arithmatex">\(e^{i\theta}\)</span>, with its real-axis projection tracing <span class="arithmatex">\(\cos(\theta)\)</span> and its imaginary-axis projection tracing <span class="arithmatex">\(\sin(\theta)\)</span></li>
+<li><strong>Predict</strong> the values of <span class="arithmatex">\(\cos(\theta)\)</span> and <span class="arithmatex">\(\sin(\theta)\)</span> at <span class="arithmatex">\(\theta\)</span> = 0, <span class="arithmatex">\(\pi/2\)</span>, <span class="arithmatex">\(\pi\)</span> and <span class="arithmatex">\(3\pi/2\)</span>, then confirm them with the angle slider and the read-out box</li>
+<li><strong>Explain</strong> why the sine and cosine traces are identical curves offset by a quarter turn, given that they are projections of the same rotating vector onto perpendicular axes</li>
+<li><strong>Trace</strong> how advancing <span class="arithmatex">\(\theta\)</span> through a full <span class="arithmatex">\(2\pi\)</span> rotation generates exactly one complete cycle of each wave</li>
+<li><strong>Evaluate</strong> Euler's identity by setting <span class="arithmatex">\(\theta = \pi\)</span> and confirming that <span class="arithmatex">\(e^{i\pi} = -1\)</span></li>
 </ol>
-<h3 id="grade-level">Grade Level</h3>
-<p>College-level signal processing, pre-calculus, or complex analysis courses</p>
-<h3 id="duration">Duration</h3>
-<p>15-25 minutes for exploration, 45 minutes with full instruction</p>
+<h3 id="target-audience">Target Audience</h3>
+<p>College-level signal processing, complex analysis or pre-calculus courses. Plan 15-25 minutes for self-directed exploration, or about 45 minutes with instructor-led discussion of the assessment questions.</p>
 <h3 id="prerequisites">Prerequisites</h3>
 <ul>
-<li>Understanding of complex numbers and the complex plane</li>
-<li>Basic trigonometry (sine, cosine, unit circle)</li>
+<li>Complex numbers and the complex plane (see the <a href="../complex-plane/">Complex Plane</a> MicroSim)</li>
+<li>Basic trigonometry: sine, cosine and the unit circle</li>
 <li>Familiarity with exponential functions</li>
 </ul>
-<h3 id="suggested-activities">Suggested Activities</h3>
-<p><strong>Activity 1: Trace the Circle (5 min)</strong></p>
-<ol>
-<li>Set speed to 0.5x and press Play</li>
-<li>Watch the green point rotate around the unit circle</li>
-<li>Observe how the blue and red dots move along the axes</li>
-<li>Notice how the traces build up on the right</li>
-</ol>
-<p><strong>Activity 2: Find Special Points (5 min)</strong></p>
-<p>Use the angle slider to find:
-- Where is <span class="arithmatex">\(\cos(\theta) = 0\)</span>? What is <span class="arithmatex">\(\sin(\theta)\)</span> there?
-- Where is <span class="arithmatex">\(\sin(\theta) = 0\)</span>? What is <span class="arithmatex">\(\cos(\theta)\)</span> there?
-- Where are both <span class="arithmatex">\(|\cos(\theta)| = |\sin(\theta)|\)</span>?</p>
-<p><strong>Activity 3: Phase Relationships (5 min)</strong></p>
-<ol>
-<li>Notice that sine lags cosine by <span class="arithmatex">\(\pi/2\)</span> radians (90°)</li>
-<li>Verify: when cosine is at maximum, where is sine?</li>
-<li>When sine is at maximum, where is cosine?</li>
-</ol>
-<p><strong>Activity 4: Frequency Connection (5 min)</strong></p>
-<p>If the point rotates once per second (frequency = 1 Hz):
-- How many cycles of cosine appear in one second?
-- What determines the frequency of the output sinusoid?</p>
-<h3 id="assessment-questions">Assessment Questions</h3>
-<ol>
-<li>What is the value of <span class="arithmatex">\(e^{i\pi}\)</span>? Explain geometrically.</li>
-<li>Why does the point move counterclockwise as <span class="arithmatex">\(\theta\)</span> increases?</li>
-<li>How does multiplying two complex exponentials <span class="arithmatex">\(e^{i\theta_1} \cdot e^{i\theta_2}\)</span> relate to their angles?</li>
-<li>Why is Euler's formula useful for representing AC signals?</li>
-</ol>
-<h2 id="applications-in-signal-processing">Applications in Signal Processing</h2>
-<h3 id="phasors">Phasors</h3>
-<p>In AC circuit analysis, sinusoidal voltages and currents are represented as phasors <span class="arithmatex">\(Ve^{i\phi}\)</span>, simplifying impedance calculations.</p>
-<h3 id="fourier-transform">Fourier Transform</h3>
-<p>The Fourier transform uses <span class="arithmatex">\(e^{-i\omega t}\)</span> as basis functions, decomposing signals into frequency components.</p>
-<h3 id="modulation">Modulation</h3>
-<p>AM, FM, and PM modulation schemes can be understood as manipulating the amplitude, frequency, or phase of complex exponentials.</p>
-<h3 id="filter-design">Filter Design</h3>
-<p>Transfer functions and frequency responses are expressed using complex exponentials, making analysis tractable.</p>
-<h2 id="references">References</h2>
+<h3 id="activities">Activities</h3>
+<p><strong>Activity 1: Trace the circle (5 min).</strong> Set the speed to 0.5x and press <strong>Play</strong>. One revolution takes about 10.5 s. Watch the green tip travel counterclockwise, watch the blue and red dots slide along the axes and watch the bold traces build up on the right. Press <strong>Pause</strong> at any point and read the box under the circle.</p>
+<p><strong>Activity 2: Find the special points (5-10 min).</strong> Press <strong>Reset</strong>, then use the angle slider.</p>
 <ul>
-<li>Euler, L. (1748). <em>Introductio in analysin infinitorum</em></li>
-<li>Oppenheim, A. V., &amp; Schafer, R. W. (2010). <em>Discrete-Time Signal Processing</em></li>
-<li>Nahin, P. J. (2006). <em>Dr. Euler's Fabulous Formula</em></li>
+<li>Set the angle to 0.25π (45°). The read-out shows <span class="arithmatex">\(\cos(\theta) = 0.7071\)</span> and <span class="arithmatex">\(\sin(\theta) = 0.7071\)</span>, so <span class="arithmatex">\(e^{i\theta} = 0.71 + 0.71i\)</span>.</li>
+<li>Set 0.50π. The blue dot sits at the origin, <span class="arithmatex">\(\cos(\theta) = 0.0000\)</span> and <span class="arithmatex">\(\sin(\theta) = 1.0000\)</span>.</li>
+<li>Set 1.50π. <span class="arithmatex">\(\cos(\theta) = 0.0000\)</span> again and <span class="arithmatex">\(\sin(\theta) = -1.0000\)</span>.</li>
+<li>Find every setting where <span class="arithmatex">\(|\cos(\theta)| = |\sin(\theta)|\)</span>: 0.25π, 0.75π, 1.25π and 1.75π, where both read-outs are <span class="arithmatex">\(\pm 0.7071\)</span>.</li>
 </ul>
+<p><strong>Activity 3: Phase relationship (5 min).</strong> Set the angle to 0.00π: cosine is at its maximum (1.0000) while sine is 0. Now set 0.50π: sine is at its maximum (1.0000) while cosine is 0. The sine curve reaches each feature a quarter turn (<span class="arithmatex">\(\pi/2\)</span>) later than the cosine curve, so <span class="arithmatex">\(\sin(\theta) = \cos(\theta - \pi/2)\)</span>.</p>
+<p><strong>Activity 4: Euler's identity (5 min).</strong> Set the angle to 1.00π. The read-out shows <span class="arithmatex">\(\cos(\theta) = -1.0000\)</span>, <span class="arithmatex">\(\sin(\theta) = 0.0000\)</span> and <span class="arithmatex">\(e^{i\theta} = -1.00 + 0.00i\)</span>. The tip is at the left end of the real axis, so <span class="arithmatex">\(e^{i\pi} = -1\)</span>, or equivalently <span class="arithmatex">\(e^{i\pi} + 1 = 0\)</span>.</p>
+<p><strong>Activity 5: Frequency connection (5 min).</strong> Press <strong>Reset</strong>, set the speed to 5.0x and press <strong>Play</strong>. The vector turns at <span class="arithmatex">\(1.2 \times 5 = 6.0\)</span> rad/s, which is <span class="arithmatex">\(6.0 / 2\pi \approx 0.95\)</span> revolutions per second, so one full cycle of each wave takes about 1.05 s. At 1.0x the rate is 1.2 rad/s, or about 0.19 Hz. The frequency of the sinusoids is the rotation rate of the phasor.</p>
+<h3 id="assessment">Assessment</h3>
+<ol>
+<li>What is the value of <span class="arithmatex">\(e^{i\pi}\)</span>? Explain it geometrically. <em>(Answer: <span class="arithmatex">\(-1\)</span>. The angle <span class="arithmatex">\(\pi\)</span> points the unit vector along the negative real axis, so <span class="arithmatex">\(\cos(\pi) = -1\)</span> and <span class="arithmatex">\(\sin(\pi) = 0\)</span>.)</em></li>
+<li>Why does the point move counterclockwise as <span class="arithmatex">\(\theta\)</span> increases? <em>(Answer: Positive angles are measured counterclockwise from the positive real axis. Just after <span class="arithmatex">\(\theta = 0\)</span> the cosine falls slightly below 1 while the sine becomes positive, which moves the tip up and to the left.)</em></li>
+<li>How does multiplying two complex exponentials <span class="arithmatex">\(e^{i\theta_1} \cdot e^{i\theta_2}\)</span> relate to their angles? <em>(Answer: The angles add, giving <span class="arithmatex">\(e^{i(\theta_1 + \theta_2)}\)</span>. For example, <span class="arithmatex">\(0.25\pi + 0.25\pi = 0.50\pi\)</span>, and the result is <span class="arithmatex">\(i\)</span>.)</em></li>
+<li>At <span class="arithmatex">\(\theta = 0.75\pi\)</span> what are <span class="arithmatex">\(\cos(\theta)\)</span>, <span class="arithmatex">\(\sin(\theta)\)</span> and <span class="arithmatex">\(|e^{i\theta}|\)</span>? <em>(Answer: <span class="arithmatex">\(\cos(\theta) = -0.7071\)</span>, <span class="arithmatex">\(\sin(\theta) = 0.7071\)</span> and <span class="arithmatex">\(|e^{i\theta}| = \sqrt{0.5 + 0.5} = 1\)</span>.)</em></li>
+<li>Why is Euler's formula useful for representing AC signals? <em>(Answer: A sinusoid <span class="arithmatex">\(A\cos(\omega t + \phi)\)</span> is the real part of the rotating phasor <span class="arithmatex">\(Ae^{i(\omega t + \phi)}\)</span>, so amplitude and phase combine into one complex number and time shifts become multiplications.)</em></li>
+</ol>
+<h3 id="common-misconceptions">Common Misconceptions</h3>
+<p><strong>"Sine and cosine are two separate waves."</strong> They are two projections of one rotating vector. Press <strong>Play</strong> and watch the blue and red dots: they move together because they are driven by the same angle, and the sine curve is the cosine curve delayed by a quarter turn.</p>
+<p><strong>"The vector gets longer or shorter as it rotates."</strong> Its length is always 1. Compare the vector at 0.25π (both projections 0.7071) with the vector at 0.00π (projections 1 and 0): <span class="arithmatex">\(\cos^2(\theta) + \sin^2(\theta) = 1\)</span> in every case, so only the direction changes.</p>
+<h2 id="references">References</h2>
+<ol>
+<li><a href="https://en.wikipedia.org/wiki/Euler%27s_formula">Euler's formula</a> - Wikipedia - statement, proofs and applications of the formula</li>
+<li><a href="https://en.wikipedia.org/wiki/Euler%27s_identity">Euler's identity</a> - Wikipedia - the special case <span class="arithmatex">\(e^{i\pi} + 1 = 0\)</span> explored in Activity 4</li>
+<li><a href="https://en.wikipedia.org/wiki/Unit_circle">Unit circle</a> - Wikipedia - the circle on which the point <span class="arithmatex">\(e^{i\theta}\)</span> travels</li>
+<li><a href="https://en.wikipedia.org/wiki/Phasor">Phasor</a> - Wikipedia - representing sinusoids as rotating complex numbers</li>
+<li><a href="https://en.wikipedia.org/wiki/Sine_and_cosine">Sine and cosine</a> - Wikipedia - projections of a point on the unit circle and the quarter-turn offset between the two functions</li>
+<li><a href="https://www.dspguide.com/">The Scientist and Engineer's Guide to Digital Signal Processing</a> - Steven W. Smith - free online textbook with chapters on complex numbers and the complex exponential</li>
+<li>Oppenheim, A. V., &amp; Schafer, R. W. (2010). <em>Discrete-Time Signal Processing</em>, 3rd ed. - Pearson - standard text that develops complex exponential sequences</li>
+<li>Nahin, P. J. (2006). <em>Dr. Euler's Fabulous Formula</em> - Princeton University Press - book-length treatment of the formula and its uses</li>
+<li>Euler, L. (1748). <em>Introductio in analysin infinitorum</em> - the original publication of the formula</li>
+</ol>
+<h2 id="development-notes">Development Notes</h2>
+<details>
+<summary>Version history</summary>
+<p><strong>Version 2.0.0 (2026-10-14).</strong> Ported from p5.js 1.11.10 to p5.js 2.3.2. Layout fixes: the read-out box no longer overlaps the circle, the lower plot is no longer clipped by the control region, the projection labels no longer collide at <span class="arithmatex">\(\theta = 0\)</span>, and the title shrinks to fit narrow screens. The traces are now computed from the current angle (a faint full period plus a bold swept portion) instead of a stored history, so they stay correct when the angle slider is dragged, and no spurious line is drawn when the animation wraps from <span class="arithmatex">\(2\pi\)</span> to 0. The angle slider is now expressed in units of <span class="arithmatex">\(\pi\)</span> so that <span class="arithmatex">\(\pi/2\)</span>, <span class="arithmatex">\(\pi\)</span> and <span class="arithmatex">\(3\pi/2\)</span> can be set exactly. Moving the angle slider while the animation runs now pauses it. Added the <span class="arithmatex">\(e^{i\theta}\)</span> read-out and quarter-turn tick labels on the <span class="arithmatex">\(\theta\)</span> axes.</p>
+</details>
 
 
 
@@ -2533,7 +3385,7 @@
       <nav class="md-footer__inner md-grid" aria-label="Footer" >
         
           
-          <a href="../convolution/" class="md-footer__link md-footer__link--prev" aria-label="Previous: Convolution">
+          <a href="../dft-explorer/" class="md-footer__link md-footer__link--prev" aria-label="Previous: DFT Explorer">
             <div class="md-footer__button md-icon">
               
               <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
@@ -2543,20 +3395,20 @@
                 Previous
               </span>
               <div class="md-ellipsis">
-                Convolution
+                DFT Explorer
               </div>
             </div>
           </a>
         
         
           
-          <a href="../fft-2-osc/" class="md-footer__link md-footer__link--next" aria-label="Next: FFT 2 Oscillators">
+          <a href="../even-and-odd-signal-decomposition/" class="md-footer__link md-footer__link--next" aria-label="Next: Even and Odd Signal Decomposition">
             <div class="md-footer__title">
               <span class="md-footer__direction">
                 Next
               </span>
               <div class="md-ellipsis">
-                FFT 2 Oscillators
+                Even and Odd Signal Decomposition
               </div>
             </div>
             <div class="md-footer__button md-icon">

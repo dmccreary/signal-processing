@@ -1,81 +1,183 @@
 {
-  "title": "FFT Three Oscillators",
-  "description": "FFT demonstration with three independent oscillators showing superposition of sine waves and their combined frequency spectrum.",
-  "creator": "Dan McCreary",
-  "date": "2024-01-01",
-  "subject": [
-    "Signal Processing",
-    "FFT",
-    "Superposition",
-    "Harmonic Analysis"
-  ],
-  "type": "Interactive Simulation",
-  "format": "text/html",
-  "language": "en",
-  "rights": "CC BY-NC-SA 4.0",
-  "identifier": "https://dmccreary.github.io/signal-processing/sims/fft-3-osc/",
-  "publisher": "Dan McCreary",
-  "educationalLevel": "Undergraduate",
-  "learningResourceType": "simulation",
-  "audience": "Students, Educators",
-  "version": "1.0.0",
-  "bloomLevel": [
-    "Understand",
-    "Apply",
-    "Analyze"
-  ],
-  "concepts": [
-    "FFT",
-    "Superposition",
-    "Multiple frequencies",
-    "Signal combination"
-  ],
-  "prerequisites": [
-    "Basic FFT understanding",
-    "Sine waves"
-  ],
-  "library": "p5.js",
-  "visualizationType": [
-    "graph",
-    "interactive-demo",
-    "map",
-    "network",
-    "simulation"
-  ],
-  "learningObjectives": [
-    "Understand the key concepts of fft three oscillators",
-    "Explore fft three oscillators through interactive visualization",
-    "Apply knowledge of fft three oscillators to solve problems",
-    "Experiment with parameters to observe their effects on fft three oscillators"
-  ],
-  "bloomsTaxonomy": [
-    "Remember",
-    "Understand",
-    "Apply",
-    "Analyze",
-    "Create"
-  ],
-  "pedagogical": {
-    "pattern": "exploration",
-    "bloomAlignment": [
-      "understand",
-      "apply",
-      "analyze"
-    ],
-    "bloomVerbs": [
-      "describe",
-      "demonstrate",
-      "illustrate",
-      "solve",
-      "analyze"
-    ],
-    "pacing": "self-paced",
-    "supportsPrediction": false,
-    "dataVisibility": "medium",
-    "feedbackType": [
-      "immediate",
-      "corrective"
-    ],
-    "interactionStyle": "manipulate"
-  }
+  "microsim": {
+    "dublinCore": {
+      "title": "FFT with Multiple Frequency Components",
+      "creator": ["Dan McCreary"],
+      "subject": ["Signal Processing", "FFT", "Superposition", "Harmonic Analysis"],
+      "description": "Three sine-wave oscillators are added together and played. A triggered 20 ms window of the combined waveform is shown in the time domain and its FFT magnitude spectrum from 0 to 1600 Hz below, with a frequency label on each peak, so students can relate each component's frequency and amplitude to a spectral peak.",
+      "publisher": "Dan McCreary",
+      "contributor": ["Claude (Anthropic)"],
+      "date": "2025-05-29",
+      "type": "Interactive Simulation",
+      "format": "text/html",
+      "identifier": "https://dmccreary.github.io/signal-processing/sims/fft-3-osc/",
+      "language": "en",
+      "relation": ["Chapter 7: DFT, FFT and Frequency Domain Analysis", "Basic FFT MicroSim"],
+      "rights": "CC BY-NC-SA 4.0"
+    },
+    "search": {
+      "tags": ["FFT", "superposition", "spectrum", "time domain", "frequency domain", "sine waves", "harmonics", "frequency resolution", "beats", "audio"],
+      "searchKeywords": ["sum of sine waves", "three oscillators FFT", "multiple frequency components", "spectral peaks", "frequency resolution", "harmonic series"],
+      "visualizationType": ["graph", "interactive-demo", "simulation"],
+      "interactionLevel": "moderate",
+      "complexity": 4,
+      "relatedConcepts": ["Fast Fourier Transform", "Superposition", "Time Domain", "Frequency Domain", "Spectrum", "Magnitude Spectrum", "Harmonics", "Frequency Resolution", "Spectral Leakage", "Sinusoidal Signals"],
+      "applicationDomains": ["education", "demonstration", "exploration"],
+      "showcase": false
+    },
+    "educational": {
+      "gradeLevel": ["Undergraduate"],
+      "subjectArea": ["Engineering", "Mathematics"],
+      "topic": ["FFT", "Superposition", "Multiple frequencies", "Signal combination", "Harmonics", "Frequency resolution"],
+      "learningObjectives": [
+        "Predict that setting the three frequency sliders to distinct values produces three separate peaks in the FFT spectrum at those frequencies",
+        "Explain how the complicated time-domain waveform arises from the superposition of three sine waves whose amplitudes are set by the amplitude sliders",
+        "Compare the height of each spectral peak to its oscillator's amplitude setting to relate FFT magnitude to component amplitude",
+        "Predict what happens to the spectrum when two oscillators are tuned to the same or nearly the same frequency, or when one amplitude is set to zero",
+        "Distinguish the time-domain plot, which shows amplitude against time, from the frequency-domain plot, which shows magnitude against frequency"
+      ],
+      "bloomsTaxonomy": ["Understand", "Apply", "Analyze"],
+      "prerequisites": ["Sine waves: frequency, period and amplitude", "Basic FFT MicroSim (one sine wave gives one peak)", "Superposition of functions"],
+      "duration": {"typical": 25, "range": {"min": 15, "max": 45}},
+      "difficulty": "Intermediate",
+      "scaffolding": {
+        "type": ["guided-discovery", "feedback"],
+        "adaptability": "fixed",
+        "removal": "user-controlled"
+      },
+      "misconceptions": [
+        {
+          "misconception": "A complicated waveform must contain many frequencies",
+          "correction": "Adding sine waves creates no new frequencies; the spectrum shows exactly one peak per component",
+          "evidence": "300, 600 and 900 Hz give exactly three peaks and nothing at sums such as 1500 Hz"
+        },
+        {
+          "misconception": "Two tones always show up as two peaks, and equal tones add to a1 + a2",
+          "correction": "The FFT has finite frequency resolution, and equal-frequency sines add like phasors",
+          "evidence": "400 Hz and 410 Hz merge into one pulsing peak; two 400 Hz tones of amplitude 0.5 give a single peak anywhere from 0 to 1.0 depending on their phase difference"
+        }
+      ]
+    },
+    "technical": {
+      "framework": "p5.js",
+      "version": "2.0.0",
+      "canvasDimensions": {"width": 800, "height": 580, "responsive": true},
+      "regions": {"drawHeight": 460, "controlHeight": 120},
+      "dependencies": ["p5.js 2.3.2", "p5.sound 0.4.1"],
+      "browserCompatibility": ["Chrome 90+", "Firefox 88+", "Safari 14+", "Edge 90+"],
+      "performance": {"memoryUsage": "low", "computationalComplexity": "O(n log n)"},
+      "deviceRequirements": {
+        "minScreenWidth": 360,
+        "touchSupport": true,
+        "keyboardRequired": false,
+        "mouseRequired": false,
+        "networkRequired": true
+      },
+      "accessibility": {
+        "screenReader": true,
+        "keyboardNavigation": true,
+        "colorContrast": true,
+        "altText": true,
+        "screenReaderScript": "Three sine-wave oscillators are added together. The top plot shows the combined waveform over a 20 millisecond window; the bottom plot shows its FFT magnitude spectrum from 0 to 1600 Hz with a frequency label on each peak. Press Start, then move the frequency and amplitude sliders of each component.",
+        "sensoryAlternatives": {"visualToAudio": true, "audioToVisual": true, "hapticFeedback": false}
+      }
+    },
+    "userInterface": {
+      "layoutType": "responsive-width",
+      "layoutPattern": "drawing-region-above-controls",
+      "colorScheme": {
+        "drawingArea": "aliceblue",
+        "controlArea": "white",
+        "borders": "silver",
+        "accent": "darkred",
+        "text": "black"
+      },
+      "controls": [
+        {
+          "id": "soundButton",
+          "type": "toggle-button",
+          "label": "Start / Mute / Unmute",
+          "description": "Starts audio on the first click, then mutes and unmutes the speakers; the plots keep running while muted",
+          "group": "playback",
+          "properties": {"text": "Start", "action": "toggleSound", "toggleable": true, "style": "primary"}
+        },
+        {
+          "id": "freq1Slider",
+          "type": "slider",
+          "label": "Freq 1",
+          "description": "Frequency of the first sine component",
+          "group": "component-1",
+          "properties": {"min": 50, "max": 1000, "default": 400, "step": 1, "units": "Hz", "showValue": true}
+        },
+        {
+          "id": "amp1Slider",
+          "type": "slider",
+          "label": "Amp 1",
+          "description": "Amplitude of the first sine component",
+          "group": "component-1",
+          "properties": {"min": 0, "max": 1, "default": 0.3, "step": 0.01, "showValue": true}
+        },
+        {
+          "id": "freq2Slider",
+          "type": "slider",
+          "label": "Freq 2",
+          "description": "Frequency of the second sine component",
+          "group": "component-2",
+          "properties": {"min": 50, "max": 1000, "default": 800, "step": 1, "units": "Hz", "showValue": true}
+        },
+        {
+          "id": "amp2Slider",
+          "type": "slider",
+          "label": "Amp 2",
+          "description": "Amplitude of the second sine component",
+          "group": "component-2",
+          "properties": {"min": 0, "max": 1, "default": 0.3, "step": 0.01, "showValue": true}
+        },
+        {
+          "id": "freq3Slider",
+          "type": "slider",
+          "label": "Freq 3",
+          "description": "Frequency of the third sine component",
+          "group": "component-3",
+          "properties": {"min": 50, "max": 1500, "default": 1200, "step": 1, "units": "Hz", "showValue": true}
+        },
+        {
+          "id": "amp3Slider",
+          "type": "slider",
+          "label": "Amp 3",
+          "description": "Amplitude of the third sine component",
+          "group": "component-3",
+          "properties": {"min": 0, "max": 1, "default": 0.3, "step": 0.01, "showValue": true}
+        },
+        {
+          "id": "masterVolumeSlider",
+          "type": "slider",
+          "label": "Master",
+          "description": "Speaker level applied after the FFT tap, so it changes loudness only",
+          "group": "playback",
+          "properties": {"min": 0, "max": 0.35, "default": 0.25, "step": 0.01, "showValue": true}
+        }
+      ],
+      "visualElements": [
+        {"type": "graph", "description": "Time-domain plot (blue): a 20 ms window of the combined waveform, triggered on the steepest rising zero crossing; the amplitude axis is +/-1, +/-2 or +/-3 depending on a1 + a2 + a3", "interactive": false, "updateTriggers": ["freq1Slider", "amp1Slider", "freq2Slider", "amp2Slider", "freq3Slider", "amp3Slider", "soundButton"]},
+        {"type": "chart", "description": "Frequency-domain plot (red bars): FFT magnitude spectrum from 0 to 1600 Hz with dark-red frequency labels on up to five peaks", "interactive": false, "updateTriggers": ["freq1Slider", "amp1Slider", "freq2Slider", "amp2Slider", "freq3Slider", "amp3Slider", "soundButton"]},
+        {"type": "text-display", "description": "Formula of the signal being played, slider read-outs, sample rate and bin width, and a STOPPED / PLAYING / MUTED status indicator", "interactive": false, "updateTriggers": ["freq1Slider", "amp1Slider", "freq2Slider", "amp2Slider", "freq3Slider", "amp3Slider", "masterVolumeSlider", "soundButton"]}
+      ]
+    },
+    "simulation": {
+      "model": {
+        "type": "algorithmic",
+        "description": "Three oscillators produce x(t) = a1 sin(2 pi f1 t) + a2 sin(2 pi f2 t) + a3 sin(2 pi f3 t). The browser's analyser (via p5.sound) applies a Blackman window and an 8192-point FFT returning 4096 bins; the sketch plots the magnitude normalised so that an amplitude-1 sine centred on a bin reaches 1. The Master gain sits between the oscillators and the speakers, after the FFT tap.",
+        "equations": ["x(t) = a1 sin(2 pi f1 t) + a2 sin(2 pi f2 t) + a3 sin(2 pi f3 t)", "Delta f = f_s / 8192", "|x(t)| <= a1 + a2 + a3", "two equal-frequency tones: amplitude |a1 + a2 e^{j phi}|"],
+        "algorithms": ["Fast Fourier Transform (Web Audio AnalyserNode)", "Local-maximum peak detection with label collision avoidance", "Steepest rising zero-crossing trigger for the time-domain display"],
+        "limitations": ["Labels report the centre of the strongest bin, up to half a bin (about 2.9 Hz at 48 kHz) from the true frequency", "A tone between two bins reads up to about 12% low because of the Blackman window", "Tones 10 Hz apart merge into one peak"]
+      }
+    },
+    "usage": {
+      "recommendedUsage": ["demonstration", "exploration", "guided-practice"],
+      "instructionalStrategies": ["Predict-then-verify with the sliders", "Comparing peak heights with amplitude settings", "Finding the smallest frequency separation the FFT can resolve"],
+      "extensions": ["Add a phase slider for each oscillator and show that the magnitude spectrum does not change", "Compare FFT sizes to see how bin width changes the resolution limit"]
+    }
+  },
+  "canvasHeight": 580
 }

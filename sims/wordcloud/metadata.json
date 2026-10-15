@@ -1,0 +1,106 @@
+{
+  "microsim": {
+    "dublinCore": {
+      "title": "Signal Processing Word Cloud",
+      "creator": ["Dan McCreary"],
+      "subject": ["Signal processing", "Terminology", "Vocabulary", "Word cloud"],
+      "description": "A word cloud of 51 key signal processing terms, drawn with wordcloud2.js and sized by relative weight, that previews the vocabulary students meet in the book.",
+      "publisher": "Dan McCreary",
+      "contributor": ["Claude (Anthropic)"],
+      "date": "2024-10-19",
+      "type": "Interactive Simulation",
+      "format": "text/html",
+      "identifier": "https://dmccreary.github.io/signal-processing/sims/wordcloud/",
+      "language": "en",
+      "relation": ["Chapter 2: Introduction to Signals and Systems"],
+      "rights": "CC BY-NC-SA 4.0"
+    },
+    "search": {
+      "tags": ["word cloud", "vocabulary", "terminology", "signal processing", "course overview"],
+      "searchKeywords": ["signal processing word cloud", "signal processing terms", "DSP vocabulary", "wordcloud2.js"],
+      "visualizationType": ["infographic", "data-visualization"],
+      "interactionLevel": "passive",
+      "complexity": 1,
+      "relatedConcepts": ["Signals", "Systems", "Convolution", "Aliasing", "Quantization", "Laplace Transform", "Z-Transform", "Decimation"],
+      "applicationDomains": ["education", "exploration"],
+      "showcase": false
+    },
+    "educational": {
+      "gradeLevel": ["Undergraduate"],
+      "subjectArea": ["Engineering", "Computer Science"],
+      "topic": ["Signal processing vocabulary", "Course overview", "Reading size-encoded displays"],
+      "learningObjectives": [
+        "Recall at least 15 of the 51 signal processing terms shown in the cloud",
+        "Classify the terms into families such as transforms, filters, and sampling and rate conversion",
+        "Relate a word's weight to its rendered font size and compare two words by that ratio",
+        "Evaluate what a word cloud does and does not show, separating how often a term is mentioned from how important it is",
+        "Predict the chapter of this book that introduces a given term"
+      ],
+      "bloomsTaxonomy": ["Remember", "Understand", "Evaluate"],
+      "prerequisites": ["None"],
+      "duration": {"typical": 10, "range": {"min": 5, "max": 30}},
+      "difficulty": "Beginner",
+      "misconceptions": [
+        {
+          "misconception": "A bigger word means a more important topic",
+          "correction": "Size encodes an estimated frequency of mention taken from a weight in words.json, not how important or how hard a topic is",
+          "evidence": "Reload the page: positions and colors change but the size of every word stays fixed by its weight"
+        },
+        {
+          "misconception": "Words that sit close together are related",
+          "correction": "Position is chosen at random by the placement algorithm and carries no meaning",
+          "evidence": "Reload the page: the same two words land in different places each time"
+        }
+      ]
+    },
+    "technical": {
+      "framework": "other",
+      "version": "2.0.0",
+      "canvasDimensions": {"width": 800, "height": 510, "responsive": true},
+      "regions": {"drawHeight": 510, "controlHeight": 0},
+      "dependencies": ["wordcloud2.js 1.0.6"],
+      "browserCompatibility": ["Chrome 90+", "Firefox 88+", "Safari 14+", "Edge 90+"],
+      "performance": {"memoryUsage": "low", "loadTime": 1000},
+      "deviceRequirements": {
+        "minScreenWidth": 320,
+        "touchSupport": true,
+        "keyboardRequired": false,
+        "mouseRequired": false,
+        "networkRequired": true
+      },
+      "accessibility": {
+        "screenReader": true,
+        "keyboardNavigation": true,
+        "colorContrast": false,
+        "altText": true,
+        "screenReaderScript": "Word cloud of 51 key signal processing terms. Word size shows relative importance. The largest terms are Signal Processing, Filter, Noise, Fourier Transform, Digital Signal Processing. Placement, rotation and color are random and change each time the page loads."
+      }
+    },
+    "userInterface": {
+      "layoutType": "responsive-width",
+      "layoutPattern": "single-display-region",
+      "colorScheme": {
+        "drawingArea": "aliceblue",
+        "text": "random dark hues"
+      },
+      "controls": [],
+      "visualElements": [
+        {"type": "diagram", "description": "Word cloud of 51 signal processing terms; font size is half the term's weight in pixels in the embedded view (scaled up in larger windows), about half the words are rotated 90 degrees", "interactive": false, "updateTriggers": ["page reload"]}
+      ]
+    },
+    "simulation": {
+      "model": {
+        "type": "algorithmic",
+        "description": "wordcloud2.js places each word on a grid in decreasing weight order, searching outward from the center until the word fits without overlap",
+        "equations": ["fontSize_px = 0.5 * scale * weight, where scale = 1 at the embedded size and grows with a larger window"],
+        "algorithms": ["Grid-based spiral word placement (wordcloud2.js)"]
+      }
+    },
+    "usage": {
+      "recommendedUsage": ["demonstration", "exploration", "group-activity"],
+      "instructionalStrategies": ["Vocabulary preview on the first day of the course", "Sort terms into families, then check the chapter pages"],
+      "extensions": ["Edit the weights in words.json and reload to see how size follows weight", "Add missing terms such as High-Pass Filters, FIR Filters, IIR Filters and Spectrogram"]
+    }
+  },
+  "canvasHeight": 510
+}

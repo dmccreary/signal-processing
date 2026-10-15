@@ -1,0 +1,419 @@
+{
+  "microsim": {
+    "dublinCore": {
+      "title": "IIR Prototype Comparison",
+      "creator": [
+        "Dan McCreary"
+      ],
+      "subject": [
+        "IIR filter design",
+        "Analog filter prototypes",
+        "Butterworth filter",
+        "Chebyshev filter",
+        "Elliptic filter",
+        "Bessel filter"
+      ],
+      "description": "Interactive comparison of the classic analog low-pass prototypes (Butterworth, Chebyshev I, Chebyshev II, elliptic and Bessel) at the same order: magnitude in dB on a log frequency axis with a passband zoom, phase, group delay, step response and s-plane poles and zeros, plus a table of passband edge, stopband edge, transition width, selectivity ratio, overshoot and 2% settling time for each family.",
+      "publisher": "Dan McCreary",
+      "contributor": [
+        "Claude (Anthropic)"
+      ],
+      "date": "2026-10-14",
+      "type": "Interactive Simulation",
+      "format": "text/html",
+      "identifier": "https://dmccreary.github.io/signal-processing/sims/iir-prototype-comparison/",
+      "language": "en",
+      "relation": [
+        "Chapter 10: Advanced Filter Design and Implementation"
+      ],
+      "rights": "CC BY-NC-SA 4.0"
+    },
+    "search": {
+      "tags": [
+        "IIR filter",
+        "analog prototype",
+        "Butterworth",
+        "Chebyshev",
+        "elliptic filter",
+        "Cauer filter",
+        "Bessel filter",
+        "group delay",
+        "step response",
+        "pole-zero plot",
+        "transition band"
+      ],
+      "searchKeywords": [
+        "filter prototype comparison",
+        "Butterworth vs Chebyshev vs elliptic",
+        "Bessel filter group delay",
+        "transition width",
+        "filter overshoot settling time",
+        "elliptic filter poles and zeros"
+      ],
+      "visualizationType": [
+        "chart",
+        "interactive-demo",
+        "simulation"
+      ],
+      "interactionLevel": "high",
+      "complexity": 7,
+      "relatedConcepts": [
+        "Filter Design Methods",
+        "Butterworth Filter",
+        "Chebyshev Filter",
+        "Elliptic Filter",
+        "Bessel Filter"
+      ],
+      "applicationDomains": [
+        "education",
+        "exploration",
+        "demonstration"
+      ]
+    },
+    "educational": {
+      "gradeLevel": [
+        "Undergraduate"
+      ],
+      "subjectArea": [
+        "Engineering",
+        "Mathematics"
+      ],
+      "topic": [
+        "Analog filter prototypes",
+        "Butterworth, Chebyshev, elliptic and Bessel approximations",
+        "Selectivity versus time-domain response",
+        "Group delay",
+        "Poles and zeros"
+      ],
+      "learningObjectives": [
+        "Compare the transition width (omega_s - omega_p) of the five prototype families at the same order and rank them from sharpest to gentlest",
+        "Relate the pole and zero pattern in the s-plane (a circle, an ellipse, poles close to the j-omega axis, zeros on the j-omega axis) to flatness, ripple and notches in the magnitude response",
+        "Analyze the trade-off between frequency selectivity and time-domain behavior: overshoot, settling time and group-delay variation",
+        "Calculate Butterworth band edges and the minimum Butterworth order from |H|^2 = 1/(1 + omega^(2N)), and check them against the read-outs",
+        "Evaluate which prototype best meets an application requirement, such as sharp channel selection or faithful pulse shape"
+      ],
+      "bloomsTaxonomy": [
+        "Apply",
+        "Analyze",
+        "Evaluate"
+      ],
+      "prerequisites": [
+        "Laplace transform and transfer functions",
+        "Poles, zeros and stability",
+        "Decibels, step response and group delay",
+        "Filter specifications: passband, stopband and transition band"
+      ],
+      "duration": {
+        "typical": 35,
+        "range": {
+          "min": 20,
+          "max": 50
+        }
+      },
+      "difficulty": "Advanced",
+      "scaffolding": {
+        "type": [
+          "guided-discovery",
+          "feedback"
+        ],
+        "adaptability": "fixed",
+        "removal": "user-controlled"
+      },
+      "misconceptions": [
+        {
+          "misconception": "The sharpest filter is the best filter",
+          "correction": "Sharp transitions come from poles close to the j-omega axis, which cause large overshoot, long settling and group-delay peaks",
+          "evidence": "At the default settings the elliptic filter has the narrowest transition (0.496 rad/s) but the largest overshoot (24.0%) and longest settling time (23.12 s); at N = 8 its transition is 0.022 rad/s and it settles in 57.73 s"
+        },
+        {
+          "misconception": "Chebyshev II gives up selectivity to get a flat passband",
+          "correction": "Chebyshev I and II have the same selectivity ratio for the same N, Rp and As; Type II moves the equiripple behavior to the stopband",
+          "evidence": "With 'Passband edge at omega = 1 rad/s' scaling both Chebyshev rows show omega_s = 2.339, while Chebyshev II overshoots 13.0% instead of 21.9%"
+        }
+      ]
+    },
+    "technical": {
+      "framework": "p5.js",
+      "version": "1.0.0",
+      "canvasDimensions": {
+        "width": 900,
+        "height": 760,
+        "responsive": true
+      },
+      "regions": {
+        "drawHeight": 648,
+        "controlHeight": 112
+      },
+      "dependencies": [
+        "p5.js 2.3.2"
+      ],
+      "browserCompatibility": [
+        "Chrome 90+",
+        "Firefox 88+",
+        "Safari 14+",
+        "Edge 90+"
+      ],
+      "performance": {
+        "memoryUsage": "low",
+        "loadTime": 500
+      },
+      "deviceRequirements": {
+        "minScreenWidth": 375,
+        "touchSupport": true,
+        "keyboardRequired": false,
+        "mouseRequired": false,
+        "networkRequired": false
+      },
+      "accessibility": {
+        "screenReader": true,
+        "keyboardNavigation": true,
+        "colorContrast": true,
+        "altText": true,
+        "screenReaderScript": "Five classic analog low-pass filter prototypes compared at the same order: a magnitude plot in dB on a log frequency axis, phase, group delay, step response, an s-plane pole-zero plot, and a table of passband edge, stopband edge, transition width, overshoot and settling time for each family. Checkboxes show or hide Butterworth, Chebyshev I, Chebyshev II, elliptic and Bessel designs; sliders set the order, the passband ripple and the stopband attenuation."
+      }
+    },
+    "userInterface": {
+      "layoutType": "responsive-width",
+      "layoutPattern": "drawing-region-above-controls",
+      "colorScheme": {
+        "drawingArea": "aliceblue",
+        "controlArea": "white",
+        "butterworth": "blue",
+        "chebyshevI": "vermillion",
+        "chebyshevII": "purple",
+        "elliptic": "green",
+        "bessel": "brown",
+        "highlight": "gold",
+        "text": "black"
+      },
+      "controls": [
+        {
+          "id": "familyBoxes[0]",
+          "type": "checkbox",
+          "label": "Butterworth",
+          "description": "Shows or hides the Butterworth curves, poles, zeros and table row (label drawn in the family color)",
+          "group": "families",
+          "properties": {
+            "checked": true
+          }
+        },
+        {
+          "id": "familyBoxes[1]",
+          "type": "checkbox",
+          "label": "Chebyshev I",
+          "description": "Shows or hides the Chebyshev I curves, poles, zeros and table row (label drawn in the family color)",
+          "group": "families",
+          "properties": {
+            "checked": true
+          }
+        },
+        {
+          "id": "familyBoxes[2]",
+          "type": "checkbox",
+          "label": "Chebyshev II",
+          "description": "Shows or hides the Chebyshev II curves, poles, zeros and table row (label drawn in the family color)",
+          "group": "families",
+          "properties": {
+            "checked": false
+          }
+        },
+        {
+          "id": "familyBoxes[3]",
+          "type": "checkbox",
+          "label": "Elliptic",
+          "description": "Shows or hides the Elliptic curves, poles, zeros and table row (label drawn in the family color)",
+          "group": "families",
+          "properties": {
+            "checked": true
+          }
+        },
+        {
+          "id": "familyBoxes[4]",
+          "type": "checkbox",
+          "label": "Bessel",
+          "description": "Shows or hides the Bessel curves, poles, zeros and table row (label drawn in the family color)",
+          "group": "families",
+          "properties": {
+            "checked": true
+          }
+        },
+        {
+          "id": "orderSlider",
+          "type": "slider",
+          "label": "Order N",
+          "description": "Sets the filter order (number of poles) for every family",
+          "group": "design",
+          "properties": {
+            "min": 1,
+            "max": 10,
+            "default": 4,
+            "step": 1,
+            "showValue": true
+          }
+        },
+        {
+          "id": "rippleSlider",
+          "type": "slider",
+          "label": "Ripple Rp",
+          "description": "Passband ripple of the Chebyshev I and elliptic designs, and the passband tolerance that defines omega_p for every family",
+          "group": "design",
+          "properties": {
+            "min": 0.1,
+            "max": 3,
+            "default": 1,
+            "step": 0.1,
+            "units": "dB",
+            "showValue": true
+          }
+        },
+        {
+          "id": "stopSlider",
+          "type": "slider",
+          "label": "Stopband As",
+          "description": "Minimum stopband attenuation of the Chebyshev II and elliptic designs, and the level that defines omega_s for every family",
+          "group": "design",
+          "properties": {
+            "min": 20,
+            "max": 80,
+            "default": 40,
+            "step": 1,
+            "units": "dB",
+            "showValue": true
+          }
+        },
+        {
+          "id": "zoomCheckbox",
+          "type": "checkbox",
+          "label": "Zoom passband",
+          "description": "Switches the magnitude plot to 0.1-2 rad/s and a few dB around 0 dB so the passband ripple is visible",
+          "group": "view",
+          "properties": {
+            "checked": false
+          }
+        },
+        {
+          "id": "normSelect",
+          "type": "dropdown",
+          "label": "Scaling",
+          "description": "Frequency scaling of every prototype: the -3.01 dB point or the passband edge (loss = Rp) at 1 rad/s",
+          "group": "design",
+          "properties": {
+            "options": [
+              {
+                "value": "db3",
+                "label": "-3 dB point at omega = 1 rad/s"
+              },
+              {
+                "value": "edge",
+                "label": "Passband edge at omega = 1 rad/s"
+              }
+            ],
+            "default": "db3"
+          }
+        }
+      ],
+      "visualElements": [
+        {
+          "type": "chart",
+          "description": "Magnitude in dB versus log frequency (0.1-10 rad/s, or a passband zoom) with the -As or -Rp specification line, band-edge dots and a legend",
+          "interactive": true,
+          "updateTriggers": [
+            "familyBoxes[0-4]",
+            "orderSlider",
+            "rippleSlider",
+            "stopSlider",
+            "zoomCheckbox",
+            "normSelect"
+          ]
+        },
+        {
+          "type": "chart",
+          "description": "Phase in degrees and group delay in seconds versus frequency (0-3 rad/s)",
+          "interactive": true,
+          "updateTriggers": [
+            "familyBoxes[0-4]",
+            "orderSlider",
+            "rippleSlider",
+            "stopSlider",
+            "normSelect"
+          ]
+        },
+        {
+          "type": "chart",
+          "description": "Step response with 2% settling-time markers",
+          "interactive": true,
+          "updateTriggers": [
+            "familyBoxes[0-4]",
+            "orderSlider",
+            "rippleSlider",
+            "stopSlider",
+            "normSelect"
+          ]
+        },
+        {
+          "type": "diagram",
+          "description": "s-plane plot of poles (x) and zeros (o) with the unit circle; zeros beyond the plotted range are listed under it",
+          "interactive": true,
+          "updateTriggers": [
+            "familyBoxes[0-4]",
+            "orderSlider",
+            "rippleSlider",
+            "stopSlider",
+            "normSelect"
+          ]
+        },
+        {
+          "type": "text-display",
+          "description": "Table of omega_p, omega_s, transition width, omega_s/omega_p, overshoot and settling time with the best values highlighted in gold",
+          "interactive": false,
+          "updateTriggers": [
+            "familyBoxes[0-4]",
+            "orderSlider",
+            "rippleSlider",
+            "stopSlider",
+            "normSelect"
+          ]
+        }
+      ]
+    },
+    "simulation": {
+      "model": {
+        "type": "mathematical",
+        "description": "Builds each analog low-pass prototype as pole and zero lists, scales it in frequency so that the -3.01 dB point or the passband edge lies at 1 rad/s, and evaluates the frequency response, phase, group delay and step response analytically from the poles and zeros",
+        "equations": [
+          "H(s) = K prod(s - z_i) / prod(s - p_k)",
+          "Butterworth: |H(jw)|^2 = 1 / (1 + w^(2N))",
+          "Chebyshev I: |H(jw)|^2 = 1 / (1 + eps^2 T_N^2(w)), eps = sqrt(10^(Rp/10) - 1)",
+          "Chebyshev II: |H(jw)|^2 = T_N^2(1/w) / (eps_s^2 + T_N^2(1/w)), eps_s = sqrt(10^(As/10) - 1)",
+          "Elliptic: |H(jw)|^2 = 1 / (1 + eps^2 R_N^2(w)), degree equation K'(k)/K(k) = K'(k1) / (N K(k1)), k1 = eps / eps_s",
+          "Bessel: H(s) = theta_N(0) / theta_N(s), reverse Bessel polynomial",
+          "group delay tau(w) = sum_k sigma_k / (sigma_k^2 + (w - w_k)^2) for poles p_k = -sigma_k + j w_k",
+          "step response y(t) = H(0) + Re sum_k (Res_{p_k} H / p_k) e^{p_k t}"
+        ],
+        "algorithms": [
+          "Landen transformations for the Jacobi elliptic functions sn and cd",
+          "Durand-Kerner root finding for the Bessel polynomial",
+          "Bisection for the frequency scaling and the band edges",
+          "Partial-fraction step response"
+        ]
+      }
+    },
+    "usage": {
+      "recommendedUsage": [
+        "demonstration",
+        "exploration",
+        "guided-practice"
+      ],
+      "instructionalStrategies": [
+        "Rank the families by transition width, then by overshoot, and discuss the reversal",
+        "Compare the two scalings to separate selectivity from absolute band edges",
+        "Link each feature of the magnitude response to the pole-zero plot"
+      ],
+      "extensions": [
+        "Add the bilinear transform to map each prototype to a digital IIR filter and compare the warped band edges",
+        "Add an order-estimation mode that finds the minimum N of each family for a given omega_p, omega_s, Rp and As"
+      ]
+    }
+  },
+  "canvasHeight": 760
+}

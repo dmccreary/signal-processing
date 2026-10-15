@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Signal Processing Word Cloud</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/wordcloud2.js/1.0.6/wordcloud2.min.js"></script>
+    <style>
+        html, body {
+            height: 100%;
+        }
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: Arial, Helvetica, sans-serif;
+            display: flex;
+            flex-direction: column;
+        }
+        main {
+            flex: 1 1 auto;
+            min-height: 0;
+            box-sizing: border-box;
+            padding: 0 10px;            /* room for rotated words that overhang by a few pixels */
+            background: aliceblue;
+            overflow: hidden;           /* never let the page scroll horizontally */
+        }
+        #wordcloud {
+            position: relative;
+            width: 100%;
+            height: 100%;
+            box-sizing: border-box;
+            border: 1px solid aliceblue;
+        }
+        .back-link {
+            flex: 0 0 auto;
+            padding: 4px 8px;
+            font-size: 14px;
+            line-height: 20px;
+        }
+    </style>
+</head>
+<body>
+
+<main>
+    <div id="wordcloud" role="img"
+         aria-label="Word cloud of key signal processing terms. Larger words are more central to the course."></div>
+</main>
+<a class="back-link" href=".">Back to Documentation</a>
+
+<script type="text/javascript">
+    // Load the JSON file
+    fetch('words.json')
+        .then(response => response.json())
+        .then(data => {
+            // Convert the data to the format expected by wordcloud2.js
+            const words = data.words.map(word => [word.label, word.value]);
+
+            // Accessible description: the words are placed randomly, so name the biggest ones.
+            const top = data.words.slice().sort((a, b) => b.value - a.value).slice(0, 5).map(w => w.label);
+            document.getElementById('wordcloud').setAttribute('aria-label',
+                'Word cloud of ' + data.words.length + ' key signal processing terms. Word size shows relative ' +
+                'importance. The largest terms are ' + top.join(', ') + '. Placement, rotation and color are random ' +
+                'and change each time the page loads.');
+
+            // Grow the words with the container so a large window is not mostly empty.
+            // At the embedded size (about 800 x 484 px or less) the scale is 1: 0.5 px per weight unit.
+            const container = document.getElementById('wordcloud');
+            const scale = Math.max(1, Math.min(container.offsetWidth / 800, container.offsetHeight / 484));
+
+            // Generate the word cloud
+            WordCloud(container, {
+                list: words,
+                backgroundColor: 'aliceblue',
+                gridSize: Math.round(16 * window.innerWidth / 1024),
+                weightFactor: 0.5 * scale,  // Adjusts the size of the words
+                fontFamily: 'Times, serif',
+                color: 'random-dark',
+                rotateRatio: 0.5,
+                rotationSteps: 2,
+            });
+        })
+        .catch(error => console.error('Error loading the JSON file:', error));
+</script>
+
+</body>
+</html>

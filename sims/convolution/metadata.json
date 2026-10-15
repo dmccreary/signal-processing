@@ -1,83 +1,128 @@
 {
-  "title": "Convolution",
-  "description": "Interactive visualization demonstrating convolution as a measure of overlap between functions using a sliding square function over a stationary triangle.",
-  "creator": "Dan McCreary",
-  "date": "2024-01-01",
-  "subject": [
-    "Signal Processing",
-    "Mathematics",
-    "Convolution",
-    "Fourier Analysis"
-  ],
-  "type": "Interactive Simulation",
-  "format": "text/html",
-  "language": "en",
-  "rights": "CC BY-NC-SA 4.0",
-  "identifier": "https://dmccreary.github.io/signal-processing/sims/convolution/",
-  "publisher": "Dan McCreary",
-  "educationalLevel": "Undergraduate",
-  "learningResourceType": "simulation",
-  "audience": "Students, Educators",
-  "version": "1.0.0",
-  "bloomLevel": [
-    "Understand",
-    "Apply",
-    "Analyze"
-  ],
-  "concepts": [
-    "Convolution",
-    "Overlap integral",
-    "Time domain",
-    "Signal processing"
-  ],
-  "prerequisites": [
-    "Basic understanding of functions",
-    "Coordinate systems",
-    "Area calculations"
-  ],
-  "library": "p5.js",
-  "visualizationType": [
-    "animation",
-    "graph",
-    "interactive-demo",
-    "map",
-    "network",
-    "simulation"
-  ],
-  "learningObjectives": [
-    "Understand the key concepts of convolution",
-    "Explore convolution through interactive visualization",
-    "Apply knowledge of convolution to solve problems",
-    "Experiment with parameters to observe their effects on convolution"
-  ],
-  "bloomsTaxonomy": [
-    "Remember",
-    "Understand",
-    "Apply",
-    "Evaluate",
-    "Create"
-  ],
-  "pedagogical": {
-    "pattern": "exploration",
-    "bloomAlignment": [
-      "understand",
-      "apply",
-      "analyze"
-    ],
-    "bloomVerbs": [
-      "explain",
-      "interpret",
-      "apply",
-      "calculate",
-      "demonstrate"
-    ],
-    "pacing": "self-paced",
-    "supportsPrediction": true,
-    "dataVisibility": "high",
-    "feedbackType": [
-      "corrective",
-      "explanatory"
-    ],
-    "interactionStyle": "manipulate"
-  }
+  "microsim": {
+    "dublinCore": {
+      "title": "Convolution",
+      "creator": ["Dan McCreary"],
+      "subject": ["Signal Processing", "Mathematics", "Convolution", "Overlap integral"],
+      "description": "Interactive introduction to convolution as a measure of overlap. A blue square slides across a stationary red triangle and the height of a purple gauge shows the area of overlap, the value of the convolution at the current position.",
+      "publisher": "Dan McCreary",
+      "contributor": ["Claude (Anthropic)"],
+      "date": "2025-01-18",
+      "type": "Interactive Simulation",
+      "format": "text/html",
+      "identifier": "https://dmccreary.github.io/signal-processing/sims/convolution/",
+      "language": "en",
+      "relation": ["Chapter 4: Convolution and Correlation", "Convolution Visualizer"],
+      "rights": "CC BY-NC-SA 4.0"
+    },
+    "search": {
+      "tags": ["convolution", "overlap", "sliding function", "convolution integral", "signals and systems", "introductory"],
+      "searchKeywords": ["convolution", "function overlap", "square and triangle", "area of overlap", "convolution integral", "introduction to convolution"],
+      "visualizationType": ["diagram", "interactive-demo", "simulation"],
+      "interactionLevel": "low",
+      "complexity": 2,
+      "relatedConcepts": ["Convolution", "Convolution Integral", "Overlap Integral", "Time Shifting", "Linear Time-Invariant Systems"],
+      "applicationDomains": ["education", "exploration", "demonstration"],
+      "showcase": false
+    },
+    "educational": {
+      "gradeLevel": ["Undergraduate"],
+      "subjectArea": ["Engineering", "Mathematics"],
+      "topic": ["Convolution", "Overlap of functions", "The convolution integral"],
+      "learningObjectives": [
+        "Explain convolution as a measure of how much a sliding function overlaps a stationary one",
+        "Predict the slider positions at which the overlap begins, reaches its maximum and ends",
+        "Interpret the height of the purple gauge as the area of overlap, not the height of overlap",
+        "Calculate the overlap area at a given position from the geometry of the square and the triangle",
+        "Connect the sliding-and-overlapping picture to the convolution integral"
+      ],
+      "bloomsTaxonomy": ["Understand", "Apply", "Analyze"],
+      "prerequisites": ["Functions and their graphs", "Area under a curve as an integral", "Shifting a function"],
+      "duration": {"typical": 12, "range": {"min": 10, "max": 15}},
+      "difficulty": "Beginner",
+      "scaffolding": {
+        "type": ["guided-discovery", "feedback"],
+        "adaptability": "fixed",
+        "removal": "user-controlled"
+      },
+      "misconceptions": [
+        {
+          "misconception": "The gauge shows how high the two shapes overlap",
+          "correction": "The gauge height is the area of overlap, not the height of the overlapping region",
+          "evidence": "At slider 170 the overlap already reaches the triangle's full height, but the gauge is at half its maximum (area 0.25 of 0.50)"
+        },
+        {
+          "misconception": "The purple triangle is the output signal",
+          "correction": "The purple triangle is a gauge whose height is one value of the output at the current x; the output is the smooth bump traced by the gauge height as x changes",
+          "evidence": "Plot the read-out against x for slider 140 to 260: the points form a rounded bump with a maximum of 0.50"
+        },
+        {
+          "misconception": "Convolution multiplies the two functions at a single point",
+          "correction": "At each x the product is a whole function of tau, and the output is the integral of that product over all overlapping points",
+          "evidence": "Move the slider and watch the shared region change shape while only its area is reported"
+        }
+      ]
+    },
+    "technical": {
+      "framework": "p5.js",
+      "version": "2.0.0",
+      "canvasDimensions": {"width": 450, "height": 265, "responsive": true},
+      "regions": {"drawHeight": 210, "controlHeight": 55},
+      "dependencies": ["p5.js 2.3.2"],
+      "browserCompatibility": ["Chrome 90+", "Firefox 88+", "Safari 14+", "Edge 90+"],
+      "performance": {"memoryUsage": "low", "loadTime": 500},
+      "deviceRequirements": {
+        "minScreenWidth": 320,
+        "touchSupport": true,
+        "keyboardRequired": false,
+        "mouseRequired": false,
+        "networkRequired": false
+      },
+      "accessibility": {
+        "screenReader": true,
+        "keyboardNavigation": true,
+        "colorContrast": true,
+        "altText": true,
+        "screenReaderScript": "A blue square slides across a red triangle. One slider sets the horizontal position of the square. The height of a purple triangle shows the area where the square and the triangle overlap, which is the convolution at that position, and the area is also printed as a number."
+      }
+    },
+    "userInterface": {
+      "layoutType": "responsive-width",
+      "layoutPattern": "drawing-region-above-controls",
+      "colorScheme": {
+        "drawingArea": "aliceblue",
+        "controlArea": "white",
+        "accent": "purple",
+        "text": "black"
+      },
+      "controls": [
+        {
+          "id": "overlapSlider",
+          "type": "slider",
+          "label": "x position of f(x)",
+          "description": "Slides the blue square from left to right across the red triangle; 60 slider units move it by its own width",
+          "group": "position",
+          "properties": {"min": 0, "max": 270, "default": 0, "step": 1, "showValue": true}
+        }
+      ],
+      "visualElements": [
+        {"type": "shape", "description": "Blue square f(x) that slides and red triangle g(x) that stays fixed", "interactive": true, "updateTriggers": ["overlapSlider"]},
+        {"type": "shape", "description": "Purple gauge triangle whose height is the area of overlap, with a dashed outline at the maximum", "interactive": false, "updateTriggers": ["overlapSlider"]},
+        {"type": "text-display", "description": "Read-outs of the overlap area, the maximum area and the offset x in square widths", "interactive": false, "updateTriggers": ["overlapSlider"]}
+      ]
+    },
+    "simulation": {
+      "model": {
+        "type": "mathematical",
+        "description": "Overlap area of a unit square and a unit triangle as the square is shifted; the area is summed over 200 thin slices of the square",
+        "equations": ["(f * g)(x) = integral f(tau) g(x - tau) d tau", "area(x) = integral g(tau) f(x - tau) d tau", "maximum area = 1/2"]
+      }
+    },
+    "usage": {
+      "recommendedUsage": ["demonstration", "exploration", "guided-practice"],
+      "instructionalStrategies": ["Predict-then-verify with the slider", "Plot the read-out against x to reveal the output curve"],
+      "extensions": ["Use the Convolution Visualizer to see the flip step and other signal pairs"]
+    }
+  },
+  "canvasHeight": 265
 }

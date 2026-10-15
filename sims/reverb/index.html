@@ -6,7 +6,7 @@
       <meta charset="utf-8">
       <meta name="viewport" content="width=device-width,initial-scale=1">
       
-        <meta name="description" content="Interactive demonstration of audio reverb effect showing how reverberation affects sound signals.">
+        <meta name="description" content="Play a music clip through a convolution reverb, set the decay time and the dry/wet mix, and watch the reverb tail fade after the source stops.">
       
       
         <meta name="author" content="Dan McCreary">
@@ -15,10 +15,10 @@
         <link rel="canonical" href="https://dmccreary.github.io/signal-processing/sims/reverb/">
       
       
-        <link rel="prev" href="../rc-lowpass-filter/">
+        <link rel="prev" href="../real-time-processing-simulator/">
       
       
-        <link rel="next" href="../sine-wave/">
+        <link rel="next" href="../s-plane-explorer/">
       
       
       <link rel="icon" href="../../img/favicon.ico">
@@ -54,6 +54,8 @@
     
       <link rel="stylesheet" href="../../css/extra.css">
     
+      <link rel="stylesheet" href="../../css/mascot.css">
+    
     <script>__md_scope=new URL("../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
     
       
@@ -65,7 +67,7 @@
       
         <meta  property="og:title"  content="Sound Reverb Effect - Signal Processing with AI" >
       
-        <meta  property="og:description"  content="Interactive demonstration of audio reverb effect showing how reverberation affects sound signals." >
+        <meta  property="og:description"  content="Play a music clip through a convolution reverb, set the decay time and the dry/wet mix, and watch the reverb tail fade after the source stops." >
       
         <meta property="og:image" content="https://dmccreary.github.io/signal-processing/sims/reverb/reverb.png">
       
@@ -81,7 +83,7 @@
       
         <meta  name="twitter:title"  content="Sound Reverb Effect - Signal Processing with AI" >
       
-        <meta  name="twitter:description"  content="Interactive demonstration of audio reverb effect showing how reverberation affects sound signals." >
+        <meta  name="twitter:description"  content="Play a music clip through a convolution reverb, set the decay time and the dry/wet mix, and watch the reverb tail fade after the source stops." >
       
         <meta name="twitter:image" content="https://dmccreary.github.io/signal-processing/sims/reverb/reverb.png">
       
@@ -122,7 +124,7 @@
   <nav class="md-header__inner md-grid" aria-label="Header">
     <a href="../.." title="Signal Processing with AI" class="md-header__button md-logo" aria-label="Signal Processing with AI" data-md-component="logo">
       
-  <img src="../../img/logo-192.png" alt="logo">
+  <img src="../../img/mascot/neutral.png" alt="logo">
 
     </a>
     <label class="md-header__button md-icon" for="__drawer">
@@ -228,7 +230,7 @@
   <label class="md-nav__title" for="__drawer">
     <a href="../.." title="Signal Processing with AI" class="md-nav__button md-logo" aria-label="Signal Processing with AI" data-md-component="logo">
       
-  <img src="../../img/logo-192.png" alt="logo">
+  <img src="../../img/mascot/neutral.png" alt="logo">
 
     </a>
     Signal Processing with AI
@@ -275,31 +277,11 @@
   
   
     <li class="md-nav__item">
-      <a href="../../chapters/" class="md-nav__link">
-        
-  
-  <span class="md-ellipsis">
-    Table of Contents
-  </span>
-  
-
-      </a>
-    </li>
-  
-
-    
-      
-      
-  
-  
-  
-  
-    <li class="md-nav__item">
       <a href="../../about/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
-    About This Website
+    About
   </span>
   
 
@@ -542,6 +524,174 @@
           
         
       
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
     
     
     
@@ -551,7 +701,7 @@
       
         
         
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_6" checked>
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_5" checked>
         
           
           
@@ -567,19 +717,103 @@
             </a>
             
               
-              <label class="md-nav__link " for="__nav_6" id="__nav_6_label" tabindex="0">
+              <label class="md-nav__link " for="__nav_5" id="__nav_5_label" tabindex="0">
                 <span class="md-nav__icon md-icon"></span>
               </label>
             
           </div>
         
-        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_6_label" aria-expanded="true">
-          <label class="md-nav__title" for="__nav_6">
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_5_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_5">
             <span class="md-nav__icon md-icon"></span>
             MicroSims
           </label>
           <ul class="md-nav__list" data-md-scrollfix>
             
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../image-convolution/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    2-D Convolution and Image Filtering
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../conv-layer-as-filter/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    A Convolutional Layer Is a Learned FIR Filter
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../adaptive-algorithm-comparison-tool/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Adaptive Algorithm Comparison Tool
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../adaptive-noise-cancellation/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Adaptive Noise and Echo Cancellation
+  </span>
+  
+
+      </a>
+    </li>
+  
+
               
             
               
@@ -631,11 +865,11 @@
   
   
     <li class="md-nav__item">
-      <a href="../base-and-treble/" class="md-nav__link">
+      <a href="../fft-basic/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
-    Base and Treble
+    Basic FFT
   </span>
   
 
@@ -652,11 +886,32 @@
   
   
     <li class="md-nav__item">
-      <a href="../fft-basic/" class="md-nav__link">
+      <a href="../base-and-treble/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
-    Basic FFT
+    Bass and Treble
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../bilinear-transform/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Bilinear Transform and Frequency Warping
   </span>
   
 
@@ -778,6 +1033,27 @@
   
   
     <li class="md-nav__item">
+      <a href="../compressed-sensing/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Compressed Sensing
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
       <a href="../convolution/" class="md-nav__link">
         
   
@@ -799,11 +1075,137 @@
   
   
     <li class="md-nav__item">
+      <a href="../convolution-theorem/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Convolution Theorem and Circular Convolution
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../convolution-visualizer/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Convolution Visualizer
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../correlation-and-matched-filtering/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Correlation and Matched Filtering
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../dct-basis-explorer/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    DCT Basis Explorer
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../dft-explorer/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    DFT Explorer
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
       <a href="../euler-formula-explorer/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
     Euler's Formula Explorer
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../even-and-odd-signal-decomposition/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Even and Odd Signal Decomposition
   </span>
   
 
@@ -967,6 +1369,27 @@
   
   
     <li class="md-nav__item">
+      <a href="../fft-spectrum-analyzer/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    FFT Spectrum Analyzer
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
       <a href="../fft-waveform-types/" class="md-nav__link">
         
   
@@ -988,11 +1411,263 @@
   
   
     <li class="md-nav__item">
+      <a href="../filter-bank-explorer/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Filter Bank and Polyphase Explorer
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../fir-filter-design-comparison-tool/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    FIR Filter Design Comparison Tool
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../fir-vs-iir/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    FIR vs IIR Filters
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../fourier-series-explorer/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Fourier Series Explorer
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../fourier-transform-pairs/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Fourier Transform Pairs
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
       <a href="../frequency-detection/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
     Frequency Detection
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../huffman-coding/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Huffman Coding
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../iir-prototype-comparison/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    IIR Prototype Comparison
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../impulse-and-frequency-response-analyzer/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Impulse and Frequency Response Analyzer
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../interactive-filter-design-and-analysis-tool/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Interactive Filter Design and Analysis Tool
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../interactive-pole-zero-analysis-tool/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Interactive Pole-Zero Analysis Tool
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../interactive-spectrogram-parameter-explorer/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Interactive Spectrogram Parameter Explorer
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../interactive-stft-spectrogram-analyzer/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Interactive STFT Spectrogram Analyzer
   </span>
   
 
@@ -1072,6 +1747,48 @@
   
   
     <li class="md-nav__item">
+      <a href="../multirate-sample-rate-converter/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Multirate Sample Rate Converter
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../noise-analysis-and-reduction-tool/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Noise Analysis and Reduction Tool
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
       <a href="../nyquist-shannon-sampling/" class="md-nav__link">
         
   
@@ -1093,11 +1810,137 @@
   
   
     <li class="md-nav__item">
+      <a href="../phase-spectrum/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Phase Spectrum - What the Magnitude Hides
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../phasor-addition/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Phasor Addition
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../psd-wiener-khinchin/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Power Spectral Density and the Wiener-Khinchin Theorem
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../distribution-explorer/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Probability Distribution Explorer
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../quantization-and-noise-shaping/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Quantization and Noise Shaping
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
       <a href="../rc-lowpass-filter/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
     RC Lowpass Filter
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../real-time-processing-simulator/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Real-Time Processing Simulator
   </span>
   
 
@@ -1160,9 +2003,102 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#about-this-microsim" class="md-nav__link">
+  <a href="#description" class="md-nav__link">
     <span class="md-ellipsis">
-      About this MicroSim
+      Description
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Description">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#mathematical-concepts" class="md-nav__link">
+    <span class="md-ellipsis">
+      Mathematical Concepts
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#lesson-plan" class="md-nav__link">
+    <span class="md-ellipsis">
+      Lesson Plan
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Lesson Plan">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#learning-objectives" class="md-nav__link">
+    <span class="md-ellipsis">
+      Learning Objectives
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#target-audience" class="md-nav__link">
+    <span class="md-ellipsis">
+      Target Audience
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#prerequisites" class="md-nav__link">
+    <span class="md-ellipsis">
+      Prerequisites
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#activities" class="md-nav__link">
+    <span class="md-ellipsis">
+      Activities
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#assessment" class="md-nav__link">
+    <span class="md-ellipsis">
+      Assessment
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#common-misconceptions" class="md-nav__link">
+    <span class="md-ellipsis">
+      Common Misconceptions
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#references" class="md-nav__link">
+    <span class="md-ellipsis">
+      References
     </span>
   </a>
   
@@ -1172,6 +2108,90 @@
   
 </nav>
       
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../s-plane-explorer/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    s-Plane Explorer
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../sampling-theorem-explorer/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Sampling Theorem Explorer
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../signal-operations/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Signal Operations - Shift, Scale and Reverse
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../signal-type-explorer/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Signal Type Explorer
+  </span>
+  
+
+      </a>
     </li>
   
 
@@ -1205,11 +2225,95 @@
   
   
     <li class="md-nav__item">
+      <a href="../spectral-leakage-and-windowing/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Spectral Leakage and Windowing
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
       <a href="../synth-timeline/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
     Synth Timeline
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../system-interconnections/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    System Interconnections - Series, Parallel, Feedback
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../system-property-explorer/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    System Property Explorer
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../time-frequency-analysis-explorer/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Time-Frequency Analysis Explorer
   </span>
   
 
@@ -1252,6 +2356,27 @@
   
   <span class="md-ellipsis">
     Tone Generator
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../wavelet-explorer/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Wavelet Explorer - CWT Scalogram and Haar DWT
   </span>
   
 
@@ -1428,6 +2553,12 @@
       
         
           
+        
+      
+        
+      
+        
+      
         
       
         
@@ -1642,6 +2773,26 @@
   
   
     <li class="md-nav__item">
+      <a href="../../instructors-guide/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Instructor's Guide
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
       <a href="../../license/" class="md-nav__link">
         
   
@@ -1687,26 +2838,6 @@
   
   <span class="md-ellipsis">
     Contact
-  </span>
-  
-
-      </a>
-    </li>
-  
-
-    
-      
-      
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../../ieee-paper-changes/" class="md-nav__link">
-        
-  
-  <span class="md-ellipsis">
-    Paper Changes
   </span>
   
 
@@ -1837,9 +2968,102 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#about-this-microsim" class="md-nav__link">
+  <a href="#description" class="md-nav__link">
     <span class="md-ellipsis">
-      About this MicroSim
+      Description
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Description">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#mathematical-concepts" class="md-nav__link">
+    <span class="md-ellipsis">
+      Mathematical Concepts
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#lesson-plan" class="md-nav__link">
+    <span class="md-ellipsis">
+      Lesson Plan
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Lesson Plan">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#learning-objectives" class="md-nav__link">
+    <span class="md-ellipsis">
+      Learning Objectives
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#target-audience" class="md-nav__link">
+    <span class="md-ellipsis">
+      Target Audience
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#prerequisites" class="md-nav__link">
+    <span class="md-ellipsis">
+      Prerequisites
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#activities" class="md-nav__link">
+    <span class="md-ellipsis">
+      Activities
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#assessment" class="md-nav__link">
+    <span class="md-ellipsis">
+      Assessment
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#common-misconceptions" class="md-nav__link">
+    <span class="md-ellipsis">
+      Common Misconceptions
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#references" class="md-nav__link">
+    <span class="md-ellipsis">
+      References
     </span>
   </a>
   
@@ -1860,7 +3084,7 @@
                   
 
   
-    <a href="https://github.com/dmccreary/signal-processing/blob/master/docs/sims/reverb/index.md" title="Edit this page" class="md-content__button md-icon">
+    <a href="https://github.com/dmccreary/signal-processing/blob/main/docs/sims/reverb/index.md" title="Edit this page" class="md-content__button md-icon">
       
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M10 20H6V4h7v5h5v3.1l2-2V8l-6-6H6c-1.1 0-2 .9-2 2v16c0 1.1.9 2 2 2h4zm10.2-7c.1 0 .3.1.4.2l1.3 1.3c.2.2.2.6 0 .8l-1 1-2.1-2.1 1-1c.1-.1.2-.2.4-.2m0 3.9L14.1 23H12v-2.1l6.1-6.1z"/></svg>
     </a>
@@ -1869,11 +3093,128 @@
 
 
 <h1 id="sound-reverb-effect">Sound Reverb Effect</h1>
-<iframe src="main.html" height="270" scrolling="no" style="overflow: hidden;"></iframe>
+<iframe src="main.html" width="100%" height="422px" scrolling="no"></iframe>
 
-<p><a class="md-button md-button--primary" href="main.html">Link to MicroSim</a>
-<a href="">Edit this MicroSim</a></p>
-<h2 id="about-this-microsim">About this MicroSim</h2>
+<p>Copy this iframe to your website:</p>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="p">&lt;</span><span class="nt">iframe</span> <span class="na">src</span><span class="o">=</span><span class="s">"https://dmccreary.github.io/signal-processing/sims/reverb/main.html"</span> <span class="na">width</span><span class="o">=</span><span class="s">"100%"</span> <span class="na">height</span><span class="o">=</span><span class="s">"422px"</span> <span class="na">scrolling</span><span class="o">=</span><span class="s">"no"</span><span class="p">&gt;&lt;/</span><span class="nt">iframe</span><span class="p">&gt;</span>
+</code></pre></div></td></tr></table></div>
+<p><a class="md-button md-button--primary" href="main.html">Run MicroSim in Fullscreen</a></p>
+<!-- TODO(user): add the p5.js editor link once the sketch is saved in editor.p5js.org:
+[Edit in the p5.js Editor](https://editor.p5js.org/<username>/sketches/reverb) -->
+
+<h2 id="description">Description</h2>
+<p>Reverberation is the sound that keeps arriving after a source stops, built from thousands of reflections off the
+walls of a room. This MicroSim plays a short music clip (2.4 s, looped) through a digital reverb and plots, over the
+last 8 seconds, the level of the <strong>dry clip</strong> going into the reverb (blue) and of the <strong>output you hear</strong> (maroon),
+in decibels relative to full scale (dBFS).</p>
+<table>
+<thead>
+<tr>
+<th>Control</th>
+<th>What it does</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Play / Stop</strong></td>
+<td>Play starts the clip from the beginning; Stop silences the clip, so only the reverb tail is left. A gold dashed line marks the moment the clip fell silent.</td>
+</tr>
+<tr>
+<td><strong>Decay time</strong></td>
+<td>Length of the reverb's impulse response, 1 to 10 s. The panel shows the resulting reverberation time RT60.</td>
+</tr>
+<tr>
+<td><strong>Wet mix</strong></td>
+<td>Dry/wet balance, 0 % (clip only) to 100 % (reverb only). The bars show the dry and wet gains.</td>
+</tr>
+</tbody>
+</table>
+<p>With <strong>Wet mix</strong> at 0 % the maroon trace sits on the blue one and drops to silence the instant you press Stop. Raise
+the wet mix and the maroon trace keeps going after Stop: that tail is the reverb. On the decibel axis the tail is a
+straight line, because the reverb's impulse response decays exponentially.</p>
+<p>The reverb is a convolution, so this simulation belongs with
+<a href="../../chapters/04-convolution-and-correlation/">Chapter 4: Convolution and Correlation</a>.</p>
+<p>The music clip is <em>Dancing Tiger</em> by Damscray, the sample file used in the p5.js sound examples. Its licence has not
+yet been verified.</p>
+<h3 id="mathematical-concepts">Mathematical Concepts</h3>
+<p>The output is the clip <span class="arithmatex">\(x(t)\)</span> convolved with the room's impulse response <span class="arithmatex">\(h(t)\)</span>:</p>
+<div class="arithmatex">\[y(t) = (x * h)(t) = \int_0^{\infty} h(\tau)\, x(t - \tau)\, d\tau\]</div>
+<p>so <span class="arithmatex">\(y\)</span> keeps sounding for as long as <span class="arithmatex">\(h\)</span> is non-zero, even after <span class="arithmatex">\(x\)</span> has stopped. The reverb used here (p5.sound 0.4.1,
+which wraps the Tone.js <code>Reverb</code>) builds <span class="arithmatex">\(h(t)\)</span> as stereo white noise multiplied by an exponential envelope
+<span class="arithmatex">\(e^{-t/\tau}\)</span> with <span class="arithmatex">\(\tau = \ln(d + 1)/\ln 200\)</span>, where <span class="arithmatex">\(d\)</span> is the decay time, and cuts it to zero at <span class="arithmatex">\(t = d\)</span>.
+The reverberation time RT60 is the time for the level to fall by 60 dB (a factor of 1000 in amplitude):</p>
+<div class="arithmatex">\[\mathrm{RT60} = \tau \ln 1000 = \frac{\ln 1000}{\ln 200}\,\ln(d + 1) \approx 1.30\,\ln(d + 1)\]</div>
+<p>The default <span class="arithmatex">\(d = 3\)</span> s gives RT60 = 1.81 s; the slider range 1 to 10 s gives 0.90 to 3.13 s. These values match
+RT60s measured from the impulse responses the library actually generates to within 3 %.</p>
+<p>The <strong>Wet mix</strong> <span class="arithmatex">\(w\)</span> is an <em>equal-power</em> crossfade: the dry gain is <span class="arithmatex">\(\cos(w\pi/2)\)</span> and the wet gain is
+<span class="arithmatex">\(\sin(w\pi/2)\)</span>, so the squared gains always add up to 1. At 50 % both gains are 0.71.</p>
+<h2 id="lesson-plan">Lesson Plan</h2>
+<h3 id="learning-objectives">Learning Objectives</h3>
+<p>After using this MicroSim, students will be able to:</p>
+<ol>
+<li><strong>Explain</strong> why the reverb output continues after the source stops, using the convolution <span class="arithmatex">\(y = x * h\)</span>.</li>
+<li><strong>Predict</strong> how moving the Wet mix from 0 % to 100 % changes the dry and wet gains and the sound after Stop.</li>
+<li><strong>Estimate</strong> the reverberation time RT60 from the slope of the decaying tail on the decibel plot.</li>
+<li><strong>Calculate</strong> RT60 from the decay time <span class="arithmatex">\(d\)</span> and compare it with the value shown in the panel.</li>
+<li><strong>Distinguish</strong> between reverb (a dense, smoothly decaying tail) and a discrete echo.</li>
+</ol>
+<h3 id="target-audience">Target Audience</h3>
+<p>College undergraduates in an introductory signal processing, audio engineering or music technology course.
+Plan 15-20 minutes. Headphones or speakers are required.</p>
+<h3 id="prerequisites">Prerequisites</h3>
+<ul>
+<li>Decibels and logarithms</li>
+<li>The impulse response of a linear time-invariant system</li>
+<li>Convolution (Chapter 4)</li>
+</ul>
+<h3 id="activities">Activities</h3>
+<p><strong>Activity 1: Dry versus wet (5 min).</strong> Set <strong>Wet mix</strong> to 0 %, press <strong>Play</strong>, wait a few seconds and press
+<strong>Stop</strong>. Both traces fall to the bottom of the plot at the same instant and the sound stops at once. Now set
+<strong>Wet mix</strong> to 100 % and repeat. The blue trace still drops at once, but the maroon output trace keeps going and
+takes about 1.5 s to reach the bottom of the plot (−80 dB); you hear the tail.</p>
+<p><strong>Activity 2: Measure RT60 (5 min).</strong> Keep <strong>Wet mix</strong> at 100 % and <strong>Decay time</strong> at 3.0 s. Play for a few seconds,
+press <strong>Stop</strong>, and measure how long the maroon tail takes to fall 20 dB (one grid spacing). It takes about 0.6 s.
+Multiply by 3 to estimate the time for a 60 dB fall and compare it with the <strong>RT60 (est.)</strong> read-out of 1.81 s.</p>
+<p><strong>Activity 3: Small room, big hall (5 min).</strong> Repeat Activity 2 with <strong>Decay time</strong> 1.0 s and then 10.0 s. Predict
+the slopes before you look: RT60 = 0.90 s means a fall of about 66 dB per second, and RT60 = 3.13 s means about 19 dB
+per second. Listen to how the long tail blurs the notes of the clip together.</p>
+<p><strong>Activity 4: Equal-power mixing (5 min).</strong> Move <strong>Wet mix</strong> to 25 %, 50 % and 75 % and read the gain bars:
+0.92/0.38, 0.71/0.71 and 0.38/0.92. Square and add each pair. The sum is always 1: an equal-power crossfade keeps
+the combined power of two unrelated signals constant, where a linear crossfade (0.5/0.5 in the middle) would dip.
+The output still gets quieter toward 100 % because the reverb's wet signal is itself about 10 dB quieter than the
+dry clip; compare the two traces at 100 %.</p>
+<h3 id="assessment">Assessment</h3>
+<ol>
+<li>The <strong>Decay time</strong> slider is set to 5 s. What RT60 does the panel show? <em>(Answer: <span class="arithmatex">\(1.30 \ln 6 \approx 2.34\)</span> s.)</em></li>
+<li>At <strong>Wet mix</strong> = 25 %, what are the dry and wet gains, and what is the sum of their squares?
+   <em>(Answer: <span class="arithmatex">\(\cos(\pi/8) = 0.92\)</span> and <span class="arithmatex">\(\sin(\pi/8) = 0.38\)</span>; <span class="arithmatex">\(0.92^2 + 0.38^2 = 1\)</span>.)</em></li>
+<li>After Stop with <strong>Wet mix</strong> at 100 %, why does the maroon trace keep going while the blue trace has already
+   dropped to the floor? Why does this not happen at 0 %?
+   <em>(Answer: the output is <span class="arithmatex">\(y(t) = \int h(\tau)x(t-\tau)\,d\tau\)</span>, which still contains past input for as long as
+   <span class="arithmatex">\(h\)</span> is non-zero. At 0 % wet the output is the dry clip only, with no convolution.)</em></li>
+<li>A hall has an RT60 of 2 s. A chord at 80 dB SPL is cut off. How long until it has fallen to 50 dB SPL?
+   <em>(Answer: a 30 dB fall is half of 60 dB, so 1 s.)</em></li>
+<li>A 3 s impulse response sampled at 48 kHz has how many samples, and how many multiply-adds per output sample
+   would direct convolution need? <em>(Answer: 144,000 of each, per channel. This is why reverbs use FFT-based fast
+   convolution.)</em></li>
+</ol>
+<h3 id="common-misconceptions">Common Misconceptions</h3>
+<ul>
+<li><strong>"Reverb is just an echo."</strong> An echo is a single delayed copy you can hear as a separate event. Reverb is a dense
+  mass of reflections whose level decays smoothly. The maroon tail in this simulation falls along a roughly straight,
+  unbroken line on the decibel plot, with no separate repeats.</li>
+<li><strong>"The decay time is the reverberation time."</strong> In this library the decay time is the <em>length</em> of the impulse
+  response. The level falls 60 dB well before the end: a 3 s decay gives an RT60 of 1.81 s, as the panel shows.</li>
+</ul>
+<h2 id="references">References</h2>
+<ol>
+<li><a href="https://en.wikipedia.org/wiki/Reverberation">Reverberation</a> - Wikipedia - what reverberation is and how the reverberation time RT60 is defined</li>
+<li><a href="https://en.wikipedia.org/wiki/Convolution_reverb">Convolution reverb</a> - Wikipedia - how a reverb is computed by convolving a signal with an impulse response</li>
+<li><a href="https://en.wikipedia.org/wiki/Impulse_response">Impulse response</a> - Wikipedia - the system description that the reverb tail comes from</li>
+<li><a href="https://en.wikipedia.org/wiki/Convolution">Convolution</a> - Wikipedia - the operation <span class="arithmatex">\(y = x * h\)</span> used by the reverb</li>
+<li><a href="https://www.dspguide.com/">The Scientist and Engineer's Guide to Digital Signal Processing</a> - Steven W. Smith - free online textbook with chapters on convolution and FFT convolution</li>
+<li><a href="https://github.com/processing/p5.sound.js">p5.sound.js</a> - Processing Foundation - the audio library used by this MicroSim</li>
+</ol>
 
 
 
@@ -1912,7 +3253,7 @@
       <nav class="md-footer__inner md-grid" aria-label="Footer" >
         
           
-          <a href="../rc-lowpass-filter/" class="md-footer__link md-footer__link--prev" aria-label="Previous: RC Lowpass Filter">
+          <a href="../real-time-processing-simulator/" class="md-footer__link md-footer__link--prev" aria-label="Previous: Real-Time Processing Simulator">
             <div class="md-footer__button md-icon">
               
               <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
@@ -1922,20 +3263,20 @@
                 Previous
               </span>
               <div class="md-ellipsis">
-                RC Lowpass Filter
+                Real-Time Processing Simulator
               </div>
             </div>
           </a>
         
         
           
-          <a href="../sine-wave/" class="md-footer__link md-footer__link--next" aria-label="Next: Sine Wave">
+          <a href="../s-plane-explorer/" class="md-footer__link md-footer__link--next" aria-label="Next: s-Plane Explorer">
             <div class="md-footer__title">
               <span class="md-footer__direction">
                 Next
               </span>
               <div class="md-ellipsis">
-                Sine Wave
+                s-Plane Explorer
               </div>
             </div>
             <div class="md-footer__button md-icon">

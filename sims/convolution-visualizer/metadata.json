@@ -1,0 +1,189 @@
+{
+  "microsim": {
+    "dublinCore": {
+      "title": "Convolution Visualizer",
+      "creator": ["Dan McCreary"],
+      "subject": ["Signal Processing", "Signals and Systems", "Convolution", "Impulse Response", "LTI Systems"],
+      "description": "Step-by-step flip-and-slide demonstration of the convolution integral. The impulse response is time-reversed, shifted by t, multiplied by the input, and the area under the product is plotted as the output y(t) for eight pairs of signals.",
+      "publisher": "Dan McCreary",
+      "contributor": ["Claude (Anthropic)"],
+      "date": "2026-10-02",
+      "type": "Interactive Simulation",
+      "format": "text/html",
+      "identifier": "https://dmccreary.github.io/signal-processing/sims/convolution-visualizer/",
+      "language": "en",
+      "relation": ["Chapter 4: Convolution and Correlation", "Convolution Theorem"],
+      "rights": "CC BY-NC-SA 4.0"
+    },
+    "search": {
+      "tags": ["convolution", "flip and slide", "impulse response", "LTI system", "convolution integral", "signals and systems", "overlap integral"],
+      "searchKeywords": ["convolution visualizer", "flip and slide", "convolution integral", "impulse response", "overlap area", "moving average", "RC filter"],
+      "visualizationType": ["animation", "graph", "interactive-demo"],
+      "interactionLevel": "high",
+      "complexity": 5,
+      "relatedConcepts": ["Convolution", "Impulse Response", "Linear Time-Invariant Systems", "Convolution Theorem", "Discrete Convolution"],
+      "applicationDomains": ["education", "exploration", "demonstration"],
+      "showcase": false
+    },
+    "educational": {
+      "gradeLevel": ["Undergraduate"],
+      "subjectArea": ["Engineering", "Mathematics"],
+      "topic": ["The convolution integral", "Flip and slide", "Impulse response of an LTI system"],
+      "learningObjectives": [
+        "Explain each step of the convolution integral: flip, slide, multiply and integrate",
+        "Identify the range of t over which two finite-duration signals overlap, and so where the output is non-zero",
+        "Predict the shape of the output for simple pairs of signals before stepping through them",
+        "Calculate y(t) at one time from the overlap region and its area",
+        "Describe how the shape of an impulse response determines what a system does to its input"
+      ],
+      "bloomsTaxonomy": ["Understand", "Apply"],
+      "prerequisites": ["Time shifting and time reversal", "Impulse response of an LTI system", "Integration as signed area"],
+      "duration": {"typical": 22, "range": {"min": 20, "max": 25}},
+      "difficulty": "Intermediate",
+      "scaffolding": {
+        "type": ["guided-discovery", "worked-examples", "feedback"],
+        "adaptability": "fixed",
+        "removal": "user-controlled"
+      },
+      "misconceptions": [
+        {
+          "misconception": "Convolution multiplies the two signals point by point",
+          "correction": "The shaded product is a whole function of tau for one value of t, and only its area is one point of the output",
+          "evidence": "Move the Time t slider and watch the product change shape while its area traces the purple output curve"
+        },
+        {
+          "misconception": "The output has the same duration as the input",
+          "correction": "The output of two finite pulses lasts as long as the sum of their durations",
+          "evidence": "Rectangle * Rectangle: two 2 s pulses give a 4 s output"
+        },
+        {
+          "misconception": "The impulse response slides without being reversed",
+          "correction": "The curve that slides is h(t - tau), a function of -tau, so it is the mirror image of h",
+          "evidence": "Rectangle * Exponential: h decays to the right but the red curve decays to the left"
+        }
+      ]
+    },
+    "technical": {
+      "framework": "p5.js",
+      "version": "2.0.0",
+      "canvasDimensions": {"width": 670, "height": 630, "responsive": true},
+      "regions": {"drawHeight": 550, "controlHeight": 80},
+      "dependencies": ["p5.js 2.3.2"],
+      "browserCompatibility": ["Chrome 90+", "Firefox 88+", "Safari 14+", "Edge 90+"],
+      "performance": {"memoryUsage": "low", "loadTime": 500},
+      "deviceRequirements": {
+        "minScreenWidth": 320,
+        "touchSupport": true,
+        "keyboardRequired": false,
+        "mouseRequired": false,
+        "networkRequired": false
+      },
+      "accessibility": {
+        "screenReader": true,
+        "keyboardNavigation": true,
+        "colorContrast": true,
+        "altText": true,
+        "screenReaderScript": "Flip-and-slide convolution. Top plots show the input x(t) and impulse response h(t). The middle plot shows x of tau, the flipped and shifted h of t minus tau, and their shaded product. The bottom plot traces the output y(t), the area of the product, as time t advances."
+      }
+    },
+    "userInterface": {
+      "layoutType": "responsive-width",
+      "layoutPattern": "drawing-region-above-controls",
+      "colorScheme": {
+        "drawingArea": "aliceblue",
+        "controlArea": "white",
+        "accent": "purple",
+        "text": "black"
+      },
+      "controls": [
+        {
+          "id": "pairSelect",
+          "type": "dropdown",
+          "label": "Signals",
+          "description": "Chooses which pair of signals x(t) and h(t) is convolved",
+          "group": "signals",
+          "properties": {
+            "options": [
+              {"value": "rect-rect", "label": "Rectangle * Rectangle"},
+              {"value": "wide-narrow", "label": "Wide rectangle * Narrow rectangle"},
+              {"value": "rect-exp", "label": "Rectangle * Exponential (RC filter)"},
+              {"value": "exp-exp", "label": "Exponential * Exponential"},
+              {"value": "tri-rect", "label": "Triangle * Rectangle"},
+              {"value": "tri-tri", "label": "Triangle * Triangle"},
+              {"value": "sine-rect", "label": "Sine burst * Rectangle (averager)"},
+              {"value": "rect-edge", "label": "Rectangle * Edge detector"}
+            ],
+            "default": "rect-exp"
+          }
+        },
+        {
+          "id": "playButton",
+          "type": "button",
+          "label": "Play / Pause",
+          "description": "Sweeps t automatically from its current value to 7 s; restarts from -2 s if t is already at the end",
+          "group": "animation",
+          "properties": {"text": "Play", "action": "togglePlay", "style": "primary"}
+        },
+        {
+          "id": "backButton",
+          "type": "button",
+          "label": "< Step",
+          "description": "Pauses and moves t back by 0.25 s",
+          "group": "animation",
+          "properties": {"text": "< Step", "action": "nudgeTime", "style": "secondary"}
+        },
+        {
+          "id": "forwardButton",
+          "type": "button",
+          "label": "Step >",
+          "description": "Pauses and moves t forward by 0.25 s",
+          "group": "animation",
+          "properties": {"text": "Step >", "action": "nudgeTime", "style": "secondary"}
+        },
+        {
+          "id": "resetButton",
+          "type": "button",
+          "label": "Reset",
+          "description": "Pauses and returns t to -2 s",
+          "group": "animation",
+          "properties": {"text": "Reset", "action": "resetTime", "style": "secondary"}
+        },
+        {
+          "id": "timeSlider",
+          "type": "slider",
+          "label": "Time t (s)",
+          "description": "Sets the shift t of the flipped impulse response h(t - tau)",
+          "group": "time",
+          "properties": {"min": -2, "max": 7, "default": 1, "step": 0.05, "units": "s", "showValue": true}
+        },
+        {
+          "id": "speedSlider",
+          "type": "slider",
+          "label": "Play speed",
+          "description": "Seconds of t swept per second of real time while playing",
+          "group": "animation",
+          "properties": {"min": 0.25, "max": 3, "default": 1, "step": 0.25, "units": "x", "showValue": true}
+        }
+      ],
+      "visualElements": [
+        {"type": "graph", "description": "Small plots of the input x(t) in blue and the impulse response h(t) in red", "interactive": false, "updateTriggers": ["pairSelect"]},
+        {"type": "graph", "description": "Plot against tau of x(tau), the flipped and shifted h(t - tau), and their shaded product", "interactive": true, "updateTriggers": ["pairSelect", "timeSlider", "playButton"]},
+        {"type": "graph", "description": "Output y(t) traced up to the current time, with a marker at the current area", "interactive": true, "updateTriggers": ["pairSelect", "timeSlider", "playButton"]},
+        {"type": "text-display", "description": "Read-out of t and the value of the convolution integral, plus a one-line note on the selected pair", "interactive": false, "updateTriggers": ["pairSelect", "timeSlider"]}
+      ]
+    },
+    "simulation": {
+      "model": {
+        "type": "mathematical",
+        "description": "Evaluates the convolution integral with the midpoint rule at a step of 0.005 s over tau from -1 to 16 s; all signals are zero for t < 0",
+        "equations": ["y(t) = integral of x(tau) h(t - tau) d tau"]
+      }
+    },
+    "usage": {
+      "recommendedUsage": ["demonstration", "exploration", "guided-practice"],
+      "instructionalStrategies": ["Predict the output by sketching it, then step through to check", "Step-through worked example with a numeric read-out at every t"],
+      "extensions": ["Swap the roles of x and h and confirm that the output is unchanged (commutativity)", "Relate the output duration to the sum of the two input durations"]
+    }
+  },
+  "canvasHeight": 630
+}
